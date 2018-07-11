@@ -1,0 +1,114 @@
+{
+    "extensions": {
+        "additionalContactPoint": {
+            "versions": {
+                "master": {
+                    "date": "",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_additionalContactPoints_extension/master/",
+                    "download_url": "https://github.com/open-contracting/ocds_additionalContactPoints_extension/archive/master.zip",
+                    "name": {
+                        "en": "Additional Contact Points"
+                    },
+                    "description": {
+                        "en": "For including extra contact points on each organization. Particularly used when each contact point deals only in a particular language or group of languages."
+                    }
+                }
+            },
+            "category": "parties",
+            "core": false
+        },
+        "bids": {
+            "versions": {
+                "master": {
+                    "date": "",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_bid_extension/master/",
+                    "download_url": "https://github.com/open-contracting/ocds_bid_extension/archive/master.zip",
+                    "name": {
+                        "en": "Bid statistics and details"
+                    },
+                    "description": {
+                        "en": "Allowing bid statistics, and detailed bid information to be represented."
+                    }
+                },
+                "v1.1": {
+                    "date": "2017-05-09",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_bid_extension/v1.1/",
+                    "download_url": "https://api.github.com/repos/open-contracting/ocds_bid_extension/zipball/v1.1",
+                    "name": "Bid statistics and details",
+                    "description": "Allowing bid statistics, and detailed bid information to be represented."
+                },
+                "v1.1.1": {
+                    "date": "2017-08-07",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_bid_extension/v1.1.1/",
+                    "download_url": "https://api.github.com/repos/open-contracting/ocds_bid_extension/zipball/v1.1.1",
+                    "name": "Bid statistics and details",
+                    "description": "Allowing bid statistics, and detailed bid information to be represented."
+                },
+                "v1.1.3": {
+                    "date": "2018-01-30",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_bid_extension/v1.1.3/",
+                    "download_url": "https://api.github.com/repos/open-contracting/ocds_bid_extension/zipball/v1.1.3",
+                    "name": {
+                        "en": "Bid statistics and details"
+                    },
+                    "description": {
+                        "en": "Allowing bid statistics, and detailed bid information to be represented."
+                    }
+                }
+            },
+            "category": "bids",
+            "core": true
+        },
+        "budget": {
+            "versions": {
+                "master": {
+                    "date": "",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_budget_breakdown_extension/master/",
+                    "download_url": "https://github.com/open-contracting/ocds_budget_breakdown_extension/archive/master.zip",
+                    "name": {
+                        "en": "Budget Breakdown"
+                    },
+                    "description": {
+                        "en": "Adds a budget breakdown array to the budget object to break down a budget by source and period."
+                    }
+                }
+            },
+            "category": "ppp",
+            "core": false
+        },
+        "budget_project": {
+            "versions": {
+                "master": {
+                    "date": "",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_budget_projects_extension/master/",
+                    "download_url": "https://github.com/open-contracting/ocds_budget_projects_extension/archive/master.zip",
+                    "name": {
+                        "en": "Budget and Projects"
+                    },
+                    "description": {
+                        "en": "Adds a project object to the planning object to describe the project to which the contracting process is related, including the total value of the project (not to be confused with the total value of the contracting process)."
+                    }
+                }
+            },
+            "category": "ppp",
+            "core": false
+        },
+        "charges": {
+            "versions": {
+                "master": {
+                    "date": "",
+                    "base_url": "https://raw.githubusercontent.com/open-contracting/ocds_charges_extension/master/",
+                    "download_url": "https://github.com/open-contracting/ocds_charges_extension/archive/master.zip",
+                    "name": {
+                        "en": "Charges"
+                    },
+                    "description": {
+                        "en": "Adds a charges array to the implementation object to disclose the charges to be incurred by users or government in a given period of a contract."
+                    }
+                }
+            },
+            "category": "ppp",
+            "core": false
+        }
+    }
+}
