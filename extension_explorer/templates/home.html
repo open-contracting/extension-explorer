@@ -1,1 +1,33 @@
 {% extends 'base.html' %}
+
+{% block home_nav_link %}active{% endblock %}
+
+{% block main %}
+  <div class="row mt-2">
+    <div class="col">
+      <div class="jumbotron">
+        <h1 class="display-4">OCDS Extension Explorer</h1>
+        <p class="lead">Where you can find information on Open Contracting Data Standards extensions</p>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row mt-2">
+    <div class="col">
+      <div>
+        <p class="lead">
+          <a class="" href="#"> Core Extensions</a> - Extensions maintained by the same people that devolop OCDS schema.
+        </p>
+        <p class="lead">
+          <a class="" href="#" >Community Extensions</a> - Extensions maintained by the community, vetted by the OCDS core team.
+        </p>
+        <p class="lead">
+          <a class="" href="#" >Extension Selector</a> - Tool where you can select multiple extensions and tells you what you need to add to your data to declare them.
+        </p>
+        <h2 class="mt-5">What are extensions</h1>
+        <p> Extension are additions to the core OCDS standard. They add functionality ...</p>
+      </div>
+    </div>
+  </div>
+{% endblock main %}
