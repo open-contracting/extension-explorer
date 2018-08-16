@@ -1,0 +1,8 @@
+{% extends 'extension.html' %}
+
+{% block nav_extension_info %}
+  <a class="nav-link active" href="{{url_for('extension_info', slug=slug, version=version, lang=lang)}}">Extension Info</a>
+{% endblock nav_extension_info %}
+
+{% block extension_body %}
+{% endblock extension_body %}

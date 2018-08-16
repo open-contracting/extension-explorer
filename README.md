@@ -3,5 +3,5 @@
 To run flask in development mode run:
 
 ```
-FLASK_APP=extension_explorer flask run
+FLASK_ENV=development FLASK_APP=extension_explorer flask run
 ```

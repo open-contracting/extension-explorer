@@ -37,7 +37,16 @@ def extension(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension.html', lang=lang, slug=slug, version=version, 
+    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, 
+                           extension=extension, extension_version=extension_version)
+
+@app.route('/<lang>/extension/<slug>/<version>/extension_info')
+def extension_info(lang, slug, version):
+    try:
+        extension, extension_version = get_extension(slug, version)
+    except KeyError:
+        abort(404)
+    return render_template('extension_info.html', lang=lang, slug=slug, version=version, 
                            extension=extension, extension_version=extension_version)
 
 #@app.route('/<lang>/core/<version>/<extension>/')

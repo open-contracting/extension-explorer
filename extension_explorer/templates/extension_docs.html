@@ -1,0 +1,9 @@
+{% extends 'extension.html' %}
+
+{% block nav_docs%}
+  <a class="nav-link active" href="{{url_for('extension', slug=slug, version=version, lang=lang)}}">Docs</a>
+{% endblock nav_docs%}
+
+{% block extension_body %}
+  <pre> {{ extension_version.readme[lang]["content"] }} </pre>
+{% endblock extension_body %}

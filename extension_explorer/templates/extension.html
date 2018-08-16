@@ -1,10 +1,7 @@
 {% extends 'base.html' %}
 
-{% if extension.core %} 
-  {% block core_nav_link %}active{% endblock %}
-{% else %} 
-  {% block comminity_nav_link %}active{% endblock %}
-{% endif %} 
+{% block core_nav_link %} {% if extension.core %} active {% endif %}{% endblock %}
+{% block community_nav_link %} {% if not extension.core %} active {% endif %}{% endblock %}
 
 
 {% block main %}
@@ -29,9 +26,11 @@
   <div class="row flex-xl-nowrap mt-2 no-gutters">
 
     <div class="col-12 col-md-3 col-xl-2">
-      <ul class="nav nav-pills card-header-pills flex-column">
+      <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Docs</a>
+          {% block nav_docs%}
+            <a class="nav-link" href="{{url_for('extension', slug=slug, version=version, lang=lang)}}">Docs</a>
+          {% endblock nav_docs%}
           {#
           <ul class="nav flex-column ml-3">
               <a class="nav-link pt-0 pb-0" href="#relatedlot"><small> Related Lot </small></a>
@@ -40,7 +39,9 @@
           #}
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Extension Info</a>
+          {% block nav_extension_info %}
+            <a class="nav-link" href="{{url_for('extension_info', slug=slug, version=version, lang=lang)}}">Extension Info</a>
+          {% endblock nav_extension_info %}
           {#
             <ul class="nav flex-column ml-3">
               <a class="nav-link pt-0 pb-0" href="#workedexample"><small> Usage </small></a>
@@ -52,13 +53,19 @@
           #}
         </li>
         <li class="nav-item">
+          {% block nav_schema %}
           <a class="nav-link" href="#">Schema Referance</a>
+          {% endblock nav_schema %}
         </li>
         <li class="nav-item">
+          {% block nav_codelists %}
           <a class="nav-link" href="#">Codelists</a>
+          {% endblock nav_codelists %}
         </li>
         <li class="nav-item">
+          {% block nav_examples %}
           <a class="nav-link" href="#">Examples</a>
+          {% endblock nav_examples %}
         </li>
       </ul>
     </div>
@@ -67,9 +74,8 @@
       <div class="card">
 
         <div class="card-body">
-
-          <pre> {{ extension_version.readme[lang]["content"] }} </pre>
-
+          {% block extension_body %}
+          {% endblock extension_body %}
         </div>
       </div>
     </div>

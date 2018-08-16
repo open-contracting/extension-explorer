@@ -18,6 +18,7 @@ def get_core_extensions():
         if not extension['core']:
             continue
         extension['slug'] = extension_name
+        extension['first_version'] = list(extension['versions'])[0]
         core_extensions.append(extension)
     return core_extensions
 
@@ -29,6 +30,7 @@ def get_community_extensions():
         if extension['core']:
             continue
         extension['slug'] = extension_name
+        extension['first_version'] = list(extension['versions'])[0]
         community_extensions.append(extension)
     return community_extensions
 
