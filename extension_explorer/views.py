@@ -41,7 +41,7 @@ def extension(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, 
+    return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version)
 
 
@@ -51,7 +51,7 @@ def extension_info(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_info.html', lang=lang, slug=slug, version=version, 
+    return render_template('extension_info.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version)
 
 
@@ -61,7 +61,7 @@ def extension_reference(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('schema_reference.html', lang=lang, slug=slug, version=version, 
+    return render_template('schema_reference.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version)
 
 
@@ -71,5 +71,5 @@ def extension_codelists(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version, 
+    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version)
