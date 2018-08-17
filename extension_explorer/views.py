@@ -41,7 +41,7 @@ def extension(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, 
+    return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version)
 
 
@@ -51,13 +51,13 @@ def extension_info(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_info.html', lang=lang, slug=slug, version=version, 
+    return render_template('extension_info.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version)
 
-#@app.route('/<lang>/core/<version>/<extension>/')
-#def core_extension(lang, version, extension):
-    #return render_template('home.html')
+# @app.route('/<lang>/core/<version>/<extension>/')
+# def core_extension(lang, version, extension):
+    # return render_template('home.html')
 
-#@app.route('/<lang>/community/<extension>/<version>')
-#def community_extension(lang, extension, version):
-    #return render_template('home.html')
+# @app.route('/<lang>/community/<extension>/<version>')
+# def community_extension(lang, extension, version):
+    # return render_template('home.html')

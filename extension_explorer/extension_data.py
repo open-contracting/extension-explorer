@@ -1,14 +1,16 @@
-import os 
+import os
 import json
 import collections
 
 cur_dir = os.path.dirname(os.path.realpath(__file__))
+
 
 def get_data():
     with open(os.path.join(cur_dir, 'local_data.json')) as extension_data_file:
         extension_data = json.load(extension_data_file, object_pairs_hook=collections.OrderedDict)
 
     return extension_data
+
 
 def get_core_extensions():
     all_extension_data = get_data()
@@ -22,6 +24,7 @@ def get_core_extensions():
         core_extensions.append(extension)
     return core_extensions
 
+
 def get_community_extensions():
     all_extension_data = get_data()
     community_extensions = []
@@ -34,12 +37,10 @@ def get_community_extensions():
         community_extensions.append(extension)
     return community_extensions
 
+
 def get_extension(slug, version):
     all_extension_data = get_data()
     extension = all_extension_data['extensions'][slug]
     version = extension['versions'][version]
 
     return extension, version
-
-
-
