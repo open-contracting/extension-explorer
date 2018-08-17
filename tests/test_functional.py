@@ -27,7 +27,7 @@ def browser(request):
 @pytest.mark.usefixtures('live_server')
 def test_to_test_selenium(browser):
     """
-    This is just a test to make sure the selenium set up works.
+    Test to make sure selenium works.
     TODO Please delete when other tests are added.
     """
     browser.get(url_for('home', _external=True))
