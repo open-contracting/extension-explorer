@@ -1,0 +1,37 @@
+
+{% extends 'extension.html' %}
+
+{% block nav_schema %}
+   <a class="nav-link active" href="{{url_for('extension_reference', slug=slug, version=version, lang=lang)}}">Schema Reference</a>
+  <ul class="nav flex-column ml-3">
+  {% if extension_version.release_schema %}
+    <a class="nav-link pt-0 pb-0" href="#release-schema"><small> Release Schema </small></a>
+  {% endif %}
+  {% if extension_version.release_package_schema %}
+    <a class="nav-link pt-0 pb-0" href="#release-package-schema"><small> Release Package Schema </small></a>
+  {% endif %}
+  {% if extension_version.record_package_schema %}
+    <a class="nav-link pt-0 pb-0" href="#record-package-schema"><small> Record Package Schema </small></a>
+  {% endif %}
+
+
+  </ul>
+{% endblock nav_schema %}
+
+{% block extension_body %}
+
+{% if extension_version.release_schema %}
+  <h2 id="release-schema">Release Schema</h2>
+  {{ extension_version.release_schema[lang]|tojson }}
+{% endif %}
+{% if extension_version.release_package_schema %}
+  <h2 id="release-package-schema">Release Package Schema</h2>
+  {{ extension_version.release_package_schema[lang]|tojson }}
+{% endif %}
+{% if extension_version.record_package_schema %}
+  <h2 id="record-package-schema">Record Package Schema</h2>
+  {{ extension_version.record_package_schema[lang]|tojson }}
+{% endif %}
+
+
+{% endblock extension_body %}

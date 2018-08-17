@@ -5,4 +5,23 @@
 {% endblock nav_extension_info %}
 
 {% block extension_body %}
+
+<dl class="row">
+  <dt class="col-sm-3">Download URL</dt>
+  <dd class="col-sm-9"><a href="{{extension_version.download_url}}">{{extension_version.download_url}}</a></dd>
+
+  <dt class="col-sm-3">Base URL</dt>
+  <dd class="col-sm-9">{{extension_version.base_url}}</dd>
+
+  <dt class="col-sm-3">Compatability</dt>
+  <dd class="col-sm-9"> - </dd>
+
+  <dt class="col-sm-3">Core</dt>
+  <dd class="col-sm-9">{{extension.core}}</dd>
+
+  <dt class="col-sm-3">Category</dt>
+  <dd class="col-sm-9">{{extension.category}}</dd>
+
+</dl>
+
 {% endblock extension_body %}
