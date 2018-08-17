@@ -1,6 +1,7 @@
 from flask import Flask, abort
 from flask import render_template
 from flask_env import MetaFlaskEnv
+import CommonMark
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
 
@@ -39,10 +40,14 @@ def community(lang):
 def extension(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
+
+        readme = extension_version.get("readme", {}).get(lang, {}).get("content", "")
+        ## WE SHOULD THINK HOW SAFE THIS IS
+        readme_html = CommonMark.commonmark(readme)
     except KeyError:
         abort(404)
-    return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version)
+    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, 
+                           extension=extension, extension_version=extension_version, readme_html=readme_html)
 
 
 @app.route('/<lang>/extension/<slug>/<version>/info')

@@ -5,5 +5,5 @@
 {% endblock nav_docs%}
 
 {% block extension_body %}
-  <pre> {{ extension_version.readme[lang]["content"] }} </pre>
+  {{ readme_html|safe }}
 {% endblock extension_body %}

@@ -14,12 +14,11 @@
       <p> {{ extension['description'][lang] }} </p>
     </div>
     <div class="col-12 col-md-3 col-xl-2 mt-2">
-      {# 
-      <select id="select" class="float-right">
-        <option value="">Version 1.1.3 (latest)</option>
-        <option value="">Version 1.1.0</option>
+      <select id="version-select" class="float-right">
+        {% for dropdown_version in extension.versions %}
+          <option value="{{url_for(request.endpoint, slug=slug, version=dropdown_version, lang=lang)}}" {% if dropdown_version == version %}selected{% endif %}>{{dropdown_version}}</option>
+        {% endfor %}
       </select>
-      #}
     </div>
   </div>
 
@@ -31,26 +30,11 @@
           {% block nav_docs%}
             <a class="nav-link" href="{{url_for('extension', slug=slug, version=version, lang=lang)}}">Docs</a>
           {% endblock nav_docs%}
-          {#
-          <ul class="nav flex-column ml-3">
-              <a class="nav-link pt-0 pb-0" href="#relatedlot"><small> Related Lot </small></a>
-              <a class="nav-link pt-0 pb-0" href="#workedexample"><small> Worked Example </small></a>
-          </ul>
-          #}
         </li>
         <li class="nav-item">
           {% block nav_extension_info %}
             <a class="nav-link" href="{{url_for('extension_info', slug=slug, version=version, lang=lang)}}">Extension Info</a>
           {% endblock nav_extension_info %}
-          {#
-            <ul class="nav flex-column ml-3">
-              <a class="nav-link pt-0 pb-0" href="#workedexample"><small> Usage </small></a>
-              <a class="nav-link pt-0 pb-0" href="#relatedlot"><small> Compatability </small></a>
-              <a class="nav-link pt-0 pb-0" href="#workedexample"><small> External Docs </small></a>
-              <a class="nav-link pt-0 pb-0" href="#workedexample"><small> Dependancies </small></a>
-              <a class="nav-link pt-0 pb-0" href="#workedexample"><small> Related Extenions </small></a>
-            </ul>
-          #}
         </li>
         <li class="nav-item">
           {% block nav_schema %}
@@ -59,7 +43,12 @@
         </li>
         <li class="nav-item">
           {% block nav_codelists %}
-            <a class="nav-link" href="{{url_for('extension_codelists', slug=slug, version=version, lang=lang)}}">Codelists</a>
+          {% if extension_version.codelists %}
+            <a class="nav-link" 
+               href="{{url_for('extension_codelists', slug=slug, version=version, lang=lang)}}">
+              Codelists
+            </a>
+          {% endif %}
           {% endblock nav_codelists %}
         </li>
       </ul>
@@ -76,3 +65,13 @@
     </div>
   </div>
 {% endblock main %}
+
+{% block extra_js %}
+<script>
+  
+jQuery('#version-select').change(function() {
+  window.location.href = $(this).val() 
+});
+
+</script>
+{% endblock extra_js %}
