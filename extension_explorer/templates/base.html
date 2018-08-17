@@ -24,7 +24,7 @@
           aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="{{url_for('home', lang=lang)}}">
+  <a class="navbar-brand" href="{{url_for('lang_home', lang=lang)}}">
     <svg class="navbar-svg">
               <use xlink:href="#ocp-logo-only"></use>
     </svg>
@@ -36,7 +36,7 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto ml-5 mt-2 mt-md-0">
       <li class="nav-item">
-        <a class="nav-link {% block home_nav_link %}{% endblock %}" href="{{url_for('home', lang=lang)}}">Home</a>
+        <a class="nav-link {% block home_nav_link %}{% endblock %}" href="{{url_for('lang_home', lang=lang)}}">Home</a>
       </li>
       <li class="nav-item">
         <a class="nav-link {% block core_nav_link %}{% endblock %}" href="{{url_for('core', lang=lang)}}">Core</a>
