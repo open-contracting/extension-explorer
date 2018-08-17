@@ -42,11 +42,11 @@ def extension(lang, slug, version):
         extension, extension_version = get_extension(slug, version)
 
         readme = extension_version.get("readme", {}).get(lang, {}).get("content", "")
-        ## WE SHOULD THINK HOW SAFE THIS IS
+        # WE SHOULD THINK HOW SAFE THIS IS
         readme_html = CommonMark.commonmark(readme)
     except KeyError:
         abort(404)
-    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, 
+    return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version, readme_html=readme_html)
 
 
