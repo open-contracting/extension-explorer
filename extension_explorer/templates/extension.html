@@ -54,18 +54,13 @@
         </li>
         <li class="nav-item">
           {% block nav_schema %}
-          <a class="nav-link" href="#">Schema Referance</a>
+            <a class="nav-link" href="{{url_for('extension_reference', slug=slug, version=version, lang=lang)}}">Schema Reference</a>
           {% endblock nav_schema %}
         </li>
         <li class="nav-item">
           {% block nav_codelists %}
-          <a class="nav-link" href="#">Codelists</a>
+            <a class="nav-link" href="{{url_for('extension_codelists', slug=slug, version=version, lang=lang)}}">Codelists</a>
           {% endblock nav_codelists %}
-        </li>
-        <li class="nav-item">
-          {% block nav_examples %}
-          <a class="nav-link" href="#">Examples</a>
-          {% endblock nav_examples %}
         </li>
       </ul>
     </div>

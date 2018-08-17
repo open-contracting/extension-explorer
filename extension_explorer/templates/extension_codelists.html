@@ -1,0 +1,38 @@
+{% extends 'extension.html' %}
+
+{% block nav_codelists %}
+  <a class="nav-link active" href="{{url_for('extension_codelists', slug=slug, version=version, lang=lang)}}">Codelists</a>
+  <ul class="nav flex-column ml-3">
+    {% for codelist in extension_version.codelists %}
+      <a class="nav-link pt-0 pb-0" href="#{{codelist}}"><small> {{codelist}} </small></a>
+    {% endfor %}
+  </ul>
+{% endblock nav_codelists %}
+
+{% block extension_body %}
+  {% for codelist in extension_version.codelists %}
+    <h2 id="{{codelist}}"> {{codelist}} </h2>
+
+      <table class="table">
+        <thead>
+            <tr>
+              <th scope="col">Code</th>
+              <th scope="col">Title</th>
+              <th scope="col">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+          {% for key, value in extension_version.codelists[codelist]["items"].items() %}
+            <tr>
+                <th scope="row">{{key}}</th>
+                <td>{{value[lang].Title}}{{value[lang].Title_en}}</td>
+                <td>{{value[lang].Description}}{{value[lang].Description_en}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+
+
+  {% endfor %}
+{% endblock extension_body %}

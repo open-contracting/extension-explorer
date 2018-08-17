@@ -45,7 +45,7 @@ def extension(lang, slug, version):
                            extension=extension, extension_version=extension_version)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/extension_info')
+@app.route('/<lang>/extension/<slug>/<version>/info')
 def extension_info(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
@@ -54,10 +54,23 @@ def extension_info(lang, slug, version):
     return render_template('extension_info.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version)
 
-# @app.route('/<lang>/core/<version>/<extension>/')
-# def core_extension(lang, version, extension):
-    # return render_template('home.html')
 
-# @app.route('/<lang>/community/<extension>/<version>')
-# def community_extension(lang, extension, version):
-    # return render_template('home.html')
+@app.route('/<lang>/extension/<slug>/<version>/reference')
+def extension_reference(lang, slug, version):
+    try:
+        extension, extension_version = get_extension(slug, version)
+    except KeyError:
+        abort(404)
+    return render_template('schema_reference.html', lang=lang, slug=slug, version=version, 
+                           extension=extension, extension_version=extension_version)
+
+
+@app.route('/<lang>/extension/<slug>/<version>/codelists')
+def extension_codelists(lang, slug, version):
+    try:
+        extension, extension_version = get_extension(slug, version)
+    except KeyError:
+        abort(404)
+    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version, 
+                           extension=extension, extension_version=extension_version)
+>>>>>>> 2703dc1ff711dc158eedba7c09f2fb40033324c7
