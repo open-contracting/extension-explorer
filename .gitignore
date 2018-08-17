@@ -3,3 +3,6 @@ __pycache__
 .ve
 .idea/
 .DS_Store
+.pytest_cache/
+chromedriver/
+chromedriver_mac64.zip

@@ -9,7 +9,9 @@ Jinja2==2.10
 libsass==0.14.5
 MarkupSafe==1.0
 -e git+https://github.com/open-contracting/extension_registry.py@8b06b6826c57d67ddddd38d062c7d52cfb065530#egg=ocdsextensionregistry
+pytest==3.7.1
 requests==2.19.1
+selenium==3.14.0
 six==1.11.0
 urllib3==1.23
 Werkzeug==0.14.1
