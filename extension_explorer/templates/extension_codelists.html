@@ -2,7 +2,7 @@
 
 {% block nav_codelists %}
   <a class="nav-link active" href="{{url_for('extension_codelists', slug=slug, version=version, lang=lang)}}">Codelists</a>
-  <ul class="nav flex-column ml-3">
+  <ul class="nav flex-column ml-1">
     {% for codelist in extension_version.codelists %}
       <a class="nav-link pt-0 pb-0" href="#{{codelist}}"><small> {{codelist}} </small></a>
     {% endfor %}

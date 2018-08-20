@@ -2,6 +2,8 @@ from flask import Flask, abort
 from flask import render_template
 from flask_env import MetaFlaskEnv
 import CommonMark
+import lxml.html
+from slugify import UniqueSlugify
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
 
@@ -44,10 +46,24 @@ def extension(lang, slug, version):
         readme = extension_version.get("readme", {}).get(lang, {}).get("content", "")
         # WE SHOULD THINK HOW SAFE THIS IS
         readme_html = CommonMark.commonmark(readme)
+
+        root = lxml.html.fromstring(readme_html)
+
+        slugifier = UniqueSlugify()
+        headings = []
+
+        for element in root.iter("h1", "h2", "h3", "h4", "h5"):
+            heading_id = slugifier(element.text)
+            element.attrib['id'] = heading_id
+            headings.append({"id": heading_id, "header_number": element.tag[1], "text": element.text})
+
+        readme_html = lxml.html.tostring(root).decode()
+
     except KeyError:
         abort(404)
     return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version, readme_html=readme_html)
+                           extension=extension, extension_version=extension_version,
+                           readme_html=readme_html, headings=headings)
 
 
 @app.route('/<lang>/extension/<slug>/<version>/info')

@@ -3,7 +3,7 @@
 
 {% block nav_schema %}
    <a class="nav-link active" href="{{url_for('extension_reference', slug=slug, version=version, lang=lang)}}">Schema Reference</a>
-  <ul class="nav flex-column ml-3">
+  <ul class="nav flex-column ml-1">
   {% if extension_version.release_schema %}
     <a class="nav-link pt-0 pb-0" href="#release-schema"><small> Release Schema </small></a>
   {% endif %}
