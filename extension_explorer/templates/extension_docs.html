@@ -1,5 +1,11 @@
 {% extends 'extension.html' %}
 
+{% block extra_style %}
+  <style>
+    {{ highlight_css | safe }}
+  </style>
+{% endblock extra_style %}
+
 {% block nav_docs%}
   <a class="nav-link active" href="{{url_for('extension', slug=slug, version=version, lang=lang)}}">Docs</a>
 

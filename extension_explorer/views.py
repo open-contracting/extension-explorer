@@ -4,7 +4,7 @@ from flask_env import MetaFlaskEnv
 import CommonMark
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
-from .util import create_toc, create_extension_tables, replace_directives
+from .util import create_toc, create_extension_tables, replace_directives, highlight_json
 
 
 class Configuration(metaclass=MetaFlaskEnv):
@@ -50,11 +50,13 @@ def extension(lang, slug, version):
         extension_tables = create_extension_tables(extension_version, lang)
         readme_html = replace_directives(readme_html, extension_tables, lang, slug, version)
 
+        readme_html, highlight_css = highlight_json(readme_html)
+
     except KeyError:
         abort(404)
     return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
                            extension=extension, extension_version=extension_version,
-                           readme_html=readme_html, headings=headings)
+                           readme_html=readme_html, headings=headings, highlight_css=highlight_css)
 
 
 @app.route('/<lang>/extension/<slug>/<version>/info')

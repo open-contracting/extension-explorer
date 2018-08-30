@@ -4,6 +4,9 @@ import lxml.html
 from lxml.html import builder as E
 from slugify import UniqueSlugify
 from flask import url_for
+from pygments import highlight
+from pygments.lexers import JsonLexer
+from pygments.formatters import HtmlFormatter
 
 
 def create_toc(html):
@@ -31,6 +34,20 @@ def create_extension_tables(extension_version, lang):
             definition = "Release"
         extension_tables[definition].append(row[1:])
     return extension_tables
+
+
+def highlight_json(html):
+    root = lxml.html.fromstring(html)
+    for code_block in root.find_class("language-json"):
+        code_text = code_block.text
+
+        higlighted = lxml.html.fromstring(highlight(code_text, JsonLexer(), HtmlFormatter()))
+        pre_block = code_block.getparent()
+        pre_block.getparent().replace(pre_block, higlighted)
+
+    html = lxml.html.tostring(root).decode()
+
+    return html, HtmlFormatter().get_style_defs('.highlight')
 
 
 def replace_directives(html, extension_tables, lang, slug, version):
