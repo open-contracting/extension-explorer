@@ -16,6 +16,12 @@ Flask in development mode
 FLASK_ENV=development FLASK_APP=extension_explorer/views.py flask run
 ```
 
+To create a "Frozen" site
+
+```
+python freeze.py
+```
+
 Tests
 ```
 $ python -m pytest
