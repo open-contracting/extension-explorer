@@ -2,10 +2,9 @@ from flask import Flask, abort
 from flask import render_template
 from flask_env import MetaFlaskEnv
 import CommonMark
-import lxml.html
-from slugify import UniqueSlugify
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
+from .util import create_toc, create_extension_tables, replace_directives
 
 
 class Configuration(metaclass=MetaFlaskEnv):
@@ -46,18 +45,10 @@ def extension(lang, slug, version):
         readme = extension_version.get("readme", {}).get(lang, {}).get("content", "")
         # WE SHOULD THINK HOW SAFE THIS IS
         readme_html = CommonMark.commonmark(readme)
+        readme_html, headings = create_toc(readme_html)
 
-        root = lxml.html.fromstring(readme_html)
-
-        slugifier = UniqueSlugify()
-        headings = []
-
-        for element in root.iter("h1", "h2", "h3", "h4", "h5"):
-            heading_id = slugifier(element.text)
-            element.attrib['id'] = heading_id
-            headings.append({"id": heading_id, "header_number": element.tag[1], "text": element.text})
-
-        readme_html = lxml.html.tostring(root).decode()
+        extension_tables = create_extension_tables(extension_version, lang)
+        readme_html = replace_directives(readme_html, extension_tables, lang, slug, version)
 
     except KeyError:
         abort(404)
@@ -80,10 +71,12 @@ def extension_info(lang, slug, version):
 def extension_reference(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
+        extension_tables = create_extension_tables(extension_version, lang)
     except KeyError:
         abort(404)
     return render_template('schema_reference.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version)
+                           extension=extension, extension_version=extension_version,
+                           extension_tables=extension_tables)
 
 
 @app.route('/<lang>/extension/<slug>/<version>/codelists')

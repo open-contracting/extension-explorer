@@ -6305,3 +6305,8 @@ a.text-dark:hover, a.text-dark:focus {
   position: absolute;
   bottom: 15px; }
 
+.small-icon {
+  position: relative;
+  top: -2px;
+  font-size: 65%; }
+

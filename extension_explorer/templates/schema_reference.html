@@ -2,10 +2,13 @@
 {% extends 'extension.html' %}
 
 {% block nav_schema %}
-   <a class="nav-link active" href="{{url_for('extension_reference', slug=slug, version=version, lang=lang)}}">Schema Reference</a>
+  <a class="nav-link active" href="{{url_for('extension_reference', slug=slug, version=version, lang=lang)}}">Schema Reference</a>
   <ul class="nav flex-column ml-1">
   {% if extension_version.release_schema %}
     <a class="nav-link pt-0 pb-0" href="#release-schema"><small> Release Schema </small></a>
+    {% for key in extension_tables %}
+      <a class="nav-link pt-0 pb-0 ml-1" href="#{{key}}"><small> {{key}} </small></a>
+    {% endfor %}
   {% endif %}
   {% if extension_version.release_package_schema %}
     <a class="nav-link pt-0 pb-0" href="#release-package-schema"><small> Release Package Schema </small></a>
@@ -21,8 +24,30 @@
 {% block extension_body %}
 
 {% if extension_version.release_schema %}
-  <h2 id="release-schema">Release Schema</h2>
-  {{ extension_version.release_schema[lang]|tojson }}
+  <h2 class="mb-4" id="release-schema">Release Schema</h2>
+  {% for definition, table in extension_tables.items() %}
+    <h4 id="{{definition}}">{{definition}}</h3>
+    <table class="table">
+      <thead>
+          <tr>
+            <th scope="col">Field</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Type(s)</th>
+          </tr>
+      </thead>
+      <tbody>
+        {% for row in table %}
+          <tr>
+            {% for field in row %}
+              <td>{{field}}</th>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  {% endfor %}
 {% endif %}
 {% if extension_version.release_package_schema %}
   <h2 id="release-package-schema">Release Package Schema</h2>
