@@ -101,19 +101,23 @@ def replace_extensiontable_directive(pre_block, directive_lines, extension_table
             if definition in extension_tables:
                 included_definitions.append(definition)
             else:
+                # ignore exception for broken directives
+                # raise Exception("definition {} specified but does not exist".format(definition))
                 continue
-                raise Exception("definition {} specified but does not exist".format(definition))
 
     exclude_definitions = args.get('exclude_definitions')
     if exclude_definitions:
         for definition in exclude_definitions:
             if definition not in included_definitions:
+                # ignore exception for broken directives
+                # raise Exception("definition {} specified to exclude but does not exist".format(definition))
                 continue
-                raise Exception("definition {} specified to exclude but does not exist".format(definition))
             included_definitions.remove(definition)
 
     if not included_definitions:
-        raise Exception("Directive does not choose any definitions to show")
+        # ignore exception for empty directives
+        # raise Exception("Directive does not choose any definitions to show")
+        return
     
     list_items = []
     for definition in included_definitions:
