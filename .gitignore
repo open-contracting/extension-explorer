@@ -6,3 +6,4 @@ __pycache__
 .pytest_cache/
 chromedriver/
 chromedriver_mac64.zip
+/extension_explorer/build

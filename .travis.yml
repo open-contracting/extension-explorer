@@ -13,3 +13,4 @@ install:
 script:
     - "flake8 ."
     - "python -m pytest"
+    - "python freeze.py"
