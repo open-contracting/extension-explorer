@@ -19,7 +19,7 @@
           <div class="card-body">
             <h5 class="card-title"> <a href="{{url_for('extension', slug=extension.slug, version=extension.main_version, lang=lang)}}"> {{ extension.name[lang] }} </a>  {# <span class="float-right"> <small>compatability: 1.1 / 1.0</small> </span> #}</h5>
             <p class="card-text mb-4">{{ extension["description"][lang] }}</p>
-            <p class="card-text card-bottom-text">Versions: {% for version in extension["versions"] %} 
+            <p class="card-text card-bottom-text">Versions: {% for version in extension["list_version_keys_all"] %}
               <a href="{{url_for('extension', slug=extension.slug, version=version, lang=lang)}}"> {{version}} </a> {% if not loop.last %}/{% endif %}{%endfor%} 
             </p>
           </div>
