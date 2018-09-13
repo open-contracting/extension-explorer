@@ -6,3 +6,5 @@ __pycache__
 .pytest_cache/
 chromedriver/
 chromedriver_mac64.zip
+/extension_explorer/data.json
+/extension_explorer/local_data.json
