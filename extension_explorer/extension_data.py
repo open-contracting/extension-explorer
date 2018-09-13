@@ -2,11 +2,13 @@ import os
 import json
 import collections
 
-cur_dir = os.path.dirname(os.path.realpath(__file__))
-
 
 def get_data():
-    with open(os.path.join(cur_dir, 'local_data.json')) as extension_data_file:
+    if os.environ.get('EXTENSION_EXPLORER_DATA_FILE'):
+        filename = os.environ.get('EXTENSION_EXPLORER_DATA_FILE')
+    else:
+        filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data.json')
+    with open(filename) as extension_data_file:
         extension_data = json.load(extension_data_file, object_pairs_hook=collections.OrderedDict)
 
     return extension_data
