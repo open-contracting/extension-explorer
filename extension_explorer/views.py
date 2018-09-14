@@ -1,7 +1,7 @@
 from flask import Flask, abort
 from flask import render_template
 from flask_env import MetaFlaskEnv
-import CommonMark
+import commonmark
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
 from .util import create_toc, create_extension_tables, replace_directives, highlight_json
@@ -44,7 +44,7 @@ def extension(lang, slug, version):
 
         readme = extension_version.get("readme", {}).get(lang, {}).get("content", "")
         # WE SHOULD THINK HOW SAFE THIS IS
-        readme_html = CommonMark.commonmark(readme)
+        readme_html = commonmark.commonmark(readme)
         readme_html, headings = create_toc(readme_html)
 
         extension_tables = create_extension_tables(extension_version, lang)
