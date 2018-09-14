@@ -3,6 +3,7 @@ commonmark==0.8.1
 flake8==3.5.0
 Flask==1.0.2
 Flask-Env==2.0.0
+Frozen-Flask==0.15
 libsass==0.14.5
 lxml==4.2.5
 Pygments==2.2.0

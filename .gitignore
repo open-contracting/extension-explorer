@@ -8,3 +8,4 @@ chromedriver/
 chromedriver_mac64.zip
 /extension_explorer/data.json
 /extension_explorer/local_data.json
+/extension_explorer/build
