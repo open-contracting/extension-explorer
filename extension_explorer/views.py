@@ -59,7 +59,7 @@ def extension(lang, slug, version):
                            readme_html=readme_html, headings=headings, highlight_css=highlight_css)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/info')
+@app.route('/<lang>/extension/<slug>/<version>/info/')
 def extension_info(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
@@ -69,7 +69,7 @@ def extension_info(lang, slug, version):
                            extension=extension, extension_version=extension_version)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/reference')
+@app.route('/<lang>/extension/<slug>/<version>/reference/')
 def extension_reference(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
@@ -81,7 +81,7 @@ def extension_reference(lang, slug, version):
                            extension_tables=extension_tables)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/codelists')
+@app.route('/<lang>/extension/<slug>/<version>/codelists/')
 def extension_codelists(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
