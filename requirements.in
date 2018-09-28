@@ -3,6 +3,7 @@ commonmark
 flake8
 Flask
 Flask-Env
+Flask-Babel
 Frozen-Flask
 libsass
 lxml
@@ -10,3 +11,4 @@ Pygments
 pytest
 pytest-flask
 selenium==3.8.0
+transifex-client

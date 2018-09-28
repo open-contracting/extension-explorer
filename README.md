@@ -27,6 +27,36 @@ Flask in development mode
 FLASK_ENV=development FLASK_APP=extension_explorer/views.py flask run
 ```
 
+# I18n
+
+## Compile messages:
+
+This needs to be done on each computer for i18n to work. If updating messages from transifex this has to be done last.
+
+```
+cd extension_explorer
+pybabel compile -d translations
+```
+
+## Extract messages and push to transifex
+```
+cd extension_explorer
+pybabel extract -F .babel.cfg -o messages.pot
+
+tx push --source
+```
+
+Commit this file to github
+
+## Pull From Transifex
+
+When new translations happen
+```
+tx pull --all
+```
+Commit new files to github
+
+
 # Create static site
 
 To create a "Frozen" site (it will appear in extension_explorer/build ):
