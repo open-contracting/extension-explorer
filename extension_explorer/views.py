@@ -10,6 +10,7 @@ from .util import create_toc, create_extension_tables, replace_directives, highl
 LANGS = {'en': 'English',
          'es_ES': 'Español'}
 
+
 class Configuration(metaclass=MetaFlaskEnv):
     ENV_PREFIX = 'FLASK_'
 
