@@ -78,8 +78,7 @@ Check http://localhost:8000
 $ python -m pytest
 ```
 
-## Updating requirements.
-
+# Updating requirements.
 
 ```
 $ rm -rf venv .ve
@@ -87,9 +86,7 @@ $ python3 -m venv .ve
 $ source .ve/bin/activate
 $ pip install -r requirements.in
 $ pip freeze > requirements.txt
-$ grep awesome-slugify requirements.txt >> tmp; cat tmp >> requirements.txt; rm tmp
 ```
 
-IMPORTANT: The last line of the above needs to run as awesome-slugify has to be installed after python-slugify.
 
 
