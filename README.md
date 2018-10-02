@@ -29,14 +29,22 @@ FLASK_ENV=development FLASK_APP=extension_explorer/views.py flask run
 
 # I18n
 
+
+**All users need to do the following:**
+
 ## Compile messages:
 
-This needs to be done on each computer for i18n to work. If updating messages from transifex this has to be done last.
+This needs to be done on each computer for i18n to work. This will need to be run each time the translations change.
 
 ```
 cd extension_explorer
 pybabel compile -d translations
 ```
+
+**The following only needs to be done by people updating the translations:**
+
+You will need a transifex API key which you can get from the transifex interface. 
+The first time you run any `tx` command it will prompt you for one and will make a config file in your home directory to save it.
 
 ## Extract messages and push to transifex
 ```
@@ -54,7 +62,8 @@ When new translations happen
 ```
 tx pull --all
 ```
-Commit new files to github
+Commit new files to github.
+
 
 
 # Create static site
