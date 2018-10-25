@@ -16,17 +16,17 @@
       <table class="table">
         <thead>
             <tr>
-              <th scope="col">Code</th>
-              <th scope="col">Title</th>
-              <th scope="col">Description</th>
+              {% for fieldname, fieldname_value in extension_version.codelists[codelist]["fieldnames"].items() %}
+                  <th scope="col">{{fieldname_value[lang]}}</th>
+              {% endfor %}
             </tr>
         </thead>
         <tbody>
           {% for key, value in extension_version.codelists[codelist]["items"].items() %}
             <tr>
-                <th scope="row">{{key}}</th>
-                <td>{{value[lang].Title}}{{value[lang].Title_en}}</td>
-                <td>{{value[lang].Description}}{{value[lang].Description_en}}</td>
+              {% for fieldname, fieldname_value in extension_version.codelists[codelist]["fieldnames"].items() %}
+                 <td>{{ value[lang][fieldname_value[lang]] }}</td>
+              {% endfor %}
             </tr>
           {% endfor %}
         </tbody>

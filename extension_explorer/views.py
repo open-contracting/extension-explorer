@@ -1,10 +1,14 @@
-from flask import Flask, abort
+from flask import Flask, abort, request, redirect, url_for
 from flask import render_template
+from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 import commonmark
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
 from .util import create_toc, create_extension_tables, replace_directives, highlight_json
+
+LANGS = {'en': 'English',
+         'es_ES': 'Español'}
 
 
 class Configuration(metaclass=MetaFlaskEnv):
@@ -13,11 +17,26 @@ class Configuration(metaclass=MetaFlaskEnv):
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
+babel = Babel(app)
+
+
+@app.context_processor
+def add_lang_info():
+    def change_lang_in_url(lang):
+        new_view_args = request.view_args.copy()
+        new_view_args["lang"] = lang
+        return url_for(request.endpoint, **new_view_args)
+    return dict(change_lang_in_url=change_lang_in_url, langs=LANGS)
+
+
+@babel.localeselector
+def get_locale():
+    return request.view_args.get('lang') or 'en'
 
 
 @app.route('/')
 def home():
-    return lang_home('en')
+    return redirect(url_for('lang_home', lang='en'))
 
 
 @app.route('/<lang>/')

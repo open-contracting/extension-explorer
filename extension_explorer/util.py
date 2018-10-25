@@ -1,8 +1,8 @@
-from collections import defaultdict
+from collections import defaultdict, Counter
 
 import lxml.html
 from lxml.html import builder as E
-from slugify import UniqueSlugify
+from slugify import slugify
 from flask import url_for
 from pygments import highlight
 from pygments.lexers import JsonLexer
@@ -13,11 +13,16 @@ def create_toc(html):
 
     root = lxml.html.fromstring(html)
 
-    slugifier = UniqueSlugify()
     headings = []
+    heading_count = Counter()
 
     for element in root.iter("h1", "h2", "h3", "h4", "h5"):
-        heading_id = slugifier(element.text)
+        heading_id = slugify(element.text)
+        heading_count.update([heading_id])
+        # This checks if there are duplicate headings and if so adds a number to the heading
+        if heading_count[heading_id] > 1:
+            heading_id = "{}-{}".format(heading_id, heading_count[heading_id])
+
         element.attrib['id'] = heading_id
         headings.append({"id": heading_id, "header_number": element.tag[1], "text": element.text})
 
