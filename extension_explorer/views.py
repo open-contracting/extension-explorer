@@ -1,11 +1,11 @@
-from flask import Flask, abort, request, redirect, url_for
+import commonmark
+from flask import Flask, abort, redirect, request, url_for
 from flask import render_template
 from flask_babel import Babel
 from flask_env import MetaFlaskEnv
-import commonmark
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
-from .util import create_toc, create_extension_tables, replace_directives, highlight_json
+from .util import create_extension_tables, create_toc, highlight_json, replace_directives
 
 LANGS = {
     'en': 'English',
