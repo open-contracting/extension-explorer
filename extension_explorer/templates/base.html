@@ -59,7 +59,7 @@
     <div class="float-right">
       <select id="select" class="float-right" onchange="window.location.href=this.value">
         {% for lang, name in langs.items() %}
-          <option value="{{change_lang_in_url(lang)}}" {% if request.view_args.lang == lang %}selected{% endif %}>{{name}}</option>
+          <option value="{{change_lang_in_url(lang)}}"{% if request.view_args.lang == lang %} selected{% endif %}>{{name}}</option>
         {% endfor %}
       </select>
     </div>

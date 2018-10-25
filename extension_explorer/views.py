@@ -7,8 +7,10 @@ import commonmark
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
 from .util import create_toc, create_extension_tables, replace_directives, highlight_json
 
-LANGS = {'en': 'English',
-         'es_ES': 'Español'}
+LANGS = {
+    'en': 'English',
+    'es_ES': 'Español'
+}
 
 
 class Configuration(metaclass=MetaFlaskEnv):
@@ -21,10 +23,10 @@ babel = Babel(app)
 
 
 @app.context_processor
-def add_lang_info():
+def inject_language_variables():
     def change_lang_in_url(lang):
         new_view_args = request.view_args.copy()
-        new_view_args["lang"] = lang
+        new_view_args['lang'] = lang
         return url_for(request.endpoint, **new_view_args)
     return dict(change_lang_in_url=change_lang_in_url, langs=LANGS)
 
@@ -56,55 +58,53 @@ def community(lang):
     return render_template('community.html', lang=lang, data=data)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/')
+@app.route('/<lang>/extensions/<slug>/<version>/')
 def extension(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
 
-        readme = extension_version.get("readme", {}).get(lang, {}).get("content", "")
-        # WE SHOULD THINK HOW SAFE THIS IS
+        extension_tables = create_extension_tables(extension_version, lang)
+
+        # Note: `readme` may contain unsafe HTML and JavaScript.
+        readme = extension_version.get('readme', {}).get(lang, {}).get('content', '')
         readme_html = commonmark.commonmark(readme)
         readme_html, headings = create_toc(readme_html)
-
-        extension_tables = create_extension_tables(extension_version, lang)
         readme_html = replace_directives(readme_html, extension_tables, lang, slug, version)
-
         readme_html, highlight_css = highlight_json(readme_html)
-
     except KeyError:
         abort(404)
-    return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version,
-                           readme_html=readme_html, headings=headings, highlight_css=highlight_css)
+    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version, readme_html=readme_html, headings=headings,
+                           highlight_css=highlight_css)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/info/')
+@app.route('/<lang>/extensions/<slug>/<version>/info/')
 def extension_info(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_info.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version)
+    return render_template('extension_info.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/reference/')
+@app.route('/<lang>/extensions/<slug>/<version>/reference/')
 def extension_reference(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
+
         extension_tables = create_extension_tables(extension_version, lang)
     except KeyError:
         abort(404)
-    return render_template('schema_reference.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version,
-                           extension_tables=extension_tables)
+    return render_template('schema_reference.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version, extension_tables=extension_tables)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/codelists/')
+@app.route('/<lang>/extensions/<slug>/<version>/codelists/')
 def extension_codelists(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version)
+    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version)
