@@ -19,6 +19,11 @@ Get this repository, and run it as directed in the readme.
 Copy the resulting JSON data file to extension_explorer/data.json
 (You can also copy the file to your own location and set the EXTENSION_EXPLORER_DATA_FILE environment variable.)
 
+# Modify the theme
+
+Don't edit `extension_explorer/static/css/theme.css` directly. Instead, edit the files under `extension_explorer/static/lib`, then run:
+
+    sassc extension_explorer/static/lib/scss/theme.scss > extension_explorer/static/css/theme.css
 
 # Run in dev
 
