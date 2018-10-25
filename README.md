@@ -49,7 +49,7 @@ The first time you run any `tx` command it will prompt you for one and will make
 ## Extract messages and push to transifex
 ```
 cd extension_explorer
-pybabel extract -F .babel.cfg -o messages.pot
+pybabel extract -F babel.cfg -o messages.pot
 
 tx push --source
 ```
