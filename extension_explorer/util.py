@@ -87,7 +87,13 @@ def gather_fields(json, path="", definition=""):
 
             description = field_info.get("description")
             if description:
-                yield [definition, (path + '/' + field_name).lstrip("/"), field_info.get('title', ''), description, types]
+                yield [
+                    definition,
+                    (path + '/' + field_name).lstrip("/"),
+                    field_info.get('title', ''),
+                    description,
+                    types,
+                ]
 
     definitions = json.get('definitions')
     if definitions:
@@ -101,7 +107,7 @@ def get_directive_arg(line, arg):
     if not stripped.startswith(full_arg):
         return
     return stripped[len(full_arg):].strip()
-    
+
 
 def replace_extensiontable_directive(pre_block, directive_lines, extension_tables, lang, slug, version):
     if not directive_lines[0].strip() == '.. extensiontable::':
@@ -135,14 +141,14 @@ def replace_extensiontable_directive(pre_block, directive_lines, extension_table
         # ignore exception for empty directives
         # raise Exception("Directive does not choose any definitions to show")
         return
-    
+
     list_items = []
     for definition in included_definitions:
-        list_items.append(
-            E.LI(E.A(definition, E.I(E.CLASS("fas fa-external-link-alt ml-2 small-icon")), href=url_for("extension_reference", lang=lang, slug=slug, version=version) + "#" + definition))
-        )
+        href = url_for("extension_reference", lang=lang, slug=slug, version=version) + "#" + definition
+        list_items.append(E.LI(E.A(definition, E.I(E.CLASS("fas fa-external-link-alt ml-2 small-icon")), href=href)))
 
-    pre_block.getparent().replace(pre_block, E.BLOCKQUOTE(E.CLASS("blockquote"), E.UL(E.CLASS("list-unstyled"), *list_items)))
+    replacement = E.BLOCKQUOTE(E.CLASS("blockquote"), E.UL(E.CLASS("list-unstyled"), *list_items))
+    pre_block.getparent().replace(pre_block, replacement)
 
 
 def process_extensiontable(lines):
@@ -168,7 +174,8 @@ def replace_codelist_directive(pre_block, directive_lines, lang, slug, version):
     args = process_codelist(directive_lines[1:])
     codelist = args.get("codelist")
 
-    codelist_link = E.A(codelist, E.I(E.CLASS("fas fa-external-link-alt ml-2 small-icon")), href=url_for("extension_codelists", lang=lang, slug=slug, version=version) + "#" + codelist)
+    href = url_for("extension_codelists", lang=lang, slug=slug, version=version) + "#" + codelist
+    codelist_link = E.A(codelist, E.I(E.CLASS("fas fa-external-link-alt ml-2 small-icon")), href=href)
 
     pre_block.getparent().replace(pre_block, E.BLOCKQUOTE(E.CLASS("blockquote"), codelist_link))
 
