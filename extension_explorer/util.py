@@ -1,30 +1,29 @@
 from collections import defaultdict, Counter
 
 import lxml.html
-from lxml.html import builder as E
-from slugify import slugify
 from flask import url_for
+from lxml.html import builder as E
 from pygments import highlight
-from pygments.lexers import JsonLexer
 from pygments.formatters import HtmlFormatter
+from pygments.lexers import JsonLexer
+from slugify import slugify
 
 
 def create_toc(html):
-
     root = lxml.html.fromstring(html)
 
     headings = []
     heading_count = Counter()
 
-    for element in root.iter("h1", "h2", "h3", "h4", "h5"):
+    for element in root.iter('h1', 'h2', 'h3', 'h4', 'h5'):
         heading_id = slugify(element.text)
         heading_count.update([heading_id])
         # This checks if there are duplicate headings and if so adds a number to the heading
         if heading_count[heading_id] > 1:
-            heading_id = "{}-{}".format(heading_id, heading_count[heading_id])
+            heading_id = '{}-{}'.format(heading_id, heading_count[heading_id])
 
         element.attrib['id'] = heading_id
-        headings.append({"id": heading_id, "header_number": element.tag[1], "text": element.text})
+        headings.append({'id': heading_id, 'header_number': element.tag[1], 'text': element.text})
 
     html = lxml.html.tostring(root).decode()
 
@@ -36,14 +35,14 @@ def create_extension_tables(extension_version, lang):
     for row in gather_fields(extension_version['release_schema'][lang]):
         definition = row[0]
         if not definition:
-            definition = "Release"
+            definition = 'Release'
         extension_tables[definition].append(row[1:])
     return extension_tables
 
 
 def highlight_json(html):
     root = lxml.html.fromstring(html)
-    for code_block in root.find_class("language-json"):
+    for code_block in root.find_class('language-json'):
         code_text = code_block.text
 
         higlighted = lxml.html.fromstring(highlight(code_text, JsonLexer(), HtmlFormatter()))
@@ -58,7 +57,7 @@ def highlight_json(html):
 def replace_directives(html, extension_tables, lang, slug, version):
 
     root = lxml.html.fromstring(html)
-    for code_block in root.find_class("language-eval_rst"):
+    for code_block in root.find_class('language-eval_rst'):
         lines = code_block.text.strip().split('\n')
         if not lines:
             continue
@@ -70,7 +69,7 @@ def replace_directives(html, extension_tables, lang, slug, version):
     return html
 
 
-def gather_fields(json, path="", definition=""):
+def gather_fields(json, path='', definition=''):
     properties = json.get('properties')
     if properties:
         for field_name, field_info in properties.items():
@@ -83,18 +82,18 @@ def gather_fields(json, path="", definition=""):
 
             types = field_info.get('type', '')
             if isinstance(types, list):
-                types = ", ".join(types).replace(", null", "").replace("null,", "")
+                types = ', '.join(types).replace(', null', '').replace('null,', '')
             else:
                 types = types
 
             if not types:
                 types = field_info.get('$ref', '').replace('#/definitions/', '')
 
-            description = field_info.get("description")
+            description = field_info.get('description')
             if description:
                 yield [
                     definition,
-                    (path + '/' + field_name).lstrip("/"),
+                    (path + '/' + field_name).lstrip('/'),
                     field_info.get('title', ''),
                     description,
                     types,
@@ -108,7 +107,7 @@ def gather_fields(json, path="", definition=""):
 
 def get_directive_arg(line, arg):
     stripped = line.strip()
-    full_arg = ":" + arg + ":"
+    full_arg = ':' + arg + ':'
     if not stripped.startswith(full_arg):
         return
     return stripped[len(full_arg):].strip()
