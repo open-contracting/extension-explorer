@@ -1,6 +1,7 @@
 /output_dir
 __pycache__
 .ve
+*.mo
 .idea/
 .DS_Store
 .pytest_cache/
