@@ -1,4 +1,4 @@
-from collections import defaultdict, Counter
+from collections import defaultdict
 
 import lxml.html
 from flask import url_for
@@ -9,21 +9,25 @@ from pygments.lexers import JsonLexer
 from slugify import slugify
 
 
-def create_toc(html):
+def get_headings(html):
+    """
+    Adds `id` attributes to h1-h5 headings in the HTML. Returns the HTML, and a list of headings.
+    """
     root = lxml.html.fromstring(html)
 
     headings = []
-    heading_count = Counter()
+    slug_counts = defaultdict(int)
 
     for element in root.iter('h1', 'h2', 'h3', 'h4', 'h5'):
-        heading_id = slugify(element.text)
-        heading_count.update([heading_id])
-        # This checks if there are duplicate headings and if so adds a number to the heading
-        if heading_count[heading_id] > 1:
-            heading_id = '{}-{}'.format(heading_id, heading_count[heading_id])
+        slug = slugify(element.text)
+        if slug in slug_counts:
+            heading_id = '{}-{}'.format(slug, slug_counts[slug])
+        else:
+            heading_id = slug
+        slug_counts[slug] += 1
 
         element.attrib['id'] = heading_id
-        headings.append({'id': heading_id, 'header_number': element.tag[1], 'text': element.text})
+        headings.append({'id': heading_id, 'level': int(element.tag[1]), 'text': element.text})
 
     html = lxml.html.tostring(root).decode()
 
@@ -41,31 +45,40 @@ def create_extension_tables(extension_version, lang):
 
 
 def highlight_json(html):
+    """
+    Highlights JSON code blocks. Returns the HTML, and the CSS for highlighting.
+    """
     root = lxml.html.fromstring(html)
-    for code_block in root.find_class('language-json'):
-        code_text = code_block.text
 
-        higlighted = lxml.html.fromstring(highlight(code_text, JsonLexer(), HtmlFormatter()))
-        pre_block = code_block.getparent()
-        pre_block.getparent().replace(pre_block, higlighted)
+    for code_block in root.find_class('language-json'):
+        code_block_parent = code_block.getparent()
+        highlighted = lxml.html.fromstring(highlight(code_block.text, JsonLexer(), HtmlFormatter()))
+        code_block_parent.getparent().replace(code_block_parent, highlighted)
 
     html = lxml.html.tostring(root).decode()
 
     return html, HtmlFormatter().get_style_defs('.highlight')
 
 
-def replace_directives(html, extension_tables, lang, slug, version):
-
+def replace_directives(html, lang, slug, version, extension_tables):
+    """
+    Replaces RST code blocks with links to schema and codelist reference tables. Returns the HTML.
+    """
     root = lxml.html.fromstring(html)
+
     for code_block in root.find_class('language-eval_rst'):
         lines = code_block.text.strip().split('\n')
-        if not lines:
-            continue
-        pre_block = code_block.getparent()
-        replace_extensiontable_directive(pre_block, lines, extension_tables, lang, slug, version)
-        replace_codelist_directive(pre_block, lines, lang, slug, version)
+        if lines:
+            code_block_parent = code_block.getparent()
+            replacement = replace_extensiontable_directive(lines, lang, slug, version, extension_tables)
+            if replacement:
+                code_block_parent.getparent().replace(code_block_parent, replacement)
+            replacement = replace_codelist_directive(lines, lang, slug, version)
+            if replacement:
+                code_block_parent.getparent().replace(code_block_parent, replacement)
 
     html = lxml.html.tostring(root).decode()
+
     return html
 
 
@@ -113,7 +126,7 @@ def get_directive_arg(line, arg):
     return stripped[len(full_arg):].strip()
 
 
-def replace_extensiontable_directive(pre_block, directive_lines, extension_tables, lang, slug, version):
+def replace_extensiontable_directive(directive_lines, lang, slug, version, extension_tables):
     if not directive_lines[0].strip() == '.. extensiontable::':
         return False
     args = process_extensiontable(directive_lines[1:])
@@ -151,8 +164,7 @@ def replace_extensiontable_directive(pre_block, directive_lines, extension_table
         href = url_for("extension_reference", lang=lang, slug=slug, version=version) + "#" + definition
         list_items.append(E.LI(E.A(definition, E.I(E.CLASS("fas fa-external-link-alt ml-2 small-icon")), href=href)))
 
-    replacement = E.BLOCKQUOTE(E.CLASS("blockquote"), E.UL(E.CLASS("list-unstyled"), *list_items))
-    pre_block.getparent().replace(pre_block, replacement)
+    return E.BLOCKQUOTE(E.CLASS("blockquote"), E.UL(E.CLASS("list-unstyled"), *list_items))
 
 
 def process_extensiontable(lines):
@@ -172,7 +184,7 @@ def process_extensiontable(lines):
     return args
 
 
-def replace_codelist_directive(pre_block, directive_lines, lang, slug, version):
+def replace_codelist_directive(code_block_parent, directive_lines, lang, slug, version):
     if not directive_lines[0].strip() in ('.. csv-table-no-translate::', '.. csv-table::'):
         return False
     args = process_codelist(directive_lines[1:])
@@ -181,7 +193,7 @@ def replace_codelist_directive(pre_block, directive_lines, lang, slug, version):
     href = url_for("extension_codelists", lang=lang, slug=slug, version=version) + "#" + codelist
     codelist_link = E.A(codelist, E.I(E.CLASS("fas fa-external-link-alt ml-2 small-icon")), href=href)
 
-    pre_block.getparent().replace(pre_block, E.BLOCKQUOTE(E.CLASS("blockquote"), codelist_link))
+    return E.BLOCKQUOTE(E.CLASS("blockquote"), codelist_link)
 
 
 def process_codelist(lines):

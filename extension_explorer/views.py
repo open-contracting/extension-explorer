@@ -5,7 +5,7 @@ from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
-from .util import create_extension_tables, create_toc, highlight_json, replace_directives
+from .util import create_extension_tables, get_headings, highlight_json, replace_directives
 
 LANGS = {
     'en': 'English',
@@ -68,8 +68,8 @@ def extension(lang, slug, version):
         # Note: `readme` may contain unsafe HTML and JavaScript.
         readme = extension_version.get('readme', {}).get(lang, {}).get('content', '')
         readme_html = commonmark.commonmark(readme)
-        readme_html, headings = create_toc(readme_html)
-        readme_html = replace_directives(readme_html, extension_tables, lang, slug, version)
+        readme_html, headings = get_headings(readme_html)
+        readme_html = replace_directives(readme_html, lang, slug, version, extension_tables)
         readme_html, highlight_css = highlight_json(readme_html)
     except KeyError:
         abort(404)
