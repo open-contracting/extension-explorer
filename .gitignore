@@ -1,12 +1,8 @@
-/output_dir
-__pycache__
-.ve
 *.mo
-.idea/
-.DS_Store
-.pytest_cache/
-chromedriver/
-chromedriver_mac64.zip
+/.pytest_cache
+/chromedriver
+/chromedriver_linux64.zip
+/chromedriver_mac64.zip
+/chromedriver_win32.zip
 /extension_explorer/data.json
-/extension_explorer/local_data.json
 /extension_explorer/build
