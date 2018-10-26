@@ -9,6 +9,16 @@ from pygments.lexers import JsonLexer
 from slugify import slugify
 
 
+def create_extension_tables(extension_version, lang):
+    extension_tables = defaultdict(list)
+    for row in gather_fields(extension_version['release_schema'][lang]):
+        definition = row[0]
+        if not definition:
+            definition = 'Release'
+        extension_tables[definition].append(row[1:])
+    return extension_tables
+
+
 def get_headings(html):
     """
     Adds `id` attributes to h1-h5 headings in the HTML. Returns the HTML, and a list of headings.
@@ -32,16 +42,6 @@ def get_headings(html):
     html = lxml.html.tostring(root).decode()
 
     return html, headings
-
-
-def create_extension_tables(extension_version, lang):
-    extension_tables = defaultdict(list)
-    for row in gather_fields(extension_version['release_schema'][lang]):
-        definition = row[0]
-        if not definition:
-            definition = 'Release'
-        extension_tables[definition].append(row[1:])
-    return extension_tables
 
 
 def highlight_json(html):
@@ -80,50 +80,6 @@ def replace_directives(html, lang, slug, version, extension_tables):
     html = lxml.html.tostring(root).decode()
 
     return html
-
-
-def gather_fields(json, path='', definition=''):
-    properties = json.get('properties')
-    if properties:
-        for field_name, field_info in properties.items():
-            if not field_info:
-                continue
-            yield from gather_fields(field_info, path + '/' + field_name, definition=definition)
-            for key, value in field_info.items():
-                if isinstance(value, dict):
-                    yield from gather_fields(value, path + '/' + field_name, definition=definition)
-
-            types = field_info.get('type', '')
-            if isinstance(types, list):
-                types = ', '.join(types).replace(', null', '').replace('null,', '')
-            else:
-                types = types
-
-            if not types:
-                types = field_info.get('$ref', '').replace('#/definitions/', '')
-
-            description = field_info.get('description')
-            if description:
-                yield [
-                    definition,
-                    (path + '/' + field_name).lstrip('/'),
-                    field_info.get('title', ''),
-                    description,
-                    types,
-                ]
-
-    definitions = json.get('definitions')
-    if definitions:
-        for key, value in definitions.items():
-            yield from gather_fields(value, definition=key)
-
-
-def get_directive_arg(line, arg):
-    stripped = line.strip()
-    full_arg = ':' + arg + ':'
-    if not stripped.startswith(full_arg):
-        return
-    return stripped[len(full_arg):].strip()
 
 
 def replace_extensiontable_directive(directive_lines, lang, slug, version, extension_tables):
@@ -207,3 +163,47 @@ def process_codelist(lines):
             continue
         raise NotImplementedError(line)
     return args
+
+
+def get_directive_arg(line, arg):
+    stripped = line.strip()
+    full_arg = ':' + arg + ':'
+    if not stripped.startswith(full_arg):
+        return
+    return stripped[len(full_arg):].strip()
+
+
+def gather_fields(json, path='', definition=''):
+    properties = json.get('properties')
+    if properties:
+        for field_name, field_info in properties.items():
+            if not field_info:
+                continue
+            yield from gather_fields(field_info, path + '/' + field_name, definition=definition)
+            for key, value in field_info.items():
+                if isinstance(value, dict):
+                    yield from gather_fields(value, path + '/' + field_name, definition=definition)
+
+            types = field_info.get('type', '')
+            if isinstance(types, list):
+                types = ', '.join(types).replace(', null', '').replace('null,', '')
+            else:
+                types = types
+
+            if not types:
+                types = field_info.get('$ref', '').replace('#/definitions/', '')
+
+            description = field_info.get('description')
+            if description:
+                yield [
+                    definition,
+                    (path + '/' + field_name).lstrip('/'),
+                    field_info.get('title', ''),
+                    description,
+                    types,
+                ]
+
+    definitions = json.get('definitions')
+    if definitions:
+        for key, value in definitions.items():
+            yield from gather_fields(value, definition=key)
