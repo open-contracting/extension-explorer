@@ -17,8 +17,8 @@ def get_data():
 def filter_extensions(extension_data, condition):
     all_extension_data = get_data()
     extensions = []
-    for slug in sorted(all_extension_data['extensions'].keys()):
-        extension = all_extension_data['extensions'][slug]
+    for slug in sorted(all_extension_data):
+        extension = all_extension_data[slug]
         if condition(extension):
             extension['slug'] = slug
             extensions.append(extension)
@@ -35,7 +35,7 @@ def get_community_extensions():
 
 def get_extension(slug, version):
     all_extension_data = get_data()
-    extension = all_extension_data['extensions'][slug]
+    extension = all_extension_data[slug]
     version = extension['versions'][version]
 
     return extension, version

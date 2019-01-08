@@ -9,7 +9,7 @@ from slugify import slugify
 
 def get_extension_tables(extension_version, lang):
     extension_tables = defaultdict(list)
-    for row in gather_fields(extension_version['release_schema'][lang]):
+    for row in gather_fields(extension_version['schemas']['release-schema.json'][lang]):
         definition = row[0]
         if not definition:
             definition = 'Release'
@@ -49,7 +49,9 @@ def highlight_json(html):
     root = lxml.html.fromstring(html)
 
     for code_block in root.find_class('language-json'):
-        _replace_parent(code_block, lxml.html.fromstring(highlight(code_block.text, JsonLexer(), HtmlFormatter())))
+        replacement = lxml.html.fromstring(highlight(code_block.text, JsonLexer(), HtmlFormatter()))
+        parent = code_block.getparent()
+        parent.getparent().replace(parent, replacement)
 
     html = lxml.html.tostring(root).decode()
 
@@ -89,13 +91,3 @@ def gather_fields(schema, path='', definition=''):
     if 'definitions' in schema:
         for key, value in schema['definitions'].items():
             yield from gather_fields(value, definition=key)
-
-
-def _replace_parent(element, replacement):
-    parent = element.getparent()
-    parent.getparent().replace(parent, replacement)
-
-
-def _remove_parent(element, replacement):
-    parent = element.getparent()
-    parent.getparent().replace(parent)

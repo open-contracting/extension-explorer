@@ -3,8 +3,6 @@ import re
 import lxml.html
 from lxml.html import builder as E
 
-from .util import _replace_parent, _remove_parent
-
 directive_name_pattern = re.compile(r'^\.\. ([^:]+)::$')
 option_pattern = re.compile(r'^:([^:]+):(.*)$')
 
@@ -22,23 +20,29 @@ def replace_directives(html, schema_url, codelist_url, extension_tables):
             directive_name = get_directive_name(lines)
 
             if directive_name == 'extensiontable':
-                replacement = extensiontable_replacement(lines, schema_url, extension_tables)
+                replacement = get_extensiontable_replacement(lines, schema_url, extension_tables)
             elif directive_name in ('csv-table-no-translate', 'csv-table'):
-                replacement = csv_table_replacement(lines, codelist_url)
-            else:
+                replacement = get_csv_table_replacement(lines, codelist_url)
+            elif directive_name:
                 raise NotImplementedError('Unknown directive: {}'.format(directive_name))
-
-            if replacement:
-                _replace_parent(code_block, replacement)
             else:
-                _remove_parent(code_block)
+                raise NotImplementedError('Unexpected line: {}'.format(lines[0]))
+
+            parent = code_block.getparent()
+            if replacement:
+                parent.getparent().replace(parent, replacement)
+            else:
+                parent.getparent().replace(parent)
 
     html = lxml.html.tostring(root).decode()
 
     return html
 
 
-def extensiontable_replacement(lines, url, extension_tables):
+def get_extensiontable_replacement(lines, url, extension_tables):
+    """
+    Returns a link to a section of the schema reference.
+    """
     options = get_directive_options(lines, ['extension', 'definitions', 'exclude_definitions'])
 
     # TODO
@@ -64,7 +68,10 @@ def extensiontable_replacement(lines, url, extension_tables):
     return E.BLOCKQUOTE(E.CLASS('blockquote'), E.UL(E.CLASS('list-unstyled'), *list_items))
 
 
-def csv_table_replacement(lines, url):
+def get_csv_table_replacement(lines, url):
+    """
+    Returns a link to a section of the codelists reference.
+    """
     options = get_directive_options(lines, ['file', 'header-rows'])
     codelist_filename = options['file'].rsplit('/', 1)[-1]
 
@@ -98,13 +105,13 @@ def get_directive_options(lines, known_option_names=[]):
     for line in lines[1:]:
         line = line.strip()
         match = option_pattern.search(line)
-        if match:
-            option_name = match.group(1)
-            if option_name in known_option_names:
-                options[option_name] = match.group(2).strip()
-            else:
-                raise NotImplementedError('Unknown option: {}'.format(option_name))
-        else:
+        if not match:
             raise NotImplementedError('Unexpected line: {}'.format(line))
+
+        option_name = match.group(1)
+        if option_name not in known_option_names:
+            raise NotImplementedError('Unknown option: {}'.format(option_name))
+
+        options[option_name] = match.group(2).strip()
 
     return options

@@ -5,7 +5,8 @@ from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
-from .util import get_extension_tables, mark_headings, highlight_json, replace_directives
+from .util import get_extension_tables, mark_headings, highlight_json
+from .compat import replace_directives
 
 LANGS = {
     'en': 'English',

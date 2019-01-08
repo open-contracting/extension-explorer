@@ -1,7 +1,7 @@
 import lxml.html
 import pytest
 
-from extension_explorer.compat import (extensiontable_replacement, csv_table_replacement,
+from extension_explorer.compat import (replace_directives, get_extensiontable_replacement, get_csv_table_replacement,
                                        get_directive_name, get_directive_options)
 
 
@@ -25,15 +25,23 @@ definitions = {
 
 @pytest.mark.xfail
 def test_replace_directives():
-    pass
+    html = """<div>
+    </div>
+    """
+
+    html = replace_directives(html, 'path/to/schema', 'path/to/codelist', definitions)
+
+    assert html == """<div>
+    </div>
+    """
 
 
-def test_extensiontable_replacement():
+def test_get_extensiontable_replacement():
     extensiontable = """
     .. extensiontable::
     """.strip().split('\n')
 
-    replacement = extensiontable_replacement(extensiontable, 'url/path', definitions)
+    replacement = get_extensiontable_replacement(extensiontable, 'url/path', definitions)
 
     assert lxml.html.tostring(replacement).decode() == \
     '<blockquote class="blockquote">' \
@@ -45,13 +53,13 @@ def test_extensiontable_replacement():
     '</blockquote>'  # noqa
 
 
-def test_extensiontable_replacement_whitelist():
+def test_get_extensiontable_replacement_whitelist():
     extensiontable_whitelist = """
     .. extensiontable::
        :definitions: foo bar unknown
     """.strip().split('\n')
 
-    replacement = extensiontable_replacement(extensiontable_whitelist, 'url/path', definitions)
+    replacement = get_extensiontable_replacement(extensiontable_whitelist, 'url/path', definitions)
 
     assert lxml.html.tostring(replacement).decode() == \
     '<blockquote class="blockquote">' \
@@ -62,13 +70,13 @@ def test_extensiontable_replacement_whitelist():
     '</blockquote>'  # noqa
 
 
-def test_extensiontable_replacement_blacklist():
+def test_get_extensiontable_replacement_blacklist():
     extensiontable_blacklist = """
     .. extensiontable::
        :exclude_definitions: foo bar unknown
     """.strip().split('\n')
 
-    replacement = extensiontable_replacement(extensiontable_blacklist, 'url/path', definitions)
+    replacement = get_extensiontable_replacement(extensiontable_blacklist, 'url/path', definitions)
 
     assert lxml.html.tostring(replacement).decode() == \
     '<blockquote class="blockquote">' \
@@ -78,14 +86,14 @@ def test_extensiontable_replacement_blacklist():
     '</blockquote>'  # noqa
 
 
-def test_extensiontable_replacement_whitelist_blacklist():
+def test_get_extensiontable_replacement_whitelist_blacklist():
     extensiontable_whitelist_blacklist = """
     .. extensiontable::
        :definitions: foo bar
        :exclude_definitions: foo
     """.strip().split('\n')
 
-    replacement = extensiontable_replacement(extensiontable_whitelist_blacklist, 'url/path', definitions)
+    replacement = get_extensiontable_replacement(extensiontable_whitelist_blacklist, 'url/path', definitions)
 
     assert lxml.html.tostring(replacement).decode() == \
     '<blockquote class="blockquote">' \
@@ -95,20 +103,20 @@ def test_extensiontable_replacement_whitelist_blacklist():
     '</blockquote>'  # noqa
 
 
-def test_extensiontable_replacement_exclude_all():
+def test_get_extensiontable_replacement_exclude_all():
     extensiontable_exclude_all = """
     .. extensiontable::
        :definitions: foo bar baz
        :exclude_definitions: foo bar baz
     """.strip().split('\n')
 
-    replacement = extensiontable_replacement(extensiontable_exclude_all, 'url/path', definitions)
+    replacement = get_extensiontable_replacement(extensiontable_exclude_all, 'url/path', definitions)
 
     assert replacement is None
 
 
-def test_csv_table_replacement():
-    replacement = csv_table_replacement(csv_table, 'url/path')
+def test_get_csv_table_replacement():
+    replacement = get_csv_table_replacement(csv_table, 'url/path')
 
     assert lxml.html.tostring(replacement).decode() == \
     '<blockquote class="blockquote">' \
