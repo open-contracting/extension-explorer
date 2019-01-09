@@ -13,9 +13,9 @@
   <dt class="col-sm-3">Base URL</dt>
   <dd class="col-sm-9">{{extension_version.base_url}}</dd>
 
-  <dt class="col-sm-3">Compatability</dt>
+  <dt class="col-sm-3">Compatibility</dt>
   <dd class="col-sm-9">
-    {% if extension_version.standard_compatibility['1.1'] %}Standard Version 1.1{% endif %}
+    {% if '1.1' in extension_version.metadata.compatibility %}Standard Version 1.1{% endif %}
   </dd>
 
   <dt class="col-sm-3">Core</dt>

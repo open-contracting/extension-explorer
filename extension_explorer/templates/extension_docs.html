@@ -11,7 +11,7 @@
 
   <ul class="nav flex-column ml-1">
     {% for heading in headings %}
-      <a class="nav-link pt-0 pb-0 ml-{{heading.header_number}}" href="#{{heading.id}}"><small> {{heading.text}} </small></a>
+      <a class="nav-link pt-0 pb-0 ml-{{heading.level}}" href="#{{heading.id}}"><small> {{heading.text}} </small></a>
     {% endfor %}
   </ul>
 

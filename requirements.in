@@ -1,4 +1,5 @@
 commonmark
+coveralls
 flake8
 Flask
 Flask-Env
@@ -8,6 +9,8 @@ libsass
 lxml
 Pygments
 pytest
+pytest-cov
 pytest-flask
 selenium==3.8.0
+six==1.11.0 # transifex-client
 transifex-client

@@ -1,14 +1,19 @@
-from flask import Flask, abort, request, redirect, url_for
+import commonmark
+from flask import Flask, abort, redirect, request, url_for
 from flask import render_template
 from flask_babel import Babel
 from flask_env import MetaFlaskEnv
-import commonmark
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
-from .util import create_toc, create_extension_tables, replace_directives, highlight_json
+from .util import get_extension_tables, mark_headings, highlight_json
+from .compat import replace_directives
 
-LANGS = {'en': 'English',
-         'es_ES': 'Español'}
+LANGS = {
+    'en': 'English',
+    'es': 'Español',
+    'fr': 'Français',
+    'it': 'Italiano',
+}
 
 
 class Configuration(metaclass=MetaFlaskEnv):
@@ -21,10 +26,10 @@ babel = Babel(app)
 
 
 @app.context_processor
-def add_lang_info():
+def inject_language_variables():
     def change_lang_in_url(lang):
         new_view_args = request.view_args.copy()
-        new_view_args["lang"] = lang
+        new_view_args['lang'] = lang
         return url_for(request.endpoint, **new_view_args)
     return dict(change_lang_in_url=change_lang_in_url, langs=LANGS)
 
@@ -56,55 +61,55 @@ def community(lang):
     return render_template('community.html', lang=lang, data=data)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/')
+@app.route('/<lang>/extensions/<slug>/<version>/')
 def extension(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
 
-        readme = extension_version.get("readme", {}).get(lang, {}).get("content", "")
-        # WE SHOULD THINK HOW SAFE THIS IS
+        extension_tables = get_extension_tables(extension_version, lang)
+
+        # Note: `readme` may contain unsafe HTML and JavaScript.
+        schema_url = url_for('extension_reference', lang=lang, slug=slug, version=version)
+        codelist_url = url_for('extension_codelists', lang=lang, slug=slug, version=version)
+        readme = extension_version.get('readme', {}).get(lang, {}).get('content', '')
         readme_html = commonmark.commonmark(readme)
-        readme_html, headings = create_toc(readme_html)
-
-        extension_tables = create_extension_tables(extension_version, lang)
-        readme_html = replace_directives(readme_html, extension_tables, lang, slug, version)
-
+        readme_html, headings = mark_headings(readme_html)
+        readme_html = replace_directives(readme_html, schema_url, codelist_url, extension_tables)
         readme_html, highlight_css = highlight_json(readme_html)
-
     except KeyError:
         abort(404)
-    return render_template('extension_docs.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version,
-                           readme_html=readme_html, headings=headings, highlight_css=highlight_css)
+    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version, readme_html=readme_html, headings=headings,
+                           highlight_css=highlight_css)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/info/')
+@app.route('/<lang>/extensions/<slug>/<version>/info/')
 def extension_info(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_info.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version)
+    return render_template('extension_info.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/reference/')
+@app.route('/<lang>/extensions/<slug>/<version>/reference/')
 def extension_reference(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
-        extension_tables = create_extension_tables(extension_version, lang)
+
+        extension_tables = get_extension_tables(extension_version, lang)
     except KeyError:
         abort(404)
-    return render_template('schema_reference.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version,
-                           extension_tables=extension_tables)
+    return render_template('schema_reference.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version, extension_tables=extension_tables)
 
 
-@app.route('/<lang>/extension/<slug>/<version>/codelists/')
+@app.route('/<lang>/extensions/<slug>/<version>/codelists/')
 def extension_codelists(lang, slug, version):
     try:
         extension, extension_version = get_extension(slug, version)
     except KeyError:
         abort(404)
-    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version,
-                           extension=extension, extension_version=extension_version)
+    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version, extension=extension,
+                           extension_version=extension_version)
