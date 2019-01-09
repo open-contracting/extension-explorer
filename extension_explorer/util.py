@@ -19,14 +19,14 @@ def get_extension_tables(extension_version, lang):
 
 def mark_headings(html):
     """
-    Adds `id` attributes to h1-h5 headings in the HTML. Returns the HTML, and a list of headings.
+    Adds `id` attributes to headings in the HTML. Returns the HTML, and a list of headings.
     """
     root = lxml.html.fromstring(html)
 
     headings = []
     slug_counts = defaultdict(int)
 
-    for element in root.iter('h1', 'h2', 'h3', 'h4', 'h5'):
+    for element in root.iter('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
         slug = slugify(element.text)
         if slug in slug_counts:
             heading_id = '{}-{}'.format(slug, slug_counts[slug])
