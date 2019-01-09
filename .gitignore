@@ -1,4 +1,3 @@
-*.mo
 /.coverage
 /.pytest_cache
 /chromedriver
