@@ -10,7 +10,9 @@ from .compat import replace_directives
 
 LANGS = {
     'en': 'English',
-    'es_ES': 'Español'
+    'es': 'Español',
+    'fr': 'Français',
+    'it': 'Italiano',
 }
 
 
