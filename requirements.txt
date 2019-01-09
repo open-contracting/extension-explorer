@@ -5,6 +5,7 @@ certifi==2018.11.29
 chardet==3.0.4
 Click==7.0
 commonmark==0.8.1
+coverage==4.5.2
 flake8==3.6.0
 Flask==1.0.2
 Flask-Babel==0.12.2
@@ -31,7 +32,7 @@ python-slugify==1.2.6
 pytz==2018.9
 requests==2.21.0
 selenium==3.8.0
-six==1.12.0
+six==1.11.0
 transifex-client==0.13.5
 Unidecode==1.0.23
 urllib3==1.23
