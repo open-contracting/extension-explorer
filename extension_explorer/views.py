@@ -5,7 +5,7 @@ from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 
 from .extension_data import get_core_extensions, get_community_extensions, get_extension
-from .util import get_schema_tables, mark_headings, highlight_json
+from .util import get_schema_tables, identify_headings, highlight_json
 from .compat import replace_directives
 
 LANGS = {
@@ -73,7 +73,7 @@ def extension(lang, slug, version):
         codelist_url = url_for('extension_codelists', lang=lang, slug=slug, version=version)
         readme = extension_version.get('readme', {}).get(lang, {}).get('content', '')
         readme_html = commonmark.commonmark(readme)
-        readme_html, headings = mark_headings(readme_html)
+        readme_html, headings = identify_headings(readme_html)
         readme_html = replace_directives(readme_html, schema_url, codelist_url, tables)
         readme_html, highlight_css = highlight_json(readme_html)
     except KeyError:

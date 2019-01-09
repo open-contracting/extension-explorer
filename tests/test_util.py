@@ -3,7 +3,7 @@ from copy import deepcopy
 import commonmark
 import pytest
 
-from extension_explorer.util import get_schema_tables, mark_headings, highlight_json
+from extension_explorer.util import get_schema_tables, identify_headings, highlight_json
 
 extension_version_template = {
     "schemas": {
@@ -158,10 +158,10 @@ def test_get_schema_tables_array_array():
     assert str(excinfo.value) == 'arrays of arrays with items are not implemented'
 
 
-def test_mark_headings():
+def test_identify_headings():
     html = commonmark.commonmark('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### A heading\n')  # noqa
 
-    html, headings = mark_headings(html)
+    html, headings = identify_headings(html)
 
     assert headings == [
         {'id': 'a-heading', 'level': 1, 'text': 'A heading'},

@@ -17,7 +17,7 @@ def get_schema_tables(extension_version, lang):
     return tables
 
 
-def mark_headings(html):
+def identify_headings(html):
     """
     Adds `id` attributes to headings in the HTML. Returns the HTML, and a list of headings.
     """
