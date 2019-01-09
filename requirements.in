@@ -8,6 +8,7 @@ libsass
 lxml
 Pygments
 pytest
+pytest-cov
 pytest-flask
 selenium==3.8.0
 transifex-client
