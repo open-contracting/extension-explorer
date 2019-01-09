@@ -45,10 +45,10 @@ def get_extensiontable_replacement(lines, url, tables):
     """
     options = get_directive_options(lines, ['extension', 'definitions', 'exclude_definitions'])
 
-    # TODO
-    # Don't include release (top) level fields they are indicated by empty string
-    definitions = [definition for definition in tables if definition]
+    definitions = list(tables)
 
+    # The original implementation would error if both `definitions` and `exclude_definitions` were set. Here, we
+    # instead apply the whitelist and then the blacklist, to avoid an error.
     if 'definitions' in options:
         whitelist = options['definitions'].split()
         definitions = [d for d in definitions if d in whitelist]

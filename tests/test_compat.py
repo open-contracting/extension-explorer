@@ -94,27 +94,9 @@ def test_get_extensiontable_replacement_blacklist():
     '</blockquote>'  # noqa
 
 
-def test_get_extensiontable_replacement_whitelist_blacklist():
-    extensiontable_whitelist_blacklist = """
-    .. extensiontable::
-       :definitions: foo bar
-       :exclude_definitions: foo
-    """.strip().split('\n')
-
-    replacement = get_extensiontable_replacement(extensiontable_whitelist_blacklist, 'url/path', definitions)
-
-    assert lxml.html.tostring(replacement).decode() == \
-    '<blockquote class="blockquote">' \
-        '<ul class="list-unstyled">' \
-            '<li><a href="url/path#bar">bar<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-        '</ul>' \
-    '</blockquote>'  # noqa
-
-
 def test_get_extensiontable_replacement_exclude_all():
     extensiontable_exclude_all = """
     .. extensiontable::
-       :definitions: foo bar baz
        :exclude_definitions: foo bar baz
     """.strip().split('\n')
 
