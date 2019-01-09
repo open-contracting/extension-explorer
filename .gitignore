@@ -1,4 +1,5 @@
 *.mo
+/.coverage
 /.pytest_cache
 /chromedriver
 /chromedriver_linux64.zip
