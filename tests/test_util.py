@@ -1,6 +1,6 @@
 import pytest
 
-from extension_explorer.util import get_extension_tables, mark_headings, highlight_json, gather_fields
+from extension_explorer.util import mark_headings
 
 
 @pytest.mark.xfail
@@ -52,6 +52,4 @@ def test_mark_headings():
 
 @pytest.mark.xfail
 def test_highlight_json():
-    html = """<div>
-    </div>
-    """
+    pass
