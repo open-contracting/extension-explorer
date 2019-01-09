@@ -16,7 +16,7 @@
     <div class="col-12 col-md-3 col-xl-2 mt-2">
       <select id="version-select" class="float-right">
         {% for dropdown_version in extension.versions %}
-          <option value="{{url_for(request.endpoint, slug=slug, version=dropdown_version, lang=lang)}}" {% if dropdown_version == version %}selected{% endif %}>{{dropdown_version}}</option>
+          <option value="{{ url_for(request.endpoint, slug=slug, version=dropdown_version, lang=lang) }}" {% if dropdown_version == version %}selected{% endif %}>{{ dropdown_version }}</option>
         {% endfor %}
       </select>
     </div>
@@ -28,24 +28,24 @@
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
           {% block nav_docs%}
-            <a class="nav-link" href="{{url_for('extension', slug=slug, version=version, lang=lang)}}">Docs</a>
+            <a class="nav-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">Docs</a>
           {% endblock nav_docs%}
         </li>
         <li class="nav-item">
           {% block nav_extension_info %}
-            <a class="nav-link" href="{{url_for('extension_info', slug=slug, version=version, lang=lang)}}">Extension Info</a>
+            <a class="nav-link" href="{{ url_for('extension_info', slug=slug, version=version, lang=lang) }}">Extension Info</a>
           {% endblock nav_extension_info %}
         </li>
         <li class="nav-item">
           {% block nav_schema %}
-            <a class="nav-link" href="{{url_for('extension_reference', slug=slug, version=version, lang=lang)}}">Schema Reference</a>
+            <a class="nav-link" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">Schema Reference</a>
           {% endblock nav_schema %}
         </li>
         <li class="nav-item">
           {% block nav_codelists %}
           {% if extension_version.codelists %}
             <a class="nav-link" 
-               href="{{url_for('extension_codelists', slug=slug, version=version, lang=lang)}}">
+               href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
               Codelists
             </a>
           {% endif %}

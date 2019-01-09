@@ -43,12 +43,14 @@ def test_replace_directives():
         '</blockquote>' \
     '</div>'  # noqa
 
+
 def test_replace_directives_exclude_all():
     html = commonmark.commonmark('Foo\n```eval_rst\n.. extensiontable::\n   :exclude_definitions: foo bar baz\n```\n')
 
     html = replace_directives(html, 'schema/path', 'codelist/path', definitions)
 
     assert html == '<div><p>Foo</p>\n</div>'
+
 
 def test_replace_directives_unknown_directive():
     html = commonmark.commonmark('```eval_rst\n.. directive::\n```\n')  # noqa

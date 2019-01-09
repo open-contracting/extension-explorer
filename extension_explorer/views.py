@@ -68,9 +68,9 @@ def extension(lang, slug, version):
         tables = get_schema_tables(extension_version, lang)
 
         # Note: `readme` may contain unsafe HTML and JavaScript.
-        schema_url = url_for('extension_reference', lang=lang, slug=slug, version=version)
+        schema_url = url_for('extension_schema', lang=lang, slug=slug, version=version)
         codelist_url = url_for('extension_codelists', lang=lang, slug=slug, version=version)
-        readme = extension_version.get('readme', {}).get(lang, {}).get('content', '')
+        readme = extension_version.get('readme', {}).get(lang, {})
         readme_html = commonmark.commonmark(readme)
         readme_html, headings = identify_headings(readme_html)
         readme_html = replace_directives(readme_html, schema_url, codelist_url, tables)
@@ -92,8 +92,8 @@ def extension_info(lang, slug, version):
                            extension_version=extension_version)
 
 
-@app.route('/<lang>/extensions/<slug>/<version>/reference/')
-def extension_reference(lang, slug, version):
+@app.route('/<lang>/extensions/<slug>/<version>/schema/')
+def extension_schema(lang, slug, version):
     try:
         extension, extension_version = get_extension_and_version(slug, version)
 
@@ -101,7 +101,7 @@ def extension_reference(lang, slug, version):
     except KeyError:
         abort(404)
     return render_template('schema_reference.html', lang=lang, slug=slug, version=version, extension=extension,
-                           extension_version=extension_version, extension_tables=tables)
+                           extension_version=extension_version, tables=tables)
 
 
 @app.route('/<lang>/extensions/<slug>/<version>/codelists/')

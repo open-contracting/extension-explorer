@@ -27,7 +27,7 @@
           aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="{{url_for('lang_home', lang=lang)}}">
+  <a class="navbar-brand" href="{{ url_for('lang_home', lang=lang) }}">
     <svg class="navbar-svg">
               <use xlink:href="#ocp-logo-only"></use>
     </svg>
@@ -39,13 +39,13 @@
   <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
     <ul class="navbar-nav mr-auto ml-5 mt-2 mt-md-0">
       <li class="nav-item">
-        <a class="nav-link {% block home_nav_link %}{% endblock %}" href="{{url_for('lang_home', lang=lang)}}">Home</a>
+        <a class="nav-link {% block home_nav_link %}{% endblock %}" href="{{ url_for('lang_home', lang=lang) }}">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {% block core_nav_link %}{% endblock %}" href="{{url_for('core', lang=lang)}}">Core</a>
+        <a class="nav-link {% block core_nav_link %}{% endblock %}" href="{{ url_for('core', lang=lang) }}">Core</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {% block community_nav_link %}{% endblock %}" href="{{url_for('community', lang=lang)}}">Community</a>
+        <a class="nav-link {% block community_nav_link %}{% endblock %}" href="{{ url_for('community', lang=lang) }}">Community</a>
       </li>
       <li class="nav-item">
         <a class="nav-link {% block selector_nav_link %}{% endblock %}" href="#!">Selector</a>
@@ -59,7 +59,7 @@
     <div class="float-right">
       <select id="select" class="float-right" onchange="window.location.href=this.value">
         {% for lang, name in langs.items() %}
-          <option value="{{change_lang_in_url(lang)}}"{% if request.view_args.lang == lang %} selected{% endif %}>{{name}}</option>
+          <option value="{{ change_lang_in_url(lang) }}"{% if request.view_args.lang == lang %} selected{% endif %}>{{ name }}</option>
         {% endfor %}
       </select>
     </div>

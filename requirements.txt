@@ -22,7 +22,7 @@ lxml==4.3.0
 MarkupSafe==1.1.0
 mccabe==0.6.1
 more-itertools==5.0.0
-pluggy==0.8.0
+pluggy==0.8.1
 py==1.7.0
 pycodestyle==2.4.0
 pyflakes==2.0.0
@@ -33,7 +33,6 @@ pytest-flask==0.14.0
 python-slugify==1.2.6
 pytz==2018.9
 requests==2.21.0
-selenium==3.8.0
 six==1.11.0
 transifex-client==0.13.5
 Unidecode==1.0.23
