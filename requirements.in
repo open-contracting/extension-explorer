@@ -1,4 +1,5 @@
 commonmark
+coveralls
 flake8
 Flask
 Flask-Env
