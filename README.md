@@ -48,6 +48,8 @@ Push to Transifex (`tx push -s`), translate, pull From Transifex (`tx pull -a`),
 pybabel compile -d translations -f
 ```
 
+If adding a new language, update `LANGS` in `views.py`.
+
 ### Run in development
 
 ```
