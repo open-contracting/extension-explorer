@@ -17,10 +17,10 @@
       <div class="col-12 col-md-8 col-xl-6 mb-2">
         <div class="card card-full-height">
           <div class="card-body">
-            <h5 class="card-title"> <a href="{{url_for('extension', slug=extension.slug, version=extension.latest_version, lang=lang)}}"> {{ extension.name[lang] }} </a>  {# <span class="float-right"> <small>compatability: 1.1 / 1.0</small> </span> #}</h5>
+            <h5 class="card-title"> <a href="{{url_for('extension', slug=extension.id, version=extension.latest_version, lang=lang)}}"> {{ extension.name[lang] }} </a>  {# <span class="float-right"> <small>compatability: 1.1 / 1.0</small> </span> #}</h5>
             <p class="card-text mb-4">{{ extension.description[lang] }}</p>
             <p class="card-text card-bottom-text">Versions: {% for version in extension.versions %}
-              <a href="{{url_for('extension', slug=extension.slug, version=version, lang=lang)}}"> {{version}} </a> {% if not loop.last %}/{% endif %}{%endfor%} 
+              <a href="{{url_for('extension', slug=extension.id, version=version, lang=lang)}}"> {{version}} </a> {% if not loop.last %}/{% endif %}{%endfor%} 
             </p>
           </div>
         </div>

@@ -1,10 +1,35 @@
-from collections import defaultdict
+import os
+import json
+from collections import defaultdict, OrderedDict
+from functools import lru_cache
 
 import lxml.html
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import JsonLexer
 from slugify import slugify
+
+
+@lru_cache()
+def get_data():
+    """
+    Returns the data file's parsed contents. Set the file's path with the ``EXTENSION_EXPLORER_DATA_FILE`` environment
+    variable (default is ``extension_explorer/data.json``).
+    """
+    if os.environ.get('EXTENSION_EXPLORER_DATA_FILE'):
+        filename = os.environ.get('EXTENSION_EXPLORER_DATA_FILE')
+    else:
+        filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data.json')
+    with open(filename) as f:
+        return json.load(f, object_pairs_hook=OrderedDict)
+
+
+def get_extension_and_version(identifier, version):
+    """
+    Returns an extension and a version of it.
+    """
+    data = get_data()
+    return data[identifier], data[identifier]['versions'][version]
 
 
 def get_schema_tables(extension_version, lang):

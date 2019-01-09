@@ -4,8 +4,7 @@ from flask import render_template
 from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 
-from .extension_data import get_core_extensions, get_community_extensions, get_extension
-from .util import get_schema_tables, identify_headings, highlight_json
+from .util import get_schema_tables, identify_headings, highlight_json, get_data, get_extension_and_version
 from .compat import replace_directives
 
 LANGS = {
@@ -51,20 +50,20 @@ def lang_home(lang):
 
 @app.route('/<lang>/core/')
 def core(lang):
-    data = get_core_extensions()
+    data = [extension for extension in get_data().values() if extension['core']]
     return render_template('core.html', lang=lang, data=data)
 
 
 @app.route('/<lang>/community/')
 def community(lang):
-    data = get_community_extensions()
+    data = [extension for extension in get_data().values() if not extension['core']]
     return render_template('community.html', lang=lang, data=data)
 
 
 @app.route('/<lang>/extensions/<slug>/<version>/')
 def extension(lang, slug, version):
     try:
-        extension, extension_version = get_extension(slug, version)
+        extension, extension_version = get_extension_and_version(slug, version)
 
         tables = get_schema_tables(extension_version, lang)
 
@@ -86,7 +85,7 @@ def extension(lang, slug, version):
 @app.route('/<lang>/extensions/<slug>/<version>/info/')
 def extension_info(lang, slug, version):
     try:
-        extension, extension_version = get_extension(slug, version)
+        extension, extension_version = get_extension_and_version(slug, version)
     except KeyError:
         abort(404)
     return render_template('extension_info.html', lang=lang, slug=slug, version=version, extension=extension,
@@ -96,7 +95,7 @@ def extension_info(lang, slug, version):
 @app.route('/<lang>/extensions/<slug>/<version>/reference/')
 def extension_reference(lang, slug, version):
     try:
-        extension, extension_version = get_extension(slug, version)
+        extension, extension_version = get_extension_and_version(slug, version)
 
         tables = get_schema_tables(extension_version, lang)
     except KeyError:
@@ -108,7 +107,7 @@ def extension_reference(lang, slug, version):
 @app.route('/<lang>/extensions/<slug>/<version>/codelists/')
 def extension_codelists(lang, slug, version):
     try:
-        extension, extension_version = get_extension(slug, version)
+        extension, extension_version = get_extension_and_version(slug, version)
     except KeyError:
         abort(404)
     return render_template('extension_codelists.html', lang=lang, slug=slug, version=version, extension=extension,
