@@ -1,3 +1,4 @@
+import commonmark
 import lxml.html
 import pytest
 
@@ -23,17 +24,24 @@ definitions = {
 }
 
 
-@pytest.mark.xfail
 def test_replace_directives():
-    html = """<div>
-    </div>
-    """
+    html = commonmark.commonmark('```eval_rst\n.. extensiontable::\n```\n```eval_rst\n.. csv-table::\n   :file: test.csv\n```\n')  # noqa
 
-    html = replace_directives(html, 'path/to/schema', 'path/to/codelist', definitions)
+    html = replace_directives(html, 'schema/path', 'codelist/path', definitions)
 
-    assert html == """<div>
-    </div>
-    """
+    assert html == \
+    '<div>' \
+        '<blockquote class="blockquote">' \
+            '<ul class="list-unstyled">' \
+                '<li><a href="schema/path#foo">foo<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
+                '<li><a href="schema/path#bar">bar<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
+                '<li><a href="schema/path#baz">baz<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
+            '</ul>' \
+        '</blockquote>' \
+        '<blockquote class="blockquote">' \
+            '<a href="codelist/path#test.csv">test.csv<i class="fas fa-external-link-alt ml-2 small-icon"></i></a>' \
+        '</blockquote>' \
+    '</div>'  # noqa
 
 
 def test_get_extensiontable_replacement():

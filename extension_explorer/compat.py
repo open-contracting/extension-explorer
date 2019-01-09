@@ -29,7 +29,7 @@ def replace_directives(html, schema_url, codelist_url, tables):
                 raise NotImplementedError('Unexpected line: {}'.format(lines[0]))
 
             parent = code_block.getparent()
-            if replacement:
+            if replacement is not None:
                 parent.getparent().replace(parent, replacement)
             else:
                 parent.getparent().replace(parent)
