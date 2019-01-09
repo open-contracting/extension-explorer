@@ -32,7 +32,7 @@ def replace_directives(html, schema_url, codelist_url, tables):
             if replacement is not None:
                 parent.getparent().replace(parent, replacement)
             else:
-                parent.getparent().replace(parent)
+                parent.getparent().remove(parent)
 
     html = lxml.html.tostring(root).decode()
 
