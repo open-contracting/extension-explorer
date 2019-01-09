@@ -7,7 +7,7 @@ directive_name_pattern = re.compile(r'^\.\. ([^:]+)::$')
 option_pattern = re.compile(r'^:([^:]+):(.*)$')
 
 
-def replace_directives(html, schema_url, codelist_url, extension_tables):
+def replace_directives(html, schema_url, codelist_url, tables):
     """
     Replaces RST code blocks with links to schema and codelist reference tables. Returns the HTML.
     """
@@ -20,7 +20,7 @@ def replace_directives(html, schema_url, codelist_url, extension_tables):
             directive_name = get_directive_name(lines)
 
             if directive_name == 'extensiontable':
-                replacement = get_extensiontable_replacement(lines, schema_url, extension_tables)
+                replacement = get_extensiontable_replacement(lines, schema_url, tables)
             elif directive_name in ('csv-table-no-translate', 'csv-table'):
                 replacement = get_csv_table_replacement(lines, codelist_url)
             elif directive_name:
@@ -39,7 +39,7 @@ def replace_directives(html, schema_url, codelist_url, extension_tables):
     return html
 
 
-def get_extensiontable_replacement(lines, url, extension_tables):
+def get_extensiontable_replacement(lines, url, tables):
     """
     Returns a link to a section of the schema reference.
     """
@@ -47,7 +47,7 @@ def get_extensiontable_replacement(lines, url, extension_tables):
 
     # TODO
     # Don't include release (top) level fields they are indicated by empty string
-    definitions = [definition for definition in extension_tables if definition]
+    definitions = [definition for definition in tables if definition]
 
     if 'definitions' in options:
         whitelist = options['definitions'].split()
