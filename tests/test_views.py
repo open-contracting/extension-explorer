@@ -1,4 +1,8 @@
+import os
+
 from flask import url_for
+
+os.environ['EXTENSION_EXPLORER_DATA_FILE'] = os.path.join('tests', 'fixtures', 'data.json')
 
 
 def test_home(client):
