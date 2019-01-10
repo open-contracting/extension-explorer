@@ -77,7 +77,7 @@ def extension(lang, slug, version):
         readme_html, highlight_css = highlight_json(readme_html)
     except KeyError:
         abort(404)
-    return render_template('extension_docs.html', lang=lang, slug=slug, version=version, extension=extension,
+    return render_template('extension.html', lang=lang, slug=slug, version=version, extension=extension,
                            extension_version=extension_version, readme_html=readme_html, headings=headings,
                            highlight_css=highlight_css)
 
@@ -100,7 +100,7 @@ def extension_schema(lang, slug, version):
         tables = get_schema_tables(extension_version, lang)
     except KeyError:
         abort(404)
-    return render_template('schema_reference.html', lang=lang, slug=slug, version=version, extension=extension,
+    return render_template('extension_schema.html', lang=lang, slug=slug, version=version, extension=extension,
                            extension_version=extension_version, tables=tables)
 
 

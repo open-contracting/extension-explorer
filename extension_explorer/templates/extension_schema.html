@@ -1,4 +1,4 @@
-{% extends 'extension.html' %}
+{% extends 'layout_extension.html' %}
 
 {% block nav_schema %}
   <a class="nav-link active" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">{{ _("Schema Reference") }}</a>
