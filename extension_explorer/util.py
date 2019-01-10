@@ -1,3 +1,6 @@
+"""
+Module to keep ``views.py`` simple and high-level.
+"""
 import os
 import json
 from collections import defaultdict, OrderedDict

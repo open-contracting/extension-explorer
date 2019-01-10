@@ -1,3 +1,6 @@
+"""
+Methods for compatibility with older versions of extensions' documentation, which used Sphinx directives.
+"""
 import re
 
 import lxml.html
