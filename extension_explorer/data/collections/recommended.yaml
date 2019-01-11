@@ -1,0 +1,12 @@
+slug: recommended
+title: Recommended extensions
+description: ''
+# Should include all core extensions except milestone_documents.
+# See https://github.com/open-contracting/extension_registry/blob/master/extensions.csv
+extensions:
+  - bids
+  - enquiries
+  - location
+  - lots
+  - participation_fee
+  - process_title

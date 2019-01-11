@@ -4,5 +4,5 @@
 /chromedriver_linux64.zip
 /chromedriver_mac64.zip
 /chromedriver_win32.zip
-/extension_explorer/data.json
+/extension_explorer/data/extensions.json
 /extension_explorer/build

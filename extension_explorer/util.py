@@ -4,25 +4,56 @@ Module to keep ``views.py`` simple and high-level.
 import os
 import json
 from collections import defaultdict, OrderedDict
-from functools import lru_cache
+from functools import lru_cache, cmp_to_key
+from glob import glob
 
 import lxml.html
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import JsonLexer
 from slugify import slugify
+from yaml import load
 
 
 @lru_cache()
-def get_data():
+def get_collections():
+    collections = []
+
+    filenames = glob(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'collections', '*.yaml'))
+    for filename in filenames:
+        with open(filename) as f:
+            collection = load(f)
+            if not collection.get('hidden'):
+                collections.append(collection)
+
+    return sorted(collections, key=cmp_to_key(_compare_collections))
+
+
+def _compare_collections(a, b):
+    a_type = a.get('type', '')
+    b_type = b.get('type', '')
+    a_name = a['title']
+    b_name = b['title']
+    if a_type < b_type:
+        return -1
+    elif a_type > b_type:
+        return 1
+    elif a_name < b_name:
+        return -1
+    else:
+        return 1
+
+
+@lru_cache()
+def get_extensions():
     """
     Returns the data file's parsed contents. Set the file's path with the ``EXTENSION_EXPLORER_DATA_FILE`` environment
-    variable (default is ``extension_explorer/data.json``).
+    variable (default is ``extension_explorer/data/extensions.json``).
     """
     if os.environ.get('EXTENSION_EXPLORER_DATA_FILE'):
         filename = os.environ.get('EXTENSION_EXPLORER_DATA_FILE')
     else:
-        filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data.json')
+        filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'extensions.json')
     with open(filename) as f:
         return json.load(f, object_pairs_hook=OrderedDict)
 
@@ -31,7 +62,7 @@ def get_extension_and_version(identifier, version):
     """
     Returns an extension and a version of it.
     """
-    data = get_data()
+    data = get_extensions()
     return data[identifier], data[identifier]['versions'][version]
 
 

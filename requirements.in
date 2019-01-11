@@ -11,5 +11,6 @@ Pygments
 pytest
 pytest-cov
 pytest-flask
+PyYAML
 six==1.11.0 # transifex-client
 transifex-client

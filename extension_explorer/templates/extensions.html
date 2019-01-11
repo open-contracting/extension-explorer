@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block extensions_nav_link %}active{% endblock %}
+
+{% block main %}
+  <div class="row mt-2 mb-4">
+    <div class="col">
+      <h1 class="display-5 text-center">Registered extensions</h1>
+        <p class="lead text-center">
+          
+        </p>
+    </div>
+  </div>
+
+  {% for extension in extensions %}
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-xl-6 mb-2">
+        <div class="card card-full-height">
+          <div class="card-body">
+            <h5 class="card-title">
+                <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=extension.latest_version) }}">{{ extension.name[lang] }}</a>
+                {# <span class="float-right"><small>compatability: 1.1 / 1.0</small></span> #}
+            </h5>
+            <p class="card-text mb-4">{{ extension.description[lang] }}</p>
+            <p class="card-text card-bottom-text">Versions: {% for version in extension.versions %}
+              <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=version) }}">{{ version }}</a> {% if not loop.last %}/{% endif %}{%endfor%} 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock main %}

@@ -17,7 +17,7 @@ Generate the data file, substituting the path to the above repository's `locale`
 
 ```
 pip install ocdsextensionregistry[cli]
-ocdsextensionregistry generate-data-file --locale-dir path/to/locale --languages es,fr,it > extension_explorer/data.json
+ocdsextensionregistry generate-data-file --locale-dir path/to/locale --languages es,fr,it > extension_explorer/data/extensions.json
 ```
 
 If you prefer to store the data file in another location, set the `EXTENSION_EXPLORER_DATA_FILE` environment variable to it.
@@ -56,6 +56,8 @@ If adding a new language, update `LANGS` in `views.py`.
 FLASK_ENV=development FLASK_APP=extension_explorer/views.py flask run
 ```
 
+Open <http://127.0.0.1:5000>
+
 ### Create static site
 
 Create a static site in `extension_explorer/build`:
@@ -75,7 +77,7 @@ Open <http://localhost:8000>
 
 ## Maintenance
 
-Update the requirements:
+To update the requirements, delete and re-create the virtual environment, then run:
 
 ```shell
 pip install -r requirements.in

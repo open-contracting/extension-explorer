@@ -2,7 +2,7 @@ import os
 
 from flask import url_for
 
-os.environ['EXTENSION_EXPLORER_DATA_FILE'] = os.path.join('tests', 'fixtures', 'data.json')
+os.environ['EXTENSION_EXPLORER_DATA_FILE'] = os.path.join('tests', 'fixtures', 'extensions.json')
 
 
 def test_home(client):
@@ -13,6 +13,21 @@ def test_home(client):
 
 def test_lang_home(client):
     response = client.get(url_for('lang_home', lang='en'))
+    assert response.status_code == 200
+
+
+def test_collections(client):
+    response = client.get(url_for('collections', lang='en'))
+    assert response.status_code == 200
+
+
+def test_collection(client):
+    response = client.get(url_for('collection', lang='en', slug='recommended'))
+    assert response.status_code == 200
+
+
+def test_extensions(client):
+    response = client.get(url_for('extensions', lang='en'))
     assert response.status_code == 200
 
 
@@ -29,6 +44,16 @@ def test_extension_schema(client):
 def test_extension_codelists(client):
     response = client.get(url_for('extension_codelists', lang='en', slug='location', version='v1.1.3'))
     assert response.status_code == 200
+
+
+def test_lang_home_404(client):
+    response = client.get(url_for('lang_home', lang='nonexistent'))
+    assert response.status_code == 404
+
+
+def test_collection_404(client):
+    response = client.get(url_for('collection', lang='en', slug='nonexistent'))
+    assert response.status_code == 404
 
 
 def test_extension_404_extension(client):

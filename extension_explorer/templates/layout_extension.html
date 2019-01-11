@@ -1,7 +1,6 @@
 {% extends 'layout.html' %}
 
-{% block core_nav_link %} {% if extension.core %} active {% endif %}{% endblock %}
-{% block community_nav_link %} {% if not extension.core %} active {% endif %}{% endblock %}
+{% block extensions_nav_link %}active{% endblock %}
 
 
 {% block main %}

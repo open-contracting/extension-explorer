@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+
+{% block collections_nav_link %}active{% endblock %}
+
+{% block main %}
+  <div class="row mt-2 mb-4">
+    <div class="col">
+      <h1 class="display-5 text-center">Extension collections</h1>
+        <p class="lead text-center">
+          
+        </p>
+    </div>
+  </div>
+
+  {% for collection in collections %}
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-xl-6 mb-2">
+        <div class="card card-full-height">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="{{ url_for('collection', lang=lang, slug=collection.slug) }}"> {{ collection.slug }} </a>
+            </h5>
+            <p class="card-text mb-4">{{ collection.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock main %}
