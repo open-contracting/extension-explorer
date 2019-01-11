@@ -23,7 +23,7 @@
             </h5>
             <p class="card-text mb-4">{{ extension.description[lang] }}</p>
             <p class="card-text card-bottom-text">Versions: {% for version in extension.versions %}
-              <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=version) }}">{{ version }}</a> {% if not loop.last %}/{% endif %}{%endfor%} 
+              <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=version) }}">{{ version }}</a> {% if not loop.last %}/{% endif %}{% endfor %} 
             </p>
           </div>
         </div>

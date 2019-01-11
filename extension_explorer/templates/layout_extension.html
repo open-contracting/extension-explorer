@@ -7,10 +7,10 @@
   <div class="row mt-2">
 
     <div class="col-12 col-md-3 col-xl-2 mt-2">
-      <h1> {{ extension.name[lang] }} </h1>
+      <h1>{{ extension.name[lang] }}</h1>
     </div>
     <div class="col-12 col-md-6 col-xl-6 mt-2">
-      <p> {{ extension.description[lang] }} </p>
+      <p>{{ extension.description[lang] }}</p>
     </div>
     <div class="col-12 col-md-3 col-xl-2 mt-2">
       <select id="version-select" class="float-right">
@@ -26,9 +26,9 @@
     <div class="col-12 col-md-3 col-xl-2">
       <ul class="nav nav-pills flex-column">
         <li class="nav-item">
-          {% block nav_docs%}
+          {% block nav_docs %}
             <a class="nav-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">Docs</a>
-          {% endblock nav_docs%}
+          {% endblock nav_docs %}
         </li>
         <li class="nav-item">
           {% block nav_extension_info %}

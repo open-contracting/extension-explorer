@@ -1,21 +1,21 @@
 {% extends 'layout_extension.html' %}
 
-{% block extra_style %}
+{% block extra_css %}
   <style>
     {{ highlight_css | safe }}
   </style>
-{% endblock extra_style %}
+{% endblock extra_css %}
 
-{% block nav_docs%}
+{% block nav_docs %}
   <a class="nav-link active" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">Docs</a>
 
   <ul class="nav flex-column ml-1">
     {% for heading in headings %}
-      <a class="nav-link pt-0 pb-0 ml-{{ heading.level }}" href="#{{ heading.id }}"><small> {{ heading.text }} </small></a>
+      <a class="nav-link pt-0 pb-0 ml-{{ heading.level }}" href="#{{ heading.id }}"><small>{{ heading.text }}</small></a>
     {% endfor %}
   </ul>
 
-{% endblock nav_docs%}
+{% endblock nav_docs %}
 
 {% block extension_body %}
   {{ readme_html|safe }}

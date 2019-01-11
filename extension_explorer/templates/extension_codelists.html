@@ -4,14 +4,14 @@
   <a class="nav-link active" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">Codelists</a>
   <ul class="nav flex-column ml-1">
     {% for codelist in extension_version.codelists %}
-      <a class="nav-link pt-0 pb-0" href="#{{ codelist }}"><small> {{ codelist }} </small></a>
+      <a class="nav-link pt-0 pb-0" href="#{{ codelist }}"><small>{{ codelist }}</small></a>
     {% endfor %}
   </ul>
 {% endblock nav_codelists %}
 
 {% block extension_body %}
   {% for codelist in extension_version.codelists %}
-    <h2 id="{{ codelist }}"> {{ codelist }} </h2>
+    <h2 id="{{ codelist }}">{{ codelist }}</h2>
 
       <table class="table">
         <thead>
