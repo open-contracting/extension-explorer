@@ -127,6 +127,10 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
         pointer += '/'
 
     for key, value in schema.get('properties', {}).items():
+        # If the extension deletes fields.
+        if value is None:
+            continue
+
         new_pointer = pointer + key
 
         # Only core fields should lack titles and descriptions.
