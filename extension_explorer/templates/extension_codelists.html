@@ -1,38 +1,50 @@
 {% extends 'layout_extension.html' %}
 
 {% block nav_codelists %}
-  <a class="nav-link active" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">Codelists</a>
+  <a class="nav-link active" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
+    {{ _("Codelists") }}
+  </a>
+
   <ul class="nav flex-column ml-1">
     {% for codelist in extension_version.codelists %}
-      <a class="nav-link pt-0 pb-0" href="#{{ codelist }}"><small>{{ codelist }}</small></a>
+      <li>
+        <a class="nav-link pt-0 pb-0" href="#{{ codelist }}">
+          <small>
+            {{ codelist }}
+          </small>
+        </a>
+      </li>
     {% endfor %}
   </ul>
 {% endblock nav_codelists %}
 
 {% block extension_body %}
   {% for codelist in extension_version.codelists %}
-    <h2 id="{{ codelist }}">{{ codelist }}</h2>
+    <h2 id="{{ codelist }}">
+      {{ codelist }}
+    </h2>
 
-      <table class="table">
-        <thead>
-            <tr>
-              {% for fieldname in extension_version.codelists[codelist][lang].fieldnames %}
-                  <th scope="col">{{ fieldname }}</th>
-              {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-          {% for row in extension_version.codelists[codelist][lang].rows %}
-            <tr>
-              {% for fieldname in extension_version.codelists[codelist][lang].fieldnames %}
-                 <td>{{ row[fieldname] }}</td>
-              {% endfor %}
-            </tr>
+    <table class="table">
+      <thead>
+        <tr>
+          {% for fieldname in extension_version.codelists[codelist][lang].fieldnames %}
+            <th scope="col">
+              {{ fieldname }}
+            </th>
           {% endfor %}
-        </tbody>
-      </table>
-
-
-
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in extension_version.codelists[codelist][lang].rows %}
+          <tr>
+            {% for fieldname in extension_version.codelists[codelist][lang].fieldnames %}
+              <td>
+                {{ row[fieldname] }}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   {% endfor %}
 {% endblock extension_body %}

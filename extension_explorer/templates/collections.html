@@ -5,10 +5,12 @@
 {% block main %}
   <div class="row mt-2 mb-4">
     <div class="col">
-      <h1 class="display-5 text-center">Extension collections</h1>
-        <p class="lead text-center">
-          
-        </p>
+      <h1 class="display-5 text-center">
+        {{ _("Extension collections") }}
+      </h1>
+      <p class="lead text-center">
+        
+      </p>
     </div>
   </div>
 
@@ -18,9 +20,13 @@
         <div class="card card-full-height">
           <div class="card-body">
             <h5 class="card-title">
-              <a href="{{ url_for('collection', lang=lang, slug=collection.slug) }}">{{ collection.slug }}</a>
+              <a href="{{ url_for('collection', lang=lang, slug=collection.slug) }}">
+                {{ collection.slug }}
+              </a>
             </h5>
-            <p class="card-text mb-4">{{ collection.description }}</p>
+            <p class="card-text mb-4">
+              {{ collection.description }}
+            </p>
           </div>
         </div>
       </div>
