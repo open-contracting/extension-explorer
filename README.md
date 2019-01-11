@@ -17,7 +17,7 @@ Generate the data file, substituting the path to the above repository's `locale`
 
 ```
 pip install ocdsextensionregistry[cli]
-ocdsextensionregistry generate-data-file --locale-dir path/to/locale --languages es,fr,it > extension_explorer/data/extensions.json
+ocdsextensionregistry generate-data-file --locale-dir path/to/locale > extension_explorer/data/extensions.json
 ```
 
 If you prefer to store the data file in another location, set the `EXTENSION_EXPLORER_DATA_FILE` environment variable to it.
