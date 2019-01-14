@@ -1,3 +1,4 @@
+/*.egg-info
 /.coverage
 /.pytest_cache
 /extension_explorer/data/extensions.json

@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2018 ORGANIZATION
+# Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-09-28 15:36+0100\n"
+"POT-Creation-Date: 2019-01-14 17:51-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,110 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: templates/base.html:5
+#. title
+#: data/collections/eu.yaml:1
+msgid "European Union"
+msgstr ""
+
+#. title
+#: data/collections/fiscal.yaml:1
+msgid "Fiscal extensions"
+msgstr ""
+
+#. title
+#: data/collections/gpa.yaml:1
+msgid "Agreement on Government Procurement"
+msgstr ""
+
+#. title
+#: data/collections/ppp.yaml:1
+msgid "Public Private Partnerships"
+msgstr ""
+
+#. title
+#: data/collections/recommended.yaml:1
+msgid "Recommended extensions"
+msgstr ""
+
+#: templates/collections.html:9
+msgid "Extension collections"
+msgstr ""
+
+#: templates/extension.html:11 templates/layout_extension.html:32
+msgid "Docs"
+msgstr ""
+
+#: templates/extension_codelists.html:5 templates/layout_extension.html:47
+msgid "Codelists"
+msgstr ""
+
+#: templates/extension_schema.html:5 templates/layout_extension.html:39
+msgid "Schema Reference"
+msgstr ""
+
+#: templates/extension_schema.html:13 templates/extension_schema.html:51
+msgid "Release Schema"
+msgstr ""
+
+#: templates/extension_schema.html:31 templates/extension_schema.html:93
+msgid "Release Package Schema"
+msgstr ""
+
+#: templates/extension_schema.html:40 templates/extension_schema.html:101
+msgid "Record Package Schema"
+msgstr ""
+
+#: templates/extension_schema.html:63
+msgid "Field"
+msgstr ""
+
+#: templates/extension_schema.html:66
+msgid "Title"
+msgstr ""
+
+#: templates/extension_schema.html:69
+msgid "Description"
+msgstr ""
+
+#: templates/extension_schema.html:72
+msgid "Types"
+msgstr ""
+
+#: templates/extensions.html:9
+msgid "Registered extensions"
+msgstr ""
+
+#: templates/extensions.html:38
+msgid "Versions:"
+msgstr ""
+
+#: templates/home.html:10
+msgid "OCDS Extension Explorer"
+msgstr ""
+
+#: templates/home.html:13
+msgid ""
+"Where you can find information on Open Contracting Data Standards "
+"extensions"
+msgstr ""
+
+#: templates/layout.html:4 templates/layout.html:30
 msgid "Extension Explorer"
+msgstr ""
+
+#: templates/layout.html:38
+msgid "Home"
+msgstr ""
+
+#: templates/layout.html:43
+msgid "Extensions"
+msgstr ""
+
+#: templates/layout.html:48
+msgid "Collections"
+msgstr ""
+
+#: templates/layout.html:53
+msgid "Selector"
 msgstr ""
 
