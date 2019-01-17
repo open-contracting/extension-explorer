@@ -7,10 +7,10 @@
           </a>
 
           <ul class="nav ee-sidenav">
-  {% for key in tables %}
+  {% for definition in tables %}
             <li>
-              <a href="#{{ key|lower }}">
-                {{ key }}
+              <a href="#{{ definition|lower }}">
+                {{ definition }}
               </a>
             </li>
   {% endfor %}
@@ -22,8 +22,7 @@
       <h2 class="ee-title">
         {{ _("Schema") }}
       </h2>
-  {% if extension_version.schemas['release-schema.json'][lang] %}
-    {% for definition, rows in tables.items() %}
+  {% for definition, rows in tables.items() %}
 
       <h3 id="{{ definition|lower }}">
         {{ definition }}
@@ -47,23 +46,25 @@
           </tr>
         </thead>
         <tbody>
-      {% for row in rows %}
+    {% for row in rows %}
           <tr>
-          {% for field in row %}
             <td>
-            {% if loop.first %}
               <code>
-            {% endif %}
-              {{ field | safe }}
-            {% if loop.first %}
+                {{ row[0] }}
               </code>
-            {% endif %}
             </td>
-          {% endfor %}
+            <td>
+              {{ row[1] }}
+            </td>
+            <td>
+              {{ row[2]|safe }}
+            </td>
+            <td>
+              {{ row[3]|join(' or ')|safe }}
+            </td>
           </tr>
-      {% endfor %}
+    {% endfor %}
         </tbody>
       </table>
-    {% endfor %}
-  {% endif %}
+  {% endfor %}
 {% endblock extension_body %}

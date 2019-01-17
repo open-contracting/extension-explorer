@@ -63,7 +63,7 @@ release_schema = {
                     "type": "object",
                     "properties": {
                         "subsubfield": {
-                            "description": "Subsubfield"
+                            "description": "*Subsubfield*"
                         }
                     }
                 }
@@ -74,10 +74,10 @@ release_schema = {
         },
         "deprecated": {
             "title": "Deprecated",
-            "description": "Description.",
+            "description": "Description",
             "type": "string",
             "deprecated": {
-                "description": "Field has been deprecated because reasons.",
+                "description": "Field has been deprecated because **reasons**.",
                 "deprecatedVersion": "1.1"
             }
         }
@@ -110,19 +110,19 @@ def test_get_schema_tables():
 
     assert dict(tables) == {
         'Asset': [
-            ['field', 'Title', 'Description', 'string or integer'],
+            ['field', 'Title', '<p>Description</p>\n', ['string', 'integer']],
         ],
         'Release': [
-            ['array', 'Array', '', 'array of strings / integers'],
-            ['ref', 'Asset', '', '<a href="#asset">Asset</a> object'],
-            ['refArray', 'Assets', '', 'array of <a href="#asset">Asset</a> objects'],
-            ['null', 'Null', '', ''],
-            ['external', 'External', '', '<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object'],  # noqa
-            ['field', 'Field', '', 'object'],
-            ['field/subfield', '', 'Subfield', 'object'],
-            ['field/subfield/subsubfield', '', 'Subsubfield', ''],
-            ['undeprecated', '', '<p><em>Undeprecated</em></p>', ''],
-            ['deprecated', 'Deprecated', 'Description.<p><em>Deprecated in OCDS 1.1. Field has been deprecated because reasons.</em></p>', 'string'],  # noqa
+            ['array', 'Array', '', ['array of strings / integers']],
+            ['ref', 'Asset', '', ['<a href="#asset">Asset</a> object']],
+            ['refArray', 'Assets', '', ['array of <a href="#asset">Asset</a> objects']],
+            ['null', 'Null', '', []],
+            ['external', 'External', '', ['<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object']],  # noqa
+            ['field', 'Field', '', ['object']],
+            ['field/subfield', '', '<p>Subfield</p>\n', ['object']],
+            ['field/subfield/subsubfield', '', '<p><em>Subsubfield</em></p>\n', []],
+            ['undeprecated', '', '<p><em>Undeprecated</em></p>\n', []],
+            ['deprecated', 'Deprecated', '<p>Description</p>\n<p>Deprecated in OCDS 1.1: Field has been deprecated because <strong>reasons</strong>.</p>\n', ['string']],  # noqa
         ],
     }
 
@@ -148,7 +148,7 @@ def test_get_schema_tables_mixed_array_success():
 
     assert dict(tables) == {
         'Release': [
-            ['nullArray', 'Array', '', 'array of strings'],
+            ['nullArray', 'Array', '', ['array of strings']],
         ]
     }
 

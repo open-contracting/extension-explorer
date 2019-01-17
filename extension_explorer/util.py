@@ -7,6 +7,7 @@ from collections import defaultdict, OrderedDict
 from functools import lru_cache, cmp_to_key
 from glob import glob
 
+import commonmark
 import lxml.html
 import requests
 from pygments import highlight
@@ -205,17 +206,17 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
         if 'title' in value or 'description' in value or 'deprecated' in value:
             title = value.get('title', '')
             description = value.get('description', '')
-            types = ' or '.join(_get_types(value))
+            types = _get_types(value)
 
             if 'deprecated' in value:
                 deprecated = value['deprecated']
                 if deprecated:
-                    message = 'Deprecated in OCDS {}. {}'.format(deprecated['deprecatedVersion'], deprecated['description'])  # noqa
+                    message = 'Deprecated in OCDS {}: {}'.format(deprecated['deprecatedVersion'], deprecated['description'])  # noqa
                 else:
-                    message = 'Undeprecated'
-                description += '<p><em>{}</em></p>'.format(message)
+                    message = '*Undeprecated*'
+                description += '\n\n{}'.format(message)
 
-            yield (definition, new_pointer, title, description, types)
+            yield (definition, new_pointer, title, commonmark.commonmark(description), types)
 
         if 'properties' in value:
             yield from _get_schema_fields(value, pointer=new_pointer, definition=definition)
@@ -234,21 +235,21 @@ def _get_types(value):
         else:
             url = ''
         return ['<a href="{}#{}">{}</a> object'.format(url, name.lower(), name)]
-    else:
-        types = value.get('type', [])
-        if isinstance(types, str):
-            types = [types]
 
-        # "type" might include "null" (valid JSON Schema) or `null` (invalid JSON Schema).
-        types = list(filter(lambda t: t and t != 'null', types))
+    types = value.get('type', [])
+    if isinstance(types, str):
+        types = [types]
 
-        if 'items' in value:
-            if types and types != ['array']:
-                raise NotImplementedError("{} is not implemented".format(' / '.join(types)))
-            if 'properties' in value['items']:
-                raise NotImplementedError('array of objects with properties is not implemented')
-            if 'items' in value['items']:
-                raise NotImplementedError('array of arrays with items is not implemented')
-            types = ['array of {}'.format(' / '.join('{}s'.format(_type) for _type in _get_types(value['items'])))]
+    # "type" might include "null" (valid JSON Schema) or `null` (invalid JSON Schema).
+    types = list(filter(lambda t: t and t != 'null', types))
 
-        return types
+    if 'items' in value:
+        if types and types != ['array']:
+            raise NotImplementedError("{} is not implemented".format(' / '.join(types)))
+        if 'properties' in value['items']:
+            raise NotImplementedError('array of objects with properties is not implemented')
+        if 'items' in value['items']:
+            raise NotImplementedError('array of arrays with items is not implemented')
+        types = ['array of {}'.format(' / '.join('{}s'.format(_type) for _type in _get_types(value['items'])))]
+
+    return types
