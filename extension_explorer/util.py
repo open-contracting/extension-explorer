@@ -91,7 +91,8 @@ def get_present_and_historical_versions(extension):
     versions = extension['versions']
 
     historical_versions = [v for v in versions.values() if v['version'] != latest_version]
-    historical_versions = [(v['version'], v['date']) for v in sorted(versions, key=lambda v: v['date'], reverse=True)]
+    historical_versions = sorted(historical_versions, key=lambda v: v['date'], reverse=True)
+    historical_versions = [(v['version'], v['date']) for v in historical_versions]
 
     present_versions = [(latest_version, versions[latest_version]['date'])]
     # For now, only the most recent frozen release is a present version.
@@ -139,12 +140,17 @@ def identify_headings(html):
 
     headings = []
     slug_counts = defaultdict(int)
+    previous_level = 1
 
     for element in root.iter('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
         heading_level = int(element.tag[1])
 
+        # Fix skipped heading levels.
+        if heading_level > previous_level:
+            heading_level = previous_level + 1
+
         # Skip changelog sub-headings.
-        if headings and headings[-1]['text'] == 'Changelog' and headings[-1]['level'] < heading_level:
+        if headings and headings[-1]['text'] == 'Changelog' and previous_level < heading_level:
             continue
 
         slug = slugify(element.text)
@@ -152,10 +158,11 @@ def identify_headings(html):
             heading_id = '{}-{}'.format(slug, slug_counts[slug])
         else:
             heading_id = slug
-        slug_counts[slug] += 1
-
         element.attrib['id'] = heading_id
+
         headings.append({'id': heading_id, 'level': heading_level, 'text': element.text})
+        slug_counts[slug] += 1
+        previous_level = heading_level
 
     html = lxml.html.tostring(root).decode()
 
