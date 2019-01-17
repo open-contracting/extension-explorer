@@ -36,14 +36,15 @@
   }
 }
 
-.ee-form {
+.ee-search {
+  position: relative;
   padding: 1rem 15px;
   margin-right: -15px;
   margin-left: -15px;
   border-bottom: 1px solid $light;
 }
 
-.ee-form-docs-toggle {
+.ee-search-docs-toggle {
   line-height: 1;
   color: $gray-900;
 }
@@ -100,9 +101,8 @@
   background-color: transparent;
 }
 
-@include media-breakpoint-down(sm) {
-  .ee-version {
-    -ms-flex: 1;
-    flex: 1;
-  }
+.algolia-autocomplete {
+  display: block !important;
+  -ms-flex: 1;
+  flex: 1;
 }

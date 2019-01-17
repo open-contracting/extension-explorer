@@ -17,9 +17,9 @@
 
   <div class="row flex-xl-nowrap">
     <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
-      <form class="form-inline ee-form">
-        <label class="mr-1" for="version">{{ _("Version:") }}</label>
-        <select class="custom-select custom-select-sm ee-version" id="version" onchange="window.location.href=this.value">
+      <form class="ee-search d-flex align-items-center">
+        <label class="mr-1 mb-0" for="version">{{ _("Version:") }}</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
           <optgroup label="{{ _("Present versions") }}">
   {% for other_version, date in present_versions %}
             <option value="{{ url_for(request.endpoint, slug=slug, version=other_version, lang=lang) }}"{% if other_version == version %} selected{% endif %}>
@@ -44,7 +44,7 @@
           </optgroup>
         </select>
       </span>
-        <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#ee-docs-nav" aria-controls="ee-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#ee-docs-nav" aria-controls="ee-docs-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
       </form>
 
       <nav class="collapse ee-links" id="ee-docs-nav">

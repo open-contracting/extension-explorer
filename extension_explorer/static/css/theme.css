@@ -6952,6 +6952,14 @@ a.text-dark:hover, a.text-dark:focus {
 
 .ee-navbar {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1); }
+  .ee-navbar .dropdown-item.active {
+    font-weight: 600;
+    color: #212529;
+    background-color: transparent;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23292b2c' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: .4rem .6rem;
+    background-size: .75rem .75rem; }
 
 .ee-sidebar {
   order: 0;
@@ -6982,13 +6990,14 @@ a.text-dark:hover, a.text-dark:focus {
     .ee-links {
       display: block !important; } }
 
-.ee-form {
+.ee-search {
+  position: relative;
   padding: 1rem 15px;
   margin-right: -15px;
   margin-left: -15px;
   border-bottom: 1px solid #e1e4e5; }
 
-.ee-form-docs-toggle {
+.ee-search-docs-toggle {
   line-height: 1;
   color: #212529; }
 
@@ -7029,10 +7038,10 @@ a.text-dark:hover, a.text-dark:focus {
   color: rgba(0, 0, 0, 0.85);
   background-color: transparent; }
 
-@media (max-width: 767.98px) {
-  .ee-version {
-    -ms-flex: 1;
-    flex: 1; } }
+.algolia-autocomplete {
+  display: block !important;
+  -ms-flex: 1;
+  flex: 1; }
 
 .custom-select {
   -webkit-appearance: none;
@@ -7040,17 +7049,6 @@ a.text-dark:hover, a.text-dark:focus {
 
 table code {
   word-break: normal; }
-
-.navbar-heading {
-  display: inline-block;
-  float: left;
-  padding-top: 12px; }
-
-.navbar-svg {
-  height: 50px;
-  width: 80px;
-  display: inline-block;
-  float: left; }
 
 .card-full-height {
   height: 100%; }
