@@ -8,15 +8,38 @@ from functools import lru_cache, cmp_to_key
 from glob import glob
 
 import lxml.html
+import requests
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import JsonLexer
 from slugify import slugify
 from yaml import load
 
+OCDS_BASE_URL = 'http://standard.open-contracting.org/1.1'
+RELEASE_SCHEMA_URL = '{}/en/release-schema.json'.format(OCDS_BASE_URL)
+RELEASE_SCHEMA_REFERENCE_URL = '{}/en/schema/reference/'.format(OCDS_BASE_URL)
+
+
+def _compare_collections(a, b):
+    a_type = a.get('type', '')
+    b_type = b.get('type', '')
+    a_title = a['title']
+    b_title = b['title']
+    if a_type < b_type:
+        return -1
+    elif a_type > b_type:
+        return 1
+    elif a_title < b_title:
+        return -1
+    else:
+        return 1
+
 
 @lru_cache()
 def get_collections():
+    """
+    Returns the non-hidden collections of extensions, ordered by type and title.
+    """
     collections = []
 
     filenames = glob(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'collections', '*.yaml'))
@@ -27,21 +50,6 @@ def get_collections():
                 collections.append(collection)
 
     return sorted(collections, key=cmp_to_key(_compare_collections))
-
-
-def _compare_collections(a, b):
-    a_type = a.get('type', '')
-    b_type = b.get('type', '')
-    a_name = a['title']
-    b_name = b['title']
-    if a_type < b_type:
-        return -1
-    elif a_type > b_type:
-        return 1
-    elif a_name < b_name:
-        return -1
-    else:
-        return 1
 
 
 @lru_cache()
@@ -58,12 +66,59 @@ def get_extensions():
         return json.load(f, object_pairs_hook=OrderedDict)
 
 
+@lru_cache()
+def get_ocds_definitions():
+    """
+    Returns the names of the definitions in the OCDS release schema.
+    """
+    schema = requests.get(RELEASE_SCHEMA_URL).json()
+    return list(schema['definitions'])
+
+
 def get_extension_and_version(identifier, version):
     """
     Returns an extension and a version of it.
     """
     data = get_extensions()
     return data[identifier], data[identifier]['versions'][version]
+
+
+def get_present_and_historical_versions(extension):
+    """
+    Returns the present and historical versions, with release dates.
+    """
+    latest_version = extension['latest_version']
+    versions = extension['versions']
+
+    historical_versions = [v for v in versions.values() if v['version'] != latest_version]
+    historical_versions = [(v['version'], v['date']) for v in sorted(versions, key=lambda v: v['date'], reverse=True)]
+
+    present_versions = [(latest_version, versions[latest_version]['date'])]
+    # For now, only the most recent frozen release is a present version.
+    if latest_version == 'master' and historical_versions and historical_versions[0][1]:
+        present_versions.append(historical_versions.pop(0))
+
+    return present_versions, historical_versions
+
+
+def get_codelist_fieldname_indices(extension_version):
+    """
+    Returns a list of indices to fieldnames, to ensure that the default fieldnames always appear first.
+    """
+    codelist_fieldname_indices = {}
+
+    for name, codelist in extension_version['codelists'].items():
+        indices = [None, None, None]
+        for i, fieldname in enumerate(codelist['en']['fieldnames']):
+            for j, default in enumerate(('Code', 'Title', 'Description')):
+                if fieldname == default:
+                    indices[j] = i
+                    break
+            else:
+                indices.append(i)
+        codelist_fieldname_indices[name] = [index for index in indices if index is not None]
+
+    return codelist_fieldname_indices
 
 
 def get_schema_tables(extension_version, lang):
@@ -86,6 +141,12 @@ def identify_headings(html):
     slug_counts = defaultdict(int)
 
     for element in root.iter('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
+        heading_level = int(element.tag[1])
+
+        # Skip changelog sub-headings.
+        if headings and headings[-1]['text'] == 'Changelog' and headings[-1]['level'] < heading_level:
+            continue
+
         slug = slugify(element.text)
         if slug in slug_counts:
             heading_id = '{}-{}'.format(slug, slug_counts[slug])
@@ -94,7 +155,7 @@ def identify_headings(html):
         slug_counts[slug] += 1
 
         element.attrib['id'] = heading_id
-        headings.append({'id': heading_id, 'level': int(element.tag[1]), 'text': element.text})
+        headings.append({'id': heading_id, 'level': heading_level, 'text': element.text})
 
     html = lxml.html.tostring(root).decode()
 
@@ -135,7 +196,8 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
 
         # Only core fields should lack titles and descriptions.
         if 'title' in value or 'description' in value:
-            yield (definition, new_pointer, value.get('title', ''), value.get('description', ''), _get_types(value))
+            types = ' or '.join(_get_types(value))
+            yield (definition, new_pointer, value.get('title', ''), value.get('description', ''), types)
 
         if 'properties' in value:
             yield from _get_schema_fields(value, pointer=new_pointer, definition=definition)
@@ -145,21 +207,30 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
 
 
 def _get_types(value):
+    definitions = get_ocds_definitions()
+
     if '$ref' in value:
-        return value['$ref'].replace('#/definitions/', '')
+        name = value['$ref'].replace('#/definitions/', '')
+        if name in definitions:
+            url = RELEASE_SCHEMA_REFERENCE_URL
+        else:
+            url = ''
+        return ['<a href="{}#{}">{}</a> object'.format(url, name.lower(), name)]
     else:
         types = value.get('type', [])
         if isinstance(types, str):
             types = [types]
 
         # "type" might include "null" (valid JSON Schema) or `null` (invalid JSON Schema).
-        types = ', '.join(filter(lambda t: t and t != 'null', types))
+        types = list(filter(lambda t: t and t != 'null', types))
 
         if 'items' in value:
+            if types and types != ['array']:
+                raise NotImplementedError("{} is not implemented".format(' / '.join(types)))
             if 'properties' in value['items']:
-                raise NotImplementedError("arrays of objects with properties are not implemented")
+                raise NotImplementedError('array of objects with properties is not implemented')
             if 'items' in value['items']:
-                raise NotImplementedError("arrays of arrays with items are not implemented")
-            types += ' ({})'.format(_get_types(value['items']))
+                raise NotImplementedError('array of arrays with items is not implemented')
+            types = ['array of {}'.format(' / '.join('{}s'.format(_type) for _type in _get_types(value['items'])))]
 
         return types
