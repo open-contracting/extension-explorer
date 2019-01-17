@@ -68,6 +68,18 @@ release_schema = {
                     }
                 }
             }
+        },
+        "undeprecated": {
+            "deprecated": None
+        },
+        "deprecated": {
+            "title": "Deprecated",
+            "description": "Description.",
+            "type": "string",
+            "deprecated": {
+                "description": "Field has been deprecated because reasons.",
+                "deprecatedVersion": "1.1"
+            }
         }
     },
     "definitions": {
@@ -109,6 +121,8 @@ def test_get_schema_tables():
             ['field', 'Field', '', 'object'],
             ['field/subfield', '', 'Subfield', 'object'],
             ['field/subfield/subsubfield', '', 'Subsubfield', ''],
+            ['undeprecated', '', '<p><em>Undeprecated</em></p>', ''],
+            ['deprecated', 'Deprecated', 'Description.<p><em>Deprecated in OCDS 1.1. Field has been deprecated because reasons.</em></p>', 'string'],  # noqa
         ],
     }
 

@@ -202,9 +202,20 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
         new_pointer = pointer + key
 
         # Only core fields should lack titles and descriptions.
-        if 'title' in value or 'description' in value:
+        if 'title' in value or 'description' in value or 'deprecated' in value:
+            title = value.get('title', '')
+            description = value.get('description', '')
             types = ' or '.join(_get_types(value))
-            yield (definition, new_pointer, value.get('title', ''), value.get('description', ''), types)
+
+            if 'deprecated' in value:
+                deprecated = value['deprecated']
+                if deprecated:
+                    message = 'Deprecated in OCDS {}. {}'.format(deprecated['deprecatedVersion'], deprecated['description'])  # noqa
+                else:
+                    message = 'Undeprecated'
+                description += '<p><em>{}</em></p>'.format(message)
+
+            yield (definition, new_pointer, title, description, types)
 
         if 'properties' in value:
             yield from _get_schema_fields(value, pointer=new_pointer, definition=definition)
