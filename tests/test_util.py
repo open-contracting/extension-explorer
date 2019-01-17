@@ -97,14 +97,14 @@ def test_get_schema_tables():
 
     assert dict(tables) == {
         'Asset': [
-            ['field', 'Title', 'Description', 'string, integer'],
+            ['field', 'Title', 'Description', 'string or integer'],
         ],
         'Release': [
-            ['array', 'Array', '', 'array (string, integer)'],
-            ['ref', 'Asset', '', 'Asset'],
-            ['refArray', 'Assets', '', 'array (Asset)'],
+            ['array', 'Array', '', 'array of strings / integers'],
+            ['ref', 'Asset', '', '<a href="#asset">Asset</a> object'],
+            ['refArray', 'Assets', '', 'array of <a href="#asset">Asset</a> objects'],
             ['null', 'Null', '', ''],
-            ['typeRef', 'Type', '', 'Asset'],
+            ['typeRef', 'Type', '', '<a href="#asset">Asset</a> object'],
             ['field', 'Field', '', 'object'],
             ['field/subfield', '', 'Subfield', 'object'],
             ['field/subfield/subsubfield', '', 'Subsubfield', ''],
@@ -133,7 +133,7 @@ def test_get_schema_tables_object_array():
     with pytest.raises(NotImplementedError) as excinfo:
         get_schema_tables(extension_version, 'en')
 
-    assert str(excinfo.value) == 'arrays of objects with properties are not implemented'
+    assert str(excinfo.value) == 'array of objects with properties is not implemented'
 
 
 def test_get_schema_tables_array_array():
@@ -155,7 +155,7 @@ def test_get_schema_tables_array_array():
     with pytest.raises(NotImplementedError) as excinfo:
         get_schema_tables(extension_version, 'en')
 
-    assert str(excinfo.value) == 'arrays of arrays with items are not implemented'
+    assert str(excinfo.value) == 'array of arrays with items is not implemented'
 
 
 def test_identify_headings():
@@ -165,7 +165,7 @@ def test_identify_headings():
 
     assert headings == [
         {'id': 'a-heading', 'level': 1, 'text': 'A heading'},
-        {'id': 'a-heading-1', 'level': 6, 'text': 'A heading'},
+        {'id': 'a-heading-1', 'level': 2, 'text': 'A heading'},
         {'id': 'a-heading-2', 'level': 2, 'text': 'A heading'},
         {'id': 'another-heading', 'level': 3, 'text': 'Another heading'},
         {'id': 'a-heading-3', 'level': 4, 'text': 'A heading'},
