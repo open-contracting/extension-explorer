@@ -26,7 +26,7 @@ If you prefer to store the data file in another location, set the `EXTENSION_EXP
 
 Don't edit `extension_explorer/static/css/theme.css`. Instead, edit the files under `extension_explorer/static/lib` and run:
 
-    sassc extension_explorer/static/lib/scss/theme.scss > extension_explorer/static/css/theme.css
+    pysassc extension_explorer/static/lib/scss/theme.scss > extension_explorer/static/css/theme.css
 
 ### Translations
 
