@@ -3,71 +3,84 @@
 {% block extensions_nav_link %}active{% endblock %}
 
 {% block main %}
-  <div class="row mt-2">
-    <div class="col-12 col-md-3 col-xl-2 mt-2">
+  <div class="row bg-light pt-2">
+    <div class="col">
       <h1>
         {{ extension.name[lang] }}
       </h1>
-    </div>
-    <div class="col-12 col-md-6 col-xl-6 mt-2">
-      <p>
+
+      <p class="lead">
         {{ extension.description[lang] }}
       </p>
     </div>
-    <div class="col-12 col-md-3 col-xl-2 mt-2">
-      <select id="version-select" class="float-right" onchange="window.location.href=this.value">
-        {% for dropdown_version in extension.versions %}
-          <option value="{{ url_for(request.endpoint, slug=slug, version=dropdown_version, lang=lang) }}"{% if dropdown_version == version %} selected{% endif %}>
-            {{ dropdown_version }}
-          </option>
-        {% endfor %}
-      </select>
-    </div>
   </div>
 
-  <div class="row flex-xl-nowrap mt-2 no-gutters">
-    <div class="col-12 col-md-3 col-xl-2">
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          {% block nav_docs %}
-            <a class="nav-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">
-              {{ _("Docs") }}
-            </a>
-          {% endblock nav_docs %}
-        </li>
-        <li class="nav-item">
-          {% block nav_extension_info %}
-            <a class="nav-link" href="{{ url_for('extension_info', slug=slug, version=version, lang=lang) }}">
-              {{ _("Extension Info") }}
-            </a>
-          {% endblock nav_extension_info %}
-        </li>
-        <li class="nav-item">
-          {% block nav_schema %}
-            <a class="nav-link" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">
-              {{ _("Schema Reference") }}
-            </a>
-          {% endblock nav_schema %}
-        </li>
-        <li class="nav-item">
-          {% block nav_codelists %}
-            {% if extension_version.codelists %}
-              <a class="nav-link" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
-                {{ _("Codelists") }}
-              </a>
-            {% endif %}
-          {% endblock nav_codelists %}
-        </li>
-      </ul>
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="form-inline ee-form">
+        <label class="mr-1" for="version">{{ _("Version:") }}</label>
+        <select class="custom-select custom-select-sm ee-version" id="version" onchange="window.location.href=this.value">
+          <optgroup label="{{ _("Present versions") }}">
+  {% for other_version, date in present_versions %}
+            <option value="{{ url_for(request.endpoint, slug=slug, version=other_version, lang=lang) }}"{% if other_version == version %} selected{% endif %}>
+              {{ other_version }}
+    {% if date %}
+              ({{ date[:7] }})
+    {% endif %}
+            </option>
+  {% endfor %}
+          </optgroup>
+  {% if historical_versions %}
+          <optgroup label="{{ _("Historical versions") }}">
+    {% for other_version, date in historical_versions %}
+            <option value="{{ url_for(request.endpoint, slug=slug, version=other_version, lang=lang) }}"{% if other_version == version %} selected{% endif %}>
+              {{ other_version }}
+    {% if date %}
+              ({{ date[:7] }})
+    {% endif %}
+            </option>
+    {% endfor %}
+  {% endif %}
+          </optgroup>
+        </select>
+      </span>
+        <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#ee-docs-nav" aria-controls="ee-docs-nav" aria-expanded="false" aria-label="Toggle docs navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="ee-docs-nav">
+  {% block nav_documentation %}
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">
+            {{ _("Documentation") }}
+          </a>
+        </div>
+  {% endblock nav_documentation %}
+  {% if extension_version.schemas['release-schema.json'][lang] %}
+    {% block nav_schema %}
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">
+            {{ _("Schema") }}
+          </a>
+        </div>
+    {% endblock nav_schema %}
+  {% endif %}
+  {% if extension_version.codelists %}
+    {% block nav_codelists %}
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
+            {{ _("Codelists") }}
+          </a>
+        </div>
+    {% endblock nav_codelists %}
+  {% endif %}
+      </nav>
+
+      <a class="btn btn-outline-primary d-none d-md-inline-block" href="{{ extension_version.download_url }}" role="button">Download ZIP</a>
     </div>
 
-    <div class="col-12 col-md-9 col-xl-8">
-      <div class="card">
-        <div class="card-body">
-          {% block extension_body %}
-          {% endblock extension_body %}
-        </div>
-      </div>
-    </div>
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+  {% block extension_body %}
+  {% endblock extension_body %}
+    </main>
   </div>
 {% endblock main %}

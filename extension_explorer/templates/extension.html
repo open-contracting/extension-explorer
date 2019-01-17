@@ -2,28 +2,31 @@
 
 {% block extra_css %}
   <style>
-    {{ highlight_css | safe }}
+{{ highlight_css|safe }}
   </style>
 {% endblock extra_css %}
 
-{% block nav_docs %}
-  <a class="nav-link active" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">
-    {{ _("Docs") }}
-  </a>
+{% block nav_documentation %}
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">
+            {{ _("Documentation") }}
+          </a>
 
-  <ul class="nav flex-column ml-1">
-    {% for heading in headings %}
-      <li>
-        <a class="nav-link pt-0 pb-0 ml-{{ heading.level }}" href="#{{ heading.id }}">
-          <small>
-            {{ heading.text }}
-          </small>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-{% endblock nav_docs %}
+          <ul class="nav ee-sidenav">
+  {% for heading in headings %}
+            <li class="ml-{% if heading.level <= 2 %}0{% else %}{{ [heading.level - 1, 4]|min }}{% endif %}">
+              <a href="#{{ heading.id }}">
+                {{ heading.text }}
+              </a>
+            </li>
+  {% endfor %}
+          </ul>
+        </div>
+{% endblock nav_documentation %}
 
 {% block extension_body %}
-  {{ readme_html|safe }}
+      <h2 class="ee-title">
+        {{ _("Documentation") }}
+      </h2>
+{{ readme_html|safe }}
 {% endblock extension_body %}

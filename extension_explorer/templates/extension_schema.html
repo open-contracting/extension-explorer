@@ -1,106 +1,69 @@
 {% extends 'layout_extension.html' %}
 
 {% block nav_schema %}
-  <a class="nav-link active" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">
-    {{ _("Schema Reference") }}
-  </a>
-
-  <ul class="nav flex-column ml-1">
-    {% if extension_version.schemas['release-schema.json'] %}
-      <li>
-        <a class="nav-link pt-0 pb-0" href="#release-schema">
-          <small>
-            {{ _("Release Schema") }}
-          </small>
-        </a>
-      </li>
-      {% for key in tables %}
-        <li>
-          <a class="nav-link pt-0 pb-0 ml-1" href="#{{ key }}">
-            <small>
-              {{ key }}
-            </small>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">
+            {{ _("Schema") }}
           </a>
-        </li>
-      {% endfor %}
-    {% endif %}
-    {% if extension_version.schemas['release-package-schema.json'] %}
-      <li>
-        <a class="nav-link pt-0 pb-0" href="#release-package-schema">
-          <small>
-            {{ _("Release Package Schema") }}
-          </small>
-        </a>
-      </li>
-    {% endif %}
-    {% if extension_version.schemas['record-package-schema.json'] %}
-      <li>
-        <a class="nav-link pt-0 pb-0" href="#record-package-schema">
-          <small>
-            {{ _("Record Package Schema") }}
-          </small>
-        </a>
-      </li>
-    {% endif %}
-  </ul>
+
+          <ul class="nav ee-sidenav">
+  {% for key in tables %}
+            <li>
+              <a href="#{{ key|lower }}">
+                {{ key }}
+              </a>
+            </li>
+  {% endfor %}
+          </ul>
+        </div>
 {% endblock nav_schema %}
 
 {% block extension_body %}
-  {% if extension_version.schemas['release-schema.json'] %}
-    <h2 class="mb-4" id="release-schema">
-      {{ _("Release Schema") }}
-    </h2>
-
+      <h2 class="ee-title">
+        {{ _("Schema") }}
+      </h2>
+  {% if extension_version.schemas['release-schema.json'][lang] %}
     {% for definition, rows in tables.items() %}
-      <h4 id="{{ definition }}">
-        {{ definition }}
-      </h4>
 
-      <table class="table">
-        <thead>
-            <tr>
-              <th scope="col">
-                {{ _("Field") }}
-              </th>
-              <th scope="col">
-                {{ _("Title") }}
-              </th>
-              <th scope="col">
-                {{ _("Description") }}
-              </th>
-              <th scope="col">
-                {{ _("Types") }}
-              </th>
-            </tr>
+      <h3 id="{{ definition|lower }}">
+        {{ definition }}
+      </h3>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              {{ _("Field") }}
+            </th>
+            <th scope="col">
+              {{ _("Title") }}
+            </th>
+            <th scope="col">
+              {{ _("Description") }}
+            </th>
+            <th scope="col">
+              {{ _("Type(s)") }}
+            </th>
+          </tr>
         </thead>
         <tbody>
-          {% for row in rows %}
-            <tr>
-              {% for field in row %}
-                <td>
-                  {{ field }}
-                </td>
-              {% endfor %}
-            </tr>
+      {% for row in rows %}
+          <tr>
+          {% for field in row %}
+            <td>
+            {% if loop.first %}
+              <code>
+            {% endif %}
+              {{ field | safe }}
+            {% if loop.first %}
+              </code>
+            {% endif %}
+            </td>
           {% endfor %}
+          </tr>
+      {% endfor %}
         </tbody>
       </table>
     {% endfor %}
-  {% endif %}
-
-  {% if extension_version.schemas['release-package-schema.json'] %}
-    <h2 id="release-package-schema">
-      {{ _("Release Package Schema") }}
-    </h2>
-
-    {{ extension_version.schemas['release-package-schema.json'][lang]|tojson }}
-  {% endif %}
-
-  {% if extension_version.schemas['record-package-schema.json'] %}
-    <h2 id="record-package-schema">
-      {{ _("Record Package Schema") }}
-    </h2>
-
-    {{ extension_version.schemas['record-package-schema.json'][lang]|tojson }}
   {% endif %}
 {% endblock extension_body %}

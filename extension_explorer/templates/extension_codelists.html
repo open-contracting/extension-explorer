@@ -1,50 +1,60 @@
 {% extends 'layout_extension.html' %}
 
 {% block nav_codelists %}
-  <a class="nav-link active" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
-    {{ _("Codelists") }}
-  </a>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
+            {{ _("Codelists") }}
+          </a>
 
-  <ul class="nav flex-column ml-1">
-    {% for codelist in extension_version.codelists %}
-      <li>
-        <a class="nav-link pt-0 pb-0" href="#{{ codelist }}">
-          <small>
-            {{ codelist }}
-          </small>
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
+          <ul class="nav ee-sidenav">
+  {% for codelist in extension_version.codelists %}
+            <li>
+              <a href="#{{ codelist }}">
+                {{ codelist }}
+              </a>
+            </li>
+  {% endfor %}
+          </ul>
+        </div>
 {% endblock nav_codelists %}
 
 {% block extension_body %}
+      <h2 class="ee-title">
+        {{ _("Codelists") }}
+      </h2>
   {% for codelist in extension_version.codelists %}
-    <h2 id="{{ codelist }}">
-      {{ codelist }}
-    </h2>
 
-    <table class="table">
-      <thead>
-        <tr>
-          {% for fieldname in extension_version.codelists[codelist][lang].fieldnames %}
-            <th scope="col">
-              {{ fieldname }}
-            </th>
-          {% endfor %}
-        </tr>
-      </thead>
-      <tbody>
-        {% for row in extension_version.codelists[codelist][lang].rows %}
+      <h3 id="{{ codelist }}">
+        {{ codelist }}
+      </h3>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
           <tr>
-            {% for fieldname in extension_version.codelists[codelist][lang].fieldnames %}
-              <td>
-                {{ row[fieldname] }}
-              </td>
-            {% endfor %}
+    {% for index in codelist_fieldname_indices[codelist] %}
+            <th scope="col">
+              {{ extension_version.codelists[codelist][lang].fieldnames[index] }}
+            </th>
+    {% endfor %}
           </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+    {% for row in extension_version.codelists[codelist][lang].rows %}
+          <tr>
+      {% for index in codelist_fieldname_indices[codelist] %}
+            <td>
+        {% if loop.first %}
+              <code>
+        {% endif %}
+              {{ row[extension_version.codelists[codelist][lang].fieldnames[index]] }}
+        {% if loop.first %}
+              </code>
+        {% endif %}
+            </td>
+      {% endfor %}
+          </tr>
+    {% endfor %}
+        </tbody>
+      </table>
   {% endfor %}
 {% endblock extension_body %}
