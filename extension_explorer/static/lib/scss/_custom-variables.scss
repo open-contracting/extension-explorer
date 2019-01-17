@@ -2,34 +2,25 @@
 // You can find them in node_modules/bootstrap/scss/_variables.scss
 // Copy the variables you need into this file, don't modify files under node_modules/
 
-// Some example variables that you can uncomment:
+// standard_theme
 
-// Enabling shadows and gradients
-//$enable-shadows: true;
-//$enable-gradients: true;
+// $table-border-color
+$light: #e1e4e5;
 
+// $nav-background-color
+$dark: #373738;
 
-// Changing the body background and text
-//$body-bg: #d3e9eb;
-//$body-color: #151417;
-
-// Changing the border radius of buttons
-//$border-radius: 15px;
-
-// Changing the theme colors
+// $link-color
 $primary: #9BAF00;
-//$secondary: #436296;
-$success: #545827;
-$info: #6c75e1;
+
+// .oc-fixed-alert-header
 $warning: #d9e021;
-$danger: #fb6146;
-//$light: #dfe6ee;
-$dark: #323232;
 
+// $base-font-family
+$font-family-sans-serif: "Lato", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$font-family-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$headings-font-family: "stratum-1-web","Helvetica Neue", Helvetica,Arial,sans-serif;
+// $custom-font-family
+$headings-font-family: "stratum-1-web", "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-//$theme-colors: (
-//  "cool": #4d3fa3
-//);
+// $code-font-family
+$font-family-monospace: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
