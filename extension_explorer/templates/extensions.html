@@ -17,7 +17,7 @@
   {% for extension in extensions %}
     <div class="row justify-content-center">
       <div class="col-12 col-md-8 col-xl-6 mb-2">
-        <div class="card card-full-height">
+        <div class="card">
           <div class="card-body">
             <h5 class="card-title">
               <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=extension.latest_version) }}">
@@ -31,19 +31,8 @@
               </span>
               #}
             </h5>
-            <p class="card-text mb-4">
+            <p class="card-text">
               {{ extension.description[lang] }}
-            </p>
-            <p class="card-text card-bottom-text">
-              {{ _("Versions:") }}
-              {% for version in extension.versions %}
-                <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=version) }}">
-                  {{ version }}
-                </a>
-                {% if not loop.last %}
-                  /
-                {% endif %}
-              {% endfor %}
             </p>
           </div>
         </div>

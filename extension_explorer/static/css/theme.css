@@ -7080,15 +7080,3 @@ table code {
   .table-bordered td:nth-child(3) dl {
     margin-bottom: 0.75rem; }
 
-.card-full-height {
-  height: 100%; }
-
-.card-bottom-text {
-  position: absolute;
-  bottom: 15px; }
-
-.small-icon {
-  position: relative;
-  top: -2px;
-  font-size: 65%; }
-
