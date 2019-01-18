@@ -10,6 +10,7 @@ from glob import glob
 import lxml.html
 import requests
 from commonmark import commonmark
+from flask_babel import gettext
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import JsonLexer
@@ -188,6 +189,8 @@ def get_codelist_tables(extension_version, lang):
 
             if content:
                 new_row['content'] = content
+                if 'Description' not in fieldname_map:
+                    fieldnames.append(gettext('Description'))
 
             rows.append(new_row)
 

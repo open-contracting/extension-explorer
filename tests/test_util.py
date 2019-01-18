@@ -1,13 +1,20 @@
+from collections import OrderedDict
 from copy import deepcopy
 
 import pytest
 from commonmark import commonmark
 
-from extension_explorer.util import get_schema_tables, identify_headings, highlight_json
+from extension_explorer.util import (get_present_and_historical_versions, get_schema_tables, get_codelist_tables,
+                                     identify_headings, highlight_json)
 
 extension_version_template = {
     "schemas": {
         "release-schema.json": {
+            "en": {}
+        }
+    },
+    "codelists": {
+        "codelist.csv": {
             "en": {}
         }
     }
@@ -100,6 +107,113 @@ release_schema = {
         }
     }
 }
+
+codelist = {
+    "fieldnames": [
+        "Extra",
+        "Description_en",
+        "Title_en",
+        "Code"
+    ],
+    "rows": [
+        {
+            "Code": "A code",
+            "Title_en": "A title",
+            "Description_en": "A description",
+            "Extra": "An extra"
+        },
+        {
+            "Code": "",
+            "Title_en": "",
+            "Description_en": "",
+            "Extra": ""
+        }
+    ]
+}
+
+codelist_translated = {
+    "fieldnames": [
+        "Extra",
+        "Descripción",
+        "Título",
+        "Código"
+    ],
+    "rows": [
+        {
+            "Código": "Un código",
+            "Título": "Un título",
+            "Descripción": "Un descripción",
+            "Extra": "Un extra"
+        },
+        {
+            "Código": "",
+            "Título": "",
+            "Descripción": "",
+            "Extra": ""
+        }
+    ]
+}
+
+
+def test_get_present_and_historical_versions():
+    present_versions, historical_versions = get_present_and_historical_versions({
+        "latest_version": "master",
+        "versions": {
+            "master": {
+                "version": "master",
+                "date": ""
+            },
+            "v1.1": {
+                "version": "v1.1",
+                "date": "2017-05-09"
+            },
+            "v1.1.3": {
+                "version": "v1.1.3",
+                "date": "2018-02-01"
+            },
+            "v1.1.1": {
+                "version": "v1.1.1",
+                "date": "2017-08-07"
+            }
+        }
+    })
+
+    assert present_versions == [('master', ''), ('v1.1.3', '2018-02-01')]
+    assert historical_versions == [('v1.1.1', '2017-08-07'), ('v1.1', '2017-05-09')]
+
+
+def test_get_present_and_historical_versions_master():
+    present_versions, historical_versions = get_present_and_historical_versions({
+        "latest_version": "master",
+        "versions": {
+            "master": {
+                "version": "master",
+                "date": ""
+            }
+        }
+    })
+
+    assert present_versions == [('master', '')]
+    assert historical_versions == []
+
+
+def test_get_present_and_historical_versions_live():
+    present_versions, historical_versions = get_present_and_historical_versions({
+        "latest_version": "master",
+        "versions": {
+            "master": {
+                "version": "master",
+                "date": ""
+            },
+            "live": {
+                "version": "live",
+                "date": ""
+            }
+        }
+    })
+
+    assert present_versions == [('master', '')]
+    assert historical_versions == [('live', '')]
 
 
 def test_get_schema_tables():
@@ -221,6 +335,103 @@ def test_get_schema_tables_array_array():
         get_schema_tables(extension_version, 'en')
 
     assert str(excinfo.value) == 'array of arrays with items is not implemented'
+
+
+def test_get_codelist_tables():
+    extension_version = deepcopy(extension_version_template)
+    extension_version['codelists']['codelist.csv']['en'] = codelist
+
+    tables = get_codelist_tables(extension_version, 'en')
+
+    assert tables == [
+        [
+            'codelist.csv',
+            ['Code', 'Title_en', 'Description_en'],
+            [
+                {
+                    'code': 'A code',
+                    'title': 'A title',
+                    'content': {
+                        'description': '<p>A description</p>\n',
+                        'attributes': OrderedDict([('Extra', 'An extra')]),
+                    },
+                }, {
+                    'code': '',
+                    'title': '',
+                    'content': {
+                        'description': '',
+                    },
+                },
+            ],
+        ],
+    ]
+
+
+def test_get_codelist_tables_translation():
+    extension_version = deepcopy(extension_version_template)
+    extension_version['codelists']['codelist.csv']['en'] = codelist
+    extension_version['codelists']['codelist.csv']['es'] = codelist_translated
+
+    tables = get_codelist_tables(extension_version, 'es')
+
+    assert tables == [
+        [
+            'codelist.csv',
+            ['Código', 'Título', 'Descripción'],
+            [
+                {
+                    'code': 'Un código',
+                    'title': 'Un título',
+                    'content': {
+                        'description': '<p>Un descripción</p>\n',
+                        'attributes': OrderedDict([('Extra', 'Un extra')]),
+                    },
+                }, {
+                    'code': '',
+                    'title': '',
+                    'content': {
+                        'description': '',
+                    },
+                },
+            ],
+        ],
+    ]
+
+
+def test_get_codelist_tables_subtrahend():
+    extension_version = deepcopy(extension_version_template)
+    extension_version['codelists'] = {
+        "-codelist.csv": {
+            "en": {
+                "fieldnames": ["Code"],
+                "rows": [{"Code": "A code"}]
+            }
+        }
+    }
+
+    tables = get_codelist_tables(extension_version, 'en')
+
+    assert tables == [
+        ['-codelist.csv', ['Code'], [{'code': 'A code'}]],
+    ]
+
+
+def test_get_codelist_tables_attributes():
+    extension_version = deepcopy(extension_version_template)
+    extension_version['codelists'] = {
+        "codelist.csv": {
+            "en": {
+                "fieldnames": ["Extra"],
+                "rows": [{"Extra": "An extra"}]
+            }
+        }
+    }
+
+    tables = get_codelist_tables(extension_version, 'en')
+
+    assert tables == [
+        ['codelist.csv', ['Description'], [{'content': {'attributes': OrderedDict([('Extra', 'An extra')])}}]],
+    ]
 
 
 def test_identify_headings():
