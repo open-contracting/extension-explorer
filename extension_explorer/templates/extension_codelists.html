@@ -22,7 +22,7 @@
       <h2 class="ee-title">
         {{ _("Codelists") }}
       </h2>
-  {% for codelist in extension_version.codelists %}
+  {% for codelist, fieldnames, rows in tables %}
 
       <h3 id="{{ codelist }}">
         {{ codelist }}
@@ -31,27 +31,43 @@
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
-    {% for index in codelist_fieldname_indices[codelist] %}
+    {% for fieldname in fieldnames %}
             <th scope="col">
-              {{ extension_version.codelists[codelist][lang].fieldnames[index] }}
+              {{ fieldname }}
             </th>
     {% endfor %}
           </tr>
         </thead>
         <tbody>
-    {% for row in extension_version.codelists[codelist][lang].rows %}
+    {% for row in rows %}
           <tr>
-      {% for index in codelist_fieldname_indices[codelist] %}
             <td>
-        {% if loop.first %}
               <code>
-        {% endif %}
-              {{ row[extension_version.codelists[codelist][lang].fieldnames[index]] }}
-        {% if loop.first %}
+                {{ row.code }}
               </code>
+            </td>
+      {% if 'title' in row %}
+            <td>
+              {{ row.title }}
+            </td>
+      {% endif %}
+      {% if row.content %}
+            <td>
+              {{ row.content.description|safe }}
+        {% if row.content.attributes %}
+              <dl>
+          {% for key, value in row.content.attributes.items() %}
+                <dt>
+                  {{ key }}
+                </dt>
+                <dd>
+                  {{ value|urlize }}
+                </dd>
+          {% endfor %}
+              </dl>
         {% endif %}
             </td>
-      {% endfor %}
+      {% endif %}
           </tr>
     {% endfor %}
         </tbody>

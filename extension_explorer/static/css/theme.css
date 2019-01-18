@@ -7069,6 +7069,12 @@ a.text-dark:hover, a.text-dark:focus {
 table code {
   word-break: normal; }
 
+.table-bordered td:nth-child(3) {
+  padding-bottom: 0; }
+  .table-bordered td:nth-child(3) p,
+  .table-bordered td:nth-child(3) dl {
+    margin-bottom: 0.75rem; }
+
 .card-full-height {
   height: 100%; }
 

@@ -7,9 +7,9 @@ from collections import defaultdict, OrderedDict
 from functools import lru_cache, cmp_to_key
 from glob import glob
 
-import commonmark
 import lxml.html
 import requests
+from commonmark import commonmark
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import JsonLexer
@@ -32,8 +32,9 @@ def _compare_collections(a, b):
         return 1
     elif a_title < b_title:
         return -1
-    else:
+    elif a_title > b_title:
         return 1
+    return 0
 
 
 @lru_cache()
@@ -67,21 +68,12 @@ def get_extensions():
         return json.load(f, object_pairs_hook=OrderedDict)
 
 
-@lru_cache()
-def get_ocds_definitions():
-    """
-    Returns the names of the definitions in the OCDS release schema.
-    """
-    schema = requests.get(RELEASE_SCHEMA_URL).json()
-    return list(schema['definitions'])
-
-
 def get_extension_and_version(identifier, version):
     """
     Returns an extension and a version of it.
     """
-    data = get_extensions()
-    return data[identifier], data[identifier]['versions'][version]
+    extensions = get_extensions()
+    return extensions[identifier], extensions[identifier]['versions'][version]
 
 
 def get_present_and_historical_versions(extension):
@@ -101,36 +93,6 @@ def get_present_and_historical_versions(extension):
         present_versions.append(historical_versions.pop(0))
 
     return present_versions, historical_versions
-
-
-def get_codelist_fieldname_indices(extension_version):
-    """
-    Returns a list of indices to fieldnames, to ensure that the default fieldnames always appear first.
-    """
-    codelist_fieldname_indices = {}
-
-    for name, codelist in extension_version['codelists'].items():
-        indices = [None, None, None]
-        for i, fieldname in enumerate(codelist['en']['fieldnames']):
-            for j, default in enumerate(('Code', 'Title', 'Description')):
-                if fieldname == default:
-                    indices[j] = i
-                    break
-            else:
-                indices.append(i)
-        codelist_fieldname_indices[name] = [index for index in indices if index is not None]
-
-    return codelist_fieldname_indices
-
-
-def get_schema_tables(extension_version, lang):
-    """
-    For each field in the schema, yields (definition, pointer, title, description, types).
-    """
-    tables = defaultdict(list)
-    for definition, *rest in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
-        tables[definition].append(rest)
-    return tables
 
 
 def identify_headings(html):
@@ -186,6 +148,66 @@ def highlight_json(html):
     return html, HtmlFormatter().get_style_defs('.highlight')
 
 
+def get_codelist_tables(extension_version, lang):
+    """
+    """
+    tables = []
+
+    header_groups = (('Code',), ('Title', 'Title_en'), ('Description', 'Description_en'))
+
+    for name, codelist in extension_version['codelists'].items():
+        indices = {fieldname: i for i, fieldname in enumerate(codelist['en']['fieldnames'])}
+
+        fieldname_map = OrderedDict()
+        for header_group in header_groups:
+            canonical_header = header_group[0]
+            for header in header_group:
+                if header in indices:
+                    fieldname_map[canonical_header] = codelist[lang]['fieldnames'][indices[header]]
+                    break
+
+        fieldnames = list(fieldname_map.values())
+
+        rows = []
+        for row in codelist[lang]['rows']:
+            new_row = {}
+
+            if 'Code' in fieldname_map:
+                new_row['code'] = row[fieldname_map['Code']]
+
+            if 'Title' in fieldname_map:
+                new_row['title'] = row[fieldname_map['Title']]
+
+            content = {}
+            if 'Description' in fieldname_map:
+                content['description'] = commonmark(row[fieldname_map['Description']])
+
+            attributes = OrderedDict([(k, v) for k, v in sorted(row.items()) if k not in fieldnames and v])
+            if attributes:
+                content['attributes'] = attributes
+
+            if content:
+                new_row['content'] = content
+
+            rows.append(new_row)
+
+        tables.append([name, fieldnames, rows])
+
+    return tables
+
+
+def get_schema_tables(extension_version, lang):
+    """
+    For each field in the release schema, yields (definition, pointer, title, description, types).
+    """
+    tables = defaultdict(list)
+
+    for definition, *rest in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
+        tables[definition].append(rest)
+
+    return tables
+
+
 # This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
 def _get_schema_fields(schema, pointer='', definition='Release'):
     """
@@ -216,7 +238,7 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
                     message = '*Undeprecated*'
                 description += '\n\n{}'.format(message)
 
-            yield (definition, new_pointer, title, commonmark.commonmark(description), types)
+            yield (definition, new_pointer, title, commonmark(description), types)
 
         if 'properties' in value:
             yield from _get_schema_fields(value, pointer=new_pointer, definition=definition)
@@ -226,7 +248,10 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
 
 
 def _get_types(value):
-    definitions = get_ocds_definitions()
+    """
+    Returns the types of the field, linking to definitions and iterating into arrays.
+    """
+    definitions = _get_ocds_definitions()
 
     if '$ref' in value:
         name = value['$ref'].replace('#/definitions/', '')
@@ -253,3 +278,12 @@ def _get_types(value):
         types = ['array of {}'.format(' / '.join('{}s'.format(_type) for _type in _get_types(value['items'])))]
 
     return types
+
+
+@lru_cache()
+def _get_ocds_definitions():
+    """
+    Returns the names of the definitions in the OCDS release schema.
+    """
+    schema = requests.get(RELEASE_SCHEMA_URL).json()
+    return list(schema['definitions'])

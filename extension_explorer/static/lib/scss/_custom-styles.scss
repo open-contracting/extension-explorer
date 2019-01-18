@@ -9,6 +9,17 @@ table code {
   word-break: normal;
 }
 
+.table-bordered {
+  td:nth-child(3) {
+    padding-bottom: 0;
+
+    p,
+    dl {
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
 // Custom styles
 
 .card-full-height {

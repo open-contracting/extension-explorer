@@ -1,6 +1,6 @@
 import re
 
-import commonmark
+from commonmark import commonmark
 from babel.core import UnknownLocaleError
 from flask import Flask, abort, redirect, request, url_for
 from flask import render_template
@@ -8,8 +8,8 @@ from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .util import (get_schema_tables, identify_headings, highlight_json, get_collections, get_extensions,
-                   get_extension_and_version, get_present_and_historical_versions, get_codelist_fieldname_indices)
+from .util import (get_collections, get_extensions, get_extension_and_version, get_present_and_historical_versions,
+                   identify_headings, highlight_json, get_schema_tables, get_codelist_tables)
 from .compat import replace_directives
 
 LANGS = {
@@ -100,7 +100,7 @@ def extension(lang, slug, version):
     readme = extension_version.get('readme', {}).get(lang, {})
     # Remove the first heading.
     readme = re.sub(r'\A# [^\n]+', '', readme)
-    readme_html = commonmark.commonmark(readme)
+    readme_html = commonmark(readme)
     readme_html, headings = identify_headings(readme_html)
     readme_html = replace_directives(readme_html, schema_url, codelist_url, tables)
     readme_html, highlight_css = highlight_json(readme_html)
@@ -134,9 +134,8 @@ def extension_codelists(lang, slug, version):
         abort(404)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
-    codelist_fieldname_indices = get_codelist_fieldname_indices(extension_version)
+    tables = get_codelist_tables(extension_version, lang)
 
     return render_template('extension_codelists.html', lang=lang, slug=slug, version=version, extension=extension,
                            extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions,
-                           codelist_fieldname_indices=codelist_fieldname_indices)
+                           historical_versions=historical_versions, tables=tables)
