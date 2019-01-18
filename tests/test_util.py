@@ -22,7 +22,7 @@ extension_version_template = {
 
 release_schema = {
     "properties": {
-        "omit": {
+        "empty": {
             "type": "string"
         },
         "array": {
@@ -227,6 +227,7 @@ def test_get_schema_tables():
             ['field', 'Title', '<p>Description</p>\n', ['string', 'integer']],
         ],
         'Release': [
+            ['empty', '', '', ['string']],
             ['array', 'Array', '', ['array of strings / integers']],
             ['ref', 'Asset', '', ['<a href="#asset">Asset</a> object']],
             ['refArray', 'Assets', '', ['array of <a href="#asset">Asset</a> objects']],
@@ -236,7 +237,7 @@ def test_get_schema_tables():
             ['field/subfield', '', '<p>Subfield</p>\n', ['object']],
             ['field/subfield/subsubfield', '', '<p><em>Subsubfield</em></p>\n', []],
             ['undeprecated', '', '<p><em>Undeprecated</em></p>\n', []],
-            ['deprecated', 'Deprecated', '<p>Description</p>\n<p>Deprecated in OCDS 1.1: Field has been deprecated because <strong>reasons</strong>.</p>\n', ['string']],  # noqa
+            ['deprecated', 'Deprecated', '<p>Description</p>\n<p><em>Deprecated in OCDS 1.1: Field has been deprecated because <strong>reasons</strong>.</em></p>\n', ['string']],  # noqa
         ],
     }
 

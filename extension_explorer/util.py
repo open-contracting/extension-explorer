@@ -79,7 +79,7 @@ def get_extension_and_version(identifier, version):
 
 def get_present_and_historical_versions(extension):
     """
-    Returns the present and historical versions, with release dates.
+    Returns the present and historical versions, with release dates, in reverse chronological order.
     """
     latest_version = extension['latest_version']
     versions = extension['versions']
@@ -88,7 +88,7 @@ def get_present_and_historical_versions(extension):
     historical_versions = sorted(historical_versions, key=lambda v: v['date'], reverse=True)
     historical_versions = [(v['version'], v['date']) for v in historical_versions]
 
-    present_versions = [(latest_version, versions[latest_version]['date'] or 'latest')]
+    present_versions = [(latest_version, versions[latest_version]['date'] or gettext('latest'))]
     # For now, only the most recent frozen release is a present version.
     if latest_version == 'master' and historical_versions and historical_versions[0][1]:
         present_versions.append(historical_versions.pop(0))
@@ -98,7 +98,7 @@ def get_present_and_historical_versions(extension):
 
 def identify_headings(html):
     """
-    Adds `id` attributes to headings in the HTML. Returns the HTML, and a list of headings.
+    Adds `id` attributes to headings in the HTML, skipping any changelog sub-headings. Returns HTML and headings.
     """
     root = lxml.html.fromstring(html)
 
@@ -106,6 +106,7 @@ def identify_headings(html):
     slug_counts = defaultdict(int)
     previous_level = 1
 
+    changelog_headings = ('Changelog', gettext('Changelog'))
     for element in root.iter('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
         heading_level = int(element.tag[1])
 
@@ -114,7 +115,7 @@ def identify_headings(html):
             heading_level = previous_level + 1
 
         # Skip changelog sub-headings.
-        if headings and headings[-1]['text'] == 'Changelog' and previous_level < heading_level:
+        if headings and headings[-1]['text'] in changelog_headings and previous_level < heading_level:
             continue
 
         slug = slugify(element.text)
@@ -151,6 +152,10 @@ def highlight_json(html):
 
 def get_codelist_tables(extension_version, lang):
     """
+    Returns a list of tables, one per codelist. Each item is a list of the codelist's name, translated fieldnames, and
+    and translated rows. Each row is a dictionary with up to three keys: 'code', 'title' and 'content'. The 'content'
+    value is a dictionary with 'description' and 'attributes' keys. The 'description' value is the Description column
+    value rendered from Markdown. The 'attributes' value is a dictionary of additional column headers and values.
     """
     tables = []
 
@@ -201,7 +206,8 @@ def get_codelist_tables(extension_version, lang):
 
 def get_schema_tables(extension_version, lang):
     """
-    For each field in the release schema, yields (definition, pointer, title, description, types).
+    Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a tuple:
+    (definition, pointer, title, description, types). All values are translated.
     """
     tables = defaultdict(list)
 
@@ -212,10 +218,14 @@ def get_schema_tables(extension_version, lang):
 
 
 # This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
-def _get_schema_fields(schema, pointer='', definition='Release'):
+def _get_schema_fields(schema, pointer='', definition=None):
     """
-    For each field in the schema, yields (definition, pointer, title, description, types).
+    For each field in the release schema, yields (definition, pointer, title, description, types). Renders the
+    description from Markdown. Adds deprecation information to the field's description.
     """
+    if definition is None:
+        definition = gettext('Release')
+
     # Omit the initial "/" for brevity.
     if pointer:
         pointer += '/'
@@ -226,22 +236,19 @@ def _get_schema_fields(schema, pointer='', definition='Release'):
             continue
 
         new_pointer = pointer + key
+        title = value.get('title', '')
+        description = value.get('description', '')
+        types = _get_types(value)
 
-        # Only core fields should lack titles and descriptions.
-        if 'title' in value or 'description' in value or 'deprecated' in value:
-            title = value.get('title', '')
-            description = value.get('description', '')
-            types = _get_types(value)
+        if 'deprecated' in value:
+            deprecated = value['deprecated']
+            if deprecated:
+                message = gettext('Deprecated in OCDS %(deprecatedVersion)s: %(description)s') % deprecated
+            else:
+                message = gettext('Undeprecated')
+            description += '\n\n*{}*'.format(message)
 
-            if 'deprecated' in value:
-                deprecated = value['deprecated']
-                if deprecated:
-                    message = 'Deprecated in OCDS {}: {}'.format(deprecated['deprecatedVersion'], deprecated['description'])  # noqa
-                else:
-                    message = '*Undeprecated*'
-                description += '\n\n{}'.format(message)
-
-            yield (definition, new_pointer, title, commonmark(description), types)
+        yield (definition, new_pointer, title, commonmark(description), types)
 
         if 'properties' in value:
             yield from _get_schema_fields(value, pointer=new_pointer, definition=definition)
@@ -262,7 +269,7 @@ def _get_types(value):
             url = RELEASE_SCHEMA_REFERENCE_URL
         else:
             url = ''
-        return ['<a href="{}#{}">{}</a> object'.format(url, name.lower(), name)]
+        return ['<a href="{}#{}">{}</a> {}'.format(url, name.lower(), name, gettext('object'))]
 
     types = value.get('type', [])
     if isinstance(types, str):
@@ -278,7 +285,10 @@ def _get_types(value):
             raise NotImplementedError('array of objects with properties is not implemented')
         if 'items' in value['items']:
             raise NotImplementedError('array of arrays with items is not implemented')
-        types = ['array of {}'.format(' / '.join('{}s'.format(_type) for _type in _get_types(value['items'])))]
+
+        subtypes = ' / '.join('{}s'.format(_type) for _type in _get_types(value['items']))
+        if subtypes:
+            types = [gettext('array of %(subtypes)s') % {'subtypes': subtypes}]
 
     return types
 
