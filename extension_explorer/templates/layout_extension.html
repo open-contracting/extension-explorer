@@ -92,9 +92,15 @@
           </div>
         </div>
 
-        <a class="btn btn-outline-primary" href="{{ extension_version.download_url }}" role="button">
-          {{ _("Download ZIP") }}
-        </a>
+        <p>
+          <a class="btn btn-outline-primary" href="{{ extension_version.download_url }}" role="button">
+            {{ _("Download ZIP") }}
+          </a>
+        </p>
+
+        <p class="text-muted">
+          {{ _('Maintained by <a href="%(url)s">%(name)s</a>', name=extension.versions[extension.latest_version].publisher.name, url=extension.versions[extension.latest_version].publisher.url) }}
+        </p>
       </div>
     </div>
 
