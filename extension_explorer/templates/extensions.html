@@ -30,6 +30,11 @@
             <p class="card-text">
               {{ extension.description[lang] }}
             </p>
+            <p class="card-text">
+              <small class="text-muted">
+                {{ _('Maintained by <a href="%(url)s">%(name)s</a>', name=extension.versions[extension.latest_version].publisher.name, url=extension.versions[extension.latest_version].publisher.url) }}
+              </small>
+            </p>
           </div>
         </div>
       </div>
