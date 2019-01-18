@@ -4,7 +4,7 @@
   <style>
 {{ highlight_css|safe }}
   </style>
-{% endblock extra_css %}
+{% endblock %}
 
 {% block nav_documentation %}
         <div class="ee-toc-item active">
@@ -22,11 +22,11 @@
   {% endfor %}
           </ul>
         </div>
-{% endblock nav_documentation %}
+{% endblock %}
 
 {% block extension_body %}
       <h2 class="ee-title">
         {{ _("Documentation") }}
       </h2>
 {{ readme_html|safe }}
-{% endblock extension_body %}
+{% endblock %}

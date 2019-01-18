@@ -11,7 +11,7 @@
 
   <title>{{ _("Extension Explorer") }}</title>
 {% block extra_css %}
-{% endblock extra_css %}
+{% endblock %}
 </head>
 <body>
 
@@ -68,12 +68,14 @@
 
 <div class="container-fluid">
 {% block main %}
-{% endblock main %}
+{% endblock %}
 </div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+{% block extra_js %}
+{% endblock %}
 {# https://helpx.adobe.com/ca/fonts/using/embed-codes.html#Usinglegacyembedcodeinawebsite #}
 <script src="https://use.typekit.net/xpw3jps.js"></script>
 <script>try{Typekit.load({ async: true });}catch(e){}</script>

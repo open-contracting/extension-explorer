@@ -54,7 +54,7 @@
             {{ _("Documentation") }}
           </a>
         </div>
-  {% endblock nav_documentation %}
+  {% endblock %}
   {% if extension_version.schemas['release-schema.json'][lang] %}
     {% block nav_schema %}
         <div class="ee-toc-item">
@@ -62,7 +62,7 @@
             {{ _("Schema") }}
           </a>
         </div>
-    {% endblock nav_schema %}
+    {% endblock %}
   {% endif %}
   {% if extension_version.codelists %}
     {% block nav_codelists %}
@@ -71,7 +71,7 @@
             {{ _("Codelists") }}
           </a>
         </div>
-    {% endblock nav_codelists %}
+    {% endblock %}
   {% endif %}
       </nav>
 
@@ -80,7 +80,11 @@
 
     <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
   {% block extension_body %}
-  {% endblock extension_body %}
+  {% endblock %}
     </main>
   </div>
-{% endblock main %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+{% endblock %}
