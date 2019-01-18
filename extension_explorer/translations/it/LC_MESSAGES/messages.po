@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-18 10:05-0500\n"
+"POT-Creation-Date: 2019-01-18 11:46-0500\n"
 "PO-Revision-Date: 2018-09-28 15:07+0000\n"
 "Language-Team: Italian (https://www.transifex.com/OpenDataServices/teams/59224/it/)\n"
 "MIME-Version: 1.0\n"
@@ -22,12 +22,34 @@ msgstr ""
 msgid "latest"
 msgstr ""
 
-#: util.py:117
+#: util.py:109
 msgid "Changelog"
-msgstr "Storico delle modifiche"
+msgstr ""
 
-#: templates/extension_schema.html:41 util.py:197
+#: templates/extension_schema.html:41 util.py:198
 msgid "Description"
+msgstr ""
+
+#: util.py:227
+msgid "Release"
+msgstr ""
+
+#: util.py:246
+#, python-format
+msgid "Deprecated in OCDS %(deprecatedVersion)s: %(description)s"
+msgstr ""
+
+#: util.py:248
+msgid "Undeprecated"
+msgstr ""
+
+#: util.py:272
+msgid "object"
+msgstr ""
+
+#: util.py:291
+#, python-format
+msgid "array of %(subtypes)s"
 msgstr ""
 
 #. title
@@ -124,4 +146,27 @@ msgstr ""
 
 #: templates/layout_extension.html:34
 msgid "Historical versions"
+msgstr ""
+
+#: templates/layout_extension.html:47
+msgid "Toggle extension navigation"
+msgstr ""
+
+#: templates/layout_extension.html:80
+msgid ""
+"To use this extension, add this URL to your package's "
+"<code>extensions</code> array:"
+msgstr ""
+
+#: templates/layout_extension.html:86 templates/layout_extension.html:89
+#: templates/layout_extension.html:116
+msgid "Copy to clipboard"
+msgstr ""
+
+#: templates/layout_extension.html:96
+msgid "Download ZIP"
+msgstr ""
+
+#: templates/layout_extension.html:116
+msgid "Copied!"
 msgstr ""
