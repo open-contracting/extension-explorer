@@ -178,7 +178,7 @@ def test_get_present_and_historical_versions():
         }
     })
 
-    assert present_versions == [('master', ''), ('v1.1.3', '2018-02-01')]
+    assert present_versions == [('master', 'latest'), ('v1.1.3', '2018-02-01')]
     assert historical_versions == [('v1.1.1', '2017-08-07'), ('v1.1', '2017-05-09')]
 
 
@@ -193,7 +193,7 @@ def test_get_present_and_historical_versions_master():
         }
     })
 
-    assert present_versions == [('master', '')]
+    assert present_versions == [('master', 'latest')]
     assert historical_versions == []
 
 
@@ -212,7 +212,7 @@ def test_get_present_and_historical_versions_live():
         }
     })
 
-    assert present_versions == [('master', '')]
+    assert present_versions == [('master', 'latest')]
     assert historical_versions == [('live', '')]
 
 

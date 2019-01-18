@@ -88,7 +88,7 @@ def get_present_and_historical_versions(extension):
     historical_versions = sorted(historical_versions, key=lambda v: v['date'], reverse=True)
     historical_versions = [(v['version'], v['date']) for v in historical_versions]
 
-    present_versions = [(latest_version, versions[latest_version]['date'])]
+    present_versions = [(latest_version, versions[latest_version]['date'] or 'latest')]
     # For now, only the most recent frozen release is a present version.
     if latest_version == 'master' and historical_versions and historical_versions[0][1]:
         present_versions.append(historical_versions.pop(0))
