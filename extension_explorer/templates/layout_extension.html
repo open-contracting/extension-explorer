@@ -44,10 +44,10 @@
           </optgroup>
         </select>
 
-        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#ee-docs-nav" aria-controls="ee-docs-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="{{ _("Toggle extension navigation") }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
       </form>
 
-      <nav class="collapse ee-links" id="ee-docs-nav">
+      <nav class="collapse ee-links" id="extension-nav">
   {% block nav_documentation %}
         <div class="ee-toc-item">
           <a class="ee-toc-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">
@@ -75,7 +75,27 @@
   {% endif %}
       </nav>
 
-      <a class="btn btn-outline-primary d-none d-md-inline-block" href="{{ extension_version.download_url }}" role="button">Download ZIP</a>
+      <div class="d-none d-md-block ee-download">
+        <p>
+          {{_("To use this extension, add this URL to your package's <code>extensions</code> array:") }}
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="{{ extension_version.base_url }}" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="{{ _("Copy to clipboard") }}">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                {{ _("Copy to clipboard") }}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <a class="btn btn-outline-primary" href="{{ extension_version.download_url }}" role="button">
+          {{ _("Download ZIP") }}
+        </a>
+      </div>
     </div>
 
     <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
@@ -87,4 +107,17 @@
 
 {% block extra_js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', '{{ _('Copied!') }}').tooltip('_fixTitle').tooltip('show').attr('title', '{{ _('Copy to clipboard') }}').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 {% endblock %}

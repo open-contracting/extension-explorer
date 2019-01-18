@@ -37,7 +37,6 @@
 }
 
 .ee-search {
-  position: relative;
   padding: 1rem 15px;
   margin-right: -15px;
   margin-left: -15px;
@@ -105,4 +104,11 @@
   display: block !important;
   -ms-flex: 1;
   flex: 1;
+}
+
+.ee-download {
+  padding: 1rem 15px;
+  margin-right: -15px;
+  margin-left: -15px;
+  border-top: 1px solid $light;
 }
