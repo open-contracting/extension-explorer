@@ -1,6 +1,6 @@
-import commonmark
 import lxml.html
 import pytest
+from commonmark import commonmark
 
 from extension_explorer.compat import (replace_directives, get_extensiontable_replacement, get_csv_table_replacement,
                                        get_directive_name, get_directive_options)
@@ -25,7 +25,7 @@ definitions = {
 
 
 def test_replace_directives():
-    html = commonmark.commonmark('```eval_rst\n.. extensiontable::\n```\n```eval_rst\n.. csv-table::\n   :file: test.csv\n```\n')  # noqa
+    html = commonmark('```eval_rst\n.. extensiontable::\n```\n```eval_rst\n.. csv-table::\n   :file: test.csv\n```\n')
 
     html = replace_directives(html, 'schema/path', 'codelist/path', definitions)
 
@@ -45,7 +45,7 @@ def test_replace_directives():
 
 
 def test_replace_directives_exclude_all():
-    html = commonmark.commonmark('Foo\n```eval_rst\n.. extensiontable::\n   :exclude_definitions: foo bar baz\n```\n')
+    html = commonmark('Foo\n```eval_rst\n.. extensiontable::\n   :exclude_definitions: foo bar baz\n```\n')
 
     html = replace_directives(html, 'schema/path', 'codelist/path', definitions)
 
@@ -53,7 +53,7 @@ def test_replace_directives_exclude_all():
 
 
 def test_replace_directives_unknown_directive():
-    html = commonmark.commonmark('```eval_rst\n.. directive::\n```\n')  # noqa
+    html = commonmark('```eval_rst\n.. directive::\n```\n')
 
     with pytest.raises(NotImplementedError) as excinfo:
         replace_directives(html, 'schema/path', 'codelist/path', definitions)
@@ -62,7 +62,7 @@ def test_replace_directives_unknown_directive():
 
 
 def test_replace_directives_unexpected_line():
-    html = commonmark.commonmark('```eval_rst\ncontent\n```\n')  # noqa
+    html = commonmark('```eval_rst\ncontent\n```\n')
 
     with pytest.raises(NotImplementedError) as excinfo:
         replace_directives(html, 'schema/path', 'codelist/path', definitions)

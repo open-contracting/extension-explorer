@@ -1,7 +1,7 @@
 from copy import deepcopy
 
-import commonmark
 import pytest
+from commonmark import commonmark
 
 from extension_explorer.util import get_schema_tables, identify_headings, highlight_json
 
@@ -224,7 +224,7 @@ def test_get_schema_tables_array_array():
 
 
 def test_identify_headings():
-    html = commonmark.commonmark('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n')  # noqa
+    html = commonmark('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n')  # noqa
 
     html, headings = identify_headings(html)
 
@@ -255,7 +255,7 @@ def test_identify_headings():
 
 
 def test_highlight_json():
-    html = commonmark.commonmark('## Example\n```json\n{\n    "key": 1\n}\n```\n')
+    html = commonmark('## Example\n```json\n{\n    "key": 1\n}\n```\n')
 
     html, css = highlight_json(html)
 
