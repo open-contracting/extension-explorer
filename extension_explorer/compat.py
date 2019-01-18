@@ -4,6 +4,7 @@ Methods for compatibility with older versions of extensions' documentation, whic
 import re
 
 import lxml.html
+from flask_babel import gettext
 from lxml.html import builder as E
 
 directive_name_pattern = re.compile(r'^\.\. ([^:]+)::$')
@@ -65,10 +66,11 @@ def get_extensiontable_replacement(lines, url, tables):
 
     list_items = []
     for definition in definitions:
-        href = '{}#{}'.format(url, definition)
-        list_items.append(E.LI(E.A(definition, E.I(E.CLASS('fas fa-external-link-alt ml-2 small-icon')), href=href)))
+        href = '{}#{}'.format(url, definition.lower())
+        text = gettext('View the fields in the %(definition)s object') % {'definition': definition}
+        list_items.append(E.LI(E.A(text, href=href)))
 
-    return E.BLOCKQUOTE(E.CLASS('blockquote'), E.UL(E.CLASS('list-unstyled'), *list_items))
+    return E.UL(E.CLASS('list-unstyled'), *list_items)
 
 
 def get_csv_table_replacement(lines, url):
@@ -76,12 +78,11 @@ def get_csv_table_replacement(lines, url):
     Returns a link to a section of the codelists reference.
     """
     options = get_directive_options(lines, ['file', 'header-rows'])
-    codelist_filename = options['file'].rsplit('/', 1)[-1]
+    codelist = options['file'].rsplit('/', 1)[-1]
 
-    href = '{}#{}'.format(url, codelist_filename)
-    a = E.A(codelist_filename, E.I(E.CLASS('fas fa-external-link-alt ml-2 small-icon')), href=href)
-
-    return E.BLOCKQUOTE(E.CLASS('blockquote'), a)
+    href = '{}#{}'.format(url, codelist)
+    text = gettext('View the codes in the %(codelist)s codelist') % {'codelist': codelist}
+    return E.P(E.A(text, href=href))
 
 
 def get_directive_name(lines):

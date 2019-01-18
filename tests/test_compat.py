@@ -31,16 +31,14 @@ def test_replace_directives():
 
     assert html == \
     '<div>' \
-        '<blockquote class="blockquote">' \
-            '<ul class="list-unstyled">' \
-                '<li><a href="schema/path#foo">foo<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-                '<li><a href="schema/path#bar">bar<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-                '<li><a href="schema/path#baz">baz<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-            '</ul>' \
-        '</blockquote>' \
-        '<blockquote class="blockquote">' \
-            '<a href="codelist/path#test.csv">test.csv<i class="fas fa-external-link-alt ml-2 small-icon"></i></a>' \
-        '</blockquote>' \
+        '<ul class="list-unstyled">' \
+            '<li><a href="schema/path#foo">View the fields in the foo object</a></li>' \
+            '<li><a href="schema/path#bar">View the fields in the bar object</a></li>' \
+            '<li><a href="schema/path#baz">View the fields in the baz object</a></li>' \
+        '</ul>' \
+        '<p>' \
+            '<a href="codelist/path#test.csv">View the codes in the test.csv codelist</a>' \
+        '</p>' \
     '</div>'  # noqa
 
 
@@ -78,13 +76,11 @@ def test_get_extensiontable_replacement():
     replacement = get_extensiontable_replacement(extensiontable, 'url/path', definitions)
 
     assert lxml.html.tostring(replacement).decode() == \
-    '<blockquote class="blockquote">' \
-        '<ul class="list-unstyled">' \
-            '<li><a href="url/path#foo">foo<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-            '<li><a href="url/path#bar">bar<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-            '<li><a href="url/path#baz">baz<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-        '</ul>' \
-    '</blockquote>'  # noqa
+    '<ul class="list-unstyled">' \
+        '<li><a href="url/path#foo">View the fields in the foo object</a></li>' \
+        '<li><a href="url/path#bar">View the fields in the bar object</a></li>' \
+        '<li><a href="url/path#baz">View the fields in the baz object</a></li>' \
+    '</ul>'  # noqa
 
 
 def test_get_extensiontable_replacement_whitelist():
@@ -96,12 +92,10 @@ def test_get_extensiontable_replacement_whitelist():
     replacement = get_extensiontable_replacement(extensiontable_whitelist, 'url/path', definitions)
 
     assert lxml.html.tostring(replacement).decode() == \
-    '<blockquote class="blockquote">' \
-        '<ul class="list-unstyled">' \
-            '<li><a href="url/path#foo">foo<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-            '<li><a href="url/path#bar">bar<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-        '</ul>' \
-    '</blockquote>'  # noqa
+    '<ul class="list-unstyled">' \
+        '<li><a href="url/path#foo">View the fields in the foo object</a></li>' \
+        '<li><a href="url/path#bar">View the fields in the bar object</a></li>' \
+    '</ul>'  # noqa
 
 
 def test_get_extensiontable_replacement_blacklist():
@@ -113,11 +107,9 @@ def test_get_extensiontable_replacement_blacklist():
     replacement = get_extensiontable_replacement(extensiontable_blacklist, 'url/path', definitions)
 
     assert lxml.html.tostring(replacement).decode() == \
-    '<blockquote class="blockquote">' \
-        '<ul class="list-unstyled">' \
-            '<li><a href="url/path#baz">baz<i class="fas fa-external-link-alt ml-2 small-icon"></i></a></li>' \
-        '</ul>' \
-    '</blockquote>'  # noqa
+    '<ul class="list-unstyled">' \
+        '<li><a href="url/path#baz">View the fields in the baz object</a></li>' \
+    '</ul>'  # noqa
 
 
 def test_get_extensiontable_replacement_exclude_all():
@@ -135,9 +127,9 @@ def test_get_csv_table_replacement():
     replacement = get_csv_table_replacement(csv_table, 'url/path')
 
     assert lxml.html.tostring(replacement).decode() == \
-    '<blockquote class="blockquote">' \
-        '<a href="url/path#test.csv">test.csv<i class="fas fa-external-link-alt ml-2 small-icon"></i></a>' \
-    '</blockquote>'  # noqa
+    '<p>' \
+        '<a href="url/path#test.csv">View the codes in the test.csv codelist</a>' \
+    '</p>'  # noqa
 
 
 def test_get_directive_name():
