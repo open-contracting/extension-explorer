@@ -5,11 +5,11 @@
 {% block main %}
   <div class="row mt-2 mb-4">
     <div class="col">
-      <h1 class="display-5 text-center">
+      <h1 class="display-4 text-center">
         {{ _("Registered extensions") }}
       </h1>
       <p class="lead text-center">
-        
+        {{ _('Documention for the %(num)d extensions in the <a href="https://github.com/open-contracting/extension_registry">extension registry</a>.', num=extensions|count) }}
       </p>
     </div>
   </div>
@@ -19,18 +19,14 @@
       <div class="col-12 col-md-8 col-xl-6 mb-2">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">
+            <h2 class="card-title h5">
               <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=extension.latest_version) }}">
                 {{ extension.name[lang] }}
               </a>
-              {#
-              <span class="float-right">
-                <small>
-                  {{ _("compatible with %(versions)s", versions=extension.versions[extension.latest_version].metadata.compatibility|join(' / ')) }}
-                </small>
-              </span>
-              #}
-            </h5>
+    {% if extension.core %}
+              <span class="badge badge-pill badge-light">{{ _("Recommended") }}</span>
+    {% endif %}
+            </h2>
             <p class="card-text">
               {{ extension.description[lang] }}
             </p>
