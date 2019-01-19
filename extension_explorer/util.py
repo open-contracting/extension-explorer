@@ -5,7 +5,6 @@ import os
 import json
 from collections import defaultdict, OrderedDict
 from functools import lru_cache
-from glob import glob
 
 import lxml.html
 import requests
