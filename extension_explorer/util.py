@@ -4,7 +4,7 @@ Module to keep ``views.py`` simple and high-level.
 import os
 import json
 from collections import defaultdict, OrderedDict
-from functools import lru_cache, cmp_to_key
+from functools import lru_cache
 from glob import glob
 
 import lxml.html
@@ -22,39 +22,6 @@ RELEASE_SCHEMA_URL = '{}/en/release-schema.json'.format(OCDS_BASE_URL)
 RELEASE_SCHEMA_REFERENCE_URL = '{}/en/schema/reference/'.format(OCDS_BASE_URL)
 
 
-def _compare_collections(a, b):
-    a_type = a.get('type', '')
-    b_type = b.get('type', '')
-    a_title = a['title']
-    b_title = b['title']
-    if a_type < b_type:
-        return -1
-    elif a_type > b_type:
-        return 1
-    elif a_title < b_title:
-        return -1
-    elif a_title > b_title:
-        return 1
-    return 0
-
-
-@lru_cache()
-def get_collections():
-    """
-    Returns the non-hidden collections of extensions, ordered by type and title.
-    """
-    collections = []
-
-    filenames = glob(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'collections', '*.yaml'))
-    for filename in filenames:
-        with open(filename) as f:
-            collection = load(f)
-            if not collection.get('hidden'):
-                collections.append(collection)
-
-    return sorted(collections, key=cmp_to_key(_compare_collections))
-
-
 @lru_cache()
 def get_extensions():
     """
@@ -67,6 +34,41 @@ def get_extensions():
         filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'extensions.json')
     with open(filename) as f:
         return json.load(f, object_pairs_hook=OrderedDict)
+
+
+def set_tags(extensions):
+    """
+    Adds tags and publishers to extensions, and returns profile, topic and publisher tags.
+    """
+    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'tags.yaml')) as f:
+        data = load(f)
+
+    for extension in extensions.values():
+        extension['tags'] = set()
+
+    groups = {}
+    for prefix, tags in data.items():
+        groups[prefix] = {}
+        for tag in tags:
+            if tag.get('hidden'):
+                continue
+            slug = tag['slug']
+            for identifier in tag['extensions']:
+                if identifier in extensions:
+                    extensions[identifier]['tags'].add('{}-{}'.format(prefix, slug))
+            groups[prefix][slug] = tag['title']
+
+    publishers = {}
+    for extension in extensions.values():
+        latest_version = extension['latest_version']
+        publisher = extension['versions'][latest_version]['publisher']
+        extension['publisher'] = publisher
+
+        slug = slugify(publisher['name'])
+        extension['tags'].add('publisher-{}'.format(slug))
+        publishers[slug] = publisher['name']
+
+    return groups['profile'], groups['topic'], publishers
 
 
 def get_extension_and_version(identifier, version):

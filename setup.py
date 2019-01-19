@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'babel.extractors': [
-            'collection = extension_explorer.extract:extract_collection',
+            'tag = extension_explorer.extract:extract_tag',
         ],
     },
 )

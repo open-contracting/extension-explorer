@@ -12,13 +12,8 @@ def test_lang_home(client):
     assert response.status_code == 200
 
 
-def test_collections(client):
-    response = client.get(url_for('collections', lang='en'))
-    assert response.status_code == 200
-
-
-def test_collection(client):
-    response = client.get(url_for('collection', lang='en', slug='recommended'))
+def test_documentation(client):
+    response = client.get(url_for('documentation', lang='en'))
     assert response.status_code == 200
 
 
@@ -44,11 +39,6 @@ def test_extension_codelists(client):
 
 def test_lang_home_404(client):
     response = client.get(url_for('lang_home', lang='nonexistent'))
-    assert response.status_code == 404
-
-
-def test_collection_404(client):
-    response = client.get(url_for('collection', lang='en', slug='nonexistent'))
     assert response.status_code == 404
 
 

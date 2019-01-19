@@ -1,11 +1,11 @@
 from yaml import load
 
 
-def extract_collection(fileobj, keywords, comment_tags, options):
+def extract_tag(fileobj, keywords, comment_tags, options):
     """
-    Yields the title and description values of a collection's YAML file.
+    Yields the title values in the YAML file.
     """
     data = load(fileobj)
-    yield 1, '', data['title'], ['title']
-    if data['description']:
-        yield 1, '', data['description'], ['description']
+    for prefix, tags in data.items():
+        for i, tag in enumerate(tags):
+            yield 1, '', tag['title'], ['/{}/{}/title'.format(prefix, i)]

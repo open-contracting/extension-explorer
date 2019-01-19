@@ -4,8 +4,8 @@ from copy import deepcopy
 import pytest
 from commonmark import commonmark
 
-from extension_explorer.util import (get_present_and_historical_versions, get_schema_tables, get_codelist_tables,
-                                     identify_headings, highlight_json)
+from extension_explorer.util import (get_extensions, set_tags, get_present_and_historical_versions, get_schema_tables,
+                                     get_codelist_tables, identify_headings, highlight_json)
 
 extension_version_template = {
     "schemas": {
@@ -153,6 +153,17 @@ codelist_translated = {
         }
     ]
 }
+
+
+def test_set_tags():
+    extensions = get_extensions()
+    tags = set_tags(extensions)
+
+    assert tags == (
+        {'ppp': 'Public Private Partnerships'},
+        {},
+        {'open-contracting-extensions': 'open-contracting-extensions'},
+    )
 
 
 def test_get_present_and_historical_versions():

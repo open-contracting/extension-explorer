@@ -1,0 +1,44 @@
+---
+profile:
+- slug: ppp
+  title: Public Private Partnerships
+  # See extension_versions in https://github.com/open-contracting-extensions/public-private-partnerships/blob/1.0-dev/docs/conf.py
+  extensions:
+    - bids
+    - budget
+    - budget_project
+    - charges
+    - documentation_details
+    - finance
+    - location
+    - metrics
+    - milestone_documents
+    - performance_failures
+    - process_title
+    - qualification
+    - requirements
+    - risk_allocation
+    - shareholders
+    - signatories
+    - tariffs
+    - transaction_milestones
+    - ppp
+- slug: eu
+  title: European Union
+  # See extension_versions in https://github.com/open-contracting-extensions/european-union/blob/master/docs/conf.py
+  extensions: []
+  hidden: true
+- slug: gpa
+  title: Agreement on Government Procurement
+  # See extension_versions in https://github.com/open-contracting-extensions/government-procurement-agreement/blob/master/docs/conf.py
+  extensions:
+    - recurrence
+    - options
+    - procurementMethodModalities
+    - coveredBy
+  hidden: true
+topic:
+- slug: fiscal
+  title: Fiscal extensions
+  extensions: []
+  hidden: true

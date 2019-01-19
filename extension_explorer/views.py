@@ -8,7 +8,7 @@ from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .util import (get_collections, get_extensions, get_extension_and_version, get_present_and_historical_versions,
+from .util import (get_extensions, set_tags, get_extension_and_version, get_present_and_historical_versions,
                    identify_headings, highlight_json, get_schema_tables, get_codelist_tables)
 from .compat import replace_directives
 
@@ -60,28 +60,18 @@ def lang_home(lang):
     return render_template('home.html', lang=lang)
 
 
-@app.route('/<lang>/collections/')
-def collections(lang):
-    collections = get_collections()
-
-    return render_template('collections.html', lang=lang, collections=collections)
-
-
-@app.route('/<lang>/collection/<slug>/')
-def collection(lang, slug):
-    try:
-        collection = next(collection for collection in get_collections() if collection['slug'] == slug)
-    except StopIteration:
-        abort(404)
-
-    return render_template('collection.html', lang=lang, slug=slug, collection=collection)
+@app.route('/<lang>/documentation/')
+def documentation(lang):
+    return render_template('documentation.html', lang=lang)
 
 
 @app.route('/<lang>/extensions/')
 def extensions(lang):
-    extensions = get_extensions().values()
+    extensions = get_extensions()
+    profiles, topics, publishers = set_tags(extensions)
 
-    return render_template('extensions.html', lang=lang, extensions=extensions)
+    return render_template('extensions.html', lang=lang, extensions=extensions.values(), profiles=profiles,
+                           topics=topics, publishers=publishers)
 
 
 @app.route('/<lang>/extensions/<slug>/<version>/')
