@@ -6969,6 +6969,22 @@ a.text-dark:hover, a.text-dark:focus {
     font-size: inherit;
     color: #212529; }
 
+.ee-masthead {
+  position: relative;
+  padding: 3rem 15px; }
+  .ee-masthead h1 {
+    line-height: 1; }
+  .ee-masthead .btn {
+    padding: .8rem 2rem;
+    font-weight: 600; }
+  @media (min-width: 576px) {
+    .ee-masthead {
+      padding-top: 5rem;
+      padding-bottom: 5rem; } }
+  @media (min-width: 768px) {
+    .ee-masthead h1 {
+      font-size: 4rem; } }
+
 .ee-navbar {
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05), inset 0 -1px 0 rgba(0, 0, 0, 0.1); }
   .ee-navbar .dropdown-item.active {
@@ -7079,4 +7095,8 @@ table code {
   .table-bordered td:nth-child(3) p,
   .table-bordered td:nth-child(3) dl {
     margin-bottom: 0.75rem; }
+
+.align-items-center {
+  -ms-flex-align: center !important;
+  align-items: center !important; }
 

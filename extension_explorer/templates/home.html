@@ -1,6 +1,35 @@
 {% extends 'layout.html' %}
 
+{% block navbar_title %}{% endblock %}
 {% block home_nav_link %}active{% endblock %}
 
 {% block main %}
+<main class="ee-masthead" role="main">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        <h1 class="display-4">
+          {{ _("OCDS Extension Explorer") }}
+        </h1>
+
+        <p class="lead">
+          {{ _('Disclose more data about your contracting processes, using extensions to the <a href="http://standard.open-contracting.org/latest/%(lang)s/">Open Contracting Data Standard</a>.', lang=lang) }}
+        </p>
+
+        <div class="row mx-n2">
+          <div class="col-md px-2">
+            <a href="{{ url_for('extensions', lang=lang) }}" class="btn btn-lg btn-outline-primary w-100 mb-3">
+              {{ _("Browse extensions") }}
+            </a>
+          </div>
+          <div class="col-md px-2">
+            <a href="{{ url_for('documentation', lang=lang) }}" class="btn btn-lg btn-outline-secondary w-100 mb-3">
+              {{ _("Learn about extensions") }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
 {% endblock %}
