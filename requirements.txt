@@ -32,7 +32,7 @@ pytest-cov==2.6.1
 pytest-flask==0.14.0
 python-slugify==1.2.6
 pytz==2018.9
-PyYAML==3.13
+PyYAML==4.2b4
 requests==2.21.0
 six==1.11.0
 transifex-client==0.13.5
