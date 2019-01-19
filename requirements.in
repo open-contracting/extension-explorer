@@ -5,6 +5,7 @@ Flask
 Flask-Env
 Flask-Babel
 Frozen-Flask
+gunicorn
 libsass
 lxml
 Pygments
