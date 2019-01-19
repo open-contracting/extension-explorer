@@ -9,7 +9,7 @@
   {# https://fontawesome.com/start #}
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-  <title>{{ _("Extension Explorer") }}</title>
+  <title>{{ _("OCDS Extension Explorer") }}</title>
 {% block extra_css %}
 {% endblock %}
 </head>
@@ -21,9 +21,11 @@
       <title>Open Contracting Partnership</title>
       <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
     </svg>
-    <h4 class="d-inline-block">
+{% block navbar_title %}
+    <div class="d-inline-block h4">
       {{ _("OCDS Extension Explorer") }}
-    </h4>
+    </div>
+{% endblock %}
   </a>
 
   <ul class="navbar-nav flex-row">
@@ -38,8 +40,8 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link {% block collections_nav_link %}{% endblock %}" href="{{ url_for('collections', lang=lang) }}">
-        {{ _("Collections") }}
+      <a class="nav-link {% block documentation_nav_link %}{% endblock %}" href="{{ url_for('documentation', lang=lang) }}">
+        {{ _("Documentation") }}
       </a>
     </li>
   </ul>
@@ -67,10 +69,8 @@
 #}
 </nav>
 
-<div class="container-fluid">
 {% block main %}
 {% endblock %}
-</div>
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>

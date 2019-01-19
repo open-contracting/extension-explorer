@@ -3,41 +3,126 @@
 {% block extensions_nav_link %}active{% endblock %}
 
 {% block main %}
-  <div class="row mt-2 mb-4">
+<div class="container-fluid">
+  <div class="row mt-4">
     <div class="col">
-      <h1 class="display-4 text-center">
-        {{ _("Registered extensions") }}
+      <h1 class="text-center display-4">
+        {{ _("Extensions") }}
       </h1>
-      <p class="lead text-center">
-        {{ _('Documention for the %(num)d extensions in the <a href="https://github.com/open-contracting/extension_registry">extension registry</a>.', num=extensions|count) }}
+
+      <form class="form-inline justify-content-center mt-4">
+      {{ _("Show") }}
+
+      <select class="custom-select filter-select mx-1" id="filter-core">
+        <option value="">
+          {{ _("any") }}
+        </option>
+        <option value=".core-true">
+          {{ _("recommended") }}
+        </option>
+      </select>
+
+      {{ _("extensions") }}
+
+  {% if publishers|length > 1 %}
+      {{ _("by") }}
+      <select class="custom-select filter-select mx-1" id="filter-publisher">
+        <option value="">
+          {{ _("any maintainer") }}
+        </option>
+    {% for slug, title in publishers|dictsort(false, 'value') %}
+        <option value=".publisher-{{ slug }}">
+          {{ title }}
+        </option>
+    {% endfor %}
+      </select>
+  {% endif %}
+
+  {% if profiles %}
+      {{ _("in") }}
+      <select class="custom-select filter-select mx-1" id="filter-profile">
+        <option value="*">
+          {{ _("any profile") }}
+        </option>
+    {% for slug, title in profiles|dictsort(false, 'value') %}
+        <option value=".profile-{{ slug }}">
+          {{ title }}
+        </option>
+    {% endfor %}
+      </select>
+  {% endif %}
+
+  {% if topics %}
+      {{ _("about") }}
+      <select class="custom-select filter-select mx-1" id="filter-topic">
+        <option value="*">
+          {{ _("any topic") }}
+        </option>
+    {% for slug, title in topics|dictsort(false, 'value') %}
+        <option value=".topic-{{ slug }}">
+          {{ title }}
+        </option>
+    {% endfor %}
+      </select>
+  {% endif %}
+      </form>
+
+      <p class="text-center text-muted mt-4">
+        {{ _('Showing <span id="filter-count">%(num)d</span> extensions from the <a href="https://github.com/open-contracting/extension_registry">extension registry</a>', num=extensions|count) }}
       </p>
     </div>
   </div>
 
   {% for extension in extensions %}
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-8 col-xl-6 mb-2">
-        <div class="card">
-          <div class="card-body">
-            <h2 class="card-title h5">
-              <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=extension.latest_version) }}">
-                {{ extension.name[lang] }}
-              </a>
+  <div class="row justify-content-center extension {{ extension.tags|join(' ') }}">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="{{ url_for('extension', lang=lang, slug=extension.id, version=extension.latest_version) }}">
+              {{ extension.name[lang] }}
+            </a>
     {% if extension.core %}
-              <span class="badge badge-pill badge-light">{{ _("Recommended") }}</span>
+            <span class="badge badge-pill badge-light">{{ _("Recommended") }}</span>
     {% endif %}
-            </h2>
-            <p class="card-text">
-              {{ extension.description[lang] }}
-            </p>
-            <p class="card-text">
-              <small class="text-muted">
-                {{ _('Maintained by <a href="%(url)s">%(name)s</a>', name=extension.versions[extension.latest_version].publisher.name, url=extension.versions[extension.latest_version].publisher.url) }}
-              </small>
-            </p>
-          </div>
+          </h2>
+          <p class="card-text">
+            {{ extension.description[lang] }}
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              {{ _('Maintained by <a href="%(url)s">%(name)s</a>', name=extension.publisher.name, url=extension.publisher.url) }}
+            </small>
+          </p>
         </div>
       </div>
     </div>
+  </div>
   {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+<script>
+$(function () {
+  var filters = {};
+
+  $('.filter-select').on('change', function () {
+    var prop, selector = '', selected;
+
+    filters[this.id] = this.value;
+    for (prop in filters) {
+      selector += filters[prop];
+    }
+
+    selected = $('.extension' + selector).show();
+    if (selector) {
+      $('.extension:not(' + selector + ')').hide();
+    }
+
+    $('#filter-count').text(selected.length);
+  });
+});
+</script>
 {% endblock %}

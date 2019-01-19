@@ -3,6 +3,7 @@
 {% block extensions_nav_link %}active{% endblock %}
 
 {% block main %}
+<div class="container-fluid">
   <div class="row bg-light pt-2">
     <div class="col">
       <h1>
@@ -17,7 +18,7 @@
 
   <div class="row flex-xl-nowrap">
     <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
-      <form class="ee-search d-flex align-items-center">
+      <form class="d-flex align-items-center ee-search">
         <label class="mr-1 mb-0" for="version">{{ _("Version:") }}</label>
         <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
           <optgroup label="{{ _("Present versions") }}">
@@ -109,10 +110,11 @@
   {% endblock %}
     </main>
   </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
 <script>
 $(function () {
   var clipboard = new ClipboardJS('.clipboard');
