@@ -44,7 +44,7 @@ def set_tags(extensions):
         data = load(f)
 
     for extension in extensions.values():
-        extension['tags'] = set()
+        extension['tags'] = {'core-{}'.format(str(extension['core']).lower())}
 
     groups = {}
     for prefix, tags in data.items():
