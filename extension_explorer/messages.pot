@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-18 11:46-0500\n"
+"POT-Creation-Date: 2019-01-18 19:59-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,81 +17,83 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.6.0\n"
 
-#: util.py:91
+#: compat.py:70
+#, python-format
+msgid "View the fields in the %(definition)s object"
+msgstr ""
+
+#: compat.py:84
+#, python-format
+msgid "View the codes in the %(codelist)s codelist"
+msgstr ""
+
+#: util.py:93
 msgid "latest"
 msgstr ""
 
-#: util.py:109
+#: util.py:111
 msgid "Changelog"
 msgstr ""
 
-#: templates/extension_schema.html:41 util.py:198
+#: templates/extension_schema.html:41 util.py:200
 msgid "Description"
 msgstr ""
 
-#: util.py:227
+#: util.py:229
 msgid "Release"
 msgstr ""
 
-#: util.py:246
+#: util.py:248
 #, python-format
 msgid "Deprecated in OCDS %(deprecatedVersion)s: %(description)s"
 msgstr ""
 
-#: util.py:248
+#: util.py:250
 msgid "Undeprecated"
 msgstr ""
 
-#: util.py:272
+#: util.py:274
 msgid "object"
 msgstr ""
 
-#: util.py:291
+#: util.py:293
 #, python-format
 msgid "array of %(subtypes)s"
 msgstr ""
 
-#. title
-#: data/collections/eu.yaml:1
-msgid "European Union"
-msgstr ""
-
-#. title
-#: data/collections/fiscal.yaml:1
-msgid "Fiscal extensions"
-msgstr ""
-
-#. title
-#: data/collections/gpa.yaml:1
-msgid "Agreement on Government Procurement"
-msgstr ""
-
-#. title
-#: data/collections/ppp.yaml:1
+#. /profile/0/title
+#: data/tags.yaml:1
 msgid "Public Private Partnerships"
 msgstr ""
 
-#. title
-#: data/collections/recommended.yaml:1
-msgid "Recommended extensions"
+#. /profile/1/title
+#: data/tags.yaml:1
+msgid "European Union"
 msgstr ""
 
-#: templates/collections.html:9
-msgid "Extension collections"
+#. /profile/2/title
+#: data/tags.yaml:1
+msgid "Agreement on Government Procurement"
 msgstr ""
 
-#: templates/extension.html:12 templates/extension.html:29
-#: templates/layout_extension.html:54
+#. /topic/0/title
+#: data/tags.yaml:1
+msgid "Fiscal extensions"
+msgstr ""
+
+#: templates/documentation.html:10 templates/extension.html:12
+#: templates/extension.html:29 templates/layout.html:44
+#: templates/layout_extension.html:55
 msgid "Documentation"
 msgstr ""
 
 #: templates/extension_codelists.html:6 templates/extension_codelists.html:23
-#: templates/layout_extension.html:71
+#: templates/layout_extension.html:72
 msgid "Codelists"
 msgstr ""
 
 #: templates/extension_schema.html:6 templates/extension_schema.html:23
-#: templates/layout_extension.html:62
+#: templates/layout_extension.html:63
 msgid "Schema"
 msgstr ""
 
@@ -107,66 +109,123 @@ msgstr ""
 msgid "Type(s)"
 msgstr ""
 
-#: templates/extensions.html:9
-msgid "Registered extensions"
-msgstr ""
-
-#: templates/extensions.html:38
-msgid "Versions:"
-msgstr ""
-
-#: templates/layout.html:12
-msgid "Extension Explorer"
-msgstr ""
-
-#: templates/layout.html:25
-msgid "OCDS Extension Explorer"
-msgstr ""
-
-#: templates/layout.html:32
-msgid "Home"
-msgstr ""
-
-#: templates/layout.html:37
+#: templates/extensions.html:10 templates/layout.html:39
 msgid "Extensions"
 msgstr ""
 
-#: templates/layout.html:42
-msgid "Collections"
+#: templates/extensions.html:14
+msgid "Show"
 msgstr ""
 
-#: templates/layout_extension.html:21
+#: templates/extensions.html:18
+msgid "any"
+msgstr ""
+
+#: templates/extensions.html:21
+msgid "recommended"
+msgstr ""
+
+#: templates/extensions.html:25
+msgid "extensions"
+msgstr ""
+
+#: templates/extensions.html:28
+msgid "by"
+msgstr ""
+
+#: templates/extensions.html:31
+msgid "any maintainer"
+msgstr ""
+
+#: templates/extensions.html:42
+msgid "in"
+msgstr ""
+
+#: templates/extensions.html:45
+msgid "any profile"
+msgstr ""
+
+#: templates/extensions.html:56
+msgid "about"
+msgstr ""
+
+#: templates/extensions.html:59
+msgid "any topic"
+msgstr ""
+
+#: templates/extensions.html:71
+#, python-format
+msgid ""
+"Showing <span id=\"filter-count\">%(num)d</span> extensions from the <a "
+"href=\"https://github.com/open-contracting/extension_registry\">extension"
+" registry</a>"
+msgstr ""
+
+#: templates/extensions.html:86
+msgid "Recommended"
+msgstr ""
+
+#: templates/extensions.html:94 templates/layout_extension.html:103
+#, python-format
+msgid "Maintained by <a href=\"%(url)s\">%(name)s</a>"
+msgstr ""
+
+#: templates/home.html:12 templates/layout.html:12 templates/layout.html:26
+msgid "OCDS Extension Explorer"
+msgstr ""
+
+#: templates/home.html:16
+#, python-format
+msgid ""
+"Disclose more data about your contracting processes, using extensions to "
+"the <a href=\"http://standard.open-"
+"contracting.org/latest/%(lang)s/\">Open Contracting Data Standard</a>."
+msgstr ""
+
+#: templates/home.html:22
+msgid "Browse extensions"
+msgstr ""
+
+#: templates/home.html:27
+msgid "Learn about extensions"
+msgstr ""
+
+#: templates/layout.html:34
+msgid "Home"
+msgstr ""
+
+#: templates/layout_extension.html:22
 msgid "Version:"
 msgstr ""
 
-#: templates/layout_extension.html:23
+#: templates/layout_extension.html:24
 msgid "Present versions"
 msgstr ""
 
-#: templates/layout_extension.html:34
+#: templates/layout_extension.html:35
 msgid "Historical versions"
 msgstr ""
 
-#: templates/layout_extension.html:47
+#: templates/layout_extension.html:48
 msgid "Toggle extension navigation"
 msgstr ""
 
-#: templates/layout_extension.html:80
+#: templates/layout_extension.html:81
 msgid ""
 "To use this extension, add this URL to your package's "
 "<code>extensions</code> array:"
 msgstr ""
 
-#: templates/layout_extension.html:86 templates/layout_extension.html:89
-#: templates/layout_extension.html:116
+#: templates/layout_extension.html:87 templates/layout_extension.html:90
+#: templates/layout_extension.html:124
 msgid "Copy to clipboard"
 msgstr ""
 
-#: templates/layout_extension.html:96
+#: templates/layout_extension.html:98
 msgid "Download ZIP"
 msgstr ""
 
-#: templates/layout_extension.html:116
+#: templates/layout_extension.html:124
 msgid "Copied!"
 msgstr ""
 
