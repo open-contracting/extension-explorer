@@ -19,7 +19,7 @@ script:
   - pytest --cov extension_explorer
 after_success:
   - coveralls
-  - git clone git@github.com:open-contracting/ocds-extensions-translations.git
+  - git clone https://github.com/open-contracting/ocds-extensions-translations.git
   - ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
   - python freeze.py
 deploy:
