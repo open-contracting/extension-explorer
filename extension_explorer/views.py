@@ -1,6 +1,5 @@
 import re
 
-from commonmark import commonmark
 from babel.core import UnknownLocaleError
 from flask import Flask, abort, redirect, request, url_for
 from flask import render_template
@@ -9,7 +8,7 @@ from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
 from .util import (get_extensions, set_tags, get_extension_and_version, get_present_and_historical_versions,
-                   identify_headings, highlight_json, get_schema_tables, get_codelist_tables)
+                   identify_headings, highlight_json, get_schema_tables, get_codelist_tables, commonmark)
 from .compat import replace_directives
 
 LANGS = {

@@ -8,7 +8,7 @@ from functools import lru_cache
 
 import lxml.html
 import requests
-from commonmark import commonmark
+from CommonMark import DocParser, HTMLRenderer
 from flask_babel import gettext
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -19,6 +19,16 @@ from yaml import load
 OCDS_BASE_URL = 'http://standard.open-contracting.org/1.1'
 RELEASE_SCHEMA_URL = '{}/en/release-schema.json'.format(OCDS_BASE_URL)
 RELEASE_SCHEMA_REFERENCE_URL = '{}/en/schema/reference/'.format(OCDS_BASE_URL)
+
+
+def commonmark(text):
+    """
+    Renders text as Markdown.
+    """
+    parser = DocParser()
+    ast = parser.parse(text)
+    renderer = HTMLRenderer()
+    return renderer.render(ast)
 
 
 @lru_cache()
