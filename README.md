@@ -10,7 +10,7 @@
 Get a copy of extensions' translations:
 
 ```shell
-git@github.com:open-contracting/ocds-extensions-translations.git
+git clone git@github.com:open-contracting/ocds-extensions-translations.git
 ```
 
 Generate the data file, substituting the path to the above repository's `locale` directory for `path/to/locale`:
