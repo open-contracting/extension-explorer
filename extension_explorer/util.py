@@ -53,7 +53,9 @@ def set_tags(extensions):
         data = load(f)
 
     for extension in extensions.values():
-        extension['tags'] = {'core-{}'.format(str(extension['core']).lower())}
+        extension['tags'] = set()
+        if extension['core'] and extension['id'] != 'milestone_documents':
+            extension['tags'].add('recommended')
 
     groups = {}
     for prefix, tags in data.items():

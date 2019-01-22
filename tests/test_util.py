@@ -164,7 +164,7 @@ def test_set_tags():
         {'open-contracting-extensions': 'open-contracting-extensions'},
     )
 
-    assert extensions['location']['tags'] == {'core-true', 'profile-ppp', 'publisher-open-contracting-extensions'}
+    assert extensions['location']['tags'] == {'recommended', 'profile-ppp', 'publisher-open-contracting-extensions'}
 
 
 def test_get_present_and_historical_versions():
