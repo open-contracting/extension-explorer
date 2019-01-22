@@ -16,7 +16,6 @@ git@github.com:open-contracting/ocds-extensions-translations.git
 Generate the data file, substituting the path to the above repository's `locale` directory for `path/to/locale`:
 
 ```
-pip install ocdsextensionregistry[cli]
 ocdsextensionregistry generate-data-file --locale-dir path/to/locale > extension_explorer/data/extensions.json
 ```
 
