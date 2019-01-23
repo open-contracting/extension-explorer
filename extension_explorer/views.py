@@ -1,13 +1,14 @@
 import re
 
 from babel.core import UnknownLocaleError
-from flask import Flask, abort, render_template, request, url_for
+from flask import Flask, abort, render_template, request, send_file, url_for
 from flask_babel import Babel, gettext
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .util import (get_extensions, set_tags, get_extension_and_version, get_present_and_historical_versions,
-                   identify_headings, highlight_json, get_schema_tables, get_codelist_tables, commonmark)
+from .util import (get_extension_explorer_data_filename, get_extensions, set_tags, get_extension_and_version,
+                   get_present_and_historical_versions, identify_headings, highlight_json, get_schema_tables,
+                   get_codelist_tables, commonmark)
 from .compat import replace_directives
 
 LANGS = {
@@ -46,6 +47,11 @@ def get_locale():
 @app.errorhandler(UnknownLocaleError)
 def handle_unknown_locale_error(error):
     return NotFound()
+
+
+@app.route('/extensions.json')
+def extensions_json():
+    return send_file(get_extension_explorer_data_filename())
 
 
 @app.route('/')

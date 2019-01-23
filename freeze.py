@@ -13,5 +13,10 @@ def extension():
             yield {'lang': lang, 'identifier': identifier}
 
 
+@freezer.register_generator
+def extensions_json():
+    yield {}
+
+
 if __name__ == '__main__':
     freezer.freeze()

@@ -38,15 +38,22 @@ def commonmark(text):
 
 
 @lru_cache()
+def get_extension_explorer_data_filename():
+    """
+    Returns the data file's path. Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
+    ``extension_explorer/data/extensions.json``).
+    """
+    if os.environ.get('EXTENSION_EXPLORER_DATA_FILENAME'):
+        return os.environ.get('EXTENSION_EXPLORER_DATA_FILENAME')
+    return os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'extensions.json')
+
+
+@lru_cache()
 def get_extensions():
     """
-    Returns the data file's parsed contents. Set the file's path with the ``EXTENSION_EXPLORER_DATA_FILE`` environment
-    variable (default is ``extension_explorer/data/extensions.json``).
+    Returns the data file's parsed contents.
     """
-    if os.environ.get('EXTENSION_EXPLORER_DATA_FILE'):
-        filename = os.environ.get('EXTENSION_EXPLORER_DATA_FILE')
-    else:
-        filename = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'extensions.json')
+    filename = get_extension_explorer_data_filename()
     with open(filename) as f:
         return json.load(f, object_pairs_hook=OrderedDict)
 

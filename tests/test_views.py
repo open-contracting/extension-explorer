@@ -1,6 +1,11 @@
 from flask import url_for
 
 
+def test_extensions_json(client):
+    response = client.get(url_for('extensions_json'))
+    assert response.status_code == 200
+
+
 def test_home(client):
     response = client.get(url_for('home'))
     assert response.status_code == 200
