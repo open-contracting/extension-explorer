@@ -51,6 +51,7 @@ def handle_unknown_locale_error(error):
 
 @app.route('/extensions.json')
 def extensions_json():
+    # Used by extensionexplorerlinklist in sphinxcontrib-opencontracting.
     return send_file(get_extension_explorer_data_filename())
 
 
