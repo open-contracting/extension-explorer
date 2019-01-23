@@ -2,7 +2,7 @@ import re
 
 from babel.core import UnknownLocaleError
 from flask import Flask, abort, render_template, request, url_for
-from flask_babel import Babel
+from flask_babel import Babel, gettext
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
@@ -50,7 +50,10 @@ def handle_unknown_locale_error(error):
 
 @app.route('/')
 def home():
-    return render_template('redirect.html', redirect=url_for('lang_home', lang='en'))
+    title = gettext('OCDS Extension Explorer')
+    url = url_for('lang_home', lang='en')
+
+    return render_template('redirect.html', title=title, redirect=url)
 
 
 @app.route('/<lang>/')
@@ -79,9 +82,10 @@ def extension(lang, identifier):
     except KeyError:
         abort(404)
 
+    title = gettext('%(name)s — OCDS Extension Explorer', name=extension['name'][lang])
     url = url_for('extension_documentation', lang=lang, identifier=identifier, version=extension['latest_version'])
 
-    return render_template('redirect.html', redirect=url)
+    return render_template('redirect.html', title=title, redirect=url)
 
 
 @app.route('/<lang>/extensions/<identifier>/<version>/')

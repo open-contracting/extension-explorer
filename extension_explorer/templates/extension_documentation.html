@@ -1,5 +1,7 @@
 {% extends 'layout_extension.html' %}
 
+{% block title %}{{ _("%(name)s — Documentation — OCDS Extension Explorer", name=extension.name[lang]) }}{% endblock %}
+
 {% block extra_head %}
   <style>
 {{ highlight_css|safe }}
