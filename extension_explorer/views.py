@@ -1,8 +1,7 @@
 import re
 
 from babel.core import UnknownLocaleError
-from flask import Flask, abort, redirect, request, url_for
-from flask import render_template
+from flask import Flask, abort, render_template, request, url_for
 from flask_babel import Babel
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
@@ -51,7 +50,7 @@ def handle_unknown_locale_error(error):
 
 @app.route('/')
 def home():
-    return redirect(url_for('lang_home', lang='en'))
+    return render_template('redirect.html', redirect=url_for('lang_home', lang='en'))
 
 
 @app.route('/<lang>/')
@@ -73,10 +72,22 @@ def extensions(lang):
                            topics=topics, publishers=publishers)
 
 
-@app.route('/<lang>/extensions/<slug>/<version>/')
-def extension(lang, slug, version):
+@app.route('/<lang>/extensions/<identifier>/')
+def extension(lang, identifier):
     try:
-        extension, extension_version = get_extension_and_version(slug, version)
+        extension = get_extensions()[identifier]
+    except KeyError:
+        abort(404)
+
+    url = url_for('extension_documentation', lang=lang, identifier=identifier, version=extension['latest_version'])
+
+    return render_template('redirect.html', redirect=url)
+
+
+@app.route('/<lang>/extensions/<identifier>/<version>/')
+def extension_documentation(lang, identifier, version):
+    try:
+        extension, extension_version = get_extension_and_version(identifier, version)
     except KeyError:
         abort(404)
 
@@ -84,8 +95,8 @@ def extension(lang, slug, version):
     tables = get_schema_tables(extension_version, lang)
 
     # Note: `readme` may contain unsafe HTML and JavaScript.
-    schema_url = url_for('extension_schema', lang=lang, slug=slug, version=version)
-    codelist_url = url_for('extension_codelists', lang=lang, slug=slug, version=version)
+    schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
+    codelist_url = url_for('extension_codelists', lang=lang, identifier=identifier, version=version)
     readme = extension_version.get('readme', {}).get(lang, {})
     # Remove the first heading.
     readme = re.sub(r'\A# [^\n]+', '', readme)
@@ -94,37 +105,37 @@ def extension(lang, slug, version):
     readme_html = replace_directives(readme_html, schema_url, codelist_url, tables)
     readme_html, highlight_css = highlight_json(readme_html)
 
-    return render_template('extension.html', lang=lang, slug=slug, version=version, extension=extension,
-                           extension_version=extension_version, present_versions=present_versions,
+    return render_template('extension_documentation.html', lang=lang, identifier=identifier, version=version,
+                           extension=extension, extension_version=extension_version, present_versions=present_versions,
                            historical_versions=historical_versions, readme_html=readme_html, headings=headings,
                            highlight_css=highlight_css)
 
 
-@app.route('/<lang>/extensions/<slug>/<version>/schema/')
-def extension_schema(lang, slug, version):
+@app.route('/<lang>/extensions/<identifier>/<version>/schema/')
+def extension_schema(lang, identifier, version):
     try:
-        extension, extension_version = get_extension_and_version(slug, version)
+        extension, extension_version = get_extension_and_version(identifier, version)
     except KeyError:
         abort(404)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
 
-    return render_template('extension_schema.html', lang=lang, slug=slug, version=version, extension=extension,
-                           extension_version=extension_version, present_versions=present_versions,
+    return render_template('extension_schema.html', lang=lang, identifier=identifier, version=version,
+                           extension=extension, extension_version=extension_version, present_versions=present_versions,
                            historical_versions=historical_versions, tables=tables)
 
 
-@app.route('/<lang>/extensions/<slug>/<version>/codelists/')
-def extension_codelists(lang, slug, version):
+@app.route('/<lang>/extensions/<identifier>/<version>/codelists/')
+def extension_codelists(lang, identifier, version):
     try:
-        extension, extension_version = get_extension_and_version(slug, version)
+        extension, extension_version = get_extension_and_version(identifier, version)
     except KeyError:
         abort(404)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_codelist_tables(extension_version, lang)
 
-    return render_template('extension_codelists.html', lang=lang, slug=slug, version=version, extension=extension,
-                           extension_version=extension_version, present_versions=present_versions,
+    return render_template('extension_codelists.html', lang=lang, identifier=identifier, version=version,
+                           extension=extension, extension_version=extension_version, present_versions=present_versions,
                            historical_versions=historical_versions, tables=tables)

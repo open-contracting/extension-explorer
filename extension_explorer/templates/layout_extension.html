@@ -23,7 +23,7 @@
         <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
           <optgroup label="{{ _("Present versions") }}">
   {% for other_version, date in present_versions %}
-            <option value="{{ url_for(request.endpoint, slug=slug, version=other_version, lang=lang) }}"{% if other_version == version %} selected{% endif %}>
+            <option value="{{ url_for(request.endpoint, identifier=identifier, version=other_version, lang=lang) }}"{% if other_version == version %} selected{% endif %}>
               {{ other_version }}
     {% if date %}
               ({{ date }})
@@ -34,7 +34,7 @@
   {% if historical_versions %}
           <optgroup label="{{ _("Historical versions") }}">
     {% for other_version, date in historical_versions %}
-            <option value="{{ url_for(request.endpoint, slug=slug, version=other_version, lang=lang) }}"{% if other_version == version %} selected{% endif %}>
+            <option value="{{ url_for(request.endpoint, identifier=identifier, version=other_version, lang=lang) }}"{% if other_version == version %} selected{% endif %}>
               {{ other_version }}
     {% if date %}
               ({{ date }})
@@ -51,7 +51,7 @@
       <nav class="collapse ee-links" id="extension-nav">
   {% block nav_documentation %}
         <div class="ee-toc-item">
-          <a class="ee-toc-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_documentation', identifier=identifier, version=version, lang=lang) }}">
             {{ _("Documentation") }}
           </a>
         </div>
@@ -59,7 +59,7 @@
   {% if extension_version.schemas['release-schema.json'][lang] %}
     {% block nav_schema %}
         <div class="ee-toc-item">
-          <a class="ee-toc-link" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_schema', identifier=identifier, version=version, lang=lang) }}">
             {{ _("Schema") }}
           </a>
         </div>
@@ -68,7 +68,7 @@
   {% if extension_version.codelists %}
     {% block nav_codelists %}
         <div class="ee-toc-item">
-          <a class="ee-toc-link" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_codelists', identifier=identifier, version=version, lang=lang) }}">
             {{ _("Codelists") }}
           </a>
         </div>
@@ -113,7 +113,7 @@
 </div>
 {% endblock %}
 
-{% block extra_js %}
+{% block extra_footer %}
 <script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
 <script>
 $(function () {

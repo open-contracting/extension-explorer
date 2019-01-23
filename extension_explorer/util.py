@@ -3,6 +3,7 @@ Module to keep ``views.py`` simple and high-level.
 """
 import os
 import json
+import warnings
 from collections import defaultdict, OrderedDict
 from functools import lru_cache
 
@@ -28,7 +29,12 @@ def commonmark(text):
     parser = DocParser()
     ast = parser.parse(text)
     renderer = HTMLRenderer()
-    return renderer.render(ast)
+
+    # DeprecationWarning: The unescape method is deprecated and will be removed in 3.5, use html.unescape() instead.
+    with warnings.catch_warnings():
+        warnings.simplefilter('ignore', DeprecationWarning)
+
+        return renderer.render(ast)
 
 
 @lru_cache()

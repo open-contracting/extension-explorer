@@ -2,7 +2,7 @@
 
 {% block nav_codelists %}
         <div class="ee-toc-item active">
-          <a class="ee-toc-link" href="{{ url_for('extension_codelists', slug=slug, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_codelists', identifier=identifier, version=version, lang=lang) }}">
             {{ _("Codelists") }}
           </a>
 

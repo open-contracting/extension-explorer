@@ -1,6 +1,6 @@
 {% extends 'layout_extension.html' %}
 
-{% block extra_css %}
+{% block extra_head %}
   <style>
 {{ highlight_css|safe }}
   </style>
@@ -8,7 +8,7 @@
 
 {% block nav_documentation %}
         <div class="ee-toc-item active">
-          <a class="ee-toc-link" href="{{ url_for('extension', slug=slug, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_documentation', identifier=identifier, version=version, lang=lang) }}">
             {{ _("Documentation") }}
           </a>
 

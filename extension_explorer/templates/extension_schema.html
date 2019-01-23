@@ -2,7 +2,7 @@
 
 {% block nav_schema %}
         <div class="ee-toc-item active">
-          <a class="ee-toc-link" href="{{ url_for('extension_schema', slug=slug, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_schema', identifier=identifier, version=version, lang=lang) }}">
             {{ _("Schema") }}
           </a>
 

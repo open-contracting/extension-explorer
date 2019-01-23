@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="refresh" content="0;url='{{ redirect }}'">
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <title>{{ _("OCDS Extension Explorer") }}</title>
+</head>
+<body>
+
+<main role="main">
+  <div class="container">
+    <div class="row mt-4">
+      <div class="col">
+        <p class="lead">
+          {% include '_logo.html' %}
+
+          {{ _('This page has moved to a <a href="%(redirect)s">%(redirect)s</a>', redirect=redirect) }}
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
