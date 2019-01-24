@@ -9,6 +9,7 @@ def test_extensions_json(client):
 def test_home(client):
     response = client.get(url_for('home'))
     assert response.status_code == 200
+
     assert b"""<meta http-equiv="refresh" content="0;url='/en/'">""" in response.data
 
 
@@ -30,12 +31,16 @@ def test_extensions(client):
 def test_extension(client):
     response = client.get(url_for('extension', lang='en', identifier='location'))
     assert response.status_code == 200
+
     assert b"""<meta http-equiv="refresh" content="0;url='/en/extensions/location/v1.1.3/'">""" in response.data
 
 
 def test_extension_documentation(client):
     response = client.get(url_for('extension_documentation', lang='en', identifier='location', version='v1.1.3'))
     assert response.status_code == 200
+
+    assert b'Location Data' not in response.data  # first header
+    assert b'Communicating the location of proposed or executed contract delivery is important to ' in response.data
 
 
 def test_extension_schema(client):
