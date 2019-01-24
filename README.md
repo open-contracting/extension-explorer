@@ -89,6 +89,7 @@ The automated tests provide full code coverage, but you might still want to chec
   * Additional columns are shown <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/#documentType.csv>
   * URLs are hyperlinked <https://extensions.open-contracting.org/en/extensions/location/master/codelists/#geometryType.csv>
   * Subtracted codes are shown <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/#-partyRole.csv>
+  * Added, removed, and replaced codelists link to original codelists <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/>
 
 ## Maintenance
 

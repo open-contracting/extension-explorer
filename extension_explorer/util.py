@@ -1,8 +1,9 @@
 """
 Module to keep ``views.py`` simple and high-level.
 """
-import os
 import json
+import os
+import re
 import warnings
 from collections import defaultdict, OrderedDict
 from functools import lru_cache
@@ -184,6 +185,8 @@ def get_codelist_tables(extension_version, lang):
     tables = []
 
     header_groups = (('Code',), ('Title', 'Title_en'), ('Description', 'Description_en'))
+    codelist_reference_url = _ocds_codelist_reference_url(lang)
+    codelist_names = _ocds_codelist_names(lang)
 
     for name, codelist in extension_version['codelists'].items():
         indices = {fieldname: i for i, fieldname in enumerate(codelist['en']['fieldnames'])}
@@ -223,7 +226,17 @@ def get_codelist_tables(extension_version, lang):
 
             rows.append(new_row)
 
-        tables.append([name, fieldnames, rows])
+        if name.startswith(('+', '-')):
+            basename = name[1:]
+        else:
+            basename = name
+
+        url = None
+        if basename in codelist_names:
+            anchor = re.sub(r'[A-Z]', lambda s: '-' + s[0].lower(), basename.replace('.csv', ''))
+            url = '{}#{}'.format(codelist_reference_url, anchor)
+
+        tables.append([name, basename, url, fieldnames, rows])
 
     return tables
 
@@ -396,6 +409,30 @@ def _ocds_release_schema_definitions(lang):
     return list(_ocds_release_schema(lang)['definitions'])
 
 
+def _ocds_codelist_names(lang):
+    """
+    Returns the names of the codelists in the OCDS release schema.
+    """
+    return _ocds_codelist_names_recursive(_ocds_release_schema(lang))
+
+
+# Similar to `collect_codelist_values` in `test_json.py` in standard-maintenance-scripts.
+def _ocds_codelist_names_recursive(data):
+    codelists = set()
+
+    if isinstance(data, list):
+        for item in data:
+            codelists.update(_ocds_codelist_names_recursive(item))
+    elif isinstance(data, dict):
+        if 'codelist' in data:
+            codelists.add(data['codelist'])
+
+        for value in data.values():
+            codelists.update(_ocds_codelist_names_recursive(value))
+
+    return codelists
+
+
 @lru_cache()
 def _ocds_release_schema(lang):
     """
@@ -410,3 +447,7 @@ def _ocds_release_schema_url(lang):
 
 def _ocds_release_schema_reference_url(lang):
     return '{}/{}/schema/reference/'.format(OCDS_BASE_URL, lang)
+
+
+def _ocds_codelist_reference_url(lang):
+    return '{}/{}/schema/codelists/'.format(OCDS_BASE_URL, lang)

@@ -378,26 +378,22 @@ def test_get_codelist_tables():
     tables = get_codelist_tables(extension_version, 'en')
 
     assert tables == [
-        [
-            'codelist.csv',
-            ['Code', 'Title_en', 'Description_en'],
-            [
-                {
-                    'code': 'A code',
-                    'title': 'A title',
-                    'content': {
-                        'description': '<p>A description</p>\n',
-                        'attributes': OrderedDict([('Extra', 'An extra')]),
-                    },
-                }, {
-                    'code': '',
-                    'title': '',
-                    'content': {
-                        'description': '',
-                    },
+        ['codelist.csv', 'codelist.csv', None, ['Code', 'Title_en', 'Description_en'], [
+            {
+                'code': 'A code',
+                'title': 'A title',
+                'content': {
+                    'description': '<p>A description</p>\n',
+                    'attributes': OrderedDict([('Extra', 'An extra')]),
                 },
-            ],
-        ],
+            }, {
+                'code': '',
+                'title': '',
+                'content': {
+                    'description': '',
+                },
+            },
+        ]],
     ]
 
 
@@ -409,26 +405,22 @@ def test_get_codelist_tables_translation():
     tables = get_codelist_tables(extension_version, 'es')
 
     assert tables == [
-        [
-            'codelist.csv',
-            ['Código', 'Título', 'Descripción'],
-            [
-                {
-                    'code': 'Un código',
-                    'title': 'Un título',
-                    'content': {
-                        'description': '<p>Un descripción</p>\n',
-                        'attributes': OrderedDict([('Extra', 'Un extra')]),
-                    },
-                }, {
-                    'code': '',
-                    'title': '',
-                    'content': {
-                        'description': '',
-                    },
+        ['codelist.csv', 'codelist.csv', None, ['Código', 'Título', 'Descripción'], [
+            {
+                'code': 'Un código',
+                'title': 'Un título',
+                'content': {
+                    'description': '<p>Un descripción</p>\n',
+                    'attributes': OrderedDict([('Extra', 'Un extra')]),
                 },
-            ],
-        ],
+            }, {
+                'code': '',
+                'title': '',
+                'content': {
+                    'description': '',
+                },
+            },
+        ]],
     ]
 
 
@@ -446,7 +438,9 @@ def test_get_codelist_tables_subtrahend():
     tables = get_codelist_tables(extension_version, 'en')
 
     assert tables == [
-        ['-codelist.csv', ['Code'], [{'code': 'A code'}]],
+        ['-codelist.csv', 'codelist.csv', None, ['Code'], [
+            {'code': 'A code'},
+        ]],
     ]
 
 
@@ -464,7 +458,9 @@ def test_get_codelist_tables_attributes():
     tables = get_codelist_tables(extension_version, 'en')
 
     assert tables == [
-        ['codelist.csv', ['Description'], [{'content': {'attributes': OrderedDict([('Extra', 'An extra')])}}]],
+        ['codelist.csv', 'codelist.csv', None, ['Description'], [
+            {'content': {'attributes': OrderedDict([('Extra', 'An extra')])}},
+        ]],
     ]
 
 

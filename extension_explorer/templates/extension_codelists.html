@@ -24,11 +24,23 @@
       <h2 class="ee-title">
         {{ _("Codelists") }}
       </h2>
-  {% for codelist, fieldnames, rows in tables %}
+  {% for codelist, basename, url, fieldnames, rows in tables %}
 
       <h3 id="{{ codelist }}">
         {{ codelist }}
       </h3>
+
+    {% if url %}
+      <p>
+      {% if codelist.startswith('+') %}
+        {{ _('The extension adds these codes to the <a href="%(url)s"><code>%(codelist)s</code> codelist</a>.', url=url, codelist=basename) }}
+      {% elif codelist.startswith('-') %}
+        {{ _('The extension removes these codes from the <a href="%(url)s"><code>%(codelist)s</code> codelist</a>.', url=url, codelist=basename) }}
+      {% else %}
+        {{ _('The extension replaces the <a href="%(url)s"><code>%(codelist)s</code> codelist</a> with these codes.', url=url, codelist=basename) }}
+      {% endif %}
+      </p>
+    {% endif %}
 
       <table class="table table-bordered">
         <thead class="thead-light">
