@@ -241,10 +241,10 @@ def test_get_removed_fields():
 
     assert fields == {
         'active': [
-            '.field.subfield.subsubremoved',
-            '.field.subremoved',
-            '.removed',
-            '.Asset.removed',
+            (None, '<code>field.<wbr>subfield.<wbr>subsubremoved</code>', '', '', ''),
+            (None, '<code>field.<wbr>subremoved</code>', '', '', ''),
+            (None, '<code>removed</code>', '', '', ''),
+            ('Asset', '<code>Asset.<wbr>removed</code>', '', '', ''),
         ],
     }
 
@@ -257,20 +257,20 @@ def test_get_schema_tables():
 
     assert dict(tables) == {
         'Asset': [
-            ['.field', 'Title', '<p>Description</p>\n', ['string', 'integer']],
+            ('Asset', '.field', 'Title', '<p>Description</p>\n', 'string or integer'),
         ],
         'Release': [
-            ['.empty', '', '', ['string']],
-            ['.array', 'Array', '', ['array of strings / integers']],
-            ['.ref', 'Asset', '', ['<a href="#asset">Asset</a> object']],
-            ['.refArray', 'Assets', '', ['array of <a href="#asset">Asset</a> objects']],
-            ['.null', 'Null', '', []],
-            ['.external', 'External', '', ['<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object']],  # noqa
-            ['.field', 'Field', '', ['object']],
-            ['.field.subfield', '', '<p>Subfield</p>\n', ['object']],
-            ['.field.subfield.subsubfield', '', '<p><em>Subsubfield</em></p>\n', []],
-            ['.undeprecated', '', '<p><em>Undeprecated</em></p>\n', []],
-            ['.deprecated', 'Deprecated', '<p>Description</p>\n<p><em>Deprecated in OCDS 1.1: Field has been deprecated because <strong>reasons</strong>.</em></p>\n', ['string']],  # noqa
+            ('Release', '.empty', '', '', 'string'),
+            ('Release', '.array', 'Array', '', 'array of strings / integers'),
+            ('Release', '.ref', 'Asset', '', '<a href="#asset">Asset</a> object'),
+            ('Release', '.refArray', 'Assets', '', 'array of <a href="#asset">Asset</a> objects'),
+            ('Release', '.null', 'Null', '', ''),
+            ('Release', '.external', 'External', '', '<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object'),  # noqa
+            ('Release', '.field', 'Field', '', 'object'),
+            ('Release', '.field.subfield', '', '<p>Subfield</p>\n', 'object'),
+            ('Release', '.field.subfield.subsubfield', '', '<p><em>Subsubfield</em></p>\n', ''),
+            ('Release', '.undeprecated', '', '<p><em>Undeprecated</em></p>\n', ''),
+            ('Release', '.deprecated', 'Deprecated', '<p>Description</p>\n<p><strong>Deprecated in OCDS 1.1</strong>: Field has been deprecated because <strong>reasons</strong>.</p>\n', 'string'),  # noqa
         ],
     }
 
@@ -296,7 +296,7 @@ def test_get_schema_tables_mixed_array_success():
 
     assert dict(tables) == {
         'Release': [
-            ['.nullArray', 'Array', '', ['array of strings']],
+            ('Release', '.nullArray', 'Array', '', 'array of strings'),
         ]
     }
 
@@ -346,7 +346,7 @@ def test_get_schema_tables_object_array():
     with pytest.raises(NotImplementedError) as excinfo:
         get_schema_tables(extension_version, 'en')
 
-    assert str(excinfo.value) == 'array of objects with properties is not implemented'
+    assert str(excinfo.value).startswith('array of objects with properties is not implemented: ')
 
 
 def test_get_schema_tables_array_array():
@@ -368,7 +368,7 @@ def test_get_schema_tables_array_array():
     with pytest.raises(NotImplementedError) as excinfo:
         get_schema_tables(extension_version, 'en')
 
-    assert str(excinfo.value) == 'array of arrays with items is not implemented'
+    assert str(excinfo.value).startswith('array of arrays with items is not implemented: ')
 
 
 def test_get_codelist_tables():

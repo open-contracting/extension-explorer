@@ -19,8 +19,6 @@ from slugify import slugify
 from yaml import load
 
 OCDS_BASE_URL = 'http://standard.open-contracting.org/1.1'
-RELEASE_SCHEMA_URL = '{}/en/release-schema.json'.format(OCDS_BASE_URL)
-RELEASE_SCHEMA_REFERENCE_URL = '{}/en/schema/reference/'.format(OCDS_BASE_URL)
 
 
 def commonmark(text):
@@ -232,26 +230,46 @@ def get_codelist_tables(extension_version, lang):
 
 def get_removed_fields(extension_version, lang):
     """
-    Returns a dictionary of lists of paths for removed fields.
+    Returns a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a tuple:
+    (definition, path, title, description, types). All values are translated.
     """
-    paths = defaultdict(list)
+    tables = defaultdict(list)
 
-    release_schema = _get_ocds_release_schema()
-    for pointer, path in _get_removed_fields(extension_version['schemas']['release-schema.json'][lang]):
+    release_schema_reference_url = _ocds_release_schema_reference_url(lang)
+    template = '#release-schema.json,{},{}'
+
+    release_schema = _ocds_release_schema(lang)
+    for definition, pointer, path in _get_removed_fields(extension_version['schemas']['release-schema.json'][lang]):
+        anchor = None
         try:
-            if jsonpointer.resolve_pointer(release_schema, pointer).get('deprecated'):
-                key = 'deprecated'
-            else:
-                key = 'active'
+            value = jsonpointer.resolve_pointer(release_schema, pointer)
+
+            # OCDS 1.1 doesn't list OrganizationReference's fields.
+            if definition != 'OrganizationReference':
+                if definition:
+                    definition_pointer = '/definitions/{}'.format(definition)
+                else:
+                    definition_pointer = ''
+                anchor = template.format(definition_pointer, pointer.rsplit('/', 1)[-1])
         except jsonpointer.JsonPointerException:
+            value = {}
+
+        path = '<code>{}</code>'.format(path[1:].replace('.', '.<wbr>'))
+        if anchor:
+            path = '<a href="{}{}">{}</a>'.format(release_schema_reference_url, anchor, path)
+
+        if value.get('deprecated'):
+            key = 'deprecated'
+        else:
             key = 'active'
 
-        paths[key].append(path)
+        title, description, types = _get_title_description_types(value, lang)
+        tables[key].append((definition, path, title, description, types))
 
-    return paths
+    return tables
 
 
-def _get_removed_fields(schema, pointer='', path=''):
+def _get_removed_fields(schema, pointer='', path='', definition=None):
     pointer += '/'
     path += '.'
 
@@ -260,15 +278,15 @@ def _get_removed_fields(schema, pointer='', path=''):
         new_path = path + key
 
         if value is None:
-            yield (new_pointer, new_path)
+            yield (definition, new_pointer, new_path)
         elif 'properties' in value:
-            yield from _get_removed_fields(value, pointer=new_pointer, path=new_path)
+            yield from _get_removed_fields(value, pointer=new_pointer, path=new_path, definition=definition)
 
     for key, value in schema.get('definitions', {}).items():
         new_pointer = pointer + 'definitions/' + key
         new_path = path + key
 
-        yield from _get_removed_fields(value, pointer=new_pointer, path=new_path)
+        yield from _get_removed_fields(value, pointer=new_pointer, path=new_path, definition=key)
 
 
 def get_schema_tables(extension_version, lang):
@@ -278,14 +296,14 @@ def get_schema_tables(extension_version, lang):
     """
     tables = defaultdict(list)
 
-    for definition, *rest in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
-        tables[definition].append(rest)
+    for definition, *rest in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang], lang):
+        tables[definition].append((definition, *rest))
 
     return tables
 
 
 # This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
-def _get_schema_fields(schema, path='', definition=None):
+def _get_schema_fields(schema, lang, path='', definition=None):
     """
     For each field in the release schema, yields (definition, path, title, description, types). Renders the
     description from Markdown. Adds deprecation information to the field's description.
@@ -301,39 +319,46 @@ def _get_schema_fields(schema, path='', definition=None):
             continue
 
         new_path = path + key
-        title = value.get('title', '')
-        description = value.get('description', '')
-        types = _get_types(value)
 
-        if 'deprecated' in value:
-            deprecated = value['deprecated']
-            if deprecated:
-                message = gettext('Deprecated in OCDS %(deprecatedVersion)s: %(description)s') % deprecated
-            else:
-                message = gettext('Undeprecated')
-            description += '\n\n*{}*'.format(message)
-
-        yield (definition, new_path, title, commonmark(description), types)
+        title, description, types = _get_title_description_types(value, lang)
+        yield (definition, new_path, title, description, types)
 
         if 'properties' in value:
-            yield from _get_schema_fields(value, path=new_path, definition=definition)
+            yield from _get_schema_fields(value, lang, path=new_path, definition=definition)
 
         # Per make_versioned_release_schema.py, un-$ref'erenced objects in arrays don't occur.
 
     for key, value in schema.get('definitions', {}).items():
-        yield from _get_schema_fields(value, definition=key)
+        yield from _get_schema_fields(value, lang, definition=key)
 
 
-def _get_types(value):
+def _get_title_description_types(value, lang):
+    title = value.get('title', '')
+    description = value.get('description', '')
+    types = _get_types(value, lang)
+
+    if 'deprecated' in value:
+        deprecated = value['deprecated']
+        if deprecated:
+            label = gettext('Deprecated in OCDS %(deprecatedVersion)s') % deprecated
+            message = '**{}**: {}'.format(label, deprecated['description'])
+        else:
+            message = '*{}*'.format(gettext('Undeprecated'))
+        description += '\n\n{}'.format(message)
+
+    return title, commonmark(description), gettext(' or ').join(types)
+
+
+def _get_types(value, lang):
     """
     Returns the types of the field, linking to definitions and iterating into arrays.
     """
-    definitions = _get_ocds_release_schema_definitions()
+    definitions = _ocds_release_schema_definitions(lang)
 
     if '$ref' in value:
         name = value['$ref'].replace('#/definitions/', '')
         if name in definitions:
-            url = RELEASE_SCHEMA_REFERENCE_URL
+            url = _ocds_release_schema_reference_url(lang)
         else:
             url = ''
         return ['<a href="{}#{}">{}</a> {}'.format(url, name.lower(), name, gettext('object'))]
@@ -346,30 +371,42 @@ def _get_types(value):
     types = list(filter(lambda t: t and t != 'null', types))
 
     if 'items' in value:
+        # Avoid descending into /Amendment/changes, which will raise an error.
+        if value.get('deprecated'):
+            return types
+
         if types and types != ['array']:
             raise NotImplementedError("{} is not implemented".format(' / '.join(types)))
         if 'properties' in value['items']:
-            raise NotImplementedError('array of objects with properties is not implemented')
+            raise NotImplementedError('array of objects with properties is not implemented: {}'.format(repr(value)))
         if 'items' in value['items']:
-            raise NotImplementedError('array of arrays with items is not implemented')
+            raise NotImplementedError('array of arrays with items is not implemented: {}'.format(repr(value)))
 
-        subtypes = ' / '.join('{}s'.format(_type) for _type in _get_types(value['items']))
+        subtypes = ' / '.join('{}s'.format(_type) for _type in _get_types(value['items'], lang))
         if subtypes:
             types = [gettext('array of %(subtypes)s') % {'subtypes': subtypes}]
 
     return types
 
 
-def _get_ocds_release_schema_definitions():
+def _ocds_release_schema_definitions(lang):
     """
     Returns the names of the definitions in the OCDS release schema.
     """
-    return list(_get_ocds_release_schema()['definitions'])
+    return list(_ocds_release_schema(lang)['definitions'])
 
 
 @lru_cache()
-def _get_ocds_release_schema():
+def _ocds_release_schema(lang):
     """
-    Returns the OCDS release schema.
+    Returns the translated OCDS release schema.
     """
-    return requests.get(RELEASE_SCHEMA_URL).json()
+    return requests.get(_ocds_release_schema_url(lang)).json()
+
+
+def _ocds_release_schema_url(lang):
+    return '{}/{}/release-schema.json'.format(OCDS_BASE_URL, lang)
+
+
+def _ocds_release_schema_reference_url(lang):
+    return '{}/{}/schema/reference/'.format(OCDS_BASE_URL, lang)

@@ -37,6 +37,33 @@
         {{ definition }}
       </h3>
 
+      {{ schema_table(rows) }}
+  {% endfor %}
+
+  {% if removed_fields %}
+      <h3 id="removed-fields">
+        {{ _("Removed fields") }}
+      </h3>
+
+    {% if 'active' in removed_fields %}
+      <p>
+        {{ _("The extension removes the following fields from the release schema:") }}
+      </p>
+
+      {{ schema_table(removed_fields.active, removed=true) }}
+    {% endif %}
+
+    {% if 'deprecated' in removed_fields %}
+      <p>
+        {{ _("The extension removes the following <em>deprecated</em> fields from the release schema:") }}
+      </p>
+
+      {{ schema_table(removed_fields.deprecated, removed=true) }}
+    {% endif %}
+  {% endif %}
+{% endblock %}
+
+{% macro schema_table(rows, removed=false) %}
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
@@ -57,61 +84,28 @@
         <tbody>
     {% for row in rows %}
           <tr>
+      {% if removed %}
+            <td>
+              {{ row[1]|safe }}
+            </td>
+      {% else %}
             <td id="{{ definition }}{{ row[0] }}">
               <code>
-                {{ row[0][1:] }}
+                {{ row[1][1:] }}
               </code>
             </td>
+      {% endif %}
             <td>
-              {{ row[1] }}
+              {{ row[2] }}
             </td>
             <td>
-              {{ row[2]|safe }}
+              {{ row[3]|safe }}
             </td>
             <td>
-              {{ row[3]|join(' or ')|safe }}
+              {{ row[4]|safe }}
             </td>
           </tr>
     {% endfor %}
         </tbody>
       </table>
-  {% endfor %}
-
-  {% if removed_fields %}
-      <h3 id="removed-fields">
-        {{ _("Removed fields") }}
-      </h3>
-
-    {% if 'active' in removed_fields %}
-      <p>
-        {{ _("The extension removes the following fields from the release schema:") }}
-      </p>
-
-      <ul>
-      {% for field in removed_fields.active %}
-        <li>
-          <code>
-            {{ field[1:] }}
-          </code>
-        </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-
-    {% if 'deprecated' in removed_fields %}
-      <p>
-        {{ _("The extension removes the following <em>deprecated</em> fields from the release schema:") }}
-      </p>
-
-      <ul>
-      {% for field in removed_fields.deprecated %}
-        <li>
-          <code>
-            {{ field[1:] }}
-          </code>
-        </li>
-      {% endfor %}
-      </ul>
-    {% endif %}
-  {% endif %}
-{% endblock %}
+{% endmacro %}
