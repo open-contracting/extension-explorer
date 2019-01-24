@@ -245,7 +245,7 @@ def get_codelist_tables(extension_version, lang):
 def get_removed_fields(extension_version, lang):
     """
     Returns a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition", "path", "title", "description", "types" and "url" keys. All values are translated.
+    dictionary with "definition", "path" and "url" (if available) keys. All values are translated.
     """
     tables = defaultdict(list)
 
@@ -274,7 +274,7 @@ def get_removed_fields(extension_version, lang):
 
         del field['pointer']
 
-        tables[key].append(_add_title_description_types(field, value, lang))
+        tables[key].append(field)
 
     return tables
 
