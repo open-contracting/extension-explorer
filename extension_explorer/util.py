@@ -177,10 +177,11 @@ def highlight_json(html):
 
 def get_codelist_tables(extension_version, lang):
     """
-    Returns a list of tables, one per codelist. Each item is a list of the codelist's name, translated fieldnames, and
-    and translated rows. Each row is a dictionary with up to three keys: 'code', 'title' and 'content'. The 'content'
-    value is a dictionary with 'description' and 'attributes' keys. The 'description' value is the Description column
-    value rendered from Markdown. The 'attributes' value is a dictionary of additional column headers and values.
+    Returns a list of tables, one per codelist. Each item is a list of the codelist's name, basename, documentation URL
+    (if patched), translated fieldnames, and and translated rows. Each row is a dictionary with up to three keys:
+    'code', 'title' and 'content'. The 'content' value is a dictionary with 'description' and 'attributes' keys. The
+    'description' value is the Description column value rendered from Markdown. The 'attributes' value is a dictionary
+    of additional column headers and values.
     """
     tables = []
 
@@ -243,41 +244,37 @@ def get_codelist_tables(extension_version, lang):
 
 def get_removed_fields(extension_version, lang):
     """
-    Returns a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a tuple:
-    (definition, path, title, description, types). All values are translated.
+    Returns a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
+    dictionary with "definition", "path", "title", "description", "types" and "url" keys. All values are translated.
     """
     tables = defaultdict(list)
 
     release_schema_reference_url = _ocds_release_schema_reference_url(lang)
-    template = '#release-schema.json,{},{}'
+    template = '{}#release-schema.json,{},{}'
 
     release_schema = _ocds_release_schema(lang)
-    for definition, pointer, path in _get_removed_fields(extension_version['schemas']['release-schema.json'][lang]):
-        anchor = None
+    for field in _get_removed_fields(extension_version['schemas']['release-schema.json'][lang]):
         try:
-            value = jsonpointer.resolve_pointer(release_schema, pointer)
+            value = jsonpointer.resolve_pointer(release_schema, field['pointer'])
 
             # OCDS 1.1 doesn't list OrganizationReference's fields.
-            if definition != 'OrganizationReference':
-                if definition:
-                    definition_pointer = '/definitions/{}'.format(definition)
+            if field['definition'] != 'OrganizationReference':
+                if field['definition']:
+                    definition_pointer = '/definitions/{}'.format(field['definition'])
                 else:
                     definition_pointer = ''
-                anchor = template.format(definition_pointer, pointer.rsplit('/', 1)[-1])
+                field['url'] = template.format(release_schema_reference_url, definition_pointer, field['pointer'].rsplit('/', 1)[-1])
         except jsonpointer.JsonPointerException:
             value = {}
-
-        path = '<code>{}</code>'.format(path[1:].replace('.', '.<wbr>'))
-        if anchor:
-            path = '<a href="{}{}">{}</a>'.format(release_schema_reference_url, anchor, path)
 
         if value.get('deprecated'):
             key = 'deprecated'
         else:
             key = 'active'
 
-        title, description, types = _get_title_description_types(value, lang)
-        tables[key].append((definition, path, title, description, types))
+        del field['pointer']
+
+        tables[key].append(_add_title_description_types(field, value, lang))
 
     return tables
 
@@ -291,7 +288,7 @@ def _get_removed_fields(schema, pointer='', path='', definition=None):
         new_path = path + key
 
         if value is None:
-            yield (definition, new_pointer, new_path)
+            yield {'definition': definition, 'pointer': new_pointer, 'path': new_path}
         elif 'properties' in value:
             yield from _get_removed_fields(value, pointer=new_pointer, path=new_path, definition=definition)
 
@@ -304,23 +301,22 @@ def _get_removed_fields(schema, pointer='', path='', definition=None):
 
 def get_schema_tables(extension_version, lang):
     """
-    Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a tuple:
-    (definition, path, title, description, types). All values are translated.
+    Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
+    dictionary with "definition", "path", "title", "description", and "types" keys. All values are translated.
+
+    The "description" (rendered from Markdown) and "types" values may contain HTML. The "description" includes any
+    deprecation information.
     """
     tables = defaultdict(list)
 
-    for definition, *rest in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang], lang):
-        tables[definition].append((definition, *rest))
+    for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang], lang):
+        tables[field['definition']].append(field)
 
     return tables
 
 
 # This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
 def _get_schema_fields(schema, lang, path='', definition=None):
-    """
-    For each field in the release schema, yields (definition, path, title, description, types). Renders the
-    description from Markdown. Adds deprecation information to the field's description.
-    """
     path += '.'
 
     if definition is None:
@@ -333,8 +329,7 @@ def _get_schema_fields(schema, lang, path='', definition=None):
 
         new_path = path + key
 
-        title, description, types = _get_title_description_types(value, lang)
-        yield (definition, new_path, title, description, types)
+        yield _add_title_description_types({'definition': definition, 'path': new_path}, value, lang)
 
         if 'properties' in value:
             yield from _get_schema_fields(value, lang, path=new_path, definition=definition)
@@ -345,10 +340,10 @@ def _get_schema_fields(schema, lang, path='', definition=None):
         yield from _get_schema_fields(value, lang, definition=key)
 
 
-def _get_title_description_types(value, lang):
-    title = value.get('title', '')
-    description = value.get('description', '')
-    types = _get_types(value, lang)
+def _add_title_description_types(field, value, lang):
+    field['title'] = value.get('title', '')
+    field['description'] = value.get('description', '')
+    field['types'] = gettext(' or ').join(_get_types(value, lang))
 
     if 'deprecated' in value:
         deprecated = value['deprecated']
@@ -357,9 +352,11 @@ def _get_title_description_types(value, lang):
             message = '**{}**: {}'.format(label, deprecated['description'])
         else:
             message = '*{}*'.format(gettext('Undeprecated'))
-        description += '\n\n{}'.format(message)
+        field['description'] += '\n\n{}'.format(message)
 
-    return title, commonmark(description), gettext(' or ').join(types)
+    field['description'] = commonmark(field['description'])
+
+    return field
 
 
 def _get_types(value, lang):

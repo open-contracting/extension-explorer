@@ -63,7 +63,7 @@
   {% endif %}
 {% endblock %}
 
-{% macro schema_table(rows, removed=false) %}
+{% macro schema_table(rows, removed=false) -%}
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
@@ -84,28 +84,32 @@
         <tbody>
     {% for row in rows %}
           <tr>
-      {% if removed %}
-            <td>
-              {{ row[1]|safe }}
-            </td>
+            <td{% if not removed %} id="{{ row.definition }}{{ row.path }}"{% endif %}>
+      {% if row.url %}
+              <a href="{{ row.url }}">
+              {{ path(row) }}
+              </a>
       {% else %}
-            <td id="{{ definition }}{{ row[0] }}">
-              <code>
-                {{ row[1][1:] }}
-              </code>
-            </td>
+              {{ path(row) }}
       {% endif %}
-            <td>
-              {{ row[2] }}
             </td>
             <td>
-              {{ row[3]|safe }}
+              {{ row.title }}
             </td>
             <td>
-              {{ row[4]|safe }}
+              {{ row.description|safe }}
+            </td>
+            <td>
+              {{ row.types|safe }}
             </td>
           </tr>
     {% endfor %}
         </tbody>
       </table>
-{% endmacro %}
+{%- endmacro %}
+
+{% macro path(row) -%}
+              <code>
+                {{ row.path[1:]|replace('.', '.<wbr>'|safe) }}
+              </code>
+{%- endmacro %}
