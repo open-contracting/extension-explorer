@@ -5,6 +5,7 @@ Flask-Env
 Flask-Babel
 Frozen-Flask
 gunicorn
+jsonpointer
 libsass
 lxml
 ocdsextensionregistry[cli]>=0.0.8

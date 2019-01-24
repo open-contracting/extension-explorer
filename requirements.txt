@@ -22,6 +22,7 @@ imagesize==1.1.0
 itsdangerous==1.1.0
 Jinja2==2.10
 json-merge-patch==0.2
+jsonpointer==2.0
 libsass==0.17.0
 lxml==4.3.0
 MarkupSafe==1.1.0

@@ -4,7 +4,8 @@ from copy import deepcopy
 import pytest
 
 from extension_explorer.util import (get_extensions, set_tags, get_present_and_historical_versions, identify_headings,
-                                     highlight_json, get_schema_tables, get_codelist_tables, commonmark)
+                                     highlight_json, get_removed_fields, get_schema_tables, get_codelist_tables,
+                                     commonmark)
 
 extension_version_template = {
     "schemas": {
@@ -70,9 +71,11 @@ release_schema = {
                     "properties": {
                         "subsubfield": {
                             "description": "*Subsubfield*"
-                        }
+                        },
+                        "subsubremoved": None
                     }
-                }
+                },
+                "subremoved": None
             }
         },
         "undeprecated": {
@@ -86,7 +89,8 @@ release_schema = {
                 "description": "Field has been deprecated because **reasons**.",
                 "deprecatedVersion": "1.1"
             }
-        }
+        },
+        "removed": None
     },
     "definitions": {
         "Asset": {
@@ -101,7 +105,8 @@ release_schema = {
                         "null",
                         None
                     ]
-                }
+                },
+                "removed": None
             }
         }
     }
@@ -228,6 +233,22 @@ def test_get_present_and_historical_versions_live():
     assert historical_versions == [('live', '')]
 
 
+def test_get_removed_fields():
+    extension_version = deepcopy(extension_version_template)
+    extension_version['schemas']['release-schema.json']['en'] = release_schema
+
+    fields = get_removed_fields(extension_version, 'en')
+
+    assert fields == {
+        'active': [
+            '.field.subfield.subsubremoved',
+            '.field.subremoved',
+            '.removed',
+            '.Asset.removed',
+        ],
+    }
+
+
 def test_get_schema_tables():
     extension_version = deepcopy(extension_version_template)
     extension_version['schemas']['release-schema.json']['en'] = release_schema
@@ -236,20 +257,20 @@ def test_get_schema_tables():
 
     assert dict(tables) == {
         'Asset': [
-            ['field', 'Title', '<p>Description</p>\n', ['string', 'integer']],
+            ['.field', 'Title', '<p>Description</p>\n', ['string', 'integer']],
         ],
         'Release': [
-            ['empty', '', '', ['string']],
-            ['array', 'Array', '', ['array of strings / integers']],
-            ['ref', 'Asset', '', ['<a href="#asset">Asset</a> object']],
-            ['refArray', 'Assets', '', ['array of <a href="#asset">Asset</a> objects']],
-            ['null', 'Null', '', []],
-            ['external', 'External', '', ['<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object']],  # noqa
-            ['field', 'Field', '', ['object']],
-            ['field/subfield', '', '<p>Subfield</p>\n', ['object']],
-            ['field/subfield/subsubfield', '', '<p><em>Subsubfield</em></p>\n', []],
-            ['undeprecated', '', '<p><em>Undeprecated</em></p>\n', []],
-            ['deprecated', 'Deprecated', '<p>Description</p>\n<p><em>Deprecated in OCDS 1.1: Field has been deprecated because <strong>reasons</strong>.</em></p>\n', ['string']],  # noqa
+            ['.empty', '', '', ['string']],
+            ['.array', 'Array', '', ['array of strings / integers']],
+            ['.ref', 'Asset', '', ['<a href="#asset">Asset</a> object']],
+            ['.refArray', 'Assets', '', ['array of <a href="#asset">Asset</a> objects']],
+            ['.null', 'Null', '', []],
+            ['.external', 'External', '', ['<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object']],  # noqa
+            ['.field', 'Field', '', ['object']],
+            ['.field.subfield', '', '<p>Subfield</p>\n', ['object']],
+            ['.field.subfield.subsubfield', '', '<p><em>Subsubfield</em></p>\n', []],
+            ['.undeprecated', '', '<p><em>Undeprecated</em></p>\n', []],
+            ['.deprecated', 'Deprecated', '<p>Description</p>\n<p><em>Deprecated in OCDS 1.1: Field has been deprecated because <strong>reasons</strong>.</em></p>\n', ['string']],  # noqa
         ],
     }
 
@@ -275,7 +296,7 @@ def test_get_schema_tables_mixed_array_success():
 
     assert dict(tables) == {
         'Release': [
-            ['nullArray', 'Array', '', ['array of strings']],
+            ['.nullArray', 'Array', '', ['array of strings']],
         ]
     }
 

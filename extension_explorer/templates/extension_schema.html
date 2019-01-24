@@ -16,6 +16,13 @@
               </a>
             </li>
   {% endfor %}
+  {% if removed_fields %}
+            <li>
+              <a href="#removed-fields">
+                {{ _("Removed fields") }}
+              </a>
+            </li>
+  {% endif %}
           </ul>
         </div>
 {% endblock %}
@@ -52,7 +59,7 @@
           <tr>
             <td id="{{ definition }}/{{ row[0] }}">
               <code>
-                {{ row[0] }}
+                {{ row[0][1:] }}
               </code>
             </td>
             <td>
@@ -69,4 +76,42 @@
         </tbody>
       </table>
   {% endfor %}
+
+  {% if removed_fields %}
+      <h3 id="removed-fields">
+        {{ _("Removed fields") }}
+      </h3>
+
+    {% if 'active' in removed_fields %}
+      <p>
+        {{ _("The extension removes the following fields from the release schema:") }}
+      </p>
+
+      <ul>
+      {% for field in removed_fields.active %}
+        <li>
+          <code>
+            {{ field[1:] }}
+          </code>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if 'deprecated' in removed_fields %}
+      <p>
+        {{ _("The extension removes the following <em>deprecated</em> fields from the release schema:") }}
+      </p>
+
+      <ul>
+      {% for field in removed_fields.deprecated %}
+        <li>
+          <code>
+            {{ field[1:] }}
+          </code>
+        </li>
+      {% endfor %}
+      </ul>
+    {% endif %}
+  {% endif %}
 {% endblock %}

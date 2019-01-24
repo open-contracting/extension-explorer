@@ -7,6 +7,7 @@ import warnings
 from collections import defaultdict, OrderedDict
 from functools import lru_cache
 
+import jsonpointer
 import lxml.html
 import requests
 from CommonMark import DocParser, HTMLRenderer
@@ -37,7 +38,6 @@ def commonmark(text):
         return renderer.render(ast)
 
 
-@lru_cache()
 def get_extension_explorer_data_filename():
     """
     Returns the data file's path. Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
@@ -230,10 +230,51 @@ def get_codelist_tables(extension_version, lang):
     return tables
 
 
+def get_removed_fields(extension_version, lang):
+    """
+    Returns a dictionary of lists of paths for removed fields.
+    """
+    paths = defaultdict(list)
+
+    release_schema = _get_ocds_release_schema()
+    for pointer, path in _get_removed_fields(extension_version['schemas']['release-schema.json'][lang]):
+        try:
+            if jsonpointer.resolve_pointer(release_schema, pointer).get('deprecated'):
+                key = 'deprecated'
+            else:
+                key = 'active'
+        except jsonpointer.JsonPointerException:
+            key = 'active'
+
+        paths[key].append(path)
+
+    return paths
+
+
+def _get_removed_fields(schema, pointer='', path=''):
+    pointer += '/'
+    path += '.'
+
+    for key, value in schema.get('properties', {}).items():
+        new_pointer = pointer + 'properties/' + key
+        new_path = path + key
+
+        if value is None:
+            yield (new_pointer, new_path)
+        elif 'properties' in value:
+            yield from _get_removed_fields(value, pointer=new_pointer, path=new_path)
+
+    for key, value in schema.get('definitions', {}).items():
+        new_pointer = pointer + 'definitions/' + key
+        new_path = path + key
+
+        yield from _get_removed_fields(value, pointer=new_pointer, path=new_path)
+
+
 def get_schema_tables(extension_version, lang):
     """
     Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a tuple:
-    (definition, pointer, title, description, types). All values are translated.
+    (definition, path, title, description, types). All values are translated.
     """
     tables = defaultdict(list)
 
@@ -244,24 +285,22 @@ def get_schema_tables(extension_version, lang):
 
 
 # This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
-def _get_schema_fields(schema, pointer='', definition=None):
+def _get_schema_fields(schema, path='', definition=None):
     """
-    For each field in the release schema, yields (definition, pointer, title, description, types). Renders the
+    For each field in the release schema, yields (definition, path, title, description, types). Renders the
     description from Markdown. Adds deprecation information to the field's description.
     """
+    path += '.'
+
     if definition is None:
         definition = gettext('Release')
-
-    # Omit the initial "/" for brevity.
-    if pointer:
-        pointer += '/'
 
     for key, value in schema.get('properties', {}).items():
         # If the extension deletes fields.
         if value is None:
             continue
 
-        new_pointer = pointer + key
+        new_path = path + key
         title = value.get('title', '')
         description = value.get('description', '')
         types = _get_types(value)
@@ -274,10 +313,12 @@ def _get_schema_fields(schema, pointer='', definition=None):
                 message = gettext('Undeprecated')
             description += '\n\n*{}*'.format(message)
 
-        yield (definition, new_pointer, title, commonmark(description), types)
+        yield (definition, new_path, title, commonmark(description), types)
 
         if 'properties' in value:
-            yield from _get_schema_fields(value, pointer=new_pointer, definition=definition)
+            yield from _get_schema_fields(value, path=new_path, definition=definition)
+
+        # Per make_versioned_release_schema.py, un-$ref'erenced objects in arrays don't occur.
 
     for key, value in schema.get('definitions', {}).items():
         yield from _get_schema_fields(value, definition=key)
@@ -287,7 +328,7 @@ def _get_types(value):
     """
     Returns the types of the field, linking to definitions and iterating into arrays.
     """
-    definitions = _get_ocds_definitions()
+    definitions = _get_ocds_release_schema_definitions()
 
     if '$ref' in value:
         name = value['$ref'].replace('#/definitions/', '')
@@ -319,10 +360,16 @@ def _get_types(value):
     return types
 
 
-@lru_cache()
-def _get_ocds_definitions():
+def _get_ocds_release_schema_definitions():
     """
     Returns the names of the definitions in the OCDS release schema.
     """
-    schema = requests.get(RELEASE_SCHEMA_URL).json()
-    return list(schema['definitions'])
+    return list(_get_ocds_release_schema()['definitions'])
+
+
+@lru_cache()
+def _get_ocds_release_schema():
+    """
+    Returns the OCDS release schema.
+    """
+    return requests.get(RELEASE_SCHEMA_URL).json()

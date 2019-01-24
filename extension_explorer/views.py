@@ -7,8 +7,8 @@ from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
 from .util import (get_extension_explorer_data_filename, get_extensions, set_tags, get_extension_and_version,
-                   get_present_and_historical_versions, identify_headings, highlight_json, get_schema_tables,
-                   get_codelist_tables, commonmark)
+                   get_present_and_historical_versions, identify_headings, highlight_json, get_removed_fields,
+                   get_schema_tables, get_codelist_tables, commonmark)
 from .compat import replace_directives
 
 LANGS = {
@@ -131,10 +131,11 @@ def extension_schema(lang, identifier, version):
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
+    removed_fields = get_removed_fields(extension_version, lang)
 
     return render_template('extension_schema.html', lang=lang, identifier=identifier, version=version,
                            extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, tables=tables)
+                           historical_versions=historical_versions, tables=tables, removed_fields=removed_fields)
 
 
 @app.route('/<lang>/extensions/<identifier>/<version>/codelists/')
