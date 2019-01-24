@@ -74,6 +74,22 @@ python -m http.server
 
 Open <http://localhost:8000>
 
+### Manual tests
+
+The automated tests provide full code coverage, but you might still want to check pages visually. Here are a few features to check:
+
+* Schema
+  * Markdown is rendered <https://extensions.open-contracting.org/en/extensions/lots/master/schema/#Lot.status>
+  * Sub-fields are shown in tables <https://extensions.open-contracting.org/en/extensions/location/master/schema/#Location.geometry.type>
+  * Undeprecated fields are indicated <https://extensions.open-contracting.org/en/extensions/milestone_documents/master/schema/>
+  * Removed fields are listed, grouped by deprecation <https://extensions.open-contracting.org/en/extensions/ppp/master/schema/#removed-fields>
+  * Types include links to definitions in the extensions or in the standard <https://extensions.open-contracting.org/en/extensions/location/master/schema/>
+  * Types of arrays indicate the types of items <https://extensions.open-contracting.org/en/extensions/location/master/schema/#Location.geometry.coordinates>
+* Codelists
+  * Additional columns are shown <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/#documentType.csv>
+  * URLs are hyperlinked <https://extensions.open-contracting.org/en/extensions/location/master/codelists/#geometryType.csv>
+  * Subtracted codes are shown <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/#-partyRole.csv>
+
 ## Maintenance
 
 To update the requirements, delete and re-create the virtual environment, then run:

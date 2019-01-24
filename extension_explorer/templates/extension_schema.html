@@ -57,7 +57,7 @@
         <tbody>
     {% for row in rows %}
           <tr>
-            <td id="{{ definition }}/{{ row[0] }}">
+            <td id="{{ definition }}{{ row[0] }}">
               <code>
                 {{ row[0][1:] }}
               </code>
