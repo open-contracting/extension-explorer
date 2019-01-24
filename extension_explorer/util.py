@@ -20,6 +20,7 @@ from slugify import slugify
 from yaml import load
 
 OCDS_BASE_URL = 'http://standard.open-contracting.org/1.1'
+LANGUAGE_CODE_PATTERN = '_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$'  # noqa
 
 
 def commonmark(text):
@@ -322,22 +323,33 @@ def _get_schema_fields(schema, lang, path='', definition=None):
     if definition is None:
         definition = gettext('Release')
 
+    multilingual = set()
+    for key, value in schema.get('patternProperties', {}).items():
+        if LANGUAGE_CODE_PATTERN in key:
+            multilingual.add(key.replace(LANGUAGE_CODE_PATTERN, '').replace('^(', ''))
+
     for key, value in schema.get('properties', {}).items():
         # If the extension deletes fields.
         if value is None:
             continue
 
         new_path = path + key
+        field = {'definition': definition, 'path': new_path, 'multilingual': key in multilingual}
+        yield _add_title_description_types(field, value, lang)
 
-        yield _add_title_description_types({'definition': definition, 'path': new_path}, value, lang)
-
-        if 'properties' in value:
+        if 'properties' in value or 'patternProperties' in value:
             yield from _get_schema_fields(value, lang, path=new_path, definition=definition)
 
         # Per make_versioned_release_schema.py, un-$ref'erenced objects in arrays don't occur.
 
     for key, value in schema.get('definitions', {}).items():
         yield from _get_schema_fields(value, lang, definition=key)
+
+    for key, value in schema.get('patternProperties', {}).items():
+        if LANGUAGE_CODE_PATTERN not in key:
+            new_path = '{}({})'.format(path, key)
+            field = {'definition': definition, 'path': new_path, 'multilingual': False}
+            yield _add_title_description_types(field, value, lang)
 
 
 def _add_title_description_types(field, value, lang):

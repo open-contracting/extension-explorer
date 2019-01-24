@@ -86,13 +86,18 @@
     {% for field in fields %}
           <tr>
             <td{% if not removed %} id="{{ field.definition }}{{ field.path }}"{% endif %}>
-{{ path_link(field) }}
+              {{- path_link(field) }}
             </td>
             <td>
               {{ field.title }}
             </td>
             <td>
               {{ field.description|safe }}
+      {% if field.multilingual %}
+              <p class="font-italic">
+                {{ _('This field has <a href="%(url)s#multilingual-support">multilingual support</a>.', url=url_for('documentation', lang=lang)) }}
+              </p>
+      {% endif %}
             </td>
             <td>
               {{ field.types|safe }}
@@ -107,20 +112,21 @@
       <ul>
   {% for field in fields %}
         <li>
-{{ path_link(field) }}
+          {{- path_link(field) }}
         </li>
   {% endfor %}
       </ul>
 {%- endmacro %}
 
 {% macro path_link(field) %}
+
   {% if field.url %}
-              <a href="{{ field.url }}">
+            <a href="{{ field.url }}">
   {% endif %}
               <code>
                 {{ field.path[1:]|replace('.', '.<wbr>'|safe) }}
               </code>
   {% if field.url %}
-              </a>
+            </a>
   {% endif %}
 {%- endmacro %}
