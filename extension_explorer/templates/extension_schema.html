@@ -86,7 +86,15 @@
     {% for field in fields %}
           <tr>
             <td{% if not removed %} id="{{ field.definition_path }}{{ field.path }}"{% endif %}>
-              {{- path_link(field) }}
+      {% if field.url %}
+              <a href="{{ field.url }}">
+      {% endif %}
+                <code>
+                  {{ field.path[1:]|replace('.', '.<wbr>'|safe) }}
+                </code>
+      {% if field.url %}
+              </a>
+      {% endif %}
             </td>
             <td>
               {{ field.title }}
@@ -112,21 +120,16 @@
       <ul>
   {% for field in fields %}
         <li>
-          {{- path_link(field) }}
+    {% if field.url %}
+          <a href="{{ field.url }}">
+    {% endif %}
+            <code>
+              {{ field.definition_path }}{% if field.definition_path %}.<wbr>{% endif %}{{ field.path[1:]|replace('.', '.<wbr>'|safe) }}
+            </code>
+    {% if field.url %}
+          </a>
+    {% endif %}
         </li>
   {% endfor %}
       </ul>
-{%- endmacro %}
-
-{% macro path_link(field) %}
-
-  {% if field.url %}
-            <a href="{{ field.url }}">
-  {% endif %}
-              <code>
-                {{ field.path[1:]|replace('.', '.<wbr>'|safe) }}
-              </code>
-  {% if field.url %}
-            </a>
-  {% endif %}
 {%- endmacro %}

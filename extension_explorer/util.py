@@ -246,18 +246,20 @@ def get_codelist_tables(extension_version, lang):
 def get_removed_fields(extension_version, lang):
     """
     Returns a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition", "path" and "url" (if available) keys. All values are translated.
+    dictionary with "definition_path", "path" and "url" (if available) keys. All values are translated.
     """
     tables = defaultdict(list)
 
-    release_schema_reference_url = _ocds_release_schema_reference_url(lang)
     template = '{}#release-schema.json,{},{}'
-
     release_schema = _ocds_release_schema(lang)
-    for field in _get_removed_fields(extension_version['schemas']['release-schema.json'][lang]):
+    release_schema_reference_url = _ocds_release_schema_reference_url(lang)
+
+    for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
+        if field['schema']:
+            continue
+
         try:
             value = jsonpointer.resolve_pointer(release_schema, field['pointer'])
-
             # OCDS 1.1 doesn't list OrganizationReference's fields.
             if field['definition_pointer'] != '/definitions/OrganizationReference':
                 # This depends on the implementation of the `jsonschema` Sphinx directive.
@@ -271,7 +273,7 @@ def get_removed_fields(extension_version, lang):
         else:
             group = 'active'
 
-        for key in ('definition_pointer', 'pointer'):
+        for key in ('definition_pointer', 'pointer', 'schema', 'multilingual'):
             del field[key]
 
         tables[group].append(field)
@@ -279,33 +281,10 @@ def get_removed_fields(extension_version, lang):
     return tables
 
 
-def _get_removed_fields(schema, pointer='', path='', definition_pointer='', definition_path=''):
-    pointer += '/'
-    path += '.'
-
-    for key, value in schema.get('properties', {}).items():
-        new_pointer = pointer + 'properties/' + key
-        new_path = path + key
-
-        if value is None:
-            yield {'definition_pointer': definition_pointer, 'definition_path': definition_path,
-                   'pointer': new_pointer, 'path': new_path}
-        elif 'properties' in value:
-            yield from _get_removed_fields(value, pointer=new_pointer, path=new_path,
-                                           definition_pointer=definition_pointer, definition_path=definition_path)
-
-    for key, value in schema.get('definitions', {}).items():
-        new_pointer = pointer + 'definitions/' + key
-        new_path = path + key
-
-        yield from _get_removed_fields(value, pointer=new_pointer, path=new_path,
-                                       definition_pointer=new_pointer, definition_path=key)
-
-
 def get_schema_tables(extension_version, lang):
     """
     Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition", "path", "schema", "multilingual", "title", "description", and "types" keys.
+    dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", and "types" keys.
     All values are translated.
 
     The "description" (rendered from Markdown) and "types" values may contain HTML. The "description" includes any
@@ -313,18 +292,27 @@ def get_schema_tables(extension_version, lang):
     """
     tables = defaultdict(list)
 
-    for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang], lang):
-        tables[field['definition']].append(_add_title_description_types(field, field['schema'], lang))
+    for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
+        if field['schema'] is None:
+            continue
+
+        if not field['definition_path']:
+            field['definition_path'] = gettext('Release')
+
+        for key in ('definition_pointer', 'pointer'):
+            del field[key]
+
+        tables[field['definition_path']].append(_add_title_description_types(field, field['schema'], lang))
 
     return tables
 
 
 # This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
-def _get_schema_fields(schema, lang, path='', definition=None):
+def _get_schema_fields(schema, pointer='', path='', definition_pointer='', definition_path=''):
+    pointer += '/'
     path += '.'
 
-    if definition is None:
-        definition = gettext('Release')
+    template = '{}{}/{}'
 
     multilingual = set()
     for key, value in schema.get('patternProperties', {}).items():
@@ -332,25 +320,28 @@ def _get_schema_fields(schema, lang, path='', definition=None):
             multilingual.add(key.replace(LANGUAGE_CODE_PATTERN, '').replace('^(', ''))
 
     for key, value in schema.get('properties', {}).items():
-        # If the extension deletes fields.
-        if value is None:
-            continue
-
+        new_pointer = template.format(pointer, 'properties', key)
         new_path = path + key
-        yield {'definition': definition, 'path': new_path, 'schema': value, 'multilingual': key in multilingual}
+        yield {'definition_pointer': definition_pointer, 'definition_path': definition_path,
+               'pointer': new_pointer, 'path': new_path, 'schema': value, 'multilingual': key in multilingual}
 
-        if 'properties' in value or 'patternProperties' in value:
-            yield from _get_schema_fields(value, lang, path=new_path, definition=definition)
+        if value and ('properties' in value or 'patternProperties' in value):
+            yield from _get_schema_fields(value, path=new_path, definition_pointer=definition_pointer,
+                                          definition_path=definition_path)
 
         # Per make_versioned_release_schema.py, un-$ref'erenced objects in arrays don't occur.
 
     for key, value in schema.get('definitions', {}).items():
-        yield from _get_schema_fields(value, lang, definition=key)
+        new_pointer = template.format(pointer, 'definitions', key)
+        yield from _get_schema_fields(value, pointer=new_pointer, path='', definition_pointer=new_pointer,
+                                       definition_path=key)
 
     for key, value in schema.get('patternProperties', {}).items():
         if LANGUAGE_CODE_PATTERN not in key:
+            new_pointer = template.format(pointer, 'patternProperties', key)
             new_path = '{}({})'.format(path, key)
-            yield {'definition': definition, 'path': new_path, 'schema': value, 'multilingual': False}
+            yield {'definition_pointer': definition_pointer, 'definition_path': definition_path,
+                   'pointer': new_pointer, 'path': new_path, 'schema': value, 'multilingual': False}
 
 
 def _get_types(value, lang):

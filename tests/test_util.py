@@ -244,43 +244,9 @@ def test_get_removed_fields():
             {'definition_path': '', 'path': '.field.subfield.subsubremoved'},
             {'definition_path': '', 'path': '.field.subremoved'},
             {'definition_path': '', 'path': '.removed'},
-            {'definition_path': 'Asset', 'path': '.Asset.removed'},
+            {'definition_path': 'Asset', 'path': '.removed'},
         ],
     }
-
-    # Keeping test in case we switch to tables for removed fields.
-    # assert fields == {
-    #     'active': [
-    #         {
-    #             'definition': None,
-    #             'path': '.field.subfield.subsubremoved',
-    #             'title': '',
-    #             'description': '',
-    #             'types': '',
-    #         },
-    #         {
-    #             'definition': None,
-    #             'path': '.field.subremoved',
-    #             'title': '',
-    #             'description': '',
-    #             'types': '',
-    #         },
-    #         {
-    #             'definition': None,
-    #             'path': '.removed',
-    #             'title': '',
-    #             'description': '',
-    #             'types': '',
-    #         },
-    #         {
-    #             'definition': 'Asset',
-    #             'path': '.Asset.removed',
-    #             'title': '',
-    #             'description': '',
-    #             'types': '',
-    #         },
-    #     ],
-    # }
 
 
 def test_get_schema_tables():
@@ -292,7 +258,7 @@ def test_get_schema_tables():
     assert dict(tables) == {
         'Asset': [
             {
-                'definition': 'Asset',
+                'definition_path': 'Asset',
                 'path': '.field',
                 'schema': release_schema['definitions']['Asset']['properties']['field'],
                 'multilingual': False,
@@ -303,7 +269,7 @@ def test_get_schema_tables():
         ],
         'Release': [
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.empty',
                 'schema': release_schema['properties']['empty'],
                 'multilingual': False,
@@ -312,7 +278,7 @@ def test_get_schema_tables():
                 'types': 'string',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.array',
                 'schema': release_schema['properties']['array'],
                 'multilingual': False,
@@ -321,7 +287,7 @@ def test_get_schema_tables():
                 'types': 'array of strings / integers',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.ref',
                 'schema': release_schema['properties']['ref'],
                 'multilingual': False,
@@ -330,7 +296,7 @@ def test_get_schema_tables():
                 'types': '<a href="#asset">Asset</a> object',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.refArray',
                 'schema': release_schema['properties']['refArray'],
                 'multilingual': False,
@@ -339,7 +305,7 @@ def test_get_schema_tables():
                 'types': 'array of <a href="#asset">Asset</a> objects',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.null',
                 'schema': release_schema['properties']['null'],
                 'multilingual': False,
@@ -348,7 +314,7 @@ def test_get_schema_tables():
                 'types': '',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.external',
                 'schema': release_schema['properties']['external'],
                 'multilingual': False,
@@ -357,7 +323,7 @@ def test_get_schema_tables():
                 'types': '<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.field',
                 'schema': release_schema['properties']['field'],
                 'multilingual': False,
@@ -366,7 +332,7 @@ def test_get_schema_tables():
                 'types': 'object',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.field.subfield',
                 'schema': release_schema['properties']['field']['properties']['subfield'],
                 'multilingual': False,
@@ -375,7 +341,7 @@ def test_get_schema_tables():
                 'types': 'object',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.field.subfield.subsubfield',
                 'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa
                 'multilingual': False,
@@ -384,7 +350,7 @@ def test_get_schema_tables():
                 'types': '',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.undeprecated',
                 'schema': release_schema['properties']['undeprecated'],
                 'multilingual': False,
@@ -393,7 +359,7 @@ def test_get_schema_tables():
                 'types': '',
             },
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.deprecated',
                 'schema': release_schema['properties']['deprecated'],
                 'multilingual': False,
@@ -429,7 +395,7 @@ def test_get_schema_tables_mixed_array_success():
     assert dict(tables) == {
         'Release': [
             {
-                'definition': 'Release',
+                'definition_path': 'Release',
                 'path': '.nullArray',
                 'schema': schema['properties']['nullArray'],
                 'multilingual': False,
