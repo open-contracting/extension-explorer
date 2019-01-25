@@ -241,36 +241,46 @@ def test_get_removed_fields():
 
     assert fields == {
         'active': [
-            {
-                'definition': None,
-                'path': '.field.subfield.subsubremoved',
-                'title': '',
-                'description': '',
-                'types': '',
-            },
-            {
-                'definition': None,
-                'path': '.field.subremoved',
-                'title': '',
-                'description': '',
-                'types': '',
-            },
-            {
-                'definition': None,
-                'path': '.removed',
-                'title': '',
-                'description': '',
-                'types': '',
-            },
-            {
-                'definition': 'Asset',
-                'path': '.Asset.removed',
-                'title': '',
-                'description': '',
-                'types': '',
-            },
+            {'definition': None, 'path': '.field.subfield.subsubremoved'},
+            {'definition': None, 'path': '.field.subremoved'},
+            {'definition': None, 'path': '.removed'},
+            {'definition': 'Asset', 'path': '.Asset.removed'},
         ],
     }
+
+    # Keeping test in case we switch to tables for removed fields.
+    # assert fields == {
+    #     'active': [
+    #         {
+    #             'definition': None,
+    #             'path': '.field.subfield.subsubremoved',
+    #             'title': '',
+    #             'description': '',
+    #             'types': '',
+    #         },
+    #         {
+    #             'definition': None,
+    #             'path': '.field.subremoved',
+    #             'title': '',
+    #             'description': '',
+    #             'types': '',
+    #         },
+    #         {
+    #             'definition': None,
+    #             'path': '.removed',
+    #             'title': '',
+    #             'description': '',
+    #             'types': '',
+    #         },
+    #         {
+    #             'definition': 'Asset',
+    #             'path': '.Asset.removed',
+    #             'title': '',
+    #             'description': '',
+    #             'types': '',
+    #         },
+    #     ],
+    # }
 
 
 def test_get_schema_tables():
@@ -284,6 +294,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Asset',
                 'path': '.field',
+                'schema': release_schema['definitions']['Asset']['properties']['field'],
+                'multilingual': False,
                 'title': 'Title',
                 'description': '<p>Description</p>\n',
                 'types': 'string or integer',
@@ -293,6 +305,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.empty',
+                'schema': release_schema['properties']['empty'],
+                'multilingual': False,
                 'title': '',
                 'description': '',
                 'types': 'string',
@@ -300,6 +314,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.array',
+                'schema': release_schema['properties']['array'],
+                'multilingual': False,
                 'title': 'Array',
                 'description': '',
                 'types': 'array of strings / integers',
@@ -307,6 +323,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.ref',
+                'schema': release_schema['properties']['ref'],
+                'multilingual': False,
                 'title': 'Asset',
                 'description': '',
                 'types': '<a href="#asset">Asset</a> object',
@@ -314,6 +332,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.refArray',
+                'schema': release_schema['properties']['refArray'],
+                'multilingual': False,
                 'title': 'Assets',
                 'description': '',
                 'types': 'array of <a href="#asset">Asset</a> objects',
@@ -321,6 +341,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.null',
+                'schema': release_schema['properties']['null'],
+                'multilingual': False,
                 'title': 'Null',
                 'description': '',
                 'types': '',
@@ -328,6 +350,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.external',
+                'schema': release_schema['properties']['external'],
+                'multilingual': False,
                 'title': 'External',
                 'description': '',
                 'types': '<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa
@@ -335,6 +359,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.field',
+                'schema': release_schema['properties']['field'],
+                'multilingual': False,
                 'title': 'Field',
                 'description': '',
                 'types': 'object',
@@ -342,6 +368,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.field.subfield',
+                'schema': release_schema['properties']['field']['properties']['subfield'],
+                'multilingual': False,
                 'title': '',
                 'description': '<p>Subfield</p>\n',
                 'types': 'object',
@@ -349,6 +377,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.field.subfield.subsubfield',
+                'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa
+                'multilingual': False,
                 'title': '',
                 'description': '<p><em>Subsubfield</em></p>\n',
                 'types': '',
@@ -356,6 +386,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.undeprecated',
+                'schema': release_schema['properties']['undeprecated'],
+                'multilingual': False,
                 'title': '',
                 'description': '<p><em>Undeprecated</em></p>\n',
                 'types': '',
@@ -363,6 +395,8 @@ def test_get_schema_tables():
             {
                 'definition': 'Release',
                 'path': '.deprecated',
+                'schema': release_schema['properties']['deprecated'],
+                'multilingual': False,
                 'title': 'Deprecated',
                 'description': '<p>Description</p>\n<p><strong>Deprecated in OCDS 1.1</strong>: Field has been deprecated because <strong>reasons</strong>.</p>\n',  # noqa
                 'types': 'string',
@@ -372,8 +406,7 @@ def test_get_schema_tables():
 
 
 def test_get_schema_tables_mixed_array_success():
-    extension_version = deepcopy(extension_version_template)
-    extension_version['schemas']['release-schema.json']['en'] = {
+    schema = {
         "properties": {
             "nullArray": {
                 "title": "Array",
@@ -388,6 +421,9 @@ def test_get_schema_tables_mixed_array_success():
         }
     }
 
+    extension_version = deepcopy(extension_version_template)
+    extension_version['schemas']['release-schema.json']['en'] = schema
+
     tables = get_schema_tables(extension_version, 'en')
 
     assert dict(tables) == {
@@ -395,6 +431,8 @@ def test_get_schema_tables_mixed_array_success():
             {
                 'definition': 'Release',
                 'path': '.nullArray',
+                'schema': schema['properties']['nullArray'],
+                'multilingual': False,
                 'title': 'Array',
                 'description': '',
                 'types': 'array of strings',

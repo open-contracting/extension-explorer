@@ -264,7 +264,8 @@ def get_removed_fields(extension_version, lang):
                     definition_pointer = '/definitions/{}'.format(field['definition'])
                 else:
                     definition_pointer = ''
-                field['url'] = template.format(release_schema_reference_url, definition_pointer, field['pointer'].rsplit('/', 1)[-1])
+                field['url'] = template.format(release_schema_reference_url, definition_pointer,
+                                               field['pointer'].rsplit('/', 1)[-1])
         except jsonpointer.JsonPointerException:
             value = {}
 
@@ -303,7 +304,8 @@ def _get_removed_fields(schema, pointer='', path='', definition=None):
 def get_schema_tables(extension_version, lang):
     """
     Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition", "path", "title", "description", and "types" keys. All values are translated.
+    dictionary with "definition", "path", "schema", "multilingual", "title", "description", and "types" keys.
+    All values are translated.
 
     The "description" (rendered from Markdown) and "types" values may contain HTML. The "description" includes any
     deprecation information.
@@ -311,7 +313,7 @@ def get_schema_tables(extension_version, lang):
     tables = defaultdict(list)
 
     for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang], lang):
-        tables[field['definition']].append(field)
+        tables[field['definition']].append(_add_title_description_types(field, field['schema'], lang))
 
     return tables
 
@@ -334,8 +336,7 @@ def _get_schema_fields(schema, lang, path='', definition=None):
             continue
 
         new_path = path + key
-        field = {'definition': definition, 'path': new_path, 'multilingual': key in multilingual}
-        yield _add_title_description_types(field, value, lang)
+        yield {'definition': definition, 'path': new_path, 'schema': value, 'multilingual': key in multilingual}
 
         if 'properties' in value or 'patternProperties' in value:
             yield from _get_schema_fields(value, lang, path=new_path, definition=definition)
@@ -348,8 +349,7 @@ def _get_schema_fields(schema, lang, path='', definition=None):
     for key, value in schema.get('patternProperties', {}).items():
         if LANGUAGE_CODE_PATTERN not in key:
             new_path = '{}({})'.format(path, key)
-            field = {'definition': definition, 'path': new_path, 'multilingual': False}
-            yield _add_title_description_types(field, value, lang)
+            yield {'definition': definition, 'path': new_path, 'schema': value, 'multilingual': False}
 
 
 def _add_title_description_types(field, value, lang):
@@ -451,12 +451,16 @@ def _ocds_release_schema(lang):
 
 
 def _ocds_release_schema_url(lang):
-    return '{}/{}/release-schema.json'.format(OCDS_BASE_URL, lang)
+    return _ocds_documentation_url('{}/{}/release-schema.json', lang)
 
 
 def _ocds_release_schema_reference_url(lang):
-    return '{}/{}/schema/reference/'.format(OCDS_BASE_URL, lang)
+    return _ocds_documentation_url('{}/{}/schema/reference/', lang)
 
 
 def _ocds_codelist_reference_url(lang):
-    return '{}/{}/schema/codelists/'.format(OCDS_BASE_URL, lang)
+    return _ocds_documentation_url('{}/{}/schema/codelists/', lang)
+
+
+def _ocds_documentation_url(template, lang):
+    return template.format(OCDS_BASE_URL, lang)
