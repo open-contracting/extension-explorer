@@ -250,9 +250,7 @@ def get_removed_fields(extension_version, lang):
     """
     tables = defaultdict(list)
 
-    template = '{}#release-schema.json,{},{}'
     release_schema = _ocds_release_schema(lang)
-    release_schema_reference_url = _ocds_release_schema_reference_url(lang)
 
     for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
         if field['schema']:
@@ -260,11 +258,7 @@ def get_removed_fields(extension_version, lang):
 
         try:
             value = jsonpointer.resolve_pointer(release_schema, field['pointer'])
-            # OCDS 1.1 doesn't list OrganizationReference's fields.
-            if field['definition_pointer'] != '/definitions/OrganizationReference':
-                # This depends on the implementation of the `jsonschema` Sphinx directive.
-                field['url'] = template.format(release_schema_reference_url, field['definition_pointer'],
-                                               field['pointer'].rsplit('/', 1)[-1])
+            field['url'] = _ocds_release_reference_field_anchor(field['definition_pointer'], field['pointer'], lang)
         except jsonpointer.JsonPointerException:
             value = {}
 
@@ -273,8 +267,8 @@ def get_removed_fields(extension_version, lang):
         else:
             group = 'active'
 
-        for key in ('definition_pointer', 'pointer', 'schema', 'multilingual'):
-            del field[key]
+        for k in ('definition_pointer', 'pointer', 'schema', 'multilingual'):
+            del field[k]
 
         tables[group].append(field)
 
@@ -284,25 +278,33 @@ def get_removed_fields(extension_version, lang):
 def get_schema_tables(extension_version, lang):
     """
     Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", and "types" keys.
-    All values are translated.
+    dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", "types" and "url" (if
+    available) keys. All values are translated.
 
     The "description" (rendered from Markdown) and "types" values may contain HTML. The "description" includes any
     deprecation information.
     """
-    tables = defaultdict(list)
+    tables = {}
+
+    definitions = _ocds_release_schema_definitions(lang)
 
     for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
         if field['schema'] is None:
             continue
 
-        if not field['definition_path']:
-            field['definition_path'] = gettext('Release')
+        key = field['definition_path']
+        if not key:
+            key = gettext('Release')
+        if key not in tables:
+            tables[key] = {'fields': []}
 
-        for key in ('definition_pointer', 'pointer'):
-            del field[key]
+        if field['definition_path'] in definitions:
+            tables[key]['url'] = _ocds_release_reference_definition_anchor(field['definition_path'], lang)
 
-        tables[field['definition_path']].append(_add_title_description_types(field, field['schema'], lang))
+        for k in ('definition_pointer', 'pointer'):
+            del field[k]
+
+        tables[key]['fields'].append(_add_title_description_types(field, field['schema'], lang))
 
     return tables
 
@@ -334,7 +336,7 @@ def _get_schema_fields(schema, pointer='', path='', definition_pointer='', defin
     for key, value in schema.get('definitions', {}).items():
         new_pointer = template.format(pointer, 'definitions', key)
         yield from _get_schema_fields(value, pointer=new_pointer, path='', definition_pointer=new_pointer,
-                                       definition_path=key)
+                                      definition_path=key)
 
     for key, value in schema.get('patternProperties', {}).items():
         if LANGUAGE_CODE_PATTERN not in key:
@@ -353,7 +355,7 @@ def _get_types(value, lang):
     if '$ref' in value:
         name = value['$ref'].replace('#/definitions/', '')
         if name in definitions:
-            url = _ocds_release_schema_reference_url(lang)
+            url = _ocds_release_reference_url(lang)
         else:
             url = ''
         return ['<a href="{}#{}">{}</a> {}'.format(url, name.lower(), name, gettext('object'))]
@@ -434,6 +436,21 @@ def _ocds_codelist_names_recursive(data):
     return codelists
 
 
+def _ocds_release_reference_definition_anchor(definition, lang):
+    url = _ocds_release_reference_url(lang)
+    return '{}#{}'.format(url, definition.lower())
+
+
+# Depends on the implementation of the `jsonschema` Sphinx directive.
+def _ocds_release_reference_field_anchor(definition_pointer, pointer, lang):
+    # OCDS 1.1 doesn't list OrganizationReference's fields.
+    if definition_pointer == '/definitions/OrganizationReference':
+        return
+
+    url = _ocds_release_reference_url(lang)
+    return '{}#release-schema.json,{},{}'.format(url, definition_pointer, pointer.rsplit('/', 1)[-1])
+
+
 @lru_cache()
 def _ocds_release_schema(lang):
     """
@@ -446,7 +463,7 @@ def _ocds_release_schema_url(lang):
     return _ocds_documentation_url('{}/{}/release-schema.json', lang)
 
 
-def _ocds_release_schema_reference_url(lang):
+def _ocds_release_reference_url(lang):
     return _ocds_documentation_url('{}/{}/schema/reference/', lang)
 
 

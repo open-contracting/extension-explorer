@@ -31,13 +31,23 @@
       <h2 class="ee-title">
         {{ _("Schema") }}
       </h2>
-  {% for definition, fields in tables.items() %}
+  {% for definition, properties in tables.items() %}
 
       <h3 id="{{ definition|lower }}">
         {{ definition }}
       </h3>
 
-      {{ schema_table(fields) }}
+      <p>
+    {% if definition == 'Release' %}
+        {{ _("The extension defines these fields in the release schema:") }}
+    {% elif properties.url %}
+        {{ _('The extension defines these fields in the existing <a href="%(url)s"><code>%(name)s</code></a> object:', url=properties.url, name=definition) }}
+    {% else %}
+        {{ _('The extension defines a new <code>%(name)s</code> object with these fields:', name=definition) }}
+    {% endif %}
+      </p>
+
+      {{ schema_table(properties.fields) }}
   {% endfor %}
 
   {% if removed_fields %}

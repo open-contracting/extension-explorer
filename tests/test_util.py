@@ -256,7 +256,7 @@ def test_get_schema_tables():
     tables = get_schema_tables(extension_version, 'en')
 
     assert dict(tables) == {
-        'Asset': [
+        'Asset': {'fields': [
             {
                 'definition_path': 'Asset',
                 'path': '.field',
@@ -266,10 +266,10 @@ def test_get_schema_tables():
                 'description': '<p>Description</p>\n',
                 'types': 'string or integer',
             },
-        ],
-        'Release': [
+        ]},
+        'Release': {'fields': [
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.empty',
                 'schema': release_schema['properties']['empty'],
                 'multilingual': False,
@@ -278,7 +278,7 @@ def test_get_schema_tables():
                 'types': 'string',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.array',
                 'schema': release_schema['properties']['array'],
                 'multilingual': False,
@@ -287,7 +287,7 @@ def test_get_schema_tables():
                 'types': 'array of strings / integers',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.ref',
                 'schema': release_schema['properties']['ref'],
                 'multilingual': False,
@@ -296,7 +296,7 @@ def test_get_schema_tables():
                 'types': '<a href="#asset">Asset</a> object',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.refArray',
                 'schema': release_schema['properties']['refArray'],
                 'multilingual': False,
@@ -305,7 +305,7 @@ def test_get_schema_tables():
                 'types': 'array of <a href="#asset">Asset</a> objects',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.null',
                 'schema': release_schema['properties']['null'],
                 'multilingual': False,
@@ -314,7 +314,7 @@ def test_get_schema_tables():
                 'types': '',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.external',
                 'schema': release_schema['properties']['external'],
                 'multilingual': False,
@@ -323,7 +323,7 @@ def test_get_schema_tables():
                 'types': '<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.field',
                 'schema': release_schema['properties']['field'],
                 'multilingual': False,
@@ -332,7 +332,7 @@ def test_get_schema_tables():
                 'types': 'object',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.field.subfield',
                 'schema': release_schema['properties']['field']['properties']['subfield'],
                 'multilingual': False,
@@ -341,7 +341,7 @@ def test_get_schema_tables():
                 'types': 'object',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.field.subfield.subsubfield',
                 'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa
                 'multilingual': False,
@@ -350,7 +350,7 @@ def test_get_schema_tables():
                 'types': '',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.undeprecated',
                 'schema': release_schema['properties']['undeprecated'],
                 'multilingual': False,
@@ -359,7 +359,7 @@ def test_get_schema_tables():
                 'types': '',
             },
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.deprecated',
                 'schema': release_schema['properties']['deprecated'],
                 'multilingual': False,
@@ -367,7 +367,7 @@ def test_get_schema_tables():
                 'description': '<p>Description</p>\n<p><strong>Deprecated in OCDS 1.1</strong>: Field has been deprecated because <strong>reasons</strong>.</p>\n',  # noqa
                 'types': 'string',
             },
-        ],
+        ]},
     }
 
 
@@ -393,9 +393,9 @@ def test_get_schema_tables_mixed_array_success():
     tables = get_schema_tables(extension_version, 'en')
 
     assert dict(tables) == {
-        'Release': [
+        'Release': {'fields': [
             {
-                'definition_path': 'Release',
+                'definition_path': '',
                 'path': '.nullArray',
                 'schema': schema['properties']['nullArray'],
                 'multilingual': False,
@@ -403,7 +403,7 @@ def test_get_schema_tables_mixed_array_success():
                 'description': '',
                 'types': 'array of strings',
             },
-        ],
+        ]},
     }
 
 
