@@ -241,10 +241,10 @@ def test_get_removed_fields():
 
     assert fields == {
         'active': [
-            {'definition': None, 'path': '.field.subfield.subsubremoved'},
-            {'definition': None, 'path': '.field.subremoved'},
-            {'definition': None, 'path': '.removed'},
-            {'definition': 'Asset', 'path': '.Asset.removed'},
+            {'definition_path': '', 'path': '.field.subfield.subsubremoved'},
+            {'definition_path': '', 'path': '.field.subremoved'},
+            {'definition_path': '', 'path': '.removed'},
+            {'definition_path': 'Asset', 'path': '.Asset.removed'},
         ],
     }
 

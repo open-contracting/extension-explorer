@@ -85,7 +85,7 @@
         <tbody>
     {% for field in fields %}
           <tr>
-            <td{% if not removed %} id="{{ field.definition }}{{ field.path }}"{% endif %}>
+            <td{% if not removed %} id="{{ field.definition_path }}{{ field.path }}"{% endif %}>
               {{- path_link(field) }}
             </td>
             <td>

@@ -259,29 +259,27 @@ def get_removed_fields(extension_version, lang):
             value = jsonpointer.resolve_pointer(release_schema, field['pointer'])
 
             # OCDS 1.1 doesn't list OrganizationReference's fields.
-            if field['definition'] != 'OrganizationReference':
-                if field['definition']:
-                    definition_pointer = '/definitions/{}'.format(field['definition'])
-                else:
-                    definition_pointer = ''
-                field['url'] = template.format(release_schema_reference_url, definition_pointer,
+            if field['definition_pointer'] != '/definitions/OrganizationReference':
+                # This depends on the implementation of the `jsonschema` Sphinx directive.
+                field['url'] = template.format(release_schema_reference_url, field['definition_pointer'],
                                                field['pointer'].rsplit('/', 1)[-1])
         except jsonpointer.JsonPointerException:
             value = {}
 
         if value.get('deprecated'):
-            key = 'deprecated'
+            group = 'deprecated'
         else:
-            key = 'active'
+            group = 'active'
 
-        del field['pointer']
+        for key in ('definition_pointer', 'pointer'):
+            del field[key]
 
-        tables[key].append(field)
+        tables[group].append(field)
 
     return tables
 
 
-def _get_removed_fields(schema, pointer='', path='', definition=None):
+def _get_removed_fields(schema, pointer='', path='', definition_pointer='', definition_path=''):
     pointer += '/'
     path += '.'
 
@@ -290,15 +288,18 @@ def _get_removed_fields(schema, pointer='', path='', definition=None):
         new_path = path + key
 
         if value is None:
-            yield {'definition': definition, 'pointer': new_pointer, 'path': new_path}
+            yield {'definition_pointer': definition_pointer, 'definition_path': definition_path,
+                   'pointer': new_pointer, 'path': new_path}
         elif 'properties' in value:
-            yield from _get_removed_fields(value, pointer=new_pointer, path=new_path, definition=definition)
+            yield from _get_removed_fields(value, pointer=new_pointer, path=new_path,
+                                           definition_pointer=definition_pointer, definition_path=definition_path)
 
     for key, value in schema.get('definitions', {}).items():
         new_pointer = pointer + 'definitions/' + key
         new_path = path + key
 
-        yield from _get_removed_fields(value, pointer=new_pointer, path=new_path, definition=key)
+        yield from _get_removed_fields(value, pointer=new_pointer, path=new_path,
+                                       definition_pointer=new_pointer, definition_path=key)
 
 
 def get_schema_tables(extension_version, lang):
@@ -352,25 +353,6 @@ def _get_schema_fields(schema, lang, path='', definition=None):
             yield {'definition': definition, 'path': new_path, 'schema': value, 'multilingual': False}
 
 
-def _add_title_description_types(field, value, lang):
-    field['title'] = value.get('title', '')
-    field['description'] = value.get('description', '')
-    field['types'] = gettext(' or ').join(_get_types(value, lang))
-
-    if 'deprecated' in value:
-        deprecated = value['deprecated']
-        if deprecated:
-            label = gettext('Deprecated in OCDS %(deprecatedVersion)s') % deprecated
-            message = '**{}**: {}'.format(label, deprecated['description'])
-        else:
-            message = '*{}*'.format(gettext('Undeprecated'))
-        field['description'] += '\n\n{}'.format(message)
-
-    field['description'] = commonmark(field['description'])
-
-    return field
-
-
 def _get_types(value, lang):
     """
     Returns the types of the field, linking to definitions and iterating into arrays.
@@ -409,6 +391,25 @@ def _get_types(value, lang):
             types = [gettext('array of %(subtypes)s') % {'subtypes': subtypes}]
 
     return types
+
+
+def _add_title_description_types(field, value, lang):
+    field['title'] = value.get('title', '')
+    field['description'] = value.get('description', '')
+    field['types'] = gettext(' or ').join(_get_types(value, lang))
+
+    if 'deprecated' in value:
+        deprecated = value['deprecated']
+        if deprecated:
+            label = gettext('Deprecated in OCDS %(deprecatedVersion)s') % deprecated
+            message = '**{}**: {}'.format(label, deprecated['description'])
+        else:
+            message = '*{}*'.format(gettext('Undeprecated'))
+        field['description'] += '\n\n{}'.format(message)
+
+    field['description'] = commonmark(field['description'])
+
+    return field
 
 
 def _ocds_release_schema_definitions(lang):
