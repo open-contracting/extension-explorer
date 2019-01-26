@@ -6,12 +6,15 @@ import os
 import re
 import warnings
 from collections import defaultdict, OrderedDict
+from copy import deepcopy
 from functools import lru_cache
 
+import json_merge_patch
 import jsonpointer
 import lxml.html
 import requests
 from CommonMark import DocParser, HTMLRenderer
+from flask import url_for
 from flask_babel import gettext
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -101,6 +104,22 @@ def get_extension_and_version(identifier, version):
     """
     extensions = get_extensions()
     return extensions[identifier], extensions[identifier]['versions'][version]
+
+
+def get_extension_version_by_base_url(base_url):
+    """
+    Returns an extension ID, given a base URL.
+    """
+    return _extension_versions_by_base_url()[base_url]
+
+
+@lru_cache()
+def _extension_versions_by_base_url():
+    mapping = {}
+    for extension in get_extensions().values():
+        for version in extension['versions'].values():
+            mapping[version['base_url']] = version
+    return mapping
 
 
 def get_present_and_historical_versions(extension):
@@ -250,14 +269,14 @@ def get_removed_fields(extension_version, lang):
     """
     tables = defaultdict(list)
 
-    release_schema = _ocds_release_schema(lang)
+    schema = _patch_schema(extension_version, lang)
 
     for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
         if field['schema']:
             continue
 
         try:
-            value = jsonpointer.resolve_pointer(release_schema, field['pointer'])
+            value = jsonpointer.resolve_pointer(schema, field['pointer'])
             field['url'] = _ocds_release_reference_field_anchor(field['definition_pointer'], field['pointer'], lang)
         except jsonpointer.JsonPointerException:
             value = {}
@@ -278,15 +297,31 @@ def get_removed_fields(extension_version, lang):
 def get_schema_tables(extension_version, lang):
     """
     Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", "types" and "url" (if
-    available) keys. All values are translated.
+    dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", "types" and "source"
+    (if available) keys. All values are translated.
 
     The "description" (rendered from Markdown) and "types" values may contain HTML. The "description" includes any
     deprecation information.
     """
     tables = {}
 
-    definitions = _ocds_release_schema_definitions(lang)
+    # Collect the sources of definitions.
+    sources = {}
+    schema = _patch_schema(extension_version, lang)
+    for name, definition in schema['definitions'].items():
+        if 'extension_explorer:source' in definition:
+            source = definition['extension_explorer:source']
+            sources[name] = {
+                'type': 'extension',
+                'url': url_for('extension_schema', **source, lang=lang, _anchor=name.lower()),
+                'extension': get_extensions()[source['identifier']]['name'][lang],
+                'extension_url': url_for('extension_documentation', **source, lang=lang),
+            }
+        else:
+            sources[name] = {
+                'type': 'core',
+                'url': _ocds_release_reference_definition_anchor(name, lang),
+            }
 
     for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
         if field['schema'] is None:
@@ -298,13 +333,28 @@ def get_schema_tables(extension_version, lang):
         if key not in tables:
             tables[key] = {'fields': []}
 
-        if field['definition_path'] in definitions:
-            tables[key]['url'] = _ocds_release_reference_definition_anchor(field['definition_path'], lang)
+        if field['definition_path'] in sources:
+            tables[key]['source'] = sources[field['definition_path']]
 
         for k in ('definition_pointer', 'pointer'):
             del field[k]
 
-        tables[key]['fields'].append(_add_title_description_types(field, field['schema'], lang))
+        field['title'] = field['schema'].get('title', '')
+        field['description'] = field['schema'].get('description', '')
+        field['types'] = gettext(' or ').join(_get_types(field['schema'], lang, sources))
+
+        if 'deprecated' in field['schema']:
+            deprecated = field['schema']['deprecated']
+            if deprecated:
+                label = gettext('Deprecated in OCDS %(deprecatedVersion)s') % deprecated
+                message = '**{}**: {}'.format(label, deprecated['description'])
+            else:
+                message = '*{}*'.format(gettext('Undeprecated'))
+            field['description'] += '\n\n{}'.format(message)
+
+        field['description'] = commonmark(field['description'])
+
+        tables[key]['fields'].append(field)
 
     return tables
 
@@ -346,19 +396,17 @@ def _get_schema_fields(schema, pointer='', path='', definition_pointer='', defin
                    'pointer': new_pointer, 'path': new_path, 'schema': value, 'multilingual': False}
 
 
-def _get_types(value, lang):
+def _get_types(value, lang, sources):
     """
     Returns the types of the field, linking to definitions and iterating into arrays.
     """
-    definitions = _ocds_release_schema_definitions(lang)
-
     if '$ref' in value:
         name = value['$ref'].replace('#/definitions/', '')
-        if name in definitions:
-            url = _ocds_release_reference_url(lang)
+        if name in sources:
+            url = sources[name]['url']
         else:
-            url = ''
-        return ['<a href="{}#{}">{}</a> {}'.format(url, name.lower(), name, gettext('object'))]
+            url = '#{}'.format(name.lower())
+        return ['<a href="{}">{}</a> {}'.format(url, name, gettext('object'))]
 
     types = value.get('type', [])
     if isinstance(types, str):
@@ -379,37 +427,11 @@ def _get_types(value, lang):
         if 'items' in value['items']:
             raise NotImplementedError('array of arrays with items is not implemented: {}'.format(repr(value)))
 
-        subtypes = ' / '.join('{}s'.format(_type) for _type in _get_types(value['items'], lang))
+        subtypes = ' / '.join('{}s'.format(_type) for _type in _get_types(value['items'], lang, sources))
         if subtypes:
             types = [gettext('array of %(subtypes)s') % {'subtypes': subtypes}]
 
     return types
-
-
-def _add_title_description_types(field, value, lang):
-    field['title'] = value.get('title', '')
-    field['description'] = value.get('description', '')
-    field['types'] = gettext(' or ').join(_get_types(value, lang))
-
-    if 'deprecated' in value:
-        deprecated = value['deprecated']
-        if deprecated:
-            label = gettext('Deprecated in OCDS %(deprecatedVersion)s') % deprecated
-            message = '**{}**: {}'.format(label, deprecated['description'])
-        else:
-            message = '*{}*'.format(gettext('Undeprecated'))
-        field['description'] += '\n\n{}'.format(message)
-
-    field['description'] = commonmark(field['description'])
-
-    return field
-
-
-def _ocds_release_schema_definitions(lang):
-    """
-    Returns the names of the definitions in the OCDS release schema.
-    """
-    return list(_ocds_release_schema(lang)['definitions'])
 
 
 def _ocds_codelist_names(lang):
@@ -451,11 +473,32 @@ def _ocds_release_reference_field_anchor(definition_pointer, pointer, lang):
     return '{}#release-schema.json,{},{}'.format(url, definition_pointer, pointer.rsplit('/', 1)[-1])
 
 
+def _patch_schema(version, lang):
+    schema = deepcopy(_ocds_release_schema(lang))
+    _patch_schema_recursive(schema, version, lang)
+    return schema
+
+
+def _patch_schema_recursive(schema, version, lang):
+    definitions = set(schema['definitions'])
+    dependencies = version['metadata'].get('dependencies', []) + version['metadata'].get('testDependencies', [])
+
+    for url in dependencies:
+        version = get_extension_version_by_base_url(url[:-14])  # remove "extension.json"
+        patch = version['schemas']['release-schema.json'][lang]
+
+        # Make it possible to determine the source of the definitions.
+        for name, definition in patch.get('definitions', {}).items():
+            if name not in definitions:
+                definition['extension_explorer:source'] = {'identifier': version['id'], 'version': version['version']}
+            definitions.add(name)
+
+        json_merge_patch.merge(schema, patch)
+        _patch_schema_recursive(schema, version, lang)
+
+
 @lru_cache()
 def _ocds_release_schema(lang):
-    """
-    Returns the translated OCDS release schema.
-    """
     return requests.get(_ocds_release_schema_url(lang)).json()
 
 

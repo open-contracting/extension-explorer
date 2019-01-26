@@ -40,8 +40,12 @@
       <p>
     {% if definition == 'Release' %}
         {{ _("The extension defines these fields in the release schema:") }}
-    {% elif properties.url %}
-        {{ _('The extension defines these fields in the existing <a href="%(url)s"><code>%(name)s</code></a> object:', url=properties.url, name=definition) }}
+    {% elif properties.source %}
+      {% if properties.source.type == 'core' %}
+        {{ _('The extension defines these fields in the <a href="%(url)s"><code>%(name)s</code></a> object from OCDS:', url=properties.source.url, name=definition) }}
+      {% elif properties.source.type == 'extension' %}
+        {{ _('The extension defines these fields in the <a href="%(url)s"><code>%(name)s</code></a> object from the <a href="%(extension_url)s">%(extension)s</a> extension:', url=properties.source.url, name=definition, extension_url=properties.source.extension_url, extension=properties.source.extension) }}
+      {% endif %}
     {% else %}
         {{ _('The extension defines a new <code>%(name)s</code> object with these fields:', name=definition) }}
     {% endif %}
@@ -57,7 +61,7 @@
 
     {% if 'active' in removed_fields %}
       <p>
-        {{ _("The extension removes the following fields from the release schema:") }}
+        {{ _("The extension removes these fields from the release schema:") }}
       </p>
 
       {{ field_list(removed_fields.active) }}
@@ -65,7 +69,7 @@
 
     {% if 'deprecated' in removed_fields %}
       <p>
-        {{ _("The extension removes the following <em>deprecated</em> fields from the release schema:") }}
+        {{ _("The extension removes these <em>deprecated</em> fields from the release schema:") }}
       </p>
 
       {{ field_list(removed_fields.deprecated) }}

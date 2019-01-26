@@ -82,15 +82,17 @@ The automated tests provide full code coverage, but you might still want to chec
   * The `list-table` Sphinx directive is rendered <https://extensions.open-contracting.org/en/extensions/budget_project/master/#guidance>
   * The `extensiontable` Sphinx directive is linked <https://extensions.open-contracting.org/en/extensions/lots/master/#schema>
 * Schema
-  * Paragraphs include links to existing definitions <https://extensions.open-contracting.org/en/extensions/additionalContactPoint/master/schema/#organization>
-  * Markdown is rendered <https://extensions.open-contracting.org/en/extensions/lots/master/schema/#Lot.status>
+  * Paragraphs include links to existing definitions from:
+    * the standard <https://extensions.open-contracting.org/en/extensions/additionalContactPoint/master/schema/#organization>
+    * other extensions <https://extensions.open-contracting.org/en/extensions/ppp/master/schema/>
   * The following fields are shown in tables:
     * Sub-fields <https://extensions.open-contracting.org/en/extensions/location/master/schema/#Location.geometry.type>
     * Pattern properties <https://extensions.open-contracting.org/en/extensions/metrics/master/schema/#Observation.dimensions.(^.*)>
-  * The following are indicated about fields:
-    * Whether undeprecated <https://extensions.open-contracting.org/en/extensions/milestone_documents/master/schema/>
-    * Multilingual support <https://extensions.open-contracting.org/en/extensions/budget_project/master/schema/#Project.title>
-  * Types include links to definitions within the extensions and to:
+  * The "Description" column:
+    * renders Markdown <https://extensions.open-contracting.org/en/extensions/lots/master/schema/#Lot.status>
+    * indicates whether undeprecated <https://extensions.open-contracting.org/en/extensions/milestone_documents/master/schema/#Milestone.documents>
+    * indicates multilingual support <https://extensions.open-contracting.org/en/extensions/budget_project/master/schema/#Project.title>
+  * The "Types" column includes links to definitions within the extensions and to:
     * the standard <https://extensions.open-contracting.org/en/extensions/location/master/schema/>
     * other extensions <https://extensions.open-contracting.org/en/extensions/transaction_milestones/master/schema/>
   * Types of arrays indicate the types of items <https://extensions.open-contracting.org/en/extensions/location/master/schema/#Location.geometry.coordinates>

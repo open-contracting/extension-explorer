@@ -8,6 +8,7 @@ from extension_explorer.util import (get_extensions, set_tags, get_present_and_h
                                      commonmark)
 
 extension_version_template = {
+    "metadata": {},
     "schemas": {
         "release-schema.json": {
             "en": {}
