@@ -28,3 +28,12 @@ table code {
   -ms-flex-align: center !important;
   align-items: center !important;
 }
+
+table.docutils {
+  @extend .table;
+  @extend .table-bordered;
+
+  tt {
+    @extend code;
+  }
+}
