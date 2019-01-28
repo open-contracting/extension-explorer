@@ -8,7 +8,11 @@ from extension_explorer.util import (get_extensions, set_tags, get_present_and_h
                                      commonmark)
 
 extension_version_template = {
-    "metadata": {},
+    "metadata": {
+        "testDependencies": [
+            "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/v1.1.3/extension.json"  # noqa
+        ]
+    },
     "schemas": {
         "release-schema.json": {
             "en": {}
@@ -23,13 +27,32 @@ extension_version_template = {
 
 release_schema = {
     "properties": {
-        "empty": {
+        # Test a field with a `title` only.
+        "titleOnly": {
+            "title": "Title only"
+        },
+        # Test a field with a `description` only.
+        "descriptionOnly": {
+            "description": "Description only"
+        },
+        # Test a field with a `type` only.
+        "typeOnly": {
             "type": "string"
         },
+
+        # Test a field with a matched `$ref` and `type`.
+        "ref": {
+            "title": "Asset",
+            "type": "object",
+            "$ref": "#/definitions/Asset"
+        },
+
+        # Test an array of literals.
         "array": {
             "title": "Array",
             "type": "array",
             "items": {
+                # Test `"null"` and `null` types.
                 "type": [
                     "string",
                     "integer",
@@ -38,11 +61,7 @@ release_schema = {
                 ]
             }
         },
-        "ref": {
-            "title": "Asset",
-            "type": "object",
-            "$ref": "#/definitions/Asset"
-        },
+        # Test an array of $ref'erences.
         "refArray": {
             "title": "Assets",
             "type": "array",
@@ -50,6 +69,7 @@ release_schema = {
                 "$ref": "#/definitions/Asset"
             }
         },
+        # Test a field with no non-null types.
         "null": {
             "title": "Null",
             "type": [
@@ -57,20 +77,28 @@ release_schema = {
                 None
             ]
         },
+
+        # Test a field with a mismatched `$ref` and `type`, and a `$ref` to an object defined elsewhere.
         "external": {
             "title": "External",
             "type": "string",
             "$ref": "#/definitions/Value"
         },
+
+        # Test nested added and removed fields.
         "field": {
+            # Test a field with a `title` without a `description`.
             "title": "Field",
             "type": "object",
             "properties": {
                 "subfield": {
+                    # Test a field with a `description` without a `title`.
                     "description": "Subfield",
                     "type": "object",
                     "properties": {
                         "subsubfield": {
+                            # Test Markdown in `description`.
+                            "title": "Subsubfield",
                             "description": "*Subsubfield*"
                         },
                         "subsubremoved": None
@@ -79,27 +107,37 @@ release_schema = {
                 "subremoved": None
             }
         },
+        # Test a removed field.
+        "removed": None,
+
+        # Test a removed core field.
+        "buyer": None,
+
+        # Test an undeprecated field.
         "undeprecated": {
             "deprecated": None
         },
+        # Test a deprecated field.
         "deprecated": {
             "title": "Deprecated",
             "description": "Description",
             "type": "string",
             "deprecated": {
+                # Test Markdown in `description`.
                 "description": "Field has been deprecated because **reasons**.",
                 "deprecatedVersion": "1.1"
             }
-        },
-        "removed": None
+        }
     },
     "definitions": {
+        # Test a new definition.
         "Asset": {
             "type": "object",
             "properties": {
                 "field": {
                     "title": "Title",
                     "description": "Description",
+                    # Test `"null"` and `null` types in a definition.
                     "type": [
                         "string",
                         "integer",
@@ -107,9 +145,60 @@ release_schema = {
                         None
                     ]
                 },
+                # Test a removed field in a new definition.
                 "removed": None
             }
+        },
+
+        # Test a patched core definition.
+        "Tender": {
+            "properties": {
+                # Test a field without properties.
+                "field": {},
+
+                # Test a removed field in a core definition.
+                "description": None
+            }
+        },
+        "OrganizatinReference": {
+            "properties": {
+                # Test a removed field from OrganizatinReference.
+                "address": None
+            }
+        },
+
+        # Test a patched extension definition.
+        "Location": {
+            "properties": {
+                "field": {
+                    "type": "string"
+                },
+
+                # Test a removed field in a extension definition.
+                "description": None
+            }
         }
+    },
+    "patternProperties": {
+        # Test a pattern property.
+        ".*": {
+            "title": "Title",
+            "description": "Description",
+            "type": [
+                "string",
+                "integer"
+            ]
+        },
+        # Test a field with multilingual support.
+        "^(titleOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {  # noqa
+            "type": "string"
+        },
+        # Test a field without extra parentheses.
+        "^descriptionOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$": {},  # noqa
+        # Test a field with missing anchors.
+        "^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {},  # noqa
+        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$": {},  # noqa
+        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {}  # noqa
     }
 }
 
@@ -234,7 +323,7 @@ def test_get_present_and_historical_versions_live():
     assert historical_versions == [('live', '')]
 
 
-def test_get_removed_fields():
+def test_get_removed_fields(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['schemas']['release-schema.json']['en'] = release_schema
 
@@ -245,134 +334,215 @@ def test_get_removed_fields():
             {'definition_path': '', 'path': '.field.subfield.subsubremoved'},
             {'definition_path': '', 'path': '.field.subremoved'},
             {'definition_path': '', 'path': '.removed'},
+            {'definition_path': '', 'path': '.buyer',
+             'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,buyer'},
             {'definition_path': 'Asset', 'path': '.removed'},
+            {'definition_path': 'Tender', 'path': '.description',
+             'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},  # noqa
+            {'definition_path': 'OrganizatinReference', 'path': '.address'},
+            {'definition_path': 'Location', 'path': '.description',
+             'url': '/en/extensions/location/v1.1.3/schema/#Location.description'},
         ],
     }
 
 
-def test_get_schema_tables():
+def test_get_schema_tables(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['schemas']['release-schema.json']['en'] = release_schema
 
     tables = get_schema_tables(extension_version, 'en')
 
     assert dict(tables) == {
-        'Asset': {'fields': [
-            {
-                'definition_path': 'Asset',
-                'path': '.field',
-                'schema': release_schema['definitions']['Asset']['properties']['field'],
-                'multilingual': False,
-                'title': 'Title',
-                'description': '<p>Description</p>\n',
-                'types': 'string or integer',
+        'Asset': {
+            'fields': [
+                {
+                    'definition_path': 'Asset',
+                    'path': '.field',
+                    'schema': release_schema['definitions']['Asset']['properties']['field'],
+                    'multilingual': False,
+                    'title': 'Title',
+                    'description': '<p>Description</p>\n',
+                    'types': 'string or integer',
+                },
+            ],
+        },
+        'Release': {
+            'fields': [
+                {
+                    'definition_path': '',
+                    'path': '.titleOnly',
+                    'schema': release_schema['properties']['titleOnly'],
+                    'multilingual': True,
+                    'title': 'Title only',
+                    'description': '',
+                    'types': '',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.descriptionOnly',
+                    'schema': release_schema['properties']['descriptionOnly'],
+                    'multilingual': True,
+                    'title': '',
+                    'description': '<p>Description only</p>\n',
+                    'types': '',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.typeOnly',
+                    'schema': release_schema['properties']['typeOnly'],
+                    'multilingual': False,
+                    'title': '',
+                    'description': '',
+                    'types': 'string',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.ref',
+                    'schema': release_schema['properties']['ref'],
+                    'multilingual': False,
+                    'title': 'Asset',
+                    'description': '',
+                    'types': '<a href="#asset">Asset</a> object',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.array',
+                    'schema': release_schema['properties']['array'],
+                    'multilingual': False,
+                    'title': 'Array',
+                    'description': '',
+                    'types': 'array of strings / integers',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.refArray',
+                    'schema': release_schema['properties']['refArray'],
+                    'multilingual': False,
+                    'title': 'Assets',
+                    'description': '',
+                    'types': 'array of <a href="#asset">Asset</a> objects',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.null',
+                    'schema': release_schema['properties']['null'],
+                    'multilingual': False,
+                    'title': 'Null',
+                    'description': '',
+                    'types': '',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.external',
+                    'schema': release_schema['properties']['external'],
+                    'multilingual': False,
+                    'title': 'External',
+                    'description': '',
+                    'types': '<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa
+                },
+                {
+                    'definition_path': '',
+                    'path': '.field',
+                    'schema': release_schema['properties']['field'],
+                    'multilingual': False,
+                    'title': 'Field',
+                    'description': '',
+                    'types': 'object',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.field.subfield',
+                    'schema': release_schema['properties']['field']['properties']['subfield'],
+                    'multilingual': False,
+                    'title': '',
+                    'description': '<p>Subfield</p>\n',
+                    'types': 'object',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.field.subfield.subsubfield',
+                    'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa
+                    'multilingual': False,
+                    'title': 'Subsubfield',
+                    'description': '<p><em>Subsubfield</em></p>\n',
+                    'types': '',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.undeprecated',
+                    'schema': release_schema['properties']['undeprecated'],
+                    'multilingual': False,
+                    'title': '',
+                    'description': '<p><em>Undeprecated</em></p>\n',
+                    'types': '',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.deprecated',
+                    'schema': release_schema['properties']['deprecated'],
+                    'multilingual': False,
+                    'title': 'Deprecated',
+                    'description': '<p>Description</p>\n<p><strong>Deprecated in OCDS 1.1</strong>: Field has been deprecated because <strong>reasons</strong>.</p>\n',  # noqa
+                    'types': 'string',
+                },
+                {
+                    'definition_path': '',
+                    'path': '.(.*)',
+                    'schema': release_schema['patternProperties']['.*'],
+                    'multilingual': False,
+                    'title': 'Title',
+                    'description': '<p>Description</p>\n',
+                    'types': 'string or integer',
+                },
+            ],
+            'source': {
+                'type': 'core',
+                'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release',
+                'field_url_prefix': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa
             },
-        ]},
-        'Release': {'fields': [
-            {
-                'definition_path': '',
-                'path': '.empty',
-                'schema': release_schema['properties']['empty'],
-                'multilingual': False,
-                'title': '',
-                'description': '',
-                'types': 'string',
+        },
+        'Tender': {
+            'fields': [
+                {
+                    'definition_path': 'Tender',
+                    'path': '.field',
+                    'schema': {},
+                    'multilingual': False,
+                    'title': '',
+                    'description': '',
+                    'types': '',
+                }
+            ],
+            'source': {
+                'type': 'core',
+                'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#tender',
+                'field_url_prefix': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,',  # noqa
             },
-            {
-                'definition_path': '',
-                'path': '.array',
-                'schema': release_schema['properties']['array'],
-                'multilingual': False,
-                'title': 'Array',
-                'description': '',
-                'types': 'array of strings / integers',
+        },
+        'Location': {
+            'fields': [
+                {
+                    'definition_path': 'Location',
+                    'path': '.field',
+                    'schema': {'type': 'string'},
+                    'multilingual': False,
+                    'title': '',
+                    'description': '',
+                    'types': 'string',
+                }
+            ],
+            'source': {
+                'type': 'extension',
+                'url': '/en/extensions/location/v1.1.3/schema/#location',
+                'field_url_prefix': '/en/extensions/location/v1.1.3/schema/#Location.',
+                'extension': 'Location',
+                'extension_url': '/en/extensions/location/v1.1.3/',
             },
-            {
-                'definition_path': '',
-                'path': '.ref',
-                'schema': release_schema['properties']['ref'],
-                'multilingual': False,
-                'title': 'Asset',
-                'description': '',
-                'types': '<a href="#asset">Asset</a> object',
-            },
-            {
-                'definition_path': '',
-                'path': '.refArray',
-                'schema': release_schema['properties']['refArray'],
-                'multilingual': False,
-                'title': 'Assets',
-                'description': '',
-                'types': 'array of <a href="#asset">Asset</a> objects',
-            },
-            {
-                'definition_path': '',
-                'path': '.null',
-                'schema': release_schema['properties']['null'],
-                'multilingual': False,
-                'title': 'Null',
-                'description': '',
-                'types': '',
-            },
-            {
-                'definition_path': '',
-                'path': '.external',
-                'schema': release_schema['properties']['external'],
-                'multilingual': False,
-                'title': 'External',
-                'description': '',
-                'types': '<a href="http://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa
-            },
-            {
-                'definition_path': '',
-                'path': '.field',
-                'schema': release_schema['properties']['field'],
-                'multilingual': False,
-                'title': 'Field',
-                'description': '',
-                'types': 'object',
-            },
-            {
-                'definition_path': '',
-                'path': '.field.subfield',
-                'schema': release_schema['properties']['field']['properties']['subfield'],
-                'multilingual': False,
-                'title': '',
-                'description': '<p>Subfield</p>\n',
-                'types': 'object',
-            },
-            {
-                'definition_path': '',
-                'path': '.field.subfield.subsubfield',
-                'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa
-                'multilingual': False,
-                'title': '',
-                'description': '<p><em>Subsubfield</em></p>\n',
-                'types': '',
-            },
-            {
-                'definition_path': '',
-                'path': '.undeprecated',
-                'schema': release_schema['properties']['undeprecated'],
-                'multilingual': False,
-                'title': '',
-                'description': '<p><em>Undeprecated</em></p>\n',
-                'types': '',
-            },
-            {
-                'definition_path': '',
-                'path': '.deprecated',
-                'schema': release_schema['properties']['deprecated'],
-                'multilingual': False,
-                'title': 'Deprecated',
-                'description': '<p>Description</p>\n<p><strong>Deprecated in OCDS 1.1</strong>: Field has been deprecated because <strong>reasons</strong>.</p>\n',  # noqa
-                'types': 'string',
-            },
-        ]},
+        },
     }
 
 
-def test_get_schema_tables_mixed_array_success():
+def test_get_schema_tables_mixed_array_success(client):
     schema = {
         "properties": {
             "nullArray": {
@@ -394,21 +564,28 @@ def test_get_schema_tables_mixed_array_success():
     tables = get_schema_tables(extension_version, 'en')
 
     assert dict(tables) == {
-        'Release': {'fields': [
-            {
-                'definition_path': '',
-                'path': '.nullArray',
-                'schema': schema['properties']['nullArray'],
-                'multilingual': False,
-                'title': 'Array',
-                'description': '',
-                'types': 'array of strings',
+        'Release': {
+            'fields': [
+                {
+                    'definition_path': '',
+                    'path': '.nullArray',
+                    'schema': schema['properties']['nullArray'],
+                    'multilingual': False,
+                    'title': 'Array',
+                    'description': '',
+                    'types': 'array of strings',
+                },
+            ],
+            'source': {
+                'field_url_prefix': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa
+                'type': 'core',
+                'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release',
             },
-        ]},
+        },
     }
 
 
-def test_get_schema_tables_mixed_array_failure():
+def test_get_schema_tables_mixed_array_failure(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['schemas']['release-schema.json']['en'] = {
         "properties": {
@@ -432,7 +609,7 @@ def test_get_schema_tables_mixed_array_failure():
     assert str(excinfo.value) == 'array / string is not implemented'
 
 
-def test_get_schema_tables_object_array():
+def test_get_schema_tables_object_array(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['schemas']['release-schema.json']['en'] = {
         "properties": {
@@ -456,7 +633,7 @@ def test_get_schema_tables_object_array():
     assert str(excinfo.value).startswith('array of objects with properties is not implemented: ')
 
 
-def test_get_schema_tables_array_array():
+def test_get_schema_tables_array_array(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['schemas']['release-schema.json']['en'] = {
         "properties": {

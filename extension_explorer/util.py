@@ -23,7 +23,7 @@ from slugify import slugify
 from yaml import load
 
 OCDS_BASE_URL = 'http://standard.open-contracting.org/1.1'
-LANGUAGE_CODE_PATTERN = '_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$'  # noqa
+LANGUAGE_CODE_PATTERN = '_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))'  # noqa
 
 
 def commonmark(text):
@@ -269,15 +269,18 @@ def get_removed_fields(extension_version, lang):
     """
     tables = defaultdict(list)
 
-    schema = _patch_schema(extension_version, lang)
+    schema = _patch_schema(extension_version, 'en', include_test_dependencies=True)
+    sources = _get_sources(schema, lang)
 
     for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
-        if field['schema']:
+        if field['schema'] is not None:
             continue
 
         try:
             value = jsonpointer.resolve_pointer(schema, field['pointer'])
-            field['url'] = _ocds_release_reference_field_anchor(field['definition_pointer'], field['pointer'], lang)
+            prefix = sources[field['definition_path']]['field_url_prefix']
+            if prefix:
+                field['url'] = prefix + field['pointer'].rsplit('/', 1)[-1]
         except jsonpointer.JsonPointerException:
             value = {}
 
@@ -305,23 +308,8 @@ def get_schema_tables(extension_version, lang):
     """
     tables = {}
 
-    # Collect the sources of definitions.
-    sources = {}
-    schema = _patch_schema(extension_version, lang)
-    for name, definition in schema['definitions'].items():
-        if 'extension_explorer:source' in definition:
-            source = definition['extension_explorer:source']
-            sources[name] = {
-                'type': 'extension',
-                'url': url_for('extension_schema', **source, lang=lang, _anchor=name.lower()),
-                'extension': get_extensions()[source['identifier']]['name'][lang],
-                'extension_url': url_for('extension_documentation', **source, lang=lang),
-            }
-        else:
-            sources[name] = {
-                'type': 'core',
-                'url': _ocds_release_reference_definition_anchor(name, lang),
-            }
+    schema = _patch_schema(extension_version, 'en', include_test_dependencies=True)
+    sources = _get_sources(schema, lang)
 
     for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
         if field['schema'] is None:
@@ -368,8 +356,8 @@ def _get_schema_fields(schema, pointer='', path='', definition_pointer='', defin
 
     multilingual = set()
     for key, value in schema.get('patternProperties', {}).items():
-        if LANGUAGE_CODE_PATTERN in key:
-            multilingual.add(key.replace(LANGUAGE_CODE_PATTERN, '').replace('^(', ''))
+        if LANGUAGE_CODE_PATTERN in key and key[0] == '^' and key[-1] == '$':
+            multilingual.add(re.sub(r'^\^\(?|\)?\$$', '', key.replace(LANGUAGE_CODE_PATTERN, '')))
 
     for key, value in schema.get('properties', {}).items():
         new_pointer = template.format(pointer, 'properties', key)
@@ -458,30 +446,58 @@ def _ocds_codelist_names_recursive(data):
     return codelists
 
 
-def _ocds_release_reference_definition_anchor(definition, lang):
-    url = _ocds_release_reference_url(lang)
-    return '{}#{}'.format(url, definition.lower())
+def _get_sources(schema, lang):
+    release_reference_url = _ocds_release_reference_url(lang)
+    core_field_url_prefix_template = '{}#release-schema.json,/definitions/{},'
+
+    sources = {
+        # Release
+        '': {
+            'type': 'core',
+            'url': '{}#release'.format(release_reference_url),
+            'field_url_prefix': '{}#release-schema.json,,'.format(release_reference_url)
+        }
+    }
+
+    for name, definition in schema['definitions'].items():
+        if 'extension_explorer:source' in definition:
+            source = definition['extension_explorer:source']
+            url = url_for('extension_schema', **source, lang=lang)
+
+            sources[name] = {
+                'type': 'extension',
+                'url': '{}#{}'.format(url, name.lower()),
+                'field_url_prefix': '{}#{}.'.format(url, name),
+                'extension': get_extensions()[source['identifier']]['name'][lang],
+                'extension_url': url_for('extension_documentation', **source, lang=lang),
+            }
+        else:
+            sources[name] = {
+                'type': 'core',
+                'url': '{}#{}'.format(release_reference_url, name.lower()),
+            }
+
+            # OCDS 1.1 doesn't list OrganizationReference's fields.
+            if name == 'OrganizationReference':
+                sources[name]['field_url_prefix'] = None
+            else:
+                sources[name]['field_url_prefix'] = core_field_url_prefix_template.format(release_reference_url, name)
+
+    return sources
 
 
-# Depends on the implementation of the `jsonschema` Sphinx directive.
-def _ocds_release_reference_field_anchor(definition_pointer, pointer, lang):
-    # OCDS 1.1 doesn't list OrganizationReference's fields.
-    if definition_pointer == '/definitions/OrganizationReference':
-        return
-
-    url = _ocds_release_reference_url(lang)
-    return '{}#release-schema.json,{},{}'.format(url, definition_pointer, pointer.rsplit('/', 1)[-1])
-
-
-def _patch_schema(version, lang):
+def _patch_schema(version, lang, include_test_dependencies=False):
     schema = deepcopy(_ocds_release_schema(lang))
-    _patch_schema_recursive(schema, version, lang)
+    _patch_schema_recursive(schema, version, lang, include_test_dependencies=include_test_dependencies)
     return schema
 
 
-def _patch_schema_recursive(schema, version, lang):
+def _patch_schema_recursive(schema, version, lang, include_test_dependencies=False):
     definitions = set(schema['definitions'])
-    dependencies = version['metadata'].get('dependencies', []) + version['metadata'].get('testDependencies', [])
+
+    dependencies = version['metadata'].get('dependencies', [])
+    if include_test_dependencies:
+        dependencies += version['metadata'].get('testDependencies', [])
 
     for url in dependencies:
         version = get_extension_version_by_base_url(url[:-14])  # remove "extension.json"
@@ -494,7 +510,7 @@ def _patch_schema_recursive(schema, version, lang):
             definitions.add(name)
 
         json_merge_patch.merge(schema, patch)
-        _patch_schema_recursive(schema, version, lang)
+        _patch_schema_recursive(schema, version, lang, include_test_dependencies=include_test_dependencies)
 
 
 @lru_cache()
