@@ -105,9 +105,16 @@ def extension_documentation(lang, identifier, version):
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
 
+    if extension_version['schemas']['release-schema.json'][lang]:
+        schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
+    else:
+        schema_url = ''
+    if extension_version['codelists']:
+        codelist_url = url_for('extension_codelists', lang=lang, identifier=identifier, version=version)
+    else:
+        codelist_url = ''
+
     # Note: `readme` may contain unsafe HTML and JavaScript.
-    schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
-    codelist_url = url_for('extension_codelists', lang=lang, identifier=identifier, version=version)
     readme = extension_version.get('readme', {}).get(lang, {})
     # Remove the first heading.
     readme = re.sub(r'\A# [^\n]+', '', readme)

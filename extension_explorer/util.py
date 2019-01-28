@@ -106,22 +106,6 @@ def get_extension_and_version(identifier, version):
     return extensions[identifier], extensions[identifier]['versions'][version]
 
 
-def get_extension_version_by_base_url(base_url):
-    """
-    Returns an extension ID, given a base URL.
-    """
-    return _extension_versions_by_base_url()[base_url]
-
-
-@lru_cache()
-def _extension_versions_by_base_url():
-    mapping = {}
-    for extension in get_extensions().values():
-        for version in extension['versions'].values():
-            mapping[version['base_url']] = version
-    return mapping
-
-
 def get_present_and_historical_versions(extension):
     """
     Returns the present and historical versions, with release dates, in reverse chronological order.
@@ -207,7 +191,7 @@ def get_codelist_tables(extension_version, lang):
 
     header_groups = (('Code',), ('Title', 'Title_en'), ('Description', 'Description_en'))
     codelist_reference_url = _ocds_codelist_reference_url(lang)
-    codelist_names = _ocds_codelist_names(lang)
+    codelist_names = _ocds_codelist_names()
 
     for name, codelist in extension_version['codelists'].items():
         indices = {fieldname: i for i, fieldname in enumerate(codelist['en']['fieldnames'])}
@@ -422,11 +406,11 @@ def _get_types(value, lang, sources):
     return types
 
 
-def _ocds_codelist_names(lang):
+def _ocds_codelist_names():
     """
     Returns the names of the codelists in the OCDS release schema.
     """
-    return _ocds_codelist_names_recursive(_ocds_release_schema(lang))
+    return _ocds_codelist_names_recursive(_ocds_release_schema('en'))
 
 
 # Similar to `collect_codelist_values` in `test_json.py` in standard-maintenance-scripts.
@@ -499,8 +483,10 @@ def _patch_schema_recursive(schema, version, lang, include_test_dependencies=Fal
     if include_test_dependencies:
         dependencies += version['metadata'].get('testDependencies', [])
 
+    extension_versions_by_base_url = _extension_versions_by_base_url()
+
     for url in dependencies:
-        version = get_extension_version_by_base_url(url[:-14])  # remove "extension.json"
+        version = extension_versions_by_base_url[url[:-14]]  # remove "extension.json"
         patch = version['schemas']['release-schema.json'][lang]
 
         # Make it possible to determine the source of the definitions.
@@ -511,6 +497,15 @@ def _patch_schema_recursive(schema, version, lang, include_test_dependencies=Fal
 
         json_merge_patch.merge(schema, patch)
         _patch_schema_recursive(schema, version, lang, include_test_dependencies=include_test_dependencies)
+
+
+@lru_cache()
+def _extension_versions_by_base_url():
+    mapping = {}
+    for extension in get_extensions().values():
+        for version in extension['versions'].values():
+            mapping[version['base_url']] = version
+    return mapping
 
 
 @lru_cache()

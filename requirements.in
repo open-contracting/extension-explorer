@@ -8,7 +8,7 @@ gunicorn
 jsonpointer
 libsass
 lxml
-ocdsextensionregistry[cli]>=0.0.8
+ocdsextensionregistry[cli]>=0.0.10
 Pygments
 pytest
 pytest-cov
