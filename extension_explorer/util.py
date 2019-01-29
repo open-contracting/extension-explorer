@@ -23,7 +23,8 @@ from slugify import slugify
 from yaml import load
 
 OCDS_BASE_URL = 'http://standard.open-contracting.org/1.1'
-LANGUAGE_CODE_PATTERN = '_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))'  # noqa
+LANGUAGE_CODE_SUFFIX = '_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))'  # noqa
+LANGUAGE_CODE_SUFFIX_LEN = len(LANGUAGE_CODE_SUFFIX)
 
 
 def commonmark(text):
@@ -183,9 +184,12 @@ def get_codelist_tables(extension_version, lang):
     """
     Returns a list of tables, one per codelist. Each item is a list of the codelist's name, basename, documentation URL
     (if patched), translated fieldnames, and and translated rows. Each row is a dictionary with up to three keys:
-    'code', 'title' and 'content'. The 'content' value is a dictionary with 'description' and 'attributes' keys. The
-    'description' value is the Description column value rendered from Markdown. The 'attributes' value is a dictionary
+    "code", "title" and "content". The "content" value is a dictionary with "description" and "attributes" keys. The
+    "description" value is the Description column value rendered from Markdown. The "attributes" value is a dictionary
     of additional column headers and values.
+
+    The "description" value (rendered from Markdown) may contain HTML. The code supports old-style column headers like
+    "Title_en" and "Description_en".
     """
     tables = []
 
@@ -194,15 +198,16 @@ def get_codelist_tables(extension_version, lang):
     codelist_names = _ocds_codelist_names()
 
     for name, codelist in extension_version['codelists'].items():
-        indices = {fieldname: i for i, fieldname in enumerate(codelist['en']['fieldnames'])}
-
-        fieldname_map = OrderedDict()
+        fieldname_map = {}
         for header_group in header_groups:
             canonical_header = header_group[0]
             for header in header_group:
-                if header in indices:
-                    fieldname_map[canonical_header] = codelist[lang]['fieldnames'][indices[header]]
+                try:
+                    index = codelist['en']['fieldnames'].index(header)
+                    fieldname_map[canonical_header] = codelist[lang]['fieldnames'][index]
                     break
+                except ValueError:
+                    pass
 
         fieldnames = list(fieldname_map.values())
 
@@ -226,6 +231,7 @@ def get_codelist_tables(extension_version, lang):
 
             if content:
                 new_row['content'] = content
+                # Add the column if the row has no description, but other attributes.
                 if 'Description' not in fieldname_map:
                     fieldnames.append(gettext('Description'))
 
@@ -260,15 +266,12 @@ def get_removed_fields(extension_version, lang):
         if field['schema'] is not None:
             continue
 
-        try:
-            value = jsonpointer.resolve_pointer(schema, field['pointer'])
-            prefix = sources[field['definition_path']]['field_url_prefix']
-            if prefix:
-                field['url'] = prefix + field['pointer'].rsplit('/', 1)[-1]
-        except jsonpointer.JsonPointerException:
-            value = {}
+        original_field = jsonpointer.resolve_pointer(schema, field['pointer'])
+        field_url_prefix = sources[field['definition_path']]['field_url_prefix']
+        if field_url_prefix:
+            field['url'] = field_url_prefix + field['pointer'].rsplit('/', 1)[-1]
 
-        if value.get('deprecated'):
+        if original_field.get('deprecated'):
             group = 'deprecated'
         else:
             group = 'active'
@@ -301,15 +304,12 @@ def get_schema_tables(extension_version, lang):
 
         key = field['definition_path']
         if not key:
-            key = gettext('Release')
+            key = 'Release'
+
         if key not in tables:
             tables[key] = {'fields': []}
-
-        if field['definition_path'] in sources:
-            tables[key]['source'] = sources[field['definition_path']]
-
-        for k in ('definition_pointer', 'pointer'):
-            del field[k]
+            if field['definition_path'] in sources:
+                tables[key]['source'] = sources[field['definition_path']]
 
         field['title'] = field['schema'].get('title', '')
         field['description'] = field['schema'].get('description', '')
@@ -322,9 +322,13 @@ def get_schema_tables(extension_version, lang):
                 message = '**{}**: {}'.format(label, deprecated['description'])
             else:
                 message = '*{}*'.format(gettext('Undeprecated'))
+            # If there was no description, commonmark produces the same output regardless of leading newlines.
             field['description'] += '\n\n{}'.format(message)
 
         field['description'] = commonmark(field['description'])
+
+        for k in ('definition_pointer', 'pointer'):
+            del field[k]
 
         tables[key]['fields'].append(field)
 
@@ -333,15 +337,21 @@ def get_schema_tables(extension_version, lang):
 
 # This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
 def _get_schema_fields(schema, pointer='', path='', definition_pointer='', definition_path=''):
-    pointer += '/'
     path += '.'
 
-    template = '{}{}/{}'
+    template = '{}/{}/{}'
 
     multilingual = set()
+    hidden = set()
     for key, value in schema.get('patternProperties', {}).items():
-        if LANGUAGE_CODE_PATTERN in key and key[0] == '^' and key[-1] == '$':
-            multilingual.add(re.sub(r'^\^\(?|\)?\$$', '', key.replace(LANGUAGE_CODE_PATTERN, '')))
+        # The pattern might have an extra set of parentheses.
+        for offset in (2, 1):
+            end = -LANGUAGE_CODE_SUFFIX_LEN - offset
+            # The pattern must be anchored and the suffix must occur at the end.
+            if key[end:-offset] == LANGUAGE_CODE_SUFFIX and key[:offset] == '^('[:offset] and key[-offset:] == ')$'[-offset:]:  # noqa
+                multilingual.add(key[offset:end])
+                hidden.add(key)
+                break
 
     for key, value in schema.get('properties', {}).items():
         new_pointer = template.format(pointer, 'properties', key)
@@ -361,7 +371,7 @@ def _get_schema_fields(schema, pointer='', path='', definition_pointer='', defin
                                       definition_path=key)
 
     for key, value in schema.get('patternProperties', {}).items():
-        if LANGUAGE_CODE_PATTERN not in key:
+        if key not in hidden:
             new_pointer = template.format(pointer, 'patternProperties', key)
             new_path = '{}({})'.format(path, key)
             yield {'definition_pointer': definition_pointer, 'definition_path': definition_path,
@@ -373,11 +383,11 @@ def _get_types(value, lang, sources):
     Returns the types of the field, linking to definitions and iterating into arrays.
     """
     if '$ref' in value:
-        name = value['$ref'].replace('#/definitions/', '')
+        name = value['$ref'][14:]  # remove '#/definitions/'
         if name in sources:
             url = sources[name]['url']
         else:
-            url = '#{}'.format(name.lower())
+            url = '#{}'.format(name.lower())  # local definition
         return ['<a href="{}">{}</a> {}'.format(url, name, gettext('object'))]
 
     types = value.get('type', [])
@@ -452,7 +462,7 @@ def _get_sources(schema, lang):
                 'type': 'extension',
                 'url': '{}#{}'.format(url, name.lower()),
                 'field_url_prefix': '{}#{}.'.format(url, name),
-                'extension': get_extensions()[source['identifier']]['name'][lang],
+                'extension_name': get_extensions()[source['identifier']]['name'][lang],
                 'extension_url': url_for('extension_documentation', **source, lang=lang),
             }
         else:
@@ -477,8 +487,6 @@ def _patch_schema(version, lang, include_test_dependencies=False):
 
 
 def _patch_schema_recursive(schema, version, lang, include_test_dependencies=False):
-    definitions = set(schema['definitions'])
-
     dependencies = version['metadata'].get('dependencies', [])
     if include_test_dependencies:
         dependencies += version['metadata'].get('testDependencies', [])
@@ -491,9 +499,8 @@ def _patch_schema_recursive(schema, version, lang, include_test_dependencies=Fal
 
         # Make it possible to determine the source of the definitions.
         for name, definition in patch.get('definitions', {}).items():
-            if name not in definitions:
+            if name not in schema['definitions']:
                 definition['extension_explorer:source'] = {'identifier': version['id'], 'version': version['version']}
-            definitions.add(name)
 
         json_merge_patch.merge(schema, patch)
         _patch_schema_recursive(schema, version, lang, include_test_dependencies=include_test_dependencies)

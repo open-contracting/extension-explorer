@@ -100,15 +100,11 @@ release_schema = {
                             # Test Markdown in `description`.
                             "title": "Subsubfield",
                             "description": "*Subsubfield*"
-                        },
-                        "subsubremoved": None
+                        }
                     }
-                },
-                "subremoved": None
+                }
             }
         },
-        # Test a removed field.
-        "removed": None,
 
         # Test a removed core field.
         "buyer": None,
@@ -144,9 +140,7 @@ release_schema = {
                         "null",
                         None
                     ]
-                },
-                # Test a removed field in a new definition.
-                "removed": None
+                }
             }
         },
 
@@ -160,9 +154,9 @@ release_schema = {
                 "description": None
             }
         },
-        "OrganizatinReference": {
+        "OrganizationReference": {
             "properties": {
-                # Test a removed field from OrganizatinReference.
+                # Test a removed field from OrganizationReference.
                 "address": None
             }
         },
@@ -331,17 +325,15 @@ def test_get_removed_fields(client):
 
     assert fields == {
         'active': [
-            {'definition_path': '', 'path': '.field.subfield.subsubremoved'},
-            {'definition_path': '', 'path': '.field.subremoved'},
-            {'definition_path': '', 'path': '.removed'},
             {'definition_path': '', 'path': '.buyer',
              'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,buyer'},
-            {'definition_path': 'Asset', 'path': '.removed'},
             {'definition_path': 'Tender', 'path': '.description',
              'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},  # noqa
-            {'definition_path': 'OrganizatinReference', 'path': '.address'},
             {'definition_path': 'Location', 'path': '.description',
              'url': '/en/extensions/location/v1.1.3/schema/#Location.description'},
+        ],
+        'deprecated': [
+            {'definition_path': 'OrganizationReference', 'path': '.address'},
         ],
     }
 
@@ -494,6 +486,33 @@ def test_get_schema_tables(client):
                     'description': '<p>Description</p>\n',
                     'types': 'string or integer',
                 },
+                {
+                    'definition_path': '',
+                    'description': '',
+                    'multilingual': False,
+                    'path': '.(^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
+                    'schema': {},
+                    'title': '',
+                    'types': '',
+                },
+                {
+                    'definition_path': '',
+                    'description': '',
+                    'multilingual': False,
+                    'path': '.(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$)',  # noqa
+                    'schema': {},
+                    'title': '',
+                    'types': '',
+                },
+                {
+                    'definition_path': '',
+                    'description': '',
+                    'multilingual': False,
+                    'path': '.(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
+                    'schema': {},
+                    'title': '',
+                    'types': ''
+                },
             ],
             'source': {
                 'type': 'core',
@@ -535,7 +554,7 @@ def test_get_schema_tables(client):
                 'type': 'extension',
                 'url': '/en/extensions/location/v1.1.3/schema/#location',
                 'field_url_prefix': '/en/extensions/location/v1.1.3/schema/#Location.',
-                'extension': 'Location',
+                'extension_name': 'Location',
                 'extension_url': '/en/extensions/location/v1.1.3/',
             },
         },

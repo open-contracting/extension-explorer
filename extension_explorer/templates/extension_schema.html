@@ -44,7 +44,7 @@
       {% if properties.source.type == 'core' %}
         {{ _('The extension defines these fields in the <a href="%(url)s"><code>%(name)s</code></a> object from OCDS:', url=properties.source.url, name=definition) }}
       {% elif properties.source.type == 'extension' %}
-        {{ _('The extension defines these fields in the <a href="%(url)s"><code>%(name)s</code></a> object from the <a href="%(extension_url)s">%(extension)s</a> extension:', url=properties.source.url, name=definition, extension_url=properties.source.extension_url, extension=properties.source.extension) }}
+        {{ _('The extension defines these fields in the <a href="%(url)s"><code>%(name)s</code></a> object from the <a href="%(extension_url)s">%(extension_name)s</a> extension:', url=properties.source.url, name=definition, extension_url=properties.source.extension_url, extension_name=properties.source.extension_name) }}
       {% endif %}
     {% else %}
         {{ _('The extension defines a new <code>%(name)s</code> object with these fields:', name=definition) }}
