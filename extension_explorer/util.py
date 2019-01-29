@@ -53,11 +53,12 @@ def get_extension_explorer_data_filename():
 
 
 @lru_cache()
-def get_extensions():
+def get_extensions(filename=None):
     """
     Returns the data file's parsed contents.
     """
-    filename = get_extension_explorer_data_filename()
+    if not filename:
+        filename = get_extension_explorer_data_filename()
     with open(filename) as f:
         return json.load(f, object_pairs_hook=OrderedDict)
 
@@ -97,14 +98,6 @@ def set_tags(extensions):
         publishers[slug] = publisher['name']
 
     return groups['profile'], groups['topic'], publishers
-
-
-def get_extension_and_version(identifier, version):
-    """
-    Returns an extension and a version of it.
-    """
-    extensions = get_extensions()
-    return extensions[identifier], extensions[identifier]['versions'][version]
 
 
 def get_present_and_historical_versions(extension):
@@ -441,6 +434,8 @@ def _ocds_codelist_names_recursive(data):
 
 
 def _get_sources(schema, lang):
+    extensions = get_extensions(get_extension_explorer_data_filename())
+
     release_reference_url = _ocds_release_reference_url(lang)
     core_field_url_prefix_template = '{}#release-schema.json,/definitions/{},'
 
@@ -462,7 +457,7 @@ def _get_sources(schema, lang):
                 'type': 'extension',
                 'url': '{}#{}'.format(url, name.lower()),
                 'field_url_prefix': '{}#{}.'.format(url, name),
-                'extension_name': get_extensions()[source['identifier']]['name'][lang],
+                'extension_name': extensions[source['identifier']]['name'][lang],
                 'extension_url': url_for('extension_documentation', **source, lang=lang),
             }
         else:
@@ -508,8 +503,10 @@ def _patch_schema_recursive(schema, version, lang, include_test_dependencies=Fal
 
 @lru_cache()
 def _extension_versions_by_base_url():
+    extensions = get_extensions(get_extension_explorer_data_filename())
+
     mapping = {}
-    for extension in get_extensions().values():
+    for extension in extensions.values():
         for version in extension['versions'].values():
             mapping[version['base_url']] = version
     return mapping

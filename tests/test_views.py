@@ -1,4 +1,8 @@
+import os
+
 from flask import url_for
+
+EMPTY_EXTENSIONS_JSON = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'fixtures', 'empty.json')
 
 
 def test_extensions_json(client):
@@ -90,4 +94,20 @@ def test_extension_schema_404_version(client):
 
 def test_extension_codelists_404_version(client):
     response = client.get(url_for('extension_codelists', lang='en', identifier='location', version='nonexistent'))
+    assert response.status_code == 404
+
+
+def test_extension_schema_404_no_schema(client, monkeypatch):
+    monkeypatch.setenv('EXTENSION_EXPLORER_DATA_FILENAME', EMPTY_EXTENSIONS_JSON)
+    response = client.get(url_for('extension_documentation', lang='en', identifier='empty', version='master'))
+    assert response.status_code == 200
+    response = client.get(url_for('extension_schema', lang='en', identifier='empty', version='master'))
+    assert response.status_code == 404
+
+
+def test_extension_codelists_404_no_codelists(client, monkeypatch):
+    monkeypatch.setenv('EXTENSION_EXPLORER_DATA_FILENAME', EMPTY_EXTENSIONS_JSON)
+    response = client.get(url_for('extension_documentation', lang='en', identifier='empty', version='master'))
+    assert response.status_code == 200
+    response = client.get(url_for('extension_codelists', lang='en', identifier='empty', version='master'))
     assert response.status_code == 404

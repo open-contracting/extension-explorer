@@ -1,0 +1,24 @@
+{
+  "empty": {
+    "name": {},
+    "description": {},
+    "latest_version": "master",
+    "versions": {
+      "master": {
+        "version": "master",
+        "date": "",
+        "metadata": {},
+        "publisher": {},
+        "schemas": {
+          "release-schema.json": {
+            "en": {}
+          }
+        },
+        "codelists": {},
+        "readme": {
+          "en": "# Empty\n\nContent\n"
+        }
+      }
+    }
+  }
+}

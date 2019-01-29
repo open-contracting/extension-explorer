@@ -6,9 +6,9 @@ from flask_babel import Babel, gettext
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .util import (get_extension_explorer_data_filename, get_extensions, set_tags, get_extension_and_version,
-                   get_present_and_historical_versions, identify_headings, highlight_json, get_removed_fields,
-                   get_schema_tables, get_codelist_tables, commonmark)
+from .util import (get_extension_explorer_data_filename, get_extensions, set_tags, get_present_and_historical_versions,
+                   identify_headings, highlight_json, get_codelist_tables, get_removed_fields, get_schema_tables,
+                   commonmark)
 from .compat import replace_directives
 
 LANGS = {
@@ -28,6 +28,22 @@ app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 app.config.from_object(Configuration)
 babel = Babel(app)
+
+
+def get_extension(identifier):
+    try:
+        extensions = get_extensions(get_extension_explorer_data_filename())
+        return extensions[identifier]
+    except KeyError:
+        abort(404)
+
+
+def get_extension_and_version(identifier, version):
+    try:
+        extensions = get_extensions(get_extension_explorer_data_filename())
+        return extensions[identifier], extensions[identifier]['versions'][version]
+    except KeyError:
+        abort(404)
 
 
 @app.context_processor
@@ -75,7 +91,8 @@ def documentation(lang):
 
 @app.route('/<lang>/extensions/')
 def extensions(lang):
-    extensions = get_extensions()
+    extensions = get_extensions(get_extension_explorer_data_filename())
+
     profiles, topics, publishers = set_tags(extensions)
 
     return render_template('extensions.html', lang=lang, extensions=extensions.values(), profiles=profiles,
@@ -84,10 +101,7 @@ def extensions(lang):
 
 @app.route('/<lang>/extensions/<identifier>/')
 def extension(lang, identifier):
-    try:
-        extension = get_extensions()[identifier]
-    except KeyError:
-        abort(404)
+    extension = get_extension(identifier)
 
     title = gettext('%(name)s — OCDS Extension Explorer', name=extension['name'][lang])
     url = url_for('extension_documentation', lang=lang, identifier=identifier, version=extension['latest_version'])
@@ -97,14 +111,12 @@ def extension(lang, identifier):
 
 @app.route('/<lang>/extensions/<identifier>/<version>/')
 def extension_documentation(lang, identifier, version):
-    try:
-        extension, extension_version = get_extension_and_version(identifier, version)
-    except KeyError:
-        abort(404)
+    extension, extension_version = get_extension_and_version(identifier, version)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
 
+    # Avoid generating paths to 404 pages for Frozen-Flask.
     if extension_version['schemas']['release-schema.json'][lang]:
         schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
     else:
@@ -131,9 +143,8 @@ def extension_documentation(lang, identifier, version):
 
 @app.route('/<lang>/extensions/<identifier>/<version>/schema/')
 def extension_schema(lang, identifier, version):
-    try:
-        extension, extension_version = get_extension_and_version(identifier, version)
-    except KeyError:
+    extension, extension_version = get_extension_and_version(identifier, version)
+    if not extension_version['schemas']['release-schema.json'][lang]:
         abort(404)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
@@ -147,9 +158,8 @@ def extension_schema(lang, identifier, version):
 
 @app.route('/<lang>/extensions/<identifier>/<version>/codelists/')
 def extension_codelists(lang, identifier, version):
-    try:
-        extension, extension_version = get_extension_and_version(identifier, version)
-    except KeyError:
+    extension, extension_version = get_extension_and_version(identifier, version)
+    if not extension_version['codelists']:
         abort(404)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
