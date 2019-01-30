@@ -90,6 +90,7 @@ The automated tests provide full code coverage, but you might still want to chec
     * Pattern properties <https://extensions.open-contracting.org/en/extensions/metrics/master/schema/#Observation.dimensions.(^.*)>
   * The "Description" column:
     * renders Markdown <https://extensions.open-contracting.org/en/extensions/lots/master/schema/#Lot.status>
+    * displays deprecation message
     * indicates whether undeprecated <https://extensions.open-contracting.org/en/extensions/milestone_documents/master/schema/#Milestone.documents>
     * indicates multilingual support <https://extensions.open-contracting.org/en/extensions/budget_project/master/schema/#Project.title>
     * indicates whether it overrides:

@@ -69,7 +69,7 @@
           </tr>
         </thead>
         <tbody>
-    {% for field in fields %}
+    {% for field in properties.fields %}
           <tr>
             <td id="{{ field.definition_path }}{{ field.path }}">
               <code>
@@ -86,6 +86,20 @@
               </p>
       {% endif %}
               {{ field.description|safe }}
+      {% if 'deprecated' in field.schema %}
+        {% if field.schema.deprecated %}
+              <p>
+                <strong>
+                  {{ _('Deprecated in OCDS %(deprecatedVersion)s:', deprecatedVersion=field.schema.deprecated.deprecatedVersion) }}
+                </strong>
+                {{ field.schema.deprecated.description }}
+              </p>
+        {% else %}
+              <p class="font-italic">
+                {{ _('The extension undoes the deprecation of this field.') }}
+              </p>
+        {% endif %}
+      {% endif %}
       {% if field.multilingual %}
               <p class="font-italic">
                 {{ _('This field has <a href="%(url)s#multilingual-support">multilingual support</a>.', url=url_for('documentation', lang=lang)) }}

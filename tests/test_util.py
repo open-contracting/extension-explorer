@@ -111,6 +111,7 @@ release_schema = {
 
         # Test an undeprecated field.
         "undeprecated": {
+            "description": "Description",
             "deprecated": None
         },
         # Test a deprecated field.
@@ -472,7 +473,7 @@ def test_get_schema_tables(client):
                     'schema': release_schema['properties']['undeprecated'],
                     'multilingual': False,
                     'title': '',
-                    'description': '<p><em>Undeprecated</em></p>\n',
+                    'description': '<p>Description</p>\n',
                     'types': '',
                 },
                 {
@@ -481,7 +482,7 @@ def test_get_schema_tables(client):
                     'schema': release_schema['properties']['deprecated'],
                     'multilingual': False,
                     'title': 'Deprecated',
-                    'description': '<p>Description</p>\n<p><strong>Deprecated in OCDS 1.1</strong>: Field has been deprecated because <strong>reasons</strong>.</p>\n',  # noqa
+                    'description': '<p>Description</p>\n',
                     'types': 'string',
                 },
                 {

@@ -316,20 +316,8 @@ def get_schema_tables(extension_version, lang):
             pass
 
         field['title'] = field['schema'].get('title', '')
-        field['description'] = field['schema'].get('description', '')
+        field['description'] = commonmark(field['schema'].get('description', ''))
         field['types'] = gettext(' or ').join(_get_types(field['schema'], lang, sources))
-
-        if 'deprecated' in field['schema']:
-            deprecated = field['schema']['deprecated']
-            if deprecated:
-                label = gettext('Deprecated in OCDS %(deprecatedVersion)s') % deprecated
-                message = '**{}**: {}'.format(label, deprecated['description'])
-            else:
-                message = '*{}*'.format(gettext('Undeprecated'))
-            # If there was no description, commonmark produces the same output regardless of leading newlines.
-            field['description'] += '\n\n{}'.format(message)
-
-        field['description'] = commonmark(field['description'])
 
         for k in ('definition_pointer', 'pointer'):
             del field[k]
