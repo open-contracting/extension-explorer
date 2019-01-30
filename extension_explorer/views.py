@@ -21,6 +21,7 @@ LANGS = {
 
 class Configuration(metaclass=MetaFlaskEnv):
     ENV_PREFIX = 'FLASK_'
+    FREEZER_IGNORE_404_NOT_FOUND = True
 
 
 app = Flask(__name__)
@@ -116,15 +117,8 @@ def extension_documentation(lang, identifier, version):
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
 
-    # Avoid generating paths to 404 pages for Frozen-Flask.
-    if extension_version['schemas']['release-schema.json'][lang]:
-        schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
-    else:
-        schema_url = ''
-    if extension_version['codelists']:
-        codelist_url = url_for('extension_codelists', lang=lang, identifier=identifier, version=version)
-    else:
-        codelist_url = ''
+    schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
+    codelist_url = url_for('extension_codelists', lang=lang, identifier=identifier, version=version)
 
     # Note: `readme` may contain unsafe HTML and JavaScript.
     readme = extension_version.get('readme', {}).get(lang, {})
