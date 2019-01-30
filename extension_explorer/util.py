@@ -304,6 +304,17 @@ def get_schema_tables(extension_version, lang):
             if field['definition_path'] in sources:
                 tables[key]['source'] = sources[field['definition_path']]
 
+        try:
+            original_field = jsonpointer.resolve_pointer(schema, field['pointer'])
+            if field['definition_path'] in sources:
+                field_url_prefix = sources[field['definition_path']]['field_url_prefix']
+                if field_url_prefix:
+                    field['url'] = field_url_prefix + field['pointer'].rsplit('/', 1)[-1]
+            else:
+                raise Exception(repr(field))
+        except jsonpointer.JsonPointerException:
+            pass
+
         field['title'] = field['schema'].get('title', '')
         field['description'] = field['schema'].get('description', '')
         field['types'] = gettext(' or ').join(_get_types(field['schema'], lang, sources))
@@ -353,15 +364,15 @@ def _get_schema_fields(schema, pointer='', path='', definition_pointer='', defin
                'pointer': new_pointer, 'path': new_path, 'schema': value, 'multilingual': key in multilingual}
 
         if value and ('properties' in value or 'patternProperties' in value):
-            yield from _get_schema_fields(value, path=new_path, definition_pointer=definition_pointer,
-                                          definition_path=definition_path)
+            yield from _get_schema_fields(value, pointer=new_pointer, path=new_path,
+                                          definition_pointer=definition_pointer, definition_path=definition_path)
 
         # Per make_versioned_release_schema.py, un-$ref'erenced objects in arrays don't occur.
 
     for key, value in schema.get('definitions', {}).items():
         new_pointer = template.format(pointer, 'definitions', key)
-        yield from _get_schema_fields(value, pointer=new_pointer, path='', definition_pointer=new_pointer,
-                                      definition_path=key)
+        yield from _get_schema_fields(value, pointer=new_pointer, path='',
+                                      definition_pointer=new_pointer, definition_path=key)
 
     for key, value in schema.get('patternProperties', {}).items():
         if key not in hidden:

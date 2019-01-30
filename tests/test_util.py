@@ -147,9 +147,12 @@ release_schema = {
         # Test a patched core definition.
         "Tender": {
             "properties": {
-                # Test a field without properties.
+                # Test adding a field without properties.
                 "field": {},
-
+                # Test modifying a field.
+                "title": {
+                    "title": "Replacement"
+                },
                 # Test a removed field in a core definition.
                 "description": None
             }
@@ -164,10 +167,14 @@ release_schema = {
         # Test a patched extension definition.
         "Location": {
             "properties": {
+                # Test adding a field.
                 "field": {
                     "type": "string"
                 },
-
+                # Test modifying a field.
+                "geometry": {
+                    "title": "Replacement"
+                },
                 # Test a removed field in a extension definition.
                 "description": None
             }
@@ -488,29 +495,29 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'description': '',
-                    'multilingual': False,
                     'path': '.(^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
                     'schema': {},
+                    'multilingual': False,
                     'title': '',
+                    'description': '',
                     'types': '',
                 },
                 {
                     'definition_path': '',
-                    'description': '',
-                    'multilingual': False,
                     'path': '.(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$)',  # noqa
                     'schema': {},
+                    'multilingual': False,
                     'title': '',
+                    'description': '',
                     'types': '',
                 },
                 {
                     'definition_path': '',
-                    'description': '',
-                    'multilingual': False,
                     'path': '.(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
                     'schema': {},
+                    'multilingual': False,
                     'title': '',
+                    'description': '',
                     'types': ''
                 },
             ],
@@ -530,7 +537,17 @@ def test_get_schema_tables(client):
                     'title': '',
                     'description': '',
                     'types': '',
-                }
+                },
+                {
+                    'definition_path': 'Tender',
+                    'path': '.title',
+                    'schema': {'title': 'Replacement'},
+                    'multilingual': False,
+                    'title': 'Replacement',
+                    'description': '',
+                    'types': '',
+                    'url': 'http://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,title',  # noqa
+                },
             ],
             'source': {
                 'type': 'core',
@@ -548,7 +565,17 @@ def test_get_schema_tables(client):
                     'title': '',
                     'description': '',
                     'types': 'string',
-                }
+                },
+                {
+                    'definition_path': 'Location',
+                    'path': '.geometry',
+                    'schema': {'title': 'Replacement'},
+                    'multilingual': False,
+                    'title': 'Replacement',
+                    'description': '',
+                    'types': '',
+                    'url': '/en/extensions/location/v1.1.3/schema/#Location.geometry',
+                },
             ],
             'source': {
                 'type': 'extension',

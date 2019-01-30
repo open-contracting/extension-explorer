@@ -77,8 +77,7 @@
   {% endif %}
 {% endblock %}
 
-{# The logic has been implemented to display removed fields as tables instead of lists. #}
-{% macro schema_table(fields, removed=false) -%}
+{% macro schema_table(fields) -%}
       <table class="table table-bordered">
         <thead class="thead-light">
           <tr>
@@ -99,21 +98,20 @@
         <tbody>
     {% for field in fields %}
           <tr>
-            <td{% if not removed %} id="{{ field.definition_path }}{{ field.path }}"{% endif %}>
-      {% if field.url %}
-              <a href="{{ field.url }}">
-      {% endif %}
-                <code>
-                  {{ field.path[1:]|replace('.', '.<wbr>'|safe) }}
-                </code>
-      {% if field.url %}
-              </a>
-      {% endif %}
+            <td id="{{ field.definition_path }}{{ field.path }}">
+              <code>
+                {{ field.path[1:]|replace('.', '.<wbr>'|safe) }}
+              </code>
             </td>
             <td>
               {{ field.title }}
             </td>
             <td>
+      {% if field.url %}
+              <p class="font-italic">
+                {{ _('This field is modified from its <a href="%(url)s">original version</a>.', url=field.url) }}
+              </p>
+      {% endif %}
               {{ field.description|safe }}
       {% if field.multilingual %}
               <p class="font-italic">

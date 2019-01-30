@@ -92,6 +92,9 @@ The automated tests provide full code coverage, but you might still want to chec
     * renders Markdown <https://extensions.open-contracting.org/en/extensions/lots/master/schema/#Lot.status>
     * indicates whether undeprecated <https://extensions.open-contracting.org/en/extensions/milestone_documents/master/schema/#Milestone.documents>
     * indicates multilingual support <https://extensions.open-contracting.org/en/extensions/budget_project/master/schema/#Project.title>
+    * indicates whether it overrides:
+      * the standard <https://extensions.open-contracting.org/en/extensions/ppp/master/schema/#.tag>
+      * other extensions <https://extensions.open-contracting.org/en/extensions/ppp/master/schema/#Metric.id>
   * The "Types" column includes links to definitions within the extensions and to:
     * the standard <https://extensions.open-contracting.org/en/extensions/location/master/schema/>
     * other extensions <https://extensions.open-contracting.org/en/extensions/transaction_milestones/master/schema/>
@@ -102,6 +105,8 @@ The automated tests provide full code coverage, but you might still want to chec
   * URLs are hyperlinked <https://extensions.open-contracting.org/en/extensions/location/master/codelists/#geometryType.csv>
   * Subtracted codes are shown <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/#-partyRole.csv>
   * Added, removed, and replaced codelists link to original codelists <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/>
+
+Note: No extension deprecates codes, so code deprecation isn't implemented yet.
 
 ## Maintenance
 
