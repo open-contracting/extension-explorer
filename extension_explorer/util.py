@@ -259,10 +259,7 @@ def get_removed_fields(extension_version, lang):
         if field['schema'] is not None:
             continue
 
-        original_field = jsonpointer.resolve_pointer(schema, field['pointer'])
-        field_url_prefix = sources[field['definition_path']]['field_url_prefix']
-        if field_url_prefix:
-            field['url'] = field_url_prefix + field['pointer'].rsplit('/', 1)[-1]
+        original_field = _add_link_to_original_field(field, schema, sources)
 
         if original_field.get('deprecated'):
             group = 'deprecated'
@@ -305,13 +302,7 @@ def get_schema_tables(extension_version, lang):
                 tables[key]['source'] = sources[field['definition_path']]
 
         try:
-            original_field = jsonpointer.resolve_pointer(schema, field['pointer'])
-            if field['definition_path'] in sources:
-                field_url_prefix = sources[field['definition_path']]['field_url_prefix']
-                if field_url_prefix:
-                    field['url'] = field_url_prefix + field['pointer'].rsplit('/', 1)[-1]
-            else:
-                raise Exception(repr(field))
+            _add_link_to_original_field(field, schema, sources)
         except jsonpointer.JsonPointerException:
             pass
 
@@ -374,6 +365,7 @@ def _get_types(value, lang, sources):
     """
     Returns the types of the field, linking to definitions and iterating into arrays.
     """
+
     if '$ref' in value:
         name = value['$ref'][14:]  # remove '#/definitions/'
         if name in sources:
@@ -406,6 +398,16 @@ def _get_types(value, lang, sources):
             types = [gettext('array of %(subtypes)s') % {'subtypes': subtypes}]
 
     return types
+
+
+def _add_link_to_original_field(field, schema, sources):
+    original_field = jsonpointer.resolve_pointer(schema, field['pointer'])
+
+    field_url_prefix = sources[field['definition_path']]['field_url_prefix']
+    if field_url_prefix:
+        field['url'] = field_url_prefix + field['pointer'].rsplit('/', 1)[-1]
+
+    return original_field
 
 
 def _ocds_codelist_names():
