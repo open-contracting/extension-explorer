@@ -80,7 +80,7 @@ The automated tests provide full code coverage, but you might still want to chec
 
 * Documentation
   * The `list-table` Sphinx directive is rendered <https://extensions.open-contracting.org/en/extensions/budget_project/master/#guidance>
-  * The `extensiontable` Sphinx directive is linked <https://extensions.open-contracting.org/en/extensions/lots/master/#schema>
+  * The `extensiontable` Sphinx directive is linked <https://extensions.open-contracting.org/en/extensions/lots/v1.1.3/#schema>
 * Schema
   * Paragraphs include links to existing definitions from:
     * the standard <https://extensions.open-contracting.org/en/extensions/additionalContactPoint/master/schema/#organization>
