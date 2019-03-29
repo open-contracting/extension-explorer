@@ -88,7 +88,8 @@
               {{ field.description|safe }}
       {% if field.multilingual %}
               <p class="font-italic">
-                {{ _('This field has <a href="%(url)s#multilingual-support">multilingual support</a>.', url=url_for('documentation', lang=lang)) }}
+                {{ _('This field has multilingual support.', url=url_for('documentation', lang=lang)) }}
+                {# {{ _('This field has <a href="%(url)s#multilingual-support">multilingual support</a>.', url=url_for('documentation', lang=lang)) }} #}
               </p>
       {% endif %}
       {% if 'deprecated' in field.schema %}
