@@ -179,7 +179,7 @@ msgstr ""
 #, python-format
 msgid ""
 "Disclose more data about your contracting processes, using extensions to the"
-" <a href=\"http://standard.open-contracting.org/latest/%(lang)s/\">Open "
+" <a href=\"https://standard.open-contracting.org/latest/%(lang)s/\">Open "
 "Contracting Data Standard</a>."
 msgstr ""
 
