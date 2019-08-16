@@ -16,6 +16,7 @@ import requests
 from CommonMark import DocParser, HTMLRenderer
 from flask import url_for
 from flask_babel import gettext
+from ocdskit.schema import get_schema_fields
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import JsonLexer
@@ -255,8 +256,9 @@ def get_removed_fields(extension_version, lang):
     schema = _patch_schema(extension_version, 'en', include_test_dependencies=True)
     sources = _get_sources(schema, lang)
 
-    for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
-        if field['schema'] is not None:
+    for field in get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
+        # If the field isn't removed.
+        if field.schema is not None:
             continue
 
         original_field = _add_link_to_original_field(field, schema, sources)
@@ -266,10 +268,8 @@ def get_removed_fields(extension_version, lang):
         else:
             group = 'active'
 
-        for k in ('definition_pointer', 'pointer', 'schema', 'multilingual'):
-            del field[k]
-
-        tables[group].append(field)
+        d = field.asdict(exclude=('definition_pointer', 'pointer', 'schema', 'required', 'deprecated', 'multilingual'))
+        tables[group].append(d)
 
     return tables
 
@@ -288,77 +288,32 @@ def get_schema_tables(extension_version, lang):
     schema = _patch_schema(extension_version, 'en', include_test_dependencies=True)
     sources = _get_sources(schema, lang)
 
-    for field in _get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
-        if field['schema'] is None:
+    for field in get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
+        # If the field is removed.
+        if field.schema is None:
             continue
 
-        key = field['definition_path']
+        key = field.definition_path
         if not key:
             key = 'Release'
 
         if key not in tables:
             tables[key] = {'fields': []}
-            if field['definition_path'] in sources:
-                tables[key]['source'] = sources[field['definition_path']]
+            if field.definition_path in sources:
+                tables[key]['source'] = sources[field.definition_path]
 
         try:
             _add_link_to_original_field(field, schema, sources)
         except jsonpointer.JsonPointerException:
             pass
 
-        field['title'] = field['schema'].get('title', '')
-        field['description'] = commonmark(field['schema'].get('description', ''))
-        field['types'] = gettext(' or ').join(_get_types(field['schema'], lang, sources))
-
-        for k in ('definition_pointer', 'pointer'):
-            del field[k]
-
-        tables[key]['fields'].append(field)
+        d = field.asdict(path_sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
+        d['title'] = field.schema.get('title', '')
+        d['description'] = commonmark(field.schema.get('description', ''))
+        d['types'] = gettext(' or ').join(_get_types(field.schema, lang, sources))
+        tables[key]['fields'].append(d)
 
     return tables
-
-
-# This code is similar to `add_versioned` in `make_versioned_release_schema.py` in the `standard` repository.
-def _get_schema_fields(schema, pointer='', path='', definition_pointer='', definition_path=''):
-    path += '.'
-
-    template = '{}/{}/{}'
-
-    multilingual = set()
-    hidden = set()
-    for key, value in schema.get('patternProperties', {}).items():
-        # The pattern might have an extra set of parentheses.
-        for offset in (2, 1):
-            end = -LANGUAGE_CODE_SUFFIX_LEN - offset
-            # The pattern must be anchored and the suffix must occur at the end.
-            if key[end:-offset] == LANGUAGE_CODE_SUFFIX and key[:offset] == '^('[:offset] and key[-offset:] == ')$'[-offset:]:  # noqa
-                multilingual.add(key[offset:end])
-                hidden.add(key)
-                break
-
-    for key, value in schema.get('properties', {}).items():
-        new_pointer = template.format(pointer, 'properties', key)
-        new_path = path + key
-        yield {'definition_pointer': definition_pointer, 'definition_path': definition_path,
-               'pointer': new_pointer, 'path': new_path, 'schema': value, 'multilingual': key in multilingual}
-
-        if value and ('properties' in value or 'patternProperties' in value):
-            yield from _get_schema_fields(value, pointer=new_pointer, path=new_path,
-                                          definition_pointer=definition_pointer, definition_path=definition_path)
-
-        # Per make_versioned_release_schema.py, un-$ref'erenced objects in arrays don't occur.
-
-    for key, value in schema.get('definitions', {}).items():
-        new_pointer = template.format(pointer, 'definitions', key)
-        yield from _get_schema_fields(value, pointer=new_pointer, path='',
-                                      definition_pointer=new_pointer, definition_path=key)
-
-    for key, value in schema.get('patternProperties', {}).items():
-        if key not in hidden:
-            new_pointer = template.format(pointer, 'patternProperties', key)
-            new_path = '{}({})'.format(path, key)
-            yield {'definition_pointer': definition_pointer, 'definition_path': definition_path,
-                   'pointer': new_pointer, 'path': new_path, 'schema': value, 'multilingual': False}
 
 
 def _get_types(value, lang, sources):
@@ -401,11 +356,11 @@ def _get_types(value, lang, sources):
 
 
 def _add_link_to_original_field(field, schema, sources):
-    original_field = jsonpointer.resolve_pointer(schema, field['pointer'])
+    original_field = jsonpointer.resolve_pointer(schema, field.pointer)
 
-    field_url_prefix = sources[field['definition_path']]['field_url_prefix']
+    field_url_prefix = sources[field.definition_path]['field_url_prefix']
     if field_url_prefix:
-        field['url'] = field_url_prefix + field['pointer'].rsplit('/', 1)[-1]
+        field['url'] = field_url_prefix + field.pointer_components[-1]
 
     return original_field
 

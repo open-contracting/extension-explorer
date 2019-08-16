@@ -9,6 +9,7 @@ jsonpointer
 libsass
 lxml
 ocdsextensionregistry[cli]>=0.0.10
+ocdskit
 Pygments
 pytest
 pytest-cov

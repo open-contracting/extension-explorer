@@ -333,15 +333,15 @@ def test_get_removed_fields(client):
 
     assert fields == {
         'active': [
-            {'definition_path': '', 'path': '.buyer',
+            {'definition_path': '', 'path': 'buyer',
              'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,buyer'},
-            {'definition_path': 'Tender', 'path': '.description',
+            {'definition_path': 'Tender', 'path': 'description',
              'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},  # noqa
-            {'definition_path': 'Location', 'path': '.description',
+            {'definition_path': 'Location', 'path': 'description',
              'url': '/en/extensions/location/v1.1.3/schema/#Location.description'},
         ],
         'deprecated': [
-            {'definition_path': 'OrganizationReference', 'path': '.address'},
+            {'definition_path': 'OrganizationReference', 'path': 'address'},
         ],
     }
 
@@ -357,7 +357,7 @@ def test_get_schema_tables(client):
             'fields': [
                 {
                     'definition_path': 'Asset',
-                    'path': '.field',
+                    'path': 'field',
                     'schema': release_schema['definitions']['Asset']['properties']['field'],
                     'multilingual': False,
                     'title': 'Title',
@@ -370,7 +370,7 @@ def test_get_schema_tables(client):
             'fields': [
                 {
                     'definition_path': '',
-                    'path': '.titleOnly',
+                    'path': 'titleOnly',
                     'schema': release_schema['properties']['titleOnly'],
                     'multilingual': True,
                     'title': 'Title only',
@@ -379,7 +379,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.descriptionOnly',
+                    'path': 'descriptionOnly',
                     'schema': release_schema['properties']['descriptionOnly'],
                     'multilingual': True,
                     'title': '',
@@ -388,7 +388,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.typeOnly',
+                    'path': 'typeOnly',
                     'schema': release_schema['properties']['typeOnly'],
                     'multilingual': False,
                     'title': '',
@@ -397,7 +397,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.ref',
+                    'path': 'ref',
                     'schema': release_schema['properties']['ref'],
                     'multilingual': False,
                     'title': 'Asset',
@@ -406,7 +406,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.array',
+                    'path': 'array',
                     'schema': release_schema['properties']['array'],
                     'multilingual': False,
                     'title': 'Array',
@@ -415,7 +415,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.refArray',
+                    'path': 'refArray',
                     'schema': release_schema['properties']['refArray'],
                     'multilingual': False,
                     'title': 'Assets',
@@ -424,7 +424,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.null',
+                    'path': 'null',
                     'schema': release_schema['properties']['null'],
                     'multilingual': False,
                     'title': 'Null',
@@ -433,7 +433,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.external',
+                    'path': 'external',
                     'schema': release_schema['properties']['external'],
                     'multilingual': False,
                     'title': 'External',
@@ -442,7 +442,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.field',
+                    'path': 'field',
                     'schema': release_schema['properties']['field'],
                     'multilingual': False,
                     'title': 'Field',
@@ -451,7 +451,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.field.subfield',
+                    'path': 'field.subfield',
                     'schema': release_schema['properties']['field']['properties']['subfield'],
                     'multilingual': False,
                     'title': '',
@@ -460,7 +460,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.field.subfield.subsubfield',
+                    'path': 'field.subfield.subsubfield',
                     'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa
                     'multilingual': False,
                     'title': 'Subsubfield',
@@ -469,7 +469,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.undeprecated',
+                    'path': 'undeprecated',
                     'schema': release_schema['properties']['undeprecated'],
                     'multilingual': False,
                     'title': '',
@@ -478,7 +478,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.deprecated',
+                    'path': 'deprecated',
                     'schema': release_schema['properties']['deprecated'],
                     'multilingual': False,
                     'title': 'Deprecated',
@@ -487,7 +487,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.(.*)',
+                    'path': '(.*)',
                     'schema': release_schema['patternProperties']['.*'],
                     'multilingual': False,
                     'title': 'Title',
@@ -496,7 +496,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.(^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
+                    'path': '(^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -505,7 +505,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$)',  # noqa
+                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$)',  # noqa
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -514,7 +514,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '.(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
+                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -532,7 +532,7 @@ def test_get_schema_tables(client):
             'fields': [
                 {
                     'definition_path': 'Tender',
-                    'path': '.field',
+                    'path': 'field',
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -541,7 +541,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': 'Tender',
-                    'path': '.title',
+                    'path': 'title',
                     'schema': {'title': 'Replacement'},
                     'multilingual': False,
                     'title': 'Replacement',
@@ -560,7 +560,7 @@ def test_get_schema_tables(client):
             'fields': [
                 {
                     'definition_path': 'Location',
-                    'path': '.field',
+                    'path': 'field',
                     'schema': {'type': 'string'},
                     'multilingual': False,
                     'title': '',
@@ -569,7 +569,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': 'Location',
-                    'path': '.geometry',
+                    'path': 'geometry',
                     'schema': {'title': 'Replacement'},
                     'multilingual': False,
                     'title': 'Replacement',
@@ -615,7 +615,7 @@ def test_get_schema_tables_mixed_array_success(client):
             'fields': [
                 {
                     'definition_path': '',
-                    'path': '.nullArray',
+                    'path': 'nullArray',
                     'schema': schema['properties']['nullArray'],
                     'multilingual': False,
                     'title': 'Array',
