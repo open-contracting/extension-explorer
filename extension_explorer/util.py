@@ -336,6 +336,30 @@ def _get_types(value, lang, sources):
     # "type" might include "null" (valid JSON Schema) or `null` (invalid JSON Schema).
     types = list(filter(lambda t: t and t != 'null', types))
 
+    # Make into sentence
+    # 'uniqueItems',
+    # 'wholeListMerge', # link to docs
+
+    # Refer to codelist and ignore enum
+    # 'codelist',
+    # 'openCodelist',
+
+    # Definition list
+    # 'minimum',
+    # 'maximum',
+    # 'minLength',
+    # 'maxLength',
+    # 'minItems',
+    # 'maxItems',
+    # 'minProperties',
+    # 'maxProperties',
+    # 'format', # link to docs
+    # 'enum', # if not codelist
+
+    # Explain?
+    # 'default',
+    # 'pattern',
+
     if 'items' in value:
         # Avoid descending into /Amendment/changes, which will raise an error.
         if value.get('deprecated'):
@@ -352,6 +376,7 @@ def _get_types(value, lang, sources):
         if subtypes:
             types = [gettext('array of %(subtypes)s') % {'subtypes': subtypes}]
 
+    # Return object instead of simple list, do more work in template
     return types
 
 
