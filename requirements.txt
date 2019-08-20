@@ -58,7 +58,7 @@ python-slugify==1.2.6
 pytz==2018.9
 PyYAML==4.2b4
 -e git+https://github.com/rtfd/recommonmark.git@81d7c6f7b37981ac22571dd91a7cc9d24c3e66a1#egg=recommonmark
--e git+https://github.com/open-contracting/ocdskit.git@master#egg=ocdskit
+-e git+https://github.com/open-contracting/ocdskit.git@6acd39e7d0acb518bf60233d7a1a66b7354daf88#egg=ocdskit
 requests==2.21.0
 rfc3987==1.3.8
 six==1.11.0
