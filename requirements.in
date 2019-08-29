@@ -11,7 +11,7 @@ Pygments
 PyYAML
 six==1.11.0 # transifex-client
 transifex-client
--e git+https://github.com/open-contracting/ocdskit.git@6acd39e7d0acb518bf60233d7a1a66b7354daf88#egg=ocdskit
+-e git+https://github.com/open-contracting/ocdskit.git#egg=ocdskit
 -e git+https://github.com/rtfd/recommonmark.git@81d7c6f7b37981ac22571dd91a7cc9d24c3e66a1#egg=recommonmark
 -e .
 
