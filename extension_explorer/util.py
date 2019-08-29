@@ -307,7 +307,7 @@ def get_schema_tables(extension_version, lang):
         except jsonpointer.JsonPointerException:
             pass
 
-        d = field.asdict(path_sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
+        d = field.asdict(sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
         d['title'] = field.schema.get('title', '')
         d['description'] = commonmark(field.schema.get('description', ''))
         d['types'] = gettext(' or ').join(_get_types(field.schema, lang, sources))
