@@ -1,19 +1,28 @@
+Babel
+CommonMark==0.5.4
 Flask
-Flask-Env
 Flask-Babel
+Flask-Env
 Frozen-Flask
-gunicorn
+json_merge_patch
 jsonpointer
-libsass
 lxml
-ocdsextensionregistry[cli]
+ocdskit
 Pygments
+python-slugify
 PyYAML
+requests
 six==1.11.0 # transifex-client
 transifex-client
-ocdskit
+werkzeug
 -e git+https://github.com/rtfd/recommonmark.git@81d7c6f7b37981ac22571dd91a7cc9d24c3e66a1#egg=recommonmark
--e .
+-e . # babel.extractors
+
+# Deployment
+ocdsextensionregistry[cli]
+
+# Stylesheets
+libsass
 
 # Tests
 coveralls
