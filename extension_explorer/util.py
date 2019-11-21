@@ -368,9 +368,9 @@ def _get_types(value, lang, sources):
         if types and types != ['array']:
             raise NotImplementedError("{} is not implemented".format(' / '.join(types)))
         if 'properties' in value['items']:
-            raise NotImplementedError('array of objects with properties is not implemented: {}'.format(repr(value)))
+            raise NotImplementedError('array of objects with properties is not implemented: {!r}'.format(value))
         if 'items' in value['items']:
-            raise NotImplementedError('array of arrays with items is not implemented: {}'.format(repr(value)))
+            raise NotImplementedError('array of arrays with items is not implemented: {!r}'.format(value))
 
         subtypes = ' / '.join('{}s'.format(_type) for _type in _get_types(value['items'], lang, sources))
         if subtypes:
