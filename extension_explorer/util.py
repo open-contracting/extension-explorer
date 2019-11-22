@@ -13,7 +13,7 @@ import json_merge_patch
 import jsonpointer
 import lxml.html
 import requests
-from CommonMark import DocParser, HTMLRenderer
+from commonmark import Parser, HtmlRenderer
 from flask import url_for
 from flask_babel import gettext
 from ocdskit.schema import get_schema_fields
@@ -21,7 +21,7 @@ from pygments import highlight
 from pygments.formatters import HtmlFormatter
 from pygments.lexers import JsonLexer
 from slugify import slugify
-from yaml import load
+from yaml import safe_load
 
 OCDS_BASE_URL = 'https://standard.open-contracting.org/1.1'
 LANGUAGE_CODE_SUFFIX = '_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))'  # noqa
@@ -32,9 +32,9 @@ def commonmark(text):
     """
     Renders text as Markdown.
     """
-    parser = DocParser()
+    parser = Parser()
     ast = parser.parse(text)
-    renderer = HTMLRenderer()
+    renderer = HtmlRenderer()
 
     # DeprecationWarning: The unescape method is deprecated and will be removed in 3.5, use html.unescape() instead.
     with warnings.catch_warnings():
@@ -69,7 +69,7 @@ def set_tags(extensions):
     Adds tags and publishers to extensions, and returns profile, topic and publisher tags.
     """
     with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'tags.yaml')) as f:
-        data = load(f)
+        data = safe_load(f)
 
     for extension in extensions.values():
         extension['tags'] = set()
