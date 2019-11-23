@@ -31,7 +31,7 @@ MarkupSafe==1.1.1
 mccabe==0.6.1
 more-itertools==7.2.0
 ocds-babel==0.2.1
--e git+git@github.com:open-contracting/extension-explorer.git@bc7796c851813538dfe850544ff35b17ad7f27d5#egg=ocdsextensionexplorer
+.
 ocdsextensionregistry==0.0.16
 ocdskit==0.1.3
 ocdsmerge==0.5.10
