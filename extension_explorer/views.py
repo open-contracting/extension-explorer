@@ -6,10 +6,10 @@ from flask_babel import Babel, gettext
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .util import (get_extension_explorer_data_filename, get_extensions, set_tags, get_present_and_historical_versions,
-                   identify_headings, highlight_json, get_codelist_tables, get_removed_fields, get_schema_tables,
-                   commonmark)
 from .compat import replace_directives
+from .util import (commonmark, get_codelist_tables, get_extension_explorer_data_filename, get_extensions,
+                   get_present_and_historical_versions, get_removed_fields, get_schema_tables, highlight_json,
+                   identify_headings, set_tags)
 
 LANGS = {
     'en': 'English',

@@ -5,7 +5,7 @@ import json
 import os
 import re
 import warnings
-from collections import defaultdict, OrderedDict
+from collections import OrderedDict, defaultdict
 from copy import deepcopy
 from functools import lru_cache
 
@@ -13,7 +13,7 @@ import json_merge_patch
 import jsonpointer
 import lxml.html
 import requests
-from commonmark import Parser, HtmlRenderer
+from commonmark import HtmlRenderer, Parser
 from flask import url_for
 from flask_babel import gettext
 from ocdskit.schema import get_schema_fields

@@ -1,7 +1,7 @@
 from flask_frozen import Freezer
 
 from extension_explorer.util import get_extensions
-from extension_explorer.views import app, LANGS
+from extension_explorer.views import LANGS, app
 
 freezer = Freezer(app)
 

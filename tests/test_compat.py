@@ -1,8 +1,8 @@
 import lxml.html
 import pytest
 
-from extension_explorer.compat import (replace_directives, get_extensiontable_replacement, get_csv_table_replacement,
-                                       get_directive_name, get_directive_options)
+from extension_explorer.compat import (get_csv_table_replacement, get_directive_name, get_directive_options,
+                                       get_extensiontable_replacement, replace_directives)
 from extension_explorer.util import commonmark
 
 invalid_directive = """
