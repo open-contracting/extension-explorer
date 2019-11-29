@@ -1,4 +1,3 @@
-from collections import OrderedDict
 from copy import deepcopy
 
 import pytest
@@ -715,7 +714,7 @@ def test_get_codelist_tables():
                 'title': 'A title',
                 'content': {
                     'description': '<p>A description</p>\n',
-                    'attributes': OrderedDict([('Extra', 'An extra')]),
+                    'attributes': {'Extra': 'An extra'},
                 },
             }, {
                 'code': '',
@@ -742,7 +741,7 @@ def test_get_codelist_tables_translation():
                 'title': 'Un título',
                 'content': {
                     'description': '<p>Un descripción</p>\n',
-                    'attributes': OrderedDict([('Extra', 'Un extra')]),
+                    'attributes': {'Extra': 'Un extra'},
                 },
             }, {
                 'code': '',
@@ -790,7 +789,7 @@ def test_get_codelist_tables_attributes():
 
     assert tables == [
         ['codelist.csv', 'codelist.csv', None, ['Description'], [
-            {'content': {'attributes': OrderedDict([('Extra', 'An extra')])}},
+            {'content': {'attributes': {'Extra': 'An extra'}}},
         ]],
     ]
 

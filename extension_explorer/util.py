@@ -5,7 +5,7 @@ import json
 import os
 import re
 import warnings
-from collections import OrderedDict, defaultdict
+from collections import defaultdict
 from copy import deepcopy
 from functools import lru_cache
 
@@ -61,7 +61,7 @@ def get_extensions(filename=None):
     if not filename:
         filename = get_extension_explorer_data_filename()
     with open(filename) as f:
-        return json.load(f, object_pairs_hook=OrderedDict)
+        return json.load(f)
 
 
 def set_tags(extensions):
@@ -219,7 +219,7 @@ def get_codelist_tables(extension_version, lang):
             if 'Description' in fieldname_map:
                 content['description'] = commonmark(row[fieldname_map['Description']])
 
-            attributes = OrderedDict([(k, v) for k, v in sorted(row.items()) if k not in fieldnames and v])
+            attributes = {k: v for k, v in sorted(row.items()) if k not in fieldnames and v}
             if attributes:
                 content['attributes'] = attributes
 
