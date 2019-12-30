@@ -4,7 +4,7 @@ Babel==2.7.0
 certifi==2019.9.11
 chardet==3.0.4
 Click==7.0
--e git+https://github.com/jpmckinney/commonmark.py.git@6f16ccd10ec109d7ed296d5196ccc93fb0249280#egg=commonmark
+-e git+https://github.com/readthedocs/commonmark.py.git@dafae75015cc342f3fddb499674bab97ac4a6a96#egg=commonmark
 coverage==4.5.4
 coveralls==1.8.2
 docopt==0.6.2
