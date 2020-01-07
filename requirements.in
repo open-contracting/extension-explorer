@@ -17,17 +17,11 @@ werkzeug
 # See https://ocds-babel.readthedocs.io/en/latest/api/translate.html#install-requirements-for-markdown-translation
 -e git+https://github.com/readthedocs/commonmark.py.git@dafae75015cc342f3fddb499674bab97ac4a6a96#egg=commonmark
 -e git+https://github.com/jpmckinney/recommonmark.git@hotfix#egg=recommonmark
--e . # babel.extractors
+# See https://github.com/jazzband/pip-tools/issues/204#issuecomment-550051424
+-e file:.#egg=ocdsextensionexplorer # babel.extractors
 
 # Deployment
 ocdsextensionregistry[cli]
 
 # Stylesheets
 libsass
-
-# Tests
-coveralls
-flake8
-pytest
-pytest-cov
-pytest-flask
