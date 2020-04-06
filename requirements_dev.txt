@@ -39,7 +39,7 @@ lxml==4.4.1
 markupsafe==1.1.1
 mccabe==0.6.1             # via flake8
 more-itertools==7.2.0
-ocds-babel[markdown]==0.2.1
+ocds-babel[markdown]==0.2.2
 ocdsextensionregistry[cli]==0.0.16
 ocdskit==0.1.3
 ocdsmerge==0.5.10
