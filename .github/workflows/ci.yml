@@ -22,6 +22,15 @@ jobs:
         . venv/bin/activate
         curl -s -S --retry 3 $BASEDIR/tests/install.sh | bash -
         pip install -r requirements_dev.txt
-    - run: curl -s -S --retry 3 $BASEDIR/tests/script.sh | bash -
-    - run: pytest --cov extension_explorer
-    - run: coveralls
+    - name: Lint
+      run:
+        . venv/bin/activate
+        curl -s -S --retry 3 $BASEDIR/tests/script.sh | bash -
+    - name: Test
+      run:
+        . venv/bin/activate
+        pytest --cov extension_explorer
+    - name: Coveralls
+      run:
+        . venv/bin/activate
+        coveralls
