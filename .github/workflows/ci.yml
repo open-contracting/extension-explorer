@@ -1,0 +1,21 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
+      with:
+        python-version: 3.6
+    - uses: actions/cache@v1
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements_dev.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+    - run: pip install --src $GITHUB_WORKSPACE/../src -r requirements_dev.txt
+    - run: pytest --cov extension_explorer
+    - uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
