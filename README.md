@@ -1,6 +1,6 @@
 # Extension Explorer
 
-[![Build Status](https://secure.travis-ci.org/open-contracting/extension-explorer.png)](https://travis-ci.org/open-contracting/extension-explorer)
+![CI](https://github.com/open-contracting/extension-explorer/workflows/CI/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/open-contracting/extension-explorer/badge.png)](https://coveralls.io/r/open-contracting/extension-explorer)
 
 ## Development
