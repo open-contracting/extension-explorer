@@ -15,7 +15,7 @@ import lxml.html
 import requests
 from commonmark import HtmlRenderer, Parser
 from flask import url_for
-from flask_babel import gettext
+from flask_babel import gettext, ngettext
 from ocdskit.schema import get_schema_fields
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -236,10 +236,7 @@ def get_codelist_tables(extension_version, lang):
         else:
             basename = name
 
-        url = None
-        if basename in codelist_names:
-            anchor = re.sub(r'[A-Z]', lambda s: '-' + s[0].lower(), basename.replace('.csv', ''))
-            url = '{}#{}'.format(codelist_reference_url, anchor)
+        url = _codelist_url(basename, extension_version, lang)
 
         tables.append([name, basename, url, fieldnames, rows])
 
@@ -310,13 +307,13 @@ def get_schema_tables(extension_version, lang):
         d = field.asdict(sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
         d['title'] = field.schema.get('title', '')
         d['description'] = commonmark(field.schema.get('description', ''))
-        d['types'] = gettext(' or ').join(_get_types(field.schema, lang, sources))
+        d['types'] = gettext(' or ').join(_get_types(field.schema, sources, extension_version, lang))
         tables[key]['fields'].append(d)
 
     return tables
 
 
-def _get_types(value, lang, sources):
+def _get_types(value, sources, extension_version, lang, n=1, field=None):
     """
     Returns the types of the field, linking to definitions and iterating into arrays.
     """
@@ -327,7 +324,7 @@ def _get_types(value, lang, sources):
             url = sources[name]['url']
         else:
             url = '#{}'.format(name.lower())  # local definition
-        return ['<a href="{}">{}</a> {}'.format(url, name, gettext('object'))]
+        return ['<a href="{}">{}</a> {}'.format(url, name, ngettext('object', 'objects', n))]
 
     types = value.get('type', [])
     if isinstance(types, str):
@@ -336,13 +333,34 @@ def _get_types(value, lang, sources):
     # "type" might include "null" (valid JSON Schema) or `null` (invalid JSON Schema).
     types = list(filter(lambda t: t and t != 'null', types))
 
+    if field and 'codelist' in field:
+        codelist_schema = field
+    elif not field and 'codelist' in value:
+        codelist_schema = value
+    else:
+        codelist_schema = {}
+
+    if 'codelist' in codelist_schema and types == ['string']:
+        codelist = codelist_schema['codelist']
+        open_codelist = codelist_schema['openCodelist']
+        variables = {
+            'url': _codelist_url(codelist, extension_version, lang),
+            'codelist': os.path.splitext(codelist)[0],
+        }
+        if open_codelist is True:
+            return [ngettext('string from open <a href="%(url)s">%(codelist)s</a> codelist',
+                             'strings from open <a href="%(url)s">%(codelist)s</a> codelist', n, **variables)]
+        if open_codelist is False:
+            return [ngettext('string from closed <a href="%(url)s">%(codelist)s</a> codelist',
+                             'strings from closed <a href="%(url)s">%(codelist)s</a> codelist', n, **variables)]
+        return [ngettext('string from <a href="%(url)s">%(codelist)s</a> codelist',
+                         'strings from <a href="%(url)s">%(codelist)s</a> codelist', n, **variables)]
+
+    types = list(map(lambda t: ngettext('%(type)s', '%(type)ss', n, type=t), types))
+
     # Make into sentence
     # 'uniqueItems',
     # 'wholeListMerge', # link to docs
-
-    # Refer to codelist and ignore enum
-    # 'codelist',
-    # 'openCodelist',
 
     # Definition list
     # 'minimum',
@@ -357,7 +375,6 @@ def _get_types(value, lang, sources):
     # 'enum', # if not codelist
 
     # Explain?
-    # 'default',
     # 'pattern',
 
     if 'items' in value:
@@ -372,7 +389,7 @@ def _get_types(value, lang, sources):
         if 'items' in value['items']:
             raise NotImplementedError('array of arrays with items is not implemented: {!r}'.format(value))
 
-        subtypes = ' / '.join('{}s'.format(_type) for _type in _get_types(value['items'], lang, sources))
+        subtypes = ' / '.join(_get_types(value['items'], sources, extension_version, lang, field=value, n=2))
         if subtypes:
             types = [gettext('array of %(subtypes)s') % {'subtypes': subtypes}]
 
@@ -390,6 +407,24 @@ def _add_link_to_original_field(field, schema, sources):
     return original_field
 
 
+def _codelist_url(basename, extension_version, lang):
+    codelist_reference_url = _ocds_codelist_reference_url(lang)
+    codelist_names = _ocds_codelist_names()
+
+    url = None
+    if basename in extension_version['codelists']:
+        url = url_for('extension_codelists', lang=lang, identifier=extension_version['id'],
+                      version=extension_version['version'], _anchor=basename)
+    elif basename in codelist_names:
+        anchor = re.sub(r'[A-Z]', lambda s: '-' + s[0].lower(), os.path.splitext(basename)[0])
+        url = '{}#{}'.format(codelist_reference_url, anchor)
+    else:
+        raise NotImplementedError("linking to another extension's codelist is not implemented: {}".format(basename))
+
+    return url
+
+
+@lru_cache()
 def _ocds_codelist_names():
     """
     Returns the names of the codelists in the OCDS release schema.

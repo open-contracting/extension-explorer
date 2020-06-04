@@ -30,7 +30,7 @@
         {{ codelist }}
       </h3>
 
-    {% if url %}
+    {% if url and 'standard.open-contracting.org' in url %}
       <p>
       {% if codelist.startswith('+') %}
         {{ _('The extension adds these codes to the <a href="%(url)s"><code>%(codelist)s</code> codelist</a>.', url=url, codelist=basename) }}
