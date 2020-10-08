@@ -9,7 +9,7 @@ from extension_explorer.util import (commonmark, get_codelist_tables, get_extens
 extension_version_template = {
     "metadata": {
         "testDependencies": [
-            "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/v1.1.3/extension.json"  # noqa
+            "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/v1.1.3/extension.json"  # noqa: E501
         ]
     },
     "schemas": {
@@ -191,15 +191,15 @@ release_schema = {
             ]
         },
         # Test a field with multilingual support.
-        "^(titleOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {  # noqa
+        "^(titleOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {  # noqa: E501
             "type": "string"
         },
         # Test a field without extra parentheses.
-        "^descriptionOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$": {},  # noqa
+        "^descriptionOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$": {},  # noqa: E501
         # Test a field with missing anchors.
-        "^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {},  # noqa
-        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$": {},  # noqa
-        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {}  # noqa
+        "^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {},  # noqa: E501
+        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$": {},  # noqa: E501
+        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {}  # noqa: E501
     }
 }
 
@@ -335,7 +335,7 @@ def test_get_removed_fields(client):
             {'definition_path': '', 'path': 'buyer',
              'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,buyer'},
             {'definition_path': 'Tender', 'path': 'description',
-             'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},  # noqa
+             'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},  # noqa: E501
             {'definition_path': 'Location', 'path': 'description',
              'url': '/en/extensions/location/v1.1.3/schema/#Location.description'},
         ],
@@ -437,7 +437,7 @@ def test_get_schema_tables(client):
                     'multilingual': False,
                     'title': 'External',
                     'description': '',
-                    'types': '<a href="https://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa
+                    'types': '<a href="https://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa: E501
                 },
                 {
                     'definition_path': '',
@@ -460,7 +460,7 @@ def test_get_schema_tables(client):
                 {
                     'definition_path': '',
                     'path': 'field.subfield.subsubfield',
-                    'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa
+                    'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa: E501
                     'multilingual': False,
                     'title': 'Subsubfield',
                     'description': '<p><em>Subsubfield</em></p>\n',
@@ -495,7 +495,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '(^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
+                    'path': '(^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa: E501
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -504,7 +504,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$)',  # noqa
+                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$)',  # noqa: E501
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -513,7 +513,7 @@ def test_get_schema_tables(client):
                 },
                 {
                     'definition_path': '',
-                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa
+                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa: E501
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -524,7 +524,7 @@ def test_get_schema_tables(client):
             'source': {
                 'type': 'core',
                 'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release',
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa
+                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa: E501
             },
         },
         'Tender': {
@@ -546,13 +546,13 @@ def test_get_schema_tables(client):
                     'title': 'Replacement',
                     'description': '',
                     'types': '',
-                    'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,title',  # noqa
+                    'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,title',  # noqa: E501
                 },
             ],
             'source': {
                 'type': 'core',
                 'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#tender',
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,',  # noqa
+                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,',  # noqa: E501
             },
         },
         'Location': {
@@ -623,7 +623,7 @@ def test_get_schema_tables_mixed_array_success(client):
                 },
             ],
             'source': {
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa
+                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa: E501
                 'type': 'core',
                 'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release',
             },
@@ -795,7 +795,7 @@ def test_get_codelist_tables_attributes():
 
 
 def test_identify_headings():
-    html = commonmark('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n')  # noqa
+    html = commonmark('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n')  # noqa: E501
 
     html, headings = identify_headings(html)
 
