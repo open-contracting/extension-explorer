@@ -1,4 +1,6 @@
+import csv
 import re
+from io import StringIO
 
 from babel.core import UnknownLocaleError
 from flask import Flask, abort, render_template, request, send_file, url_for
@@ -162,3 +164,44 @@ def extension_codelists(lang, identifier, version):
     return render_template('extension_codelists.html', lang=lang, identifier=identifier, version=version,
                            extension=extension, extension_version=extension_version, present_versions=present_versions,
                            historical_versions=historical_versions, tables=tables)
+
+
+@app.route('/<lang>/extensions/<identifier>/<version>/extension.json')
+def extension_metadata_file(lang, identifier, version):
+    extension, extension_version = get_extension_and_version(identifier, version)
+
+    return extension_version['metadata']
+
+
+@app.route('/<lang>/extensions/<identifier>/<version>/README.md')
+def extension_documentation_file(lang, identifier, version):
+    extension, extension_version = get_extension_and_version(identifier, version)
+    if not extension_version['readme'][lang]:
+        abort(404)
+
+    return extension_version['readme'][lang], {'Content-Type': 'text/markdown; charset=utf-8'}
+
+
+@app.route('/<lang>/extensions/<identifier>/<version>/<filename>')
+def extension_schema_file(lang, identifier, version, filename):
+    extension, extension_version = get_extension_and_version(identifier, version)
+    if not extension_version['schemas'][filename] or not extension_version['schemas'][filename][lang]:
+        abort(404)
+
+    return extension_version['schemas'][filename][lang]
+
+
+@app.route('/<lang>/extensions/<identifier>/<version>/codelists/<filename>')
+def extension_codelist_file(lang, identifier, version, filename):
+    extension, extension_version = get_extension_and_version(identifier, version)
+    if not extension_version['codelists'][filename] or not extension_version['codelists'][filename][lang]:
+        abort(404)
+
+    codelist = extension_version['codelists'][filename][lang]
+
+    io = StringIO()
+    writer = csv.DictWriter(io, fieldnames=codelist['fieldnames'], lineterminator='\n', extrasaction='ignore')
+    writer.writeheader()
+    writer.writerows(codelist['rows'])
+
+    return io.getvalue(), {'Content-Type': 'text/csv; charset=utf-8'}

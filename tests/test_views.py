@@ -57,6 +57,28 @@ def test_extension_codelists(client):
     assert response.status_code == 200
 
 
+def test_extension_metadata_file(client):
+    response = client.get(url_for('extension_metadata_file', lang='en', identifier='location', version='v1.1.3'))
+    assert response.status_code == 200
+
+
+def test_extension_documentation_file(client):
+    response = client.get(url_for('extension_documentation_file', lang='en', identifier='location', version='v1.1.3'))
+    assert response.status_code == 200
+
+
+def test_extension_schema_file(client):
+    response = client.get(url_for('extension_schema_file', lang='en', identifier='location', version='v1.1.3',
+                                  filename='release-schema.json'))
+    assert response.status_code == 200
+
+
+def test_extension_codelist_file(client):
+    response = client.get(url_for('extension_codelist_file', lang='en', identifier='location', version='v1.1.3',
+                                  filename='geometryType.csv'))
+    assert response.status_code == 200
+
+
 def test_lang_home_404(client):
     response = client.get(url_for('lang_home', lang='nonexistent'))
     assert response.status_code == 404
