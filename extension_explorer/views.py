@@ -23,6 +23,7 @@ LANGS = {
 
 class Configuration(metaclass=MetaFlaskEnv):
     ENV_PREFIX = 'FLASK_'
+    JSONIFY_PRETTYPRINT_REGULAR = True
     FREEZER_IGNORE_404_NOT_FOUND = True
 
 

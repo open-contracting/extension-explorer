@@ -7,6 +7,11 @@ freezer = Freezer(app)
 
 
 @freezer.register_generator
+def extensions_json():
+    yield {}
+
+
+@freezer.register_generator
 def extension():
     for lang in LANGS:
         for identifier in get_extensions():
@@ -14,8 +19,19 @@ def extension():
 
 
 @freezer.register_generator
-def extensions_json():
-    yield {}
+def extension_metadata_file():
+    for lang in LANGS:
+        for identifier, extension in get_extensions().items():
+            for version in extension['versions']:
+                yield {'lang': lang, 'identifier': identifier, 'version': version}
+
+
+@freezer.register_generator
+def extension_documentation_file():
+    for lang in LANGS:
+        for identifier, extension in get_extensions().items():
+            for version in extension['versions']:
+                yield {'lang': lang, 'identifier': identifier, 'version': version}
 
 
 if __name__ == '__main__':
