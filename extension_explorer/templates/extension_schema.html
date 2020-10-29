@@ -33,7 +33,7 @@
       </h2>
 
       <p>
-        {{ _('You can <a href="%(url)s>">download the translated <code>release-schema.json</code> file</a>.', url=url_for('extension_schema_file', lang=lang, identifier=identifier, version=version, filename='release-schema.json')) }}
+        {{ _('You can <a href="%(url)s">download the translated <code>release-schema.json</code> file</a>.', url=url_for('extension_schema_file', lang=lang, identifier=identifier, version=version, filename='release-schema.json')) }}
       </p>
   {% for definition, properties in tables.items() %}
 
