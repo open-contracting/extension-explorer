@@ -4,7 +4,7 @@
 
 {% block nav_codelists %}
         <div class="ee-toc-item active">
-          <a class="ee-toc-link" href="{{ url_for('extension_codelists', identifier=identifier, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_codelists', lang=lang, identifier=identifier, version=version) }}">
             {{ _("Codelists") }}
           </a>
 
@@ -29,6 +29,10 @@
       <h3 id="{{ codelist }}">
         {{ codelist }}
       </h3>
+
+      <p>
+        {{ _('You can <a href="%(url)s>">download the translated <code>%(codelist)s</code> file</a>.', url=url_for('extension_codelist_file', lang=lang, identifier=identifier, version=version, filename=codelist), codelist=codelist) }}
+      </p>
 
     {% if url and 'standard.open-contracting.org' in url %}
       <p>

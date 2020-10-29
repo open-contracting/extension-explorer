@@ -10,7 +10,7 @@
 
 {% block nav_documentation %}
         <div class="ee-toc-item active">
-          <a class="ee-toc-link" href="{{ url_for('extension_documentation', identifier=identifier, version=version, lang=lang) }}">
+          <a class="ee-toc-link" href="{{ url_for('extension_documentation', lang=lang, identifier=identifier, version=version) }}">
             {{ _("Documentation") }}
           </a>
 
