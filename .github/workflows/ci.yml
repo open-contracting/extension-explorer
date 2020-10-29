@@ -38,6 +38,7 @@ jobs:
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     needs: build
+    # Copied to deploy.yml
     env:
       OCDS_GITHUB_ACCESS_TOKEN: ${{ secrets.OCDS_GITHUB_ACCESS_TOKEN }}
     runs-on: ubuntu-latest
