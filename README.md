@@ -41,7 +41,19 @@ Extract messages:
 pybabel extract -F babel.cfg -o messages.pot .
 ```
 
-Push to Transifex (`tx push -s`), translate, pull From Transifex (`tx pull -a`), then compile messages:
+Push to Transifex:
+
+```shell
+tx push -s
+```
+
+Translate, then pull From Transifex:
+
+```shell
+tx pull -a
+```
+
+Finally, compile messages:
 
 ```shell
 pybabel compile -d translations -f
