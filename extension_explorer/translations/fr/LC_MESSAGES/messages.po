@@ -1,20 +1,20 @@
 # Translations template for PROJECT.
-# Copyright (C) 2019 ORGANIZATION
+# Copyright (C) 2020 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2020.
 # 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2019-01-18 19:59-0500\n"
+"POT-Creation-Date: 2020-10-29 19:23-0400\n"
 "PO-Revision-Date: 2018-09-28 15:07+0000\n"
-"Language-Team: French (https://www.transifex.com/OpenDataServices/teams/59224/fr/)\n"
+"Language-Team: French (https://www.transifex.com/open-contracting-partnership-1/teams/112300/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.6.0\n"
+"Generated-By: Babel 2.7.0\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -28,38 +28,69 @@ msgstr ""
 msgid "View the codes in the %(codelist)s codelist"
 msgstr ""
 
-#: util.py:93
+#: util.py:115
 msgid "latest"
 msgstr ""
 
-#: util.py:111
+#: util.py:133
 msgid "Changelog"
 msgstr ""
 
-#: templates/extension_schema.html:41 util.py:200
+#: templates/extension_schema.html:68 util.py:230
 msgid "Description"
 msgstr ""
 
-#: util.py:229
-msgid "Release"
+#: util.py:310
+msgid " or "
 msgstr ""
 
-#: util.py:248
-#, python-format
-msgid "Deprecated in OCDS %(deprecatedVersion)s: %(description)s"
-msgstr ""
-
-#: util.py:250
-msgid "Undeprecated"
-msgstr ""
-
-#: util.py:274
+#: util.py:327
 msgid "object"
-msgstr ""
+msgid_plural "objects"
+msgstr[0] ""
+msgstr[1] ""
 
-#: util.py:293
+#: util.py:351
+#, python-format
+msgid "string from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
+msgid_plural "strings from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
+msgstr[0] ""
+msgstr[1] ""
+
+#: util.py:354
+#, python-format
+msgid "string from closed <a href=\"%(url)s\">%(codelist)s</a> codelist"
+msgid_plural "strings from closed <a href=\"%(url)s\">%(codelist)s</a> codelist"
+msgstr[0] ""
+msgstr[1] ""
+
+#: util.py:356
+#, python-format
+msgid "string from <a href=\"%(url)s\">%(codelist)s</a> codelist"
+msgid_plural "strings from <a href=\"%(url)s\">%(codelist)s</a> codelist"
+msgstr[0] ""
+msgstr[1] ""
+
+#: util.py:359
+#, python-format
+msgid "%(type)s"
+msgid_plural "%(type)ss"
+msgstr[0] ""
+msgstr[1] ""
+
+#: util.py:394
 #, python-format
 msgid "array of %(subtypes)s"
+msgstr ""
+
+#: templates/home.html:3 templates/home.html:13 templates/layout.html:23
+#: views.py:80
+msgid "OCDS Extension Explorer"
+msgstr ""
+
+#: views.py:110
+#, python-format
+msgid "%(name)s — OCDS Extension Explorer"
 msgstr ""
 
 #. /profile/0/title
@@ -82,79 +113,194 @@ msgstr ""
 msgid "Fiscal extensions"
 msgstr ""
 
-#: templates/documentation.html:10 templates/extension.html:12
-#: templates/extension.html:29 templates/layout.html:44
+#: templates/documentation.html:3
+msgid "Documentation — OCDS Extension Explorer"
+msgstr ""
+
+#: templates/documentation.html:11 templates/extension_documentation.html:14
+#: templates/extension_documentation.html:31
 #: templates/layout_extension.html:55
 msgid "Documentation"
 msgstr ""
 
-#: templates/extension_codelists.html:6 templates/extension_codelists.html:23
+#: templates/extension_codelists.html:3
+#, python-format
+msgid "%(name)s — Codelists — OCDS Extension Explorer"
+msgstr ""
+
+#: templates/extension_codelists.html:8 templates/extension_codelists.html:25
 #: templates/layout_extension.html:72
 msgid "Codelists"
 msgstr ""
 
-#: templates/extension_schema.html:6 templates/extension_schema.html:23
+#: templates/extension_codelists.html:34
+#, python-format
+msgid ""
+"You can <a href=\"%(url)s\">download the translated "
+"<code>%(codelist)s</code> file</a>."
+msgstr ""
+
+#: templates/extension_codelists.html:40
+#, python-format
+msgid ""
+"The extension adds these codes to the <a "
+"href=\"%(url)s\"><code>%(codelist)s</code> codelist</a>."
+msgstr ""
+
+#: templates/extension_codelists.html:42
+#, python-format
+msgid ""
+"The extension removes these codes from the <a "
+"href=\"%(url)s\"><code>%(codelist)s</code> codelist</a>."
+msgstr ""
+
+#: templates/extension_codelists.html:44
+#, python-format
+msgid ""
+"The extension replaces the <a href=\"%(url)s\"><code>%(codelist)s</code> "
+"codelist</a> with these codes."
+msgstr ""
+
+#: templates/extension_documentation.html:3
+#, python-format
+msgid "%(name)s — Documentation — OCDS Extension Explorer"
+msgstr ""
+
+#: templates/extension_schema.html:3
+#, python-format
+msgid "%(name)s — Schema — OCDS Extension Explorer"
+msgstr ""
+
+#: templates/extension_schema.html:8 templates/extension_schema.html:32
 #: templates/layout_extension.html:63
 msgid "Schema"
 msgstr ""
 
-#: templates/extension_schema.html:35
+#: templates/extension_schema.html:22 templates/extension_schema.html:125
+msgid "Removed fields"
+msgstr ""
+
+#: templates/extension_schema.html:36
+#, python-format
+msgid ""
+"You can <a href=\"%(url)s\">download the translated <code>release-"
+"schema.json</code> file</a>."
+msgstr ""
+
+#: templates/extension_schema.html:46
+msgid "The extension defines these fields in the release schema:"
+msgstr ""
+
+#: templates/extension_schema.html:49
+#, python-format
+msgid ""
+"The extension defines these fields in the <a "
+"href=\"%(url)s\"><code>%(name)s</code></a> object from OCDS:"
+msgstr ""
+
+#: templates/extension_schema.html:51
+#, python-format
+msgid ""
+"The extension defines these fields in the <a "
+"href=\"%(url)s\"><code>%(name)s</code></a> object from the <a "
+"href=\"%(extension_url)s\">%(extension_name)s</a> extension:"
+msgstr ""
+
+#: templates/extension_schema.html:54
+#, python-format
+msgid ""
+"The extension defines a new <code>%(name)s</code> object with these fields:"
+msgstr ""
+
+#: templates/extension_schema.html:62
 msgid "Field"
 msgstr ""
 
-#: templates/extension_schema.html:38
+#: templates/extension_schema.html:65
 msgid "Title"
 msgstr ""
 
-#: templates/extension_schema.html:44
+#: templates/extension_schema.html:71
 msgid "Type(s)"
 msgstr ""
 
-#: templates/extensions.html:10 templates/layout.html:39
+#: templates/extension_schema.html:89
+#, python-format
+msgid "This field is modified from its <a href=\"%(url)s\">original version</a>."
+msgstr ""
+
+#: templates/extension_schema.html:95
+msgid "This field has multilingual support."
+msgstr ""
+
+#: templates/extension_schema.html:103
+#, python-format
+msgid "Deprecated in OCDS %(deprecatedVersion)s:"
+msgstr ""
+
+#: templates/extension_schema.html:109
+msgid "The extension undoes the deprecation of this field."
+msgstr ""
+
+#: templates/extension_schema.html:130
+msgid "The extension removes these fields from the release schema:"
+msgstr ""
+
+#: templates/extension_schema.html:138
+msgid ""
+"The extension removes these <em>deprecated</em> fields from the release "
+"schema:"
+msgstr ""
+
+#: templates/extensions.html:3
+msgid "Extensions — OCDS Extension Explorer"
+msgstr ""
+
+#: templates/extensions.html:11 templates/layout.html:36
 msgid "Extensions"
 msgstr ""
 
-#: templates/extensions.html:14
+#: templates/extensions.html:15
 msgid "Show"
 msgstr ""
 
-#: templates/extensions.html:18
+#: templates/extensions.html:19
 msgid "any"
 msgstr ""
 
-#: templates/extensions.html:21
+#: templates/extensions.html:22
 msgid "recommended"
 msgstr ""
 
-#: templates/extensions.html:25
+#: templates/extensions.html:26
 msgid "extensions"
 msgstr ""
 
-#: templates/extensions.html:28
+#: templates/extensions.html:29
 msgid "by"
 msgstr ""
 
-#: templates/extensions.html:31
+#: templates/extensions.html:32
 msgid "any maintainer"
 msgstr ""
 
-#: templates/extensions.html:42
+#: templates/extensions.html:43
 msgid "in"
 msgstr ""
 
-#: templates/extensions.html:45
+#: templates/extensions.html:46
 msgid "any profile"
 msgstr ""
 
-#: templates/extensions.html:56
+#: templates/extensions.html:57
 msgid "about"
 msgstr ""
 
-#: templates/extensions.html:59
+#: templates/extensions.html:60
 msgid "any topic"
 msgstr ""
 
-#: templates/extensions.html:71
+#: templates/extensions.html:72
 #, python-format
 msgid ""
 "Showing <span id=\"filter-count\">%(num)d</span> extensions from the <a "
@@ -162,20 +308,16 @@ msgid ""
 "registry</a>"
 msgstr ""
 
-#: templates/extensions.html:86
+#: templates/extensions.html:87
 msgid "Recommended"
 msgstr ""
 
-#: templates/extensions.html:94 templates/layout_extension.html:103
+#: templates/extensions.html:95 templates/layout_extension.html:103
 #, python-format
 msgid "Maintained by <a href=\"%(url)s\">%(name)s</a>"
 msgstr ""
 
-#: templates/home.html:12 templates/layout.html:12 templates/layout.html:26
-msgid "OCDS Extension Explorer"
-msgstr ""
-
-#: templates/home.html:16
+#: templates/home.html:17
 #, python-format
 msgid ""
 "Disclose more data about your contracting processes, using extensions to the"
@@ -183,15 +325,11 @@ msgid ""
 "Contracting Data Standard</a>."
 msgstr ""
 
-#: templates/home.html:22
+#: templates/home.html:23
 msgid "Browse extensions"
 msgstr ""
 
-#: templates/home.html:27
-msgid "Learn about extensions"
-msgstr ""
-
-#: templates/layout.html:34
+#: templates/layout.html:31
 msgid "Home"
 msgstr ""
 
@@ -228,4 +366,9 @@ msgstr ""
 
 #: templates/layout_extension.html:124
 msgid "Copied!"
+msgstr ""
+
+#: templates/redirect.html:19
+#, python-format
+msgid "This page has moved to a <a href=\"%(redirect)s\">%(redirect)s</a>"
 msgstr ""
