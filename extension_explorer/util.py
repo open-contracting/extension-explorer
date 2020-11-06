@@ -282,6 +282,9 @@ def get_schema_tables(extension_version, lang):
     """
     tables = {}
 
+    if not extension_version['schemas']['release-schema.json']:
+        return tables
+
     schema = _patch_schema(extension_version, 'en', include_test_dependencies=True)
     sources = _get_sources(schema, lang)
 
