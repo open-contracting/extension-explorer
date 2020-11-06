@@ -120,7 +120,10 @@ def extension_documentation(lang, identifier, version):
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
 
-    schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
+    if tables:
+        schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
+    else:
+        schema_url = None
     codelist_url = url_for('extension_codelists', lang=lang, identifier=identifier, version=version)
 
     # Note: `readme` may contain unsafe HTML and JavaScript.

@@ -24,7 +24,8 @@ def replace_directives(html, schema_url, codelist_url, tables):
             directive_name = get_directive_name(lines)
 
             if directive_name == 'extensiontable':
-                replacement = get_extensiontable_replacement(lines, schema_url, tables)
+                if schema_url:
+                    replacement = get_extensiontable_replacement(lines, schema_url, tables)
             elif directive_name in ('csv-table-no-translate', 'csv-table'):
                 replacement = get_csv_table_replacement(lines, codelist_url)
             elif directive_name:
