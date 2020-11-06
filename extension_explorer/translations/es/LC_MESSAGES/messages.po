@@ -144,11 +144,11 @@ msgstr "Listas de código"
 #: templates/extension_codelists.html:34
 #, python-format
 msgid ""
-"You can <a href=\"%(url)s\">download the translated "
-"<code>%(codelist)s</code> file</a>."
+"You can <a href=\"%(url)s\">download the "
+"<code>%(codelist)s</code> file</a> in English."
 msgstr ""
-"Puede <a href=\"%(url)s\">descargar la traducción "
-"<code>%(codelist)s</code> del archivo</a>."
+"Puede <a href=\"%(url)s\">descargar el archivo "
+"<code>%(codelist)s</code></a> en español."
 
 #: templates/extension_codelists.html:40
 #, python-format
@@ -199,11 +199,11 @@ msgstr "Quitar campos"
 #: templates/extension_schema.html:36
 #, python-format
 msgid ""
-"You can <a href=\"%(url)s\">download the translated <code>release-"
-"schema.json</code> file</a>."
+"You can <a href=\"%(url)s\">download the <code>release-"
+"schema.json</code> file</a> in English."
 msgstr ""
-"Puede <a href=\"%(url)s\">descargar la traducción del archivo <code"
-">release-schema.json</code></a>."
+"Puede <a href=\"%(url)s\">descargar el archivo <code"
+">release-schema.json</code></a> en español."
 
 #: templates/extension_schema.html:46
 msgid "The extension defines these fields in the release schema:"

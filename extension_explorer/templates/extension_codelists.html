@@ -31,7 +31,7 @@
       </h3>
 
       <p>
-        {{ _('You can <a href="%(url)s">download the translated <code>%(codelist)s</code> file</a>.', url=url_for('extension_codelist_file', lang=lang, identifier=identifier, version=version, filename=codelist), codelist=codelist) }}
+        {{ _('You can <a href="%(url)s">download the <code>%(codelist)s</code> file</a> in English.', url=url_for('extension_codelist_file', lang=lang, identifier=identifier, version=version, filename=codelist), codelist=codelist) }}
       </p>
 
     {% if url and 'standard.open-contracting.org' in url %}
