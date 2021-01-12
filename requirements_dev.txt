@@ -5,79 +5,282 @@
 #    pip-compile requirements_dev.in
 #
 -e git+https://github.com/readthedocs/commonmark.py.git@dafae75015cc342f3fddb499674bab97ac4a6a96#egg=commonmark
+    # via
+    #   -r requirements.txt
+    #   recommonmark
 -e file:.#egg=ocdsextensionexplorer
+    # via -r requirements.txt
 -e git+https://github.com/jpmckinney/recommonmark.git@hotfix#egg=recommonmark
+    # via -r requirements.txt
 alabaster==0.7.12
+    # via
+    #   -r requirements.txt
+    #   sphinx
 attrs==19.3.0
+    # via
+    #   -r requirements.txt
+    #   jsonschema
+    #   pytest
 babel==2.7.0
+    # via
+    #   -r requirements.txt
+    #   flask-babel
+    #   ocdsextensionregistry
+    #   sphinx
 certifi==2019.9.11
+    # via
+    #   -r requirements.txt
+    #   requests
 chardet==3.0.4
+    # via
+    #   -r requirements.txt
+    #   requests
 click==7.0
-coverage==5.0.2           # via coveralls, pytest-cov
+    # via
+    #   -r requirements.txt
+    #   flask
+    #   pip-tools
+coverage==5.0.2
+    # via
+    #   coveralls
+    #   pytest-cov
 coveralls==1.10.0
-docopt==0.6.2             # via coveralls
+    # via -r requirements_dev.in
+docopt==0.6.2
+    # via coveralls
 docutils==0.15.2
-entrypoints==0.3          # via flake8
+    # via
+    #   -r requirements.txt
+    #   ocds-babel
+    #   ocdsextensionregistry
+    #   recommonmark
+    #   sphinx
+entrypoints==0.3
+    # via flake8
 flake8==3.7.9
+    # via -r requirements_dev.in
 flask-babel==0.12.2
+    # via -r requirements.txt
 flask-env==2.0.0
+    # via -r requirements.txt
 flask==1.1.1
+    # via
+    #   -r requirements.txt
+    #   flask-babel
+    #   frozen-flask
+    #   pytest-flask
 frozen-flask==0.15
+    # via -r requirements.txt
 idna==2.8
+    # via
+    #   -r requirements.txt
+    #   requests
 ijson==2.5.1
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 imagesize==1.1.0
+    # via
+    #   -r requirements.txt
+    #   sphinx
 importlib-metadata==0.23
+    # via
+    #   -r requirements.txt
+    #   jsonschema
+    #   pytest
 isort==4.3.21
+    # via -r requirements_dev.in
 itsdangerous==1.1.0
+    # via
+    #   -r requirements.txt
+    #   flask
 jinja2==2.10.3
+    # via
+    #   -r requirements.txt
+    #   flask
+    #   flask-babel
+    #   sphinx
 json-merge-patch==0.2
+    # via
+    #   -r requirements.txt
+    #   ocdsextensionregistry
 jsonpointer==2.0
+    # via -r requirements.txt
 jsonref==0.2
+    # via
+    #   -r requirements.txt
+    #   ocdskit
+    #   ocdsmerge
 jsonschema==3.2.0
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 libsass==0.19.4
-lxml==4.4.1
+    # via -r requirements.txt
+lxml==4.6.2
+    # via -r requirements.txt
 markupsafe==1.1.1
-mccabe==0.6.1             # via flake8
+    # via
+    #   -r requirements.txt
+    #   jinja2
+mccabe==0.6.1
+    # via flake8
 more-itertools==7.2.0
+    # via
+    #   -r requirements.txt
+    #   pytest
+    #   zipp
 ocds-babel[markdown]==0.2.2
+    # via
+    #   -r requirements.txt
+    #   ocdsextensionregistry
 ocdsextensionregistry[cli]==0.0.18
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 ocdskit==0.1.3
+    # via -r requirements.txt
 ocdsmerge==0.5.10
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 packaging==19.2
+    # via
+    #   -r requirements.txt
+    #   pytest
+    #   sphinx
 pip-tools==4.3.0
-pluggy==0.13.1            # via pytest
-py==1.8.1                 # via pytest
-pycodestyle==2.5.0        # via flake8
-pyflakes==2.1.1           # via flake8
+    # via -r requirements_dev.in
+pluggy==0.13.1
+    # via pytest
+py==1.8.1
+    # via pytest
+pycodestyle==2.5.0
+    # via flake8
+pyflakes==2.1.1
+    # via flake8
 pygments==2.4.2
+    # via
+    #   -r requirements.txt
+    #   sphinx
 pyparsing==2.4.5
+    # via
+    #   -r requirements.txt
+    #   packaging
 pyrsistent==0.15.5
+    # via
+    #   -r requirements.txt
+    #   jsonschema
 pytest-cov==2.8.1
+    # via -r requirements_dev.in
 pytest-flask==0.15.0
+    # via -r requirements_dev.in
 pytest==5.3.2
+    # via
+    #   -r requirements_dev.in
+    #   pytest-cov
+    #   pytest-flask
 python-slugify==1.2.6
+    # via
+    #   -r requirements.txt
+    #   transifex-client
 pytz==2019.3
+    # via
+    #   -r requirements.txt
+    #   babel
 pyyaml==5.1.2
+    # via -r requirements.txt
 requests-cache==0.5.2
+    # via
+    #   -r requirements.txt
+    #   ocdsextensionregistry
 requests==2.22.0
+    # via
+    #   -r requirements.txt
+    #   coveralls
+    #   ocdsextensionregistry
+    #   ocdskit
+    #   ocdsmerge
+    #   requests-cache
+    #   sphinx
+    #   transifex-client
 rfc3987==1.3.8
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 six==1.11.0
+    # via
+    #   -r requirements.txt
+    #   jsonschema
+    #   libsass
+    #   packaging
+    #   pip-tools
+    #   pyrsistent
+    #   transifex-client
 snowballstemmer==2.0.0
+    # via
+    #   -r requirements.txt
+    #   sphinx
 sphinx==2.2.1
+    # via
+    #   -r requirements.txt
+    #   ocds-babel
+    #   ocdsextensionregistry
+    #   recommonmark
 sphinxcontrib-applehelp==1.0.1
+    # via
+    #   -r requirements.txt
+    #   sphinx
 sphinxcontrib-devhelp==1.0.1
+    # via
+    #   -r requirements.txt
+    #   sphinx
 sphinxcontrib-htmlhelp==1.0.2
+    # via
+    #   -r requirements.txt
+    #   sphinx
 sphinxcontrib-jsmath==1.0.1
+    # via
+    #   -r requirements.txt
+    #   sphinx
 sphinxcontrib-qthelp==1.0.2
+    # via
+    #   -r requirements.txt
+    #   sphinx
 sphinxcontrib-serializinghtml==1.1.3
+    # via
+    #   -r requirements.txt
+    #   sphinx
 sqlalchemy==1.3.11
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 strict-rfc3339==0.7
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 transifex-client==0.13.7
+    # via -r requirements.txt
 unidecode==1.1.1
+    # via
+    #   -r requirements.txt
+    #   python-slugify
 urllib3==1.25.7
-wcwidth==0.1.8            # via pytest
+    # via
+    #   -r requirements.txt
+    #   requests
+    #   transifex-client
+wcwidth==0.1.8
+    # via pytest
 werkzeug==0.16.0
+    # via
+    #   -r requirements.txt
+    #   flask
+    #   pytest-flask
 zipp==0.6.0
+    # via
+    #   -r requirements.txt
+    #   importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
