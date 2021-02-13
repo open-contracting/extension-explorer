@@ -7,6 +7,8 @@ from extension_explorer.util import (commonmark, get_codelist_tables, get_extens
                                      highlight_json, identify_headings, set_tags)
 
 extension_version_template = {
+    "id": "template",
+    "version": "master",
     "metadata": {
         "testDependencies": [
             "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/v1.1.3/extension.json"  # noqa: E501
@@ -19,7 +21,10 @@ extension_version_template = {
     },
     "codelists": {
         "codelist.csv": {
-            "en": {}
+            "en": {
+                "fieldnames": ["Code"],
+                "rows": [{"Code": "A code"}]
+            }
         }
     }
 }
@@ -701,14 +706,18 @@ def test_get_schema_tables_array_array(client):
     assert str(excinfo.value).startswith('array of arrays with items is not implemented: ')
 
 
-def test_get_codelist_tables():
+def test_get_codelist_tables(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['codelists']['codelist.csv']['en'] = codelist
 
     tables = get_codelist_tables(extension_version, 'en')
 
-    assert tables == [
-        ['codelist.csv', 'codelist.csv', None, ['Code', 'Title_en', 'Description_en'], [
+    assert tables == [[
+        'codelist.csv',
+        'codelist.csv',
+        '/en/extensions/template/master/codelists/#codelist.csv',
+        ['Code', 'Title_en', 'Description_en'],
+        [
             {
                 'code': 'A code',
                 'title': 'A title',
@@ -723,19 +732,23 @@ def test_get_codelist_tables():
                     'description': '',
                 },
             },
-        ]],
-    ]
+        ],
+    ]]
 
 
-def test_get_codelist_tables_translation():
+def test_get_codelist_tables_translation(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['codelists']['codelist.csv']['en'] = codelist
     extension_version['codelists']['codelist.csv']['es'] = codelist_translated
 
     tables = get_codelist_tables(extension_version, 'es')
 
-    assert tables == [
-        ['codelist.csv', 'codelist.csv', None, ['Código', 'Título', 'Descripción'], [
+    assert tables == [[
+        'codelist.csv',
+        'codelist.csv',
+        '/es/extensions/template/master/codelists/#codelist.csv',
+        ['Código', 'Título', 'Descripción'],
+        [
             {
                 'code': 'Un código',
                 'title': 'Un título',
@@ -750,31 +763,31 @@ def test_get_codelist_tables_translation():
                     'description': '',
                 },
             },
-        ]],
-    ]
+        ],
+    ]]
 
 
-def test_get_codelist_tables_subtrahend():
+def test_get_codelist_tables_subtrahend(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['codelists'] = {
-        "-codelist.csv": {
-            "en": {
-                "fieldnames": ["Code"],
-                "rows": [{"Code": "A code"}]
-            }
+    extension_version['codelists']['-codelist.csv'] = {
+        "en": {
+            "fieldnames": ["Code"],
+            "rows": [{"Code": "A code"}]
         }
     }
 
     tables = get_codelist_tables(extension_version, 'en')
 
-    assert tables == [
-        ['-codelist.csv', 'codelist.csv', None, ['Code'], [
-            {'code': 'A code'},
-        ]],
+    assert tables[1] == [
+        '-codelist.csv',
+        'codelist.csv',
+        '/en/extensions/template/master/codelists/#codelist.csv',
+        ['Code'],
+        [{'code': 'A code'}],
     ]
 
 
-def test_get_codelist_tables_attributes():
+def test_get_codelist_tables_attributes(client):
     extension_version = deepcopy(extension_version_template)
     extension_version['codelists'] = {
         "codelist.csv": {
@@ -787,11 +800,13 @@ def test_get_codelist_tables_attributes():
 
     tables = get_codelist_tables(extension_version, 'en')
 
-    assert tables == [
-        ['codelist.csv', 'codelist.csv', None, ['Description'], [
-            {'content': {'attributes': {'Extra': 'An extra'}}},
-        ]],
-    ]
+    assert tables == [[
+        'codelist.csv',
+        'codelist.csv',
+        '/en/extensions/template/master/codelists/#codelist.csv',
+        ['Description'],
+        [{'content': {'attributes': {'Extra': 'An extra'}}}],
+    ]]
 
 
 def test_identify_headings():
