@@ -2,9 +2,9 @@ from copy import deepcopy
 
 import pytest
 
-from extension_explorer.util import (commonmark, get_codelist_tables, get_extensions,
-                                     get_present_and_historical_versions, get_removed_fields, get_schema_tables,
-                                     highlight_json, identify_headings, set_tags)
+from extension_explorer.util import (get_codelist_tables, get_extensions, get_present_and_historical_versions,
+                                     get_removed_fields, get_schema_tables, highlight_json, identify_headings,
+                                     markdown, set_tags)
 
 extension_version_template = {
     "id": "template",
@@ -810,7 +810,7 @@ def test_get_codelist_tables_attributes(client):
 
 
 def test_identify_headings():
-    html = commonmark('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n')  # noqa: E501
+    html = markdown('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n')  # noqa: E501
 
     html, headings = identify_headings(html)
 
@@ -841,7 +841,7 @@ def test_identify_headings():
 
 
 def test_highlight_json():
-    html = commonmark('## Example\n```json\n{\n    "key": 1\n}\n```\n')
+    html = markdown('## Example\n```json\n{\n    "key": 1\n}\n```\n')
 
     html, css = highlight_json(html)
 

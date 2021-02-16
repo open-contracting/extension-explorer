@@ -8,9 +8,9 @@ from flask_babel import Babel, gettext
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .util import (commonmark, get_codelist_tables, get_extension_explorer_data_filename, get_extensions,
+from .util import (get_codelist_tables, get_extension_explorer_data_filename, get_extensions,
                    get_present_and_historical_versions, get_removed_fields, get_schema_tables, highlight_json,
-                   identify_headings, set_tags)
+                   identify_headings, markdown, set_tags)
 
 LANGS = {
     'en': 'English',
@@ -122,7 +122,7 @@ def extension_documentation(lang, identifier, version):
     readme = extension_version.get('readme', {}).get(lang, {})
     # Remove the first heading.
     readme = re.sub(r'\A# [^\n]+', '', readme)
-    readme_html = commonmark(readme)
+    readme_html = markdown(readme)
     readme_html, headings = identify_headings(readme_html)
     readme_html, highlight_css = highlight_json(readme_html)
 

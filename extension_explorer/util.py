@@ -4,7 +4,6 @@ Module to keep ``views.py`` simple and high-level.
 import json
 import os
 import re
-import warnings
 from collections import defaultdict
 from copy import deepcopy
 from functools import lru_cache
@@ -13,9 +12,9 @@ import json_merge_patch
 import jsonpointer
 import lxml.html
 import requests
-from commonmark import HtmlRenderer, Parser
 from flask import url_for
 from flask_babel import gettext, ngettext
+from markdown_it import MarkdownIt
 from ocdskit.schema import get_schema_fields
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -28,19 +27,11 @@ LANGUAGE_CODE_SUFFIX = '_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|
 LANGUAGE_CODE_SUFFIX_LEN = len(LANGUAGE_CODE_SUFFIX)
 
 
-def commonmark(text):
+def markdown(md):
     """
-    Renders text as Markdown.
+    Renders Markdown text as HTML.
     """
-    parser = Parser()
-    ast = parser.parse(text)
-    renderer = HtmlRenderer()
-
-    # DeprecationWarning: The unescape method is deprecated and will be removed in 3.5, use html.unescape() instead.
-    with warnings.catch_warnings():
-        warnings.simplefilter('ignore', DeprecationWarning)
-
-        return renderer.render(ast)
+    return MarkdownIt().render(md)
 
 
 def get_extension_explorer_data_filename():
@@ -188,8 +179,6 @@ def get_codelist_tables(extension_version, lang):
     tables = []
 
     header_groups = (('Code',), ('Title', 'Title_en'), ('Description', 'Description_en'))
-    codelist_reference_url = _ocds_codelist_reference_url(lang)
-    codelist_names = _ocds_codelist_names()
 
     for name, codelist in extension_version['codelists'].items():
         fieldname_map = {}
@@ -217,7 +206,7 @@ def get_codelist_tables(extension_version, lang):
 
             content = {}
             if 'Description' in fieldname_map:
-                content['description'] = commonmark(row[fieldname_map['Description']])
+                content['description'] = markdown(row[fieldname_map['Description']])
 
             attributes = {k: v for k, v in sorted(row.items()) if k not in fieldnames and v}
             if attributes:
@@ -309,7 +298,7 @@ def get_schema_tables(extension_version, lang):
 
         d = field.asdict(sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
         d['title'] = field.schema.get('title', '')
-        d['description'] = commonmark(field.schema.get('description', ''))
+        d['description'] = markdown(field.schema.get('description', ''))
         d['types'] = gettext(' or ').join(_get_types(field.schema, sources, extension_version, lang))
         tables[key]['fields'].append(d)
 
