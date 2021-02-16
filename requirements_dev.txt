@@ -100,7 +100,9 @@ json-merge-patch==0.2
     #   -r requirements.txt
     #   ocdsextensionregistry
 jsonpointer==2.0
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   ocdskit
 jsonref==0.2
     # via
     #   -r requirements.txt
@@ -154,9 +156,9 @@ ocdsextensionregistry[cli]==0.1.0
     # via
     #   -r requirements.txt
     #   ocdskit
-ocdskit==0.1.3
+ocdskit==0.2.18
     # via -r requirements.txt
-ocdsmerge==0.5.10
+ocdsmerge==0.6.4
     # via
     #   -r requirements.txt
     #   ocdskit
