@@ -82,7 +82,7 @@ importlib-metadata==0.23
     #   jsonschema
     #   mdformat
     #   pytest
-isort==4.3.21
+isort==5.7.0
     # via -r requirements_dev.in
 itsdangerous==1.1.0
     # via
