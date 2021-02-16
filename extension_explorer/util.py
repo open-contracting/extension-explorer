@@ -14,7 +14,7 @@ import lxml.html
 import requests
 from flask import url_for
 from flask_babel import gettext, ngettext
-from markdown_it import MarkdownIt
+from markdown_it.main import AttrDict, MarkdownIt
 from ocdskit.schema import get_schema_fields
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -31,7 +31,19 @@ def markdown(md):
     """
     Renders Markdown text as HTML.
     """
-    return MarkdownIt().render(md)
+    parser = MarkdownIt('default')
+    env = AttrDict()
+
+    tokens = parser.parse(md, env)
+    for token in tokens:
+        if token.type == 'table_open':
+            token.attrs = [['class', 'table table-bordered']]
+        elif token.type == 'thead_open':
+            token.attrs = [['class', 'thead-light']]
+        elif token.type == 'th_open':
+            token.attrs = [['scope', 'col']]
+
+    return parser.renderer.render(tokens, parser.options, env)
 
 
 def get_extension_explorer_data_filename():
