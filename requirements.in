@@ -6,6 +6,7 @@ Frozen-Flask
 json_merge_patch
 jsonpointer
 lxml
+markdown-it-py
 ocdskit
 Pygments
 python-slugify
@@ -14,9 +15,6 @@ requests
 six==1.11.0 # transifex-client
 transifex-client
 werkzeug
-# See https://ocds-babel.readthedocs.io/en/latest/api/translate.html#install-requirements-for-markdown-translation
--e git+https://github.com/readthedocs/commonmark.py.git@dafae75015cc342f3fddb499674bab97ac4a6a96#egg=commonmark
--e git+https://github.com/jpmckinney/recommonmark.git@hotfix#egg=recommonmark
 # See https://github.com/jazzband/pip-tools/issues/204#issuecomment-550051424
 -e file:.#egg=ocdsextensionexplorer # babel.extractors
 

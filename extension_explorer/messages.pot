@@ -17,16 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.7.0\n"
 
-#: compat.py:70
-#, python-format
-msgid "View the fields in the %(definition)s object"
-msgstr ""
-
-#: compat.py:84
-#, python-format
-msgid "View the codes in the %(codelist)s codelist"
-msgstr ""
-
 #: util.py:115
 msgid "latest"
 msgstr ""

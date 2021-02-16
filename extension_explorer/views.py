@@ -8,7 +8,6 @@ from flask_babel import Babel, gettext
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .compat import replace_directives
 from .util import (commonmark, get_codelist_tables, get_extension_explorer_data_filename, get_extensions,
                    get_present_and_historical_versions, get_removed_fields, get_schema_tables, highlight_json,
                    identify_headings, set_tags)
@@ -118,13 +117,6 @@ def extension_documentation(lang, identifier, version):
     extension, extension_version = get_extension_and_version(identifier, version)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
-    tables = get_schema_tables(extension_version, lang)
-
-    if tables:
-        schema_url = url_for('extension_schema', lang=lang, identifier=identifier, version=version)
-    else:
-        schema_url = None
-    codelist_url = url_for('extension_codelists', lang=lang, identifier=identifier, version=version)
 
     # Note: `readme` may contain unsafe HTML and JavaScript.
     readme = extension_version.get('readme', {}).get(lang, {})
@@ -132,7 +124,6 @@ def extension_documentation(lang, identifier, version):
     readme = re.sub(r'\A# [^\n]+', '', readme)
     readme_html = commonmark(readme)
     readme_html, headings = identify_headings(readme_html)
-    readme_html = replace_directives(readme_html, schema_url, codelist_url, tables)
     readme_html, highlight_css = highlight_json(readme_html)
 
     return render_template('extension_documentation.html', lang=lang, identifier=identifier, version=version,

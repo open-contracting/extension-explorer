@@ -4,13 +4,7 @@
 #
 #    pip-compile requirements_dev.in
 #
--e git+https://github.com/readthedocs/commonmark.py.git@dafae75015cc342f3fddb499674bab97ac4a6a96#egg=commonmark
-    # via
-    #   -r requirements.txt
-    #   recommonmark
 -e file:.#egg=ocdsextensionexplorer
-    # via -r requirements.txt
--e git+https://github.com/jpmckinney/recommonmark.git@hotfix#egg=recommonmark
     # via -r requirements.txt
 alabaster==0.7.12
     # via
@@ -20,6 +14,7 @@ attrs==19.3.0
     # via
     #   -r requirements.txt
     #   jsonschema
+    #   markdown-it-py
     #   pytest
 babel==2.7.0
     # via
@@ -51,9 +46,7 @@ docopt==0.6.2
 docutils==0.15.2
     # via
     #   -r requirements.txt
-    #   ocds-babel
-    #   ocdsextensionregistry
-    #   recommonmark
+    #   myst-parser
     #   sphinx
 entrypoints==0.3
     # via flake8
@@ -87,6 +80,7 @@ importlib-metadata==0.23
     # via
     #   -r requirements.txt
     #   jsonschema
+    #   mdformat
     #   pytest
 isort==4.3.21
     # via -r requirements_dev.in
@@ -99,6 +93,7 @@ jinja2==2.10.3
     #   -r requirements.txt
     #   flask
     #   flask-babel
+    #   myst-parser
     #   sphinx
 json-merge-patch==0.2
     # via
@@ -109,6 +104,7 @@ jsonpointer==2.0
 jsonref==0.2
     # via
     #   -r requirements.txt
+    #   ocdsextensionregistry
     #   ocdskit
     #   ocdsmerge
 jsonschema==3.2.0
@@ -119,22 +115,42 @@ libsass==0.19.4
     # via -r requirements.txt
 lxml==4.6.2
     # via -r requirements.txt
+markdown-it-py==0.6.2
+    # via
+    #   -r requirements.txt
+    #   mdformat
+    #   mdit-py-plugins
+    #   myst-parser
+    #   ocds-babel
 markupsafe==1.1.1
     # via
     #   -r requirements.txt
     #   jinja2
 mccabe==0.6.1
     # via flake8
+mdformat==0.5.6
+    # via
+    #   -r requirements.txt
+    #   ocds-babel
+mdit-py-plugins==0.2.5
+    # via
+    #   -r requirements.txt
+    #   markdown-it-py
+    #   myst-parser
 more-itertools==7.2.0
     # via
     #   -r requirements.txt
     #   pytest
     #   zipp
-ocds-babel[markdown]==0.2.2
+myst-parser==0.13.5
     # via
     #   -r requirements.txt
     #   ocdsextensionregistry
-ocdsextensionregistry[cli]==0.0.18
+ocds-babel[markdown]==0.3.0
+    # via
+    #   -r requirements.txt
+    #   ocdsextensionregistry
+ocdsextensionregistry[cli]==0.1.0
     # via
     #   -r requirements.txt
     #   ocdskit
@@ -189,7 +205,9 @@ pytz==2019.3
     #   -r requirements.txt
     #   babel
 pyyaml==5.1.2
-    # via -r requirements.txt
+    # via
+    #   -r requirements.txt
+    #   myst-parser
 requests-cache==0.5.2
     # via
     #   -r requirements.txt
@@ -223,9 +241,8 @@ snowballstemmer==2.0.0
 sphinx==2.2.1
     # via
     #   -r requirements.txt
-    #   ocds-babel
+    #   myst-parser
     #   ocdsextensionregistry
-    #   recommonmark
 sphinxcontrib-applehelp==1.0.1
     # via
     #   -r requirements.txt
@@ -260,6 +277,10 @@ strict-rfc3339==0.7
     #   ocdskit
 transifex-client==0.13.7
     # via -r requirements.txt
+typing-extensions==3.7.4.3
+    # via
+    #   -r requirements.txt
+    #   mdformat
 unidecode==1.1.1
     # via
     #   -r requirements.txt

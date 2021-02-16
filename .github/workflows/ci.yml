@@ -12,30 +12,18 @@ jobs:
         python-version: 3.6
     - uses: actions/cache@v1
       with:
-        path: venv
-        key: ${{ runner.os }}-venv-${{ hashFiles('**/requirements_dev.txt') }}
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements_dev.txt') }}
         restore-keys: |
-          ${{ runner.os }}-venv-
-    # Need to install editable projects in a venv for isort to detect.
-    - name: Install
-      run: |
-        python -m venv venv
-        . venv/bin/activate
-        curl -s -S --retry 3 $BASEDIR/tests/install.sh | bash -
-        pip install -r requirements_dev.txt
-    - name: Lint
-      run: |
-        . venv/bin/activate
-        curl -s -S --retry 3 $BASEDIR/tests/script.sh | bash -
-    - name: Test
-      run: |
-        . venv/bin/activate
-        pytest --cov extension_explorer
+          ${{ runner.os }}-pip-
+    - run: curl -s -S --retry 3 $BASEDIR/tests/install.sh | bash -
+    - run: pip install -r requirements_dev.txt
+    - run: curl -s -S --retry 3 $BASEDIR/tests/script.sh | bash -
+    - run: pytest --cov extension_explorer
       if: always()
-    - name: Coveralls
-      run: |
-        . venv/bin/activate
-        coveralls
+    - env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+      run: coveralls
   deploy:
     if: github.event_name == 'push' && github.ref == 'refs/heads/master'
     needs: build
