@@ -95,7 +95,7 @@ more-itertools==7.2.0
     # via zipp
 myst-parser==0.13.5
     # via ocdsextensionregistry
-ocds-babel[markdown]==0.3.0
+ocds-babel[markdown]==0.3.1
     # via ocdsextensionregistry
 ocdsextensionregistry[cli]==0.1.0
     # via
