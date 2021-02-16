@@ -3,8 +3,8 @@ on:
   schedule:
     - cron:  '11 2 * * *'
 jobs:
-  # Copied from ci.yml
   deploy:
+    # Copied from ci.yml
     env:
       OCDS_GITHUB_ACCESS_TOKEN: ${{ secrets.OCDS_GITHUB_ACCESS_TOKEN }}
     runs-on: ubuntu-latest
