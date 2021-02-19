@@ -1,7 +1,7 @@
 name: CI
 on: [push, pull_request]
 env:
-  BASEDIR: https://raw.githubusercontent.com/open-contracting/standard-maintenance-scripts/master
+  BASEDIR: https://raw.githubusercontent.com/open-contracting/standard-maintenance-scripts/main
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       run: coveralls
   deploy:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: build
     # Copied to deploy.yml
     env:
