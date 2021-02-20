@@ -25,12 +25,12 @@ profile:
     - ppp
 - slug: eu
   title: European Union
-  # See extension_versions in https://github.com/open-contracting-extensions/european-union/blob/master/docs/conf.py
+  # See extension_versions in https://github.com/open-contracting-extensions/european-union/blob/latest/docs/conf.py
   extensions: []
   hidden: true
 - slug: gpa
   title: Agreement on Government Procurement
-  # See extension_versions in https://github.com/open-contracting-extensions/government-procurement-agreement/blob/master/docs/conf.py
+  # See extension_versions in https://github.com/open-contracting-extensions/government-procurement-agreement/blob/latest/docs/conf.py
   extensions:
     - recurrence
     - options
