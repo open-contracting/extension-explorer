@@ -12,14 +12,9 @@ Pygments
 python-slugify
 PyYAML
 requests
-six==1.11.0 # transifex-client
-transifex-client
 werkzeug
 # See https://github.com/jazzband/pip-tools/issues/204#issuecomment-550051424
 -e file:.#egg=ocdsextensionexplorer # babel.extractors
 
 # Deployment
 ocdsextensionregistry[cli]
-
-# Stylesheets
-libsass

@@ -6,3 +6,7 @@ pip-tools
 pytest
 pytest-cov
 pytest-flask
+
+# Build utilities.
+libsass
+transifex-client
