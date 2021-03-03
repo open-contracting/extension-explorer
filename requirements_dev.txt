@@ -114,7 +114,7 @@ jsonschema==3.2.0
     #   -r requirements.txt
     #   ocdskit
 libsass==0.19.4
-    # via -r requirements.txt
+    # via -r requirements_dev.in
 lxml==4.6.2
     # via -r requirements.txt
 markdown-it-py==0.6.2
@@ -278,7 +278,7 @@ strict-rfc3339==0.7
     #   -r requirements.txt
     #   ocdskit
 transifex-client==0.13.7
-    # via -r requirements.txt
+    # via -r requirements_dev.in
 typing-extensions==3.7.4.3
     # via
     #   -r requirements.txt
