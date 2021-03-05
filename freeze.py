@@ -19,6 +19,14 @@ def extension():
 
 
 @freezer.register_generator
+def extension_documentation():
+    for lang in LANGS:
+        for identifier, extension in get_extensions().items():
+            if 'master' not in extension['versions']:
+                yield {'lang': lang, 'identifier': identifier, 'version': 'master'}
+
+
+@freezer.register_generator
 def extension_metadata_file():
     for lang in LANGS:
         for identifier, extension in get_extensions().items():

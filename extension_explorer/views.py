@@ -44,6 +44,8 @@ def get_extension(identifier):
 def get_extension_and_version(identifier, version):
     try:
         extensions = get_extensions(get_extension_explorer_data_filename())
+        if version == 'master' and version not in extensions[identifier]['versions']:
+            version = extensions[identifier]['latest_version']
         return extensions[identifier], extensions[identifier]['versions'][version]
     except KeyError:
         abort(404)
