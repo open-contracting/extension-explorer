@@ -95,7 +95,7 @@ myst-parser==0.13.5
     # via ocdsextensionregistry
 ocds-babel[markdown]==0.3.1
     # via ocdsextensionregistry
-ocdsextensionregistry[cli]==0.1.0
+ocdsextensionregistry[cli]==0.1.3
     # via
     #   -r requirements.in
     #   ocdskit
