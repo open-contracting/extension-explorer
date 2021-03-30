@@ -852,4 +852,4 @@ def test_highlight_json():
 </pre></div>
 </div>"""
 
-    assert css.startswith('.highlight .hll {')
+    assert '\n.highlight ' in css
