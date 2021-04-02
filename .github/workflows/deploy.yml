@@ -9,27 +9,27 @@ jobs:
       OCDS_GITHUB_ACCESS_TOKEN: ${{ secrets.OCDS_GITHUB_ACCESS_TOKEN }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-python@v1
-      with:
-        python-version: 3.6
-    - uses: actions/cache@v1
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-    - name: Install
-      run: pip install -r requirements.txt
-    - name: Build
-      run: |
-        git clone https://github.com/open-contracting/ocds-extensions-translations.git
-        ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
-        python freeze.py
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: extension_explorer/build
-        cname: extensions.open-contracting.org
-        force_orphan: true
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: 3.6
+      - uses: actions/cache@v1
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Install
+        run: pip install -r requirements.txt
+      - name: Build
+        run: |
+          git clone https://github.com/open-contracting/ocds-extensions-translations.git
+          ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
+          python freeze.py
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: extension_explorer/build
+          cname: extensions.open-contracting.org
+          force_orphan: true
