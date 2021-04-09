@@ -1,7 +1,7 @@
 name: Deploy
 on:
   schedule:
-    - cron:  '11 2 * * *'
+    - cron: "11 2 * * *"
 jobs:
   deploy:
     # Copied from ci.yml
