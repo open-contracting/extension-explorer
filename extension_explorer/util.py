@@ -145,14 +145,14 @@ def identify_headings(html):
         if headings and headings[-1]['text'] in changelog_headings and previous_level < heading_level:
             continue
 
-        slug = slugify(element.text)
+        slug = slugify(element.text_content())
         if slug in slug_counts:
             heading_id = '{}-{}'.format(slug, slug_counts[slug])
         else:
             heading_id = slug
         element.attrib['id'] = heading_id
 
-        headings.append({'id': heading_id, 'level': heading_level, 'text': element.text})
+        headings.append({'id': heading_id, 'level': heading_level, 'text': element.text_content()})
         slug_counts[slug] += 1
         previous_level = heading_level
 
