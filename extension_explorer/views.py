@@ -15,8 +15,6 @@ from .util import (get_codelist_tables, get_extension_explorer_data_filename, ge
 LANGS = {
     'en': 'English',
     'es': 'Español',
-    'fr': 'Français',
-    'it': 'Italiano',
 }
 
 
