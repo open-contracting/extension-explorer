@@ -7124,9 +7124,11 @@ a.text-dark:hover, a.text-dark:focus {
   -webkit-appearance: none;
   -moz-appearance: none; }
 
-table code,
-table.docutils tt {
-  word-break: normal; }
+@media (max-width: 1199.98px) {
+  table code,
+  table.docutils tt {
+    word-break: normal; }
+}
 
 .table-bordered td:nth-child(3),
 table.docutils td:nth-child(3) {
