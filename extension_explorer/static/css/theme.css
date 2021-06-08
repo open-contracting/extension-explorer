@@ -417,7 +417,8 @@ table.docutils tt {
   font-size: 87.5%;
   color: #e83e8c;
   word-break: break-word; }
-  a > code, table.docutils a > tt {
+  a > code,
+  table.docutils a > tt {
     color: inherit; }
 
 kbd {
@@ -435,7 +436,9 @@ pre {
   display: block;
   font-size: 87.5%;
   color: #212529; }
-  pre code, pre table.docutils tt, table.docutils pre tt {
+  pre code,
+  pre table.docutils tt,
+  table.docutils pre tt {
     font-size: inherit;
     color: inherit;
     word-break: normal; }
@@ -1031,35 +1034,45 @@ pre {
   .offset-xl-11 {
     margin-left: 91.66667%; } }
 
-.table, table.docutils {
+.table,
+table.docutils {
   width: 100%;
   margin-bottom: 1rem;
   background-color: transparent; }
-  .table th, table.docutils th,
+  .table th,
+  table.docutils th,
   .table td,
   table.docutils td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6; }
-  .table thead th, table.docutils thead th {
+  .table thead th,
+  table.docutils thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6; }
-  .table tbody + tbody, table.docutils tbody + tbody {
+  .table tbody + tbody,
+  table.docutils tbody + tbody {
     border-top: 2px solid #dee2e6; }
-  .table .table, table.docutils .table, .table table.docutils, table.docutils table.docutils {
+  .table .table,
+  table.docutils .table,
+  .table table.docutils,
+  table.docutils table.docutils {
     background-color: #fff; }
 
 .table-sm th,
 .table-sm td {
   padding: 0.3rem; }
 
-.table-bordered, table.docutils {
+.table-bordered,
+table.docutils {
   border: 1px solid #dee2e6; }
-  .table-bordered th, table.docutils th,
+  .table-bordered th,
+  table.docutils th,
   .table-bordered td,
   table.docutils td {
     border: 1px solid #dee2e6; }
-  .table-bordered thead th, table.docutils thead th,
+  .table-bordered thead th,
+  table.docutils thead th,
   .table-bordered thead td,
   table.docutils thead td {
     border-bottom-width: 2px; }
@@ -1223,12 +1236,14 @@ pre {
   .table-hover .table-active:hover > th {
     background-color: rgba(0, 0, 0, 0.075); }
 
-.table .thead-dark th, table.docutils .thead-dark th {
+.table .thead-dark th,
+table.docutils .thead-dark th {
   color: #fff;
   background-color: #212529;
   border-color: #32383e; }
 
-.table .thead-light th, table.docutils .thead-light th {
+.table .thead-light th,
+table.docutils .thead-light th {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6; }
@@ -1240,7 +1255,8 @@ pre {
   .table-dark td,
   .table-dark thead th {
     border-color: #32383e; }
-  .table-dark.table-bordered, table.table-dark.docutils {
+  .table-dark.table-bordered,
+  table.table-dark.docutils {
     border: 0; }
   .table-dark.table-striped tbody tr:nth-of-type(odd) {
     background-color: rgba(255, 255, 255, 0.05); }
@@ -1254,7 +1270,8 @@ pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar; }
-    .table-responsive-sm > .table-bordered, .table-responsive-sm > table.docutils {
+    .table-responsive-sm > .table-bordered,
+    .table-responsive-sm > table.docutils {
       border: 0; } }
 
 @media (max-width: 767.98px) {
@@ -1264,7 +1281,8 @@ pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar; }
-    .table-responsive-md > .table-bordered, .table-responsive-md > table.docutils {
+    .table-responsive-md > .table-bordered,
+    .table-responsive-md > table.docutils {
       border: 0; } }
 
 @media (max-width: 991.98px) {
@@ -1274,7 +1292,8 @@ pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar; }
-    .table-responsive-lg > .table-bordered, .table-responsive-lg > table.docutils {
+    .table-responsive-lg > .table-bordered,
+    .table-responsive-lg > table.docutils {
       border: 0; } }
 
 @media (max-width: 1199.98px) {
@@ -1284,7 +1303,8 @@ pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     -ms-overflow-style: -ms-autohiding-scrollbar; }
-    .table-responsive-xl > .table-bordered, .table-responsive-xl > table.docutils {
+    .table-responsive-xl > .table-bordered,
+    .table-responsive-xl > table.docutils {
       border: 0; } }
 
 .table-responsive {
@@ -1293,7 +1313,8 @@ pre {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; }
-  .table-responsive > .table-bordered, .table-responsive > table.docutils {
+  .table-responsive > .table-bordered,
+  .table-responsive > table.docutils {
     border: 0; }
 
 .form-control {
@@ -6914,13 +6935,17 @@ a.text-dark:hover, a.text-dark:focus {
     display: none; }
   .badge {
     border: 1px solid #000; }
-  .table, table.docutils {
+  .table,
+  table.docutils {
     border-collapse: collapse !important; }
     
     .table td,
-    table.docutils td, .table th, table.docutils th {
+    table.docutils td,
+    .table th,
+    table.docutils th {
       background-color: #fff !important; }
-  .table-bordered th, table.docutils th,
+  .table-bordered th,
+  table.docutils th,
   .table-bordered td,
   table.docutils td {
     border: 1px solid #dee2e6 !important; }
@@ -6931,7 +6956,8 @@ a.text-dark:hover, a.text-dark:focus {
     .table-dark thead th,
     .table-dark tbody + tbody {
       border-color: #dee2e6; }
-  .table .thead-dark th, table.docutils .thead-dark th {
+  .table .thead-dark th,
+  table.docutils .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
 
@@ -6974,7 +7000,9 @@ a.text-dark:hover, a.text-dark:focus {
     margin-bottom: 0;
     background-color: transparent;
     border: 0; }
-  .highlight pre code, .highlight pre table.docutils tt, table.docutils .highlight pre tt {
+  .highlight pre code,
+  .highlight pre table.docutils tt,
+  table.docutils .highlight pre tt {
     font-size: inherit;
     color: #212529; }
 
@@ -7096,12 +7124,15 @@ a.text-dark:hover, a.text-dark:focus {
   -webkit-appearance: none;
   -moz-appearance: none; }
 
-table code, table.docutils tt {
+table code,
+table.docutils tt {
   word-break: normal; }
 
-.table-bordered td:nth-child(3), table.docutils td:nth-child(3) {
+.table-bordered td:nth-child(3),
+table.docutils td:nth-child(3) {
   padding-bottom: 0; }
-  .table-bordered td:nth-child(3) p, table.docutils td:nth-child(3) p,
+  .table-bordered td:nth-child(3) p,
+  table.docutils td:nth-child(3) p,
   .table-bordered td:nth-child(3) dl,
   table.docutils td:nth-child(3) dl {
     margin-bottom: 0.75rem; }
