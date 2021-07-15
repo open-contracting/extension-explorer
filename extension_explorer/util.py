@@ -335,7 +335,7 @@ def _get_types(value, sources, extension_version, lang, n=1, field=None):
         types = [types]
 
     # "type" might include "null" (valid JSON Schema) or `null` (invalid JSON Schema).
-    types = list(filter(lambda t: t and t != 'null', types))
+    types = [t for t in types if t and t != 'null']
 
     if field and 'codelist' in field:
         codelist_schema = field
@@ -360,7 +360,7 @@ def _get_types(value, sources, extension_version, lang, n=1, field=None):
         return [ngettext('string from <a href="%(url)s">%(codelist)s</a> codelist',
                          'strings from <a href="%(url)s">%(codelist)s</a> codelist', n, **variables)]
 
-    types = list(map(lambda t: ngettext('%(type)s', '%(type)ss', n, type=t), types))
+    types = [ngettext('%(type)s', '%(type)ss', n, type=t) for t in types]
 
     # Make into sentence
     # 'uniqueItems',
