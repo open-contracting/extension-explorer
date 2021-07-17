@@ -1,0 +1,56 @@
+.ee-content {
+  > h3:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  > h4 {
+    margin-top: 1.5rem;
+  }
+
+  > ul li,
+  > ol li {
+    margin-bottom: .25rem;
+  }
+
+  @include media-breakpoint-up(lg) {
+    > ul,
+    > ol,
+    > p {
+      max-width: 80%;
+    }
+  }
+}
+
+.ee-title {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  font-weight: 300;
+
+  @include media-breakpoint-up(sm) {
+    font-size: 3rem;
+  }
+}
+
+.highlight {
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  background-color: $gray-100;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+
+  @include media-breakpoint-up(sm) {
+    padding: 1.5rem;
+  }
+
+  pre {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: transparent;
+    border: 0;
+  }
+  pre code {
+    font-size: inherit;
+    color: $gray-900; // Effectively the base text color
+  }
+}

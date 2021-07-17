@@ -1,0 +1,1023 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Requisitos — Esquema — Explorador de Extensiones OCDS</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/es/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      Explorador de Extensiones OCDS
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/es/">
+        Página principal
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/es/extensions/">
+        Extensiones
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        Español
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item" href="/en/extensions/requirements/master/schema/">
+          English
+        </a>
+        <a class="dropdown-item active" href="/es/extensions/requirements/master/schema/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Requisitos
+      </h1>
+
+      <p class="lead">
+        Agrega una sección de criterios a las secciones de objeto de licitación y respuestas a ofertas, adjudicaciones y contratos. Basado en el criterio principal y el vocabulario de evidencia central (CCCEV) de la UE.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Versión:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/requirements/master/schema/" selected>
+              master
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/requirements/master/">
+            Documentación
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/requirements/master/schema/">
+            Esquema
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#criterion">
+                Criterion
+              </a>
+            </li>
+            <li>
+              <a href="#requirementgroup">
+                RequirementGroup
+              </a>
+            </li>
+            <li>
+              <a href="#requirement">
+                Requirement
+              </a>
+            </li>
+            <li>
+              <a href="#requirementresponse">
+                RequirementResponse
+              </a>
+            </li>
+            <li>
+              <a href="#requirementreference">
+                RequirementReference
+              </a>
+            </li>
+            <li>
+              <a href="#bid">
+                Bid
+              </a>
+            </li>
+            <li>
+              <a href="#tender">
+                Tender
+              </a>
+            </li>
+            <li>
+              <a href="#award">
+                Award
+              </a>
+            </li>
+            <li>
+              <a href="#contract">
+                Contract
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/requirements/master/codelists/">
+            Listas de código
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_requirements_extension/master/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copiar al portapapeles">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_requirements_extension/archive/master.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Esquema
+      </h2>
+
+      <p>
+        You can <a href="/es/extensions/requirements/master/release-schema.json">download the <code>release-schema.json</code> file</a> in English.
+      </p>
+
+      <h3 id="criterion">
+        Criterion
+      </h3>
+
+      <p>
+        La extensión define un nuevo <code>Criterion</code> objeto con estos campos: 
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Criterion.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              Identificador
+            </td>
+            <td>
+              <p>El identificador para este criterio. Debe de ser único y no puede cambiar dentro del Proceso de Contratación Abierta del cual es parte (definido por un sólo ocid). Ver la <a href="http://standard.open-contracting.org/latest/en/schema/identifiers/">guía de identificadores</a> para mayores detalles.</p>
+
+            </td>
+            <td>
+              stringointeger
+            </td>
+          </tr>
+          <tr>
+            <td id="Criterion.title">
+              <code>
+                title
+              </code>
+            </td>
+            <td>
+              Título
+            </td>
+            <td>
+              <p>Un título para este criterio</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Criterion.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Descripción
+            </td>
+            <td>
+              <p>Una descripción de este criterio. La información estructurada se debe de dar en los otros campos.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Criterion.source">
+              <code>
+                source
+              </code>
+            </td>
+            <td>
+              Fuente
+            </td>
+            <td>
+              <p>Source of response to the requirements specified in the criterion. For example, responses might be submitted by tenderers or by an assessment committee at the procuringEntity.</p>
+
+            </td>
+            <td>
+              cadena de la lista de código <a href="/es/extensions/requirements/master/codelists/#responseSource.csv">responseSource</a> cerrada
+            </td>
+          </tr>
+          <tr>
+            <td id="Criterion.relatesTo">
+              <code>
+                relatesTo
+              </code>
+            </td>
+            <td>
+              Elementos relacionados al esquema
+            </td>
+            <td>
+              <p>The schema element that the criterion judges, evaluates or assesses. For example, the criterion might be defined against items or against bidders.</p>
+
+            </td>
+            <td>
+              cadena de la lista de código <a href="/es/extensions/requirements/master/codelists/#relatesTo.csv">relatesTo</a> cerrada
+            </td>
+          </tr>
+          <tr>
+            <td id="Criterion.relatedItem">
+              <code>
+                relatedItem
+              </code>
+            </td>
+            <td>
+              Artículo relacionado
+            </td>
+            <td>
+              <p>Donde relatesTo = &quot;item&quot; este campo debe de ser llenado con el id del artículo en esta sección de la licitación con el que se relaciona el criterio. Se debe omitir el campo cuando  relatesTo &lt;&gt; &quot;item&quot;.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Criterion.requirementGroups">
+              <code>
+                requirementGroups
+              </code>
+            </td>
+            <td>
+              Grupos de requisitos
+            </td>
+            <td>
+              <p>Una lista de grupos de requisitos para este Criterio. Un criterio se satisface cuando uno o más grupos de requisitos se cumplen. Un grupo de requisitos se cumple cuando todos los requerimientos del grupo se satisfacen.</p>
+
+            </td>
+            <td>
+              matriz de <a href="#requirementgroup">RequirementGroup</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="requirementgroup">
+        RequirementGroup
+      </h3>
+
+      <p>
+        La extensión define un nuevo <code>RequirementGroup</code> objeto con estos campos: 
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="RequirementGroup.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              Identificador
+            </td>
+            <td>
+              <p>El identificador para este grupo de requisitos. Debe ser único y no puede cambiar dentro del Proceso de Contratación Abierta del que forma parte (definido por un solo ocid). Consulte la <a href="http://standard.open-contracting.org/latest/en/schema/identifiers/">guía de identificadores</a> para obtener más detalles.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementGroup.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Descripción
+            </td>
+            <td>
+              <p>Una descripción de este grupo de requisitos. Se debe de proveer información estructurada en la  lista de requisitos.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementGroup.requirements">
+              <code>
+                requirements
+              </code>
+            </td>
+            <td>
+              Requisitos
+            </td>
+            <td>
+              <p>Una lista de requisitos que deben ser cumplidos para que el grupo de requisitos se cumpla.</p>
+
+            </td>
+            <td>
+              matriz de <a href="#requirement">Requirement</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="requirement">
+        Requirement
+      </h3>
+
+      <p>
+        La extensión define un nuevo <code>Requirement</code> objeto con estos campos: 
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Requirement.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              Identificador del requisito
+            </td>
+            <td>
+              <p>El identificador de este requisito. Debe ser único y no puede cambiar dentro del Proceso de Contratación Abierta de que forma parte (definido por un solo ocid). Consulte la <a href="http://standard.open-contracting.org/latest/en/schema/identifiers/">guía de identificadores</a> para obtener más detalles.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.title">
+              <code>
+                title
+              </code>
+            </td>
+            <td>
+              Título de requisito
+            </td>
+            <td>
+              <p>El título de este requisito atómico.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Descripción del requisito
+            </td>
+            <td>
+              <p>Una descripción de texto libre para este requisito atómico</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.dataType">
+              <code>
+                dataType
+              </code>
+            </td>
+            <td>
+              Tipo de dato de Requisito
+            </td>
+            <td>
+              <p>El tipo de dato en el que se debe proporcionar la respuesta del requisito.</p>
+
+            </td>
+            <td>
+              cadena de la lista de código <a href="/es/extensions/requirements/master/codelists/#dataType.csv">dataType</a> cerrada
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.pattern">
+              <code>
+                pattern
+              </code>
+            </td>
+            <td>
+              Patrón de validación de respuesta
+            </td>
+            <td>
+              <p>Una expresión regular para validar la respuesta requerida</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.expectedValue">
+              <code>
+                expectedValue
+              </code>
+            </td>
+            <td>
+              Valor esperado
+            </td>
+            <td>
+              <p>Usado para que se establezca el requisito cuando la respuesta debe ser un valor particular.</p>
+
+            </td>
+            <td>
+              stringointegeronumberoboolean
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.minValue">
+              <code>
+                minValue
+              </code>
+            </td>
+            <td>
+              Valor mínimo
+            </td>
+            <td>
+              <p>Se usa para indicar el límite inferior del requisito cuando la respuesta debe estar dentro de un cierto rango.</p>
+
+            </td>
+            <td>
+              integeronumber
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.maxValue">
+              <code>
+                maxValue
+              </code>
+            </td>
+            <td>
+              Valor máximo
+            </td>
+            <td>
+              <p>Se usa para indicar el límite superior del requisito cuando la respuesta debe estar dentro de un cierto rango.</p>
+
+            </td>
+            <td>
+              integeronumber
+            </td>
+          </tr>
+          <tr>
+            <td id="Requirement.period">
+              <code>
+                period
+              </code>
+            </td>
+            <td>
+              Periodo
+            </td>
+            <td>
+              <p>Usado para especificar un período particular al que el requisito aplica, por ejemplo, el volumen de negocio del licitante en un año específico.</p>
+
+            </td>
+            <td>
+              <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#period">Period</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="requirementresponse">
+        RequirementResponse
+      </h3>
+
+      <p>
+        La extensión define un nuevo <code>RequirementResponse</code> objeto con estos campos: 
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="RequirementResponse.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              Identificador
+            </td>
+            <td>
+              <p>El identificador para este requisito de respuesta. Debe de ser único y no puede cambiar dentro del Proceso de Contratación Abierta del cual es parte (definido por un sólo ocid). Ver la <a href="http://standard.open-contracting.org/latest/en/schema/identifiers/">guía de identificadores</a> para mayores detalles.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementResponse.title">
+              <code>
+                title
+              </code>
+            </td>
+            <td>
+              Título
+            </td>
+            <td>
+              <p>Un título para la respuesta del requisito.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementResponse.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Descripción
+            </td>
+            <td>
+              <p>Una descripción de este grupo de requisitos. Se debe de proveer información estructurada en la lista de requisitos.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementResponse.value">
+              <code>
+                value
+              </code>
+            </td>
+            <td>
+              Valor
+            </td>
+            <td>
+              <p>El valor de esta respuesta de requisito. El valor debe ser el tipo que se define en el campo requirement.data.</p>
+
+            </td>
+            <td>
+              stringointegeronumberoboolean
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementResponse.period">
+              <code>
+                period
+              </code>
+            </td>
+            <td>
+              Periodo
+            </td>
+            <td>
+              <p>El período en que se aplica la respuesta de requisitos.</p>
+
+            </td>
+            <td>
+              <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#period">Period</a> objetos
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementResponse.requirement">
+              <code>
+                requirement
+              </code>
+            </td>
+            <td>
+              Requisito relacionado
+            </td>
+            <td>
+              <p>El id y título que aplica a la respuesta de requisitos.</p>
+
+            </td>
+            <td>
+              <a href="#requirementreference">RequirementReference</a> objetos
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementResponse.relatedTenderer">
+              <code>
+                relatedTenderer
+              </code>
+            </td>
+            <td>
+              Licitador relacionado
+            </td>
+            <td>
+              <p>Donde esta respuesta de requisito se relaciona con un licitador y es provista por el comprador o la entidad compradora, este campo debe usarse para referenciar la entrada en la sección de partes para el licitador al cual se relaciona la respuesta.</p>
+
+            </td>
+            <td>
+              <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#organizationreference">OrganizationReference</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="requirementreference">
+        RequirementReference
+      </h3>
+
+      <p>
+        La extensión define un nuevo <code>RequirementReference</code> objeto con estos campos: 
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="RequirementReference.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              ID de requisito
+            </td>
+            <td>
+              <p>El identificador del requerimiento al cual se aplica la respuesta.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="RequirementReference.title">
+              <code>
+                title
+              </code>
+            </td>
+            <td>
+              Título de requisito
+            </td>
+            <td>
+              <p>El título del requisito al cual se aplica la respuesta.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="bid">
+        Bid
+      </h3>
+
+      <p>
+        La extensión define estos campos en el <a href="/es/extensions/bids/master/schema/#bid"><code>Bid</code></a> objeto de la <a href="/es/extensions/bids/master/">Estadísticas y detalles de las ofertas</a> extensión:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Bid.requirementResponses">
+              <code>
+                requirementResponses
+              </code>
+            </td>
+            <td>
+              Respuestas de requisito
+            </td>
+            <td>
+              <p>Si también se usa la extensión de requisitos, aquí se pueden especificar las respuestas detalladas de esta oferta a los requisitos de la licitación.</p>
+
+            </td>
+            <td>
+              matriz de <a href="#requirementresponse">RequirementResponse</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="tender">
+        Tender
+      </h3>
+
+      <p>
+        La extensión define estos campos en el <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#tender"><code>Tender</code></a> objeto del OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Tender.criteria">
+              <code>
+                criteria
+              </code>
+            </td>
+            <td>
+              Criterios
+            </td>
+            <td>
+              <p>Una lista de criterios en la cual se evaluarán o valorarán los licitadores o los artículos.</p>
+
+            </td>
+            <td>
+              matriz de <a href="#criterion">Criterion</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="award">
+        Award
+      </h3>
+
+      <p>
+        La extensión define estos campos en el <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#award"><code>Award</code></a> objeto del OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Award.requirementResponses">
+              <code>
+                requirementResponses
+              </code>
+            </td>
+            <td>
+              Respuestas de requisito
+            </td>
+            <td>
+              <p>Una lista detallada de las respuestas a esta adjudicación a los requisitos de la licitación</p>
+
+            </td>
+            <td>
+              matriz de <a href="#requirementresponse">RequirementResponse</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="contract">
+        Contract
+      </h3>
+
+      <p>
+        La extensión define estos campos en el <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#contract"><code>Contract</code></a> objeto del OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Contract.requirementResponses">
+              <code>
+                requirementResponses
+              </code>
+            </td>
+            <td>
+              Respuestas de requisito
+            </td>
+            <td>
+              <p>Una lista detallada de respuestas a este contrato con los requisitos de la licitación.</p>
+
+            </td>
+            <td>
+              matriz de <a href="#requirementresponse">RequirementResponse</a> objetos
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copiado!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copiar al portapapeles').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

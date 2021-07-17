@@ -1,0 +1,26 @@
+{
+  "codelists": [
+    "country.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds a country code field to the address object.", 
+    "es": "Adds a country code field to the address object."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/countryCode/"
+  }, 
+  "name": {
+    "en": "Country code", 
+    "es": "Country code"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

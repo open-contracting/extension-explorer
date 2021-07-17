@@ -1,0 +1,119 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "hasSubcontracting": {
+          "description": "Whether a part of the contract will be subcontracted.", 
+          "title": "Subcontracting involved", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "subcontracting": {
+          "$ref": "#/definitions/Subcontracting", 
+          "description": "Information about the parts of the contract that the supplier will subcontract to third parties.", 
+          "title": "Subcontracting"
+        }
+      }
+    }, 
+    "Subcontracting": {
+      "description": "Information about the parts of the contract that the supplier will subcontract to third parties.", 
+      "minProperties": 1, 
+      "properties": {
+        "competitive": {
+          "description": "Whether the supplier will subcontract part of the contract to third parties through a competitive procedure.", 
+          "title": "Competitive subcontracting", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "competitiveMaximumPercentage": {
+          "description": "The maximum percentage of the contract value that the procuring entity requires the supplier to subcontract to third parties through a competitive procedure.", 
+          "exclusiveMinimum": true, 
+          "maximum": 1, 
+          "minimum": 0, 
+          "title": "Maximum percentage of contract value for competitive subcontracting", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "competitiveMinimumPercentage": {
+          "description": "The minimum percentage of the contract value that the procuring entity requires the supplier to subcontract to third parties through a competitive procedure.", 
+          "maximum": 1, 
+          "minimum": 0, 
+          "title": "Minimum percentage of contract value for competitive subcontracting", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "The description of the part of the contract that the supplier will subcontract to third parties.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "maximumPercentage": {
+          "description": "The maximum percentage of the contract value that will be subcontracted.", 
+          "exclusiveMinimum": true, 
+          "maximum": 1, 
+          "minimum": 0, 
+          "title": "Maximum percentage of contract value", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "minimumPercentage": {
+          "description": "The minimum percentage of the contract value that will be subcontracted.", 
+          "maximum": 1, 
+          "minimum": 0, 
+          "title": "Minimum percentage of contract value", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value", 
+          "description": "The estimated value of the part of the contract that the supplier will subcontract to third parties.", 
+          "title": "Subcontracted value"
+        }
+      }, 
+      "title": "Subcontracting", 
+      "type": "object"
+    }, 
+    "SubcontractingTerms": {
+      "description": "The obligations of the suppliers who subcontract.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "A description of the terms governing subcontracting.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Subcontracting terms", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "subcontractingTerms": {
+          "$ref": "#/definitions/SubcontractingTerms", 
+          "description": "Information about the terms governing subcontracting.", 
+          "title": "Subcontracting terms"
+        }
+      }
+    }
+  }
+}

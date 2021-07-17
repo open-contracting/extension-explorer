@@ -1,0 +1,26 @@
+{
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds an array to the tender object to classify the procurement method rationale.", 
+    "es": "Adds an array to the tender object to classify the procurement method rationale."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/procurementMethodRationaleClassifications/"
+  }, 
+  "name": {
+    "en": "Procurement method rationale classifications", 
+    "es": "Procurement method rationale classifications"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

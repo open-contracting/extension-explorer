@@ -1,0 +1,75 @@
+{
+  "definitions": {
+    "Budget": {
+      "properties": {
+        "budgetBreakdown": {
+          "description": "A detailed breakdown of the budget by period and/or participating funders.", 
+          "items": {
+            "$ref": "#/definitions/BudgetBreakdown"
+          }, 
+          "minItems": 1, 
+          "title": "Budget breakdown", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "BudgetBreakdown": {
+      "description": "This section allows a detailed budget breakdown to be expressed, covering multiple budget sources and multiple periods", 
+      "extension_explorer:source": {
+        "identifier": "budget", 
+        "version": "master"
+      }, 
+      "minProperties": 1, 
+      "properties": {
+        "amount": {
+          "$ref": "#/definitions/Value", 
+          "description": "The value of the budget line item.", 
+          "title": "Amount"
+        }, 
+        "description": {
+          "description": "A short free text description of this budget entry.", 
+          "minLength": 1, 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "An identifier for this particular budget entry.", 
+          "minLength": 1, 
+          "title": "Identifier", 
+          "type": [
+            "string", 
+            "integer"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "The period covered by this budget entry.", 
+          "title": "Budget period"
+        }, 
+        "sourceParty": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "An organization reference, linking to the entry in the `parties` section describing the organization providing the funds for this part of the budget. The party must have the 'funder' role. If the budget amount is positive, this indicates a flow of resources from the party to the contracting process. If the budget amount is negative, it indicates a payment from the contracting process to this party.", 
+          "title": "Source party"
+        }, 
+        "uri": {
+          "description": "A URI pointing directly to a machine-readable information about this budget entry.", 
+          "format": "uri", 
+          "title": "Linked budget information", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Detailed budget breakdown", 
+      "type": "object"
+    }
+  }
+}

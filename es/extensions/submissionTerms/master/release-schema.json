@@ -1,0 +1,106 @@
+{
+  "definitions": {
+    "Lot": {
+      "properties": {
+        "submissionTerms": {
+          "$ref": "#/definitions/SubmissionTerms", 
+          "description": "Information about the submission terms to describe how, when and where the tenderers need to submit their bids for the lot.", 
+          "title": "Submission terms"
+        }
+      }
+    }, 
+    "SubmissionTerms": {
+      "description": "Information about the submission terms to describe how, when and where the tenderers need to submit their bids.", 
+      "minProperties": 1, 
+      "properties": {
+        "bidValidityPeriod": {
+          "$ref": "#/definitions/Period", 
+          "description": "The period, from the bid submission deadline, for which bids must remain valid.", 
+          "title": "Bid validity period"
+        }, 
+        "depositsGuarantees": {
+          "description": "Information about the deposits or guarantees required from the tenderers.", 
+          "minLength": 1, 
+          "title": "Deposits and guarantees", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "electronicCataloguePolicy": {
+          "codelist": "permission.csv", 
+          "description": "Whether tenderers are required, allowed or not allowed to submit bids as electronic catalogues.", 
+          "enum": [
+            "required", 
+            "allowed", 
+            "notAllowed", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Electronic catalogue policy", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "electronicSubmissionPolicy": {
+          "codelist": "permission.csv", 
+          "description": "Whether tenderers are required, allowed or not allowed to submit bids electronically.", 
+          "enum": [
+            "required", 
+            "allowed", 
+            "notAllowed", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Electronic submission policy", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "languages": {
+          "description": "One or more languages in which bids or requests to participate can be submitted, using either two-letter [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), or extended [BCP47 language tags](http://www.w3.org/International/articles/language-tags/). The use of lowercase two-letter codes from [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is recommended.", 
+          "items": {
+            "minLength": 1, 
+            "type": "string"
+          }, 
+          "minItems": 1, 
+          "title": "Submission language", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "uniqueItems": true
+        }, 
+        "variantPolicy": {
+          "codelist": "permission.csv", 
+          "description": "Whether tenderers are required, allowed or not allowed to submit tenders which fulfill the buyer's needs differently than as proposed in the procurement documents.", 
+          "enum": [
+            "required", 
+            "allowed", 
+            "notAllowed", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Variant policy", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Submission terms", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "submissionTerms": {
+          "$ref": "#/definitions/SubmissionTerms", 
+          "description": "Information about the submission terms to describe how, when and where the tenderers need to submit their bids for the procedure.", 
+          "title": "Submission terms"
+        }
+      }
+    }
+  }
+}

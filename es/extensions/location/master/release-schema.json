@@ -1,0 +1,111 @@
+{
+  "definitions": {
+    "Item": {
+      "properties": {
+        "deliveryAddress": {
+          "$ref": "#/definitions/Address", 
+          "description": "La direcci\u00f3n en la que bienes y servicios relacionados con esta licitaci\u00f3n, contrato o licencia ser\u00e1n entregados.", 
+          "title": "Direcci\u00f3n de Entrega"
+        }, 
+        "deliveryLocation": {
+          "$ref": "#/definitions/Location", 
+          "description": "La ubicaci\u00f3n donde la actividad relacionada con esta licitaci\u00f3n, contrato o licencia ser\u00e1 entregada o se llevar\u00e1 a cabo. ", 
+          "title": "Ubicaci\u00f3n de Entrega"
+        }
+      }
+    }, 
+    "Location": {
+      "description": "El lugar donde la actividad relacionada con esta licitaci\u00f3n, contrato o licencia ser\u00e1 entregada, o tendr\u00e1 lugar. Una ubicaci\u00f3n puede ser descrita por una geometr\u00eda (ubicaci\u00f3n de punto, l\u00ednea o pol\u00edgono), o una entrada de un diccionario geogr\u00e1fico, o ambas.", 
+      "properties": {
+        "description": {
+          "description": "Un nombre o descripci\u00f3n para esta ubicaci\u00f3n. Esto puede incluir el(los) nombre(s) de la ubicaci\u00f3n (o ubicaciones), o puede incluir una descripci\u00f3n legible de la ubicaci\u00f3n a ser cubierta.", 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "gazetteer": {
+          "description": "Identificadores de un diccionario geogr\u00e1fico (un \u00edndice o directorio geogr\u00e1fico) para la ubicaci\u00f3n.", 
+          "properties": {
+            "identifiers": {
+              "description": "Una lista de uno o m\u00e1s c\u00f3digos tomados del diccionario geogr\u00e1fico indicado en el campo `scheme`.", 
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }, 
+              "title": "Identificadores", 
+              "type": [
+                "array", 
+                "null"
+              ]
+            }, 
+            "scheme": {
+              "codelist": "locationGazetteers.csv", 
+              "description": "El identificador del diccionario geogr\u00e1fico. La lista de c\u00f3digos `locationGazetteers.csv` provee detalles de servicios, si est\u00e1n disponibles, que pueden resolver una entrada del diccionario geogr\u00e1fico para proveer nombres de ubicaci\u00f3n.", 
+              "openCodelist": true, 
+              "title": "Esquema de diccionario geogr\u00e1fico", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Diccionario Geogr\u00e1fico", 
+          "type": "object"
+        }, 
+        "geometry": {
+          "description": "We follow the [GeoJSON standard](https://geojson.org/) to express basic location information, using longitude, latitude, and optional elevation values in the [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326) projection. A point location can be identified by geocoding a delivery address. For concession licenses, or other contracts covering a polygon location which is not contained in a known gazetteer, polygon and multi-polygon can be used.", 
+          "properties": {
+            "coordinates": {
+              "description": "La lista de puntos, ej. [longitud, latitud] o [longitud, latitud, elevaci\u00f3n], o una lista anidada de puntos, para el objeto geom\u00e9trico JSON que est\u00e1 siendo descrito. La longitud y latitud deben ser expresadas en grados decimales en la proyecci\u00f3n WGS84 (EPSG:4326).", 
+              "items": {
+                "type": [
+                  "number", 
+                  "array"
+                ]
+              }, 
+              "title": "Coordenadas", 
+              "type": [
+                "array", 
+                "null"
+              ]
+            }, 
+            "type": {
+              "codelist": "geometryType.csv", 
+              "description": "The type of [GeoJSON Geometry Objects](https://geojson.org/geojson-spec.html#geometry-objects) being provided. To provide longitude, latitude, and optional elevation, use 'Point', and enter an array of [longitude, latitude] or [longitude, latitude, elevation] as the value of the coordinates field: e.g. [-122.085, 37.42].", 
+              "enum": [
+                "Point", 
+                "MultiPoint", 
+                "LineString", 
+                "MultiLineString", 
+                "Polygon", 
+                "MultiPolygon", 
+                null
+              ], 
+              "openCodelist": false, 
+              "title": "Tipo", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Geometr\u00eda", 
+          "type": "object"
+        }, 
+        "uri": {
+          "description": "Un URI a una descripci\u00f3n m\u00e1s detallada de la ubicaci\u00f3n de la actividad. Esto puede ser un documento legible por el usuario con informaci\u00f3n sobre la ubicaci\u00f3n o una descripci\u00f3n legible por computadora de la ubicaci\u00f3n.", 
+          "title": "URI", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Ubicaci\u00f3n de Entrega", 
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "definitions": {
+    "BidOpening": {
+      "description": "The date, time, place and other details of the bid opening.", 
+      "minProperties": 1, 
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/Address", 
+          "description": "The address of the place where the bid opening occurs.", 
+          "title": "Address"
+        }, 
+        "date": {
+          "description": "The date and time of the bid opening.", 
+          "format": "date-time", 
+          "title": "Date and time", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "Any other details about the bid opening (who can participate, whether authorization is needed, etc.).", 
+          "minLength": 1, 
+          "title": "Details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "location": {
+          "$ref": "#/definitions/Location", 
+          "description": "The place where the bid opening occurs.", 
+          "title": "Location"
+        }
+      }, 
+      "title": "Bid opening", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "bidOpening": {
+          "$ref": "#/definitions/BidOpening", 
+          "description": "The date, time, place and other details of the bid opening.", 
+          "title": "Bid opening"
+        }
+      }
+    }
+  }
+}

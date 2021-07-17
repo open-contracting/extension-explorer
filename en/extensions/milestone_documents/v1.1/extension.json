@@ -1,0 +1,15 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "dependencies": [], 
+  "description": {
+    "en": "Documents at the milestone level were deprecated in OCDS 1.1. This extension re-introduces the ability to attach documents to each individual milestone.", 
+    "es": "Los documentos en el nivel del hito son obsoletos en OCDS 1.1. Esta extensi\u00f3n re-introduce la capacidad de adjuntar documentos a cada hito individual."
+  }, 
+  "documentationUrl": {}, 
+  "name": {
+    "en": "Milestone documents", 
+    "es": "Documentos del hito"
+  }
+}

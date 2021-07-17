@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>OCDS for PPPs Extension — Documentation — OCDS Extension Explorer</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/en/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      OCDS Extension Explorer
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/en/">
+        Home
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/en/extensions/">
+        Extensions
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        English
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item active" href="/en/extensions/ppp/master/">
+          English
+        </a>
+        <a class="dropdown-item" href="/es/extensions/ppp/master/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        OCDS for PPPs Extension
+      </h1>
+
+      <p class="lead">
+        Makes changes required by the OCDS for PPPs profile. Evaluation indicators, finance summary and project details may be moved into new extensions.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Version:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/en/extensions/ppp/master/" selected>
+              master
+              (latest)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/en/extensions/ppp/master/">
+            Documentation
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ml-0">
+              <a href="#about-ppp-extensions">
+                About PPP extensions
+              </a>
+            </li>
+            <li class="ml-2">
+              <a href="#ppp-specific-extensions">
+                PPP Specific extensions
+              </a>
+            </li>
+            <li class="ml-3">
+              <a href="#evaluation-indicators">
+                Evaluation Indicators
+              </a>
+            </li>
+            <li class="ml-4">
+              <a href="#example">
+                Example
+              </a>
+            </li>
+            <li class="ml-3">
+              <a href="#finance-summary">
+                Finance Summary
+              </a>
+            </li>
+            <li class="ml-4">
+              <a href="#example-1">
+                Example
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#changelog">
+                Changelog
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/ppp/master/schema/">
+            Schema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/ppp/master/codelists/">
+            Codelists
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_ppp_extension/master/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_ppp_extension/archive/master.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentation
+      </h2>
+<div><p>The Open Contracting Data Standard for Public Private Partnerships profile provides an extended Open Contracting Data Standard schema, offering a structured data model for presenting information on Public Private Partnership Projects.</p>
+<p>It is based on the <a href="http://www.worldbank.org/en/topic/publicprivatepartnerships/brief/ppp-tools#T1">World Bank Framework for Disclosure in Public Private Partnership Projects</a> and was developed between May 2016 and May 2017 through a partnership between the <a href="https://blogs.worldbank.org/category/tags/open-contracting">World Bank Open Contracting team</a>, <a href="http://www.worldbank.org/en/topic/publicprivatepartnerships">PPP team</a>, <a href="http://open-contracting.org">Open Contracting Partnership</a>, and <a href="http://www.opendataservices.coop">Open Data Services Co-operative</a>.</p>
+<p>Full documentation of the profile is available at <a href="http://standard.open-contracting.org/profiles/ppp/">http://standard.open-contracting.org/profiles/ppp/</a></p>
+<p>The consolidated OCDS for PPPs extension can be declared in <a href="http://standard.open-contracting.org/latest/en/schema/release_package/">OCDS package metadata</a> using:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">"extensions"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">"http://standard.open-contracting.org/profiles/ppp/extension/1__0__0__beta/extension.json"</span>
+  <span class="p">],</span>
+  <span class="nt">"releases"</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="about-ppp-extensions">About PPP extensions</h2>
+<p>OCDS for PPPs is constructed from <a href="http://standard.open-contracting.org/profiles/ppp/latest/en/extensions/">a number of different modular extensions to OCDS</a>, most of which can be used independently from the profile.</p>
+<p>This repository contains one additional extension that forms part of the OCDS for PPPs profile. This extension introduces a number of fields and building blocks that are specific to PPP disclosure against the World Bank Framework.</p>
+<h3 id="ppp-specific-extensions">PPP Specific extensions</h3>
+<h4 id="evaluation-indicators">Evaluation Indicators</h4>
+<p>The PPP disclosure framework calls for a number of different indicators to be reported relating to governments evaluation of a PPP project.</p>
+<p>The <code>awards.evaluationIndicators</code> section includes properties to express the <strong>value</strong> and supporting <strong>free-text details</strong> for each indicator:</p>
+<ul>
+<li>discountRate</li>
+<li>riskPremium</li>
+<li>netPresentValue</li>
+</ul>
+<h5 id="example">Example</h5>
+<pre><code>"evaluationIndicators": {
+  "riskPremium": 0.0092,
+  "riskPremiumDetails": "Based on a market risk premium of 6.0% (per government guidelines) and an asset beta of 0.45 (per a sample of listed telecommunication network providers) the project risk allocation gives rise to a risk premium of 0.92%",
+  "discountRate": 0.03,
+  "discountRateDetails": "Based on the current long term public sector bond rate",
+  "netPresentValue": {
+    "amount": 118044591901.35034,
+    "currency": "USD"
+  }
+</code></pre>
+<h4 id="finance-summary">Finance Summary</h4>
+<p>The PPP disclosure framework calls for a number of different indicators relating to the financial model of a PPP project. Whilst some of these may be reported as metrics on an ongoing basis, some are simple single values.</p>
+<p>The <code>contracts.financeSummary</code> section includes properties to express the <strong>value</strong> and supporting <strong>free-text details</strong> for each indicator:</p>
+<ul>
+<li>debtEquityRatio</li>
+<li>shareCapital</li>
+<li>subsidyRatio</li>
+<li>projectIRR</li>
+</ul>
+<h5 id="example-1">Example</h5>
+<pre><code>"financeSummary": {
+  "debtEquityRatio": 2.05,
+  "debtEquityRatioDetails": "Until the target population coverage is reached mega Consortium must comply with a contribution of capital of at least 30% of the total value of the company",
+  "shareCapital": {
+    "amount": 20000000,
+    "currency": "USD"
+  }
+</code></pre>
+<h2 id="issues">Issues</h2>
+<p>Report issues for this extension in the <a href="https://github.com/open-contracting/ocds-extensions/issues">ocds-extensions repository</a>, putting the extension's name in the issue's title.</p>
+<h2 id="changelog">Changelog</h2>
+<h3>2021-04-19</h3>
+<ul>
+<li>Replace <code>documentType.csv</code> with <code>+documentType.csv</code>, which adds new codes instead of replacing the codelist.</li>
+</ul>
+<h3>2021-02-15</h3>
+<ul>
+<li>Restore 'procuringEntity', 'tenderer' and 'funder' roles. Remove 'bidder' role.</li>
+</ul>
+<h3>2021-01-14</h3>
+<ul>
+<li>Remove <code>+releaseTag.csv</code> codelist.</li>
+</ul>
+<h3>2021-01-11</h3>
+<ul>
+<li>Remove <code>initiationType.csv</code> codelist.</li>
+<li>Restore <code>buyer</code> and <code>awards.suppliers</code> fields.</li>
+</ul>
+<h3>2020-11-16</h3>
+<ul>
+<li>Restore deprecated fields.</li>
+<li>Restore <code>Budget.project</code> and <code>Budget.projectID</code> fields.</li>
+</ul>
+<h3>2020-06-04</h3>
+<ul>
+<li>Review normative and non-normative words.</li>
+</ul>
+<h3>2020-04-24</h3>
+<ul>
+<li>Add <code>minProperties</code>, <code>minItems</code> and/or <code>minLength</code> properties.</li>
+</ul>
+<h3>2019-05-01</h3>
+<ul>
+<li>Remove 'qualifiedBidder' and 'disqualifiedBidder' codes from <code>+partyRole.csv</code> (moved to <a href="https://extensions.open-contracting.org/en/extensions/qualification/master/">qualification</a> extension).</li>
+</ul>
+<h3>2019-03-20</h3>
+<ul>
+<li>Set <code>"uniqueItems": true</code> on array fields.</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

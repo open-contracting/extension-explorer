@@ -1,0 +1,26 @@
+{
+  "codelists": [
+    "partyScale.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "For classifying organizations as micro, sme or large.", 
+    "es": "Para clasificar organizaciones como micro, PyME or grande"
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/partyScale/"
+  }, 
+  "name": {
+    "en": "Party Scale", 
+    "es": "Escala de las partes"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

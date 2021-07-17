@@ -1,0 +1,40 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "endDate": {
+          "description": "The actual date when contract implementation ended. Where `implementation/endDate` varies from the anticipated `contract/period/endDate` an explanation of the variance should be provided in `implementation/endDateDetails`.", 
+          "format": "date-time", 
+          "title": "End date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "endDateDetails": {
+          "description": "Details related to the endDate. This may be a justification for the contract's completion date being different than in the original contract.", 
+          "minLength": 1, 
+          "title": "End date details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "finalValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "The actual total value of all payments for a completed contract. If `implementation/transactions` are used for this contract, this field should equal the sum of the `transaction/value/amount` fields. Where `finalValue/amount` varies from `contract/value/amount` an explanation of the variance should be provided in `finalValueDetails`.", 
+          "title": "Final value"
+        }, 
+        "finalValueDetails": {
+          "description": "Details related to the final value. This may be a justification for the completed contract's value being different than in the original contract.", 
+          "minLength": 1, 
+          "title": "Final  value details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

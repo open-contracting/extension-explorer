@@ -1,0 +1,105 @@
+{
+  "definitions": {
+    "Planning": {
+      "properties": {
+        "project": {
+          "$ref": "#/definitions/Project", 
+          "description": "The project section can be used to describe the relationship between this contracting process and a project or programme of work.", 
+          "title": "Project information"
+        }
+      }
+    }, 
+    "Project": {
+      "description": "A project or programme of work.", 
+      "minProperties": 1, 
+      "patternProperties": {
+        "^(description_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {
+          "minLength": 1, 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "^(title_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {
+          "minLength": 1, 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "properties": {
+        "additionalClassifications": {
+          "description": "Additional project classification, by other sector classifications, or using other classification schemes (e.g. against a strategic framework).", 
+          "items": {
+            "$ref": "#/definitions/Classification"
+          }, 
+          "minItems": 1, 
+          "title": "Additional sector classifications", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "description": {
+          "description": "A short free text description of the project.", 
+          "minLength": 1, 
+          "title": "Project description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "An externally provided identifier for the project. This might be drawn from a projects register, or may be based on the canonical version of a project name. Project IDs should be unique to a publisher. URIs can be used.", 
+          "minLength": 1, 
+          "title": "Project identifier", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "locations": {
+          "description": "Information about the location where a project is taking place.", 
+          "items": {
+            "$ref": "#/definitions/Location"
+          }, 
+          "minItems": 1, 
+          "title": "Project location", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "sector": {
+          "$ref": "#/definitions/Classification", 
+          "description": "A high-level categorization of the main sector this procurement process relates to. Use of [UN COFOG codes](https://unstats.un.org/unsd/publications/catalogue?selectID=145), with 'COFOG' as the classification scheme, and the numerical COFOG code is recommended for the primary sector classification.", 
+          "title": "Project sector"
+        }, 
+        "title": {
+          "description": "The name of the project to which this contracting process relates. Some organizations maintain a registry of projects, and the data should use the name by which the project is known in that registry.", 
+          "minLength": 1, 
+          "title": "Project title", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "totalValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "The total anticipated value of the project over it's lifetime.", 
+          "title": "Total project value"
+        }, 
+        "uri": {
+          "description": "A URI pointing to further information about this project.", 
+          "format": "uri", 
+          "title": "Linked project information", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Project information", 
+      "type": "object"
+    }
+  }
+}

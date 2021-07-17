@@ -1,0 +1,115 @@
+{
+  "definitions": {
+    "Item": {
+      "properties": {
+        "deliveryAddress": {
+          "$ref": "#/definitions/Address", 
+          "description": "The address to which, or where, goods or services related to this tender, contract or license will be delivered.", 
+          "title": "Delivery Address"
+        }, 
+        "deliveryLocation": {
+          "$ref": "#/definitions/Location", 
+          "description": "The location where activity related to this tender, contract or license will be delivered, or will take place.", 
+          "title": "Delivery Location"
+        }
+      }
+    }, 
+    "Location": {
+      "description": "The location where activity related to this tender, contract or license will be delivered, or will take place. A location can be described by either a geometry (point location, line or polygon), or a gazetteer entry, or both.", 
+      "extension_explorer:source": {
+        "identifier": "location", 
+        "version": "master"
+      }, 
+      "properties": {
+        "description": {
+          "description": "A name or description of this location. This might include the name(s) of the location(s), or might provide a human-readable description of the location to be covered.", 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "gazetteer": {
+          "description": "Identifiers from a gazetteer (a geographical index or directory) for the location.", 
+          "properties": {
+            "identifiers": {
+              "description": "An array of one or more codes drawn from the gazetteer indicated by the `scheme` field.", 
+              "items": {
+                "type": [
+                  "string"
+                ]
+              }, 
+              "title": "Identifiers", 
+              "type": [
+                "array", 
+                "null"
+              ]
+            }, 
+            "scheme": {
+              "codelist": "locationGazetteers.csv", 
+              "description": "The identifier of the gazetteer. The `locationGazetteers.csv` codelist provides details of services, where available, that can resolve a gazetteer entry to provide location names.", 
+              "openCodelist": true, 
+              "title": "Gazetteer scheme", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Gazetteer", 
+          "type": "object"
+        }, 
+        "geometry": {
+          "description": "We follow the [GeoJSON standard](https://geojson.org/) to express basic location information, using longitude, latitude, and optional elevation values in the [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326) projection. A point location can be identified by geocoding a delivery address. For concession licenses, or other contracts covering a polygon location which is not contained in a known gazetteer, polygon and multi-polygon can be used.", 
+          "properties": {
+            "coordinates": {
+              "description": "The relevant array of points, e.g. [longitude, latitude] or [longitude, latitude, elevation], or a nested array of points, for the GeoJSON geometry being described. The longitude and latitude must be expressed in decimal degrees in the WGS84 (EPSG:4326) projection.", 
+              "items": {
+                "type": [
+                  "number", 
+                  "array"
+                ]
+              }, 
+              "title": "Coordinates", 
+              "type": [
+                "array", 
+                "null"
+              ]
+            }, 
+            "type": {
+              "codelist": "geometryType.csv", 
+              "description": "The type of [GeoJSON Geometry Objects](https://geojson.org/geojson-spec.html#geometry-objects) being provided. To provide longitude, latitude, and optional elevation, use 'Point', and enter an array of [longitude, latitude] or [longitude, latitude, elevation] as the value of the coordinates field: e.g. [-122.085, 37.42].", 
+              "enum": [
+                "Point", 
+                "MultiPoint", 
+                "LineString", 
+                "MultiLineString", 
+                "Polygon", 
+                "MultiPolygon", 
+                null
+              ], 
+              "openCodelist": false, 
+              "title": "Type", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Geometry", 
+          "type": "object"
+        }, 
+        "uri": {
+          "description": "A URI to a further description of the activity location. This might be a human-readable document with information on the location, or a machine-readable description of the location.", 
+          "title": "URI", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Delivery Location", 
+      "type": "object"
+    }
+  }
+}

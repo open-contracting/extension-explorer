@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Lot": {
+      "properties": {
+        "otherRequirements": {
+          "$ref": "#/definitions/OtherRequirements", 
+          "description": "Other requirements to participate in the lot.", 
+          "title": "Other requirements"
+        }
+      }
+    }, 
+    "OtherRequirements": {
+      "description": "Other requirements to participate in the procedure or lot.", 
+      "minProperties": 1, 
+      "properties": {
+        "qualificationSystemConditions": {
+          "description": "The conditions to be fulfilled by candidates in view of their qualification for the system.", 
+          "minItems": 1, 
+          "title": "Qualification system conditions", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "uniqueItems": true
+        }, 
+        "qualificationSystemMethods": {
+          "description": "The methods according to which each of the qualification system conditions will be verified.", 
+          "minItems": 1, 
+          "title": "Qualification system methods", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "uniqueItems": true
+        }, 
+        "reductionCriteria": {
+          "description": "The criteria or rules for selecting a limited number of qualified candidates to submit bids.", 
+          "minLength": 1, 
+          "title": "Reduction criteria", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "requiresStaffNamesAndQualifications": {
+          "description": "Whether the bidders are obligated to indicate the names and professional qualifications of the staff assigned to performing the contract.", 
+          "title": "Requires staff names and qualifications", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "reservedParticipation": {
+          "codelist": "reservedParticipation.csv", 
+          "description": "The types of organizations to which participation is reserved.", 
+          "items": {
+            "minLength": 1, 
+            "type": "string"
+          }, 
+          "minItems": 1, 
+          "openCodelist": true, 
+          "title": "Reserved participation", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "uniqueItems": true
+        }
+      }, 
+      "title": "Other requirements", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "otherRequirements": {
+          "$ref": "#/definitions/OtherRequirements", 
+          "description": "Other requirements to participate in the procedure.", 
+          "title": "Other requirements"
+        }
+      }
+    }
+  }
+}

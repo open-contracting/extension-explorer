@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "signatories": {
+          "description": "Los firmantes del contrato. Cada firmante debe tener una entrada asociada en la secci\u00f3n de partes de OCDS.", 
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          }, 
+          "minItems": 1, 
+          "title": "Firmantes del contrato", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

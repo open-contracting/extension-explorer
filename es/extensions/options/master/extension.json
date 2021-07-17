@@ -1,0 +1,26 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds fields for information on options.", 
+    "es": "Adds fields for information on options."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/options/"
+  }, 
+  "name": {
+    "en": "Options", 
+    "es": "Options"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ], 
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

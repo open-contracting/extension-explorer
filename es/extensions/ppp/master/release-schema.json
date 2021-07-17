@@ -1,0 +1,167 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "evaluationIndicators": {
+          "$ref": "#/definitions/EvaluationIndicators", 
+          "description": "Indicadores clave que describen c\u00f3mo la opci\u00f3n de APP ha sido evaluada por el gobierno.", 
+          "title": "Evaluaci\u00f3n de la opci\u00f3n APP"
+        }
+      }
+    }, 
+    "Contract": {
+      "properties": {
+        "financeSummary": {
+          "$ref": "#/definitions/FinanceSummary", 
+          "description": "Indicadores clave que describen el modelo financiero de la APP.", 
+          "title": "Resumen financiero"
+        }
+      }
+    }, 
+    "EvaluationIndicators": {
+      "description": "Indicadores clave que describen c\u00f3mo la opci\u00f3n de APP ha sido evaluada por el gobierno.", 
+      "minProperties": 1, 
+      "properties": {
+        "discountRate": {
+          "description": "La tasa de descuento utilizada por el gobierno al evaluar la opci\u00f3n APP expresada como una fracci\u00f3n decimal (por ejemplo, 3,2% = 0,032). Se pueden proporcionar m\u00e1s detalles en el campo discountRateDetails.", 
+          "title": "Tasa de descuento", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "discountRateDetails": {
+          "description": "M\u00e1s detalles sobre la tasa de descuento utilizada.", 
+          "minLength": 1, 
+          "title": "Detalles de la tasa de descuento", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "netPresentValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "El valor descontado de las entradas de efectivo de una inversi\u00f3n menos el valor descontado de sus salidas de efectivo. Se pueden proporcionar m\u00e1s detalles en el campo netPresentValueRateDetails.", 
+          "title": "Valor presente neto"
+        }, 
+        "netPresentValueDetails": {
+          "description": "M\u00e1s detalles sobre el c\u00e1lculo del valor actual neto.", 
+          "minLength": 1, 
+          "title": "Detalles del valor actual neto", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "riskPremium": {
+          "description": "La prima de riesgo utilizada por el gobierno al evaluar la opci\u00f3n APP expresada como una fracci\u00f3n decimal (por ejemplo, 3,2% = 0,032). Se debe proporcionar una explicaci\u00f3n de la prima de riesgo utilizada en el campo riskPremiumDetails.", 
+          "title": "Prima de riesgo", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "riskPremiumDetails": {
+          "description": "M\u00e1s detalles sobre la prima de riesgo utilizada, incluyendo una explicaci\u00f3n de por qu\u00e9 se utiliz\u00f3.", 
+          "minLength": 1, 
+          "title": "Detalles de la prima de riesgo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Indicadores de evaluaci\u00f3n", 
+      "type": "object"
+    }, 
+    "FinanceSummary": {
+      "description": "Indicadores clave que describen el modelo financiero de la APP.", 
+      "minProperties": 1, 
+      "properties": {
+        "debtEquityRatio": {
+          "description": "La proporci\u00f3n deuda-capital del proyecto, expresada como un valor decimal. El PPPIRC del Banco Mundial define la proporci\u00f3n de endeudamiento como \"deuda a largo plazo (dividida por) el capital accionario de la empresa del proyecto\". Tambi\u00e9n conocido como \"apalancamiento\" o \"gearing\". Pueden proporcionarse m\u00e1s detalles sobre la proporci\u00f3n de capital de deuda en el campo debtEquityRatioDetails.", 
+          "title": "Proporci\u00f3n de capital de la deuda", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "debtEquityRatioDetails": {
+          "description": "M\u00e1s detalles sobre el c\u00e1lculo de la proporci\u00f3n del capital de la deuda.", 
+          "minLength": 1, 
+          "title": "Detalles de la relaci\u00f3n de capital de la deuda", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "projectIRR": {
+          "description": "La tasa interna de rendimiento del proyecto, expresada como una fracci\u00f3n decimal (por ejemplo, 3,2% = 0,032). El Programa de Certificaci\u00f3n PPM de APMG define la TIR como \"La tasa de rendimiento de una inversi\u00f3n calculada a partir de sus flujos de efectivo proyectados. La tasa interna de rentabilidad (TIR) \u200b\u200bes tambi\u00e9n la tasa de descuento que equipara el valor presente de una corriente futura de flujos de efectivo a la inversi\u00f3n inicial\" Pueden proporcionarse m\u00e1s detalles sobre la TIR del proyecto en el campo projectIRRdetails.", 
+          "title": "Tasa Interna de Retorno del Proyecto", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "projectIRRDetails": {
+          "description": "M\u00e1s detalles sobre el c\u00e1lculo de la TIR del proyecto.", 
+          "minLength": 1, 
+          "title": "Detalles de la tasa interna de retorno de la inversi\u00f3n  del proyecto", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "shareCapital": {
+          "$ref": "#/definitions/Value", 
+          "description": "El valor del capital en el proyecto que proviene de la emisi\u00f3n de acciones. Pueden proporcionarse m\u00e1s detalles sobre el capital accionario en el campo shareCapitalDetails.", 
+          "title": "Capital accionario"
+        }, 
+        "shareCapitalDetails": {
+          "description": "M\u00e1s detalles sobre el c\u00e1lculo del capital social.", 
+          "minLength": 1, 
+          "title": "Detalles del capital social", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "subsidyRatio": {
+          "description": "Subvenci\u00f3n como proporci\u00f3n del valor del proyecto, expresada como una fracci\u00f3n decimal (por ejemplo, 3,2% = 0,032). Se pueden proporcionar m\u00e1s detalles sobre el coeficiente de subvenci\u00f3n en el campo subsidyRatioDetails.", 
+          "title": "Relaci\u00f3n de subsidio", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "subsidyRatioDetails": {
+          "description": "M\u00e1s detalles sobre el c\u00e1lculo del coeficiente de subvenci\u00f3n.", 
+          "minLength": 1, 
+          "title": "Detalles de la relaci\u00f3n de subvenci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Resumen financiero", 
+      "type": "object"
+    }, 
+    "Metric": {
+      "properties": {
+        "id": {
+          "codelist": "metricID.csv", 
+          "openCodelist": true
+        }
+      }
+    }, 
+    "Milestone": {
+      "properties": {
+        "code": {
+          "codelist": "milestoneCode.csv", 
+          "openCodelist": true
+        }
+      }
+    }
+  }
+}

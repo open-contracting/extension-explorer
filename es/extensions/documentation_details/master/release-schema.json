@@ -1,0 +1,44 @@
+{
+  "definitions": {
+    "Document": {
+      "properties": {
+        "accessDetails": {
+          "description": "Una descripci\u00f3n de cualquier arreglo especial necesitado para acceder a estos documentos, por ejemplo: registrarse para acceder, pagar una tarifa o visitar un lugar para inspeccionar el documento.", 
+          "minLength": 1, 
+          "title": "Detalles de acceso", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "author": {
+          "description": "Los nombres de los autores del documento.", 
+          "minLength": 1, 
+          "title": "Autor", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "pageEnd": {
+          "description": "Cuando la informaci\u00f3n mencionada existe dentro de un documento grande, se debe indicar la \u00faltima p\u00e1gina en la que se puede encontrar. Esto debe de referirse al n\u00famero de p\u00e1gina impreso, no al n\u00famero de p\u00e1gina reportado por software.", 
+          "minLength": 1, 
+          "title": "Fin de p\u00e1gina", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "pageStart": {
+          "description": "Cuando la informaci\u00f3n mencionada exista dentro de un documento grande, se debe indicar la primera p\u00e1gina en la que se puede encontrar. Esto debe de referirse al n\u00famero de p\u00e1gina impreso, no al n\u00famero de p\u00e1gina reportado por software.", 
+          "minLength": 1, 
+          "title": "Inicio de p\u00e1gina", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "definitions": {
+    "Lot": {
+      "properties": {
+        "hasRenewal": {
+          "description": "Whether the contract related to the lot can be renewed.", 
+          "title": "Has renewal", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "renewal": {
+          "$ref": "#/definitions/Renewal", 
+          "description": "The options for the renewal of the contract related to the lot.", 
+          "title": "Renewal"
+        }
+      }
+    }, 
+    "Renewal": {
+      "description": "Information about the options for the renewal of a contract.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "A description of the options for the renewal of the contract.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "maximumRenewals": {
+          "description": "The maximum number of renewals. If there is no maximum, set to 1e9999 (which parses to infinity).", 
+          "title": "Maximum renewal", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "minimumRenewals": {
+          "description": "The minimum number of renewals.", 
+          "title": "Minimum renewal", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "The period over which the contract can be renewed.", 
+          "title": "Renewal period"
+        }
+      }, 
+      "title": "Renewal", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "hasRenewal": {
+          "description": "Whether the contracts can be renewed.", 
+          "title": "Has renewal", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "renewal": {
+          "$ref": "#/definitions/Renewal", 
+          "description": "The options for the renewal of the contracts.", 
+          "title": "Renewal"
+        }
+      }
+    }
+  }
+}

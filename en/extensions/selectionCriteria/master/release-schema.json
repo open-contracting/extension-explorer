@@ -1,0 +1,112 @@
+{
+  "definitions": {
+    "Lot": {
+      "properties": {
+        "selectionCriteria": {
+          "$ref": "#/definitions/SelectionCriteria", 
+          "description": "Information about the conditions for participation in a lot.", 
+          "title": "Selection criteria"
+        }
+      }
+    }, 
+    "SelectionCriteria": {
+      "description": "Information about conditions for participation.", 
+      "minProperties": 1, 
+      "properties": {
+        "criteria": {
+          "description": "The selection criteria.", 
+          "items": {
+            "$ref": "#/definitions/SelectionCriterion"
+          }, 
+          "minItems": 1, 
+          "title": "Selection criteria", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "description": {
+          "description": "The description of the criteria used to select the economic operators who will be allowed to bid.", 
+          "minLength": 1, 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Selection criteria", 
+      "type": "object"
+    }, 
+    "SelectionCriterion": {
+      "description": "Information about the selection criterion.", 
+      "minProperties": 1, 
+      "properties": {
+        "appliesTo": {
+          "codelist": "appliesTo.csv", 
+          "description": "Whether the criterion applies to suppliers, subcontractors, or both.", 
+          "items": {
+            "enum": [
+              "supplier", 
+              "subcontractor"
+            ], 
+            "type": "string"
+          }, 
+          "minItems": 1, 
+          "openCodelist": false, 
+          "title": "Applies to", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "uniqueItems": true
+        }, 
+        "description": {
+          "description": "The description of the criterion.", 
+          "minLength": 1, 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "minimum": {
+          "description": "The minimum value or level of compliance a candidate needs to meet in order to participate.", 
+          "minLength": 1, 
+          "title": "Minimum value or level", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "type": {
+          "codelist": "selectionCriterionType.csv", 
+          "description": "The type of the criterion.", 
+          "enum": [
+            "technical", 
+            "economic", 
+            "suitability", 
+            "other", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Type", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Selection criterion", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "selectionCriteria": {
+          "$ref": "#/definitions/SelectionCriteria", 
+          "description": "Information about the conditions for participation in a procedure.", 
+          "title": "Selection criteria"
+        }
+      }
+    }
+  }
+}

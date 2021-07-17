@@ -1,0 +1,144 @@
+{
+  "definitions": {
+    "ActiveIngredient": {
+      "description": "An active ingredient, typically a chemical compound or biological substance.", 
+      "minProperties": 1, 
+      "properties": {
+        "name": {
+          "description": "The name of the active ingredient. It is recommended to use a generic name from the International Nonproprietary Names (INN). Also known as: generic name, drug, substance name, active substance.", 
+          "minLength": 1, 
+          "title": "Name", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "strength": {
+          "$ref": "#/definitions/Quantity", 
+          "description": "The strength of the active ingredient. Also known as: concentration, potency.", 
+          "title": "Strength"
+        }
+      }, 
+      "title": "Active ingredient", 
+      "type": "object"
+    }, 
+    "Container": {
+      "description": "The container for the medicine. Also known as: presentation, presentation form, package.", 
+      "minProperties": 1, 
+      "properties": {
+        "capacity": {
+          "$ref": "#/definitions/Quantity", 
+          "description": "The storage capacity of the container.", 
+          "title": "Capacity"
+        }, 
+        "name": {
+          "codelist": "container.csv", 
+          "description": "The common name of the container, from the container codelist.", 
+          "minLength": 1, 
+          "openCodelist": true, 
+          "title": "Name", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Container", 
+      "type": "object"
+    }, 
+    "Item": {
+      "properties": {
+        "activeIngredients": {
+          "description": "An array of active ingredients, typically chemical compounds or biological substances.", 
+          "items": {
+            "$ref": "#/definitions/ActiveIngredient"
+          }, 
+          "minItems": 1, 
+          "title": "Active ingredients", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "administrationRoute": {
+          "codelist": "administrationRoute.csv", 
+          "description": "The route by which the medicine can be administered, from the administrationRoute codelist.", 
+          "minLength": 1, 
+          "openCodelist": true, 
+          "title": "Administration route", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "container": {
+          "$ref": "#/definitions/Container", 
+          "description": "The immediate container for the medicine. Also known as: presentation, presentation form, package.", 
+          "title": "Container"
+        }, 
+        "dosageForm": {
+          "codelist": "dosageForm.csv", 
+          "description": "The dosage form in which the medicine is available, from the dosageForm codelist.", 
+          "minLength": 1, 
+          "openCodelist": true, 
+          "title": "Dosage form", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }, 
+    "Quantity": {
+      "description": "The quantity of a thing.", 
+      "minProperties": 1, 
+      "properties": {
+        "unit": {
+          "$ref": "#/definitions/SimpleUnit", 
+          "description": "The unit of measurement for the quantity.", 
+          "title": "Unit"
+        }, 
+        "value": {
+          "description": "The quantity, as a multiple of the unit of measurement. The quantity is expressed in interval notation, for example: \"[10,10]\" for 10 units, \"[1,10]\" for 1 to 10 units, or \"[10,INF[\" for 10 or more units.", 
+          "pattern": "^[([\\]][0-9]+,([0-9]+|INF)[)[\\]]$", 
+          "title": "Value", 
+          "type": [
+            "string", 
+            "number", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Quantity", 
+      "type": "object"
+    }, 
+    "SimpleUnit": {
+      "description": "A unit of measurement.", 
+      "minProperties": 1, 
+      "properties": {
+        "id": {
+          "description": "The identifier for the unit of measurement, taken from the codelist referenced by the `scheme` field. Refer to the [unitClassificationScheme](https://standard.open-contracting.org/{{version}}/{{lang}}/schema/codelists/#unit-classification-scheme) codelist for details of how to find identifiers within schemes.", 
+          "minLength": 1, 
+          "title": "ID", 
+          "type": [
+            "string", 
+            "null"
+          ], 
+          "versionId": true
+        }, 
+        "scheme": {
+          "codelist": "unitClassificationScheme.csv", 
+          "description": "The codelist from which the identifier for the unit of measurement is taken, using the open [unitClassificationScheme](https://standard.open-contracting.org/{{version}}/{{lang}}/schema/codelists/#unit-classification-scheme) codelist. 'UNCEFACT' is recommended.", 
+          "minLength": 1, 
+          "openCodelist": true, 
+          "title": "Scheme", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Simple unit", 
+      "type": "object"
+    }
+  }
+}

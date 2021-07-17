@@ -1,0 +1,26 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "dependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/master/extension.json"
+  ], 
+  "description": {
+    "en": "Adds an object to describe the date, time, place and other details of the bid opening.", 
+    "es": "Agregar un objeto para describir la fecha, hora, lugar y otros detalles de la apertura de ofertas."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/bidOpening/"
+  }, 
+  "name": {
+    "en": "Bid opening", 
+    "es": "Apertura de ofertas"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

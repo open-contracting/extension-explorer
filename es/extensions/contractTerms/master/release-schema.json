@@ -1,0 +1,151 @@
+{
+  "definitions": {
+    "ContractTerms": {
+      "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen los contratos futuros.", 
+      "minProperties": 1, 
+      "properties": {
+        "electronicInvoicingPolicy": {
+          "codelist": "permission.csv", 
+          "description": "Si el comprador requerir\u00e1, permitir\u00e1 o no permitir\u00e1 las facturas electr\u00f3nicas.", 
+          "enum": [
+            "required", 
+            "allowed", 
+            "notAllowed", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Pol\u00edtica de facturaci\u00f3n electr\u00f3nica", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "exclusiveRights": {
+          "description": "La naturaleza y alcance de los derechos exclusivos otorgados por la entidad contratante al proveedor.", 
+          "minLength": 1, 
+          "title": "Derechos exclusivos", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "financialTerms": {
+          "description": "La principal informaci\u00f3n sobre financiaci\u00f3n y pago y/o referencia a las disposiciones que las regulan.", 
+          "minLength": 1, 
+          "title": "T\u00e9rminos financieros", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "hasElectronicOrdering": {
+          "description": "Si se utiliza el pedido electr\u00f3nico.", 
+          "title": "Pedido electr\u00f3nico utilizado", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "hasElectronicPayment": {
+          "description": "Si se utiliza el pago electr\u00f3nico.", 
+          "title": "Pago electr\u00f3nico utilizado", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "hasExclusiveRights": {
+          "description": "Un derecho que permite a un operador de servicio p\u00fablico operar ciertos servicios p\u00fablicos de transporte de pasajeros en una ruta o red particular o en un \u00e1rea particular, con exclusi\u00f3n de cualquier otro operador.", 
+          "title": "Tiene derechos exclusivos", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "operatorRevenueShare": {
+          "description": "El porcentaje de ingresos por la venta de boletos asignado al proveedor.", 
+          "maximum": 1, 
+          "minimum": 0, 
+          "title": "Reparto de ingresos del operador", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "otherTerms": {
+          "description": "Otros t\u00e9rminos del contrato que no se ajustan a la sem\u00e1ntica de ning\u00fan otro campo OCDS.", 
+          "minLength": 1, 
+          "title": "Otros t\u00e9rminos", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "performanceTerms": {
+          "description": "La informaci\u00f3n principal sobre la ejecuci\u00f3n del contrato (por ejemplo, entregables intermediarios, compensaci\u00f3n por da\u00f1os, derechos de propiedad intelectual).", 
+          "minLength": 1, 
+          "title": "Rendimiento de los t\u00e9rminos", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "reservedExecution": {
+          "description": "Si la ejecuci\u00f3n del contrato se restringe al marco de los programas de empleo protegido", 
+          "title": "Ejecuci\u00f3n reservada", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "rewardsAndPenalties": {
+          "description": "Informaci\u00f3n sobre recompensas y sanciones relacionadas con los objetivos de calidad.", 
+          "minLength": 1, 
+          "title": "Recompensas y sanciones", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "socialStandards": {
+          "description": "Los est\u00e1ndares sociales requeridos, por ejemplo: detalle de los derechos contractuales del personal afectado y condiciones en las que se considera que los empleados est\u00e1n vinculados a los servicios.", 
+          "minLength": 1, 
+          "title": "Est\u00e1ndares sociales", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "tendererLegalForm": {
+          "description": "Una determinada forma jur\u00eddica que debe adoptar un grupo de licitantes que es adjudicado a un contrato.", 
+          "minLength": 1, 
+          "title": "Forma jur\u00eddica del licitador", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "T\u00e9rminos del contrato", 
+      "type": "object"
+    }, 
+    "Lot": {
+      "properties": {
+        "contractTerms": {
+          "$ref": "#/definitions/ContractTerms", 
+          "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen los contratos futuros del lote.", 
+          "title": "T\u00e9rminos del contrato"
+        }
+      }
+    }, 
+    "Tender": {
+      "properties": {
+        "contractTerms": {
+          "$ref": "#/definitions/ContractTerms", 
+          "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen los futuros contratos del procedimiento.", 
+          "title": "T\u00e9rminos del contrato"
+        }
+      }
+    }
+  }
+}

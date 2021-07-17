@@ -1,0 +1,88 @@
+{
+  "definitions": {
+    "Organization": {
+      "properties": {
+        "shareholders": {
+          "description": "Una lista de los accionistas de la organizaci\u00f3n: se utiliza para proporcionar informaci\u00f3n sobre la propiedad de la empresa para las sociedades, principalmente en el caso de contratos grandes y complejos, o Sociedades P\u00fablicas Privadas, que requieren la divulgaci\u00f3n de esta informaci\u00f3n para ciertos licitadores o adjudicatarios.", 
+          "items": {
+            "$ref": "#/definitions/Shareholder"
+          }, 
+          "minItems": 1, 
+          "title": "Accionistas de la organizaci\u00f3n", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Shareholder": {
+      "description": "Un accionista en una organizaci\u00f3n.", 
+      "minProperties": 1, 
+      "properties": {
+        "id": {
+          "description": "Un identificador local para este accionista, \u00fanico dentro de este bloque. Este campo se utiliza para realizar un seguimiento de las revisiones m\u00faltiples de un accionista a trav\u00e9s de la compilaci\u00f3n del mecanismo de entrega a registro.", 
+          "minLength": 1, 
+          "title": "ID del Accionista", 
+          "type": [
+            "string"
+          ]
+        }, 
+        "notes": {
+          "description": "Notas adicionales sobre este accionista. Este campo debe usarse para proporcionar detalles sobre los l\u00edmites m\u00e1ximos en la transferencia de capital, o acuerdos de bloqueo, aplicables a este accionista.", 
+          "minLength": 1, 
+          "title": "Notas sobre los accionistas", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "shareholder": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "Una referencia de la organizaci\u00f3n se\u00f1alando la entrada en la secci\u00f3n de partes de la organizaci\u00f3n accionaria.", 
+          "title": "Referencia de la organizaci\u00f3n de accionistas."
+        }, 
+        "shareholding": {
+          "description": "El porcentaje de acciones que posee el accionista, expresado como un valor decimal entre 0 y 1.", 
+          "maximum": 1, 
+          "minimum": 0, 
+          "title": "Participaci\u00f3n", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "votingRights": {
+          "codelist": "votingRights.csv", 
+          "description": "El tipo de derechos de voto asociados a las acciones que posee el accionista.", 
+          "enum": [
+            "ordinary", 
+            "none", 
+            "restricted", 
+            "additional", 
+            "enhanced", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Derechos de voto de los accionistas", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "votingRightsDetails": {
+          "description": "Informaci\u00f3n detallada sobre los derechos de voto del accionista. Este campo debe completarse cuando los derechos de voto de los accionistas son restringidos, adicionales o mejorados.", 
+          "minLength": 1, 
+          "title": "Detalles de los derechos de voto de los accionistas", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Accionista", 
+      "type": "object"
+    }
+  }
+}

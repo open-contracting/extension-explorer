@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Budget and spending classification — Documentation — OCDS Extension Explorer</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/en/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      OCDS Extension Explorer
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/en/">
+        Home
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/en/extensions/">
+        Extensions
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        English
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item active" href="/en/extensions/budget_and_spend/master/">
+          English
+        </a>
+        <a class="dropdown-item" href="/es/extensions/budget_and_spend/master/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Budget and spending classification
+      </h1>
+
+      <p class="lead">
+        Extends budget breakdown and contract implementation to allow publication of detailed budget allocations and execution for a contracting process, using classifications that can be mapped to separately published budget and spend data.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Version:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/en/extensions/budget_and_spend/master/" selected>
+              master
+              (latest)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/en/extensions/budget_and_spend/master/">
+            Documentation
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ml-0">
+              <a href="#in-summary">
+                In summary
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#getting-started">
+                Getting started
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#key-concepts">
+                Key concepts
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#relating-budget-contracting-and-spend">
+                Relating budget, contracting and spend
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#joined-up-data-standards-connections-with-the-fiscal-data-package">
+                Joined up data standards: connections with the fiscal data package
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#background">
+                Background
+              </a>
+            </li>
+            <li class="ml-2">
+              <a href="#user-stories-requirements">
+                User stories &amp; requirements
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#changelog">
+                Changelog
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/budget_and_spend/master/schema/">
+            Schema
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_and_spend_extension/master/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/archive/master.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentation
+      </h2>
+<div><p>The Budgets and Spend extension extends <a href="https://github.com/open-contracting-extensions/ocds_budget_breakdown_extension/blob/master/README.md">budget breakdown</a> and the contract implementation section to allow the publication of detailed budget allocations and execution for a contracting process.</p>
+<p>A <a href="https://docs.google.com/document/d/1b43JeG5YQ62tGTTbP7jTE4XqUxYzG-r-emgRILZPRn4/edit">discussion paper providing background approach taken is available here</a>.</p>
+<p>This repository is under active development, and currently contains a <a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/tree/master/examples#readme">worked example</a> of how this extension can be used to record yearly financial commitments to a contracting process and individual contracts.</p>
+<h2 id="in-summary">In summary</h2>
+<p>This extension introduces three new features that build on the <a href="https://github.com/open-contracting-extensions/ocds_budget_breakdown_extension/blob/master/README.md">budget breakdown</a> extension:</p>
+<ul>
+<li><code>classifications</code> - allowing functional, economic and administrative classifications to be provided for each budget breakdown item;</li>
+<li><code>measures</code> - allowing different budget measures (planned, committed, executed etc.) to be expressed at the contracting process level for each set of budget classifications;</li>
+<li><code>fiscalBreakdownFieldMapping</code> - providing an approach to link to a <a href="https://frictionlessdata.io/specs/fiscal-data-package/">Fiscal Data Package</a> datapackage.json file that defines the meaning of each classification and measure, and that provides access to related budget-level data.</li>
+</ul>
+<p>In addition, it introduces the <code>financialProgress</code> object into <code>contracts.implementation</code>, allowing a detailed breakdown of the financial execution of each contract to be expressed, using the same <code>classifications</code>, <code>measures</code> and <code>fiscalBreakdownFieldMapping</code> features as for <code>budgetBreakdown</code>.</p>
+<h2 id="getting-started">Getting started</h2>
+<p>The best way to understand this extension is by looking at worked examples.</p>
+<ul>
+<li>
+<p>The <strong><a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/blob/master/examples/coordination.md">coordination example</a></strong> illustrates how to express data on budget allocation and execution that may be drawn from different data systems (e.g. finance systems and procurement systems).</p>
+</li>
+<li>
+<p>The <strong><a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/blob/master/examples/integration.md">integration example</a></strong> illustrates how references to a Fiscal Data Package can support display of data to users, and comparison between contracting process level and budget level data.</p>
+</li>
+<li>
+<p>The <strong><a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/blob/master/examples/flat.md">flat data example</a></strong> illustrates how the structured data published using this extension can be analyzed using spreadsheet tools.</p>
+</li>
+</ul>
+<h2 id="key-concepts">Key concepts</h2>
+<p>This extension provides the tools to create data that links <strong>budgets</strong>, <strong>contracting processes</strong> and <strong>spending</strong></p>
+<p>Drawing on definitions from the <a href="http://www.fiscaltransparency.net/">Global Initiative for Fiscal Transparency (GIFT)</a>:</p>
+<p><strong>A budget</strong> is a forward-looking statements of how an organization proposes to raise revenues, spend resources, and finance its operations. The National Government budget should cover all the activities of a state. Detailed budgets may also exist at the level of agencies and projects. In public contracting, the funding for a contracting process may come from a particular section of the National budget, or from an organizational budget. It may also come wholly or partially from an external funders budget (e.g. an International Development Bank), either directly, or passing through government systems.</p>
+<p>Budget lines are constructed from a set of <strong>classifications</strong> (often described in terms of Functional, Administrative and Economic classifications), and <strong>measures</strong> (such as the original amount committed to a particular set of classifications, or the modified, or executed, amounts).</p>
+<p><strong>Fiscal reports</strong> are records of [an organization's] actual (historical) revenues, <strong>spending</strong> and financing. They may report the fiscal activities of the central government, state governments, or local governments, or of all levels of government in a country (referred to as the general government). Reports may cover a whole government in aggregate as an entity, and/or individual government entities e.g. ministries, departments or agencies. They may be on a cash or accruals basis (full or partial). As payments are made during the execution of a contract, these may be allocated against one or more sections of the budget. In some cases, this may allow the creation of fiscal reporting at the level of individual contracts.</p>
+<p>The Open Contracting Data Standard is used to share information about <strong>contracting processes</strong>. A contracting process may go through a number of stages over time, including planning, tender, award, contract signature and implementation.</p>
+<h2 id="relating-budget-contracting-and-spend">Relating budget, contracting and spend</h2>
+<p><img src="https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_and_spend_extension/master/images/budget-contract-spend.png" alt="Budget, Contract and Spending relationships"></p>
+<p>The image above presents a schematic representation of how budget, contracting and spend datasets may interact.</p>
+<p>Note that:</p>
+<ul>
+<li>
+<p>This does not represent a linear sequence of events. Data may become available at different points in time, such as when budgeting takes place on an annual cycle, but contracts are signed to cover multiple years. In such cases, the budget information in the <code>planning</code> section of an OCDS contracting process may be updated after contracts are awarded and being implemented.</p>
+</li>
+<li>
+<p>Budget and spend data may be provided at varying levels of granularity, from a single budget line that funds multiple contracting processes, to the fiscal classification of individual items of spend against a particular contract. Data publishers will vary as to the level of detail that can be extracted reliably from their systems.</p>
+</li>
+<li>
+<p>Budget execution data may exist at the transactional level, or may exist at a more aggregated level. This extension currently covers budget execution, but does not cover detailed classification of transactions.</p>
+</li>
+</ul>
+<p>The image below shows a mapping between the stages of a transaction and the stages of a contracting process. The stages of a transaction are generally common across different jurisdictions and reflect those described by the <a href="https://frictionlessdata.io/specs/fiscal-data-package/">Fiscal Data Package</a>; however, some jurisdictions might not record all stages, some might use different terminology, and some might have more stages.</p>
+<p><img src="https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_and_spend_extension/master/images/transaction-contracting_process.png" alt="Transaction and contracting process mapping"></p>
+<p>The joined-up data covered by this extension is typically sourced from procurement systems and Financial Management Information Systems (FMIS). Examples of how such systems can be integrated include:</p>
+<ul>
+<li>
+<p>Before beginning a tender, the procurement system checks that funds are available for the contracting process through the FMIS, and creates a reservation in the FMIS.</p>
+</li>
+<li>
+<p>When a contract is signed, the procurement system creates a commitment in the FMIS for the value of the contract.</p>
+</li>
+<li>
+<p>When a milestone or deliverable of a contract is completed, the procurement system creates a verification or accrual ("devengado" in Spanish) in the FMIS.</p>
+</li>
+</ul>
+<h2 id="joined-up-data-standards-connections-with-the-fiscal-data-package">Joined up data standards: connections with the fiscal data package</h2>
+<p>The <a href="https://frictionlessdata.io/specs/fiscal-data-package/">Fiscal Data Package</a>, developed by Open Knowledge with the support of <a href="http://www.fiscaltransparency.net/">GIFT</a>, provides <em>"a lightweight and user-oriented format for publishing and consuming fiscal data"</em>. Unlike OCDS, which requires data to be converted to a set JSON structure before publication, a Fiscal Data Package consists of:</p>
+<ul>
+<li>A data package definition (datapackage.json) which describes the 'logical model' to apply to existing data files. This defines columns, their relationship to fiscal concepts, and how they should be transformed by consuming applications in order to create normalized data.</li>
+<li>Data files, which provide the 'physical model' for budget or spending dataset, and may be the direct exports from existing systems.</li>
+</ul>
+<p>Considerable research and user-testing has taken place to develop the Fiscal Data Package, establishing that, instead of seeking agreement on some global set of fiscal concepts, it is important, given the diversity of budget and spending systems around the world, to allow publishers to provide data using their existing fiscal concepts, and to then annotate these with additional data that can progressively support comparison and analysis across datasets.</p>
+<p>To avoid duplication of effort by data publishers and consumers, this extension defers to the Fiscal Data Package model with respect to the definition of fiscal concepts, and follows FDP's approach of allowing use of existing data column names. Whilst FDP makes no direct distinction between "classifications" and "measures", considering both to be instances of "fiscal concepts", in this extension we do draw a distinction to allow measures to be validated as numerical, whilst classifications can take string or number values.</p>
+<h2 id="background">Background</h2>
+<p>A full exploration of the approach taken in this extension can be found in the <a href="https://docs.google.com/document/d/1b43JeG5YQ62tGTTbP7jTE4XqUxYzG-r-emgRILZPRn4/edit">background discussion paper</a>.</p>
+<h3 id="user-stories-requirements">User stories &amp; requirements</h3>
+<p>This extension was designed around a set of user stories.</p>
+<ul>
+<li>
+<p>U1: As a journalist I want to see the budget source of a particular contracting process in order to understand whether funding has come from domestic resources, loans or other international revenue</p>
+</li>
+<li>
+<p>U2: As a journalist I want to find all the contracts funded through a particular budget source in order to analyze the extent to which the budget is spent via contracting or other means</p>
+</li>
+<li>
+<p>U3: As a civil society organization focused on infrastructure I want to find all the contracting processes related to a given infrastructure programme or project so that I can carry out a review of compliance with infrastructure project transparency requirements.</p>
+</li>
+<li>
+<p>U4: As a journalist I want to track (suspicious) contracts in order to identify potential connections between the recipients and the officials and politicians in control of the budgeting and award processes.</p>
+</li>
+</ul>
+<p>Identifying and confirming budget allocations:</p>
+<ul>
+<li>
+<p>U5: As a potential supplier I want to see when budget availability is confirmed for a given contracting process so that I can plan a pipeline of potential bidding opportunities.</p>
+</li>
+<li>
+<p>U6: As a civil society monitoring organization I want to identify projects without confirmed budget so that I can analyze the funding gap for planned procurement</p>
+</li>
+<li>
+<p>U7: As a treasury official I want to share information on the status of budget allocations and spending for any given contract so that I can demonstrate to the public that the budget is being spent in accordance with approved plans</p>
+</li>
+<li>
+<p>U8: As a procurement monitor I want to see how much of the spend on an infrastructure project has come from the capital budget vs the revenue budget so that I can monitor over or underspend</p>
+</li>
+<li>
+<p>U9: As a civil society organization I want to identify how far particular budget lines have spend allocated against them, and the status of that spend over time so that I can report on areas of over or under spending.</p>
+</li>
+</ul>
+<p>Tracking the payment process:</p>
+<ul>
+<li>
+<p>U10: As an academic I want to identify the gap between invoice date and payment date so that I can analyze how prices are affected by payment timelines</p>
+</li>
+<li>
+<p>U11: As an auditor I want to see full details of the billing and payment process so that I can identify potential red flags and investigate particular processes</p>
+</li>
+</ul>
+<p>These user stories were used to identify a set of requirements that the extension should meet. The list below outlines the extent to which the current extension meets the requirements that were identified.</p>
+<ul>
+<li>R1: Uniquely identify each relevant budget line
+<ul>
+<li><strong>Requirement met?</strong>: Yes. BudgetBreakdown is extended with a flexible <code>classifications</code> object that can include any number of classification properties, mirroring the terms and column names used within budget datasets.</li>
+</ul>
+</li>
+<li>R2: Uniquely identify the projects providing funding to a contracting process
+<ul>
+<li><strong>Requirement met?</strong>: Partially. No changes are currently introduced to meet this use case. The core budget object already includes a <code>projectID</code> field.</li>
+</ul>
+</li>
+<li>R3: Provide amounts for different budget phases including confirmed budget allocations
+<ul>
+<li><strong>Requirement met?</strong>: Yes. BudgetBreakdown is extended with a flexible <code>measures</code> object that can include any number of measure properties, mirroring the terms and column names used within existing budget and spending datasets.</li>
+</ul>
+</li>
+<li>R4: Classify transactions against budget lines
+<ul>
+<li><strong>Requirement met?</strong>: No. Disaggregated financial progress information can be classified against budget lines in the contract implementation <code>financialProgress.breakdown</code> section, but the extension does not currently modify the <code>transactions</code> block to allow classification at the individual transaction level.</li>
+</ul>
+</li>
+<li>R5: Provide information on the transaction process, from invoice to payment
+<ul>
+<li><strong>Requirement met?</strong>: Partial. The <code>measures</code> in <code>financialProgress.breakdown</code> for each contract can be used to describe different moments of payment processing. However, this only provides a full history of the timing of payment processes when used with a detailed version history of releases. An alternative approach of adding details of <code>transactions</code> to represent different moments such as requests for payment and payment approvals has not been included in this extension, but may be developed separately in future.</li>
+</ul>
+</li>
+<li>R6: Allow individual amount allocations of budget to contract within OCDS to be checked against overall budget line allocations in a budget dataset
+<ul>
+<li><strong>Requirement met?</strong>: Yes. Through use of a link to the Fiscal Data Package it is possible to compare the contract-level financial information in OCDS with similarly classified information in an FDP.</li>
+</ul>
+</li>
+<li>R7: Provide front end interfaces with the information needed to display budget information to users
+<ul>
+<li><strong>Requirement met?</strong>: Yes. When used in conjunction with a Fiscal Data Package, applications can lookup labels and meta-data for each <code>classifications</code> and <code>measures</code> in order to display information clearly to users.</li>
+</ul>
+</li>
+</ul>
+<h2 id="issues">Issues</h2>
+<p>Report issues for this extension in the <a href="https://github.com/open-contracting/ocds-extensions/issues">ocds-extensions repository</a>, putting the extension's name in the issue's title.</p>
+<h2 id="changelog">Changelog</h2>
+<h3>2020-06-04</h3>
+<ul>
+<li>Review normative and non-normative words</li>
+</ul>
+<h3>2020-04-24</h3>
+<ul>
+<li>Add <code>minProperties</code>, <code>minItems</code> and/or <code>minLength</code> properties.</li>
+</ul>
+<h3>2019-03-20</h3>
+<ul>
+<li>Set <code>"uniqueItems": true</code> on array fields, and add <code>"minLength": 1</code> on required string fields.</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

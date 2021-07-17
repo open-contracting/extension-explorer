@@ -1,0 +1,71 @@
+{
+  "definitions": {
+    "Lot": {
+      "properties": {
+        "secondStage": {
+          "$ref": "#/definitions/SecondStage", 
+          "description": "Information about the second stage of a two-stage procedure (e.g. a restricted procedure, a competitive procedure with negotiation, a competitive dialogue or an innovation partnership).", 
+          "title": "Second stage"
+        }
+      }
+    }, 
+    "SecondStage": {
+      "description": "Information about the second stage of a two-stage procedure (e.g. a restricted procedure, a competitive procedure with negotiation, a competitive dialogue or an innovation partnership).", 
+      "minProperties": 1, 
+      "properties": {
+        "invitationDate": {
+          "description": "The estimated date of dispatch of the invitations to participate or to submit bids.", 
+          "format": "date-time", 
+          "title": "Invitation date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "maximumCandidates": {
+          "description": "The maximum number of candidates to be invited for the second stage of the procedure. If there is an exact limit on the number of candidates, set `minimumCandidates` and `maximumCandidates` to the same number.", 
+          "title": "Maximum number of candidates", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "minimumCandidates": {
+          "description": "The minimum number of candidates to be invited for the second stage of the procedure. If there is an exact limit on the number of candidates, set `minimumCandidates` and `maximumCandidates` to the same number.", 
+          "title": "Minimum number of candidates", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "noNegotiationNecessary": {
+          "description": "The buyer or procuring entity reserves the right to award the contract on the basis of the initial bids without any further negotiations.", 
+          "title": "No negotiation necessary", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "successiveReduction": {
+          "description": "The procedure will take place in successive stages. In each stage, some participants might be eliminated.", 
+          "title": "Successive reduction", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Second stage", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "secondStage": {
+          "$ref": "#/definitions/SecondStage", 
+          "description": "Information about the second stage of a two-stage procedure (e.g. a restricted procedure, a competitive procedure with negotiation, a competitive dialogue or an innovation partnership).", 
+          "title": "Second stage"
+        }
+      }
+    }
+  }
+}

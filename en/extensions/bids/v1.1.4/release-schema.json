@@ -1,0 +1,166 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "relatedBid": {
+          "description": "Where bid details are used, a cross reference to the entry in the bids array to which this award relates. Provide the bid identifier here.", 
+          "title": "Related bid", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }, 
+    "Bid": {
+      "description": "For representing a bid in response to the tender or qualification stage in this contracting process.", 
+      "properties": {
+        "date": {
+          "description": "The date when this bid was received.", 
+          "format": "date-time", 
+          "title": "Date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "documents": {
+          "description": "All documents and attachments related to the bid and its evaluation.", 
+          "items": {
+            "$ref": "#/definitions/Document"
+          }, 
+          "title": "Documents", 
+          "type": "array", 
+          "uniqueItems": true
+        }, 
+        "id": {
+          "description": "A local identifier for this bid", 
+          "title": "ID", 
+          "type": [
+            "string"
+          ]
+        }, 
+        "status": {
+          "codelist": "bidStatus.csv", 
+          "description": "The status of the bid, drawn from the bidStatus codelist", 
+          "enum": [
+            "invited", 
+            "pending", 
+            "valid", 
+            "disqualified", 
+            "withdrawn", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Status", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "tenderers": {
+          "description": "The party, or parties, responsible for this bid. This should provide a name and identifier, cross-referenced to an entry in the parties array at the top level of the release.", 
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          }, 
+          "title": "Tenderer", 
+          "type": "array"
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value", 
+          "description": "The total value of the bid.", 
+          "title": "Value"
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Bid", 
+      "type": "object"
+    }, 
+    "Bids": {
+      "description": "Summary and detailed information about bids received and evaluated as part of this contracting process.", 
+      "properties": {
+        "details": {
+          "description": "An array of bids, providing information on the bidders, and where applicable, bid status, bid values and related documents. The extent to which this information can be disclosed varies from jurisdiction to jurisdiction.", 
+          "items": {
+            "$ref": "#/definitions/Bid"
+          }, 
+          "title": "Bid details", 
+          "type": "array"
+        }, 
+        "statistics": {
+          "description": "Summary statistics on the number and nature of bids received. Where information is provided on individual bids, these statistics should match those that can be calculated from the bid details array.", 
+          "items": {
+            "$ref": "#/definitions/BidsStatistic"
+          }, 
+          "title": "Statistics", 
+          "type": "array"
+        }
+      }, 
+      "title": "Bids", 
+      "type": "object"
+    }, 
+    "BidsStatistic": {
+      "description": "For reporting aggregate statistics about the bids related to a tender. Where lots are in use, statistics may optionally be broken down by lot.", 
+      "properties": {
+        "date": {
+          "description": "The date when this statistic was last updated. This is often the closing date of the tender process. This field can be left blank unless either (a) the same statistic is provided from multiple points in time, or (b) there is a specific local requirement for the date when statistics were calculated to be provided.", 
+          "format": "date-time", 
+          "title": "Date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "An internal identifier for this statistical item.", 
+          "title": "ID", 
+          "type": "string"
+        }, 
+        "measure": {
+          "codelist": "bidStatistics.csv", 
+          "description": "An item from the bidStatistics codelist for the statistic reported in value. This is an open codelist, and other statistics may also be included.", 
+          "openCodelist": true, 
+          "title": "Measure", 
+          "type": "string"
+        }, 
+        "notes": {
+          "description": "Any notes required to understand or interpret the given statistic.", 
+          "title": "Notes", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatedLot": {
+          "description": "Where lots are in use, if this statistic relates to bids on a particular lot, provide the lot identifier here. If left blank, the statistic will be interpreted as applying to the whole tender.", 
+          "title": "Related Lot", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "description": "The value for the measure in question. Total counts should be provided as an integer. Percentages should be presented as a proportion of 1 (e.g. 10% = 0.1)", 
+          "title": "Value", 
+          "type": "number"
+        }
+      }, 
+      "required": [
+        "id", 
+        "measure", 
+        "value"
+      ], 
+      "title": "Bid Statistic", 
+      "type": "object"
+    }
+  }, 
+  "properties": {
+    "bids": {
+      "$ref": "#/definitions/Bids", 
+      "description": "The bid section is used to publish summary statistics, and where applicable, individual bid information.", 
+      "title": "Bids"
+    }
+  }
+}

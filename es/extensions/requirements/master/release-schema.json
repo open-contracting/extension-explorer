@@ -1,0 +1,370 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "requirementResponses": {
+          "description": "Una lista detallada de las respuestas a esta adjudicaci\u00f3n a los requisitos de la licitaci\u00f3n", 
+          "items": {
+            "$ref": "#/definitions/RequirementResponse"
+          }, 
+          "minItems": 1, 
+          "title": "Respuestas de requisito", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Bid": {
+      "properties": {
+        "requirementResponses": {
+          "description": "Si tambi\u00e9n se usa la extensi\u00f3n de requisitos, aqu\u00ed se pueden especificar las respuestas detalladas de esta oferta a los requisitos de la licitaci\u00f3n.", 
+          "items": {
+            "$ref": "#/definitions/RequirementResponse"
+          }, 
+          "minItems": 1, 
+          "title": "Respuestas de requisito", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Contract": {
+      "properties": {
+        "requirementResponses": {
+          "description": "Una lista detallada de respuestas a este contrato con los requisitos de la licitaci\u00f3n.", 
+          "items": {
+            "$ref": "#/definitions/RequirementResponse"
+          }, 
+          "minItems": 1, 
+          "title": "Respuestas de requisito", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Criterion": {
+      "description": "Un criterio sobre el cual se juzgar\u00e1n, evaluar\u00e1n o valorar\u00e1n los licitadores o art\u00edculos.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "Una descripci\u00f3n de este criterio. La informaci\u00f3n estructurada se debe de dar en los otros campos.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "El identificador para este criterio. Debe de ser \u00fanico y no puede cambiar dentro del Proceso de Contrataci\u00f3n Abierta del cual es parte (definido por un s\u00f3lo ocid). Ver la [gu\u00eda de identificadores](http://standard.open-contracting.org/latest/en/schema/identifiers/) para mayores detalles.", 
+          "minLength": 1, 
+          "title": "Identificador", 
+          "type": [
+            "string", 
+            "integer"
+          ]
+        }, 
+        "relatedItem": {
+          "description": "Donde relatesTo = \"item\" este campo debe de ser llenado con el id del art\u00edculo en esta secci\u00f3n de la licitaci\u00f3n con el que se relaciona el criterio. Se debe omitir el campo cuando  relatesTo <> \"item\".", 
+          "minLength": 1, 
+          "title": "Art\u00edculo relacionado", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatesTo": {
+          "codelist": "relatesTo.csv", 
+          "description": "The schema element that the criterion judges, evaluates or assesses. For example, the criterion might be defined against items or against bidders.", 
+          "enum": [
+            "tenderer", 
+            "item", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Elementos relacionados al esquema", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "requirementGroups": {
+          "description": "Una lista de grupos de requisitos para este Criterio. Un criterio se satisface cuando uno o m\u00e1s grupos de requisitos se cumplen. Un grupo de requisitos se cumple cuando todos los requerimientos del grupo se satisfacen.", 
+          "items": {
+            "$ref": "#/definitions/RequirementGroup"
+          }, 
+          "minItems": 1, 
+          "title": "Grupos de requisitos", 
+          "type": "array", 
+          "uniqueItems": true
+        }, 
+        "source": {
+          "codelist": "responseSource.csv", 
+          "description": "Source of response to the requirements specified in the criterion. For example, responses might be submitted by tenderers or by an assessment committee at the procuringEntity.", 
+          "enum": [
+            "tenderer", 
+            "buyer", 
+            "procuringEntity", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Fuente", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "title": {
+          "description": "Un t\u00edtulo para este criterio", 
+          "minLength": 1, 
+          "title": "T\u00edtulo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Criterio", 
+      "type": "object"
+    }, 
+    "Requirement": {
+      "description": "Un requisito at\u00f3mico. Los requisitos pueden especificar el valor esperado que la respuesta debe contener, o un rango de valores tope en los que la respuesta debe de entrar. El requisito puede aplicar a un per\u00edodo espec\u00edfico de tiempo.", 
+      "minProperties": 1, 
+      "properties": {
+        "dataType": {
+          "codelist": "dataType.csv", 
+          "description": "El tipo de dato en el que se debe proporcionar la respuesta del requisito.", 
+          "enum": [
+            "string", 
+            "date-time", 
+            "number", 
+            "integer", 
+            "boolean", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Tipo de dato de Requisito", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "Una descripci\u00f3n de texto libre para este requisito at\u00f3mico", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n del requisito", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "expectedValue": {
+          "description": "Usado para que se establezca el requisito cuando la respuesta debe ser un valor particular.", 
+          "minLength": 1, 
+          "title": "Valor esperado", 
+          "type": [
+            "string", 
+            "integer", 
+            "number", 
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "El identificador de este requisito. Debe ser \u00fanico y no puede cambiar dentro del Proceso de Contrataci\u00f3n Abierta de que forma parte (definido por un solo ocid). Consulte la [gu\u00eda de identificadores](http://standard.open-contracting.org/latest/en/schema/identifiers/) para obtener m\u00e1s detalles.", 
+          "minLength": 1, 
+          "title": "Identificador del requisito", 
+          "type": "string"
+        }, 
+        "maxValue": {
+          "description": "Se usa para indicar el l\u00edmite superior del requisito cuando la respuesta debe estar dentro de un cierto rango.", 
+          "title": "Valor m\u00e1ximo", 
+          "type": [
+            "integer", 
+            "number", 
+            "null"
+          ]
+        }, 
+        "minValue": {
+          "description": "Se usa para indicar el l\u00edmite inferior del requisito cuando la respuesta debe estar dentro de un cierto rango.", 
+          "title": "Valor m\u00ednimo", 
+          "type": [
+            "integer", 
+            "number", 
+            "null"
+          ]
+        }, 
+        "pattern": {
+          "description": "Una expresi\u00f3n regular para validar la respuesta requerida", 
+          "minLength": 1, 
+          "title": "Patr\u00f3n de validaci\u00f3n de respuesta", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "Usado para especificar un per\u00edodo particular al que el requisito aplica, por ejemplo, el volumen de negocio del licitante en un a\u00f1o espec\u00edfico. ", 
+          "title": "Periodo"
+        }, 
+        "title": {
+          "description": "El t\u00edtulo de este requisito at\u00f3mico.", 
+          "minLength": 1, 
+          "title": "T\u00edtulo de requisito", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Requisito", 
+      "type": "object"
+    }, 
+    "RequirementGroup": {
+      "description": "Un grupo de requisitos es un conjunto de requisitos que deben cumplirse juntos para validar un criterio.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "Una descripci\u00f3n de este grupo de requisitos. Se debe de proveer informaci\u00f3n estructurada en la  lista de requisitos.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "El identificador para este grupo de requisitos. Debe ser \u00fanico y no puede cambiar dentro del Proceso de Contrataci\u00f3n Abierta del que forma parte (definido por un solo ocid). Consulte la [gu\u00eda de identificadores](http://standard.open-contracting.org/latest/en/schema/identifiers/) para obtener m\u00e1s detalles.", 
+          "minLength": 1, 
+          "title": "Identificador", 
+          "type": "string"
+        }, 
+        "requirements": {
+          "description": "Una lista de requisitos que deben ser cumplidos para que el grupo de requisitos se cumpla.", 
+          "items": {
+            "$ref": "#/definitions/Requirement"
+          }, 
+          "minItems": 1, 
+          "title": "Requisitos", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Grupo de requisitos", 
+      "type": "object"
+    }, 
+    "RequirementReference": {
+      "description": "Usado para hacer una referencia cruzada de un requisito.", 
+      "minProperties": 1, 
+      "properties": {
+        "id": {
+          "description": "El identificador del requerimiento al cual se aplica la respuesta.", 
+          "minLength": 1, 
+          "title": "ID de requisito", 
+          "type": "string"
+        }, 
+        "title": {
+          "description": "El t\u00edtulo del requisito al cual se aplica la respuesta.", 
+          "minLength": 1, 
+          "title": "T\u00edtulo de requisito", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Referencia de requisito", 
+      "type": "object"
+    }, 
+    "RequirementResponse": {
+      "description": "Una declaraci\u00f3n que responde a un s\u00f3lo requisito. Una respuesta de requisito provee el valor del requisito y puede proveer el periodo al cual aplica.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "Una descripci\u00f3n de este grupo de requisitos. Se debe de proveer informaci\u00f3n estructurada en la lista de requisitos.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "El identificador para este requisito de respuesta. Debe de ser \u00fanico y no puede cambiar dentro del Proceso de Contrataci\u00f3n Abierta del cual es parte (definido por un s\u00f3lo ocid). Ver la [gu\u00eda de identificadores](http://standard.open-contracting.org/latest/en/schema/identifiers/) para mayores detalles.", 
+          "minLength": 1, 
+          "title": "Identificador", 
+          "type": "string"
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "El per\u00edodo en que se aplica la respuesta de requisitos.", 
+          "title": "Periodo"
+        }, 
+        "relatedTenderer": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "Donde esta respuesta de requisito se relaciona con un licitador y es provista por el comprador o la entidad compradora, este campo debe usarse para referenciar la entrada en la secci\u00f3n de partes para el licitador al cual se relaciona la respuesta.", 
+          "title": "Licitador relacionado"
+        }, 
+        "requirement": {
+          "$ref": "#/definitions/RequirementReference", 
+          "description": "El id y t\u00edtulo que aplica a la respuesta de requisitos.", 
+          "title": "Requisito relacionado"
+        }, 
+        "title": {
+          "description": "Un t\u00edtulo para la respuesta del requisito. ", 
+          "minLength": 1, 
+          "title": "T\u00edtulo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "description": "El valor de esta respuesta de requisito. El valor debe ser el tipo que se define en el campo requirement.data.", 
+          "minLength": 1, 
+          "title": "Valor", 
+          "type": [
+            "string", 
+            "integer", 
+            "number", 
+            "boolean", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id", 
+        "requirement"
+      ], 
+      "title": "Respuesta de Requisito", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "criteria": {
+          "description": "Una lista de criterios en la cual se evaluar\u00e1n o valorar\u00e1n los licitadores o los art\u00edculos. ", 
+          "items": {
+            "$ref": "#/definitions/Criterion"
+          }, 
+          "minItems": 1, 
+          "title": "Criterios", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

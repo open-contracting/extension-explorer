@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Charge": {
+      "description": "A charge to be incurred by users or government over the course of the contract. Charge information can be broken down by period. Information on the unit prices upon which total values are based can be provided in the tariffs section.", 
+      "minProperties": 1, 
+      "properties": {
+        "actualValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "In the implementation section, this field may be updated with the total revenue raised from this charge during this period.", 
+          "title": "Actual value"
+        }, 
+        "estimatedValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "What is the estimated total value to be raised from this charge during this period.", 
+          "title": "Estimated value"
+        }, 
+        "id": {
+          "description": "A local identifier for this specific charge. This field is used to keep track of revisions of a charge across multiple OCDS releases.", 
+          "minLength": 1, 
+          "title": "Charge identifier", 
+          "type": "string"
+        }, 
+        "notes": {
+          "description": "Any notes on this charge. This may include clarifying information.", 
+          "minLength": 1, 
+          "title": "Notes", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "paidBy": {
+          "codelist": "chargePaidBy.csv", 
+          "description": "Is this a user charge (paid by businesses or citizens using the facilities provided by the contract), or a charge paid by the government?", 
+          "enum": [
+            "government", 
+            "user", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Paid by", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "The period to which this charge applies.", 
+          "title": "Period"
+        }, 
+        "title": {
+          "description": "A descriptive title for this charge.", 
+          "minLength": 1, 
+          "title": "Charge title", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Charge", 
+      "type": "object"
+    }, 
+    "Implementation": {
+      "properties": {
+        "charges": {
+          "description": "Information on the revenue to be raised through charges, as set out in the contract or as subsequently revised during the life of the project.", 
+          "items": {
+            "$ref": "#/definitions/Charge"
+          }, 
+          "minItems": 1, 
+          "title": "Charges", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

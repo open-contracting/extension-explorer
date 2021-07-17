@@ -1,0 +1,24 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "coveredBy": {
+          "codelist": "coveredBy.csv", 
+          "description": "The treaties that the contracting process is covered by.", 
+          "items": {
+            "minLength": 1, 
+            "type": "string"
+          }, 
+          "minItems": 1, 
+          "openCodelist": true, 
+          "title": "Covered by", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

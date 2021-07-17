@@ -1,0 +1,23 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds a budget breakdown array to the budget object to break down a budget by source and period.", 
+    "es": "Agrega una lista de desglose de presupuesto al objeto de presupuesto para desglosar un presupuesto por fuente y per\u00edodo."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/budget/"
+  }, 
+  "name": {
+    "en": "Budget Breakdown", 
+    "es": "Desglose del presupuesto"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "definitions": {
+    "EssentialAssets": {
+      "description": "Information about the assets used for the provision of public services.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "Description of the essential assets.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "predominance": {
+          "description": "Estimated share of assets provided compared to assets used for activities other than the public services.", 
+          "minLength": 1, 
+          "title": "Predominance", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "significance": {
+          "description": "Share of the essential assets provided in relation to the overall assets needed for the provision of the public services.", 
+          "minLength": 1, 
+          "title": "Significance", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Essential assets", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "essentialAssets": {
+          "$ref": "#/definitions/EssentialAssets", 
+          "description": "Information about the assets used for the provision of public services.", 
+          "title": "Essentials assets"
+        }, 
+        "hasEssentialAssets": {
+          "description": "Whether there is information about the assets used for the provision of public services.", 
+          "title": "Has essential assets", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

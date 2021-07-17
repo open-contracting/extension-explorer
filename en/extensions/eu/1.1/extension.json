@@ -1,0 +1,31 @@
+{
+  "codelists": [
+    "+partyRole.csv", 
+    "+milestoneType.csv", 
+    "+documentType.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Implements fields and codes that are specific to European law.", 
+    "es": "Implementa campos y c\u00f3digo que son espec\u00edficos de la legislaci\u00f3n europea."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/eu/"
+  }, 
+  "name": {
+    "en": "European Union", 
+    "es": "Uni\u00f3n Europea"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ], 
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

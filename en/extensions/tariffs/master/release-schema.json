@@ -1,0 +1,153 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "tariffs": {
+          "description": "The tariffs as set out in the contract schedules. Also known as tolls or user charges. Updates to tariffs over the operation of the contract can be provided in the implementation section.", 
+          "items": {
+            "$ref": "#/definitions/Tariff"
+          }, 
+          "minItems": 1, 
+          "title": "Tariffs", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Implementation": {
+      "properties": {
+        "tariffs": {
+          "description": "The tariffs as they apply during the life of the project. Also known as tolls or user charges. These may be initially copied from the contract section, and then updated with any revisions over the lifetime of the implementation phase.", 
+          "items": {
+            "$ref": "#/definitions/Tariff"
+          }, 
+          "minItems": 1, 
+          "title": "Tariffs", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Tariff": {
+      "description": "An item in a tariff table, setting out a breakdown of the user or government fees payable in relation to each unit of a particular good or services.", 
+      "minProperties": 1, 
+      "properties": {
+        "dimensions": {
+          "description": "Used to capture the different breakdowns in tariff charges. Any number of dimensions can be recorded within this object. Dimensions names should follow the camelCase conventions of OCDS.", 
+          "minProperties": 1, 
+          "patternProperties": {
+            "^.*": {
+              "minLength": 1, 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Tariff dimensions", 
+          "type": "object"
+        }, 
+        "id": {
+          "description": "A local identifier for this specific tariff. This field is used to keep track of revisions of a tariff across multiple OCDS releases.", 
+          "minLength": 1, 
+          "title": "Tariff identifier", 
+          "type": "string"
+        }, 
+        "notes": {
+          "description": "Any notes on this tariff line item. This may include clarifying information.", 
+          "minLength": 1, 
+          "title": "Tariff notes", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "paidBy": {
+          "codelist": "chargePaidBy.csv", 
+          "description": "Is this a user charge (paid by businesses or citizens using the facilities provided by the contract), or a charge paid by the government?", 
+          "enum": [
+            "government", 
+            "user", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Paid by", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "The period to which this tariff applies.", 
+          "title": "Tariff period"
+        }, 
+        "title": {
+          "description": "The title of this tariff.", 
+          "minLength": 1, 
+          "title": "Tariff title", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "unit": {
+          "description": "The unit against which this tariff is charged.", 
+          "minProperties": 1, 
+          "properties": {
+            "id": {
+              "description": "The identifier from the codelist referenced in the schema property. For example, with UNCEFACT, this is the value of the 'Common Code' column. From this identifier, applications can look-up the human readable name or symbol for this unit of measure.", 
+              "minLength": 1, 
+              "title": "ID", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "name": {
+              "description": "The name of the unit that the tariff is charged against. E.g. tonnes,", 
+              "minLength": 1, 
+              "title": "Unit name", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "scheme": {
+              "codelist": "unitClassificationScheme.csv", 
+              "description": "The list from which units of measure identifiers are taken. Use of the scheme 'UNCEFACT' for the UN/CEFACT Recommendation 20 list of \"Codes for Units of Measure Used in International Trade\" is recommended.", 
+              "minLength": 1, 
+              "openCodelist": true, 
+              "title": "Scheme", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "uri": {
+              "description": "If the scheme used provide a machine-readable URI for this unit of measure, this can be given.", 
+              "format": "uri", 
+              "title": "URI", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Tariff unit", 
+          "type": "object"
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value", 
+          "description": "The price per unit of this tariff.", 
+          "title": "Tariff value"
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Tariff", 
+      "type": "object"
+    }
+  }
+}

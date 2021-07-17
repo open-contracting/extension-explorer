@@ -1,0 +1,28 @@
+{
+  "codelists": [
+    "dosageForm.csv", 
+    "administrationRoute.csv", 
+    "container.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds fields to the item object relevant to the procurement of medicines.", 
+    "es": "Adds fields to the item object relevant to the procurement of medicines."
+  }, 
+  "documentationUrl": {
+    "en": "http://extensions.open-contracting.org/en/extensions/medicine/"
+  }, 
+  "name": {
+    "en": "Medicine", 
+    "es": "Medicine"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

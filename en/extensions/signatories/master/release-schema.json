@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "signatories": {
+          "description": "The signatories to the contract. Each signatory should have an associated entry in the parties section of OCDS.", 
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          }, 
+          "minItems": 1, 
+          "title": "Contract signatories", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

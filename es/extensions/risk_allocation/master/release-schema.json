@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "riskAllocation": {
+          "description": "Informaci\u00f3n sobre la asignaci\u00f3n de los riesgos relacionados con el contrato.", 
+          "items": {
+            "$ref": "#/definitions/Risk"
+          }, 
+          "minItems": 1, 
+          "title": "Asignaci\u00f3n de riesgos", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Risk": {
+      "description": "Un riesgo relacionado al proyecto.", 
+      "minProperties": 1, 
+      "properties": {
+        "allocation": {
+          "codelist": "riskAllocation.csv", 
+          "description": "La parte que absorbe el riesgo.", 
+          "enum": [
+            "publicAuthority", 
+            "privateParty", 
+            "undefined", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Asignaci\u00f3n de riesgos", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "category": {
+          "codelist": "riskCategory.csv", 
+          "description": "La categor\u00eda del riesgo.", 
+          "minLength": 1, 
+          "openCodelist": true, 
+          "title": "Categor\u00eda de riesgo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "Una descripci\u00f3n para este riesgo.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n de riesgo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "Un identificador local para este riesgo, \u00fanico en este bloque. Este campo se utiliza para mantener el monitoreo de revisiones m\u00faltiples de un riesgo a trav\u00e9s de la compilaci\u00f3n desde la entrega hasta el registro.", 
+          "minLength": 1, 
+          "title": "ID de riesgo", 
+          "type": [
+            "string", 
+            "integer"
+          ]
+        }, 
+        "notes": {
+          "description": "Notas adicionales sobre el riesgo, por ejemplo la justificaci\u00f3n para la asignaci\u00f3n.", 
+          "minLength": 1, 
+          "title": "Notas de Riesgo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Riesgo", 
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "communication": {
+          "description": "Modalities of communication about key events.", 
+          "minProperties": 1, 
+          "properties": {
+            "atypicalToolUrl": {
+              "description": "Electronic communication with the procuring entity requires the use of tools and devices that are not generally available. These tools are accessible via this URL.", 
+              "format": "uri", 
+              "title": "Atypical tool URL", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "documentAvailabilityPeriod": {
+              "$ref": "#/definitions/Period", 
+              "description": "The period during which documents can be accessed, or during which requests for access to documents can be submitted.", 
+              "title": "Document availability period"
+            }, 
+            "futureNoticeDate": {
+              "description": "The estimated date of publication of the next sequential notice.", 
+              "format": "date-time", 
+              "title": "Future notice date", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Communication", 
+          "type": "object"
+        }
+      }
+    }
+  }
+}

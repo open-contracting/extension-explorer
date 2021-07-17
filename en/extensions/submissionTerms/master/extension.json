@@ -1,0 +1,29 @@
+{
+  "codelists": [
+    "permission.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds a submission terms object to the tender and lot objects, to describe how, when and where the tenderers must submit their bids.", 
+    "es": "Adds a submission terms object to the tender and lot objects, to describe how, when and where the tenderers must submit their bids."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/submissionTerms/"
+  }, 
+  "name": {
+    "en": "Submission terms", 
+    "es": "Submission terms"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ], 
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

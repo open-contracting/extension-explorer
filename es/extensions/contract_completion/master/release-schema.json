@@ -1,0 +1,40 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "endDate": {
+          "description": "La fecha real en la que finaliz\u00f3 la implementaci\u00f3n del contrato. Cuando `deployment/endDate` difiera del `contract/period/endDate` anticipado, se debe proporcionar una explicaci\u00f3n de la variaci\u00f3n en `deployment/endDateDetails`.", 
+          "format": "date-time", 
+          "title": "Fecha de fin", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "endDateDetails": {
+          "description": "Detalles relacionados con la endDate. Esto puede justificar que la fecha de cumplimento del contrato sea diferente a la del contrato original.", 
+          "minLength": 1, 
+          "title": "Detalles de fecha de t\u00e9rmino", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "finalValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "Valor total real de todos los pagos para un contrato completado. Si se utiliza `implementation/transactions` para este contrato, este campo debe ser igual a la suma de los campos `transaction/value/amount`. Cuando `finalValue/amount` difiera de `contract/value/amount` se debe dar una explicaci\u00f3n de la variaci\u00f3n en `finalValueDetails`.", 
+          "title": "Valor final"
+        }, 
+        "finalValueDetails": {
+          "description": "Detalles relacionados al valor final. Esto puede ser una justificaci\u00f3n del cambio del valor del contrato terminado contra el valor en el contrato original.", 
+          "minLength": 1, 
+          "title": "Detalles del valor final", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "evaluationIndicators": {
+          "$ref": "#/definitions/EvaluationIndicators", 
+          "description": "Key indicators that describe how the PPP option has been evaluated by government.", 
+          "title": "Evaluation of PPP option"
+        }
+      }
+    }, 
+    "Contract": {
+      "properties": {
+        "financeSummary": {
+          "$ref": "#/definitions/FinanceSummary", 
+          "description": "Key indicators that describe the financial model of the PPP.", 
+          "title": "Finance summary"
+        }
+      }
+    }, 
+    "EvaluationIndicators": {
+      "description": "Key indicators that describe how the PPP option has been evaluated by government.", 
+      "minProperties": 1, 
+      "properties": {
+        "discountRate": {
+          "description": "The discount rate used by government when evaluating the PPP option expressed as a decimal fraction (e.g. 3.2% = 0.032). Further details can be provided in the discountRateDetails field.", 
+          "title": "Discount rate", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "discountRateDetails": {
+          "description": "Further details on the discount rate used.", 
+          "minLength": 1, 
+          "title": "Discount rate details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "netPresentValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "The discounted value of an investment's cash inflows minus the discounted value of its cash outflows. Further details can be provided in the netPresentValueRateDetails field.", 
+          "title": "Net present value"
+        }, 
+        "netPresentValueDetails": {
+          "description": "Further details on the calculation of the net present value.", 
+          "minLength": 1, 
+          "title": "Net present value details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "riskPremium": {
+          "description": "The risk premium used by government when evaluating the PPP option expressed as a decimal fraction (e.g. 3.2% = 0.032). An explanation of the risk premium used should be provided in the riskPremiumDetails field.", 
+          "title": "Risk premium", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "riskPremiumDetails": {
+          "description": "Further details on the risk premium used including an explanation of why it was used.", 
+          "minLength": 1, 
+          "title": "Risk premium details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Evaluation indicators", 
+      "type": "object"
+    }, 
+    "FinanceSummary": {
+      "description": "Key indicators that describe the financial model of the PPP.", 
+      "minProperties": 1, 
+      "properties": {
+        "debtEquityRatio": {
+          "description": "The debt-equity ratio of the project, expressed as a decimal value. The World Bank PPPIRC defines the debt equity ratio as 'long term debt (divided by) the shareholder equity of the project company'. Also known as 'leverage' or 'gearing'. Further details on the debt equity ratio can be provided in the debtEquityRatioDetails field.", 
+          "title": "Debt equity ratio", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "debtEquityRatioDetails": {
+          "description": "Further details on the calculation of the debt equity ratio.", 
+          "minLength": 1, 
+          "title": "Debt equity ratio details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "projectIRR": {
+          "description": "The internal rate of return of the project, expressed as a decimal fraction (e.g. 3.2% = 0.032). The APMG PPP Certification Program defines IRR as 'The rate of return of an investment calculated from its projected cash flows. The internal rate of return (IRR) is also the discount rate that equates the present value of a future stream of cash flows to the initial investment'. Further details on the project IRR can be provided in the projectIRRDetails field.", 
+          "title": "Project Internal Rate of Return", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "projectIRRDetails": {
+          "description": "Further details on the calculation of the project IRR.", 
+          "minLength": 1, 
+          "title": "Project IRR details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "shareCapital": {
+          "$ref": "#/definitions/Value", 
+          "description": "The value of the capital in the project that comes from the issue of shares. Further details on the share capital can be provided in the shareCapitalDetails field.", 
+          "title": "Share capital"
+        }, 
+        "shareCapitalDetails": {
+          "description": "Further details on the calculation of the share capital.", 
+          "minLength": 1, 
+          "title": "Share capital details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "subsidyRatio": {
+          "description": "Subsidy as a proportion of project value, expressed as a decimal fraction (e.g. 3.2% = 0.032). Further details of the subsidy ratio can be provided in the subsidyRatioDetails field.", 
+          "title": "Subsidy ratio", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "subsidyRatioDetails": {
+          "description": "Further details on the calculation of the subsidy ratio.", 
+          "minLength": 1, 
+          "title": "Subsidy ratio details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Finance summary", 
+      "type": "object"
+    }, 
+    "Metric": {
+      "properties": {
+        "id": {
+          "codelist": "metricID.csv", 
+          "openCodelist": true
+        }
+      }
+    }, 
+    "Milestone": {
+      "properties": {
+        "code": {
+          "codelist": "milestoneCode.csv", 
+          "openCodelist": true
+        }
+      }
+    }
+  }
+}

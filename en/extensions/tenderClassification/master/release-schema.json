@@ -1,0 +1,24 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "additionalClassifications": {
+          "description": "Additional classifications of the contracting process.", 
+          "items": {
+            "$ref": "#/definitions/Classification"
+          }, 
+          "minItems": 1, 
+          "title": "Tender additional classifications", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "classification": {
+          "$ref": "#/definitions/Classification", 
+          "description": "The primary classification of the contracting process.", 
+          "title": "Tender classification"
+        }
+      }
+    }
+  }
+}

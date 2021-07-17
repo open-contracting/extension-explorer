@@ -1,0 +1,61 @@
+{
+  "definitions": {
+    "ParticipationFee": {
+      "properties": {
+        "description": {
+          "description": "Informaci\u00f3n adicional sobre la manera en que se cobran las cuotas o la naturaleza exacta de las mismas.", 
+          "title": "Descripci\u00f3n", 
+          "type": "string"
+        }, 
+        "methodOfPayment": {
+          "description": "Informaci\u00f3n opcional sobre la manera en que se pueden pagar las cuotas", 
+          "items": {
+            "type": "string"
+          }, 
+          "title": "M\u00e9todos de pago", 
+          "type": [
+            "array", 
+            "null"
+          ]
+        }, 
+        "type": {
+          "description": "Las cuotas que aplican a los ofertantes que participen en el proceso de licitaciones. Las cuotas pueden aplicar para tener acceso a documentos de la oferta, hacer presentaci\u00f3n de ofertas o una cuota puede aplicar para el ofertante ganador.", 
+          "items": {
+            "enum": [
+              "document", 
+              "deposit", 
+              "submission", 
+              "win", 
+              null
+            ], 
+            "type": "string"
+          }, 
+          "title": "Tipo de cuota/cargo", 
+          "type": [
+            "array", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value"
+        }
+      }, 
+      "title": "Cuota/Cargos de participaci\u00f3n", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "participationFees": {
+          "description": "Cualquier cuota que sea aplicable a los ofertantes que quieran participar en el proceso de contrataciones. Las cuotas pueden aplicar para tener acceso a documentos de compras, para hacer ofertas o cuotas que deben ser pagadas por  el ofertante ganador.", 
+          "items": {
+            "$ref": "#/definitions/ParticipationFee"
+          }, 
+          "mergeStrategy": "ocdsVersion", 
+          "title": "Cuotas de participaci\u00f3n", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

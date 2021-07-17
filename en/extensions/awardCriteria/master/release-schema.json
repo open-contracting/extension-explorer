@@ -1,0 +1,164 @@
+{
+  "definitions": {
+    "AwardCriteria": {
+      "description": "Information about the award criteria.", 
+      "minProperties": 1, 
+      "properties": {
+        "criteria": {
+          "description": "The award criteria.", 
+          "items": {
+            "$ref": "#/definitions/AwardCriterion"
+          }, 
+          "minItems": 1, 
+          "title": "Award criteria", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "orderRationale": {
+          "description": "The justification for only indicating the award criteria's order of importance, not their weighting.", 
+          "minLength": 1, 
+          "title": "Justification for order of importance", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "weightingDescription": {
+          "description": "When the weighting cannot be expressed per criterion, the mathematical equation (or other description) that expresses the complicated (e.g. non-linear) weighting.", 
+          "minLength": 1, 
+          "title": "Complicated weighting description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Award criteria", 
+      "type": "object"
+    }, 
+    "AwardCriterion": {
+      "description": "Information about the award criterion.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "The description of the criterion.", 
+          "minLength": 1, 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "name": {
+          "description": "The name of the criterion.", 
+          "minLength": 1, 
+          "title": "Name", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "numbers": {
+          "description": "Numbers linked to the criterion.", 
+          "items": {
+            "$ref": "#/definitions/AwardCriterionNumber"
+          }, 
+          "minItems": 1, 
+          "title": "Numbers", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "type": {
+          "codelist": "awardCriterionType.csv", 
+          "description": "The aspect of the bid that the criterion concerns.", 
+          "minLength": 1, 
+          "openCodelist": true, 
+          "title": "Type", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Award criterion", 
+      "type": "object"
+    }, 
+    "AwardCriterionNumber": {
+      "description": "Information about a number linked to an award criterion.", 
+      "minProperties": 1, 
+      "properties": {
+        "fixed": {
+          "codelist": "awardCriterionFixed.csv", 
+          "description": "Whether the number is a fixed value.", 
+          "enum": [
+            "total", 
+            "unit", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Fixed", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "number": {
+          "description": "The number.", 
+          "title": "Number", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "threshold": {
+          "codelist": "criterionThreshold.csv", 
+          "description": "Whether the number is a type of threshold.", 
+          "enum": [
+            "minimumScore", 
+            "maximumBids", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Threshold", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "weight": {
+          "codelist": "criterionWeight.csv", 
+          "description": "Whether the number is a type of weight.", 
+          "enum": [
+            "percentageExact", 
+            "percentageRangeMiddle", 
+            "decimalExact", 
+            "decimalRangeMiddle", 
+            "pointsExact", 
+            "pointsRangeMiddle", 
+            "order", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Weight", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Award criterion number", 
+      "type": "object"
+    }, 
+    "Lot": {
+      "properties": {
+        "awardCriteria": {
+          "$ref": "#/definitions/AwardCriteria", 
+          "description": "Information about the award criteria for the lot.", 
+          "title": "Award criteria"
+        }
+      }
+    }
+  }
+}

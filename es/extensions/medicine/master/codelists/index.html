@@ -1,0 +1,1665 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Medicine — Listas de código — Explorador de Extensiones OCDS</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/es/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      Explorador de Extensiones OCDS
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/es/">
+        Página principal
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/es/extensions/">
+        Extensiones
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        Español
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item" href="/en/extensions/medicine/master/codelists/">
+          English
+        </a>
+        <a class="dropdown-item active" href="/es/extensions/medicine/master/codelists/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Medicine
+      </h1>
+
+      <p class="lead">
+        Adds fields to the item object relevant to the procurement of medicines.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Versión:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/medicine/master/codelists/" selected>
+              master
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/">
+            Documentación
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/schema/">
+            Esquema
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/codelists/">
+            Listas de código
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#administrationRoute.csv">
+                administrationRoute.csv
+              </a>
+            </li>
+            <li>
+              <a href="#container.csv">
+                container.csv
+              </a>
+            </li>
+            <li>
+              <a href="#dosageForm.csv">
+                dosageForm.csv
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_medicine_extension/master/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copiar al portapapeles">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_medicine_extension/archive/master.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Listas de código
+      </h2>
+
+      <h3 id="administrationRoute.csv">
+        administrationRoute.csv
+      </h3>
+
+      <p>
+        You can <a href="/es/extensions/medicine/master/codelists/administrationRoute.csv">download the <code>administrationRoute.csv</code> file</a> in English.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="administrationRoute.csv/auricular">
+              <code>
+                auricular
+              </code>
+            </td>
+            <td>
+              Auricular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/buccal">
+              <code>
+                buccal
+              </code>
+            </td>
+            <td>
+              Buccal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/conjunctival">
+              <code>
+                conjunctival
+              </code>
+            </td>
+            <td>
+              Conjunctival
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/cutaneous">
+              <code>
+                cutaneous
+              </code>
+            </td>
+            <td>
+              Cutaneous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/dental">
+              <code>
+                dental
+              </code>
+            </td>
+            <td>
+              Dental
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/electroOsmosis">
+              <code>
+                electroOsmosis
+              </code>
+            </td>
+            <td>
+              Electro-osmosis
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/endocervical">
+              <code>
+                endocervical
+              </code>
+            </td>
+            <td>
+              Endocervical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/endosinusial">
+              <code>
+                endosinusial
+              </code>
+            </td>
+            <td>
+              Endosinusial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/endotracheal">
+              <code>
+                endotracheal
+              </code>
+            </td>
+            <td>
+              Endotracheal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/enteral">
+              <code>
+                enteral
+              </code>
+            </td>
+            <td>
+              Enteral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/epidural">
+              <code>
+                epidural
+              </code>
+            </td>
+            <td>
+              Epidural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/extraAmniotic">
+              <code>
+                extraAmniotic
+              </code>
+            </td>
+            <td>
+              Extra-amniotic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/extracorporeal">
+              <code>
+                extracorporeal
+              </code>
+            </td>
+            <td>
+              Extracorporeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/hemodialysis">
+              <code>
+                hemodialysis
+              </code>
+            </td>
+            <td>
+              Hemodialysis
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/infiltration">
+              <code>
+                infiltration
+              </code>
+            </td>
+            <td>
+              Infiltration
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/interstitial">
+              <code>
+                interstitial
+              </code>
+            </td>
+            <td>
+              Interstitial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraAbdominal">
+              <code>
+                intraAbdominal
+              </code>
+            </td>
+            <td>
+              Intra-abdominal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intra-amniotic">
+              <code>
+                intra-amniotic
+              </code>
+            </td>
+            <td>
+              Intra-amniotic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intra-arterial">
+              <code>
+                intra-arterial
+              </code>
+            </td>
+            <td>
+              Intra-arterial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intra-articular">
+              <code>
+                intra-articular
+              </code>
+            </td>
+            <td>
+              Intra-articular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrabiliary">
+              <code>
+                intrabiliary
+              </code>
+            </td>
+            <td>
+              Intrabiliary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrabronchial">
+              <code>
+                intrabronchial
+              </code>
+            </td>
+            <td>
+              Intrabronchial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrabursal">
+              <code>
+                intrabursal
+              </code>
+            </td>
+            <td>
+              Intrabursal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracardiac">
+              <code>
+                intracardiac
+              </code>
+            </td>
+            <td>
+              Intracardiac
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracartilaginous">
+              <code>
+                intracartilaginous
+              </code>
+            </td>
+            <td>
+              Intracartilaginous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracaudal">
+              <code>
+                intracaudal
+              </code>
+            </td>
+            <td>
+              Intracaudal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracavernous">
+              <code>
+                intracavernous
+              </code>
+            </td>
+            <td>
+              Intracavernous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracavitary">
+              <code>
+                intracavitary
+              </code>
+            </td>
+            <td>
+              Intracavitary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracerebral">
+              <code>
+                intracerebral
+              </code>
+            </td>
+            <td>
+              Intracerebral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracisternal">
+              <code>
+                intracisternal
+              </code>
+            </td>
+            <td>
+              Intracisternal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracorneal">
+              <code>
+                intracorneal
+              </code>
+            </td>
+            <td>
+              Intracorneal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracoronal">
+              <code>
+                intracoronal
+              </code>
+            </td>
+            <td>
+              Intracoronal, dental
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracoronary">
+              <code>
+                intracoronary
+              </code>
+            </td>
+            <td>
+              Intracoronary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intracorporusCavernosum">
+              <code>
+                intracorporusCavernosum
+              </code>
+            </td>
+            <td>
+              Intracorporus cavernosum
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intradermal">
+              <code>
+                intradermal
+              </code>
+            </td>
+            <td>
+              Intradermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intradiscal">
+              <code>
+                intradiscal
+              </code>
+            </td>
+            <td>
+              Intradiscal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraductal">
+              <code>
+                intraductal
+              </code>
+            </td>
+            <td>
+              Intraductal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraduodenal">
+              <code>
+                intraduodenal
+              </code>
+            </td>
+            <td>
+              Intraduodenal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intradural">
+              <code>
+                intradural
+              </code>
+            </td>
+            <td>
+              Intradural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraepidermal">
+              <code>
+                intraepidermal
+              </code>
+            </td>
+            <td>
+              Intraepidermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraesophageal">
+              <code>
+                intraesophageal
+              </code>
+            </td>
+            <td>
+              Intraesophageal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intragastric">
+              <code>
+                intragastric
+              </code>
+            </td>
+            <td>
+              Intragastric
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intragingival">
+              <code>
+                intragingival
+              </code>
+            </td>
+            <td>
+              Intragingival
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraileal">
+              <code>
+                intraileal
+              </code>
+            </td>
+            <td>
+              Intraileal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intralesional">
+              <code>
+                intralesional
+              </code>
+            </td>
+            <td>
+              Intralesional
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraluminal">
+              <code>
+                intraluminal
+              </code>
+            </td>
+            <td>
+              Intraluminal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intralymphatic">
+              <code>
+                intralymphatic
+              </code>
+            </td>
+            <td>
+              Intralymphatic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intramedullary">
+              <code>
+                intramedullary
+              </code>
+            </td>
+            <td>
+              Intramedullary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrameningeal">
+              <code>
+                intrameningeal
+              </code>
+            </td>
+            <td>
+              Intrameningeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intramuscular">
+              <code>
+                intramuscular
+              </code>
+            </td>
+            <td>
+              Intramuscular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraocular">
+              <code>
+                intraocular
+              </code>
+            </td>
+            <td>
+              Intraocular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraovarian">
+              <code>
+                intraovarian
+              </code>
+            </td>
+            <td>
+              Intraovarian
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrapericardial">
+              <code>
+                intrapericardial
+              </code>
+            </td>
+            <td>
+              Intrapericardial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraperitoneal">
+              <code>
+                intraperitoneal
+              </code>
+            </td>
+            <td>
+              Intraperitoneal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrapleural">
+              <code>
+                intrapleural
+              </code>
+            </td>
+            <td>
+              Intrapleural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraprostatic">
+              <code>
+                intraprostatic
+              </code>
+            </td>
+            <td>
+              Intraprostatic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrapulmonary">
+              <code>
+                intrapulmonary
+              </code>
+            </td>
+            <td>
+              Intrapulmonary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrasinal">
+              <code>
+                intrasinal
+              </code>
+            </td>
+            <td>
+              Intrasinal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraspinal">
+              <code>
+                intraspinal
+              </code>
+            </td>
+            <td>
+              Intraspinal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrasynovial">
+              <code>
+                intrasynovial
+              </code>
+            </td>
+            <td>
+              Intrasynovial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intratendinous">
+              <code>
+                intratendinous
+              </code>
+            </td>
+            <td>
+              Intratendinous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intratesticular">
+              <code>
+                intratesticular
+              </code>
+            </td>
+            <td>
+              Intratesticular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrathecal">
+              <code>
+                intrathecal
+              </code>
+            </td>
+            <td>
+              Intrathecal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrathoracic">
+              <code>
+                intrathoracic
+              </code>
+            </td>
+            <td>
+              Intrathoracic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intratubular">
+              <code>
+                intratubular
+              </code>
+            </td>
+            <td>
+              Intratubular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intratumor">
+              <code>
+                intratumor
+              </code>
+            </td>
+            <td>
+              Intratumor
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intratympanic">
+              <code>
+                intratympanic
+              </code>
+            </td>
+            <td>
+              Intratympanic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intrauterine">
+              <code>
+                intrauterine
+              </code>
+            </td>
+            <td>
+              Intrauterine
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intravascular">
+              <code>
+                intravascular
+              </code>
+            </td>
+            <td>
+              Intravascular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intravenous">
+              <code>
+                intravenous
+              </code>
+            </td>
+            <td>
+              Intravenous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intraventricular">
+              <code>
+                intraventricular
+              </code>
+            </td>
+            <td>
+              Intraventricular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intravesical">
+              <code>
+                intravesical
+              </code>
+            </td>
+            <td>
+              Intravesical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/intravitreal">
+              <code>
+                intravitreal
+              </code>
+            </td>
+            <td>
+              Intravitreal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/iontophoresis">
+              <code>
+                iontophoresis
+              </code>
+            </td>
+            <td>
+              Iontophoresis
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/irrigation">
+              <code>
+                irrigation
+              </code>
+            </td>
+            <td>
+              Irrigation
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/laryngeal">
+              <code>
+                laryngeal
+              </code>
+            </td>
+            <td>
+              Laryngeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/nasal">
+              <code>
+                nasal
+              </code>
+            </td>
+            <td>
+              Nasal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/nasogastric">
+              <code>
+                nasogastric
+              </code>
+            </td>
+            <td>
+              Nasogastric
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ophthalmic">
+              <code>
+                ophthalmic
+              </code>
+            </td>
+            <td>
+              Ophthalmic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/oral">
+              <code>
+                oral
+              </code>
+            </td>
+            <td>
+              Oral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/oropharyngeal">
+              <code>
+                oropharyngeal
+              </code>
+            </td>
+            <td>
+              Oropharyngeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/parenteral">
+              <code>
+                parenteral
+              </code>
+            </td>
+            <td>
+              Parenteral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/percutaneous">
+              <code>
+                percutaneous
+              </code>
+            </td>
+            <td>
+              Percutaneous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/periarticular">
+              <code>
+                periarticular
+              </code>
+            </td>
+            <td>
+              Periarticular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/peridural">
+              <code>
+                peridural
+              </code>
+            </td>
+            <td>
+              Peridural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/perineural">
+              <code>
+                perineural
+              </code>
+            </td>
+            <td>
+              Perineural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/periodontal">
+              <code>
+                periodontal
+              </code>
+            </td>
+            <td>
+              Periodontal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/rectal">
+              <code>
+                rectal
+              </code>
+            </td>
+            <td>
+              Rectal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/respiratory">
+              <code>
+                respiratory
+              </code>
+            </td>
+            <td>
+              Respiratory
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/retrobulbar">
+              <code>
+                retrobulbar
+              </code>
+            </td>
+            <td>
+              Retrobulbar
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/subarachnoid">
+              <code>
+                subarachnoid
+              </code>
+            </td>
+            <td>
+              Subarachnoid
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/subconjunctival">
+              <code>
+                subconjunctival
+              </code>
+            </td>
+            <td>
+              Subconjunctival
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/subcutaneous">
+              <code>
+                subcutaneous
+              </code>
+            </td>
+            <td>
+              Subcutaneous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/sublingual">
+              <code>
+                sublingual
+              </code>
+            </td>
+            <td>
+              Sublingual
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/submucosal">
+              <code>
+                submucosal
+              </code>
+            </td>
+            <td>
+              Submucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/topical">
+              <code>
+                topical
+              </code>
+            </td>
+            <td>
+              Topical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/transdermal">
+              <code>
+                transdermal
+              </code>
+            </td>
+            <td>
+              Transdermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/transmucosal">
+              <code>
+                transmucosal
+              </code>
+            </td>
+            <td>
+              Transmucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/transplacental">
+              <code>
+                transplacental
+              </code>
+            </td>
+            <td>
+              Transplacental
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/transtracheal">
+              <code>
+                transtracheal
+              </code>
+            </td>
+            <td>
+              Transtracheal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/transtympanic">
+              <code>
+                transtympanic
+              </code>
+            </td>
+            <td>
+              Transtympanic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ureteral">
+              <code>
+                ureteral
+              </code>
+            </td>
+            <td>
+              Ureteral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/urethral">
+              <code>
+                urethral
+              </code>
+            </td>
+            <td>
+              Urethral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/vaginal">
+              <code>
+                vaginal
+              </code>
+            </td>
+            <td>
+              Vaginal
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="container.csv">
+        container.csv
+      </h3>
+
+      <p>
+        You can <a href="/es/extensions/medicine/master/codelists/container.csv">download the <code>container.csv</code> file</a> in English.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="container.csv/ampule">
+              <code>
+                ampule
+              </code>
+            </td>
+            <td>
+              Ampule
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/bag">
+              <code>
+                bag
+              </code>
+            </td>
+            <td>
+              Bag
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/blister">
+              <code>
+                blister
+              </code>
+            </td>
+            <td>
+              Blister
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/bottle">
+              <code>
+                bottle
+              </code>
+            </td>
+            <td>
+              Bottle
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/cartridge">
+              <code>
+                cartridge
+              </code>
+            </td>
+            <td>
+              Cartridge
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/jar">
+              <code>
+                jar
+              </code>
+            </td>
+            <td>
+              Jar
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/preFilledSyringe">
+              <code>
+                preFilledSyringe
+              </code>
+            </td>
+            <td>
+              Pre-Filled Syringe
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/sashet">
+              <code>
+                sashet
+              </code>
+            </td>
+            <td>
+              Sashet
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/strip">
+              <code>
+                strip
+              </code>
+            </td>
+            <td>
+              Strip
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/tin">
+              <code>
+                tin
+              </code>
+            </td>
+            <td>
+              Tin
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/tube">
+              <code>
+                tube
+              </code>
+            </td>
+            <td>
+              Tube
+            </td>
+          </tr>
+          <tr>
+            <td id="container.csv/vial">
+              <code>
+                vial
+              </code>
+            </td>
+            <td>
+              Vial
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="dosageForm.csv">
+        dosageForm.csv
+      </h3>
+
+      <p>
+        You can <a href="/es/extensions/medicine/master/codelists/dosageForm.csv">download the <code>dosageForm.csv</code> file</a> in English.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="dosageForm.csv/capsule">
+              <code>
+                capsule
+              </code>
+            </td>
+            <td>
+              Capsule
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/cream">
+              <code>
+                cream
+              </code>
+            </td>
+            <td>
+              Cream
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/drops">
+              <code>
+                drops
+              </code>
+            </td>
+            <td>
+              Drops
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/gas">
+              <code>
+                gas
+              </code>
+            </td>
+            <td>
+              Gas
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/gel">
+              <code>
+                gel
+              </code>
+            </td>
+            <td>
+              Gel
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/granules">
+              <code>
+                granules
+              </code>
+            </td>
+            <td>
+              Granules
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/foam">
+              <code>
+                foam
+              </code>
+            </td>
+            <td>
+              Foam
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/implant">
+              <code>
+                implant
+              </code>
+            </td>
+            <td>
+              Implant
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/insert">
+              <code>
+                insert
+              </code>
+            </td>
+            <td>
+              Insert
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/inhaler">
+              <code>
+                inhaler
+              </code>
+            </td>
+            <td>
+              Inhaler
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/injection">
+              <code>
+                injection
+              </code>
+            </td>
+            <td>
+              Injection
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/liquid">
+              <code>
+                liquid
+              </code>
+            </td>
+            <td>
+              Liquid
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/lotion">
+              <code>
+                lotion
+              </code>
+            </td>
+            <td>
+              Lotion
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/ointment">
+              <code>
+                ointment
+              </code>
+            </td>
+            <td>
+              Ointment
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/paste">
+              <code>
+                paste
+              </code>
+            </td>
+            <td>
+              Paste
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/pessary">
+              <code>
+                pessary
+              </code>
+            </td>
+            <td>
+              Pessary
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/pillules">
+              <code>
+                pillules
+              </code>
+            </td>
+            <td>
+              Pillules
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/powder">
+              <code>
+                powder
+              </code>
+            </td>
+            <td>
+              Powder
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/poultice">
+              <code>
+                poultice
+              </code>
+            </td>
+            <td>
+              Poultice
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/solution">
+              <code>
+                solution
+              </code>
+            </td>
+            <td>
+              Solution
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/spray">
+              <code>
+                spray
+              </code>
+            </td>
+            <td>
+              Spray
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/suppository">
+              <code>
+                suppository
+              </code>
+            </td>
+            <td>
+              Suppository
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/suspension">
+              <code>
+                suspension
+              </code>
+            </td>
+            <td>
+              Suspension
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/syrup">
+              <code>
+                syrup
+              </code>
+            </td>
+            <td>
+              Syrup
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/tablet">
+              <code>
+                tablet
+              </code>
+            </td>
+            <td>
+              Tablet
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copiado!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copiar al portapapeles').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

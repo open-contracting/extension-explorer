@@ -1,0 +1,4 @@
+Código,Título,Descripción
+required,Required,The activity is required.
+allowed,Allowed,The activity is allowed.
+notAllowed,Not allowed,The activity is not allowed.

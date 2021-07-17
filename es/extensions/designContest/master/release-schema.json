@@ -1,0 +1,109 @@
+{
+  "definitions": {
+    "DesignContest": {
+      "description": "Information about the organization of a design contest.", 
+      "minProperties": 1, 
+      "properties": {
+        "bindingJuryDecision": {
+          "description": "Whether the jury\u2019s decision is binding on the procuring entity.", 
+          "title": "Binding jury decision", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "followUpContracts": {
+          "description": "Whether any contracts following the design contest will be awarded to the winner or winners of the design contest.", 
+          "title": "Follow-up contracts", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "hasPrizes": {
+          "description": "Whether prizes will be awarded in the design contest.", 
+          "title": "Has prizes", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "juryMembers": {
+          "description": "The members of the jury.", 
+          "items": {
+            "$ref": "#/definitions/JuryMember"
+          }, 
+          "minItems": 1, 
+          "title": "Jury members", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "prizes": {
+          "description": "Information about the prizes awarded in the design contest.", 
+          "minProperties": 1, 
+          "properties": {
+            "description": {
+              "description": "The description of the prizes.", 
+              "minLength": 1, 
+              "title": "Descripci\u00f3n", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Prizes", 
+          "type": "object"
+        }, 
+        "rewardsDetails": {
+          "description": "The details and conditions of the payments to be made to the participants.", 
+          "minLength": 1, 
+          "title": "Rewards details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "selectedParticipants": {
+          "description": "The parties that have already been selected to participate to the design contest.", 
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          }, 
+          "minItems": 1, 
+          "title": "Selected participants", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }, 
+      "title": "Design contest", 
+      "type": "object"
+    }, 
+    "JuryMember": {
+      "description": "Member of the jury.", 
+      "minProperties": 1, 
+      "properties": {
+        "name": {
+          "description": "The name of the jury member.", 
+          "minLength": 1, 
+          "title": "Nombre", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Jury member", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "designContest": {
+          "$ref": "#/definitions/DesignContest", 
+          "description": "Information about the organization of a design contest.", 
+          "title": "Design contest"
+        }
+      }
+    }
+  }
+}

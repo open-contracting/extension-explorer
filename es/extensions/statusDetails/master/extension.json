@@ -1,0 +1,19 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "description": {
+    "en": "Add a statusDetails field to Tender, Award and Contract object", 
+    "es": "Add a statusDetails field to Tender, Award and Contract object"
+  }, 
+  "documentationUrl": {
+    "en": "https://gitlab.com/dncp-opendata/ocds_statusdetails_extension"
+  }, 
+  "name": {
+    "en": "Status Details", 
+    "es": "Status Details"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Essential assets — Esquema — Explorador de Extensiones OCDS</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/es/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      Explorador de Extensiones OCDS
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/es/">
+        Página principal
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/es/extensions/">
+        Extensiones
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        Español
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item" href="/en/extensions/essentialAssets/master/schema/">
+          English
+        </a>
+        <a class="dropdown-item active" href="/es/extensions/essentialAssets/master/schema/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Essential assets
+      </h1>
+
+      <p class="lead">
+        Adds a object to the tender object to describe the assets used for the provision of public services.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Versión:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/essentialAssets/master/schema/" selected>
+              master
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/essentialAssets/master/">
+            Documentación
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/essentialAssets/master/schema/">
+            Esquema
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#tender">
+                Tender
+              </a>
+            </li>
+            <li>
+              <a href="#essentialassets">
+                EssentialAssets
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_essentialAssets_extension/master/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copiar al portapapeles">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_essentialAssets_extension/archive/master.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Esquema
+      </h2>
+
+      <p>
+        You can <a href="/es/extensions/essentialAssets/master/release-schema.json">download the <code>release-schema.json</code> file</a> in English.
+      </p>
+
+      <h3 id="tender">
+        Tender
+      </h3>
+
+      <p>
+        La extensión define estos campos en el <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#tender"><code>Tender</code></a> objeto del OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Tender.essentialAssets">
+              <code>
+                essentialAssets
+              </code>
+            </td>
+            <td>
+              Essentials assets
+            </td>
+            <td>
+              <p>Information about the assets used for the provision of public services.</p>
+
+            </td>
+            <td>
+              <a href="#essentialassets">EssentialAssets</a> objetos
+            </td>
+          </tr>
+          <tr>
+            <td id="Tender.hasEssentialAssets">
+              <code>
+                hasEssentialAssets
+              </code>
+            </td>
+            <td>
+              Has essential assets
+            </td>
+            <td>
+              <p>Whether there is information about the assets used for the provision of public services.</p>
+
+            </td>
+            <td>
+              boolean
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="essentialassets">
+        EssentialAssets
+      </h3>
+
+      <p>
+        La extensión define un nuevo <code>EssentialAssets</code> objeto con estos campos: 
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Campo
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+            <th scope="col">
+              Tipo(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="EssentialAssets.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Descripción
+            </td>
+            <td>
+              <p>Description of the essential assets.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="EssentialAssets.significance">
+              <code>
+                significance
+              </code>
+            </td>
+            <td>
+              Significance
+            </td>
+            <td>
+              <p>Share of the essential assets provided in relation to the overall assets needed for the provision of the public services.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="EssentialAssets.predominance">
+              <code>
+                predominance
+              </code>
+            </td>
+            <td>
+              Predominance
+            </td>
+            <td>
+              <p>Estimated share of assets provided compared to assets used for activities other than the public services.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copiado!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copiar al portapapeles').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

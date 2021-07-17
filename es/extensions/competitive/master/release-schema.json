@@ -1,0 +1,16 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "competitive": {
+          "description": "A true/false field to indicate whether this call-off is competitive or not.", 
+          "title": "Is the framework agreement call-off competitive?", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

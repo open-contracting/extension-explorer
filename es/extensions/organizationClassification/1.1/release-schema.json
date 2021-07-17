@@ -1,0 +1,23 @@
+{
+  "definitions": {
+    "Organization": {
+      "properties": {
+        "details": {
+          "properties": {
+            "classifications": {
+              "description": "The classifications that categorize the organization", 
+              "items": {
+                "$ref": "#/definitions/Classification"
+              }, 
+              "minItems": 1, 
+              "title": "Organization classifications", 
+              "type": "array", 
+              "uniqueItems": true, 
+              "wholeListMerge": true
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "definitions": {
+    "Procedure": {
+      "description": "Information about the procurement procedure.", 
+      "minProperties": 1, 
+      "properties": {
+        "acceleratedRationale": {
+          "description": "The justification for using an accelerated procedure.", 
+          "minLength": 1, 
+          "title": "Accelerated procedure rationale", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "features": {
+          "description": "The main features of the procedure (e.g. description of the individual stages) and information about where the full rules for the procedure can be found.", 
+          "minLength": 1, 
+          "title": "Features", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "isAccelerated": {
+          "description": "Whether the time limit for receipt of bids or requests to participate can be reduced due to a state of urgency.", 
+          "title": "Accelerated procedure used", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Procedure", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "procedure": {
+          "$ref": "#/definitions/Procedure", 
+          "description": "Information about the procurement procedure.", 
+          "title": "Procedure"
+        }
+      }
+    }
+  }
+}

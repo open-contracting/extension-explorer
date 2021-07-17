@@ -1,0 +1,44 @@
+{
+  "definitions": {
+    "Document": {
+      "properties": {
+        "accessDetails": {
+          "description": "A description of any special arrangements needed to access this document, for example: registering for access, paying a fee, or visiting a location to inspect the document.", 
+          "minLength": 1, 
+          "title": "Access details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "author": {
+          "description": "The names of the authors of the document.", 
+          "minLength": 1, 
+          "title": "Author", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "pageEnd": {
+          "description": "When the information referenced exists within a large document, indicate the last page on which it can be found. This should refer to the printed page number, not the page number reported by software applications.", 
+          "minLength": 1, 
+          "title": "Page end", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "pageStart": {
+          "description": "When the information referenced exists within a large document, indicate the first page on which it can be found. This should refer to the printed page number, not the page number reported by software applications.", 
+          "minLength": 1, 
+          "title": "Page start", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

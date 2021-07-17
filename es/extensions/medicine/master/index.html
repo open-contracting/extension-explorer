@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Medicine — Documentación — Explorador de Extensiones OCDS</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/es/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      Explorador de Extensiones OCDS
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/es/">
+        Página principal
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/es/extensions/">
+        Extensiones
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        Español
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item" href="/en/extensions/medicine/master/">
+          English
+        </a>
+        <a class="dropdown-item active" href="/es/extensions/medicine/master/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Medicine
+      </h1>
+
+      <p class="lead">
+        Adds fields to the item object relevant to the procurement of medicines.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Versión:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/medicine/master/" selected>
+              master
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/">
+            Documentación
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ml-0">
+              <a href="#guidance">
+                Guidance
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#examples">
+                Examples
+              </a>
+            </li>
+            <li class="ml-2">
+              <a href="#one-active-ingredient">
+                One Active Ingredient
+              </a>
+            </li>
+            <li class="ml-2">
+              <a href="#more-than-one-active-ingredient">
+                More than one Active Ingredient
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#related-standards">
+                Related Standards
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#background">
+                Background
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/schema/">
+            Esquema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/codelists/">
+            Listas de código
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_medicine_extension/master/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copiar al portapapeles">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_medicine_extension/archive/master.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentación
+      </h2>
+<div><p>Adds fields to the item object relevant to the procurement of medicines.</p>
+<h2 id="guidance">Guidance</h2>
+<p>This extension is intended to be used in the medicines-related items in the tender, award, or contract stages, to add more specific details that a medicine item may have. To use it, set the properties that are known, including the active ingredients, dosage form, the medicine container, and the administration route.</p>
+<p>If a contracting process is in the award or contract stage, it&#8217;s possible to know more information about the medicine, such as the brand, the manufacturer, the country of origin, the expiration date, if they must maintain a cold chain and all the other commercial, financial and logistical conditions. Use the <a href="https://extensions.open-contracting.org/en/extensions/itemAttributes/master/">generic item attributes</a> extension for all the cases where the medicine item has other attributes not included in this extension.</p>
+<p>If a medicine item has more than one active ingredient, add each one to the <code>activeIngredients</code> array.</p>
+<p>If a medicine item is packaged in a multi-drug container, use <code>items.quantity</code> for the quantity in the container and <code>items.unit</code> for the unit.</p>
+<h2 id="examples">Examples</h2>
+<h3 id="one-active-ingredient">One Active Ingredient</h3>
+<p>This is an <a href="https://api.mercadopublico.cl/APISOCDS/ocds/tender/734-82-LP14">example</a> of an item of a drug procurement process in Chile, and its modeling in the extension.</p>
+<table class="table table-bordered">
+<thead class="thead-light">
+<tr>
+<th scope="col">Description</th>
+<th scope="col">Minimum dispensing unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acetilcisteina</td>
+<td>ACETILCISTEINA-N 100 MG/ML SOLUCION PARA NEBULIZAR FRASCO 15-30 ML ENVASE INDIVIDUAL RESISTENTE CON SELLO QUE ASEGURE INVIOLABILIDAD DEL CONTENIDO</td>
+</tr>
+</tbody>
+</table>
+<p>The strength is expressed as "100 MG/ML", but the UN/CEFACT codes for unit codes only includes "mg/L", so 100mg/ml is converted to 100000mg/L.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">"tender"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"items"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+        <span class="nt">"description"</span><span class="p">:</span> <span class="s2">"Acetilcisteina"</span><span class="p">,</span>
+        <span class="nt">"classification"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"51161701"</span><span class="p">,</span>
+          <span class="nt">"scheme"</span><span class="p">:</span> <span class="s2">"UNSPSC"</span><span class="p">,</span>
+          <span class="nt">"uri"</span><span class="p">:</span> <span class="s2">"https://apis.mercadopublico.cl/OCDS/data/productos/categoria/51161701"</span>
+        <span class="p">},</span>
+        <span class="nt">"dosageForm"</span><span class="p">:</span> <span class="s2">"solution"</span><span class="p">,</span>
+        <span class="nt">"administrationRoute"</span><span class="p">:</span> <span class="s2">"nasal"</span><span class="p">,</span>
+        <span class="nt">"container"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"jar"</span><span class="p">,</span>
+          <span class="nt">"capacity"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"unit"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"scheme"</span><span class="p">:</span> <span class="s2">"UNCEFACT"</span><span class="p">,</span>
+              <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"ml"</span>
+            <span class="p">},</span>
+            <span class="nt">"value"</span><span class="p">:</span> <span class="s2">"[15,30]"</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">"activeIngredients"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"acetilcisteina"</span><span class="p">,</span>
+            <span class="nt">"strength"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"unit"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">"scheme"</span><span class="p">:</span> <span class="s2">"UNCEFACT"</span><span class="p">,</span>
+                <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"ml/L"</span>
+              <span class="p">},</span>
+              <span class="nt">"value"</span><span class="p">:</span> <span class="mi">100000</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="more-than-one-active-ingredient">More than one Active Ingredient</h3>
+<p>This is an <a href="https://www.contrataciones.gov.py/licitaciones/convocatoria/391507-adquisicion-medicamentos-hospital-clinicas-1.html#pliego">example</a> of an item of a drug procurement process in Paraguay and how it would be represented with the extension.</p>
+<table class="table table-bordered">
+<thead class="thead-light">
+<tr>
+<th scope="col">Description</th>
+<th scope="col">Technical specifications</th>
+<th scope="col">Unit of measurement</th>
+<th scope="col">Presentation</th>
+<th scope="col">Delivery presentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clorhidrato de Bupivacaina Hiperbarica Inyectable</td>
+<td>clorhidrato de bupivacaina 25 mg. + dextrosa 82,5 mg. - soluci&#243;n inyectable</td>
+<td>UNIDAD</td>
+<td>VIAL</td>
+<td>caja conteniendo 25 ampollas como minimo de 5 ml.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">"tender"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">"items"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+        <span class="nt">"dosageForm"</span><span class="p">:</span> <span class="s2">"injection"</span><span class="p">,</span>
+        <span class="nt">"administrationRoute"</span><span class="p">:</span> <span class="s2">"transdermal"</span><span class="p">,</span>
+        <span class="nt">"container"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"blister"</span><span class="p">,</span>
+          <span class="nt">"capacity"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"unit"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"scheme"</span><span class="p">:</span> <span class="s2">"UNCEFACT"</span><span class="p">,</span>
+              <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"ml"</span>
+            <span class="p">},</span>
+            <span class="nt">"value"</span><span class="p">:</span> <span class="s2">"[5,INF["</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">"activeIngredients"</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">{</span>
+            <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"clorhidrato de bupivacaina"</span><span class="p">,</span>
+            <span class="nt">"strength"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"unit"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">"scheme"</span><span class="p">:</span> <span class="s2">"UNCEFACT"</span><span class="p">,</span>
+                <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"mg"</span>
+              <span class="p">},</span>
+              <span class="nt">"value"</span><span class="p">:</span> <span class="mi">250</span>
+            <span class="p">}</span>
+          <span class="p">},</span>
+          <span class="p">{</span>
+            <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"dextrosa"</span><span class="p">,</span>
+            <span class="nt">"strength"</span><span class="p">:</span> <span class="p">{</span>
+              <span class="nt">"unit"</span><span class="p">:</span> <span class="p">{</span>
+                <span class="nt">"scheme"</span><span class="p">:</span> <span class="s2">"UNCEFACT"</span><span class="p">,</span>
+                <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"mg"</span>
+              <span class="p">},</span>
+              <span class="nt">"value"</span><span class="p">:</span> <span class="mf">82.5</span>
+            <span class="p">}</span>
+          <span class="p">}</span>
+        <span class="p">],</span>
+        <span class="nt">"quantity"</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+        <span class="nt">"unit"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"UNI"</span><span class="p">,</span>
+          <span class="nt">"name"</span><span class="p">:</span> <span class="s2">"Unidad"</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="related-standards">Related Standards</h2>
+<p>The fields, definitions and codelists used in this extension are based on the following standards that are commonly used in the data on public medicine purchases. Each standard is used for the classification, designation, or listing of drugs in different countries.
+The <code>administrationRoute</code> codelist is based on the <a href="https://www.fda.gov/drugs/data-standards-manual-monographs/route-administration">FDA Route of Administration list</a> (see <code>items.administrationRoute</code>).
+The <code>dosageForm</code> codelist is based on the <a href="https://www.ema.europa.eu/documents/other/list-pharmaceutical-dosage-forms_en.xls">European Medicines Agency (EMA) dosage form list</a>.
+The <code>container</code> codelist is based on the Health Level Seven (HL7) Fast Healthcare Interoperability Resources (FHIR) <a href="http://terminology.hl7.org/CodeSystem/medicationknowledge-package-type">Medication knowledge package type codes</a>.</p>
+<table class="table table-bordered">
+<thead class="thead-light">
+<tr>
+<th scope="col">Standard</th>
+<th scope="col">Maintainer</th>
+<th scope="col">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://www.whocc.no/atc_ddd_index/">Anatomical, Therapeutic, Chemical classification system (ATC)</a></td>
+<td><a href="https://www.who.int/home">World Health Organization</a></td>
+<td>medicine classification</td>
+</tr>
+<tr>
+<td><a href="https://schema.org/Drug">Drug</a> (Schema.org type)</td>
+<td><a href="https://www.w3.org/community/schemaorg/">Schema.org Community Group</a></td>
+<td>medicine classification</td>
+</tr>
+<tr>
+<td><a href="https://www.who.int/teams/health-product-and-policy-standards/inn/">International nonproprietary names (INN)</a></td>
+<td><a href="https://www.who.int/home">World Health Organization</a></td>
+<td>medicine names</td>
+</tr>
+<tr>
+<td><a href="https://www.msh.org/resources/international-medical-products-price-guide">MSH Products Price Guide</a></td>
+<td><a href="https://www.msh.org/about-us">Management Sciences for Health</a></td>
+<td>medicine list</td>
+</tr>
+<tr>
+<td><a href="https://www.mspbs.gov.py/dependencias/dggies/adjunto/db7bee-ListadodeMedicamentosEsenciales.pdf">Listado de Medicamentos Esenciales</a></td>
+<td><a href="https://www.mspbs.gov.py/index.php">Ministerio de Salud del Paraguay</a></td>
+<td>medicine list</td>
+</tr>
+<tr>
+<td><a href="http://www.csg.gob.mx/contenidos/priorizacion/cuadro-basico/med/catalogos.html">Cuadro B&#225;sico y Cat&#225;logo de Medicamentos (CBM)</a></td>
+<td><a href="http://www.csg.gob.mx/index.html">Consejo de Salubridad General de M&#233;xico</a></td>
+<td>medicine catalogue</td>
+</tr>
+<tr>
+<td><a href="https://www.unspsc.org/">United Nations Standard Products and Services Code (UNSPSC)</a></td>
+<td><a href="https://www.un.org/en/">United Nations</a></td>
+<td>classification of products and services, including medicines</td>
+</tr>
+<tr>
+<td><a href="http://observatorio.digemid.minsa.gob.pe/Precios/ProcesoL/Catalogo/CatalogoProductos.aspx">Cat&#225;logo de Productos Farmac&#233;uticos</a></td>
+<td><a href="https://www.gob.pe/minsa/">Ministerio de Salud de Per&#250;</a></td>
+<td>medicine catalogue</td>
+</tr>
+</tbody>
+</table>
+<h2 id="background">Background</h2>
+<p>This extension is based on research with 4 data users and 6 data publishers including public entities, journalists, medicine price analysts, and software developers for medicine purchase systems from 9 countries from Latin America, Europe, and Africa.</p>
+<p>The extension includes the most used fields in different countries. The field names are standardized according to the <a href="https://www.whocc.no/atc_ddd_index/">Anatomical, Therapeutic, Chemical classification system (ATC)</a>, developed by the World Health Organization, and the Drug definition by <a href="https://schema.org/Drug">Schema.org</a>.</p>
+<h2 id="issues">Issues</h2>
+<p>Report issues for this extension in the <a href="https://github.com/open-contracting/ocds-extensions/issues">ocds-extensions repository</a>, putting the extension's name in the issue's title.</p>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copiado!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copiar al portapapeles').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

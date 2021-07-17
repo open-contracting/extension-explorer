@@ -1,0 +1,189 @@
+{
+  "definitions": {
+    "Budget": {
+      "properties": {
+        "finance": {
+          "description": "Una matriz con los detalles de cada fuente de financiaci\u00f3n prevista para este procedimiento.", 
+          "items": {
+            "$ref": "#/definitions/Finance"
+          }, 
+          "minItems": 1, 
+          "title": "Financiamiento", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Contract": {
+      "properties": {
+        "finance": {
+          "description": "Una lista con los detalles de cada fuente de financiamiento acordada para este contrato.", 
+          "items": {
+            "$ref": "#/definitions/Finance"
+          }, 
+          "minItems": 1, 
+          "title": "Financiamiento", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Finance": {
+      "description": "Este bloque puede usarse para modelar detalles de cada una de las partes que financian un contrato o proyecto. Nota: Si el financiamiento es sindicalizado y se conocen todas las partes de la sindicaci\u00f3n, esta secci\u00f3n podr\u00e1 ampliarse con una lista de socios sindicados. Actualmente, no se proporciona ning\u00fan esquema para esto.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "Una breve descripci\u00f3n de este acuerdo de financiamiento. Esto puede incluir detalles de los derechos del prestamista, los arreglos de intervenci\u00f3n, las garant\u00edas de tipo de cambio, y para los pr\u00e9stamos indicados, los detalles de la sindicaci\u00f3n y los bancos que son partes conocidas del pr\u00e9stamo.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "exchangeRateGuarantee": {
+          "description": "Si existe una garant\u00eda de tipo de cambio asociada con esta fuente de financiamiento. Este es un campo true/false para indicar cu\u00e1ndo existen garant\u00edas de tipo de cambio. Los detalles de las garant\u00edas pueden ser proporcionados en la descripci\u00f3n financiera, o en documentos asociados.", 
+          "title": "Garant\u00edas del tipo de cambio", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "financeCategory": {
+          "codelist": "financeCategory.csv", 
+          "description": "La naturaleza de la financiaci\u00f3n. Esta informaci\u00f3n puede utilizarse a la hora de determinar el orden de preferencia de los inversores para recuperar su dinero en caso de liquidaci\u00f3n.", 
+          "enum": [
+            "equity", 
+            "seniorDebt", 
+            "mezzanineDebt", 
+            "grant", 
+            "guarantee", 
+            "other", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Categor\u00eda de financiamiento", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "financeType": {
+          "codelist": "financeType.csv", 
+          "description": "El tipo de financiaci\u00f3n concertada.", 
+          "enum": [
+            "institutional", 
+            "commercial", 
+            "bilateral", 
+            "multilateral", 
+            "publicBondIssue", 
+            "supplierCredit", 
+            "other", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Tipo de financiamiento", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "financingParty": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "Las partes que proveen este arreglo financiero.", 
+          "title": "Parte financiadora"
+        }, 
+        "id": {
+          "description": "Un identificador para este acuerdo de financiamiento", 
+          "minLength": 1, 
+          "title": "ID", 
+          "type": "string"
+        }, 
+        "interestRate": {
+          "description": "La tasa de inter\u00e9s asociada con este financiamiento.", 
+          "minProperties": 1, 
+          "properties": {
+            "base": {
+              "description": "La variable a la que se a\u00f1ade un importe de margen adicional para obtener el importe de los intereses. Puede especificarse como un n\u00famero fijo, como una variable conocida (por ejemplo, LIBOR o LIBOR+1%), o puede omitirse si el margen especifica todo el tipo de inter\u00e9s.", 
+              "minLength": 1, 
+              "title": "Base", 
+              "type": [
+                "string", 
+                "number", 
+                "null"
+              ]
+            }, 
+            "fixed": {
+              "description": "Un campo booleano. Si este tipo de inter\u00e9s es fijo, se establece en true. De lo contrario, se establece en false.", 
+              "title": "Tipo de inter\u00e9s fijo", 
+              "type": [
+                "boolean", 
+                "null"
+              ]
+            }, 
+            "margin": {
+              "description": "La variable a\u00f1adida a la base para dar el monto de inter\u00e9s expresado como una fracci\u00f3n decimal (por ejemplo 12,5% = 0,125).", 
+              "title": "Margen", 
+              "type": [
+                "number", 
+                "null"
+              ]
+            }, 
+            "notes": {
+              "description": "Notas explicativas sobre el tipo de inter\u00e9s.", 
+              "minLength": 1, 
+              "title": "Notas", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Tasa de inter\u00e9s", 
+          "type": "object"
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "El per\u00edodo cubierto por este financiamiento.", 
+          "title": "Periodo de financiamiento"
+        }, 
+        "repaymentFrequency": {
+          "description": "Define cu\u00e1l es la frecuencia media de reembolso (en d\u00edas) de esta fuente de financiamiento. Por ejemplo, para cada a\u00f1o, use 365; Para el uso del reembolso mensual 30.4; Para el uso diario 1. Las interfaces de usuario pueden traducir esto en una presentaci\u00f3n m\u00e1s f\u00e1cil de usar, como 'diario', 'mensual' o 'anual'.", 
+          "minimum": 0, 
+          "title": "Frecuencia de pagos (d\u00edas)", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "stepInRights": {
+          "description": "\u00bfLa provisi\u00f3n de esta financiaci\u00f3n provee alg\u00fan derecho de intervenci\u00f3n a la parte financiadora? Los derechos de intervenci\u00f3n son la opci\u00f3n del prestamista para asumir ciertas responsabilidades contractuales de una parte del proyecto a trav\u00e9s de la gesti\u00f3n de su contrato en los casos en que esa parte no cumple con sus obligaciones en virtud de dicho contrato. Este es un campo true/false para indicar cu\u00e1ndo existen derechos de intervenci\u00f3n. Si hay derechos de intervenci\u00f3n. los detalles se deben proporcionar en el campo de descripci\u00f3n y en los documentos adicionales del contrato.", 
+          "title": "Derechos de intervenci\u00f3n", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "title": {
+          "description": "T\u00edtulo breve de este acuerdo de financiamiento.", 
+          "minLength": 1, 
+          "title": "T\u00edtulo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value", 
+          "description": "El valor total de este financiamiento.", 
+          "title": "Valor"
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Acuerdo de financiamiento", 
+      "type": "object"
+    }
+  }
+}

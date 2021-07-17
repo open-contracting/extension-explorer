@@ -1,0 +1,23 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "In some cases, a single contracting process involves multiple buyers (for example, a framework that different organizations can buy from). In these cases, the multiple buyers extension can be used to specify a distinct buyer for each contract.", 
+    "es": "En algunos casos, un proceso \u00fanico de contrataciones involucra a varios actores (por ejemplo, un acuerdo macro del cual diferentes organizaciones pueden comprar). En algunos casos, la extensi\u00f3n de m\u00faltiples compradores puede usarse para especificar un comprador distinto para cada contrato."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/contract_buyer/"
+  }, 
+  "name": {
+    "en": "Multiple buyers - contract level", 
+    "es": "M\u00faltiples compradores-  a nivel contrato"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

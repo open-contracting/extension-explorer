@@ -1,0 +1,106 @@
+{
+  "definitions": {
+    "Enquiry": {
+      "description": "A question related to this contracting process, generally sent during the enquiry period.", 
+      "properties": {
+        "answer": {
+          "description": "The answer to this question, when available.", 
+          "title": "Answer", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "author": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "The party asking this question. The corresponding entry in the `parties` array should have 'enquirer' in its `roles` array. Procurement policies vary on whether or not the identity of those asking questions is disclosed, or at which stage this information is disclosed.", 
+          "title": "Question author"
+        }, 
+        "date": {
+          "description": "The date the enquiry was received or processed.", 
+          "format": "date-time", 
+          "title": "Date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "dateAnswered": {
+          "description": "The date the answer to the question was provided.", 
+          "format": "date-time", 
+          "title": "Date answered", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "The body of the question.", 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "A unique identifier for the enquiry.", 
+          "title": "Identifier", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatedItem": {
+          "description": "If this question relates to a specific line-item, this field contains the line-item identifier.", 
+          "title": "Related item", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatedLot": {
+          "description": "Where lots are used, if this question relates to a specific lot, this field contains the lot identifier.", 
+          "title": "Related lot", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "threadID": {
+          "description": "If this question and answer forms part of a discussion thread (e.g. the question is a follow-up to a previous answer) a thread identifier can be used to associate multiple enquiries.", 
+          "title": "Thread identifier", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "title": {
+          "description": "The subject line of the question.", 
+          "title": "Question title", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Enquiry", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "enquiries": {
+          "description": "Questions sent to the procuring entity, and the answers given", 
+          "items": {
+            "$ref": "#/definitions/Enquiry"
+          }, 
+          "title": "Enquiries", 
+          "type": [
+            "array", 
+            "null"
+          ], 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

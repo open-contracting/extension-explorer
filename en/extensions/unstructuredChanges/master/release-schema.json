@@ -1,0 +1,111 @@
+{
+  "definitions": {
+    "Amendment": {
+      "properties": {
+        "unstructuredChanges": {
+          "description": "Unstructured or semi-structured changes to an earlier notice.", 
+          "items": {
+            "$ref": "#/definitions/UnstructuredChange"
+          }, 
+          "minItems": 1, 
+          "title": "Unstructured changes", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }
+      }
+    }, 
+    "UnstructuredChange": {
+      "description": "Unstructured or semi-structured change to an earlier notice.", 
+      "minProperties": 1, 
+      "properties": {
+        "newValue": {
+          "$ref": "#/definitions/UnstructuredChangeValue", 
+          "description": "The value of the data element referenced by the `where` field, after the change.", 
+          "title": "New value"
+        }, 
+        "oldValue": {
+          "$ref": "#/definitions/UnstructuredChangeValue", 
+          "description": "The value of the data element referenced by the `where` field, before the change.", 
+          "title": "Old value"
+        }, 
+        "relatedLot": {
+          "description": "The identifier of the lot to which this change relates, if any.", 
+          "minLength": 1, 
+          "title": "Related lot", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "where": {
+          "description": "A reference to a data element on an earlier notice that is being changed.", 
+          "minProperties": 1, 
+          "properties": {
+            "label": {
+              "description": "The label for the data element.", 
+              "minLength": 1, 
+              "title": "Label", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "section": {
+              "description": "The identifier of the section containing the data element, if the earlier notice is organized into sections.", 
+              "minLength": 1, 
+              "title": "Section", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Where", 
+          "type": "object"
+        }
+      }, 
+      "title": "Unstructured change", 
+      "type": "object"
+    }, 
+    "UnstructuredChangeValue": {
+      "description": "A value of a data element. The value must be described using exactly one of the fields `text`, `classifications` or `date`.", 
+      "minProperties": 1, 
+      "properties": {
+        "classifications": {
+          "description": "A list of classifications.", 
+          "items": {
+            "$ref": "#/definitions/Classification"
+          }, 
+          "minItems": 1, 
+          "title": "Classifications", 
+          "type": [
+            "array"
+          ], 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "date": {
+          "description": "A date.", 
+          "pattern": "^\\d{4}-[01]\\d-[0-3]\\d(T[0-2]\\d:[0-5]\\d:[0-5]\\d([+-][0-2]\\d:?[0-5]\\d|Z))?$", 
+          "title": "Date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "text": {
+          "description": "A text. If the change deleted or erased the data element, use the empty string (\"\").", 
+          "minLength": 1, 
+          "title": "Text value", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Unstructured change value", 
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "definitions": {
+    "Planning": {
+      "properties": {
+        "project": {
+          "$ref": "#/definitions/Project", 
+          "description": "Una secci\u00f3n de proyecto se puede usar para describir la relaci\u00f3n entre este proceso de contrataci\u00f3n y un proyecto o programa de trabajo.", 
+          "title": "Informaci\u00f3n de proyecto"
+        }
+      }
+    }, 
+    "Project": {
+      "description": "Un proyecto o programa de trabajo.", 
+      "minProperties": 1, 
+      "patternProperties": {
+        "^(description_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {
+          "minLength": 1, 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "^(title_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {
+          "minLength": 1, 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "properties": {
+        "additionalClassifications": {
+          "description": "Clasificaci\u00f3n adicional del proyecto por otras clasificaciones de sector o usando otros esquemas de clasificaci\u00f3n (p.ej. Contra un marco estrat\u00e9gico).", 
+          "items": {
+            "$ref": "#/definitions/Classification"
+          }, 
+          "minItems": 1, 
+          "title": "Clasificaciones sectoriales adicionales ", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "description": {
+          "description": "Una breve descripci\u00f3n en texto libre del proyecto.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n del proyecto", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "Un identificador externo para el proyecto. \u00c9ste puede tomarse de un registro de proyectos o puede basarse en la versi\u00f3n can\u00f3nica de un nombre de proyecto. Los IDs de proyecto deben de ser \u00fanicos para un publicador. Se pueden usar URIs.", 
+          "minLength": 1, 
+          "title": "Identificador de proyecto", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "locations": {
+          "description": "Informaci\u00f3n sobre la ubicaci\u00f3n donde se llevar\u00e1 a cabo un proyecto.", 
+          "items": {
+            "$ref": "#/definitions/Location"
+          }, 
+          "minItems": 1, 
+          "title": "Ubicaci\u00f3n de Proyecto", 
+          "type": "array", 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "sector": {
+          "$ref": "#/definitions/Classification", 
+          "description": "Una categorizaci\u00f3n general del sector principal con el cual se relaciona este proceso de licitaci\u00f3n. Se recomienda el uso de [UN COFOG codes](https://unstats.un.org/unsd/publications/catalogue?selectID=145), con 'COFOG'  como esquema de clasificaci\u00f3n y el c\u00f3digo num\u00e9rico COFOG para la clasificaci\u00f3n primaria de sector.", 
+          "title": "Sector del proyecto"
+        }, 
+        "title": {
+          "description": "El nombre del proyecto con el cual se relaciona este proceso de contrataci\u00f3n. Algunas organizaciones mantienen un registro de proyectos y los datos deben de usar el nombre por el cual se conoce al proyecto en dicho registro.", 
+          "minLength": 1, 
+          "title": "T\u00edtulo del Proyecto", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "totalValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "El monto total anticipado del proyecto a lo largo de su duraci\u00f3n.", 
+          "title": "Valor total del proyecto"
+        }, 
+        "uri": {
+          "description": "Una URI que apunte a mayor informaci\u00f3n sobre este proyecto.", 
+          "format": "uri", 
+          "title": "Informaci\u00f3n vinculada del proyecto", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Informaci\u00f3n de proyecto", 
+      "type": "object"
+    }
+  }
+}

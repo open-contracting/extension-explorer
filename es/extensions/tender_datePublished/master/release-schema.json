@@ -1,0 +1,17 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "datePublished": {
+          "description": "The date when the tender was published.", 
+          "format": "date-time", 
+          "title": "Date Published", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

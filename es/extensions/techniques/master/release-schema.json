@@ -1,0 +1,212 @@
+{
+  "definitions": {
+    "DynamicPurchasingSystem": {
+      "description": "Informaci\u00f3n sobre el sistema de compra din\u00e1mica.", 
+      "minProperties": 1, 
+      "properties": {
+        "status": {
+          "codelist": "dynamicPurchasingSystemStatus.csv", 
+          "description": "El estado del sistema de compra din\u00e1mica.", 
+          "enum": [
+            "pending", 
+            "active", 
+            "cancelled", 
+            "terminated", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Estado", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "type": {
+          "codelist": "dynamicPurchasingSystemType.csv", 
+          "description": "En el caso de las centrales de compras, si el sistema de compra din\u00e1mica puede ser utilizado por compradores que no figuran en el proceso de contrataci\u00f3n.", 
+          "enum": [
+            "open", 
+            "closed", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Tipo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Sistema de compra din\u00e1mica", 
+      "type": "object"
+    }, 
+    "ElectronicAuction": {
+      "description": "Informaci\u00f3n sobre la subasta electr\u00f3nica.", 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "Cualquier informaci\u00f3n adicional sobre la subasta electr\u00f3nica.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "url": {
+          "description": "La direcci\u00f3n de Internet de la subasta electr\u00f3nica.", 
+          "minLength": 1, 
+          "title": "URL", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Subasta electr\u00f3nica", 
+      "type": "object"
+    }, 
+    "FrameworkAgreement": {
+      "description": "Informaci\u00f3n sobre el acuerdo marco.", 
+      "minProperties": 1, 
+      "properties": {
+        "buyerCategories": {
+          "description": "Cualquier categor\u00eda adicional de compradores que participe en el acuerdo marco y que no se mencione por su nombre (por ejemplo, \"todos los hospitales de la regi\u00f3n de la Toscana\"). ", 
+          "minLength": 1, 
+          "title": "Categor\u00edas de compradores", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "Una descripci\u00f3n resumida del acuerdo marco. Esto complementa cualquier informaci\u00f3n estructurada proporcionada utilizando los otros campos.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "maximumParticipants": {
+          "description": "El n\u00famero m\u00e1ximo de participantes en el acuerdo marco. Si no hay un m\u00e1ximo, establecerlo en 1e9999 (que analiza hasta infinito).", 
+          "title": "N\u00famero m\u00e1ximo de participantes", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "method": {
+          "codelist": "frameworkAgreementMethod.csv", 
+          "description": "Si los contratos se adjudican con, sin o ambos con y sin re-apertura del concurso.", 
+          "enum": [
+            "withReopeningCompetition", 
+            "withoutReopeningCompetition", 
+            "withAndWithoutReopeningCompetition", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "M\u00e9todo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "minimumParticipants": {
+          "description": "El n\u00famero m\u00ednimo de participantes en el acuerdo marco", 
+          "title": "N\u00famero m\u00ednimo de participantes", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "El per\u00edodo durante el cual se estima que el acuerdo marco estar\u00e1 activo.", 
+          "title": "Periodo"
+        }, 
+        "periodRationale": {
+          "description": "La justificaci\u00f3n de casos excepcionales cuando la duraci\u00f3n de un acuerdo marco excede los l\u00edmites legales.", 
+          "minLength": 1, 
+          "title": "Duraci\u00f3n razonable", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value", 
+          "description": "El valor total estimado superior del acuerdo marco.", 
+          "title": "Valor"
+        }
+      }, 
+      "title": "Acuerdo marco", 
+      "type": "object"
+    }, 
+    "Lot": {
+      "properties": {
+        "techniques": {
+          "$ref": "#/definitions/Techniques", 
+          "description": "Informaci\u00f3n sobre el uso de t\u00e9cnicas,  como acuerdos marco, sistemas de compra din\u00e1mica y subastas electr\u00f3nicas.", 
+          "title": "T\u00e9cnicas"
+        }
+      }
+    }, 
+    "Techniques": {
+      "description": "Informaci\u00f3n sobre el uso de t\u00e9cnicas,  como acuerdos marco, sistemas de compra din\u00e1mica y subastas electr\u00f3nicas.", 
+      "minProperties": 1, 
+      "properties": {
+        "dynamicPurchasingSystem": {
+          "$ref": "#/definitions/DynamicPurchasingSystem", 
+          "description": "Informaci\u00f3n sobre el sistema de compra din\u00e1mica.", 
+          "title": "Sistema de compra din\u00e1mica"
+        }, 
+        "electronicAuction": {
+          "$ref": "#/definitions/ElectronicAuction", 
+          "description": "Informaci\u00f3n sobre la subasta electr\u00f3nica.", 
+          "title": "Subasta electr\u00f3nica"
+        }, 
+        "frameworkAgreement": {
+          "$ref": "#/definitions/FrameworkAgreement", 
+          "description": "Informaci\u00f3n sobre el acuerdo marco.", 
+          "title": "Acuerdo marco"
+        }, 
+        "hasDynamicPurchasingSystem": {
+          "description": "Si se trata de un sistema de compra din\u00e1mica.", 
+          "title": "Sistema de compra din\u00e1mica involucrado", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "hasElectronicAuction": {
+          "description": "Si se utiliza una subasta electr\u00f3nica.", 
+          "title": "Subasta electr\u00f3nica utilizada", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "hasFrameworkAgreement": {
+          "description": "Si se trata de un acuerdo marco.", 
+          "title": "Acuerdo marco involucrado", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "T\u00e9cnicas", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "techniques": {
+          "$ref": "#/definitions/Techniques", 
+          "description": "Informaci\u00f3n sobre el uso de t\u00e9cnicas,  como acuerdos marco, sistemas de compra din\u00e1mica y subastas electr\u00f3nicas.", 
+          "title": "T\u00e9cnicas"
+        }
+      }
+    }
+  }
+}

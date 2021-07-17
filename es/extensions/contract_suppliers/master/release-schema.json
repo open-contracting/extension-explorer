@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "suppliers": {
+          "description": "Los proveedores mencionados expl\u00edcitamente en este contrato.", 
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          }, 
+          "minItems": 1, 
+          "title": "Proveedores", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

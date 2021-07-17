@@ -1,0 +1,162 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "valueCalculationMethod": {
+          "description": "Cualquier detalle relevante al valor de la concesi\u00f3n seg\u00fan el art\u00edculo 8(3) de la Directiva 2014/23/UE sobre contratos de concesi\u00f3n.", 
+          "minLength": 1, 
+          "title": "M\u00e9todo de c\u00e1lculo de valor", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }, 
+    "Contract": {
+      "properties": {
+        "periodRationale": {
+          "description": "La justificaci\u00f3n de la duraci\u00f3n del contrato.", 
+          "minLength": 1, 
+          "title": "Justificaci\u00f3n del per\u00edodo del contrato", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "publicPassengerTransportServicesKilometers": {
+          "description": "El n\u00famero de kil\u00f3metros de servicios de transporte p\u00fablico de pasajeros prestados por un contrato de servicio p\u00fablico.", 
+          "minimum": 0, 
+          "title": "Kil\u00f3metros de servicios de transporte p\u00fablico de pasajeros", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }
+      }
+    }, 
+    "Item": {
+      "properties": {
+        "deliveryAddresses": {
+          "description": "La(s) direcci\u00f3n(es) a la(s) cual(es) el proveedor entrega el \u00edtem.", 
+          "items": {
+            "$ref": "#/definitions/Address"
+          }, 
+          "minItems": 1, 
+          "title": "Direcci\u00f3n de entrega", 
+          "type": [
+            "array"
+          ], 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }
+      }
+    }, 
+    "LegislativeReference": {
+      "description": "Referencias legislativas y puntos de contacto asociados", 
+      "minProperties": 1, 
+      "properties": {
+        "informationService": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "Una organizaci\u00f3n que puede proporcionar informaci\u00f3n sobre la referencia legislativa.", 
+          "title": "Servicio de informaci\u00f3n"
+        }, 
+        "title": {
+          "description": "El t\u00edtulo de una referencia legislativa", 
+          "minLength": 1, 
+          "title": "T\u00edtulo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "url": {
+          "description": "Un enlace a la p\u00e1gina web de la referencia legislativa.", 
+          "format": "uri", 
+          "title": "URL", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Referencia legislativa", 
+      "type": "object"
+    }, 
+    "Lot": {
+      "properties": {
+        "awardPeriod": {
+          "$ref": "#/definitions/Period", 
+          "description": "El plazo para la toma de decisiones sobre la adjudicaci\u00f3n del contrato del lote. La fecha de finalizaci\u00f3n debe ser la fecha en la que se debe finalizar la decisi\u00f3n de adjudicaci\u00f3n. La fecha de inicio se puede utilizar para indicar el inicio de un per\u00edodo de evaluaci\u00f3n.", 
+          "title": "Periodo de adjudicaci\u00f3n"
+        }, 
+        "minimumValue": {
+          "$ref": "#/definitions/Value", 
+          "description": "El valor m\u00ednimo estimado del lote. Un valor negativo indica que el proceso de contrataci\u00f3n puede implicar pagos del proveedor al comprador (com\u00fanmente utilizado en los contratos de concesi\u00f3n).", 
+          "title": "Valor m\u00ednimo"
+        }
+      }
+    }, 
+    "Organization": {
+      "properties": {
+        "details": {
+          "properties": {
+            "buyerProfile": {
+              "description": "Direcci\u00f3n web del perfil del comprador.", 
+              "minLength": 1, 
+              "title": "URL del perfil del comprador", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "url": {
+              "description": "Sitio web de la organizaci\u00f3n", 
+              "minLength": 1, 
+              "title": "URL del sitio web", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }, 
+    "Tender": {
+      "properties": {
+        "legislativeReferences": {
+          "description": "Referencias legislativas y puntos de contacto asociados para informaci\u00f3n.", 
+          "items": {
+            "$ref": "#/definitions/LegislativeReference"
+          }, 
+          "minItems": 1, 
+          "title": "Referencias legislativas", 
+          "type": [
+            "array"
+          ], 
+          "uniqueItems": true, 
+          "wholeListMerge": true
+        }, 
+        "reviewDetails": {
+          "description": "Informaci\u00f3n precisa sobre los plazos para los procedimientos de revisi\u00f3n o informaci\u00f3n de contacto de la que se puede obtener.", 
+          "minLength": 1, 
+          "title": "Detalles de la revisi\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "valueCalculationMethod": {
+          "description": "El m\u00e9todo usado para el c\u00e1lculo del valor estimado de la concesi\u00f3n.", 
+          "minLength": 1, 
+          "title": "M\u00e9todo de c\u00e1lculo de valor", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

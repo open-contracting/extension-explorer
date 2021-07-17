@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>European Union — Codelists — OCDS Extension Explorer</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/en/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      OCDS Extension Explorer
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/en/">
+        Home
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/en/extensions/">
+        Extensions
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        English
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item active" href="/en/extensions/eu/master/codelists/">
+          English
+        </a>
+        <a class="dropdown-item" href="/es/extensions/eu/master/codelists/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        European Union
+      </h1>
+
+      <p class="lead">
+        Implements fields and codes that are specific to European law.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Version:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/en/extensions/eu/1.1/codelists/">
+              1.1
+              (latest)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/eu/master/">
+            Documentation
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/eu/master/schema/">
+            Schema
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/en/extensions/eu/master/codelists/">
+            Codelists
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#+documentType.csv">
+                +documentType.csv
+              </a>
+            </li>
+            <li>
+              <a href="#+milestoneType.csv">
+                +milestoneType.csv
+              </a>
+            </li>
+            <li>
+              <a href="#+partyRole.csv">
+                +partyRole.csv
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_eu_extension/1.1/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_eu_extension/archive/1.1.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Codelists
+      </h2>
+
+      <h3 id="+documentType.csv">
+        +documentType.csv
+      </h3>
+
+      <p>
+        You can <a href="/en/extensions/eu/master/codelists/%2BdocumentType.csv">download the <code>+documentType.csv</code> file</a> in English.
+      </p>
+
+      <p>
+        The extension adds these codes to the <a href="https://standard.open-contracting.org/1.1/en/schema/codelists/#document-type"><code>documentType.csv</code> codelist</a>.
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="+documentType.csv/economicSelectionCriteria">
+              <code>
+                economicSelectionCriteria
+              </code>
+            </td>
+            <td>
+              Economic selection criteria
+            </td>
+            <td>
+              <p>Documentation that describes the economic selection criteria.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/technicalSelectionCriteria">
+              <code>
+                technicalSelectionCriteria
+              </code>
+            </td>
+            <td>
+              Technical selection criteria
+            </td>
+            <td>
+              <p>Documentation that describes the technical selection criteria.</p>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="+milestoneType.csv">
+        +milestoneType.csv
+      </h3>
+
+      <p>
+        You can <a href="/en/extensions/eu/master/codelists/%2BmilestoneType.csv">download the <code>+milestoneType.csv</code> file</a> in English.
+      </p>
+
+      <p>
+        The extension adds these codes to the <a href="https://standard.open-contracting.org/1.1/en/schema/codelists/#milestone-type"><code>milestoneType.csv</code> codelist</a>.
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="+milestoneType.csv/securityClearanceDeadline">
+              <code>
+                securityClearanceDeadline
+              </code>
+            </td>
+            <td>
+              Security clearance deadline
+            </td>
+            <td>
+              <p>The tenderers may obtain their security clearance until this date.</p>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="+partyRole.csv">
+        +partyRole.csv
+      </h3>
+
+      <p>
+        You can <a href="/en/extensions/eu/master/codelists/%2BpartyRole.csv">download the <code>+partyRole.csv</code> file</a> in English.
+      </p>
+
+      <p>
+        The extension adds these codes to the <a href="https://standard.open-contracting.org/1.1/en/schema/codelists/#party-role"><code>partyRole.csv</code> codelist</a>.
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="+partyRole.csv/mediationBody">
+              <code>
+                mediationBody
+              </code>
+            </td>
+            <td>
+              Mediation body
+            </td>
+            <td>
+              <p>The body responsible for mediation procedures.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/centralPurchasingBody">
+              <code>
+                centralPurchasingBody
+              </code>
+            </td>
+            <td>
+              Central purchasing body
+            </td>
+            <td>
+              <p>The procuring entity providing centralized purchasing activities and, possibly, ancillary purchasing activities.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/processContactPoint">
+              <code>
+                processContactPoint
+              </code>
+            </td>
+            <td>
+              Process contact point
+            </td>
+            <td>
+              <p>A contact point dedicated to this contracting process.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/reviewContactPoint">
+              <code>
+                reviewContactPoint
+              </code>
+            </td>
+            <td>
+              Review contact point
+            </td>
+            <td>
+              <p>The service from which information about the review procedure can be obtained.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/selectedParticipant">
+              <code>
+                selectedParticipant
+              </code>
+            </td>
+            <td>
+              Selected participant
+            </td>
+            <td>
+              <p>A party that has already been selected to participate in the design contest.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/informationService">
+              <code>
+                informationService
+              </code>
+            </td>
+            <td>
+              Information service
+            </td>
+            <td>
+              <p>An organization that can provide information regarding specific aspects of the contracting process.</p>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+  "definitions": {
+    "BidOpening": {
+      "description": "La fecha, hora, lugar y otros detalles de la apertura de ofertas.", 
+      "minProperties": 1, 
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/Address", 
+          "description": "La direcci\u00f3n del lugar donde se realiza la apertura de ofertas", 
+          "title": "Direcci\u00f3n"
+        }, 
+        "date": {
+          "description": "Fecha y hora de la apertura de ofertas.", 
+          "format": "date-time", 
+          "title": "Fecha y hora", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "Cualquier otro detalle con relaci\u00f3n a la apertura de ofertas (Quienes pueden participar, si es necesaria una autorizaci\u00f3n, etc.)", 
+          "minLength": 1, 
+          "title": "Detalles", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "location": {
+          "$ref": "#/definitions/Location", 
+          "description": "El lugar donde se realiza la apertura de ofertas.", 
+          "title": "Ubicaci\u00f3n"
+        }
+      }, 
+      "title": "Apertura de ofertas", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "bidOpening": {
+          "$ref": "#/definitions/BidOpening", 
+          "description": "La fecha, hora, lugar y otros detalles de la apertura de ofertas.", 
+          "title": "Apertura de ofertas"
+        }
+      }
+    }
+  }
+}

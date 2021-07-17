@@ -1,0 +1,39 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "communication": {
+          "description": "Modalidades de comunicaci\u00f3n sobre eventos clave.", 
+          "minProperties": 1, 
+          "properties": {
+            "atypicalToolUrl": {
+              "description": "La comunicaci\u00f3n electr\u00f3nica con la entidad contratante requiere el uso de herramientas y dispositivos que generalmente no est\u00e1n disponibles. Estas herramientas son accesibles a trav\u00e9s de esta URL.", 
+              "format": "uri", 
+              "title": "URL de herramienta at\u00edpica", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }, 
+            "documentAvailabilityPeriod": {
+              "$ref": "#/definitions/Period", 
+              "description": "El per\u00edodo durante el cual los documentos pueden ser accedidos o durante el cual se pueden presentar peticiones de acceso a los documentos.", 
+              "title": "Per\u00edodo de disponibilidad del documento"
+            }, 
+            "futureNoticeDate": {
+              "description": "Fecha estimada de publicaci\u00f3n del pr\u00f3ximo aviso secuencial.", 
+              "format": "date-time", 
+              "title": "Fecha de notificaci\u00f3n futura", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Comunicaci\u00f3n", 
+          "type": "object"
+        }
+      }
+    }
+  }
+}

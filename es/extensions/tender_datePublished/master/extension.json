@@ -1,0 +1,19 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "description": {
+    "en": "Adds a date field to indicate when the tender was published.", 
+    "es": "Adds a date field to indicate when the tender was published."
+  }, 
+  "documentationUrl": {
+    "en": "https://github.com/portaledcahn/ocds_tenderDatePublished_extension/blob/master/README.md"
+  }, 
+  "name": {
+    "en": "Tender Date Published", 
+    "es": "Tender Date Published"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

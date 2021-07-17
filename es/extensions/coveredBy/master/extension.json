@@ -1,0 +1,26 @@
+{
+  "codelists": [
+    "coveredBy.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds a field to indicate the treaties that the contracting process is covered by.", 
+    "es": "Adds a field to indicate the treaties that the contracting process is covered by."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/coveredBy/"
+  }, 
+  "name": {
+    "en": "Covered By", 
+    "es": "Covered By"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

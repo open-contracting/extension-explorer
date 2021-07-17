@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Tarifas — Documentación — Explorador de Extensiones OCDS</title>
+  <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark ee-navbar">
+  <a class="navbar-brand mr-0 mr-md-2 py-0 py-md-2" href="/es/">
+<svg class="d-inline-block" width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>    <div class="d-inline-block h4">
+      Explorador de Extensiones OCDS
+    </div>
+  </a>
+
+  <ul class="navbar-nav flex-row">
+    <li class="nav-item">
+      <a class="nav-link " href="/es/">
+        Página principal
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="/es/extensions/">
+        Extensiones
+      </a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+    <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="languages" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+        <span class="sr-only">Select language</span>
+        Español
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="languages">
+        <a class="dropdown-item" href="/en/extensions/tariffs/master/">
+          English
+        </a>
+        <a class="dropdown-item active" href="/es/extensions/tariffs/master/">
+          Español
+        </a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Tarifas
+      </h1>
+
+      <p class="lead">
+        Agrega campos al contrato y objetos de implementación para capturar los detalles de las tarifas, los peajes y las tarifas de los usuarios establecidos en el contrato y en uso durante la vida del proyecto.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="mr-1 mb-0" for="version">Versión:</label>
+        <select class="custom-select custom-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/tariffs/1.1/">
+              1.1
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/tariffs/master/">
+            Documentación
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ml-0">
+              <a href="#introduccion">
+                Introducción
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#modelado-de-tarifas">
+                Modelado de tarifas
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#ejemplo">
+                Ejemplo
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#entradas-de-lista-de-codigos">
+                Entradas de lista de códigos
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ml-0">
+              <a href="#registro-de-cambios">
+                Registro de cambios
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/tariffs/master/schema/">
+            Esquema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/tariffs/master/codelists/">
+            Listas de código
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_tariffs_extension/1.1/extension.json" aria-describedby="copy" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copiar al portapapeles">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_tariffs_extension/archive/1.1.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 pl-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentación
+      </h2>
+<div><h2 id="introduccion">Introducci&#243;n</h2>
+<p>Algunos contratos, en particular los contratos de Asociaci&#243;n P&#250;blico Privada, incluyen acuerdos sobre las tarifas de usuario que se cobrar&#225;n por el uso de la infraestructura o los servicios a los que se refiere el contrato.</p>
+<p>Por ejemplo, un proyecto de Asociaci&#243;n P&#250;blica Privada para construir un puente puede establecer los peajes para coches y otros veh&#237;culos para cruzar el mismo.</p>
+<p>La extensi&#243;n de tarifas permite establecer una lista estructurada de estos cargos.</p>
+<p>Tambi&#233;n incluye entradas de lista de c&#243;digos adicionales para la lista de c&#243;digos documentType para:</p>
+<ul>
+<li>tariffs</li>
+<li>tariffMethod</li>
+<li>tariffReview</li>
+<li>tariffIllustration</li>
+</ul>
+<h2 id="modelado-de-tarifas">Modelado de tarifas</h2>
+<p>El modelo de tarifas se basa en la extensi&#243;n de m&#233;tricas, permitiendo una lista de elementos tarrif, cada uno con un identificador, t&#237;tulo, per&#237;odo, valor, unidades y un conjunto arbitrario de dimensiones.</p>
+<p>Por ejemplo, si el peaje para un puente de carretera var&#237;a seg&#250;n (a) el tipo de veh&#237;culo y (b) la hora del d&#237;a; una implementaci&#243;n de la extensi&#243;n de tarifas puede crear nuevos campos para <code>dimensions.vehicleType</code> y <code>dimensions.timeOfDay</code>,  rellenando estos de acuerdo con las listas de c&#243;digos locales. En los casos de APP, estas dimensiones adicionales pueden reflejar las utilizadas en las secciones de demanda estimada y otras m&#233;tricas.</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<p>El ejemplo siguiente muestra una tabla de tarifas muy sencilla, sin per&#237;odos ni unidades, pero con dos dimensiones. Las tarifas que se refieren a un determinado conjunto de fechas podr&#237;an tener un bloque <code>period</code>. Los que se refieren a una unidad particular (por ejemplo, toneladas) podr&#237;an tener esto indicado usando un bloque <code>unit</code>.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">"contracts"</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+      <span class="nt">"awardID"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+      <span class="nt">"tariffs"</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"1"</span><span class="p">,</span>
+          <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Standard Toll"</span><span class="p">,</span>
+          <span class="nt">"dimensions"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"vehicleType"</span><span class="p">:</span> <span class="s2">"Class 1"</span><span class="p">,</span>
+            <span class="nt">"registration"</span><span class="p">:</span> <span class="s2">"No registration"</span>
+          <span class="p">},</span>
+          <span class="nt">"value"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"amount"</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+            <span class="nt">"currency"</span><span class="p">:</span> <span class="s2">"GBP"</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"2"</span><span class="p">,</span>
+          <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Standard Toll"</span><span class="p">,</span>
+          <span class="nt">"dimensions"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"vehicleType"</span><span class="p">:</span> <span class="s2">"Class 2"</span><span class="p">,</span>
+            <span class="nt">"registration"</span><span class="p">:</span> <span class="s2">"No registration"</span>
+          <span class="p">},</span>
+          <span class="nt">"value"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"amount"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span>
+            <span class="nt">"currency"</span><span class="p">:</span> <span class="s2">"GBP"</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"3"</span><span class="p">,</span>
+          <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Standard Toll"</span><span class="p">,</span>
+          <span class="nt">"dimensions"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"vehicleType"</span><span class="p">:</span> <span class="s2">"Class 3"</span><span class="p">,</span>
+            <span class="nt">"registration"</span><span class="p">:</span> <span class="s2">"No registration"</span>
+          <span class="p">},</span>
+          <span class="nt">"value"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"amount"</span><span class="p">:</span> <span class="mf">6.0</span><span class="p">,</span>
+            <span class="nt">"currency"</span><span class="p">:</span> <span class="s2">"GBP"</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+          <span class="nt">"id"</span><span class="p">:</span> <span class="s2">"4"</span><span class="p">,</span>
+          <span class="nt">"title"</span><span class="p">:</span> <span class="s2">"Standard Toll"</span><span class="p">,</span>
+          <span class="nt">"dimensions"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"vehicleType"</span><span class="p">:</span> <span class="s2">"Class 4"</span><span class="p">,</span>
+            <span class="nt">"registration"</span><span class="p">:</span> <span class="s2">"No registration"</span>
+          <span class="p">},</span>
+          <span class="nt">"value"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">"amount"</span><span class="p">:</span> <span class="mf">8.0</span><span class="p">,</span>
+            <span class="nt">"currency"</span><span class="p">:</span> <span class="s2">"GBP"</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="entradas-de-lista-de-codigos">Entradas de lista de c&#243;digos</h2>
+<p>Los siguientes tipos de documentos son introducidos por la extensi&#243;n de tarifa</p>
+<ul>
+<li>tariffs - Para proporcionar tarifas y horarios de precios.</li>
+<li>tariffMethod - Para resumir el m&#233;todo por el cual se fijan las tarifas, y enlazar a la documentaci&#243;n detallada de los m&#233;todos para fijar tarifas. Esto puede incluir documentaci&#243;n escrita y hojas de c&#225;lculo con los modelos utilizados para calcular las tarifas.</li>
+<li>tariffReview - Para resumir las disposiciones para la revisi&#243;n y regulaci&#243;n de las tarifas, y enlazar con la documentaci&#243;n detallada que explique c&#243;mo se regulan las tarifas. Esto es importante para poder explicarles a los usuarios por qu&#233; est&#225;n pagando lo que est&#225;n pagando, y el alcance de los cambios en las estructuras de pago.</li>
+<li>tariffIllustration - Para vincular a gr&#225;ficos e informes sobre el cambio en el tiempo en los precios de las tarifas. Utilice el tipo de material de imagen relevante al vincular a gr&#225;ficos PNG, JPEG o GIF para permitir que las aplicaciones muestren directamente este contenido.</li>
+</ul>
+<h2 id="issues">Issues</h2>
+<p>Reporte issues para esta extensi&#243;n en el <a href="https://github.com/open-contracting/ocds-extensions/issues">repositorio de extensiones ocds</a>, poniendo el nombre de la extensi&#243;n en el t&#237;tulo del issue.</p>
+<h2 id="registro-de-cambios">Registro de cambios</h2>
+<h3>2021-04-19</h3>
+<ul>
+<li>Add Section column to <code>+documentType.csv</code> codelist.</li>
+</ul>
+<h3>2020-06-04</h3>
+<ul>
+<li>Review normative and non-normative words.</li>
+</ul>
+<h3>2020-04-24</h3>
+<ul>
+<li>Agregar las propiedades <code>minProperties</code>, <code>minItems</code> y/o <code>minLength</code>.</li>
+</ul>
+<h3>2019-03-20</h3>
+<ul>
+<li>Establecer <code>"uniqueItems ": true</code> en los campos matriz y agregar <code>"minLength": 1</code> en los campos de cadena obligatorios.</li>
+<li>Hacer <code>Tariff.unit</code> no nulo, como <code>Item.unit</code>.</li>
+<li>Hacer <code>Tariff.dimensions</code> no nulo (deshacer el cambio anterior).</li>
+</ul>
+<h3>2018-05-08</h3>
+<ul>
+<li>Hacer que <code>Tariff.id</code> sea obligatorio para soportar el seguimiento de revisiones y <a href="https://standard.open-contracting.org/latest/es/schema/merging/#lists">fusi&#243;n de listas</a></li>
+</ul>
+<h3>2018-05-01</h3>
+<ul>
+<li>Hacer que <code>Tariff.dimensions</code> pueda ser nulo.</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copiado!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copiar al portapapeles').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

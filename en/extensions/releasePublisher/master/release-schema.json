@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "publisher": {
+      "description": "Information to uniquely identify the publisher of this release.", 
+      "properties": {
+        "name": {
+          "description": "The name of the organisation or department responsible for publishing this data.", 
+          "title": "Name", 
+          "type": "string"
+        }, 
+        "scheme": {
+          "description": "The scheme that holds the unique identifiers used to identify the item being identified.", 
+          "title": "Scheme", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "uid": {
+          "description": "The unique ID for this entity under the given ID scheme. Note the use of 'uid' rather than 'id'. See issue #245.", 
+          "title": "uid", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "uri": {
+          "description": "A URI to identify the publisher.", 
+          "format": "uri", 
+          "title": "URI", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "name"
+      ], 
+      "title": "Publisher", 
+      "type": "object"
+    }
+  }
+}

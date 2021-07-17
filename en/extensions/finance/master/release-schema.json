@@ -1,0 +1,193 @@
+{
+  "definitions": {
+    "Budget": {
+      "properties": {
+        "finance": {
+          "description": "An array with details of each source of finance planned for this procedure.", 
+          "items": {
+            "$ref": "#/definitions/Finance"
+          }, 
+          "minItems": 1, 
+          "title": "Finance", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Contract": {
+      "properties": {
+        "finance": {
+          "description": "An array with details of each source of finance arranged for this contract.", 
+          "items": {
+            "$ref": "#/definitions/Finance"
+          }, 
+          "minItems": 1, 
+          "title": "Finance", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Finance": {
+      "description": "This block can be used to model details of each of the parties financing a contract or project. Note: If the finance is syndicated, and all the parties to the syndication are known, this section may be further extended with an array of syndicate partners. No schema for this is currently provided.", 
+      "extension_explorer:source": {
+        "identifier": "finance", 
+        "version": "master"
+      }, 
+      "minProperties": 1, 
+      "properties": {
+        "description": {
+          "description": "A short description of this financing arrangement. This may include details of lender rights, step in arrangements, exchange rate guarantees, and for syndicated loans, details of syndication and any banks who are known parties to the loan.", 
+          "minLength": 1, 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "exchangeRateGuarantee": {
+          "description": "Is there an associated exchange rate guarantee with this source of finance. This is a true/false field to indicate when exchange rate guarantees exist. Details of any guarantees can be provided in the finance description, or in associated documents.", 
+          "title": "Exchange rate guarantees", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "financeCategory": {
+          "codelist": "financeCategory.csv", 
+          "description": "The nature of the finance. This information can be used when determining the order of preference for investors to get their money back in cases of liquidation.", 
+          "enum": [
+            "equity", 
+            "seniorDebt", 
+            "mezzanineDebt", 
+            "grant", 
+            "guarantee", 
+            "other", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Finance category", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "financeType": {
+          "codelist": "financeType.csv", 
+          "description": "The type of finance arranged.", 
+          "enum": [
+            "institutional", 
+            "commercial", 
+            "bilateral", 
+            "multilateral", 
+            "publicBondIssue", 
+            "supplierCredit", 
+            "other", 
+            null
+          ], 
+          "openCodelist": false, 
+          "title": "Finance type", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "financingParty": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "The party providing this financing arrangement.", 
+          "title": "Financing party"
+        }, 
+        "id": {
+          "description": "An identifier for this financing arrangement.", 
+          "minLength": 1, 
+          "title": "ID", 
+          "type": "string"
+        }, 
+        "interestRate": {
+          "description": "The interest rate associated with this finance.", 
+          "minProperties": 1, 
+          "properties": {
+            "base": {
+              "description": "The variable to which an additional margin amount is added to get the Interest amount. This can be specified as a fixed number, as a known variable (e.g. LIBOR or LIBOR+1%), or can be omitted if margin specifies the entire interest rate.", 
+              "minLength": 1, 
+              "title": "Base", 
+              "type": [
+                "string", 
+                "number", 
+                "null"
+              ]
+            }, 
+            "fixed": {
+              "description": "A boolean field. If this interest rate of fixed, set to true. Otherwise, set to false.", 
+              "title": "Fixed rate", 
+              "type": [
+                "boolean", 
+                "null"
+              ]
+            }, 
+            "margin": {
+              "description": "The variable added to the base to give the Interest amount expressed as a decimal fraction (e.g. 12.5% = 0.125).", 
+              "title": "Margin", 
+              "type": [
+                "number", 
+                "null"
+              ]
+            }, 
+            "notes": {
+              "description": "Any explanatory notes concerning the interest rate.", 
+              "minLength": 1, 
+              "title": "Notes", 
+              "type": [
+                "string", 
+                "null"
+              ]
+            }
+          }, 
+          "title": "Interest rate", 
+          "type": "object"
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "What period is covered by this finance.", 
+          "title": "Finance period"
+        }, 
+        "repaymentFrequency": {
+          "description": "What is the average repayment frequency (in days) for this source of finance. For example, for yearly, use 365; for monthly repayment use 30.4; for daily use 1. User interfaces may wish to translate this into a more user-friendly presentation, such as 'daily','monthly' or 'yearly'.", 
+          "minimum": 0, 
+          "title": "Repayment frequency (days)", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "stepInRights": {
+          "description": "Does provision of this finance confer any step in rights on the financing party? Step in rights are the lender's option to assume certain contractual responsibilities of a project party through managing their contract in cases when that party is not meeting its obligations under such a contract. This is a true/false field to indicate when step in rights exist. If there are step in rights, details should be provided in the description field, and in additional contract documents.", 
+          "title": "Step in rights", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "title": {
+          "description": "A short title for this financing arrangement.", 
+          "minLength": 1, 
+          "title": "Title", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value", 
+          "description": "The total value of this finance.", 
+          "title": "Value"
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Financing arrangements", 
+      "type": "object"
+    }
+  }
+}

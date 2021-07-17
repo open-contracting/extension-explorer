@@ -1,0 +1,13 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "buyer": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "La entidad cuyo presupuesto se utilizar\u00e1 para comprar los bienes o servicios especificados en este contrato en particular. Cuando se utiliza la extensi\u00f3n de comprador de contrato, se debe especificar un comprador aqu\u00ed ** a menos que ** el comprador de este contrato sea el mismo que el comprador general especificado en el nivel de release.", 
+          "title": "Comprador"
+        }
+      }
+    }
+  }
+}

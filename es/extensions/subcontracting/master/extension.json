@@ -1,0 +1,23 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds an object for information about the parts of the contract that the supplier will subcontract to third parties.", 
+    "es": "Adds an object for information about the parts of the contract that the supplier will subcontract to third parties."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/subcontracting/"
+  }, 
+  "name": {
+    "en": "Subcontracting", 
+    "es": "Subcontracting"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

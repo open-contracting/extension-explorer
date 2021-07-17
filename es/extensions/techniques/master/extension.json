@@ -1,0 +1,31 @@
+{
+  "codelists": [
+    "dynamicPurchasingSystemType.csv", 
+    "dynamicPurchasingSystemStatus.csv", 
+    "frameworkAgreementMethod.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds fields to the tender and lot objects to describe the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions.", 
+    "es": "Agrega campos a los objetos de licitaci\u00f3n y lote para describir el uso de t\u00e9cnicas, como acuerdos marco, sistemas de compra din\u00e1mica y subastas electr\u00f3nicas."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/techniques/"
+  }, 
+  "name": {
+    "en": "Techniques", 
+    "es": "T\u00e9cnicas"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ], 
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

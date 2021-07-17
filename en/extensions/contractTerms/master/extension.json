@@ -1,0 +1,29 @@
+{
+  "codelists": [
+    "permission.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds a contract terms object to the tender and lot objects, to describe the terms governing the future contract.", 
+    "es": "Agrega un objeto t\u00e9rminos del contrato a los objetos de la licitaci\u00f3n y del lote, para describir los t\u00e9rminos que rigen al futuro contrato."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/contractTerms/"
+  }, 
+  "name": {
+    "en": "Contract terms", 
+    "es": "T\u00e9rminos del contrato"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ], 
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

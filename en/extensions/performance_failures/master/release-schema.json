@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "performanceFailures": {
+          "description": "An array of performance failure disclosures, detailing performance failures for different periods and categories.", 
+          "items": {
+            "$ref": "#/definitions/PerformanceFailure"
+          }, 
+          "minItems": 1, 
+          "title": "Performance failure disclosures", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "PerformanceFailure": {
+      "description": "Details of the performance failures for a given period and category. Details of the associated penalties and abatements provided for in the contract, imposed and paid can also be provided.", 
+      "minProperties": 1, 
+      "properties": {
+        "category": {
+          "description": "The category into which these performance failures fall.", 
+          "minLength": 1, 
+          "title": "Performance failure category", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "events": {
+          "description": "The number of performance failures for the given period and category.", 
+          "title": "Number of events", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "A local identifier for this specific category and period of performance failure. This field is used to keep track of revisions of a charge across multiple OCDS releases.", 
+          "minLength": 1, 
+          "title": "Identifier", 
+          "type": "string"
+        }, 
+        "penaltyContracted": {
+          "description": "A free text description of the penalty or abatement provided for in the contract for this period, category and number of performance failures.", 
+          "minLength": 1, 
+          "title": "Contracted penalty", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "penaltyImposed": {
+          "description": "A free text description of the penalty or abatement imposed for this period, category and number of performance failures.", 
+          "minLength": 1, 
+          "title": "Penalty imposed", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "penaltyPaid": {
+          "description": "A yes/no field indicating whether the penalty imposed for this period, category and number of performance failures has been paid.", 
+          "title": "Penalty paid", 
+          "type": [
+            "boolean", 
+            "null"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "The reporting period for these performance failures.", 
+          "title": "Performance failure period"
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Performance failure disclosure", 
+      "type": "object"
+    }
+  }
+}

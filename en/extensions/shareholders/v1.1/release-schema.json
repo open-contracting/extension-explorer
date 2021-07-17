@@ -1,0 +1,84 @@
+{
+  "definitions": {
+    "Organization": {
+      "properties": {
+        "beneficialOwnership": {
+          "description": "This section can be used to record information concerning individuals or organisations with a beneficial ownership or control interests in this party. Where structured data is available, this section may be extended by embedding or linking to information modelled using the [Beneficial Ownership Data Standard (BODS)](https://github.com/openownership/data-standard).", 
+          "properties": {
+            "description": {
+              "description": "A free text description of beneficial ownership or control arrangements.", 
+              "title": "Description", 
+              "type": "string"
+            }
+          }, 
+          "title": "Beneficial ownership", 
+          "type": "object"
+        }, 
+        "shareholders": {
+          "description": "A list of shareholders in the organization: used to provide company ownership information for firms, primarily in the case of large and complex contracts, or Public Private Partnerships, that require disclosure of this information for certain bidders or awarded parties.", 
+          "items": {
+            "$ref": "#/definitions/Shareholder"
+          }, 
+          "title": "Organization shareholders", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "Shareholder": {
+      "description": "A shareholder in an organization.", 
+      "properties": {
+        "id": {
+          "description": "A local identifier for this shareholder, unique within this block. This field is used to keep track of multiple revisions of a shareholder through the compilation from release to record mechanism.", 
+          "title": "Shareholder ID", 
+          "type": [
+            "string"
+          ]
+        }, 
+        "notes": {
+          "description": "Additional notes on this shareholder. This field should be used to provide details on any caps on equity transfer, or lock-in arrangements, applicable to this shareholder.", 
+          "title": "Shareholder notes", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "shareholder": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "An organization reference pointing the entry in the parties section for the shareholding organization.", 
+          "title": "Shareholder organization reference."
+        }, 
+        "shareholding": {
+          "description": "The percentage of shares held by the shareholder, expressed as a decimal value between 0 and 1.", 
+          "maximum": 1, 
+          "minimum": 0, 
+          "title": "Shareholding", 
+          "type": [
+            "number", 
+            "null"
+          ]
+        }, 
+        "votingRights": {
+          "codelist": "votingRights.csv", 
+          "description": "Specify the type of voting rights associated with the shares held by the shareholder against the [voting rights codelist](http://standard.open-contracting.org/latest/en/schema/codelists/#voting-rights).", 
+          "openCodelist": false, 
+          "title": "Shareholder voting rights", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "votingRightsDetails": {
+          "description": "Detailed information about the shareholder's voting rights. This field should be completed when the shareholder voting rights are restricted, additional or enhanced.", 
+          "title": "Shareholder voting rights details", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Shareholder", 
+      "type": "object"
+    }
+  }
+}

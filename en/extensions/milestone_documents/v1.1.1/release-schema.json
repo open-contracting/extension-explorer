@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "Milestone": {
+      "properties": {
+        "documents": {
+          "deprecated": null, 
+          "description": "A list of documents specifically associated with this milestone.", 
+          "items": {
+            "$ref": "#/definitions/Document"
+          }, 
+          "title": "Documents", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

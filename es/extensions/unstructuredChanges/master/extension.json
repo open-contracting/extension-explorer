@@ -1,0 +1,26 @@
+{
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds an unstructuredChanges array to the Amendment object.", 
+    "es": "Agrega una matriz unstructuredChanges al objeto Amendment."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/unstructuredChanges/"
+  }, 
+  "name": {
+    "en": "Unstructured changes", 
+    "es": "Cambios no estructurados"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ], 
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

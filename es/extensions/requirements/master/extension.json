@@ -1,0 +1,31 @@
+{
+  "codelists": [
+    "dataType.csv", 
+    "relatesTo.csv", 
+    "responseSource.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds a criteria section to the tender object and responses sections to bids, awards and contracts. Based on the EU's Core Criterion and Core Evidence Vocabulary (CCCEV).", 
+    "es": "Agrega una secci\u00f3n de criterios a las secciones de objeto de licitaci\u00f3n y respuestas a ofertas, adjudicaciones y contratos. Basado en el criterio principal y el vocabulario de evidencia central (CCCEV) de la UE."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/requirements/"
+  }, 
+  "name": {
+    "en": "Requirements", 
+    "es": "Requisitos"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ], 
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"
+  ]
+}

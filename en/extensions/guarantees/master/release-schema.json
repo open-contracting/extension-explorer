@@ -1,0 +1,79 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "guarantees": {
+          "description": "A list of the guarantees given for this contract.", 
+          "items": {
+            "$ref": "#/definitions/Guarantee"
+          }, 
+          "title": "Guarantees", 
+          "type": "array"
+        }
+      }
+    }, 
+    "Guarantee": {
+      "description": "Information of the guarantee used to ensure compliance with the terms of a contract.", 
+      "properties": {
+        "date": {
+          "description": "The date of the guarantee. This is the date on which the guarantee is issued.", 
+          "format": "date-time", 
+          "title": "Guarantee date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "guarantor": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "Institution that issues the guarantee.", 
+          "title": "Guarantor"
+        }, 
+        "id": {
+          "description": "A local identifier for this guarantee, unique within this block.", 
+          "minLength": 1, 
+          "title": "Guarantee ID", 
+          "type": [
+            "string", 
+            "integer"
+          ]
+        }, 
+        "obligations": {
+          "codelist": "guaranteedObligations.csv", 
+          "description": "Specify the type of obligations that are guaranteed, using the [obligationType](https://github.com/contratacionesabiertas/ocds_guarantees_extension/blob/master/codelists/guaranteedObligations.csv) codelist.", 
+          "openCodelist": true, 
+          "title": "Guaranteed obligations", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "The period on which this quote is valid.", 
+          "title": "Guarantee period"
+        }, 
+        "type": {
+          "codelist": "guaranteeType.csv", 
+          "description": "Specify the guarantee type for this contract using the [guaranteeType](https://github.com/contratacionesabiertas/ocds_guarantees_extension/blob/master/codelists/guaranteeType.csv) codelist.", 
+          "openCodelist": true, 
+          "title": "Guarantee type", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "value": {
+          "$ref": "#/definitions/Value", 
+          "description": "Total amount of the guarantee.", 
+          "title": "Guarantee value"
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Guarantee", 
+      "type": "object"
+    }
+  }
+}

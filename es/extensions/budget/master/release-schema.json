@@ -1,0 +1,71 @@
+{
+  "definitions": {
+    "Budget": {
+      "properties": {
+        "budgetBreakdown": {
+          "description": "Un desglose detallado del presupuesto por periodo y/o financiadores participantes.", 
+          "items": {
+            "$ref": "#/definitions/BudgetBreakdown"
+          }, 
+          "minItems": 1, 
+          "title": "Desglose del presupuesto", 
+          "type": "array", 
+          "uniqueItems": true
+        }
+      }
+    }, 
+    "BudgetBreakdown": {
+      "description": "Esta secci\u00f3n permite expresar un desglose detallado del presupuesto, cubriendo tanto  m\u00faltiples fuentes presupuestarias como per\u00edodos m\u00faltiples", 
+      "minProperties": 1, 
+      "properties": {
+        "amount": {
+          "$ref": "#/definitions/Value", 
+          "description": "El valor de partida presupuestaria.", 
+          "title": "Monto"
+        }, 
+        "description": {
+          "description": "Una breve descripci\u00f3n de texto libre sobre esta entrada de presupuesto.", 
+          "minLength": 1, 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "Un identificador para esta entrada de presupuesto en particular.", 
+          "minLength": 1, 
+          "title": "Identificador", 
+          "type": [
+            "string", 
+            "integer"
+          ]
+        }, 
+        "period": {
+          "$ref": "#/definitions/Period", 
+          "description": "El per\u00edodo cubierto por esta entrada presupuestaria.", 
+          "title": "Per\u00edodo de Presupuesto"
+        }, 
+        "sourceParty": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "Una referencia de la organizaci\u00f3n, vinculada a la entrada en la secci\u00f3n `parties` que describe la organizaci\u00f3n que proporciona los fondos para esta parte del presupuesto. La parte debe tener el rol de 'funder'. Si el monto del presupuesto es positivo, esto indica un flujo de recursos de la parte al proceso de contrataci\u00f3n. Si el monto del presupuesto es negativo, indica un pago del proceso de contrataci\u00f3n a esta parte.", 
+          "title": "Parte origen"
+        }, 
+        "uri": {
+          "description": "Un URI apuntando directamente a informaci\u00f3n legible por computadora acerca de esta entrada de presupuesto.", 
+          "format": "uri", 
+          "title": "Informaci\u00f3n vinculada de presupuesto", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "required": [
+        "id"
+      ], 
+      "title": "Desglose detallado del presupuesto", 
+      "type": "object"
+    }
+  }
+}

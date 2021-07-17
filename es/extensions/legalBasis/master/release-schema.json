@@ -1,0 +1,22 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "crossBorderLaw": {
+          "description": "In case of joint procurement, the public procurement legislation that applies to the procedure.", 
+          "minLength": 1, 
+          "title": "Cross-border law", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "legalBasis": {
+          "$ref": "#/definitions/Classification", 
+          "description": "The legal basis of the procedure.", 
+          "title": "Legal basis"
+        }
+      }
+    }
+  }
+}

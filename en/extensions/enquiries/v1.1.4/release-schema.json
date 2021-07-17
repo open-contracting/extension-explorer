@@ -1,0 +1,105 @@
+{
+  "definitions": {
+    "Enquiry": {
+      "description": "A question related to this contracting process, generally sent during the enquiry period.", 
+      "properties": {
+        "answer": {
+          "description": "The answer to this question, when available.", 
+          "title": "Answer", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "author": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "The identifier and name of the party asking this question. Questioners may be listed in the parties array with a role of 'enquirer'. Procurement policies vary on whether or not the identity of those asking questions should be disclosed, or at which stage this information may be disclosed. When the identity of the questioner cannot be disclosed leave the author section blank. Display systems should interpret this as an anonymous question.", 
+          "title": "Question author"
+        }, 
+        "date": {
+          "description": "The date the enquiry was received or processed.", 
+          "format": "date-time", 
+          "title": "Date", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "dateAnswered": {
+          "description": "The date the answer to the question was provided.", 
+          "format": "date-time", 
+          "title": "Date answered", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "The body of the question.", 
+          "title": "Description", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "A unique identifier for the enquiry.", 
+          "title": "Identifier", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatedItem": {
+          "description": "If this question relates to a specific line-item, this field contains the line-item identifier.", 
+          "title": "Related item", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatedLot": {
+          "description": "Where lots are used, if this question relates to a specific lot, this field contains the lot identifier.", 
+          "title": "Related lot", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "threadID": {
+          "description": "If this question and answer forms part of a discussion thread (e.g. the question is a follow up to a previous answer) an optional thread identifier can be used to associate together multiple enquiries.", 
+          "title": "Thread identifier", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "title": {
+          "description": "The subject line of the question.", 
+          "title": "Question title", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Enquiry", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "enquiries": {
+          "description": "Questions sent to the procuring entity, and the answers given", 
+          "items": {
+            "$ref": "#/definitions/Enquiry"
+          }, 
+          "title": "Enquiries", 
+          "type": [
+            "array", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

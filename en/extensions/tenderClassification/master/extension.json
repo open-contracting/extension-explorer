@@ -1,0 +1,26 @@
+{
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ], 
+  "compatibility": [
+    "1.1"
+  ], 
+  "contactPoint": {
+    "email": "data@open-contracting.org", 
+    "name": "Open Contracting Partnership"
+  }, 
+  "description": {
+    "en": "Adds an array of classification objects to the tender object, in order to categorize the procedure or call-off as a whole.", 
+    "es": "Adds an array of classification objects to the tender object, in order to categorize the procedure or call-off as a whole."
+  }, 
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/tenderClassification/"
+  }, 
+  "name": {
+    "en": "Tender classification", 
+    "es": "Tender classification"
+  }, 
+  "schemas": [
+    "release-schema.json"
+  ]
+}

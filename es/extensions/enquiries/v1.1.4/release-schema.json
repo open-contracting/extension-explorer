@@ -1,0 +1,105 @@
+{
+  "definitions": {
+    "Enquiry": {
+      "description": "Una pregunta relacionada con el proceso de contrataciones, hecha generalmente durante el per\u00edodo de preguntas.", 
+      "properties": {
+        "answer": {
+          "description": "La respuesta a esta pregunta, cuando est\u00e9 disponible.", 
+          "title": "Respuesta", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "author": {
+          "$ref": "#/definitions/OrganizationReference", 
+          "description": "El identificador y el nombre de la parte involucrada que hace esta pregunta. Los solicitantes pueden mostrarse en la lista de las partes con un rol de \"enquirer\". Las pol\u00edticas de adquisici\u00f3n var\u00edan en cuanto a si la identidad de los que hacen preguntas debe ser divulgada, o en qu\u00e9 etapa se puede divulgar esta informaci\u00f3n. Cuando no se pueda identificar al solicitante de la informaci\u00f3n, deje la secci\u00f3n de autor en blanco. Los sistemas deber\u00edan de interpretar esta como una pregunta an\u00f3nima.", 
+          "title": "Autor de la pregunta"
+        }, 
+        "date": {
+          "description": "La fecha en que se recibi\u00f3 o proces\u00f3 la consulta.", 
+          "format": "date-time", 
+          "title": "Fecha", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "dateAnswered": {
+          "description": "La fecha en que se proporcion\u00f3 la respuesta a la pregunta.", 
+          "format": "date-time", 
+          "title": "Fecha de respuesta", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "description": {
+          "description": "El cuerpo de la pregunta.", 
+          "title": "Descripci\u00f3n", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "id": {
+          "description": "Un identificador \u00fanico para la consulta.", 
+          "title": "Identificador", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatedItem": {
+          "description": "Si esta pregunta se refiere a una partida presupuestaria en espec\u00edfico, este campo contiene el identificador de la partida.", 
+          "title": "Art\u00edculo relacionado", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "relatedLot": {
+          "description": "Cuando se usan lotes, si esta pregunta se refiere a un lote espec\u00edfico, este campo contiene el identificador de lote.", 
+          "title": "Lote relacionado", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "threadID": {
+          "description": "Si esta pregunta y respuesta forma parte de un hilo de discusi\u00f3n (por ejemplo, la pregunta es un seguimiento a una respuesta anterior), se puede usar un identificador de hilo opcional para asociar varias consultas.", 
+          "title": "Identificador de hilo", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }, 
+        "title": {
+          "description": "La l\u00ednea de asunto de la pregunta.", 
+          "title": "T\u00edtulo de la pregunta", 
+          "type": [
+            "string", 
+            "null"
+          ]
+        }
+      }, 
+      "title": "Consulta", 
+      "type": "object"
+    }, 
+    "Tender": {
+      "properties": {
+        "enquiries": {
+          "description": "Preguntas enviadas a la entidad contratante y las respuestas dadas", 
+          "items": {
+            "$ref": "#/definitions/Enquiry"
+          }, 
+          "title": "Consultas", 
+          "type": [
+            "array", 
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
