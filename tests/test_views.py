@@ -22,8 +22,13 @@ def test_lang_home(client):
     assert response.status_code == 200
 
 
-def test_documentation(client):
-    response = client.get(url_for('documentation', lang='en'))
+def test_publisher_guidance(client):
+    response = client.get(url_for('publisher_guidance', lang='en'))
+    assert response.status_code == 200
+
+
+def test_user_guidance(client):
+    response = client.get(url_for('user_guidance', lang='en'))
     assert response.status_code == 200
 
 
