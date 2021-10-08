@@ -91,6 +91,7 @@ def lang_home(lang):
 def publisher_guidance(lang):
     return render_template('publisher_guidance.html', lang=lang)
 
+
 @app.route('/<lang>/user_guidance/')
 def user_guidance(lang):
     return render_template('user_guidance.html', lang=lang)
