@@ -1,0 +1,242 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ _("Publisher Guidance") }}{% endblock %}
+{% block documentation_nav_link %}active{% endblock %}
+
+{% block main %}
+<main class="ee-masthead" role="main">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        <h1 class="display-4">
+          {{ _("Publisher Guidance") }}
+        </h1>
+
+        <p>
+          {{ _("To implement OCDS, you must identify the fields and codes in OCDS that match the data elements that you want to publish. Some data elements might not match any field or code in OCDS. To cover such cases, you can add additional fields or codes to your OCDS data. Extensions provide a way to document these additional fields and codes.") }}
+        </p>
+
+        <h2>
+          {{ _("Why use extensions?") }}
+        </h2>
+
+        <p>
+          {{ _("We recommend using extensions to describe your additional fields and codes so that:") }}
+        </p>
+
+        <ul>
+          <li>
+            {{ _("Analysts can access definitions for fields and codes to help them interpret your data.") }}
+          </li>
+          <li>
+            {{ _("Developers can access information about the structure of your data to help write software to process it.") }}
+          </li>
+          <li>
+            {{ _("Your data is consistent with that of other publishers and compatible with reusable tools and methodologies.") }}
+          </li>
+        </ul>
+
+        <h2 id="use-an-extension">
+          {{ _("Use an extension") }}
+        </h2>
+
+        <p>
+          {{ _("To publish additional fields or codes using an extension:") }}
+        </p>
+
+        <ol>
+          <li class="mt-3">
+            {{ _('Use the Extension Explorer to find an extension that describes the data element(s) you want to publish. If you can’t find a suitable extension, you might need to <a href="#create-an-extension">create an extension</a>.') }}
+          </li>
+          <li class="mt-3">
+            {{ _("Structure your data according to the extension’s schema and documentation.") }}
+          </li>
+          <li class="mt-3">
+            {{ _('Declare the extension in your <a href="https://standard.open-contracting.org/latest/%(lang)s/schema/release_package/">package’s</a> `extensions` array using the URL from the extension’s documentation. For example, to declare the Bid statistics and details extension:', lang=lang) }}
+            <div class="mt-3">
+              <code>
+                {"extensions": ["https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"]}
+              </code>
+            </div>
+          </li>
+          <li class="mt-3">
+            {{ _('Check your data using the <a href="https://standard.open-contracting.org/review/">OCDS Data Review Tool</a>.') }}
+          </li>
+        </ol>
+
+        <h2 id="create-an-extension">
+          {{ _("Create an extension") }}
+        </h2>
+        <p>
+          {{ _("If you can’t find a suitable extension to describe the data elements you want to publish, you can create an extension.") }}
+        </p>
+
+        <p>
+          {{ _('Extensions can introduce new fields, add codes to open codelists and introduce additional validation rules to existing OCDS fields. However, extensions cannot remove fields, change the title or description of fields or add codes to closed codelists. To suggest such changes, <a href="https://github.com/open-contracting/standard/issues/new">open an issue</a> on the standard issue tracker.') }}
+        </p>
+
+        <p>
+          {{ _('You should also consider whether the data you want to publish belongs to the contracting process or whether it exists independently. Data that exists independently of the contracting process is typically better published in a separate dataset. For example, data on changes to the <a href="https://standard.open-contracting.org/latest/%(lang)s/guidance/map/beneficial_ownership/">beneficial ownership</a> of suppliers, which is usually tracked outside of procurement systems.', lang=lang) }}
+        </p>
+
+        <p>
+          {{ _('To create an extension you need to understand <a href="http://json-schema.org/">JSON Schema</a> and the structure of the <a href="https://standard.open-contracting.org/%(lang)s/en/schema/">OCDS schema</a>. Extensions are fragments of JSON Schema that can be merged into the OCDS schema to create an extended schema.', lang=lang) }}
+        </p>
+
+        <p>
+          {{ _('The <a href="https://github.com/open-contracting/standard_extension_template">standard extension template</a> describes the structure and components of an extension and the technical steps to document an extension.', lang=lang) }}
+        </p>
+
+        <p>
+          {{ _("There are five steps to creating an extension:") }}
+        </p>
+
+        <h3>
+          {{ _("Discuss") }}
+        </h3>
+        
+        <p>
+          {{ _('Before creating an extension, search for related discussions on the <a href="https://github.com/open-contracting/standard/issues">standard issue tracker</a>.') }}
+        </p>
+
+        <p>
+          {{ _('If you can’t find any related discussions, <a href="https://github.com/open-contracting/standard/issues/new">open an issue</a> to describe the extension you plan to create. The issue’s description should include:') }}
+        </p>
+
+        <ul>
+          <li>
+            {{ _("The extension’s use case(s). Describe your reason for adding additional fields and/or codes and what users will do with the data.") }}
+          </li>
+          <li>
+            {{ _("The concepts or process that you want to represent. Explain the underlying concepts described by the extension and the workflow for collecting the data. Include references to legislation and other documentation, and consider providing a
+            diagram.") }}
+          </li>
+          <li>
+            {{ _("Examples of existing data. Provide examples of how the data covered by the extension is represented in your data sources.") }}
+          </li>
+          <li>
+            {{ _("To encourage collaboration, keep this issue up to date throughout the development of your extension.") }}
+          </li>
+        </ul>
+
+        <h3>
+          {{ _("Develop") }}
+        </h3>
+        
+        <p>
+          {{ _("You first need to decide on the name, structure and format of the fields in your extension.") }}
+        </p>
+
+        <p>
+          {{ _("You can start by mocking up an example of the data you are creating an extension for in JSON format. Consider:") }}
+        </p>
+
+        <ul>
+          <li>
+            {{ _("How would different data fit into this structure?") }}
+          </li>
+          <li>
+            {{ _("Are the field names intuitive for users?") }}
+          </li>
+          <li>
+            {{ _("Is the structure easy for applications to consume?") }}
+          </li>
+          <li>
+            {{ _('You can also check <a href="https://lov.linkeddata.es/dataset/lov">other standards</a> for potential models. The more different examples of source data, and different use cases for the data you can consider, the better.') }}
+          </li>
+        </ul>
+
+        <p>
+          {{ _("Before continuing, you should invite feedback on your mockup using the Github issue you created in the previous step.") }}
+        </p>
+
+        <p>
+          {{ _("Once you have settled on a model, you should then document the schema for your extension. The following tools are available to help you:") }}
+        </p>
+
+        <ul>
+          <li>
+            {{ _('You can use the <a href="https://open-contracting.github.io/extension_creator">OCDS Extension Creator</a> to edit the OCDS schema and generate a patch. For more information on using the extension creator, refer to its <a href="https://github.com/open-contracting/extension_creator">documentation</a>.') }}
+          </li>
+          <li>
+            {{ _('You can copy the <a href="https://github.com/open-contracting/standard_extension_template">standard extension template</a> and use a text editor to edit the schema files.') }}
+          </li>
+          <li>
+            {{ _('You can use <a href="https://jsonschema.net">JSONschema.net</a> to generate a schema from your JSON mockup.') }}
+          </li>
+        </ul>
+
+        <p>
+          {{ _('Your schema should follow the <a href="https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html">schema style guide</a>.') }}
+        </p>
+
+        <h3>
+          {{ _("Document") }}
+        </h3>
+
+        <p>
+          {{ _("You will need to find somewhere to host your extension online at a stable URL. Creating a GitHub repository for your extension is a good option because it offers version control and issue tracking.") }}
+        </p>
+
+        <p>
+          {{ _("You also need to write a README file and/or other documentation for your extension.") }}
+        </p>
+
+        <p>
+          {{ _("Your documentation should include a description of the extension and its use cases, and examples of data structured according to the extension.") }}
+        </p>
+
+        <h3>
+          {{ _("Test") }}
+        </h3>
+        <p>
+          {{ _('Test your extension by following steps 2-4 in <a href="#use-an-extension">Use an extension</a>.') }}
+        </p>
+
+        <h3>
+          {{ _("Register") }}
+        </h3>
+        <p>
+          {{ _('We encourage you to <a href ="https://github.com/open-contracting/extension_registry#how-to-register-an-extension">register your extension</a> so that others can discover it using the Extension Explorer.') }}
+        </p>
+
+        <p>
+          {{ _("Extensions that are useful to only a single publisher do not need to be registered.") }}
+        </p>
+
+        <p>
+          {{ _("To register an extension, it must meet the following criteria:") }}
+        </p>
+
+        <ul>
+          <li>
+            {{ _('The documentation is in English. According to the <a href="https://docs.google.com/document/d/1GLwWTpgDDkKmMr1hZE4D75LI8VQtFiD0VA7TF_FvY_Q/">translation and localization policy</a>, “the authoritative language for the standard is English.” As such, all extensions in the Extension Explorer – as part of the standard’s documentation
+            – must be in English.') }}
+          </li>
+          <li>
+            {{ _("The documentation, excluding examples, is more than 200 characters long. Documentation of less than 200 characters cannot adequately describe an extension, its purpose and technical details.") }}
+          </li>
+          <li>
+            {{ _("The extension.json and README.md files are not publisher-specific. If the extension’s name or description suggests it is relevant to only one publisher, then it is unlikely to be used by other publishers, even if the schema patch is
+            relevant.") }}
+          </li>
+          <li>
+            {{ _("No other extension expresses the same concepts. Having multiple ways to express the same concept would be counter-productive to standardization.") }}
+          </li>
+          <li>
+            {{ _('The extension follows the <a href="https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html">schema style guide</a>.') }}
+          </li>
+        </ul>
+        
+        <h2>
+          {{ _("Versioning") }}
+        </h2>
+        <p>
+          {{ _('OCDS extensions should use <a href="https://semver.org/">semantic versioning.</a>') }}
+        </p>
+
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

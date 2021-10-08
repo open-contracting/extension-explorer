@@ -14,7 +14,7 @@
         </h1>
 
         <p class="lead">
-          {{ _('Disclose more data about your contracting processes, using extensions to the <a href="https://standard.open-contracting.org/latest/%(lang)s/">Open Contracting Data Standard</a>.', lang=lang) }}
+          {{ _('Find extensions to the <a href="https://standard.open-contracting.org/latest/%(lang)s/">Open Contracting Data Standard</a>.', lang=lang) }}
         </p>
 
         <div class="row mx-n2">
@@ -23,13 +23,26 @@
               {{ _("Browse extensions") }}
             </a>
           </div>
-          {#
+        </div>
+        <div class="row mx-n2">
           <div class="col-md px-2">
-            <a href="{{ url_for('documentation', lang=lang) }}" class="btn btn-lg btn-outline-secondary w-100 mb-3">
-              {{ _("Learn about extensions") }}
-            </a>
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">{{ _("For data publishers") }}</h2>
+                <p class="card-text">{{ _("OCDS defines a core set of fields and codes for describing contracting processes. You can use extensions to describe additional fields outside the core set.") }}</p>
+                <a href="{{ url_for('publisher_guidance', lang=lang) }}" class="btn btn-primary">{{ _("Read the publisher guidance") }}</a>
+              </div>
+            </div>
           </div>
-          #}
+          <div class="col-md px-2">
+            <div class="card">
+              <div class="card-body">
+                <h2 class="card-title">{{ _("For data users") }}</h2>
+                <p class="card-text">{{ _("OCDS data can include fields and codes from the OCDS schema and from extensions. To understand extended data, you need to identify which extensions are used and read the extensions' documentation.") }}</p>
+                <a href="{{ url_for('user_guidance', lang=lang) }}" class="btn btn-primary">{{ _("Read the user guidance") }}</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

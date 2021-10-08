@@ -87,9 +87,13 @@ def lang_home(lang):
     return render_template('home.html', lang=lang)
 
 
-@app.route('/<lang>/documentation/')
-def documentation(lang):
-    return render_template('documentation.html', lang=lang)
+@app.route('/<lang>/publisher_guidance/')
+def publisher_guidance(lang):
+    return render_template('publisher_guidance.html', lang=lang)
+
+@app.route('/<lang>/user_guidance/')
+def user_guidance(lang):
+    return render_template('user_guidance.html', lang=lang)
 
 
 @app.route('/<lang>/extensions/')
