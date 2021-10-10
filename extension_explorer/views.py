@@ -88,13 +88,13 @@ def lang_home(lang):
 
 
 @app.route('/<lang>/publishers/')
-def publisher_guidance(lang):
-    return render_template('publisher_guidance.html', lang=lang)
+def publishers(lang):
+    return render_template('publishers.html', lang=lang)
 
 
 @app.route('/<lang>/users/')
-def user_guidance(lang):
-    return render_template('user_guidance.html', lang=lang)
+def users(lang):
+    return render_template('users.html', lang=lang)
 
 
 @app.route('/<lang>/extensions/')
