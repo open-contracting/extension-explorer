@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+
+{% block title %}{{ _("User Guidance") }}{% endblock %}
+{% block user_guidance_nav_link %}active{% endblock %}
+
+{% block main %}
+<main class="ee-masthead" role="main">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        <h1 class="display-4">
+          {{ _("User Guidance") }}
+        </h1>
+
+        <p>
+          {{ _("To use data, you first need to understand its structure and meaning. OCDS data can contain fields from:") }}
+        <p>
+        
+        <ul>
+          <li>  
+            {{ _('OCDS, whose fields are described in its schema and in its <a href="https://standard.open-contracting.org/latest/%(lang)s/schema/">Schema Reference</a>.', lang=lang) }}
+          </li>
+          <li>
+            {{ _("Extensions, whose fields are described in their schema and in their documentation.") }}
+          </li>
+        </ul>
+        
+        <p>
+          {{ _("To identify which extensions are used in OCDS data, you can either:") }}
+        </p>
+        
+        <ul>
+          <li class="mt-3">
+            {{ _("Check for an <code>extensions</code> field at the package level. For data with extensions, this field contains an array of URLs to <code>extension.json</code> files. Each file contains a <code>documentationUrl</code> object with a URL to the extension's documentation. Open the URL to read its documentation (in many cases, the URL leads to this website). For example, the following data declares the Bid statistics and details extension:") }}
+            <div class="mt-3">
+              <code>
+                {"extensions": ["https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"]}
+              </code>
+            </div>
+          </li>
+          <li class="mt-3">
+            {{ _('Upload the data to the <a href="https://standard.open-contracting.org/review/">OCDS Data Review Tool</a>, which lists the extensions used and links to their documentation.') }}
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
