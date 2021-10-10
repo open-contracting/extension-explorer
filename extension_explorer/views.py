@@ -87,12 +87,12 @@ def lang_home(lang):
     return render_template('home.html', lang=lang)
 
 
-@app.route('/<lang>/publisher_guidance/')
+@app.route('/<lang>/publishers/')
 def publisher_guidance(lang):
     return render_template('publisher_guidance.html', lang=lang)
 
 
-@app.route('/<lang>/user_guidance/')
+@app.route('/<lang>/users/')
 def user_guidance(lang):
     return render_template('user_guidance.html', lang=lang)
 
