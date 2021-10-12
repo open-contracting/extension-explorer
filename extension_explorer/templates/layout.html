@@ -37,13 +37,16 @@
         {{ _("Extensions") }}
       </a>
     </li>
-    {#
     <li class="nav-item">
-      <a class="nav-link {% block documentation_nav_link %}{% endblock %}" href="{{ url_for('documentation', lang=lang) }}">
-        {{ _("Documentation") }}
+      <a class="nav-link {% block publisher_guidance_nav_link %}{% endblock %}" href="{{ url_for('publishers', lang=lang) }}">
+        {{ _("Publisher guidance") }}
       </a>
     </li>
-    #}
+    <li class="nav-item">
+      <a class="nav-link {% block user_guidance_nav_link %}{% endblock %}" href="{{ url_for('users', lang=lang) }}">
+        {{ _("User guidance") }}
+      </a>
+    </li>
   </ul>
 
   <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
