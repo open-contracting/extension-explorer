@@ -1,5 +1,7 @@
-name: CI
+name: Lint
 on: [push, pull_request]
+env:
+  BASEDIR: https://raw.githubusercontent.com/open-contracting/standard-maintenance-scripts/main
 jobs:
   build:
     if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
@@ -15,8 +17,9 @@ jobs:
           key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt', 'setup.py') }}
           restore-keys: |
             ${{ runner.os }}-pip-
+      - run: curl -s -S --retry 3 $BASEDIR/tests/install.sh | bash -
+      - run: curl -s -S --retry 3 $BASEDIR/tests/script.sh | bash -
       - run: pip install -r requirements_dev.txt
-      - run: pytest --cov extension_explorer
       - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: coveralls --service=github
+          STANDARD_MAINTENANCE_SCRIPTS_IGNORE: ocdsextensionregistry
+        run: pytest /tmp/test_requirements.py
