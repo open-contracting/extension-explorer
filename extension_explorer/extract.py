@@ -8,4 +8,4 @@ def extract_tag(fileobj, keywords, comment_tags, options):
     data = safe_load(fileobj)
     for prefix, tags in data.items():
         for i, tag in enumerate(tags):
-            yield 1, '', tag['title'], ['/{}/{}/title'.format(prefix, i)]
+            yield 1, '', tag['title'], [f'/{prefix}/{i}/title']
