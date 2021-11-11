@@ -88,7 +88,7 @@ def set_tags(extensions):
             slug = tag['slug']
             for identifier in tag['extensions']:
                 if identifier in extensions:
-                    extensions[identifier]['tags'].add('{}-{}'.format(prefix, slug))
+                    extensions[identifier]['tags'].add(f'{prefix}-{slug}')
             groups[prefix][slug] = tag['title']
 
     publishers = {}
@@ -98,7 +98,7 @@ def set_tags(extensions):
         extension['publisher'] = publisher
 
         slug = slugify(publisher['name'])
-        extension['tags'].add('publisher-{}'.format(slug))
+        extension['tags'].add(f'publisher-{slug}')
         publishers[slug] = publisher['name']
 
     return groups['profile'], groups['topic'], publishers
@@ -147,7 +147,7 @@ def identify_headings(html):
 
         slug = slugify(element.text_content())
         if slug in slug_counts:
-            heading_id = '{}-{}'.format(slug, slug_counts[slug])
+            heading_id = f'{slug}-{slug_counts[slug]}'
         else:
             heading_id = slug
         element.attrib['id'] = heading_id
@@ -327,8 +327,9 @@ def _get_types(value, sources, extension_version, lang, n=1, field=None):
         if name in sources:
             url = sources[name]['url']
         else:
-            url = '#{}'.format(name.lower())  # local definition
-        return ['<a href="{}">{}</a> {}'.format(url, name, ngettext('object', 'objects', n))]
+            url = f'#{name.lower()}'  # local definition
+        noun = ngettext('object', 'objects', n)
+        return [f'<a href="{url}">{name}</a> {noun}']
 
     types = value.get('type', [])
     if isinstance(types, str):
@@ -387,11 +388,11 @@ def _get_types(value, sources, extension_version, lang, n=1, field=None):
             return types
 
         if types and types != ['array']:
-            raise NotImplementedError("{} is not implemented".format(' / '.join(types)))
+            raise NotImplementedError(f"{' / '.join(types)} is not implemented")
         if 'properties' in value['items']:
-            raise NotImplementedError('array of objects with properties is not implemented: {!r}'.format(value))
+            raise NotImplementedError(f'array of objects with properties is not implemented: {value!r}')
         if 'items' in value['items']:
-            raise NotImplementedError('array of arrays with items is not implemented: {!r}'.format(value))
+            raise NotImplementedError(f'array of arrays with items is not implemented: {value!r}')
 
         subtypes = ' / '.join(_get_types(value['items'], sources, extension_version, lang, field=value, n=2))
         if subtypes:
@@ -421,9 +422,9 @@ def _codelist_url(basename, extension_version, lang):
                       version=extension_version['version'], _anchor=basename)
     elif basename in codelist_names:
         anchor = re.sub(r'[A-Z]', lambda s: '-' + s[0].lower(), os.path.splitext(basename)[0])
-        url = '{}#{}'.format(codelist_reference_url, anchor)
+        url = f'{codelist_reference_url}#{anchor}'
     else:
-        raise NotImplementedError("linking to another extension's codelist is not implemented: {}".format(basename))
+        raise NotImplementedError(f"linking to another extension's codelist is not implemented: {basename}")
 
     return url
 
@@ -463,8 +464,8 @@ def _get_sources(schema, lang):
         # Release
         '': {
             'type': 'core',
-            'url': '{}#release'.format(release_reference_url),
-            'field_url_prefix': '{}#release-schema.json,,'.format(release_reference_url)
+            'url': f'{release_reference_url}#release',
+            'field_url_prefix': f'{release_reference_url}#release-schema.json,,'
         }
     }
 
@@ -475,15 +476,15 @@ def _get_sources(schema, lang):
 
             sources[name] = {
                 'type': 'extension',
-                'url': '{}#{}'.format(url, name.lower()),
-                'field_url_prefix': '{}#{}.'.format(url, name),
+                'url': f'{url}#{name.lower()}',
+                'field_url_prefix': f'{url}#{name}.',
                 'extension_name': extensions[source['identifier']]['name'][lang],
                 'extension_url': url_for('extension_documentation', **source, lang=lang),
             }
         else:
             sources[name] = {
                 'type': 'core',
-                'url': '{}#{}'.format(release_reference_url, name.lower()),
+                'url': f'{release_reference_url}#{name.lower()}',
             }
 
             # OCDS 1.1 doesn't list OrganizationReference's fields.

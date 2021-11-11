@@ -1,0 +1,34 @@
+name: Translations
+on:
+  pull_request: {}
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.6
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt', 'setup.py') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+      - name: Install translate-toolkit
+        run: |
+          sudo apt update
+          sudo apt install translate-toolkit
+      - run: pip install -r requirements.txt
+      - name: Update catalogs
+        working-directory: extension_explorer
+        run: |
+          pybabel extract -F babel.cfg -o messages.pot .
+          pybabel update -i messages.pot -d translations
+      - name: Count incomplete translations
+        run: |
+          output=$(find . -name LC_MESSAGES -exec pocount --incomplete --short "{}" +)
+          echo $output
+          [ "$output" = "" ]
