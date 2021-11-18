@@ -30,7 +30,7 @@ jobs:
           ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
           python freeze.py
       - name: Compile translations
-        working-directory: extension-explorer
+        working-directory: extension_explorer
         run: pybabel compile -d translations -f
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
