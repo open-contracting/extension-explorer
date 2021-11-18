@@ -29,6 +29,9 @@ jobs:
           git clone https://github.com/open-contracting/ocds-extensions-translations.git
           ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
           python freeze.py
+      - name: Compile translations
+        working-directory: extension-explorer
+        run: pybabel compile -d translations -f
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
