@@ -22,6 +22,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - run: pip install -r requirements.txt
+      - name: Compile translations
+        working-directory: extension_explorer
+        run: pybabel compile -d translations -f
       - name: Build
         env:
           OCDS_GITHUB_ACCESS_TOKEN: ${{ secrets.OCDS_GITHUB_ACCESS_TOKEN }}
@@ -29,9 +32,6 @@ jobs:
           git clone https://github.com/open-contracting/ocds-extensions-translations.git
           ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
           python freeze.py
-      - name: Compile translations
-        working-directory: extension_explorer
-        run: pybabel compile -d translations -f
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
