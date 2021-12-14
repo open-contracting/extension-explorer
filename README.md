@@ -77,8 +77,7 @@ python freeze.py
 Preview the static site:
 
 ```shell
-cd extension_explorer/build
-python -m http.server
+python -m http.server --directory extension_explorer/build
 ```
 
 Open <http://localhost:8000>
