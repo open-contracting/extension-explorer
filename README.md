@@ -58,6 +58,8 @@ pybabel compile -d translations -f
 
 If adding a new language, update `LANGS` in `views.py`.
 
+Note: For translating the extensions themselves, see [these instructions](https://ocdsextensionregistry.readthedocs.io/en/latest/translation.html).
+
 ### Run in development
 
 ```
