@@ -16,9 +16,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
       - run: pip install -r requirements_dev.txt
-      - env:
-          PYTHONWARNINGS: error
-        run: pytest --cov extension_explorer
+      - run: pytest -W error --cov extension_explorer
       - env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: coveralls --service=github
