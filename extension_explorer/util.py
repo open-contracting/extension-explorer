@@ -37,11 +37,11 @@ def markdown(md):
     tokens = parser.parse(md, env)
     for token in tokens:
         if token.type == 'table_open':
-            token.attrs = [['class', 'table table-bordered']]
+            token.attrs = {'class': 'table table-bordered'}
         elif token.type == 'thead_open':
-            token.attrs = [['class', 'thead-light']]
+            token.attrs = {'class': 'thead-light'}
         elif token.type == 'th_open':
-            token.attrs = [['scope', 'col']]
+            token.attrs = {'scope': 'col'}
 
     return parser.renderer.render(tokens, parser.options, env)
 
