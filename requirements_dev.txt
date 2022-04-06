@@ -216,7 +216,7 @@ snowballstemmer==2.0.0
     # via
     #   -r requirements.txt
     #   sphinx
-sphinx==2.2.1
+sphinx==3.5.4
     # via
     #   -r requirements.txt
     #   myst-parser
