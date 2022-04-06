@@ -14,7 +14,7 @@ import lxml.html
 import requests
 from flask import url_for
 from flask_babel import gettext, ngettext
-from markdown_it.main import AttrDict, MarkdownIt
+from markdown_it.main import MarkdownIt
 from ocdskit.schema import get_schema_fields
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -32,7 +32,7 @@ def markdown(md):
     Renders Markdown text as HTML.
     """
     parser = MarkdownIt('default')
-    env = AttrDict()
+    env = {}
 
     tokens = parser.parse(md, env)
     for token in tokens:

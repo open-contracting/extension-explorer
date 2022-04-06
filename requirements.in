@@ -6,7 +6,7 @@ Frozen-Flask
 json_merge_patch
 jsonpointer
 lxml
-markdown-it-py
+markdown-it-py>=2
 ocdskit
 Pygments
 python-slugify
