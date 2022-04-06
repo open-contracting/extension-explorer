@@ -57,7 +57,7 @@ flask==1.1.1
     #   flask-babel
     #   frozen-flask
     #   pytest-flask
-flask-babel==0.12.2
+flask-babel==2.0.0
     # via -r requirements.txt
 flask-env==2.0.0
     # via -r requirements.txt
@@ -178,7 +178,7 @@ pytest==5.3.2
     #   pytest-flask
 pytest-cov==2.8.1
     # via -r requirements_dev.in
-pytest-flask==0.15.0
+pytest-flask==1.2.0
     # via -r requirements_dev.in
 python-slugify==1.2.6
     # via
@@ -188,6 +188,7 @@ pytz==2019.3
     # via
     #   -r requirements.txt
     #   babel
+    #   flask-babel
 pyyaml==5.4.1
     # via
     #   -r requirements.txt

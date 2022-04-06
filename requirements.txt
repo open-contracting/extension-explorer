@@ -31,7 +31,7 @@ flask==1.1.1
     #   -r requirements.in
     #   flask-babel
     #   frozen-flask
-flask-babel==0.12.2
+flask-babel==2.0.0
     # via -r requirements.in
 flask-env==2.0.0
     # via -r requirements.in
@@ -102,7 +102,9 @@ pyparsing==2.4.5
 python-slugify==1.2.6
     # via -r requirements.in
 pytz==2019.3
-    # via babel
+    # via
+    #   babel
+    #   flask-babel
 pyyaml==5.4.1
     # via
     #   -r requirements.in
