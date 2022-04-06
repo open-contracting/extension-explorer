@@ -44,7 +44,9 @@ ijson==2.5.1
 imagesize==1.1.0
     # via sphinx
 importlib-metadata==4.11.3
-    # via sphinx
+    # via
+    #   mdformat
+    #   sphinx
 itsdangerous==1.1.0
     # via flask
 jinja2==2.11.3
@@ -75,7 +77,7 @@ markdown-it-py==2.0.1
     #   ocds-babel
 markupsafe==1.1.1
     # via jinja2
-mdformat==0.5.6
+mdformat==0.7.14
     # via ocds-babel
 mdit-py-plugins==0.3.0
     # via myst-parser
@@ -140,6 +142,8 @@ sphinxcontrib-qthelp==1.0.2
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
+tomli==2.0.1
+    # via mdformat
 typing-extensions==4.1.1
     # via myst-parser
 unidecode==1.1.1
