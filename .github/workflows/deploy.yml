@@ -18,9 +18,8 @@ jobs:
           cache: pip
           cache-dependency-path: '**/requirements*.txt'
       - run: pip install -r requirements.txt
-      - name: Compile translations
-        working-directory: extension_explorer
-        run: pybabel compile -d translations -f
+      - working-directory: extension_explorer
+        run: pybabel compile -f -d locale
       - name: Build
         env:
           OCDS_GITHUB_ACCESS_TOKEN: ${{ secrets.OCDS_GITHUB_ACCESS_TOKEN }}

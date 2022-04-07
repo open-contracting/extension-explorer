@@ -53,7 +53,7 @@ tx pull -a
 Finally, compile messages:
 
 ```shell
-pybabel compile -d translations -f
+pybabel compile -f -d locale
 ```
 
 If adding a new language, update `LANGS` in `views.py`.

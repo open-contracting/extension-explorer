@@ -2,7 +2,7 @@
 host = https://www.transifex.com
 
 [ocds-extension-explorer.messages]
-file_filter = translations/<lang>/LC_MESSAGES/messages.po
+file_filter = locale/<lang>/LC_MESSAGES/messages.po
 minimum_perc = 0
 source_file = messages.pot
 source_lang = en
