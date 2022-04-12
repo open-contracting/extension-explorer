@@ -34,3 +34,5 @@ jobs:
           publish_dir: extension_explorer/build
           cname: extensions.open-contracting.org
           force_orphan: true
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
