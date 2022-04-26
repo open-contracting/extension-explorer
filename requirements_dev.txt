@@ -235,11 +235,11 @@ sphinx==4.5.0
     #   -r requirements.txt
     #   myst-parser
     #   ocdsextensionregistry
-sphinxcontrib-applehelp==1.0.1
+sphinxcontrib-applehelp==1.0.2
     # via
     #   -r requirements.txt
     #   sphinx
-sphinxcontrib-devhelp==1.0.1
+sphinxcontrib-devhelp==1.0.2
     # via
     #   -r requirements.txt
     #   sphinx
@@ -251,7 +251,7 @@ sphinxcontrib-jsmath==1.0.1
     # via
     #   -r requirements.txt
     #   sphinx
-sphinxcontrib-qthelp==1.0.2
+sphinxcontrib-qthelp==1.0.3
     # via
     #   -r requirements.txt
     #   sphinx
