@@ -10,17 +10,27 @@ alabaster==0.7.12
     # via
     #   -r requirements.txt
     #   sphinx
-attrs==19.3.0
+appdirs==1.4.4
     # via
     #   -r requirements.txt
+    #   requests-cache
+attrs==21.4.0
+    # via
+    #   -r requirements.txt
+    #   cattrs
     #   markdown-it-py
     #   pytest
+    #   requests-cache
 babel==2.9.1
     # via
     #   -r requirements.txt
     #   flask-babel
     #   ocdsextensionregistry
     #   sphinx
+cattrs==1.10.0
+    # via
+    #   -r requirements.txt
+    #   requests-cache
 certifi==2019.9.11
     # via
     #   -r requirements.txt
@@ -214,7 +224,7 @@ requests==2.25.1
     #   requests-cache
     #   sphinx
     #   transifex-client
-requests-cache==0.5.2
+requests-cache==0.9.4
     # via
     #   -r requirements.txt
     #   ocdsextensionregistry
@@ -224,6 +234,7 @@ six==1.11.0
     #   libsass
     #   packaging
     #   transifex-client
+    #   url-normalize
 smmap==5.0.0
     # via gitdb
 snowballstemmer==2.0.0
@@ -274,10 +285,15 @@ typing-extensions==4.1.1
     # via
     #   -r requirements.txt
     #   myst-parser
+url-normalize==1.4.3
+    # via
+    #   -r requirements.txt
+    #   requests-cache
 urllib3==1.26.5
     # via
     #   -r requirements.txt
     #   requests
+    #   requests-cache
     #   transifex-client
 wcwidth==0.1.8
     # via pytest
