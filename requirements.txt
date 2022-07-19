@@ -73,7 +73,7 @@ jsonref==0.2
     #   ocdsextensionregistry
     #   ocdskit
     #   ocdsmerge
-lxml==4.7.1
+lxml==4.9.1
     # via -r requirements.in
 markdown-it-py==2.0.1
     # via
