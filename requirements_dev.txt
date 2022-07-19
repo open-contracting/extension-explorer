@@ -121,7 +121,7 @@ jsonref==0.2
     #   ocdsmerge
 libsass==0.19.4
     # via -r requirements_dev.in
-lxml==4.7.1
+lxml==4.9.1
     # via -r requirements.txt
 markdown-it-py==2.0.1
     # via
