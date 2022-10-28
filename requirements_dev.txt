@@ -44,7 +44,7 @@ click==7.0
     #   -r requirements.txt
     #   flask
     #   pip-tools
-coverage==5.0.2
+coverage[toml]==5.5
     # via
     #   coveralls
     #   pytest-cov
@@ -117,7 +117,7 @@ json-merge-patch==0.2
     #   ocdsextensionregistry
 jsonpointer==2.0
     # via -r requirements.txt
-jsonref==0.2
+jsonref==1.0.0.post1
     # via
     #   -r requirements.txt
     #   ocdsextensionregistry
@@ -198,7 +198,7 @@ pytest==7.2.0
     #   -r requirements_dev.in
     #   pytest-cov
     #   pytest-flask
-pytest-cov==2.8.1
+pytest-cov==4.0.0
     # via -r requirements_dev.in
 pytest-flask==1.2.0
     # via -r requirements_dev.in
@@ -274,6 +274,8 @@ text-unidecode==1.3
     # via
     #   -r requirements.txt
     #   python-slugify
+toml==0.10.2
+    # via coverage
 tomli==2.0.1
     # via
     #   -r requirements.txt

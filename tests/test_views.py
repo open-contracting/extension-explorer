@@ -8,6 +8,7 @@ EMPTY_EXTENSIONS_JSON = os.path.join(os.path.dirname(os.path.realpath(__file__))
 def test_extensions_json(client):
     response = client.get(url_for('extensions_json'))
     assert response.status_code == 200
+    response.close()
 
 
 def test_home(client):
