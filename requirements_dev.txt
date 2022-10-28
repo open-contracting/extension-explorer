@@ -59,6 +59,8 @@ docutils==0.15.2
     #   sphinx
 entrypoints==0.3
     # via flake8
+exceptiongroup==1.0.0
+    # via pytest
 flake8==3.7.9
     # via -r requirements_dev.in
 flask==1.1.1
@@ -94,6 +96,8 @@ importlib-metadata==4.11.3
     #   -r requirements.txt
     #   mdformat
     #   sphinx
+iniconfig==1.1.1
+    # via pytest
 isort==5.7.0
     # via -r requirements_dev.in
 itsdangerous==1.1.0
@@ -148,8 +152,6 @@ mdurl==0.1.0
     # via
     #   -r requirements.txt
     #   markdown-it-py
-more-itertools==7.2.0
-    # via pytest
 myst-parser==0.17.0
     # via
     #   -r requirements.txt
@@ -179,8 +181,6 @@ pip-tools==6.4.0
     # via -r requirements_dev.in
 pluggy==0.13.1
     # via pytest
-py==1.10.0
-    # via pytest
 pycodestyle==2.5.0
     # via flake8
 pyflakes==2.1.1
@@ -193,7 +193,7 @@ pyparsing==2.4.5
     # via
     #   -r requirements.txt
     #   packaging
-pytest==5.3.2
+pytest==7.2.0
     # via
     #   -r requirements_dev.in
     #   pytest-cov
@@ -279,6 +279,7 @@ tomli==2.0.1
     #   -r requirements.txt
     #   mdformat
     #   pep517
+    #   pytest
 transifex-client==0.14.4
     # via -r requirements_dev.in
 typing-extensions==4.1.1
@@ -295,8 +296,6 @@ urllib3==1.26.5
     #   requests
     #   requests-cache
     #   transifex-client
-wcwidth==0.1.8
-    # via pytest
 werkzeug==0.16.0
     # via
     #   -r requirements.txt
