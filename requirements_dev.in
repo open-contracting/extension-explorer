@@ -7,6 +7,5 @@ pytest
 pytest-cov
 pytest-flask
 
-# Build utilities.
+# Build utilities
 libsass
-transifex-client

@@ -75,10 +75,6 @@ flask-env==2.0.0
     # via -r requirements.txt
 frozen-flask==0.15
     # via -r requirements.txt
-gitdb==4.0.9
-    # via gitpython
-gitpython==3.1.27
-    # via transifex-client
 idna==2.8
     # via
     #   -r requirements.txt
@@ -203,9 +199,7 @@ pytest-cov==4.0.0
 pytest-flask==1.2.0
     # via -r requirements_dev.in
 python-slugify==4.0.1
-    # via
-    #   -r requirements.txt
-    #   transifex-client
+    # via -r requirements.txt
 pytz==2019.3
     # via
     #   -r requirements.txt
@@ -223,7 +217,6 @@ requests==2.25.1
     #   ocdsmerge
     #   requests-cache
     #   sphinx
-    #   transifex-client
 requests-cache==0.9.4
     # via
     #   -r requirements.txt
@@ -233,10 +226,7 @@ six==1.11.0
     #   -r requirements.txt
     #   libsass
     #   packaging
-    #   transifex-client
     #   url-normalize
-smmap==5.0.0
-    # via gitdb
 snowballstemmer==2.0.0
     # via
     #   -r requirements.txt
@@ -282,8 +272,6 @@ tomli==2.0.1
     #   mdformat
     #   pep517
     #   pytest
-transifex-client==0.14.4
-    # via -r requirements_dev.in
 typing-extensions==4.1.1
     # via
     #   -r requirements.txt
@@ -297,7 +285,6 @@ urllib3==1.26.5
     #   -r requirements.txt
     #   requests
     #   requests-cache
-    #   transifex-client
 werkzeug==0.16.0
     # via
     #   -r requirements.txt
