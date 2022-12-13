@@ -31,7 +31,7 @@ cattrs==1.10.0
     # via
     #   -r requirements.txt
     #   requests-cache
-certifi==2019.9.11
+certifi==2022.12.7
     # via
     #   -r requirements.txt
     #   requests

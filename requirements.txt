@@ -23,7 +23,7 @@ babel==2.9.1
     #   sphinx
 cattrs==1.10.0
     # via requests-cache
-certifi==2019.9.11
+certifi==2022.12.7
     # via requests
 chardet==3.0.4
     # via requests
