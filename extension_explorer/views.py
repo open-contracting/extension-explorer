@@ -55,7 +55,7 @@ def inject_language_variables():
         new_view_args = request.view_args.copy()
         new_view_args['lang'] = lang
         return url_for(request.endpoint, **new_view_args)
-    return dict(change_lang_in_url=change_lang_in_url, langs=LANGS)
+    return {'change_lang_in_url': change_lang_in_url, 'langs': LANGS}
 
 
 @babel.localeselector
