@@ -27,7 +27,7 @@ certifi==2022.12.7
     # via requests
 chardet==3.0.4
     # via requests
-click==7.0
+click==8.1.3
     # via flask
 docutils==0.15.2
     # via
@@ -42,7 +42,7 @@ flask-babel==2.0.0
     # via -r requirements.in
 flask-env==2.0.0
     # via -r requirements.in
-frozen-flask==0.15
+frozen-flask==0.18
     # via -r requirements.in
 idna==2.8
     # via requests
