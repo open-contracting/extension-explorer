@@ -56,7 +56,7 @@ def get_extension_explorer_data_filename():
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'extensions.json')
 
 
-@lru_cache()
+@lru_cache
 def get_extensions(filename=None):
     """
     Returns the data file's parsed contents.
@@ -429,7 +429,7 @@ def _codelist_url(basename, extension_version, lang):
     return url
 
 
-@lru_cache()
+@lru_cache
 def _ocds_codelist_names():
     """
     Returns the names of the codelists in the OCDS release schema.
@@ -522,7 +522,7 @@ def _patch_schema_recursive(schema, version, lang, include_test_dependencies=Fal
         _patch_schema_recursive(schema, version, lang, include_test_dependencies=include_test_dependencies)
 
 
-@lru_cache()
+@lru_cache
 def _extension_versions_by_base_url():
     extensions = get_extensions(get_extension_explorer_data_filename())
 
@@ -533,7 +533,7 @@ def _extension_versions_by_base_url():
     return mapping
 
 
-@lru_cache()
+@lru_cache
 def _ocds_release_schema(lang):
     return requests.get(_ocds_release_schema_url(lang)).json()
 
