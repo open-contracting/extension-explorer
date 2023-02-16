@@ -20,13 +20,13 @@ LANGS = {
 
 class Configuration(metaclass=MetaFlaskEnv):
     ENV_PREFIX = 'FLASK_'
-    JSONIFY_PRETTYPRINT_REGULAR = True
     FREEZER_IGNORE_404_NOT_FOUND = True
 
 
 app = Flask(__name__)
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
+app.json.compact = False
 app.config.from_object(Configuration)
 babel = Babel(app)
 
