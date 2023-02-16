@@ -78,8 +78,10 @@ markdown-it-py==2.0.1
     #   mdit-py-plugins
     #   myst-parser
     #   ocds-babel
-markupsafe==1.1.1
-    # via jinja2
+markupsafe==2.1.2
+    # via
+    #   jinja2
+    #   werkzeug
 mdformat==0.7.14
     # via ocds-babel
 mdit-py-plugins==0.3.0
@@ -159,7 +161,7 @@ urllib3==1.26.5
     # via
     #   requests
     #   requests-cache
-werkzeug==0.16.0
+werkzeug==2.2.3
     # via
     #   -r requirements.in
     #   flask
