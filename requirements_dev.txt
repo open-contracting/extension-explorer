@@ -65,7 +65,7 @@ exceptiongroup==1.0.0
     # via pytest
 flake8==3.7.9
     # via -r requirements_dev.in
-flask==1.1.1
+flask==2.2.3
     # via
     #   -r requirements.txt
     #   flask-babel
@@ -93,7 +93,7 @@ iniconfig==1.1.1
     # via pytest
 isort==5.7.0
     # via -r requirements_dev.in
-itsdangerous==1.1.0
+itsdangerous==2.1.2
     # via
     #   -r requirements.txt
     #   flask
