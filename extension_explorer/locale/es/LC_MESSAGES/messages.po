@@ -534,11 +534,11 @@ msgstr ""
 
 #: templates/publishers.html:63
 msgid ""
-"Check your data using the <a href=\"https://standard.open-"
-"contracting.org/review/\">OCDS Data Review Tool</a>."
+"Check your data using the <a href=\"https://review.standard.open-"
+"contracting.org/\">OCDS Data Review Tool</a>."
 msgstr ""
-"Revisar sus datos utilizando la <a href=\"https://standard.open-"
-"contracting.org/review/\">Herramienta de Revisión de Datos OCDS</a>."
+"Revisar sus datos utilizando la <a href=\"https://review.standard.open-"
+"contracting.org/\">Herramienta de Revisión de Datos OCDS</a>."
 
 #: templates/publishers.html:68
 msgid "Create an extension"
@@ -967,10 +967,10 @@ msgstr ""
 
 #: templates/users.html:42
 msgid ""
-"Upload the data to the <a href=\"https://standard.open-"
-"contracting.org/review/\">OCDS Data Review Tool</a>, which lists the "
+"Upload the data to the <a href=\"https://review.standard.open-"
+"contracting.org/\">OCDS Data Review Tool</a>, which lists the "
 "extensions used and links to their documentation."
 msgstr ""
-"Suba los datos a la <a href=\"https://standard.open-"
-"contracting.org/review/\">Herramienta de Revisión de Datos OCDS</a>, la cual"
+"Suba los datos a la <a href=\"https://review.standard.open-"
+"contracting.org/\">Herramienta de Revisión de Datos OCDS</a>, la cual"
 " enlista las extensiones utilizadas y los enlaces a su documentación."
