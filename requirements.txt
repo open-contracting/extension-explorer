@@ -13,7 +13,6 @@ appdirs==1.4.4
 attrs==21.4.0
     # via
     #   cattrs
-    #   markdown-it-py
     #   requests-cache
 babel==2.9.1
     # via
@@ -71,7 +70,7 @@ jsonref==1.0.0.post1
     #   ocdsmerge
 lxml==4.9.1
     # via -r requirements.in
-markdown-it-py==2.0.1
+markdown-it-py==2.2.0
     # via
     #   -r requirements.in
     #   mdformat
