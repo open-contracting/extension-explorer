@@ -1,5 +1,13 @@
 {% extends 'layout.html' %}
 
+{% block extra_head %}
+  {% if default_master %}
+  <link rel="canonical" value="{{ url_for(request.endpoint, lang=lang, identifier=identifier, version=extension.latest_version) }}">
+  {% endif %}
+{% block style %}
+{% endblock %}
+{% endblock %}
+
 {% block extensions_nav_link %}active{% endblock %}
 
 {% block main %}

@@ -42,9 +42,11 @@ def get_extension(identifier):
 def get_extension_and_version(identifier, version):
     try:
         extensions = get_extensions(get_extension_explorer_data_filename())
-        if version == 'master' and version not in extensions[identifier]['versions']:
+        # Always render a master branch, even if not present.
+        default_master = version == 'master' and version not in extensions[identifier]['versions']
+        if default_master:
             version = extensions[identifier]['latest_version']
-        return extensions[identifier], extensions[identifier]['versions'][version]
+        return extensions[identifier], extensions[identifier]['versions'][version], default_master
     except KeyError:
         abort(404)
 
@@ -119,7 +121,7 @@ def extension(lang, identifier):
 
 @app.route('/<lang>/extensions/<identifier>/<version>/')
 def extension_documentation(lang, identifier, version):
-    extension, extension_version = get_extension_and_version(identifier, version)
+    extension, extension_version, default_master = get_extension_and_version(identifier, version)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
 
@@ -133,13 +135,13 @@ def extension_documentation(lang, identifier, version):
 
     return render_template('extension_documentation.html', lang=lang, identifier=identifier, version=version,
                            extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, readme_html=readme_html, headings=headings,
-                           highlight_css=highlight_css)
+                           historical_versions=historical_versions, default_master=default_master,
+                           readme_html=readme_html, headings=headings, highlight_css=highlight_css)
 
 
 @app.route('/<lang>/extensions/<identifier>/<version>/schema/')
 def extension_schema(lang, identifier, version):
-    extension, extension_version = get_extension_and_version(identifier, version)
+    extension, extension_version, default_master = get_extension_and_version(identifier, version)
     if not extension_version['schemas']['release-schema.json'][lang]:
         abort(404)
 
@@ -149,12 +151,13 @@ def extension_schema(lang, identifier, version):
 
     return render_template('extension_schema.html', lang=lang, identifier=identifier, version=version,
                            extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, tables=tables, removed_fields=removed_fields)
+                           historical_versions=historical_versions, default_master=default_master, tables=tables,
+                           removed_fields=removed_fields)
 
 
 @app.route('/<lang>/extensions/<identifier>/<version>/codelists/')
 def extension_codelists(lang, identifier, version):
-    extension, extension_version = get_extension_and_version(identifier, version)
+    extension, extension_version, default_master = get_extension_and_version(identifier, version)
     if not extension_version['codelists']:
         abort(404)
 
@@ -163,19 +166,19 @@ def extension_codelists(lang, identifier, version):
 
     return render_template('extension_codelists.html', lang=lang, identifier=identifier, version=version,
                            extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, tables=tables)
+                           historical_versions=historical_versions, default_master=default_master, tables=tables)
 
 
 @app.route('/<lang>/extensions/<identifier>/<version>/extension.json')
 def extension_metadata_file(lang, identifier, version):
-    extension, extension_version = get_extension_and_version(identifier, version)
+    extension, extension_version, _ = get_extension_and_version(identifier, version)
 
     return extension_version['metadata']
 
 
 @app.route('/<lang>/extensions/<identifier>/<version>/README.md')
 def extension_documentation_file(lang, identifier, version):
-    extension, extension_version = get_extension_and_version(identifier, version)
+    extension, extension_version, _ = get_extension_and_version(identifier, version)
     if not extension_version['readme'][lang]:
         abort(404)
 
@@ -184,7 +187,7 @@ def extension_documentation_file(lang, identifier, version):
 
 @app.route('/<lang>/extensions/<identifier>/<version>/<filename>')
 def extension_schema_file(lang, identifier, version, filename):
-    extension, extension_version = get_extension_and_version(identifier, version)
+    extension, extension_version, _ = get_extension_and_version(identifier, version)
     if not extension_version['schemas'][filename] or not extension_version['schemas'][filename][lang]:
         abort(404)
 
@@ -193,7 +196,7 @@ def extension_schema_file(lang, identifier, version, filename):
 
 @app.route('/<lang>/extensions/<identifier>/<version>/codelists/<filename>')
 def extension_codelist_file(lang, identifier, version, filename):
-    extension, extension_version = get_extension_and_version(identifier, version)
+    extension, extension_version, _ = get_extension_and_version(identifier, version)
     if not extension_version['codelists'][filename] or not extension_version['codelists'][filename][lang]:
         abort(404)
 
