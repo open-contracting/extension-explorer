@@ -11,6 +11,11 @@
 
   <title>{% block title %}{% endblock %}</title>
   <script src="https://kite.open-contracting.org/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+{% for lang, name in langs.items() %}
+  {% if request.view_args.lang != lang %}
+  <link rel="alternate" hreflang="{{ lang }}" href="{{ change_lang_in_url(lang) }}">
+  {% endif %}
+{% endfor %}
 {% block extra_head %}
 {% endblock %}
 </head>
