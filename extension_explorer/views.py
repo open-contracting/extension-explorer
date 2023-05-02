@@ -28,7 +28,7 @@ app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 app.json.compact = False
 app.config.from_object(Configuration)
-babel = Babel(app)
+babel = Babel(app, locale_selector=get_locale)
 
 
 def get_extension(identifier):
@@ -60,7 +60,6 @@ def inject_language_variables():
     return {'change_lang_in_url': change_lang_in_url, 'langs': LANGS}
 
 
-@babel.localeselector
 def get_locale():
     return request.view_args.get('lang') or 'en'
 
