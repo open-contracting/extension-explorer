@@ -23,6 +23,10 @@ class Configuration(metaclass=MetaFlaskEnv):
     FREEZER_IGNORE_404_NOT_FOUND = True
 
 
+def get_locale():
+    return request.view_args.get('lang') or 'en'
+
+
 app = Flask(__name__)
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
@@ -58,10 +62,6 @@ def inject_language_variables():
         new_view_args['lang'] = lang
         return url_for(request.endpoint, **new_view_args)
     return {'change_lang_in_url': change_lang_in_url, 'langs': LANGS}
-
-
-def get_locale():
-    return request.view_args.get('lang') or 'en'
 
 
 @app.errorhandler(UnknownLocaleError)
