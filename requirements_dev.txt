@@ -20,16 +20,12 @@ attrs==21.4.0
     #   cattrs
     #   pytest
     #   requests-cache
-babel==2.9.1
+babel==2.12.1
     # via
     #   -r requirements.txt
     #   flask-babel
     #   ocdsextensionregistry
     #   sphinx
-blinker==1.6.2
-    # via
-    #   -r requirements.txt
-    #   flask
 build==0.10.0
     # via pip-tools
 cattrs==1.10.0
@@ -68,13 +64,13 @@ exceptiongroup==1.0.0
     # via pytest
 flake8==3.7.9
     # via -r requirements_dev.in
-flask==2.3.2
+flask==2.2.5
     # via
     #   -r requirements.txt
     #   flask-babel
     #   frozen-flask
     #   pytest-flask
-flask-babel==2.0.0
+flask-babel==3.1.0
     # via -r requirements.txt
 flask-env==2.0.0
     # via -r requirements.txt
@@ -202,10 +198,9 @@ pytest-flask==1.2.0
     # via -r requirements_dev.in
 python-slugify==4.0.1
     # via -r requirements.txt
-pytz==2019.3
+pytz==2023.3
     # via
     #   -r requirements.txt
-    #   babel
     #   flask-babel
 pyyaml==5.4.1
     # via
