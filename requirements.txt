@@ -14,7 +14,7 @@ attrs==21.4.0
     # via
     #   cattrs
     #   requests-cache
-babel==2.9.1
+babel==2.12.1
     # via
     #   -r requirements.in
     #   flask-babel
@@ -39,7 +39,7 @@ flask==2.3.2
     #   -r requirements.in
     #   flask-babel
     #   frozen-flask
-flask-babel==2.0.0
+flask-babel==3.1.0
     # via -r requirements.in
 flask-env==2.0.0
     # via -r requirements.in
@@ -111,10 +111,8 @@ pyparsing==2.4.5
     # via packaging
 python-slugify==4.0.1
     # via -r requirements.in
-pytz==2019.3
-    # via
-    #   babel
-    #   flask-babel
+pytz==2023.3
+    # via flask-babel
 pyyaml==5.4.1
     # via
     #   -r requirements.in
