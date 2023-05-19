@@ -19,5 +19,6 @@ jobs:
         run: curl -s -S --retry 3 $BASEDIR/tests/script.sh | bash -
       - run: pip install -r requirements_dev.txt
       - env:
+          # ocdsextensionregistry is run as a command in a workflow.
           STANDARD_MAINTENANCE_SCRIPTS_IGNORE: ocdsextensionregistry
         run: pytest /tmp/test_requirements.py
