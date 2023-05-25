@@ -24,7 +24,7 @@ cattrs==1.10.0
     # via requests-cache
 certifi==2022.12.7
     # via requests
-chardet==3.0.4
+charset-normalizer==3.1.0
     # via requests
 click==8.1.3
     # via flask
@@ -115,7 +115,7 @@ pyyaml==5.4.1
     # via
     #   -r requirements.in
     #   myst-parser
-requests==2.25.1
+requests==2.31.0
     # via
     #   -r requirements.in
     #   ocdsextensionregistry
