@@ -24,6 +24,7 @@ jobs:
       - name: Build
         env:
           OCDS_GITHUB_ACCESS_TOKEN: ${{ secrets.OCDS_GITHUB_ACCESS_TOKEN }}
+        shell: bash
         run: |
           git clone https://github.com/open-contracting/ocds-extensions-translations.git
           ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
