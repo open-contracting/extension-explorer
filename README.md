@@ -63,7 +63,7 @@ Note: For translating the extensions themselves, see [these instructions](https:
 ### Run in development
 
 ```
-FLASK_ENV=development FLASK_APP=extension_explorer/views.py flask run
+env FLASK_DEBUG=1 FLASK_APP=extension_explorer/views.py flask run
 ```
 
 Open <http://127.0.0.1:5000>
