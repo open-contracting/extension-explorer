@@ -424,6 +424,9 @@ def _codelist_url(basename, extension_version, lang):
         anchor = re.sub(r'[A-Z]', lambda s: '-' + s[0].lower(), os.path.splitext(basename)[0])
         url = f'{codelist_reference_url}#{anchor}'
     else:
+        # XXX: Hardcoding.
+        if basename == 'statistic.csv':
+            url = url_for('extension_codelists', lang=lang, identifier='bids', version='master', _anchor=basename)
         raise NotImplementedError(f"linking to another extension's codelist is not implemented: {basename}")
 
     return url
