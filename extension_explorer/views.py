@@ -31,6 +31,7 @@ app = Flask(__name__)
 app.jinja_env.trim_blocks = True
 app.jinja_env.lstrip_blocks = True
 app.json.compact = False
+app.json.sort_keys = False
 app.config.from_object(Configuration)
 babel = Babel(app, locale_selector=get_locale)
 
