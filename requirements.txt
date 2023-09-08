@@ -111,7 +111,7 @@ python-slugify==4.0.1
     # via -r requirements.in
 pytz==2023.3
     # via flask-babel
-pyyaml==5.4.1
+pyyaml==6.0.1
     # via
     #   -r requirements.in
     #   myst-parser
