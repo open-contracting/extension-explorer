@@ -51,8 +51,8 @@ def get_extension_explorer_data_filename():
     Returns the data file's path. Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
     ``extension_explorer/data/extensions.json``).
     """
-    if os.environ.get('EXTENSION_EXPLORER_DATA_FILENAME'):
-        return os.environ.get('EXTENSION_EXPLORER_DATA_FILENAME')
+    if os.getenv('EXTENSION_EXPLORER_DATA_FILENAME'):
+        return os.getenv('EXTENSION_EXPLORER_DATA_FILENAME')
     return os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'extensions.json')
 
 
