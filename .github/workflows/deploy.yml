@@ -23,6 +23,7 @@ jobs:
         run: pybabel compile -f -d locale
       - name: Build
         env:
+          # For the ocdsextensionregistry package to use the GitHub API to get the organization name.
           OCDS_GITHUB_ACCESS_TOKEN: ${{ secrets.OCDS_GITHUB_ACCESS_TOKEN }}
         shell: bash
         run: |
