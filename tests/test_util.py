@@ -2,9 +2,17 @@ from copy import deepcopy
 
 import pytest
 
-from extension_explorer.util import (get_codelist_tables, get_extensions, get_present_and_historical_versions,
-                                     get_removed_fields, get_schema_tables, highlight_json, identify_headings,
-                                     markdown, set_tags)
+from extension_explorer.util import (
+    get_codelist_tables,
+    get_extensions,
+    get_present_and_historical_versions,
+    get_removed_fields,
+    get_schema_tables,
+    highlight_json,
+    identify_headings,
+    markdown,
+    set_tags,
+)
 
 extension_version_template = {
     "id": "template",
