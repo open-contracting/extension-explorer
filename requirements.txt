@@ -20,6 +20,8 @@ babel==2.12.1
     #   flask-babel
     #   ocdsextensionregistry
     #   sphinx
+blinker==1.7.0
+    # via flask
 cattrs==1.10.0
     # via requests-cache
 certifi==2023.7.22
@@ -32,7 +34,7 @@ docutils==0.20.1
     # via
     #   myst-parser
     #   sphinx
-flask==2.2.5
+flask==3.0.0
     # via
     #   -r requirements.in
     #   flask-babel
