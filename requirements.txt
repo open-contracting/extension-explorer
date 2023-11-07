@@ -151,11 +151,11 @@ tomli==2.0.1
     # via mdformat
 url-normalize==1.4.3
     # via requests-cache
-urllib3==1.26.17
+urllib3==1.26.18
     # via
     #   requests
     #   requests-cache
-werkzeug==2.3.3
+werkzeug==3.0.1
     # via
     #   -r requirements.in
     #   flask
