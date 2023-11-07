@@ -34,16 +34,16 @@ docutils==0.20.1
     # via
     #   myst-parser
     #   sphinx
-flask==3.0.0
+flask==2.3.3
     # via
     #   -r requirements.in
     #   flask-babel
     #   frozen-flask
-flask-babel==3.1.0
+flask-babel==4.0.0
     # via -r requirements.in
 flask-env==2.0.0
     # via -r requirements.in
-frozen-flask==0.18
+frozen-flask==0.19
     # via -r requirements.in
 idna==2.8
     # via requests
@@ -157,7 +157,8 @@ urllib3==1.26.18
     # via
     #   requests
     #   requests-cache
-werkzeug==3.0.1
+werkzeug==2.3.7
     # via
     #   -r requirements.in
     #   flask
+    #   frozen-flask

@@ -1,5 +1,6 @@
 Babel
-Flask
+# https://github.com/Frozen-Flask/Frozen-Flask/pull/132#issuecomment-1800289596
+Flask<3
 Flask-Babel
 Flask-Env
 Frozen-Flask
