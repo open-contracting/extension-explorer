@@ -26,6 +26,10 @@ babel==2.12.1
     #   flask-babel
     #   ocdsextensionregistry
     #   sphinx
+blinker==1.7.0
+    # via
+    #   -r requirements.txt
+    #   flask
 build==0.10.0
     # via pip-tools
 cattrs==1.10.0
@@ -64,7 +68,7 @@ exceptiongroup==1.0.0
     # via pytest
 flake8==3.7.9
     # via -r requirements_dev.in
-flask==2.2.5
+flask==3.0.0
     # via
     #   -r requirements.txt
     #   flask-babel
