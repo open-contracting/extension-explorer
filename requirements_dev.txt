@@ -68,7 +68,7 @@ exceptiongroup==1.0.0
     # via pytest
 flake8==3.7.9
     # via -r requirements_dev.in
-flask==2.3.3
+flask==3.0.0
     # via
     #   -r requirements.txt
     #   flask-babel
@@ -78,7 +78,7 @@ flask-babel==4.0.0
     # via -r requirements.txt
 flask-env==2.0.0
     # via -r requirements.txt
-frozen-flask==0.19
+frozen-flask==1.0.1
     # via -r requirements.txt
 idna==2.8
     # via
@@ -282,11 +282,10 @@ urllib3==1.26.18
     #   -r requirements.txt
     #   requests
     #   requests-cache
-werkzeug==2.3.7
+werkzeug==3.0.1
     # via
     #   -r requirements.txt
     #   flask
-    #   frozen-flask
     #   pytest-flask
 wheel==0.38.4
     # via pip-tools
