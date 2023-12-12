@@ -1,0 +1,23 @@
+{
+  "defaults": {
+    "ignore": [
+      "WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2"
+    ]
+  },
+  "urls": [
+    "http://127.0.0.1:8000/en/",
+    "http://127.0.0.1:8000/es/",
+    "http://127.0.0.1:8000/en/publishers/",
+    "http://127.0.0.1:8000/es/publishers/",
+    "http://127.0.0.1:8000/en/users/",
+    "http://127.0.0.1:8000/es/users/",
+    "http://127.0.0.1:8000/en/extensions/",
+    "http://127.0.0.1:8000/es/extensions/",
+    "http://127.0.0.1:8000/en/extensions/medicine/master/",
+    "http://127.0.0.1:8000/es/extensions/medicine/master/",
+    "http://127.0.0.1:8000/en/extensions/medicine/master/schema/",
+    "http://127.0.0.1:8000/es/extensions/medicine/master/schema/",
+    "http://127.0.0.1:8000/en/extensions/medicine/master/codelists/",
+    "http://127.0.0.1:8000/es/extensions/medicine/master/codelists/"
+  ]
+}

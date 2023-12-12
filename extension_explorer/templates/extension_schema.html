@@ -56,7 +56,7 @@
       </p>
 
       <table class="table table-bordered">
-        <thead class="thead-light">
+        <thead class="table-light">
           <tr>
             <th scope="col">
               {{ _("Field") }}
@@ -85,13 +85,13 @@
             </td>
             <td>
       {% if field.url %}
-              <p class="font-italic">
+              <p class="fst-italic">
                 {{ _('This field is modified from its <a href="%(url)s">original version</a>.', url=field.url) }}
               </p>
       {% endif %}
               {{ field.description|safe }}
       {% if field.multilingual %}
-              <p class="font-italic">
+              <p class="fst-italic">
                 {{ _('This field has <a href="https://standard.open-contracting.org/latest/{{ lang }}/schema/reference/#language">multilingual support</a>.') }}
               </p>
       {% endif %}
@@ -104,7 +104,7 @@
                 {{ field.schema.deprecated.description }}
               </p>
         {% else %}
-              <p class="font-italic">
+              <p class="fst-italic">
                 {{ _('The extension undoes the deprecation of this field.') }}
               </p>
         {% endif %}

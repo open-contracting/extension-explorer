@@ -11,60 +11,60 @@
         {{ _("Extensions") }}
       </h1>
 
-      <form class="form-inline justify-content-center mt-4">
-      {{ _("Show") }}
+      <form class="form-inline d-flex justify-content-center align-items-center g-2 mt-4">
+        {{ _("Show") }}
 
-      <select class="custom-select filter-select mx-1" id="filter-core">
-        <option value="">
-          {{ _("any") }}
-        </option>
-        <option value=".recommended">
-          {{ _("recommended") }}
-        </option>
-      </select>
+        <select class="form-select filter-select mx-1" id="filter-core" aria-label="{{ _('Extension') }}">
+          <option value="">
+            {{ _("any") }}
+          </option>
+          <option value=".recommended">
+            {{ _("recommended") }}
+          </option>
+        </select>
 
-      {{ _("extensions") }}
+        {{ _("extensions") }}
 
   {% if publishers|length > 1 %}
-      {{ _("by") }}
-      <select class="custom-select filter-select mx-1" id="filter-publisher">
-        <option value="">
-          {{ _("any maintainer") }}
-        </option>
+        {{ _("by") }}
+        <select class="form-select filter-select mx-1" id="filter-publisher" aria-label="{{ _('Maintainer') }}">
+          <option value="">
+            {{ _("any maintainer") }}
+          </option>
     {% for slug, title in publishers|dictsort(false, 'value') %}
-        <option value=".publisher-{{ slug }}">
-          {{ title }}
-        </option>
+          <option value=".publisher-{{ slug }}">
+            {{ title }}
+          </option>
     {% endfor %}
-      </select>
+        </select>
   {% endif %}
 
   {% if profiles %}
-      {{ _("in") }}
-      <select class="custom-select filter-select mx-1" id="filter-profile">
-        <option value="*">
-          {{ _("any profile") }}
-        </option>
+        {{ _("in") }}
+        <select class="form-select filter-select mx-1" id="filter-profile" aria-label="{{ _('Profile') }}">
+          <option value="*">
+            {{ _("any profile") }}
+          </option>
     {% for slug, title in profiles|dictsort(false, 'value') %}
-        <option value=".profile-{{ slug }}">
-          {{ title }}
-        </option>
+          <option value=".profile-{{ slug }}">
+            {{ title }}
+          </option>
     {% endfor %}
-      </select>
+        </select>
   {% endif %}
 
   {% if topics %}
-      {{ _("about") }}
-      <select class="custom-select filter-select mx-1" id="filter-topic">
-        <option value="*">
-          {{ _("any topic") }}
-        </option>
+        {{ _("about") }}
+        <select class="form-select filter-select mx-1" id="filter-topic"> aria-label="{{ _('Topic') }}"
+          <option value="*">
+            {{ _("any topic") }}
+          </option>
     {% for slug, title in topics|dictsort(false, 'value') %}
-        <option value=".topic-{{ slug }}">
-          {{ title }}
-        </option>
+          <option value=".topic-{{ slug }}">
+            {{ title }}
+          </option>
     {% endfor %}
-      </select>
+        </select>
   {% endif %}
       </form>
 
@@ -84,7 +84,7 @@
               {{ extension.name[lang] }}
             </a>
     {% if 'recommended' in extension.tags %}
-            <span class="badge badge-pill badge-light">{{ _("Recommended") }}</span>
+            <span class="badge rounded-pill text-bg-light">{{ _("Recommended") }}</span>
     {% endif %}
           </h2>
           <p class="card-text">
