@@ -80,9 +80,7 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title h5">
-            <a href="{{ url_for('extension_documentation', lang=lang, identifier=extension.id, version=extension.latest_version) }}">
-              {{ extension.name[lang] }}
-            </a>
+            <a href="{{ url_for('extension_documentation', lang=lang, identifier=extension.id, version=extension.latest_version) }}">{{ extension.name[lang] }}</a>
     {% if 'recommended' in extension.tags %}
             <span class="badge rounded-pill text-bg-light">{{ _("Recommended") }}</span>
     {% endif %}
