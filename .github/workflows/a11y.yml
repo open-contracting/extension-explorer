@@ -1,0 +1,33 @@
+name: Accessibility
+on: [push, pull_request]
+jobs:
+  build:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    # https://github.com/pa11y/pa11y-ci#pa11y-ci-3-and-ubuntu
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: pip
+          cache-dependency-path: '**/requirements*.txt'
+      - run: npm install pa11y-ci
+      - run: pip install -r requirements.txt
+      - working-directory: extension_explorer
+        run: pybabel compile -f -d locale
+      - name: Build
+        shell: bash
+        # The Medicine extension has examples, tables, schema and codelists.
+        run: |
+          git clone https://github.com/open-contracting/ocds-extensions-translations.git
+          ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale medicine==master > extension_explorer/data/extensions.json
+          python freeze.py
+      - name: Serve
+        run: |
+          python -m http.server -d extension_explorer/build/ &
+          sleep 5
+      - run: npx pa11y-ci -c pa11y.default.json

@@ -14,7 +14,7 @@
       <form class="form-inline d-flex justify-content-center align-items-center g-2 mt-4">
         {{ _("Show") }}
 
-        <select class="form-select filter-select mx-1" id="filter-core">
+        <select class="form-select filter-select mx-1" id="filter-core" aria-label="{{ _('Extension') }}">
           <option value="">
             {{ _("any") }}
           </option>
@@ -27,7 +27,7 @@
 
   {% if publishers|length > 1 %}
         {{ _("by") }}
-        <select class="form-select filter-select mx-1" id="filter-publisher">
+        <select class="form-select filter-select mx-1" id="filter-publisher" aria-label="{{ _('Maintainer') }}">
           <option value="">
             {{ _("any maintainer") }}
           </option>
@@ -41,7 +41,7 @@
 
   {% if profiles %}
         {{ _("in") }}
-        <select class="form-select filter-select mx-1" id="filter-profile">
+        <select class="form-select filter-select mx-1" id="filter-profile" aria-label="{{ _('Profile') }}">
           <option value="*">
             {{ _("any profile") }}
           </option>
@@ -55,7 +55,7 @@
 
   {% if topics %}
         {{ _("about") }}
-        <select class="form-select filter-select mx-1" id="filter-topic">
+        <select class="form-select filter-select mx-1" id="filter-topic"> aria-label="{{ _('Topic') }}"
           <option value="*">
             {{ _("any topic") }}
           </option>
