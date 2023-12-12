@@ -15,7 +15,9 @@
     <div class="row mt-4">
       <div class="col">
         <p class="lead">
-          {% include '_logo.html' %}
+          <div class="d-inline-block">
+            {% include '_logo.html' %}
+          </div>
 
           {{ _('This page has moved to a <a href="%(redirect)s">%(redirect)s</a>', redirect=redirect) }}
         </p>

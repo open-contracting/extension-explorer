@@ -16,7 +16,7 @@
 
           <ul class="nav ee-sidenav">
   {% for heading in headings %}
-            <li class="ml-{% if heading.level <= 2 %}0{% else %}{{ [heading.level - 1, 4]|min }}{% endif %}">
+            <li class="ms-{% if heading.level <= 2 %}0{% else %}{{ [heading.level - 1, 4]|min }}{% endif %}">
               <a href="#{{ heading.id }}">
                 {{ heading.text }}
               </a>

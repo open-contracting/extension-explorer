@@ -39,7 +39,7 @@ def markdown(md):
         if token.type == 'table_open':
             token.attrs = {'class': 'table table-bordered'}
         elif token.type == 'thead_open':
-            token.attrs = {'class': 'thead-light'}
+            token.attrs = {'class': 'table-light'}
         elif token.type == 'th_open':
             token.attrs = {'scope': 'col'}
 

@@ -2,23 +2,20 @@
 // You can find them in node_modules/bootstrap/scss/_variables.scss
 // Copy the variables you need into this file, don't modify files under node_modules/
 
-// $table-border-color
+$primary: #9baf00;
+$warning: #d9e021;
 $light: #e1e4e5;
-
-// $nav-background-color
 $dark: #373738;
 
-// $link-color
-$primary: #9BAF00;
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+  // xxl: 1320px
+);
 
-// .oc-fixed-alert-header
-$warning: #d9e021;
-
-// $base-font-family
 $font-family-sans-serif: "Lato", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-// $custom-font-family
-$headings-font-family: "stratum-1-web", "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-// $code-font-family
 $font-family-monospace: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
+$headings-font-family: "stratum-1-web", "Helvetica Neue", Helvetica, Arial, sans-serif;

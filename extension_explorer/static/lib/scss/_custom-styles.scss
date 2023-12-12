@@ -24,16 +24,27 @@ table code {
 
 // Extra
 
-.align-items-center {
-  -ms-flex-align: center !important;
-  align-items: center !important;
-}
-
 table.docutils {
   @extend .table;
   @extend .table-bordered;
 
   tt {
     @extend code;
+  }
+}
+
+.form-inline {
+  flex-flow: row wrap;
+
+  .form-select {
+    display: inline-block;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .form-inline {
+    .form-select {
+      width: auto;
+    }
   }
 }
