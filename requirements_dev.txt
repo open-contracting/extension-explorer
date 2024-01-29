@@ -177,7 +177,7 @@ packaging==23.1
     #   build
     #   pytest
     #   sphinx
-pip-tools==6.12.1
+pip-tools==7.3.0
     # via -r requirements_dev.in
 pluggy==0.13.1
     # via pytest
@@ -272,6 +272,7 @@ tomli==2.0.1
     #   -r requirements.txt
     #   build
     #   mdformat
+    #   pip-tools
     #   pytest
 url-normalize==1.4.3
     # via
