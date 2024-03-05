@@ -167,7 +167,7 @@ ocdsmerge==0.6.4
     # via
     #   -r requirements.txt
     #   ocdskit
-orjson==3.9.5
+orjson==3.9.15
     # via
     #   -r requirements.txt
     #   ocdskit
@@ -273,6 +273,7 @@ tomli==2.0.1
     #   build
     #   mdformat
     #   pip-tools
+    #   pyproject-hooks
     #   pytest
 url-normalize==1.4.3
     # via
