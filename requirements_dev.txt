@@ -157,7 +157,7 @@ ocds-babel[markdown]==0.3.5
     # via
     #   -r requirements.txt
     #   ocdsextensionregistry
-ocdsextensionregistry[cli]==0.1.3
+ocdsextensionregistry[cli]==0.3.4
     # via
     #   -r requirements.txt
     #   ocdskit
