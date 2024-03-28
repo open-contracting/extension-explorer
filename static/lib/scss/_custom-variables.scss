@@ -1,0 +1,21 @@
+// Overwrite Bootstrap's variables here
+// You can find them in node_modules/bootstrap/scss/_variables.scss
+// Copy the variables you need into this file, don't modify files under node_modules/
+
+$primary: #6f7e00; // #9baf00
+$warning: #d9e021;
+$light: #e1e4e5;
+$dark: #373738;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px
+  // xxl: 1320px
+);
+
+$font-family-sans-serif: "Lato", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-family-monospace: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+
+$headings-font-family: "stratum-1-web", "Helvetica Neue", Helvetica, Arial, sans-serif;

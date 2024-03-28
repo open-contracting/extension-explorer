@@ -1,0 +1,975 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Bid statistics and details — Schema — OCDS Extension Explorer</title>
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/bids/master/schema/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/bids/master/schema/">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/en/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        OCDS Extension Explorer
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/en/">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/en/extensions/">
+            Extensions
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/en/publishers/">
+            Publisher guidance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/en/users/">
+            User guidance
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+            <span class="sr-only">Select language</span>
+            English
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4 active" href="/en/extensions/bids/master/schema/">
+              English
+            </a>
+            <a class="dropdown-item px-4" href="/es/extensions/bids/master/schema/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Bid statistics and details
+      </h1>
+
+      <p class="lead">
+        Adds a bids object to describe individual bids and aggregate statistics.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Version:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/en/extensions/bids/master/schema/" selected>
+              master
+              (latest)
+            </option>
+            <option value="/en/extensions/bids/v1.1.5/schema/">
+              v1.1.5
+              (2020-08-20)
+            </option>
+          </optgroup>
+          <optgroup label="Historical versions">
+            <option value="/en/extensions/bids/v1.1.4/schema/">
+              v1.1.4
+              (2019-02-25)
+            </option>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/bids/master/">
+            Documentation
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/en/extensions/bids/master/schema/">
+            Schema
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#release">
+                Release
+              </a>
+            </li>
+            <li>
+              <a href="#award">
+                Award
+              </a>
+            </li>
+            <li>
+              <a href="#contract">
+                Contract
+              </a>
+            </li>
+            <li>
+              <a href="#statistic">
+                Statistic
+              </a>
+            </li>
+            <li>
+              <a href="#bids">
+                Bids
+              </a>
+            </li>
+            <li>
+              <a href="#bid">
+                Bid
+              </a>
+            </li>
+            <li>
+              <a href="#simpleidentifier">
+                SimpleIdentifier
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/bids/master/codelists/">
+            Codelists
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json" aria-label="Extension URL" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_bid_extension/archive/master.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Schema
+      </h2>
+
+      <p>
+        You can <a href="/en/extensions/bids/master/release-schema.json">download the <code>release-schema.json</code> file</a> in English.
+      </p>
+
+      <h3 id="release">
+        Release
+      </h3>
+
+      <p>
+        The extension defines these fields in the release schema:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id=".bids">
+              <code>
+                bids
+              </code>
+            </td>
+            <td>
+              Bids
+            </td>
+            <td>
+              <p>The bid section is used to publish summary statistics, and where applicable, individual bid information.</p>
+
+            </td>
+            <td>
+              <a href="#bids">Bids</a> object
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="award">
+        Award
+      </h3>
+
+      <p>
+        The extension defines these fields in the <a href="https://standard.open-contracting.org/1.1/en/schema/reference/#award"><code>Award</code></a> object from OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Award.relatedBid">
+              <code>
+                relatedBid
+              </code>
+            </td>
+            <td>
+              Related bid
+            </td>
+            <td>
+              <p>Where bid details are used, a cross reference to the entry in the bids array to which this award relates. Provide the bid identifier here.</p>
+
+              <p>
+                <strong>
+                  Deprecated in OCDS 1.2:
+                </strong>
+                This field is deprecated in favor of `relatedBids`, to allow an award to combine multiple bids.
+              </p>
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Award.relatedBids">
+              <code>
+                relatedBids
+              </code>
+            </td>
+            <td>
+              Related bids
+            </td>
+            <td>
+              <p>Where bid details are used, a cross reference to the entries in the bids array to which this award relates. Provide the bid identifiers here.</p>
+
+            </td>
+            <td>
+              array of strings
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="contract">
+        Contract
+      </h3>
+
+      <p>
+        The extension defines these fields in the <a href="https://standard.open-contracting.org/1.1/en/schema/reference/#contract"><code>Contract</code></a> object from OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Contract.relatedBids">
+              <code>
+                relatedBids
+              </code>
+            </td>
+            <td>
+              Related bids
+            </td>
+            <td>
+              <p>Where bid details are used, a cross reference to the entries in the bids array to which this contract relates. Provide the bid identifiers here.</p>
+
+            </td>
+            <td>
+              array of strings
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="statistic">
+        Statistic
+      </h3>
+
+      <p>
+        The extension defines a new <code>Statistic</code> object with these fields:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Statistic.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              ID
+            </td>
+            <td>
+              <p>An internal identifier for this statistic.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Statistic.measure">
+              <code>
+                measure
+              </code>
+            </td>
+            <td>
+              Measure
+            </td>
+            <td>
+              <p>The statistic reported in the value.</p>
+
+            </td>
+            <td>
+              string from open <a href="/en/extensions/bids/master/codelists/#statistic.csv">statistic</a> codelist
+            </td>
+          </tr>
+          <tr>
+            <td id="Statistic.date">
+              <code>
+                date
+              </code>
+            </td>
+            <td>
+              Date
+            </td>
+            <td>
+              <p>The date when this statistic was last updated. This is often the closing date of the tender process. This field may be omitted unless either (a) the same statistic is provided from multiple points in time, or (b) there is a specific local requirement for the date when statistics were calculated to be provided.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Statistic.value">
+              <code>
+                value
+              </code>
+            </td>
+            <td>
+              Value
+            </td>
+            <td>
+              <p>The value for the measure in question. A total count should be expressed as an integer. A proportion should be expressed as a decimal (for example, 0.1) and not as a percentage (for example, 10).</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+          <tr>
+            <td id="Statistic.valueGross">
+              <code>
+                valueGross
+              </code>
+            </td>
+            <td>
+              Gross value
+            </td>
+            <td>
+              <p>The monetary value for the measure in question, including all taxes.</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+          <tr>
+            <td id="Statistic.currency">
+              <code>
+                currency
+              </code>
+            </td>
+            <td>
+              Currency
+            </td>
+            <td>
+              <p>The currency of the amount in the <code>value</code> field, if the statistic has a monetary value.</p>
+
+            </td>
+            <td>
+              string from closed <a href="https://standard.open-contracting.org/1.1/en/schema/codelists/#currency">currency</a> codelist
+            </td>
+          </tr>
+          <tr>
+            <td id="Statistic.notes">
+              <code>
+                notes
+              </code>
+            </td>
+            <td>
+              Notes
+            </td>
+            <td>
+              <p>Any notes needed to understand or interpret the given statistic.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Statistic.relatedLot">
+              <code>
+                relatedLot
+              </code>
+            </td>
+            <td>
+              Related Lot
+            </td>
+            <td>
+              <p>Where lots are in use, if this statistic relates to a particular lot, provide the lot identifier here. If left blank, the statistic will be interpreted as applying to the whole tender.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="bids">
+        Bids
+      </h3>
+
+      <p>
+        The extension defines a new <code>Bids</code> object with these fields:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Bids.statistics">
+              <code>
+                statistics
+              </code>
+            </td>
+            <td>
+              Statistics
+            </td>
+            <td>
+              <p>Summary statistics on the number and nature of bids received. Where information is provided on individual bids, these statistics should match those that can be calculated from the bid details array.</p>
+
+            </td>
+            <td>
+              array of <a href="#statistic">Statistic</a> objects
+            </td>
+          </tr>
+          <tr>
+            <td id="Bids.details">
+              <code>
+                details
+              </code>
+            </td>
+            <td>
+              Bid details
+            </td>
+            <td>
+              <p>An array of bids, providing information on the bidders, and where applicable, bid status, bid values and related documents. The extent to which this information can be disclosed varies from jurisdiction to jurisdiction.</p>
+
+            </td>
+            <td>
+              array of <a href="#bid">Bid</a> objects
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="bid">
+        Bid
+      </h3>
+
+      <p>
+        The extension defines a new <code>Bid</code> object with these fields:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Bid.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              ID
+            </td>
+            <td>
+              <p>A local identifier for this bid</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.identifiers">
+              <code>
+                identifiers
+              </code>
+            </td>
+            <td>
+              Identifiers
+            </td>
+            <td>
+              <p>Identifiers for this bid. This field can be used to provide internal identifiers for the bid, such as identifiers from a buyer's document management system or procurement system.</p>
+
+            </td>
+            <td>
+              array of <a href="#simpleidentifier">SimpleIdentifier</a> objects
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.date">
+              <code>
+                date
+              </code>
+            </td>
+            <td>
+              Date
+            </td>
+            <td>
+              <p>The date when this bid was received.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Description
+            </td>
+            <td>
+              <p>A description of this bid. The description field may be used to describe the terms and conditions for the bid.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.status">
+              <code>
+                status
+              </code>
+            </td>
+            <td>
+              Status
+            </td>
+            <td>
+              <p>The status of the bid.</p>
+
+            </td>
+            <td>
+              string from closed <a href="/en/extensions/bids/master/codelists/#bidStatus.csv">bidStatus</a> codelist
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.items">
+              <code>
+                items
+              </code>
+            </td>
+            <td>
+              Items offered by the tenderer(s)
+            </td>
+            <td>
+              <p>The goods, works or services offered by the tenderer(s), broken into line items wherever possible. Items should not be duplicated, but the quantity specified instead.</p>
+
+            </td>
+            <td>
+              array of <a href="https://standard.open-contracting.org/1.1/en/schema/reference/#item">Item</a> objects
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.tenderers">
+              <code>
+                tenderers
+              </code>
+            </td>
+            <td>
+              Tenderer
+            </td>
+            <td>
+              <p>The organization(s) responsible for this bid.</p>
+
+            </td>
+            <td>
+              array of <a href="https://standard.open-contracting.org/1.1/en/schema/reference/#organizationreference">OrganizationReference</a> objects
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.value">
+              <code>
+                value
+              </code>
+            </td>
+            <td>
+              Value
+            </td>
+            <td>
+              <p>The total value of the bid.</p>
+
+            </td>
+            <td>
+              <a href="https://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.validityPeriod">
+              <code>
+                validityPeriod
+              </code>
+            </td>
+            <td>
+              Validity period
+            </td>
+            <td>
+              <p>The period for which this bid is valid.</p>
+
+            </td>
+            <td>
+              <a href="https://standard.open-contracting.org/1.1/en/schema/reference/#period">Period</a> object
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.documents">
+              <code>
+                documents
+              </code>
+            </td>
+            <td>
+              Documents
+            </td>
+            <td>
+              <p>All documents and attachments related to the bid and its evaluation.</p>
+
+            </td>
+            <td>
+              array of <a href="https://standard.open-contracting.org/1.1/en/schema/reference/#document">Document</a> objects
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.relatedLots">
+              <code>
+                relatedLots
+              </code>
+            </td>
+            <td>
+              Related lot(s)
+            </td>
+            <td>
+              <p>The identifiers of the lots to which this bid relates.</p>
+
+            </td>
+            <td>
+              array of strings
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.countriesOfOrigin">
+              <code>
+                countriesOfOrigin
+              </code>
+            </td>
+            <td>
+              Countries of origin
+            </td>
+            <td>
+              <p>The countries of origin of the items in this bid, from the closed country codelist. If a country is missing, <a href="https://github.com/open-contracting/standard/issues">create an issue</a> to discuss the addition of a user-assigned code to the country codelist.</p>
+
+            </td>
+            <td>
+              array of strings from closed <a href="/en/extensions/bids/master/codelists/#country.csv">country</a> codelist
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.hasRank">
+              <code>
+                hasRank
+              </code>
+            </td>
+            <td>
+              Has rank
+            </td>
+            <td>
+              <p>Whether this bid is ranked.</p>
+
+            </td>
+            <td>
+              boolean
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.rank">
+              <code>
+                rank
+              </code>
+            </td>
+            <td>
+              Rank
+            </td>
+            <td>
+              <p>The position of this bid (i.e. whether the bid is ranked first, second, third, etc.) in a design contest, a framework agreement with multiple winners (e.g. cascades), an innovation partnership, a competitive dialogue, or another procedure.</p>
+
+            </td>
+            <td>
+              integer
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.variant">
+              <code>
+                variant
+              </code>
+            </td>
+            <td>
+              Is variant
+            </td>
+            <td>
+              <p>Whether the bid is a variant. A variant is a bid that fulfills the buyer's needs differently than as proposed in the procurement documents.</p>
+
+            </td>
+            <td>
+              boolean
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="simpleidentifier">
+        SimpleIdentifier
+      </h3>
+
+      <p>
+        The extension defines a new <code>SimpleIdentifier</code> object with these fields:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="SimpleIdentifier.scheme">
+              <code>
+                scheme
+              </code>
+            </td>
+            <td>
+              Scheme
+            </td>
+            <td>
+              <p>The list, register or system from which the identifier is taken.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="SimpleIdentifier.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              ID
+            </td>
+            <td>
+              <p>The identifier taken from the scheme.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

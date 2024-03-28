@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Estadísticas y detalles de las ofertas — Documentation — OCDS Extension Explorer</title>
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/bids/v1.1.4/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/bids/v1.1.4/">
+  <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        OCDS Extension Explorer
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensions
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Publisher guidance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            User guidance
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+            <span class="sr-only">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/bids/v1.1.4/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/bids/v1.1.4/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Estadísticas y detalles de las ofertas
+      </h1>
+
+      <p class="lead">
+        Adds a bids object to describe individual bids and aggregate statistics.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Version:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/es/extensions/bids/master/">
+              master
+              (latest)
+            </option>
+            <option value="/es/extensions/bids/v1.1.5/">
+              v1.1.5
+              (2020-08-20)
+            </option>
+          </optgroup>
+          <optgroup label="Historical versions">
+            <option value="/es/extensions/bids/v1.1.4/" selected>
+              v1.1.4
+              (2019-02-25)
+            </option>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/bids/v1.1.4/">
+            Documentation
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ms-0">
+              <a href="#esquema">
+                Esquema
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#ejemplo">
+                Ejemplo
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#registro-de-cambios">
+                Registro de cambios
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#v1-1-4">
+                v1.1.4
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#v1-1-3">
+                v1.1.3
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/bids/v1.1.4/schema/">
+            Schema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/bids/v1.1.4/codelists/">
+            Codelists
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/v1.1.4/extension.json" aria-label="Extension URL" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://api.github.com/repos/open-contracting-extensions/ocds_bid_extension/zipball/v1.1.4" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentation
+      </h2>
+<div><p>La informaci&#243;n sobre las ofertas presentadas como parte de un proceso de contrataci&#243;n es importante para muchas formas de an&#225;lisis, incluyendo:</p>
+<ul>
+<li>An&#225;lisis de mercado para comprender la competitividad de un mercado determinado;</li>
+<li>An&#225;lisis de banderas rojas para comprender los posibles riesgos de corrupci&#243;n; y</li>
+<li>An&#225;lisis de valor por dinero;</li>
+</ul>
+<p>Los reg&#237;menes regulatorios var&#237;an en la medida en que permiten que la informaci&#243;n sobre licitaciones se publique de forma proactiva y en qu&#233; momento del proceso de adquisici&#243;n. En algunos sistemas y procesos, se publicar&#225; una lista de licitadores invitados al comienzo de la licitaci&#243;n, y todos los detalles y documentos sobre las ofertas recibidas podr&#225;n ser revelados cuando se complete la evaluaci&#243;n. En otros sistemas, s&#243;lo pueden hacerse p&#250;blicas las estad&#237;sticas resumidas sobre el n&#250;mero de ofertas recibidas.</p>
+<p>La extensi&#243;n de oferta de OCDS introduce una secci&#243;n nueva, flexible y de alto nivel para cada proceso de contrataci&#243;n para capturar informaci&#243;n de ofertas. Los ejecutores deber&#225;n evaluar qu&#233; campos son aplicables a su r&#233;gimen regulatorio local y los casos de uso locales.</p>
+<h2 id="esquema">Esquema</h2>
+<p>La lista <code>bids/details</code> se utiliza para proporcionar uno o m&#225;s objetos <code> Bid</code>, cada uno de los cuales representa una &#250;nica oferta recibida.</p>
+<p>La lista <code>bids/statistics</code> se usa para representar informaci&#243;n estad&#237;sitca sobre el n&#250;mero de ofertas y ofertantes. En cada entrada de la lista hay un objeto <code>BidsStatistic</code> que contiene al menos:</p>
+<ul>
+<li>Un identificador</li>
+<li>Una medida, de la lista de c&#243;digos <code>bidStatistics.csv</code></li>
+<li>Un valor para esa medida</li>
+</ul>
+<p>La lista de c&#243;digos <code>bidStatistics.csv</code> es una lista de c&#243;digos <strong>abierta</strong>. Los publicadores pueden agregar sus propios c&#243;digos a esta lista. Al hacerlo, se alienta a los publicadores a comprometerse con la comunidad de contrataciones abiertas para acordar las definiciones de cada c&#243;digo.</p>
+<p>Por ejemplo, tal vez los publicadores deseen agregar estad&#237;sticas sobre negocios pertenecientes a minor&#237;as o mujeres, u ofertas que cumplan ciertos est&#225;ndares y metas ambientales.</p>
+<p>La lista de c&#243;digo en la columna Categor&#237;a muestra si la estad&#237;stica aplica a las ofertas u ofertantes o si esta especificado o requerido por una categor&#237;a particular del contexto regulatorio (ej. UE)</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<p>A continuaci&#243;n se muestra un ejemplo de una extensi&#243;n de ofertas:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"measure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validBids"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-09T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This statistic covers the total number of unique bids received that were considered valid against relevant criteria."</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"measure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disqualifiedBids"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-10T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This statistic covers the total number of unique bids received that were disqualified."</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-09T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valid"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"documentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evaluationReports"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mega Consortium Bid Evaluation Report"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This document provides details of the evaluation of the bid submitted by Mega Consortium"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://communications.gov.example/example_ppp/evaluationReport_megaConsortium.pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"datePublished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T10:00:00-06:00"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ministry of Communications"</span>
+<span class="w">      </span><span class="p">}],</span>
+<span class="w">      </span><span class="nt">"tenderers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEGA"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mega Consortium"</span>
+<span class="w">      </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-10T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disqualified"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"documentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evaluationReports"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beta Consortium Bid Evaluation Report"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This document provides details of the evaluation of the bid submitted by Beta Consortium"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://communications.gov.example/example_ppp/evaluationReport_betaConsortium.pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"datePublished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-18T10:00:00-06:00"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ministry of Communications"</span>
+<span class="w">      </span><span class="p">}],</span>
+<span class="w">      </span><span class="nt">"tenderers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BETA"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beta Consortium"</span>
+<span class="w">      </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">}]</span>
+
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"awards"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example PPP contract award"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Award of Example PPP contract to Mega Consortium"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17T10:00:00-06:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"relatedBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="issues">Issues</h2>
+<p>Reporte issues para esta extensi&#243;n en el <a href="https://github.com/open-contracting/ocds-extensions/issues">repositorio de extensiones ocds</a>, poniendo el nombre de la extensi&#243;n en el t&#237;tulo del issue.</p>
+<h2 id="registro-de-cambios">Registro de cambios</h2>
+<h3 id="v1-1-4">v1.1.4</h3>
+<ul>
+<li>Se corrige el t&#237;tulo y la descripci&#243;n del c&#243;digo 'foreignBidsFromEU' para referirse al &#193;rea Econ&#243;mica Europea (AEE). Anteriormente, el t&#237;tulo se refer&#237;a al Mercado &#218;nico Europeo, pero su descripci&#243;n enlistaba los miembros del AEE.</li>
+<li>A&#241;ade el c&#243;digo <code>foreignBidsFromNonEU a </code>bidStatistics.csv`</li>
+<li>Quitar propiedad  <code>required</code> invalide a la matriz del campo <code>Bids.details</code></li>
+<li>Arreglar el comportamiento de uni&#243;n de  <code>Bids.statistics</code> a  <code>Bid.tenderers</code>&#160; para identificar la estrategia de uni&#243;n de los identificadores</li>
+<li>Quita las directrices Sphinx del readme</li>
+<li>A&#241;adir extension.json para el Extension Explorer</li>
+</ul>
+<h3 id="v1-1-3">v1.1.3</h3>
+<ul>
+<li>No permitir que los campos requeridos <code>BidsStatistic.id</code>,<code> BidsStatistic.measure</code>, <code>BidsStatistic.value</code> sean null</li>
+<li>No permitir que <code>Bids.statistics</code> tenga null en su lista de objetos</li>
+<li>Permitir que <code>Bids.statistics</code> sea null</li>
+<li>Agregar enum a <code>BidsStatistic.status</code></li>
+<li>Mover <code>BidsStatistic.requirementResponses</code> a la extensi&#243;n de requisitos</li>
+<li>Agregar descripciones a bidStatus.csv</li>
+<li>Enlista listas de c&#243;digos en extension.json</li>
+<li>Agregar un ejemplo a la documentaci&#243;n</li>
+<li>Agregar pruebas y ordenar el c&#243;digo</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

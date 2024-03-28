@@ -1,0 +1,69 @@
+{
+  "definitions": {
+    "Document": {
+      "properties": {
+        "pageStart": {
+          "title": "Inicio de p\u00e1gina",
+          "description": "Cuando la informaci\u00f3n mencionada exista dentro de un documento grande, se debe indicar la primera p\u00e1gina en la que se puede encontrar. Esto debe de referirse al n\u00famero de p\u00e1gina impreso, no al n\u00famero de p\u00e1gina reportado por software.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "pageEnd": {
+          "title": "Fin de p\u00e1gina",
+          "description": "Cuando la informaci\u00f3n mencionada existe dentro de un documento grande, se debe indicar la \u00faltima p\u00e1gina en la que se puede encontrar. Esto debe de referirse al n\u00famero de p\u00e1gina impreso, no al n\u00famero de p\u00e1gina reportado por software.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "accessDetails": {
+          "title": "Detalles de acceso",
+          "description": "Una descripci\u00f3n de cualquier arreglo especial necesitado para acceder a estos documentos, por ejemplo: registrarse para acceder, pagar una tarifa o visitar un lugar para inspeccionar el documento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "accessDetailsURL": {
+          "title": "Access details URL",
+          "description": "A web address for information on any special arrangements needed to access the document.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "author": {
+          "title": "Autor",
+          "description": "Los nombres de los autores del documento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "unofficialTranslations": {
+          "title": "Unofficial translations",
+          "description": "The languages in which unofficial translations of the document are available, from the open [language](https://standard.open-contracting.org/{{version}}/{{lang}}/schema/codelists/#language) codelist. A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "language.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

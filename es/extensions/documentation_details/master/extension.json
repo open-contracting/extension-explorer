@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Document Details",
+    "es": "Detalles de Documentos"
+  },
+  "description": {
+    "en": "Adds fields to the document object for page references, access details and author information.",
+    "es": "Agrega campos al objeto document para referencias a p\u00e1ginas, acceso a detalles e informaci\u00f3n del autor."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/documentation_details/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "language.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

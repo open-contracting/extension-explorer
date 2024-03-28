@@ -1,0 +1,76 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Has renewal",
+          "description": "Whether the contracts can be renewed.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renewal",
+          "description": "The options for the renewal of the contracts.",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Has renewal",
+          "description": "Whether the contract related to the lot can be renewed.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renewal",
+          "description": "The options for the renewal of the contract related to the lot.",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Renewal": {
+      "title": "Renewal",
+      "description": "Information about the options for the renewal of a contract.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of the options for the renewal of the contract.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "minimumRenewals": {
+          "title": "Minimum renewal",
+          "description": "The minimum number of renewals.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximumRenewals": {
+          "title": "Maximum renewal",
+          "description": "The maximum number of renewals. If there is no maximum, set to 1e9999 (which parses to infinity).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "period": {
+          "title": "Renewal period",
+          "description": "The period over which the contract can be renewed.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

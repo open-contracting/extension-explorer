@@ -1,0 +1,773 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Subcontratación — Schema — OCDS Extension Explorer</title>
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/subcontracting/master/schema/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/subcontracting/master/schema/">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        OCDS Extension Explorer
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensions
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Publisher guidance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            User guidance
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+            <span class="sr-only">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/subcontracting/master/schema/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/subcontracting/master/schema/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Subcontratación
+      </h1>
+
+      <p class="lead">
+        Adds objects for information about the terms governing subcontracting and the parts of the contract that tenderers and suppliers will subcontract to third parties.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Version:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/es/extensions/subcontracting/master/schema/" selected>
+              master
+              (latest)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/subcontracting/master/">
+            Documentation
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/subcontracting/master/schema/">
+            Schema
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#tender">
+                Tender
+              </a>
+            </li>
+            <li>
+              <a href="#award">
+                Award
+              </a>
+            </li>
+            <li>
+              <a href="#lot">
+                Lot
+              </a>
+            </li>
+            <li>
+              <a href="#bid">
+                Bid
+              </a>
+            </li>
+            <li>
+              <a href="#subcontractingterms">
+                SubcontractingTerms
+              </a>
+            </li>
+            <li>
+              <a href="#subcontracting">
+                Subcontracting
+              </a>
+            </li>
+            <li>
+              <a href="#subcontract">
+                Subcontract
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/subcontracting/master/codelists/">
+            Codelists
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_subcontracting_extension/master/extension.json" aria-label="Extension URL" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_subcontracting_extension/archive/master.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Schema
+      </h2>
+
+      <p>
+        You can <a href="/es/extensions/subcontracting/master/release-schema.json">download the <code>release-schema.json</code> file</a> in English.
+      </p>
+
+      <h3 id="tender">
+        Tender
+      </h3>
+
+      <p>
+        The extension defines these fields in the <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#tender"><code>Tender</code></a> object from OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Tender.subcontractingTerms">
+              <code>
+                subcontractingTerms
+              </code>
+            </td>
+            <td>
+              Términos de subcontratación 
+            </td>
+            <td>
+              <p>Información sobre los términos que rigen la subcontratación.</p>
+
+            </td>
+            <td>
+              <a href="#subcontractingterms">SubcontractingTerms</a> object
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="award">
+        Award
+      </h3>
+
+      <p>
+        The extension defines these fields in the <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#award"><code>Award</code></a> object from OCDS:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Award.hasSubcontracting">
+              <code>
+                hasSubcontracting
+              </code>
+            </td>
+            <td>
+              Subcontratación involucrada
+            </td>
+            <td>
+              <p>Si se subcontratará una parte del contrato.</p>
+
+            </td>
+            <td>
+              boolean
+            </td>
+          </tr>
+          <tr>
+            <td id="Award.subcontracting">
+              <code>
+                subcontracting
+              </code>
+            </td>
+            <td>
+              Subcontratación
+            </td>
+            <td>
+              <p>Información sobre las partes del contrato que el proveedor subcontratará a terceros.</p>
+
+            </td>
+            <td>
+              <a href="#subcontracting">Subcontracting</a> object
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="lot">
+        Lot
+      </h3>
+
+      <p>
+        The extension defines these fields in the <a href="/es/extensions/lots/master/schema/#lot"><code>Lot</code></a> object from the <a href="/es/extensions/lots/master/">Lotes</a> extension:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Lot.subcontractingTerms">
+              <code>
+                subcontractingTerms
+              </code>
+            </td>
+            <td>
+              Términos de subcontratación 
+            </td>
+            <td>
+              <p>Información sobre los términos que rigen la subcontratación.</p>
+
+            </td>
+            <td>
+              <a href="#subcontractingterms">SubcontractingTerms</a> object
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="bid">
+        Bid
+      </h3>
+
+      <p>
+        The extension defines these fields in the <a href="/es/extensions/bids/master/schema/#bid"><code>Bid</code></a> object from the <a href="/es/extensions/bids/master/">Estadísticas y detalles de las ofertas</a> extension:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Bid.hasSubcontracting">
+              <code>
+                hasSubcontracting
+              </code>
+            </td>
+            <td>
+              Subcontratación involucrada
+            </td>
+            <td>
+              <p>Whether a part of the contract will be subcontracted to third parties.</p>
+
+            </td>
+            <td>
+              boolean
+            </td>
+          </tr>
+          <tr>
+            <td id="Bid.subcontracting">
+              <code>
+                subcontracting
+              </code>
+            </td>
+            <td>
+              Subcontratación
+            </td>
+            <td>
+              <p>Information about the parts of the contract that will be subcontracted to third parties.</p>
+
+            </td>
+            <td>
+              <a href="#subcontracting">Subcontracting</a> object
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="subcontractingterms">
+        SubcontractingTerms
+      </h3>
+
+      <p>
+        The extension defines a new <code>SubcontractingTerms</code> object with these fields:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="SubcontractingTerms.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Descripción
+            </td>
+            <td>
+              <p>Una descripción de los términos que rigen la subcontratación.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="SubcontractingTerms.competitiveMaximumPercentage">
+              <code>
+                competitiveMaximumPercentage
+              </code>
+            </td>
+            <td>
+              Porcentaje máximo del valor del contrato para una subcontratación competitiva
+            </td>
+            <td>
+              <p>The maximum percentage of the contract value that the buyer or procuring entity allows the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+          <tr>
+            <td id="SubcontractingTerms.competitiveMinimumPercentage">
+              <code>
+                competitiveMinimumPercentage
+              </code>
+            </td>
+            <td>
+              Porcentaje mínimo del valor del contrato para una subcontratación competitiva
+            </td>
+            <td>
+              <p>The minimum percentage of the contract value that the buyer or procuring entity requires the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="subcontracting">
+        Subcontracting
+      </h3>
+
+      <p>
+        The extension defines a new <code>Subcontracting</code> object with these fields:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Subcontracting.description">
+              <code>
+                description
+              </code>
+            </td>
+            <td>
+              Descripción
+            </td>
+            <td>
+              <p>The description of the part of the contract that will be subcontracted to third parties.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontracting.maximumPercentage">
+              <code>
+                maximumPercentage
+              </code>
+            </td>
+            <td>
+              Porcentaje máximo del valor del contrato
+            </td>
+            <td>
+              <p>The maximum percentage of the contract value that will be subcontracted, expressed as a decimal proportion between 0 and 1.</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontracting.minimumPercentage">
+              <code>
+                minimumPercentage
+              </code>
+            </td>
+            <td>
+              Porcentaje mínimo del valor del contrato
+            </td>
+            <td>
+              <p>The minimum percentage of the contract value that will be subcontracted, expressed as a decimal proportion between 0 and 1.</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontracting.competitiveMaximumPercentage">
+              <code>
+                competitiveMaximumPercentage
+              </code>
+            </td>
+            <td>
+              Porcentaje máximo del valor del contrato para una subcontratación competitiva
+            </td>
+            <td>
+              <p>The maximum percentage of the contract value that the buyer or procuring entity allows the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontracting.competitiveMinimumPercentage">
+              <code>
+                competitiveMinimumPercentage
+              </code>
+            </td>
+            <td>
+              Porcentaje mínimo del valor del contrato para una subcontratación competitiva
+            </td>
+            <td>
+              <p>The minimum percentage of the contract value that the buyer or procuring entity requires the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.</p>
+
+            </td>
+            <td>
+              number
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontracting.value">
+              <code>
+                value
+              </code>
+            </td>
+            <td>
+              Valor subcontratado
+            </td>
+            <td>
+              <p>The estimated value of the part of the contract that will be subcontracted to third parties.</p>
+
+            </td>
+            <td>
+              <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#value">Value</a> object
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontracting.competitive">
+              <code>
+                competitive
+              </code>
+            </td>
+            <td>
+              Subcontratación competitiva
+            </td>
+            <td>
+              <p>Si el proveedor subcontratará parte del contrato a terceros mediante un procedimiento competitivo.</p>
+
+            </td>
+            <td>
+              boolean
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontracting.subcontracts">
+              <code>
+                subcontracts
+              </code>
+            </td>
+            <td>
+              Subcontracts
+            </td>
+            <td>
+              <p>Information about the subcontracts that will be established.</p>
+
+            </td>
+            <td>
+              array of <a href="#subcontract">Subcontract</a> objects
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="subcontract">
+        Subcontract
+      </h3>
+
+      <p>
+        The extension defines a new <code>Subcontract</code> object with these fields:
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Field
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+            <th scope="col">
+              Type(s)
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="Subcontract.id">
+              <code>
+                id
+              </code>
+            </td>
+            <td>
+              Identifier
+            </td>
+            <td>
+              <p>The locally unique identifier for the subcontract.</p>
+
+            </td>
+            <td>
+              string
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontract.subcontractor">
+              <code>
+                subcontractor
+              </code>
+            </td>
+            <td>
+              Subcontractor
+            </td>
+            <td>
+              <p>The organization that performs part of the contract on behalf of the suppliers.</p>
+
+            </td>
+            <td>
+              <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#organizationreference">OrganizationReference</a> object
+            </td>
+          </tr>
+          <tr>
+            <td id="Subcontract.mainContractors">
+              <code>
+                mainContractors
+              </code>
+            </td>
+            <td>
+              Main contractors
+            </td>
+            <td>
+              <p>The organizations to which the subcontractor will be subcontracted, if they are a subset of the tenderers submitting the bid or the suppliers receiving the award.</p>
+
+            </td>
+            <td>
+              array of <a href="https://standard.open-contracting.org/1.1/es/schema/reference/#organizationreference">OrganizationReference</a> objects
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>

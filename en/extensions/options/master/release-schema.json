@@ -1,0 +1,60 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "options": {
+          "title": "Options",
+          "description": "A description of the options.",
+          "$ref": "#/definitions/Options"
+        },
+        "hasOptions": {
+          "title": "Options used",
+          "description": "Whether or not the buyer reserves the right to make additional purchases from the supplier, as long as the contract is valid.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "options": {
+          "title": "Options",
+          "description": "A description of the options.",
+          "$ref": "#/definitions/Options"
+        },
+        "hasOptions": {
+          "title": "Options used",
+          "description": "Whether the buyer reserves the right to make additional purchases from the supplier, as long as the contract is valid.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Options": {
+      "title": "Options",
+      "description": "A description of the options.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of the options.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "period": {
+          "title": "Period",
+          "description": "The period over which the options can be used.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": {
+    "en": "Bid statistics and details",
+    "es": "Estad\u00edsticas y detalles de las ofertas"
+  },
+  "description": {
+    "en": "Adds a bids object to describe individual bids and aggregate statistics.",
+    "es": "Adds a bids object to describe individual bids and aggregate statistics."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/bids/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "statistic.csv",
+    "bidStatus.csv",
+    "country.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

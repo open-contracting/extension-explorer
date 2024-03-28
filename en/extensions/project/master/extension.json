@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Project",
+    "es": "Proyecto"
+  },
+  "description": {
+    "en": "Adds a project object to the planning object to describe the project to which the contracting process is related, including the total value of the project (not to be confused with the total value of the contracting process).",
+    "es": "Agrega un objeto de proyecto al objeto de planificaci\u00f3n para describir el proyecto con el que est\u00e1 relacionado el proceso de contrataci\u00f3n, incluido el valor total del proyecto (no debe confundirse con el valor total del proceso de contrataci\u00f3n)."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/project/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "dependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

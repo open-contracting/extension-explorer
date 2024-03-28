@@ -1,0 +1,24 @@
+.ee-masthead {
+  position: relative;
+  padding: 3rem ($grid-gutter-width / 2);
+
+  h1 {
+    line-height: 1;
+  }
+
+  .btn {
+    padding: .8rem 2rem;
+    font-weight: 600;
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  @include media-breakpoint-up(md) {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+// Bootstrap fixes
+
+.custom-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+// Bootstrap customizations
+
+table code {
+  word-break: normal;
+}
+
+.table-bordered {
+  td:nth-child(3) {
+    padding-bottom: 0;
+
+    p,
+    dl {
+      margin-bottom: 0.75rem;
+    }
+  }
+}
+
+// Extra
+
+table.docutils {
+  @extend .table;
+  @extend .table-bordered;
+
+  tt {
+    @extend code;
+  }
+}
+
+.form-inline {
+  flex-flow: row wrap;
+
+  .form-select {
+    display: inline-block;
+  }
+}
+
+@include media-breakpoint-up(sm) {
+  .form-inline {
+    .form-select {
+      width: auto;
+    }
+  }
+}
