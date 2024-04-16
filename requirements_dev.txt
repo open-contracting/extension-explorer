@@ -79,7 +79,7 @@ flask-env==2.0.0
     # via -r requirements.txt
 frozen-flask==1.0.1
     # via -r requirements.txt
-idna==2.8
+idna==3.7
     # via
     #   -r requirements.txt
     #   requests

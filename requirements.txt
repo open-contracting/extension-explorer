@@ -45,7 +45,7 @@ flask-env==2.0.0
     # via -r requirements.in
 frozen-flask==1.0.1
     # via -r requirements.in
-idna==2.8
+idna==3.7
     # via requests
 ijson==2.5.1
     # via ocdskit
