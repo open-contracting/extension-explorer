@@ -8,9 +8,7 @@
   </style>
 {% endblock %}
 
-{% block meta_description %}
-{{ extension.description[lang] }}
-{% endblock %}
+{% block description %}{{ extension.description[lang] }}{% endblock %}
 
 {% block nav_documentation %}
         <div class="ee-toc-item active">
