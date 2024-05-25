@@ -1,29 +1,31 @@
-# Translations template for PROJECT.
+# Spanish translations for PROJECT.
 # Copyright (C) 2024 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
-# 
+#
 # Translators:
 # James McKinney, 2020
 # Maria Esther Cervantes <mcervantes@cds.com.py>, 2021
 # Dulce Jazmín Areco Maggereger <dulceareco@cds.com.py>, 2021
 # Yohanna Lisnichuk <ylisnichuk@open-contracting.org>, 2024
-# 
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-04 09:51-0400\n"
+"POT-Creation-Date: 2024-05-24 21:22-0400\n"
 "PO-Revision-Date: 2018-09-28 15:07+0000\n"
-"Last-Translator: Yohanna Lisnichuk <ylisnichuk@open-contracting.org>, 2024\n"
-"Language-Team: Spanish (https://app.transifex.com/open-contracting-partnership-1/teams/112300/es/)\n"
+"Last-Translator: Yohanna Lisnichuk <ylisnichuk@open-contracting.org>, "
+"2024\n"
+"Language: es\n"
+"Language-Team: Spanish (https://app.transifex.com/open-contracting-"
+"partnership-1/teams/112300/es/)\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 "
+"? 1 : 2;\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.12.1\n"
-"Language: es\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
 
 #: util.py:118
 msgid "latest"
@@ -33,7 +35,7 @@ msgstr "más reciente"
 msgid "Changelog"
 msgstr "Registro de cambios"
 
-#: templates/extension_schema.html:68 util.py:231
+#: templates/extension_schema.html:72 util.py:231
 msgid "Description"
 msgstr "Descripción"
 
@@ -52,23 +54,17 @@ msgstr[2] "objetos"
 #, python-format
 msgid "string from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgid_plural "strings from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
-msgstr[0] ""
-"cadena de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
-msgstr[1] ""
-"cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
-msgstr[2] ""
-"cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
+msgstr[0] "cadena de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
+msgstr[1] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
+msgstr[2] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
 
 #: util.py:359
 #, python-format
 msgid "string from closed <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgid_plural "strings from closed <a href=\"%(url)s\">%(codelist)s</a> codelist"
-msgstr[0] ""
-"cadena de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
-msgstr[1] ""
-"cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
-msgstr[2] ""
-"cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
+msgstr[0] "cadena de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
+msgstr[1] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
+msgstr[2] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
 
 #: util.py:361
 #, python-format
@@ -91,12 +87,12 @@ msgstr[2] "%(type)s"
 msgid "array of %(subtypes)s"
 msgstr "matriz de %(subtypes)s"
 
-#: templates/home.html:3 templates/home.html:13 templates/layout.html:30
-#: views.py:90
+#: templates/home.html:3 templates/home.html:13 templates/layout.html:32
+#: views.py:96
 msgid "OCDS Extension Explorer"
 msgstr "Explorador de Extensiones OCDS"
 
-#: views.py:125
+#: views.py:131
 #, python-format
 msgid "%(name)s — OCDS Extension Explorer"
 msgstr "%(name)s- Explorador de Extensiones OCDS"
@@ -126,21 +122,26 @@ msgstr "Extensiones fiscales"
 msgid "%(name)s — Codelists — OCDS Extension Explorer"
 msgstr "%(name)s — Listas de código — Explorador de Extensiones OCDS"
 
-#: templates/extension_codelists.html:8 templates/extension_codelists.html:25
+#: templates/extension_codelists.html:6
+#, python-format
+msgid "Documentation of the codes in the %(name)s extension"
+msgstr "Documentación de los códigos en la extensión %(name)s"
+
+#: templates/extension_codelists.html:12 templates/extension_codelists.html:29
 #: templates/layout_extension.html:80
 msgid "Codelists"
 msgstr "Listas de código"
 
-#: templates/extension_codelists.html:34
+#: templates/extension_codelists.html:38
 #, python-format
 msgid ""
-"You can <a href=\"%(url)s\">download the <code>%(codelist)s</code> file</a> "
-"in English."
+"You can <a href=\"%(url)s\">download the <code>%(codelist)s</code> "
+"file</a> in English."
 msgstr ""
-"Puede <a href=\"%(url)s\">descargar el archivo <code>%(codelist)s</code></a>"
-" en inglés."
+"Puede <a href=\"%(url)s\">descargar el archivo "
+"<code>%(codelist)s</code></a> en inglés."
 
-#: templates/extension_codelists.html:40
+#: templates/extension_codelists.html:44
 #, python-format
 msgid ""
 "The extension adds these codes to the <a "
@@ -149,7 +150,7 @@ msgstr ""
 "La extensión añade estos códigos a la <a "
 "href=\"%(url)s\"><code>%(codelist)s</code> lista de código</a>."
 
-#: templates/extension_codelists.html:42
+#: templates/extension_codelists.html:46
 #, python-format
 msgid ""
 "The extension removes these codes from the <a "
@@ -158,7 +159,7 @@ msgstr ""
 "La extensión quita los códigos de la <a "
 "href=\"%(url)s\"><code>%(codelist)s</code> lista de código</a>."
 
-#: templates/extension_codelists.html:44
+#: templates/extension_codelists.html:48
 #, python-format
 msgid ""
 "The extension replaces the <a href=\"%(url)s\"><code>%(codelist)s</code> "
@@ -172,9 +173,8 @@ msgstr ""
 msgid "%(name)s — Documentation — OCDS Extension Explorer"
 msgstr "%(name)s — Documentación — Explorador de Extensiones OCDS"
 
-#: templates/extension_documentation.html:14
-#: templates/extension_documentation.html:31
-#: templates/layout_extension.html:63
+#: templates/extension_documentation.html:18
+#: templates/extension_documentation.html:35 templates/layout_extension.html:63
 msgid "Documentation"
 msgstr "Documentación"
 
@@ -183,29 +183,34 @@ msgstr "Documentación"
 msgid "%(name)s — Schema — OCDS Extension Explorer"
 msgstr "%(name)s — Esquema — Explorador de Extensiones OCDS"
 
-#: templates/extension_schema.html:8 templates/extension_schema.html:32
+#: templates/extension_schema.html:6
+#, python-format
+msgid "Documentation of the fields in the %(name)s extension"
+msgstr "Documentación de los campos en la extensión %(name)s"
+
+#: templates/extension_schema.html:12 templates/extension_schema.html:36
 #: templates/layout_extension.html:71
 msgid "Schema"
 msgstr "Esquema"
 
-#: templates/extension_schema.html:22 templates/extension_schema.html:124
+#: templates/extension_schema.html:26 templates/extension_schema.html:128
 msgid "Removed fields"
 msgstr "Quitar campos"
 
-#: templates/extension_schema.html:36
+#: templates/extension_schema.html:40
 #, python-format
 msgid ""
-"You can <a href=\"%(url)s\">download the <code>release-schema.json</code> "
-"file</a> in English."
+"You can <a href=\"%(url)s\">download the <code>release-schema.json</code>"
+" file</a> in English."
 msgstr ""
 "Puede <a href=\"%(url)s\">descargar el archivo<code>release-"
 "schema.json</code></a>en inglés."
 
-#: templates/extension_schema.html:46
+#: templates/extension_schema.html:50
 msgid "The extension defines these fields in the release schema:"
 msgstr "La extensión define estos campos en el esquema de entrega:"
 
-#: templates/extension_schema.html:49
+#: templates/extension_schema.html:53
 #, python-format
 msgid ""
 "The extension defines these fields in the <a "
@@ -214,7 +219,7 @@ msgstr ""
 "La extensión define estos campos en el <a "
 "href=\"%(url)s\"><code>%(name)s</code></a> objeto del OCDS:"
 
-#: templates/extension_schema.html:51
+#: templates/extension_schema.html:55
 #, python-format
 msgid ""
 "The extension defines these fields in the <a "
@@ -225,63 +230,65 @@ msgstr ""
 "href=\"%(url)s\"><code>%(name)s</code></a> objeto de la <a "
 "href=\"%(extension_url)s\">%(extension_name)s</a> extensión:"
 
-#: templates/extension_schema.html:54
+#: templates/extension_schema.html:58
 #, python-format
 msgid ""
-"The extension defines a new <code>%(name)s</code> object with these fields:"
+"The extension defines a new <code>%(name)s</code> object with these "
+"fields:"
 msgstr ""
-"La extensión define un nuevo <code>%(name)s</code> objeto con estos campos: "
+"La extensión define un nuevo <code>%(name)s</code> objeto con estos "
+"campos: "
 
-#: templates/extension_schema.html:62
+#: templates/extension_schema.html:66
 msgid "Field"
 msgstr "Campo"
 
-#: templates/extension_schema.html:65
+#: templates/extension_schema.html:69
 msgid "Title"
 msgstr "Título"
 
-#: templates/extension_schema.html:71
+#: templates/extension_schema.html:75
 msgid "Type(s)"
 msgstr "Tipo(s)"
 
-#: templates/extension_schema.html:89
+#: templates/extension_schema.html:93
 #, python-format
 msgid "This field is modified from its <a href=\"%(url)s\">original version</a>."
 msgstr "Este campo se modifica de su <a href=\"%(url)s\">versión original </a>."
 
-#: templates/extension_schema.html:95
+#: templates/extension_schema.html:99
 msgid ""
 "This field has <a href=\"https://standard.open-contracting.org/latest/{{ "
 "lang }}/schema/reference/#language\">multilingual support</a>."
 msgstr ""
-"Este archivo tiene <a href=\"https://standard.open-contracting.org/latest/{{"
-" lang }}/schema/reference/#language\">apoyo multilingüe</a>."
+"Este archivo tiene <a href=\"https://standard.open-"
+"contracting.org/latest/{{ lang }}/schema/reference/#language\">apoyo "
+"multilingüe</a>."
 
-#: templates/extension_schema.html:102
+#: templates/extension_schema.html:106
 #, python-format
 msgid "Deprecated in OCDS %(deprecatedVersion)s:"
 msgstr "Obsoleto en OCDS %(deprecatedVersion)s:"
 
-#: templates/extension_schema.html:108
+#: templates/extension_schema.html:112
 msgid "The extension undoes the deprecation of this field."
 msgstr "La extensión deshace la desaprobación de este campo."
 
-#: templates/extension_schema.html:129
+#: templates/extension_schema.html:133
 msgid "The extension removes these fields from the release schema:"
 msgstr "Esta extensión quita estos campos del esquema de entrega:"
 
-#: templates/extension_schema.html:137
+#: templates/extension_schema.html:141
 msgid ""
 "The extension removes these <em>deprecated</em> fields from the release "
 "schema:"
-msgstr ""
-"La extensión quita los campos <em>obsoletos</em> del esquema de entrega:"
+msgstr "La extensión quita los campos <em>obsoletos</em> del esquema de entrega:"
 
 #: templates/extensions.html:3
 msgid "Extensions — OCDS Extension Explorer"
 msgstr "Extensiones — Explorador de Extensiones OCDS"
 
-#: templates/extensions.html:11 templates/layout.html:48
+#: templates/extensions.html:11 templates/layout.html:50
 msgid "Extensions"
 msgstr "Extensiones"
 
@@ -345,12 +352,12 @@ msgstr "cualquier tema"
 #, python-format
 msgid ""
 "Showing <span id=\"filter-count\">%(num)d</span> extensions from the <a "
-"href=\"https://github.com/open-contracting/extension_registry\">extension "
-"registry</a>"
+"href=\"https://github.com/open-contracting/extension_registry\">extension"
+" registry</a>"
 msgstr ""
 "Mostrando <span id=\"filter-count\">%(num)d</span> extensiones del <a "
-"href=\"https://github.com/open-contracting/extension_registry\">registro de "
-"extensiones</a>"
+"href=\"https://github.com/open-contracting/extension_registry\">registro "
+"de extensiones</a>"
 
 #: templates/extensions.html:85
 msgid "Recommended"
@@ -364,9 +371,9 @@ msgstr "Mantenido por <a href=\"%(url)s\">%(name)s</a>"
 #: templates/home.html:17
 #, python-format
 msgid ""
-"Disclose more data about your contracting processes, using extensions to the"
-" <a href=\"https://standard.open-contracting.org/latest/%(lang)s/\">Open "
-"Contracting Data Standard</a>."
+"Disclose more data about your contracting processes, using extensions to "
+"the <a href=\"https://standard.open-"
+"contracting.org/latest/%(lang)s/\">Open Contracting Data Standard</a>."
 msgstr ""
 "Divulge más datos sobre su proceso de contrataciones, utilizando las "
 "extensiones del <a href=\"https://standard.open-"
@@ -384,12 +391,12 @@ msgstr "Para publicadores de datos"
 #: templates/home.html:32
 msgid ""
 "OCDS defines a core set of fields and codes for describing contracting "
-"processes. You can use extensions to describe additional fields outside the "
-"core set."
+"processes. You can use extensions to describe additional fields outside "
+"the core set."
 msgstr ""
 "El OCDS define una serie de campos y códigos centrales para describir "
-"procesos de contrataciones. Puede utilizar extensiones para describir campos"
-" fuera del set central. "
+"procesos de contrataciones. Puede utilizar extensiones para describir "
+"campos fuera del set central. "
 
 #: templates/home.html:33
 msgid "Read the publisher guidance"
@@ -406,30 +413,30 @@ msgid ""
 "extensions are used and read the extensions' documentation."
 msgstr ""
 "Los datos OCDS pueden incluir campos y códigos del esquema OCDS y de las "
-"extensiones. Para entender los datos extendidos, necesita identificar las "
-"extensiones que se usaron y leer la documentación de las extensiones."
+"extensiones. Para entender los datos extendidos, necesita identificar las"
+" extensiones que se usaron y leer la documentación de las extensiones."
 
 #: templates/home.html:42
 msgid "Read the user guidance"
 msgstr "Lea la guía de usuarios"
 
-#: templates/layout.html:35
+#: templates/layout.html:37
 msgid "Toggle navigation"
 msgstr "Cambiar navegación"
 
-#: templates/layout.html:43
+#: templates/layout.html:45
 msgid "Home"
 msgstr "Página principal"
 
-#: templates/layout.html:53
+#: templates/layout.html:55
 msgid "Publisher guidance"
 msgstr "Guía de publicadores"
 
-#: templates/layout.html:58
+#: templates/layout.html:60
 msgid "User guidance"
 msgstr "Guía de usuarios"
 
-#: templates/layout.html:66
+#: templates/layout.html:68
 msgid "Select language"
 msgstr "Elegir idioma"
 
@@ -480,17 +487,17 @@ msgstr "Guía de Publicadores"
 
 #: templates/publishers.html:16
 msgid ""
-"To implement OCDS, you must identify the fields and codes in OCDS that match"
-" the data elements that you want to publish. Some data elements might not "
-"match any field or code in OCDS. To cover such cases, you can add additional"
-" fields or codes to your OCDS data. Extensions provide a way to document "
-"these additional fields and codes."
+"To implement OCDS, you must identify the fields and codes in OCDS that "
+"match the data elements that you want to publish. Some data elements "
+"might not match any field or code in OCDS. To cover such cases, you can "
+"add additional fields or codes to your OCDS data. Extensions provide a "
+"way to document these additional fields and codes."
 msgstr ""
-"Para implementar el OCDS, debe de identificar los campos y códigos en OCDS "
-"que empaten con los elementos de datos que quiere publicar. Puede ser que "
-"algunos elementos de datos no coincidan con ningún campo o código en OCDS. "
-"En esos casos, puede añadir campos o códigos a sus datos OCDS. Las "
-"extensiones proveen una forma de documentar esos campos y códigos "
+"Para implementar el OCDS, debe de identificar los campos y códigos en "
+"OCDS que empaten con los elementos de datos que quiere publicar. Puede "
+"ser que algunos elementos de datos no coincidan con ningún campo o código"
+" en OCDS. En esos casos, puede añadir campos o códigos a sus datos OCDS. "
+"Las extensiones proveen una forma de documentar esos campos y códigos "
 "adicionales. "
 
 #: templates/publishers.html:20
@@ -499,35 +506,35 @@ msgstr "¿Por qué usar extensiones?"
 
 #: templates/publishers.html:24
 msgid ""
-"We recommend using extensions to describe your additional fields and codes "
-"so that:"
+"We recommend using extensions to describe your additional fields and "
+"codes so that:"
 msgstr ""
 "Recomendamos utilizar extensiones para describir sus campos y códigos "
 "adicionales para:"
 
 #: templates/publishers.html:29
 msgid ""
-"Analysts can access definitions for fields and codes to help them interpret "
-"your data."
+"Analysts can access definitions for fields and codes to help them "
+"interpret your data."
 msgstr ""
-"Que los analistas pueden acceder a varias definiciones de campos y códigos "
-"para ayudarles a interpetar sus datos."
+"Que los analistas pueden acceder a varias definiciones de campos y "
+"códigos para ayudarles a interpetar sus datos."
 
 #: templates/publishers.html:32
 msgid ""
-"Developers can access information about the structure of your data to help "
-"write software to process it."
+"Developers can access information about the structure of your data to "
+"help write software to process it."
 msgstr ""
-"Que los desarrolladores pueden acceder a información sobre la estructura de "
-"sus datos para ayudarle a escribir software para procesarlos."
+"Que los desarrolladores pueden acceder a información sobre la estructura "
+"de sus datos para ayudarle a escribir software para procesarlos."
 
 #: templates/publishers.html:35
 msgid ""
-"Your data is consistent with that of other publishers and compatible with "
-"reusable tools and methodologies."
+"Your data is consistent with that of other publishers and compatible with"
+" reusable tools and methodologies."
 msgstr ""
-"Que sus datos sean consistentes con los de otros publicadores y compatibles "
-"con herramientas y metodologías reutilizables."
+"Que sus datos sean consistentes con los de otros publicadores y "
+"compatibles con herramientas y metodologías reutilizables."
 
 #: templates/publishers.html:40
 msgid "Use an extension"
@@ -540,19 +547,20 @@ msgstr "Publicar campos o códigos adicionales utilizando una extensión:"
 #: templates/publishers.html:49
 msgid ""
 "Use the Extension Explorer to find an extension that describes the data "
-"element(s) you want to publish. If you can’t find a suitable extension, you "
-"might need to <a href=\"#create-an-extension\">create an extension</a>."
+"element(s) you want to publish. If you can’t find a suitable extension, "
+"you might need to <a href=\"#create-an-extension\">create an "
+"extension</a>."
 msgstr ""
 "Utilizar el Explorador de Extensiones para encontrar una extensión que "
-"describa los elemento(s) de datos que quiere publicar. Si no puede encontrar"
-" una extensión adecuada, puede ser que necesite <a href=\"#create-an-"
-"extension\">crear una extensión</a>."
+"describa los elemento(s) de datos que quiere publicar. Si no puede "
+"encontrar una extensión adecuada, puede ser que necesite <a href"
+"=\"#create-an-extension\">crear una extensión</a>."
 
 #: templates/publishers.html:52
-msgid ""
-"Structure your data according to the extension’s schema and documentation."
+msgid "Structure your data according to the extension’s schema and documentation."
 msgstr ""
-"Estructurar sus datos de acuerdo al esquema y documentación de la extensión."
+"Estructurar sus datos de acuerdo al esquema y documentación de la "
+"extensión."
 
 #: templates/publishers.html:55
 #, python-format
@@ -565,8 +573,8 @@ msgstr ""
 "Declare la extensión en el array `extensions` del <a "
 "href=\"https://standard.open-"
 "contracting.org/latest/%(lang)s/schema/release_package/\">paquete</a>utilizando"
-" la URL de la documentación de la extensión. Por ejemplo, para declarar la "
-"extensión de estadísticas y detalles de Oferta:"
+" la URL de la documentación de la extensión. Por ejemplo, para declarar "
+"la extensión de estadísticas y detalles de Oferta:"
 
 #: templates/publishers.html:63
 msgid ""
@@ -585,42 +593,42 @@ msgid ""
 "If you can’t find a suitable extension to describe the data elements you "
 "want to publish, you can create an extension."
 msgstr ""
-"Si no puede encontrar una extensión adecuada para describir los elementos "
-"que quiere publicar, puede crear una extensión."
+"Si no puede encontrar una extensión adecuada para describir los elementos"
+" que quiere publicar, puede crear una extensión."
 
 #: templates/publishers.html:75
 msgid ""
 "Extensions can introduce new fields, add codes to open codelists and "
 "introduce additional validation rules to existing OCDS fields. However, "
-"extensions cannot remove fields, change the title or description of fields "
-"or add codes to closed codelists. To suggest such changes, <a "
+"extensions cannot remove fields, change the title or description of "
+"fields or add codes to closed codelists. To suggest such changes, <a "
 "href=\"https://github.com/open-contracting/standard/issues/new\">open an "
 "issue</a> on the standard issue tracker."
 msgstr ""
-"Las extensiones pueden introducir nuevos campos, añadir códigos a listas de "
-"código abiertas e introducir reglas de validación adicionales a campos OCDS."
-" Sin embargo, las extensiones no pueden quitar campos, cambiar el título o "
-"descripción de campos o añadir código a listas de código cerradas. Para "
-"sugerir esos cambios, <a href=\"https://github.com/open-"
+"Las extensiones pueden introducir nuevos campos, añadir códigos a listas "
+"de código abiertas e introducir reglas de validación adicionales a campos"
+" OCDS. Sin embargo, las extensiones no pueden quitar campos, cambiar el "
+"título o descripción de campos o añadir código a listas de código "
+"cerradas. Para sugerir esos cambios, <a href=\"https://github.com/open-"
 "contracting/standard/issues/new\">abra un issue</a> en el rastreador de "
 "issues del estándar."
 
 #: templates/publishers.html:79
 #, python-format
 msgid ""
-"You should also consider whether the data you want to publish belongs to the"
-" contracting process or whether it exists independently. Data that exists "
-"independently of the contracting process is typically better published in a "
-"separate dataset. For example, data on changes to the <a "
+"You should also consider whether the data you want to publish belongs to "
+"the contracting process or whether it exists independently. Data that "
+"exists independently of the contracting process is typically better "
+"published in a separate dataset. For example, data on changes to the <a "
 "href=\"https://standard.open-"
 "contracting.org/latest/%(lang)s/guidance/map/beneficial_ownership/\">beneficial"
-" ownership</a> of suppliers, which is usually tracked outside of procurement"
-" systems."
+" ownership</a> of suppliers, which is usually tracked outside of "
+"procurement systems."
 msgstr ""
 "También debe considerar si los datos que publica son del proceso de "
-"contrataciones o si existen independientemente del proceso. Generalmente es "
-"mejor publicar los datos que existen independientemente del proceso de "
-"contrataciones en una base de datos separada. Por ejemplo, los datos en "
+"contrataciones o si existen independientemente del proceso. Generalmente "
+"es mejor publicar los datos que existen independientemente del proceso de"
+" contrataciones en una base de datos separada. Por ejemplo, los datos en "
 "campos sobre <a href=\"https://standard.open-"
 "contracting.org/latest/%(lang)s/guidance/map/beneficial_ownership/\">beneficiarios"
 " finales</a>de los proveedores, que usualmente se almacenan fuera de los "
@@ -631,27 +639,28 @@ msgstr ""
 msgid ""
 "To create an extension you need to understand <a href=\"http://json-"
 "schema.org/\">JSON Schema</a> and the structure of the <a "
-"href=\"https://standard.open-contracting.org/latest/%(lang)s/schema/\">OCDS "
-"schema</a>. Extensions are fragments of JSON Schema that can be merged into "
-"the OCDS schema to create an extended schema."
+"href=\"https://standard.open-"
+"contracting.org/latest/%(lang)s/schema/\">OCDS schema</a>. Extensions are"
+" fragments of JSON Schema that can be merged into the OCDS schema to "
+"create an extended schema."
 msgstr ""
 "Para crear una extensión debes entender qué es un <a href=\"http://json-"
 "schema.org/\">JSON schema</a> y la estructura del <a "
 "href=\"https://standard.open-"
-"contracting.org/latest/%(lang)s/schema/\">esquema OCDS</a>. Las extensiones "
-"son fragmentos de esquemas JSON que pueden ser combinados con el esquema "
-"OCDS para crear un esquema extendido."
+"contracting.org/latest/%(lang)s/schema/\">esquema OCDS</a>. Las "
+"extensiones son fragmentos de esquemas JSON que pueden ser combinados con"
+" el esquema OCDS para crear un esquema extendido."
 
 #: templates/publishers.html:87
 msgid ""
 "The <a href=\"https://github.com/open-"
-"contracting/standard_extension_template\">standard extension template</a> "
-"describes the structure and components of an extension and the technical "
-"steps to document an extension."
+"contracting/standard_extension_template\">standard extension template</a>"
+" describes the structure and components of an extension and the technical"
+" steps to document an extension."
 msgstr ""
 "La <a href=\"https://github.com/open-"
-"contracting/standard_extension_template\">plantilla de extensión estándar "
-"</a>describe la estructura y componentes de una extensión y los pasos "
+"contracting/standard_extension_template\">plantilla de extensión estándar"
+" </a>describe la estructura y componentes de una extensión y los pasos "
 "técnicos para documentar una extensión."
 
 #: templates/publishers.html:91
@@ -665,57 +674,62 @@ msgstr "Discusión"
 #: templates/publishers.html:99
 msgid ""
 "Before creating an extension, search for related discussions on the <a "
-"href=\"https://github.com/open-contracting/standard/issues\">standard issue "
-"tracker</a>."
+"href=\"https://github.com/open-contracting/standard/issues\">standard "
+"issue tracker</a>."
 msgstr ""
-"Antes de crear una extensión, busque las discusiones relacionadas en el <a "
-"href=\"https://github.com/open-contracting/standard/issues\">rastreador de "
-"issues del estándar</a>."
+"Antes de crear una extensión, busque las discusiones relacionadas en el "
+"<a href=\"https://github.com/open-"
+"contracting/standard/issues\">rastreador de issues del estándar</a>."
 
 #: templates/publishers.html:103
 msgid ""
-"If you can’t find any related discussions, <a "
-"href=\"https://github.com/open-contracting/standard/issues/new\">open an "
-"issue</a> to describe the extension you plan to create. The issue’s "
-"description should include:"
+"If you can’t find any related discussions, <a href=\"https://github.com"
+"/open-contracting/standard/issues/new\">open an issue</a> to describe the"
+" extension you plan to create. The issue’s description should include:"
 msgstr ""
 "Si no puede encontrar ninguna discusión relacionada, <a "
 "href=\"https://github.com/open-contracting/standard/issues/new\">abra un "
-"issue</a> para describir la extensión que planea crear. La descripción del "
-"issue debe incluir:"
+"issue</a> para describir la extensión que planea crear. La descripción "
+"del issue debe incluir:"
 
 #: templates/publishers.html:108
 msgid ""
 "The extension’s use case(s). Describe your reason for adding additional "
 "fields and/or codes and what users will do with the data."
 msgstr ""
-"El caso(s) de uso de la extensión. Describir la razón por la cuál cree que "
-"se deben añadir campos y/o código adicionales y que van a hacer los usuarios"
-" con los datos."
+"El caso(s) de uso de la extensión. Describir la razón por la cuál cree "
+"que se deben añadir campos y/o código adicionales y que van a hacer los "
+"usuarios con los datos."
 
 #: templates/publishers.html:111
 msgid ""
-"The concepts or process that you want to represent. Explain the underlying concepts described by the extension and the workflow for collecting the data. Include references to legislation and other documentation, and consider providing a\n"
+"The concepts or process that you want to represent. Explain the "
+"underlying concepts described by the extension and the workflow for "
+"collecting the data. Include references to legislation and other "
+"documentation, and consider providing a\n"
 "            diagram."
 msgstr ""
-"Los conceptos o procesos que quiere representar. Explicar los conceptos subyacentes descritos por la extensión y el proceso con el cuál se recolectan los datos. Incluir referencias a la legislación y otra documentación y considere proveer un \n"
+"Los conceptos o procesos que quiere representar. Explicar los conceptos "
+"subyacentes descritos por la extensión y el proceso con el cuál se "
+"recolectan los datos. Incluir referencias a la legislación y otra "
+"documentación y considere proveer un \n"
 "diagrama. "
 
 #: templates/publishers.html:115
 msgid ""
-"Examples of existing data. Provide examples of how the data covered by the "
-"extension is represented in your data sources."
+"Examples of existing data. Provide examples of how the data covered by "
+"the extension is represented in your data sources."
 msgstr ""
-"Ejemplos de datos existentes. Dar ejemplos de como los datos cubiertos por "
-"la extensión se representan en sus fuentes de datos."
+"Ejemplos de datos existentes. Dar ejemplos de como los datos cubiertos "
+"por la extensión se representan en sus fuentes de datos."
 
 #: templates/publishers.html:118
 msgid ""
 "To encourage collaboration, keep this issue up to date throughout the "
 "development of your extension."
 msgstr ""
-"Para promover la colaboración, actualice este issue mientras desarrolla su "
-"extensión."
+"Para promover la colaboración, actualice este issue mientras desarrolla "
+"su extensión."
 
 #: templates/publishers.html:123
 msgid "Develop"
@@ -723,8 +737,8 @@ msgstr "Desarrollo"
 
 #: templates/publishers.html:127
 msgid ""
-"You first need to decide on the name, structure and format of the fields in "
-"your extension."
+"You first need to decide on the name, structure and format of the fields "
+"in your extension."
 msgstr ""
 "Primero debe decidir el nombre, estructura y formato de los campos en su "
 "extensión."
@@ -734,8 +748,8 @@ msgid ""
 "You can start by mocking up an example of the data you are creating an "
 "extension for in JSON format. Consider:"
 msgstr ""
-"Puede empezar simulando un ejemplo de los datos para los que esta creando "
-"una extensión en formato JSON. Considere:"
+"Puede empezar simulando un ejemplo de los datos para los que esta creando"
+" una extensión en formato JSON. Considere:"
 
 #: templates/publishers.html:136
 msgid "How would different data fit into this structure?"
@@ -751,26 +765,27 @@ msgstr "¿Es fácil para aplicaciones consumir esta estructura?"
 
 #: templates/publishers.html:145
 msgid ""
-"You can also check <a href=\"https://lov.linkeddata.es/dataset/lov\">other "
-"standards</a> for potential models. The more different examples of source "
-"data, and different use cases for the data you can consider, the better."
+"You can also check <a "
+"href=\"https://lov.linkeddata.es/dataset/lov\">other standards</a> for "
+"potential models. The more different examples of source data, and "
+"different use cases for the data you can consider, the better."
 msgstr ""
 "Puede revisar <a href=\"https://lov.linkeddata.es/dataset/lov\">otros "
-"estándares</a>para modelos potenciales. Mientras más ejemplos de fuentes de "
-"datos considere, así como diferentes casos de uso, mejor."
+"estándares</a>para modelos potenciales. Mientras más ejemplos de fuentes "
+"de datos considere, así como diferentes casos de uso, mejor."
 
 #: templates/publishers.html:150
 msgid ""
 "Before continuing, you should invite feedback on your mockup using the "
 "Github issue you created in the previous step."
 msgstr ""
-"Antes de continuar, debe pedir retroalimentación a su simulación utilizando "
-"el issue de Github que creo en el paso anterior."
+"Antes de continuar, debe pedir retroalimentación a su simulación "
+"utilizando el issue de Github que creo en el paso anterior."
 
 #: templates/publishers.html:154
 msgid ""
-"Once you have settled on a model, you should then document the schema for "
-"your extension. The following tools are available to help you:"
+"Once you have settled on a model, you should then document the schema for"
+" your extension. The following tools are available to help you:"
 msgstr ""
 "Una vez que se haya decidido en un modelo, debe de documentar el esquema "
 "para su extensión. Las siguientes herramientas están disponibles para "
@@ -779,9 +794,9 @@ msgstr ""
 #: templates/publishers.html:159
 msgid ""
 "You can use the <a href=\"https://open-"
-"contracting.github.io/extension_creator\">OCDS Extension Creator</a> to edit"
-" the OCDS schema and generate a patch. For more information on using the "
-"extension creator, refer to its <a href=\"https://github.com/open-"
+"contracting.github.io/extension_creator\">OCDS Extension Creator</a> to "
+"edit the OCDS schema and generate a patch. For more information on using "
+"the extension creator, refer to its <a href=\"https://github.com/open-"
 "contracting/extension_creator\">documentation</a>."
 msgstr ""
 "Puede utilizar el <a href=\"https://open-"
@@ -794,24 +809,26 @@ msgstr ""
 #: templates/publishers.html:162
 msgid ""
 "You can copy the <a href=\"https://github.com/open-"
-"contracting/standard_extension_template\">standard extension template</a> "
-"and use a text editor to edit the schema files."
+"contracting/standard_extension_template\">standard extension template</a>"
+" and use a text editor to edit the schema files."
 msgstr ""
 "Puede copiar la <a href=\"https://github.com/open-"
 "contracting/standard_extension_template\">plantilla de extensión "
-"estándar</a> y usar un editor de texto para editar los archivos del esquema."
+"estándar</a> y usar un editor de texto para editar los archivos del "
+"esquema."
 
 #: templates/publishers.html:165
 msgid ""
 "You can use <a href=\"https://jsonschema.net\">JSONschema.net</a> to "
 "generate a schema from your JSON mockup."
 msgstr ""
-"Puede utilizar <a href=\"https://jsonschema.net\">JSONschema.net t</a>para "
-"generar un esquema para su simulación JSON."
+"Puede utilizar <a href=\"https://jsonschema.net\">JSONschema.net "
+"t</a>para generar un esquema para su simulación JSON."
 
 #: templates/publishers.html:170
 msgid ""
-"Your schema should follow the <a href=\"https://ocds-standard-development-"
+"Your schema should follow the <a href=\"https://ocds-standard-"
+"development-"
 "handbook.readthedocs.io/en/latest/meta/schema_style_guide.html\">schema "
 "style guide</a>."
 msgstr ""
@@ -825,13 +842,13 @@ msgstr "Documentar"
 
 #: templates/publishers.html:178
 msgid ""
-"You will need to find somewhere to host your extension online at a stable "
-"URL. It must be possible to access an extension's schema and codelist files "
-"by replacing <code>extension.json</code> in the extension's URL with a "
-"file's path: for example, <code>release-schema.json</code> or "
-"<code>codelists/codelist.csv</code>. Creating a GitHub repository for your "
-"extension is a good option because it offers version control, issue tracking"
-" and appropriate URLs: for example, "
+"You will need to find somewhere to host your extension online at a stable"
+" URL. It must be possible to access an extension's schema and codelist "
+"files by replacing <code>extension.json</code> in the extension's URL "
+"with a file's path: for example, <code>release-schema.json</code> or "
+"<code>codelists/codelist.csv</code>. Creating a GitHub repository for "
+"your extension is a good option because it offers version control, issue "
+"tracking and appropriate URLs: for example, "
 "<code>https://raw.githubusercontent.com/open-contracting-"
 "extensions/ocds_bid_extension/master/extension.json</code>."
 msgstr ""
@@ -841,8 +858,8 @@ msgstr ""
 "<code>extension.json</code> en la URL de la extensión con una ruta a un "
 "archivo: por ejemplo, <code>release-schema.json</code> o "
 "<code>codelists/codelist.csv. Crear un repositorio en GitHub para tu "
-"extensión es una buena opción porque este ofrece control de versionamiento, "
-"trackeo de issues y URL apropiadas: por ejemplo, "
+"extensión es una buena opción porque este ofrece control de "
+"versionamiento, trackeo de issues y URL apropiadas: por ejemplo, "
 "<code>https://raw.githubusercontent.com/open-contracting-"
 "extensions/ocds_bid_extension/master/extension.json</code>."
 
@@ -856,11 +873,11 @@ msgstr ""
 
 #: templates/publishers.html:186
 msgid ""
-"Your documentation should include a description of the extension and its use"
-" cases, and examples of data structured according to the extension."
+"Your documentation should include a description of the extension and its "
+"use cases, and examples of data structured according to the extension."
 msgstr ""
-"Su documentación debe incluir una descripción de la extensión y sus casos de"
-" uso, y ejemplos de datos estructurados de acuerdo a su extensión."
+"Su documentación debe incluir una descripción de la extensión y sus casos"
+" de uso, y ejemplos de datos estructurados de acuerdo a su extensión."
 
 #: templates/publishers.html:190
 msgid "Test"
@@ -881,13 +898,14 @@ msgstr "Registre"
 #: templates/publishers.html:200
 msgid ""
 "We encourage you to <a href =\"https://github.com/open-"
-"contracting/extension_registry#how-to-register-an-extension\">register your "
-"extension</a> so that others can discover it using the Extension Explorer."
+"contracting/extension_registry#how-to-register-an-extension\">register "
+"your extension</a> so that others can discover it using the Extension "
+"Explorer."
 msgstr ""
 "Lo alentamos a <a href =\"https://github.com/open-"
-"contracting/extension_registry#how-to-register-an-extension\">registrar su "
-"extensión</a> para que otras personas puedan descubrirla utilizando el "
-"Explorador de Extensiones."
+"contracting/extension_registry#how-to-register-an-extension\">registrar "
+"su extensión</a> para que otras personas puedan descubrirla utilizando el"
+" Explorador de Extensiones."
 
 #: templates/publishers.html:204
 msgid ""
@@ -900,14 +918,23 @@ msgstr ""
 #: templates/publishers.html:208
 msgid "To register an extension, it must meet the following criteria:"
 msgstr ""
-"Para regisrtar una extensión, se deben de cumplir los siguientes criterios:"
+"Para regisrtar una extensión, se deben de cumplir los siguientes "
+"criterios:"
 
 #: templates/publishers.html:213
 msgid ""
-"The documentation is in English. According to the <a href=\"https://docs.google.com/document/d/1GLwWTpgDDkKmMr1hZE4D75LI8VQtFiD0VA7TF_FvY_Q/\">translation and localization policy</a>, “the authoritative language for the standard is English.” As such, all extensions in the Extension Explorer – as part of the standard’s documentation\n"
+"The documentation is in English. According to the <a "
+"href=\"https://docs.google.com/document/d/1GLwWTpgDDkKmMr1hZE4D75LI8VQtFiD0VA7TF_FvY_Q/\">translation"
+" and localization policy</a>, “the authoritative language for the "
+"standard is English.” As such, all extensions in the Extension Explorer –"
+" as part of the standard’s documentation\n"
 "            – must be in English."
 msgstr ""
-"La documentación esta en inglés. De acuerdo a la <a href=\"https://docs.google.com/document/d/1GLwWTpgDDkKmMr1hZE4D75LI8VQtFiD0VA7TF_FvY_Q/\">política de traducción y localización</a>, el idioma autorizado para el estándar es inglés.\" De esa manera, todas las extensiones en el Explorador de Extensiones  – como parte de la documentación del estándar  \n"
+"La documentación esta en inglés. De acuerdo a la <a "
+"href=\"https://docs.google.com/document/d/1GLwWTpgDDkKmMr1hZE4D75LI8VQtFiD0VA7TF_FvY_Q/\">política"
+" de traducción y localización</a>, el idioma autorizado para el estándar "
+"es inglés.\" De esa manera, todas las extensiones en el Explorador de "
+"Extensiones  – como parte de la documentación del estándar  \n"
 " –  deben estar en inglés."
 
 #: templates/publishers.html:217
@@ -916,16 +943,22 @@ msgid ""
 "Documentation of less than 200 characters cannot adequately describe an "
 "extension, its purpose and technical details."
 msgstr ""
-"La documentación, incluyendo ejemplos, es más larga que 200 cáracteres. La "
-"documentación con menos de 200 caracteres no puede describir una extensión, "
-"su propósito y los detalles técnicos adecuadamente."
+"La documentación, incluyendo ejemplos, es más larga que 200 cáracteres. "
+"La documentación con menos de 200 caracteres no puede describir una "
+"extensión, su propósito y los detalles técnicos adecuadamente."
 
 #: templates/publishers.html:220
 msgid ""
-"The extension.json and README.md files are not publisher-specific. If the extension’s name or description suggests it is relevant to only one publisher, then it is unlikely to be used by other publishers, even if the schema patch is\n"
+"The extension.json and README.md files are not publisher-specific. If the"
+" extension’s name or description suggests it is relevant to only one "
+"publisher, then it is unlikely to be used by other publishers, even if "
+"the schema patch is\n"
 "            relevant."
 msgstr ""
-"Los archivos extension.json y README.md no son exclusivos a un solo publicador. Si el nombre de la extensión o la descripción sugiere que solo es relevante para un solo publicador, es poco probable que se utilice por otros publicadores, aunque el parche del esquema sea\n"
+"Los archivos extension.json y README.md no son exclusivos a un solo "
+"publicador. Si el nombre de la extensión o la descripción sugiere que "
+"solo es relevante para un solo publicador, es poco probable que se "
+"utilice por otros publicadores, aunque el parche del esquema sea\n"
 "relevante."
 
 #: templates/publishers.html:224
@@ -933,8 +966,9 @@ msgid ""
 "No other extension expresses the same concepts. Having multiple ways to "
 "express the same concept would be counter-productive to standardization."
 msgstr ""
-"Ninguna otra extensión expresa los mismos conceptos. Tener varias maneras de"
-" expresar el mismo concepto sería contraproducente a la estandarización."
+"Ninguna otra extensión expresa los mismos conceptos. Tener varias maneras"
+" de expresar el mismo concepto sería contraproducente a la "
+"estandarización."
 
 #: templates/publishers.html:227
 msgid ""
@@ -969,8 +1003,8 @@ msgstr "Guía de usuarios"
 
 #: templates/users.html:16
 msgid ""
-"To use data, you first need to understand its structure and meaning. OCDS "
-"data can contain fields from:"
+"To use data, you first need to understand its structure and meaning. OCDS"
+" data can contain fields from:"
 msgstr ""
 "Para utilizar los datos, primero debe entender la estructura y  el "
 "significado. Los datos OCDS pueden contener campos de:"
@@ -990,31 +1024,29 @@ msgstr ""
 msgid ""
 "Extensions, whose fields are described in their schema and in their "
 "documentation."
-msgstr ""
-"Extensiones, los campos se describen en su esquema y en su documentación."
+msgstr "Extensiones, los campos se describen en su esquema y en su documentación."
 
 #: templates/users.html:29
 msgid "To identify which extensions are used in OCDS data, you can either:"
-msgstr ""
-"Para identificar que extensiones se utilizan en los datos OCDS, puede:"
+msgstr "Para identificar que extensiones se utilizan en los datos OCDS, puede:"
 
 #: templates/users.html:34
 msgid ""
-"Check for an <code>extensions</code> field at the package level. For data "
-"with extensions, this field contains an array of URLs to "
+"Check for an <code>extensions</code> field at the package level. For data"
+" with extensions, this field contains an array of URLs to "
 "<code>extension.json</code> files. Each file contains a "
 "<code>documentationUrl</code> object with a URL to the extension's "
-"documentation. Open the URL to read its documentation (in many cases, the "
-"URL leads to this website). For example, the following data declares the Bid"
-" statistics and details extension:"
+"documentation. Open the URL to read its documentation (in many cases, the"
+" URL leads to this website). For example, the following data declares the"
+" Bid statistics and details extension:"
 msgstr ""
-"Revisar un campo de <code>extensiones</code>a nivel paquete. Para datos con "
-"extensiones, este campo contiene una lista de URLs con archivos "
+"Revisar un campo de <code>extensiones</code>a nivel paquete. Para datos "
+"con extensiones, este campo contiene una lista de URLs con archivos "
 "<code>extension.json</code>. Cada campo contiene un objeto "
 "<code>documentationUrl</code> con una URL a la documentación de la "
-"extensión. Abra la URL para leer la documentación (en muchos casos, la URL "
-"lleva a este sitio web). Por ejemplo, los siguientes datos declaran la "
-"extensión estadísticas y detalles de Oferta:"
+"extensión. Abra la URL para leer la documentación (en muchos casos, la "
+"URL lleva a este sitio web). Por ejemplo, los siguientes datos declaran "
+"la extensión estadísticas y detalles de Oferta:"
 
 #: templates/users.html:42
 msgid ""
@@ -1023,5 +1055,6 @@ msgid ""
 "used and links to their documentation."
 msgstr ""
 "Sube tus datos a la <a href=\"https://review.standard.open-"
-"contracting.org/\">OCDS Data Review Tool</a>, la cual lista las extesniones "
-"utilizadas y los enlances a su documentación."
+"contracting.org/\">OCDS Data Review Tool</a>, la cual lista las "
+"extesniones utilizadas y los enlances a su documentación."
+

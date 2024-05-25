@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-04-04 09:51-0400\n"
+"POT-Creation-Date: 2024-05-24 21:22-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Changelog"
 msgstr ""
 
-#: templates/extension_schema.html:68 util.py:231
+#: templates/extension_schema.html:72 util.py:231
 msgid "Description"
 msgstr ""
 
@@ -72,12 +72,12 @@ msgstr[1] ""
 msgid "array of %(subtypes)s"
 msgstr ""
 
-#: templates/home.html:3 templates/home.html:13 templates/layout.html:30
-#: views.py:90
+#: templates/home.html:3 templates/home.html:13 templates/layout.html:32
+#: views.py:96
 msgid "OCDS Extension Explorer"
 msgstr ""
 
-#: views.py:125
+#: views.py:131
 #, python-format
 msgid "%(name)s — OCDS Extension Explorer"
 msgstr ""
@@ -107,33 +107,38 @@ msgstr ""
 msgid "%(name)s — Codelists — OCDS Extension Explorer"
 msgstr ""
 
-#: templates/extension_codelists.html:8 templates/extension_codelists.html:25
+#: templates/extension_codelists.html:6
+#, python-format
+msgid "Documentation of the codes in the %(name)s extension"
+msgstr ""
+
+#: templates/extension_codelists.html:12 templates/extension_codelists.html:29
 #: templates/layout_extension.html:80
 msgid "Codelists"
 msgstr ""
 
-#: templates/extension_codelists.html:34
+#: templates/extension_codelists.html:38
 #, python-format
 msgid ""
 "You can <a href=\"%(url)s\">download the <code>%(codelist)s</code> "
 "file</a> in English."
 msgstr ""
 
-#: templates/extension_codelists.html:40
+#: templates/extension_codelists.html:44
 #, python-format
 msgid ""
 "The extension adds these codes to the <a "
 "href=\"%(url)s\"><code>%(codelist)s</code> codelist</a>."
 msgstr ""
 
-#: templates/extension_codelists.html:42
+#: templates/extension_codelists.html:46
 #, python-format
 msgid ""
 "The extension removes these codes from the <a "
 "href=\"%(url)s\"><code>%(codelist)s</code> codelist</a>."
 msgstr ""
 
-#: templates/extension_codelists.html:44
+#: templates/extension_codelists.html:48
 #, python-format
 msgid ""
 "The extension replaces the <a href=\"%(url)s\"><code>%(codelist)s</code> "
@@ -145,8 +150,8 @@ msgstr ""
 msgid "%(name)s — Documentation — OCDS Extension Explorer"
 msgstr ""
 
-#: templates/extension_documentation.html:14
-#: templates/extension_documentation.html:31 templates/layout_extension.html:63
+#: templates/extension_documentation.html:18
+#: templates/extension_documentation.html:35 templates/layout_extension.html:63
 msgid "Documentation"
 msgstr ""
 
@@ -155,34 +160,39 @@ msgstr ""
 msgid "%(name)s — Schema — OCDS Extension Explorer"
 msgstr ""
 
-#: templates/extension_schema.html:8 templates/extension_schema.html:32
+#: templates/extension_schema.html:6
+#, python-format
+msgid "Documentation of the fields in the %(name)s extension"
+msgstr ""
+
+#: templates/extension_schema.html:12 templates/extension_schema.html:36
 #: templates/layout_extension.html:71
 msgid "Schema"
 msgstr ""
 
-#: templates/extension_schema.html:22 templates/extension_schema.html:124
+#: templates/extension_schema.html:26 templates/extension_schema.html:128
 msgid "Removed fields"
 msgstr ""
 
-#: templates/extension_schema.html:36
+#: templates/extension_schema.html:40
 #, python-format
 msgid ""
 "You can <a href=\"%(url)s\">download the <code>release-schema.json</code>"
 " file</a> in English."
 msgstr ""
 
-#: templates/extension_schema.html:46
+#: templates/extension_schema.html:50
 msgid "The extension defines these fields in the release schema:"
 msgstr ""
 
-#: templates/extension_schema.html:49
+#: templates/extension_schema.html:53
 #, python-format
 msgid ""
 "The extension defines these fields in the <a "
 "href=\"%(url)s\"><code>%(name)s</code></a> object from OCDS:"
 msgstr ""
 
-#: templates/extension_schema.html:51
+#: templates/extension_schema.html:55
 #, python-format
 msgid ""
 "The extension defines these fields in the <a "
@@ -190,50 +200,50 @@ msgid ""
 "href=\"%(extension_url)s\">%(extension_name)s</a> extension:"
 msgstr ""
 
-#: templates/extension_schema.html:54
+#: templates/extension_schema.html:58
 #, python-format
 msgid ""
 "The extension defines a new <code>%(name)s</code> object with these "
 "fields:"
 msgstr ""
 
-#: templates/extension_schema.html:62
+#: templates/extension_schema.html:66
 msgid "Field"
 msgstr ""
 
-#: templates/extension_schema.html:65
+#: templates/extension_schema.html:69
 msgid "Title"
 msgstr ""
 
-#: templates/extension_schema.html:71
+#: templates/extension_schema.html:75
 msgid "Type(s)"
 msgstr ""
 
-#: templates/extension_schema.html:89
+#: templates/extension_schema.html:93
 #, python-format
 msgid "This field is modified from its <a href=\"%(url)s\">original version</a>."
 msgstr ""
 
-#: templates/extension_schema.html:95
+#: templates/extension_schema.html:99
 msgid ""
 "This field has <a href=\"https://standard.open-contracting.org/latest/{{ "
 "lang }}/schema/reference/#language\">multilingual support</a>."
 msgstr ""
 
-#: templates/extension_schema.html:102
+#: templates/extension_schema.html:106
 #, python-format
 msgid "Deprecated in OCDS %(deprecatedVersion)s:"
 msgstr ""
 
-#: templates/extension_schema.html:108
+#: templates/extension_schema.html:112
 msgid "The extension undoes the deprecation of this field."
 msgstr ""
 
-#: templates/extension_schema.html:129
+#: templates/extension_schema.html:133
 msgid "The extension removes these fields from the release schema:"
 msgstr ""
 
-#: templates/extension_schema.html:137
+#: templates/extension_schema.html:141
 msgid ""
 "The extension removes these <em>deprecated</em> fields from the release "
 "schema:"
@@ -243,7 +253,7 @@ msgstr ""
 msgid "Extensions — OCDS Extension Explorer"
 msgstr ""
 
-#: templates/extensions.html:11 templates/layout.html:48
+#: templates/extensions.html:11 templates/layout.html:50
 msgid "Extensions"
 msgstr ""
 
@@ -362,23 +372,23 @@ msgstr ""
 msgid "Read the user guidance"
 msgstr ""
 
-#: templates/layout.html:35
+#: templates/layout.html:37
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/layout.html:43
+#: templates/layout.html:45
 msgid "Home"
 msgstr ""
 
-#: templates/layout.html:53
+#: templates/layout.html:55
 msgid "Publisher guidance"
 msgstr ""
 
-#: templates/layout.html:58
+#: templates/layout.html:60
 msgid "User guidance"
 msgstr ""
 
-#: templates/layout.html:66
+#: templates/layout.html:68
 msgid "Select language"
 msgstr ""
 

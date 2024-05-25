@@ -14,6 +14,8 @@
 {% for lang, name in langs.items() %}
   <link rel="alternate" hreflang="{{ lang }}" href="{{ change_lang_in_url(lang) }}">
 {% endfor %}
+{% block meta_description %}
+{% endblock %}
 {% block extra_head %}
 {% endblock %}
 </head>

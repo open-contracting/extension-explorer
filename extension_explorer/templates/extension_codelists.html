@@ -2,6 +2,10 @@
 
 {% block title %}{{ _("%(name)s — Codelists — OCDS Extension Explorer", name=extension.name[lang]) }}{% endblock %}
 
+{% block meta_description %}
+{{ _('Documentation of the codes in the %(name)s extension', name=extension.name[lang]) }}
+{% endblock %}
+
 {% block nav_codelists %}
         <div class="ee-toc-item active">
           <a class="ee-toc-link" href="{{ url_for('extension_codelists', lang=lang, identifier=identifier, version=version) }}">
