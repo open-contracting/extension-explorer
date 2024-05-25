@@ -96,7 +96,7 @@ def home():
     title = gettext('OCDS Extension Explorer')
     url = url_for('lang_home', lang='en')
 
-    return render_template('redirect.html', title=title, redirect=url, lang=lang)
+    return render_template('redirect.html', title=title, redirect=url, lang='en')
 
 
 @app.route('/<lang>/')
