@@ -30,6 +30,7 @@ LANGS = {
 class Configuration(metaclass=MetaFlaskEnv):
     ENV_PREFIX = 'FLASK_'
     FREEZER_IGNORE_404_NOT_FOUND = True
+    FREEZER_STATIC_IGNORE = ['*.scss', 'LICENSE']
 
 
 def get_locale():
@@ -77,6 +78,11 @@ def inject_language_variables():
 @app.errorhandler(UnknownLocaleError)
 def handle_unknown_locale_error(error):
     return NotFound()
+
+
+@app.route('/robots.txt')
+def robots_txt():
+    return 'User-Agent: *\nDisallow:\n'
 
 
 @app.route('/extensions.json')
