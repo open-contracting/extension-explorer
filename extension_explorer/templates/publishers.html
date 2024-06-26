@@ -80,8 +80,34 @@
         </p>
 
         <p>
-          {{ _('To create an extension you need to understand <a href="http://json-schema.org/">JSON Schema</a> and the structure of the <a href="https://standard.open-contracting.org/latest/%(lang)s/schema/">OCDS schema</a>. Extensions are fragments of JSON Schema that can be merged into the OCDS schema to create an extended schema.', lang=lang) }}
+          {{ _('To create an extension you need to understand <a href="http://json-schema.org/">JSON Schema</a> and the structure of the <a href="https://standard.open-contracting.org/latest/%(lang)s/schema/">OCDS schema</a>. Extensions are fragments of JSON Schema, known as a <a href="https://tools.ietf.org/html/rfc7386">JSON Merge Patches</a>, that can be merged into the OCDS schema to create an extended schema.', lang=lang) }}
         </p>
+
+        <p>
+          {{ _('An extension's <code>release-schema.json</code> follows the structure of the OCDS schema and describes new and changed fields. For example, to add a new <code>.statusDetails</code> field to <code>Contract</code>:
+          ', lang=lang)}}
+        </p>
+
+        <pre>
+          <code>
+            {
+              "definitions": {
+                  "Contract": {
+                      "properties": {
+                          "statusDetails": {
+                              "title": "Status Details",
+                              "description": "Additional detail on the status of the contract. This field can be used to provide the local name of the status",
+                              "type": [
+                                  "string",
+                                  "null"
+                              ]
+                          }
+                      }
+                  }
+              }
+            }
+          </code>
+        </pre>
 
         <p>
           {{ _('The <a href="https://github.com/open-contracting/standard_extension_template">standard extension template</a> describes the structure and components of an extension and the technical steps to document an extension.', lang=lang) }}
