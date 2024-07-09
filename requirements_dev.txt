@@ -32,7 +32,7 @@ cattrs==23.2.3
     # via
     #   -r requirements.txt
     #   requests-cache
-certifi==2023.7.22
+certifi==2024.7.4
     # via
     #   -r requirements.txt
     #   requests
