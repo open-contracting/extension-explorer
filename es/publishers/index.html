@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Publisher Guidance</title>
+  <meta name="description" content="">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/publishers/">
+  <link rel="alternate" hreflang="es" href="/es/publishers/">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        OCDS Extension Explorer
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/extensions/">
+            Extensions
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/publishers/">
+            Publisher guidance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            User guidance
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+            <span class="sr-only">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/publishers/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/publishers/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<main class="ee-masthead" role="main">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col">
+        <h1 class="display-4">
+          Publisher Guidance
+        </h1>
+
+        <p>
+          To implement OCDS, you must identify the fields and codes in OCDS that match the data elements that you want to publish. Some data elements might not match any field or code in OCDS. To cover such cases, you can add additional fields or codes to your OCDS data. Extensions provide a way to document these additional fields and codes.
+        </p>
+
+        <h2>
+          Why use extensions?
+        </h2>
+
+        <p>
+          We recommend using extensions to describe your additional fields and codes so that:
+        </p>
+
+        <ul>
+          <li>
+            Analysts can access definitions for fields and codes to help them interpret your data.
+          </li>
+          <li>
+            Developers can access information about the structure of your data to help write software to process it.
+          </li>
+          <li>
+            Your data is consistent with that of other publishers and compatible with reusable tools and methodologies.
+          </li>
+        </ul>
+
+        <h2 id="use-an-extension">
+          Use an extension
+        </h2>
+
+        <p>
+          To publish additional fields or codes using an extension:
+        </p>
+
+        <ol>
+          <li class="mt-3">
+            Use the Extension Explorer to find an extension that describes the data element(s) you want to publish. If you can’t find a suitable extension, you might need to <a href="#create-an-extension">create an extension</a>.
+          </li>
+          <li class="mt-3">
+            Structure your data according to the extension’s schema and documentation.
+          </li>
+          <li class="mt-3">
+            Declare the extension in your <a href="https://standard.open-contracting.org/latest/es/schema/release_package/">package’s</a> `extensions` array using the URL from the extension’s documentation. For example, to declare the Bid statistics and details extension:
+            <div class="mt-3">
+              <code>
+                {"extensions": ["https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"]}
+              </code>
+            </div>
+          </li>
+          <li class="mt-3">
+            Check your data using the <a href="https://review.standard.open-contracting.org/">OCDS Data Review Tool</a>.
+          </li>
+        </ol>
+
+        <h2 id="create-an-extension">
+          Create an extension
+        </h2>
+        <p>
+          If you can’t find a suitable extension to describe the data elements you want to publish, you can create an extension.
+        </p>
+
+        <p>
+          Extensions can introduce new fields, add codes to open codelists and introduce additional validation rules to existing OCDS fields. However, extensions cannot remove fields, change the title or description of fields or add codes to closed codelists. To suggest such changes, <a href="https://github.com/open-contracting/standard/issues/new">open an issue</a> on the standard issue tracker.
+        </p>
+
+        <p>
+          You should also consider whether the data you want to publish belongs to the contracting process or whether it exists independently. Data that exists independently of the contracting process is typically better published in a separate dataset. For example, data on changes to the <a href="https://standard.open-contracting.org/latest/es/guidance/map/beneficial_ownership/">beneficial ownership</a> of suppliers, which is usually tracked outside of procurement systems.
+        </p>
+
+        <p>
+          To create an extension you need to understand <a href="http://json-schema.org/">JSON Schema</a> and the structure of the <a href="https://standard.open-contracting.org/latest/es/schema/">OCDS schema</a>. Extensions are fragments of JSON Schema that can be merged into the OCDS schema to create an extended schema.
+        </p>
+
+        <p>
+          The <a href="https://github.com/open-contracting/standard_extension_template">standard extension template</a> describes the structure and components of an extension and the technical steps to document an extension.
+        </p>
+
+        <p>
+          There are five steps to creating an extension:
+        </p>
+
+        <h3>
+          Discuss
+        </h3>
+        
+        <p>
+          Before creating an extension, search for related discussions on the <a href="https://github.com/open-contracting/standard/issues">standard issue tracker</a>.
+        </p>
+
+        <p>
+          If you can’t find any related discussions, <a href="https://github.com/open-contracting/standard/issues/new">open an issue</a> to describe the extension you plan to create. The issue’s description should include:
+        </p>
+
+        <ul>
+          <li>
+            The extension’s use case(s). Describe your reason for adding additional fields and/or codes and what users will do with the data.
+          </li>
+          <li>
+            The concepts or process that you want to represent. Explain the underlying concepts described by the extension and the workflow for collecting the data. Include references to legislation and other documentation, and consider providing a
+            diagram.
+          </li>
+          <li>
+            Examples of existing data. Provide examples of how the data covered by the extension is represented in your data sources.
+          </li>
+          <li>
+            To encourage collaboration, keep this issue up to date throughout the development of your extension.
+          </li>
+        </ul>
+
+        <h3>
+          Develop
+        </h3>
+        
+        <p>
+          You first need to decide on the name, structure and format of the fields in your extension.
+        </p>
+
+        <p>
+          You can start by mocking up an example of the data you are creating an extension for in JSON format. Consider:
+        </p>
+
+        <ul>
+          <li>
+            How would different data fit into this structure?
+          </li>
+          <li>
+            Are the field names intuitive for users?
+          </li>
+          <li>
+            Is the structure easy for applications to consume?
+          </li>
+          <li>
+            You can also check <a href="https://lov.linkeddata.es/dataset/lov">other standards</a> for potential models. The more different examples of source data, and different use cases for the data you can consider, the better.
+          </li>
+        </ul>
+
+        <p>
+          Before continuing, you should invite feedback on your mockup using the Github issue you created in the previous step.
+        </p>
+
+        <p>
+          Once you have settled on a model, you should then document the schema for your extension. The following tools are available to help you:
+        </p>
+
+        <ul>
+          <li>
+            You can use the <a href="https://open-contracting.github.io/extension_creator">OCDS Extension Creator</a> to edit the OCDS schema and generate a patch. For more information on using the extension creator, refer to its <a href="https://github.com/open-contracting/extension_creator">documentation</a>.
+          </li>
+          <li>
+            You can copy the <a href="https://github.com/open-contracting/standard_extension_template">standard extension template</a> and use a text editor to edit the schema files.
+          </li>
+          <li>
+            You can use <a href="https://jsonschema.net">JSONschema.net</a> to generate a schema from your JSON mockup.
+          </li>
+        </ul>
+
+        <p>
+          Your schema should follow the <a href="https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html">schema style guide</a>.
+        </p>
+
+        <h3>
+          Document
+        </h3>
+
+        <p>
+          You will need to find somewhere to host your extension online at a stable URL. It must be possible to access an extension's schema and codelist files by replacing <code>extension.json</code> in the extension's URL with a file's path: for example, <code>release-schema.json</code> or <code>codelists/codelist.csv</code>. Creating a GitHub repository for your extension is a good option because it offers version control, issue tracking and appropriate URLs: for example, <code>https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json</code>.
+        </p>
+
+        <p>
+          You also need to write a README file and/or other documentation for your extension.
+        </p>
+
+        <p>
+          Your documentation should include a description of the extension and its use cases, and examples of data structured according to the extension.
+        </p>
+
+        <h3>
+          Test
+        </h3>
+        <p>
+          Test your extension by following steps 2-4 in <a href="#use-an-extension">Use an extension</a>.
+        </p>
+
+        <h3>
+          Register
+        </h3>
+        <p>
+          We encourage you to <a href ="https://github.com/open-contracting/extension_registry#how-to-register-an-extension">register your extension</a> so that others can discover it using the Extension Explorer.
+        </p>
+
+        <p>
+          Extensions that are useful to only a single publisher do not need to be registered.
+        </p>
+
+        <p>
+          To register an extension, it must meet the following criteria:
+        </p>
+
+        <ul>
+          <li>
+            The documentation is in English. According to the <a href="https://docs.google.com/document/d/1GLwWTpgDDkKmMr1hZE4D75LI8VQtFiD0VA7TF_FvY_Q/">translation and localization policy</a>, “the authoritative language for the standard is English.” As such, all extensions in the Extension Explorer – as part of the standard’s documentation
+            – must be in English.
+          </li>
+          <li>
+            The documentation, excluding examples, is more than 200 characters long. Documentation of less than 200 characters cannot adequately describe an extension, its purpose and technical details.
+          </li>
+          <li>
+            The extension.json and README.md files are not publisher-specific. If the extension’s name or description suggests it is relevant to only one publisher, then it is unlikely to be used by other publishers, even if the schema patch is
+            relevant.
+          </li>
+          <li>
+            No other extension expresses the same concepts. Having multiple ways to express the same concept would be counter-productive to standardization.
+          </li>
+          <li>
+            The extension follows the <a href="https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html">schema style guide</a>.
+          </li>
+        </ul>
+        
+        <h2>
+          Versioning
+        </h2>
+        <p>
+          OCDS extensions should use <a href="https://semver.org/">semantic versioning.</a>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>
