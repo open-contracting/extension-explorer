@@ -22,7 +22,7 @@ jobs:
         working-directory: extension_explorer
         run: |
           pybabel extract -F babel.cfg -o messages.pot .
-          pybabel update -i messages.pot -d locale
+          pybabel update -N -i messages.pot -d locale
       - name: Count incomplete translations
         shell: bash
         run: |
