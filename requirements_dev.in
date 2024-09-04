@@ -2,7 +2,7 @@
 coveralls
 flake8
 isort
-pip-tools
+pre-commit
 pytest
 pytest-cov
 pytest-flask
