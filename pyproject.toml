@@ -1,12 +1,6 @@
-[build-system]
-requires = ["setuptools>=61.2"]
-build-backend = "setuptools.build_meta"
-
-# This project is not intended to be released or used as a Python package. This file only exists for babel.
 [project]
 name = "ocdsextensionexplorer"
 version = "0.0.0"
-license = {text = "BSD"}
 
 [project.entry-points."babel.extractors"]
 tag = "extension_explorer.extract:extract_tag"

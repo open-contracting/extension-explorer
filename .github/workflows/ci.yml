@@ -12,7 +12,5 @@ jobs:
           cache: pip
           cache-dependency-path: '**/requirements*.txt'
       - run: pip install -r requirements_dev.txt
-      - run: pytest -W error --cov extension_explorer
-      - env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: coveralls --service=github
+      - run: pytest -W error --cov-report=lcov:coverage/lcov.info --cov extension_explorer
+      - uses: coverallsapp/github-action@v2
