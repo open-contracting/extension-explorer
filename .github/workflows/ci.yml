@@ -12,5 +12,5 @@ jobs:
           cache: pip
           cache-dependency-path: '**/requirements*.txt'
       - run: pip install -r requirements_dev.txt
-      - run: pytest -W error --cov-report=lcov:coverage/lcov.info --cov extension_explorer
+      - run: coverage run --source=extension_explorer -m pytest -W error
       - uses: coverallsapp/github-action@v2

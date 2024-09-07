@@ -1,5 +1,6 @@
 -r requirements.txt
+coverage
 libsass
+pre-commit
 pytest
-pytest-cov
 pytest-flask
