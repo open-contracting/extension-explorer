@@ -8,6 +8,9 @@ tag = "extension_explorer.extract:extract_tag"
 [tool.setuptools]
 packages = ["extension_explorer"]
 
-[tool.isort]
-profile = "black"
-line_length = 119
+[tool.ruff]
+line-length = 119
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "C4", "F", "I", "W"]

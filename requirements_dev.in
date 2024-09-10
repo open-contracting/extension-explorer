@@ -1,6 +1,5 @@
 -r requirements.txt
 coverage
 libsass
-pre-commit
 pytest
 pytest-flask
