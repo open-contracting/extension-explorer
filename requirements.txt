@@ -8,7 +8,7 @@ attrs==23.2.0
     # via
     #   cattrs
     #   requests-cache
-babel==2.12.1
+babel==2.16.0
     # via
     #   -r requirements.in
     #   flask-babel

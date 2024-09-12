@@ -14,3 +14,15 @@ target-version = "py310"
 
 [tool.ruff.lint]
 select = ["E", "C4", "F", "I", "W"]
+
+[[tool.babel.mappings]]
+method = "python"
+pattern = "**.py"
+
+[[tool.babel.mappings]]
+method = "jinja2"
+pattern = "**/templates/**.html"
+
+[[tool.babel.mappings]]
+method = "tag"
+pattern = "**.yaml"
