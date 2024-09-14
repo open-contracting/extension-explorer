@@ -30,7 +30,7 @@ LANGS = {
 class Configuration(metaclass=MetaFlaskEnv):
     ENV_PREFIX = 'FLASK_'
     FREEZER_IGNORE_404_NOT_FOUND = True
-    FREEZER_STATIC_IGNORE = ['*.scss', 'LICENSE']
+    FREEZER_STATIC_IGNORE = ('*.scss', 'LICENSE')
 
 
 def get_locale():
