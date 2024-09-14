@@ -1,6 +1,7 @@
 """
 Module to keep ``views.py`` simple and high-level.
 """
+import contextlib
 import json
 import os
 import re
@@ -146,10 +147,7 @@ def identify_headings(html):
             continue
 
         slug = slugify(element.text_content())
-        if slug in slug_counts:
-            heading_id = f'{slug}-{slug_counts[slug]}'
-        else:
-            heading_id = slug
+        heading_id = f'{slug}-{slug_counts[slug]}' if slug in slug_counts else slug
         element.attrib['id'] = heading_id
 
         headings.append({'id': heading_id, 'level': heading_level, 'text': element.text_content()})
@@ -232,10 +230,7 @@ def get_codelist_tables(extension_version, lang):
 
             rows.append(new_row)
 
-        if name.startswith(('+', '-')):
-            basename = name[1:]
-        else:
-            basename = name
+        basename = name[1:] if name.startswith(('+', '-')) else name
 
         url = _codelist_url(basename, extension_version, lang)
 
@@ -261,10 +256,7 @@ def get_removed_fields(extension_version, lang):
 
         original_field = _add_link_to_original_field(field, schema, sources)
 
-        if original_field.get('deprecated'):
-            group = 'deprecated'
-        else:
-            group = 'active'
+        group = 'deprecated' if original_field.get('deprecated') else 'active'
 
         d = field.asdict(exclude=('definition_pointer', 'pointer', 'schema', 'required', 'deprecated', 'multilingual'))
         tables[group].append(d)
@@ -303,10 +295,8 @@ def get_schema_tables(extension_version, lang):
             if field.definition_path in sources:
                 tables[key]['source'] = sources[field.definition_path]
 
-        try:
+        with contextlib.suppress(jsonpointer.JsonPointerException):
             _add_link_to_original_field(field, schema, sources)
-        except jsonpointer.JsonPointerException:
-            pass
 
         d = field.asdict(sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
         d['title'] = field.schema.get('title', '')
@@ -324,10 +314,7 @@ def _get_types(value, sources, extension_version, lang, n=1, field=None):
 
     if '$ref' in value:
         name = value['$ref'][14:]  # remove '#/definitions/'
-        if name in sources:
-            url = sources[name]['url']
-        else:
-            url = f'#{name.lower()}'  # local definition
+        url = sources[name]['url'] if name in sources else f'#{name.lower()}'  # local definition
         noun = ngettext('object', 'objects', n)
         return [f'<a href="{url}">{name}</a> {noun}']
 
@@ -423,7 +410,8 @@ def _codelist_url(basename, extension_version, lang):
     elif basename in codelist_names:
         anchor = re.sub(r'[A-Z]', lambda s: '-' + s[0].lower(), os.path.splitext(basename)[0])
         url = f'{codelist_reference_url}#{anchor}'
-    # XXX: Hardcoding.
+    # TODO(james): Hardcoding for ocds_statistics_extension.
+    # https://github.com/open-contracting/extension-explorer/issues/58
     elif basename == 'statistic.csv':
         url = url_for('extension_codelists', lang=lang, identifier='bids', version='master', _anchor=basename)
     else:
@@ -499,13 +487,13 @@ def _get_sources(schema, lang):
     return sources
 
 
-def _patch_schema(version, lang, include_test_dependencies=False):
+def _patch_schema(version, lang, *, include_test_dependencies=False):
     schema = deepcopy(_ocds_release_schema(lang))
     _patch_schema_recursive(schema, version, lang, include_test_dependencies=include_test_dependencies)
     return schema
 
 
-def _patch_schema_recursive(schema, version, lang, include_test_dependencies=False):
+def _patch_schema_recursive(schema, version, lang, *, include_test_dependencies=False):
     dependencies = version['metadata'].get('dependencies', [])
     if include_test_dependencies:
         dependencies += version['metadata'].get('testDependencies', [])
@@ -538,7 +526,9 @@ def _extension_versions_by_base_url():
 
 @lru_cache
 def _ocds_release_schema(lang):
-    return requests.get(_ocds_release_schema_url(lang)).json()
+    response = requests.get(_ocds_release_schema_url(lang), timeout=10)
+    response.raise_for_status()
+    return response.json()
 
 
 def _ocds_release_schema_url(lang):
