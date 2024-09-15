@@ -89,11 +89,11 @@ myst-parser==2.0.0
     # via ocdsextensionregistry
 ocds-babel==0.3.5
     # via ocdsextensionregistry
-ocdsextensionregistry==0.3.8
+ocdsextensionregistry==0.4.0
     # via
     #   -r requirements.in
     #   ocdskit
-ocdskit==1.0.2
+ocdskit==1.2.0
     # via -r requirements.in
 ocdsmerge==0.6.4
     # via ocdskit

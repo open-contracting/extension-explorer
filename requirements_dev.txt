@@ -127,11 +127,11 @@ myst-parser==2.0.0
     # via -r requirements.txt
 ocds-babel==0.3.5
     # via -r requirements.txt
-ocdsextensionregistry==0.3.8
+ocdsextensionregistry==0.4.0
     # via
     #   -r requirements.txt
     #   ocdskit
-ocdskit==1.0.2
+ocdskit==1.2.0
     # via -r requirements.txt
 ocdsmerge==0.6.4
     # via
