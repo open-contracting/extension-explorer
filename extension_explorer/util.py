@@ -1,6 +1,4 @@
-"""
-Module to keep ``views.py`` simple and high-level.
-"""
+"""Module to keep ``views.py`` simple and high-level."""
 import contextlib
 import json
 import os
@@ -29,9 +27,7 @@ LANGUAGE_CODE_SUFFIX_LEN = len(LANGUAGE_CODE_SUFFIX)
 
 
 def markdown(md):
-    """
-    Renders Markdown text as HTML.
-    """
+    """Render Markdown text as HTML."""
     parser = MarkdownIt('default')
     env = {}
 
@@ -49,7 +45,9 @@ def markdown(md):
 
 def get_extension_explorer_data_filename():
     """
-    Returns the data file's path. Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
+    Return the data file's path.
+
+    Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
     ``extension_explorer/data/extensions.json``).
     """
     if os.getenv('EXTENSION_EXPLORER_DATA_FILENAME'):
@@ -59,9 +57,7 @@ def get_extension_explorer_data_filename():
 
 @lru_cache
 def get_extensions(filename=None):
-    """
-    Returns the data file's parsed contents.
-    """
+    """Return the data file's parsed contents."""
     if not filename:
         filename = get_extension_explorer_data_filename()
     with open(filename) as f:
@@ -69,9 +65,7 @@ def get_extensions(filename=None):
 
 
 def set_tags(extensions):
-    """
-    Adds tags and publishers to extensions, and returns profile, topic and publisher tags.
-    """
+    """Add tags and publishers to extensions, and return profile, topic and publisher tags."""
     with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'tags.yaml')) as f:
         data = safe_load(f)
 
@@ -106,9 +100,7 @@ def set_tags(extensions):
 
 
 def get_present_and_historical_versions(extension):
-    """
-    Returns the present and historical versions, with release dates, in reverse chronological order.
-    """
+    """Return the present and historical versions, with release dates, in reverse chronological order."""
     latest_version = extension['latest_version']
     versions = extension['versions']
 
@@ -125,9 +117,7 @@ def get_present_and_historical_versions(extension):
 
 
 def identify_headings(html):
-    """
-    Adds `id` attributes to headings in the HTML, skipping any changelog sub-headings. Returns HTML and headings.
-    """
+    """Add `id` attributes to headings in the HTML, skipping any changelog sub-headings. Return HTML and headings."""
     root = lxml.html.fromstring(html)
 
     headings = []
@@ -160,9 +150,7 @@ def identify_headings(html):
 
 
 def highlight_json(html):
-    """
-    Highlights JSON code blocks. Returns the HTML, and the CSS for highlighting.
-    """
+    """Highlight JSON code blocks. Return the HTML, and the CSS for highlighting."""
     root = lxml.html.fromstring(html)
 
     for code_block in root.find_class('language-json'):
@@ -177,7 +165,7 @@ def highlight_json(html):
 
 def get_codelist_tables(extension_version, lang):
     """
-    Returns a list of tables, one per codelist. Each item is a list of the codelist's name, basename, documentation URL
+    Return a list of tables, one per codelist. Each item is a list of the codelist's name, basename, documentation URL
     (if patched), translated fieldnames, and and translated rows. Each row is a dictionary with up to three keys:
     "code", "title" and "content". The "content" value is a dictionary with "description" and "attributes" keys. The
     "description" value is the Description column value rendered from Markdown. The "attributes" value is a dictionary
@@ -241,7 +229,7 @@ def get_codelist_tables(extension_version, lang):
 
 def get_removed_fields(extension_version, lang):
     """
-    Returns a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
+    Return a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
     dictionary with "definition_path", "path" and "url" (if available) keys. All values are translated.
     """
     tables = defaultdict(list)
@@ -266,7 +254,7 @@ def get_removed_fields(extension_version, lang):
 
 def get_schema_tables(extension_version, lang):
     """
-    Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
+    Return a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
     dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", "types" and "source"
     (if available) keys. All values are translated.
 
@@ -308,10 +296,7 @@ def get_schema_tables(extension_version, lang):
 
 
 def _get_types(value, sources, extension_version, lang, n=1, field=None):
-    """
-    Returns the types of the field, linking to definitions and iterating into arrays.
-    """
-
+    """Return the types of the field, linking to definitions and iterating into arrays."""
     if '$ref' in value:
         name = value['$ref'][14:]  # remove '#/definitions/'
         url = sources[name]['url'] if name in sources else f'#{name.lower()}'  # local definition
@@ -422,9 +407,7 @@ def _codelist_url(basename, extension_version, lang):
 
 @lru_cache
 def _ocds_codelist_names():
-    """
-    Returns the names of the codelists in the OCDS release schema.
-    """
+    """Return the names of the codelists in the OCDS release schema."""
     return _ocds_codelist_names_recursive(_ocds_release_schema('en'))
 
 
