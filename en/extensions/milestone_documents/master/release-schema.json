@@ -1,0 +1,11 @@
+{
+  "definitions": {
+    "Milestone": {
+      "properties": {
+        "documents": {
+          "deprecated": null
+        }
+      }
+    }
+  }
+}

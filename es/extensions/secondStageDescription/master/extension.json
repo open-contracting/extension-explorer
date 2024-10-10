@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Second stage description",
+    "es": "Descripci\u00f3n de la segunda etapa"
+  },
+  "description": {
+    "en": "Adds a second stage object to the tender and lot objects, to describe the second stage of a two-stage procedure.",
+    "es": "Agregar un objeto de segunda etapa a los objetos de licitaci\u00f3n y lote, para describir la segunda etapa de un procedimiento de dos etapas."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/secondStageDescription/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}
