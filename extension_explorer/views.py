@@ -8,7 +8,7 @@ from flask_babel import Babel, gettext
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
-from .util import (
+from extension_explorer.util import (
     get_codelist_tables,
     get_extension_explorer_data_filename,
     get_extensions,
@@ -30,7 +30,7 @@ LANGS = {
 class Configuration(metaclass=MetaFlaskEnv):
     ENV_PREFIX = 'FLASK_'
     FREEZER_IGNORE_404_NOT_FOUND = True
-    FREEZER_STATIC_IGNORE = ['*.scss', 'LICENSE']
+    FREEZER_STATIC_IGNORE = ('*.scss', 'LICENSE')
 
 
 def get_locale():

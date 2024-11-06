@@ -1,6 +1,5 @@
-"""
-Module to keep ``views.py`` simple and high-level.
-"""
+"""Module to keep ``views.py`` simple and high-level."""
+import contextlib
 import json
 import os
 import re
@@ -28,9 +27,7 @@ LANGUAGE_CODE_SUFFIX_LEN = len(LANGUAGE_CODE_SUFFIX)
 
 
 def markdown(md):
-    """
-    Renders Markdown text as HTML.
-    """
+    """Render Markdown text as HTML."""
     parser = MarkdownIt('default')
     env = {}
 
@@ -48,7 +45,9 @@ def markdown(md):
 
 def get_extension_explorer_data_filename():
     """
-    Returns the data file's path. Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
+    Return the data file's path.
+
+    Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
     ``extension_explorer/data/extensions.json``).
     """
     if os.getenv('EXTENSION_EXPLORER_DATA_FILENAME'):
@@ -58,9 +57,7 @@ def get_extension_explorer_data_filename():
 
 @lru_cache
 def get_extensions(filename=None):
-    """
-    Returns the data file's parsed contents.
-    """
+    """Return the data file's parsed contents."""
     if not filename:
         filename = get_extension_explorer_data_filename()
     with open(filename) as f:
@@ -68,9 +65,7 @@ def get_extensions(filename=None):
 
 
 def set_tags(extensions):
-    """
-    Adds tags and publishers to extensions, and returns profile, topic and publisher tags.
-    """
+    """Add tags and publishers to extensions, and return profile, topic and publisher tags."""
     with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'data', 'tags.yaml')) as f:
         data = safe_load(f)
 
@@ -105,9 +100,7 @@ def set_tags(extensions):
 
 
 def get_present_and_historical_versions(extension):
-    """
-    Returns the present and historical versions, with release dates, in reverse chronological order.
-    """
+    """Return the present and historical versions, with release dates, in reverse chronological order."""
     latest_version = extension['latest_version']
     versions = extension['versions']
 
@@ -124,9 +117,7 @@ def get_present_and_historical_versions(extension):
 
 
 def identify_headings(html):
-    """
-    Adds `id` attributes to headings in the HTML, skipping any changelog sub-headings. Returns HTML and headings.
-    """
+    """Add `id` attributes to headings in the HTML, skipping any changelog sub-headings. Return HTML and headings."""
     root = lxml.html.fromstring(html)
 
     headings = []
@@ -146,10 +137,7 @@ def identify_headings(html):
             continue
 
         slug = slugify(element.text_content())
-        if slug in slug_counts:
-            heading_id = f'{slug}-{slug_counts[slug]}'
-        else:
-            heading_id = slug
+        heading_id = f'{slug}-{slug_counts[slug]}' if slug in slug_counts else slug
         element.attrib['id'] = heading_id
 
         headings.append({'id': heading_id, 'level': heading_level, 'text': element.text_content()})
@@ -162,9 +150,7 @@ def identify_headings(html):
 
 
 def highlight_json(html):
-    """
-    Highlights JSON code blocks. Returns the HTML, and the CSS for highlighting.
-    """
+    """Highlight JSON code blocks. Return the HTML, and the CSS for highlighting."""
     root = lxml.html.fromstring(html)
 
     for code_block in root.find_class('language-json'):
@@ -179,7 +165,7 @@ def highlight_json(html):
 
 def get_codelist_tables(extension_version, lang):
     """
-    Returns a list of tables, one per codelist. Each item is a list of the codelist's name, basename, documentation URL
+    Return a list of tables, one per codelist. Each item is a list of the codelist's name, basename, documentation URL
     (if patched), translated fieldnames, and and translated rows. Each row is a dictionary with up to three keys:
     "code", "title" and "content". The "content" value is a dictionary with "description" and "attributes" keys. The
     "description" value is the Description column value rendered from Markdown. The "attributes" value is a dictionary
@@ -232,10 +218,7 @@ def get_codelist_tables(extension_version, lang):
 
             rows.append(new_row)
 
-        if name.startswith(('+', '-')):
-            basename = name[1:]
-        else:
-            basename = name
+        basename = name[1:] if name.startswith(('+', '-')) else name
 
         url = _codelist_url(basename, extension_version, lang)
 
@@ -246,7 +229,7 @@ def get_codelist_tables(extension_version, lang):
 
 def get_removed_fields(extension_version, lang):
     """
-    Returns a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
+    Return a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
     dictionary with "definition_path", "path" and "url" (if available) keys. All values are translated.
     """
     tables = defaultdict(list)
@@ -261,10 +244,7 @@ def get_removed_fields(extension_version, lang):
 
         original_field = _add_link_to_original_field(field, schema, sources)
 
-        if original_field.get('deprecated'):
-            group = 'deprecated'
-        else:
-            group = 'active'
+        group = 'deprecated' if original_field.get('deprecated') else 'active'
 
         d = field.asdict(exclude=('definition_pointer', 'pointer', 'schema', 'required', 'deprecated', 'multilingual'))
         tables[group].append(d)
@@ -274,7 +254,7 @@ def get_removed_fields(extension_version, lang):
 
 def get_schema_tables(extension_version, lang):
     """
-    Returns a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
+    Return a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
     dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", "types" and "source"
     (if available) keys. All values are translated.
 
@@ -303,10 +283,8 @@ def get_schema_tables(extension_version, lang):
             if field.definition_path in sources:
                 tables[key]['source'] = sources[field.definition_path]
 
-        try:
+        with contextlib.suppress(jsonpointer.JsonPointerException):
             _add_link_to_original_field(field, schema, sources)
-        except jsonpointer.JsonPointerException:
-            pass
 
         d = field.asdict(sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
         d['title'] = field.schema.get('title', '')
@@ -318,16 +296,10 @@ def get_schema_tables(extension_version, lang):
 
 
 def _get_types(value, sources, extension_version, lang, n=1, field=None):
-    """
-    Returns the types of the field, linking to definitions and iterating into arrays.
-    """
-
+    """Return the types of the field, linking to definitions and iterating into arrays."""
     if '$ref' in value:
         name = value['$ref'][14:]  # remove '#/definitions/'
-        if name in sources:
-            url = sources[name]['url']
-        else:
-            url = f'#{name.lower()}'  # local definition
+        url = sources[name]['url'] if name in sources else f'#{name.lower()}'  # local definition
         noun = ngettext('object', 'objects', n)
         return [f'<a href="{url}">{name}</a> {noun}']
 
@@ -423,7 +395,8 @@ def _codelist_url(basename, extension_version, lang):
     elif basename in codelist_names:
         anchor = re.sub(r'[A-Z]', lambda s: '-' + s[0].lower(), os.path.splitext(basename)[0])
         url = f'{codelist_reference_url}#{anchor}'
-    # XXX: Hardcoding.
+    # TODO(james): Hardcoding for ocds_statistics_extension.
+    # https://github.com/open-contracting/extension-explorer/issues/58
     elif basename == 'statistic.csv':
         url = url_for('extension_codelists', lang=lang, identifier='bids', version='master', _anchor=basename)
     else:
@@ -434,9 +407,7 @@ def _codelist_url(basename, extension_version, lang):
 
 @lru_cache
 def _ocds_codelist_names():
-    """
-    Returns the names of the codelists in the OCDS release schema.
-    """
+    """Return the names of the codelists in the OCDS release schema."""
     return _ocds_codelist_names_recursive(_ocds_release_schema('en'))
 
 
@@ -499,13 +470,13 @@ def _get_sources(schema, lang):
     return sources
 
 
-def _patch_schema(version, lang, include_test_dependencies=False):
+def _patch_schema(version, lang, *, include_test_dependencies=False):
     schema = deepcopy(_ocds_release_schema(lang))
     _patch_schema_recursive(schema, version, lang, include_test_dependencies=include_test_dependencies)
     return schema
 
 
-def _patch_schema_recursive(schema, version, lang, include_test_dependencies=False):
+def _patch_schema_recursive(schema, version, lang, *, include_test_dependencies=False):
     dependencies = version['metadata'].get('dependencies', [])
     if include_test_dependencies:
         dependencies += version['metadata'].get('testDependencies', [])
@@ -538,7 +509,9 @@ def _extension_versions_by_base_url():
 
 @lru_cache
 def _ocds_release_schema(lang):
-    return requests.get(_ocds_release_schema_url(lang)).json()
+    response = requests.get(_ocds_release_schema_url(lang), timeout=10)
+    response.raise_for_status()
+    return response.json()
 
 
 def _ocds_release_schema_url(lang):

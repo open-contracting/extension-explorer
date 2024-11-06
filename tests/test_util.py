@@ -19,7 +19,7 @@ extension_version_template = {
     "version": "master",
     "metadata": {
         "testDependencies": [
-            "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/v1.1.3/extension.json"  # noqa: E501
+            "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/v1.1.3/extension.json"
         ]
     },
     "schemas": {
@@ -348,7 +348,7 @@ def test_get_removed_fields(client):
             {'definition_path': '', 'path': 'buyer',
              'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,buyer'},
             {'definition_path': 'Tender', 'path': 'description',
-             'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},  # noqa: E501
+             'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},
             {'definition_path': 'Location', 'path': 'description',
              'url': '/en/extensions/location/v1.1.3/schema/#Location.description'},
         ],
@@ -537,7 +537,7 @@ def test_get_schema_tables(client):
             'source': {
                 'type': 'core',
                 'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release',
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa: E501
+                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',
             },
         },
         'Tender': {
@@ -559,13 +559,13 @@ def test_get_schema_tables(client):
                     'title': 'Replacement',
                     'description': '',
                     'types': '',
-                    'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,title',  # noqa: E501
+                    'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,title',
                 },
             ],
             'source': {
                 'type': 'core',
                 'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#tender',
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,',  # noqa: E501
+                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,',
             },
         },
         'Location': {
@@ -636,7 +636,7 @@ def test_get_schema_tables_mixed_array_success(client):
                 },
             ],
             'source': {
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',  # noqa: E501
+                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',
                 'type': 'core',
                 'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release',
             },

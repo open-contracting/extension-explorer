@@ -1,19 +1,18 @@
-Babel
-Flask
-Flask-Babel
-Flask-Env
-Frozen-Flask
+babel
+flask
+flask-babel
+flask-env
+frozen-flask
 json_merge_patch
 jsonpointer
 lxml
 markdown-it-py
 ocdskit[perf]
-Pygments
+pygments
 python-slugify
-PyYAML
+pyyaml
 requests
 werkzeug
-# See https://github.com/jazzband/pip-tools/issues/204#issuecomment-550051424
 -e file:.#egg=ocdsextensionexplorer # babel.extractors
 
 # Deployment

@@ -35,7 +35,7 @@ cd extension_explorer
 Extract messages:
 
 ```shell
-pybabel extract -F babel.cfg -o messages.pot .
+pybabel extract -F ../pyproject.toml -o messages.pot .
 ```
 
 Push to Transifex:
