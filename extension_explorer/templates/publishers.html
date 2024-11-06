@@ -1,123 +1,438 @@
-{% extends 'layout.html' %}
-
-{% block title %}{{ _("Publisher Guidance") }}{% endblock %}
-{% block publisher_guidance_nav_link %}active{% endblock %}
-
-{% block main %}
+{% extends 'layout.html' %} {% block title %}{{ _("Publisher Guidance") }}{%
+endblock %} {% block publisher_guidance_nav_link %}active{% endblock %} {% block
+main %}
 <main class="ee-masthead" role="main">
   <div class="container">
     <div class="row align-items-center">
       <div class="col">
         <h1 id="publisher-documentation">{{ _("Publisher documentation") }}</h1>
         <p>{{ _("This page is for publishers of OCDS data. It provides:") }}</p>
-        
+
         <ul>
-        <li>{{ _("An introduction to extensions and the needs they satisfy") }}</li>
-        <li>{{ _("How-to guides for using and creating extensions") }}</li>
-        <li>{{ _("Reference documentation for extension creators") }}</li></ul>
+          <li>
+            {{ _("An introduction to extensions and the needs they satisfy") }}
+          </li>
+          <li>{{ _("How-to guides for using and creating extensions") }}</li>
+          <li>{{ _("Reference documentation for extension creators") }}</li>
+        </ul>
         <h2 id="introduction">{{ _("Introduction") }}</h2>
-        <p>{{ _("To implement OCDS, you need to <a href='https://standard.open-contracting.org/latest/en/guidance/map/'>identify the fields and codes in OCDS</a> that match the data elements in your data sources. Some data elements might not match any field or code in OCDS. To cover such cases, you can add fields and codes to OCDS using “extensions.”") }}</p>
-        <p>{{ _("Extensions serve to document the meaning and structure of additional fields and codes. The benefits are:") }}</p>
+        <p>
+          {{ _("To implement OCDS, you need to
+          <a
+            href='https://standard.open-contracting.org/latest/en/guidance/map/'
+            >identify the fields and codes in OCDS</a
+          >
+          that match the data elements in your data sources. Some data elements
+          might not match any field or code in OCDS. To cover such cases, you
+          can add fields and codes to OCDS using “extensions.”") }}
+        </p>
+        <p>
+          {{ _("Extensions serve to document the meaning and structure of
+          additional fields and codes. The benefits are:") }}
+        </p>
         <ul>
-        <li>{{ _("By reusing extensions, your data is consistent with other publishers' data, making it possible for you and others to reuse OCDS tools and methodologies.") }}</li>
-        <li>{{ _("Analysts can access the definitions of your additional fields and codes, to help interpret your data.") }}</li>
-        <li>{{ _("Developers can read the structure of your additional fields and codes, to help write software for processing it.") }}</li></ul>
+          <li>
+            {{ _("By reusing extensions, your data is consistent with other
+            publishers' data, making it possible for you and others to reuse
+            OCDS tools and methodologies.") }}
+          </li>
+          <li>
+            {{ _("Analysts can access the definitions of your additional fields
+            and codes, to help interpret your data.") }}
+          </li>
+          <li>
+            {{ _("Developers can read the structure of your additional fields
+            and codes, to help write software for processing it.") }}
+          </li>
+        </ul>
         <h2 id="how-to-use-an-extension">{{ _("How to use an extension") }}</h2>
         <ol start="1">
-        <li>{{ _("<a href='https://extensions.open-contracting.org/en/extensions/'>Find an extension</a> that describes the data element(s) you want to publish. If you can't find a suitable extension, you might need to <a href='#how-to-create-an-extension'>create an extension</a>.") }}</li>
-        <li>{{ _("Structure your data according to the extension's schema and documentation.") }}</li>
-        <li>{{ _("Declare the extension in your <a href='https://standard.open-contracting.org/latest/en/schema/release_package/'>package's</a> extensions array, using the URL from the extension's documentation. For example, to declare the <a href='https://extensions.open-contracting.org/en/extensions/bids/master/'>Bids and expressions of interest</a> extension:") }}<code> {"extensions": ["https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"]}</code></li>
-        <li>{{ _("Check your data using the <a href='https://review.standard.open-contracting.org/'>OCDS Data Review Tool</a>.") }}</li></ol>
-        <h2 id="how-to-create-an-extension">{{ _("How to create an extension") }}</h2>
-        <p>{{ _("If you can't find a suitable extension to describe the data elements you want to publish, you can create an extension.") }}</p>
-        <p>{{ _("Extensions can add new fields, add codes to open codelists, or add validation rules to existing fields. However, extensions cannot remove fields, change the titles or descriptions of fields, or add codes to closed codelists. To suggest such changes, <a href='https://github.com/open-contracting/standard/issues/new'>open an issue</a> on the standard issue tracker.") }}</p>
-        <p>{{ _("Consider whether the data you want to publish belongs to the contracting process or whether it exists independently. Data that exists independently of the contracting process is typically better published in a separate dataset. For example, data on the <a href='https://standard.open-contracting.org/latest/en/guidance/map/beneficial_ownership/'>beneficial owners</a> of suppliers is usually tracked outside of procurement systems.") }}</p>
-        <p>{{ _("To create an extension that adds a new field or validation rule, you need to understand <a href='http://json-schema.org/'>JSON Schema</a> and the structure of the <a href='https://standard.open-contracting.org/latest/en/schema/'>OCDS schema</a>.") }}</p>
+          <li>
+            {{ _("<a
+              href='https://extensions.open-contracting.org/en/extensions/'
+              >Find an extension</a
+            >
+            that describes the data element(s) you want to publish. If you can't
+            find a suitable extension, you might need to
+            <a href='#how-to-create-an-extension'>create an extension</a>.") }}
+          </li>
+          <li>
+            {{ _("Structure your data according to the extension's schema and
+            documentation.") }}
+          </li>
+          <li>
+            {{ _("Declare the extension in your
+            <a
+              href='https://standard.open-contracting.org/latest/en/schema/release_package/'
+              >package's</a
+            >
+            extensions array, using the URL from the extension's documentation.
+            For example, to declare the
+            <a
+              href='https://extensions.open-contracting.org/en/extensions/bids/master/'
+              >Bids and expressions of interest</a
+            >
+            extension:") }}<code>
+              {"extensions":
+              ["https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"]}</code
+            >
+          </li>
+          <li>
+            {{ _("Check your data using the
+            <a href='https://review.standard.open-contracting.org/'
+              >OCDS Data Review Tool</a
+            >.") }}
+          </li>
+        </ol>
+        <h2 id="how-to-create-an-extension">
+          {{ _("How to create an extension") }}
+        </h2>
+        <p>
+          {{ _("If you can't find a suitable extension to describe the data
+          elements you want to publish, you can create an extension.") }}
+        </p>
+        <p>
+          {{ _("Extensions can add new fields, add codes to open codelists, or
+          add validation rules to existing fields. However, extensions cannot
+          remove fields, change the titles or descriptions of fields, or add
+          codes to closed codelists. To suggest such changes,
+          <a href='https://github.com/open-contracting/standard/issues/new'
+            >open an issue</a
+          >
+          on the standard issue tracker.") }}
+        </p>
+        <p>
+          {{ _("Consider whether the data you want to publish belongs to the
+          contracting process or whether it exists independently. Data that
+          exists independently of the contracting process is typically better
+          published in a separate dataset. For example, data on the
+          <a
+            href='https://standard.open-contracting.org/latest/en/guidance/map/beneficial_ownership/'
+            >beneficial owners</a
+          >
+          of suppliers is usually tracked outside of procurement systems.") }}
+        </p>
+        <p>
+          {{ _("To create an extension that adds a new field or validation rule,
+          you need to understand
+          <a href='http://json-schema.org/'>JSON Schema</a> and the structure of
+          the
+          <a href='https://standard.open-contracting.org/latest/en/schema/'
+            >OCDS schema</a
+          >.") }}
+        </p>
         <p>{{ _("There are six steps to creating an extension:") }}</p>
         <h3 id="discuss">{{ _("1. Discuss") }}</h3>
-        <p>{{ _("Before creating an extension, search for related discussions on the <a href='https://github.com/open-contracting/standard/issues'>standard issue tracker</a>.") }}</p>
-        <p>{{ _("If you can't find any related discussions, <a href='https://github.com/open-contracting/standard/issues/new'>open a GitHub issue</a> to describe the extension you plan to create. Include in the issue's description:") }}</p>
+        <p>
+          {{ _("Before creating an extension, search for related discussions on
+          the
+          <a href='https://github.com/open-contracting/standard/issues'
+            >standard issue tracker</a
+          >.") }}
+        </p>
+        <p>
+          {{ _("If you can't find any related discussions,
+          <a href='https://github.com/open-contracting/standard/issues/new'
+            >open a GitHub issue</a
+          >
+          to describe the extension you plan to create. Include in the issue's
+          description:") }}
+        </p>
         <ul>
-        <li>{{ _("The extension's use case(s). Describe your reason for adding fields and/or codes and what users will do with the data.") }}</li>
-        <li>{{ _("The concept or process that you want to represent. You can include legislative references or other documentation.") }}</li>
-        <li>{{ _("Examples of existing data. Provide examples from your data sources of the data elements to be covered by the extension.") }}</li>
-        <li>{{ _("To encourage collaboration, keep this issue up-to-date throughout the development of your extension.") }}</li></ul>
+          <li>
+            {{ _("The extension's use case(s). Describe your reason for adding
+            fields and/or codes and what users will do with the data.") }}
+          </li>
+          <li>
+            {{ _("The concept or process that you want to represent. You can
+            include legislative references or other documentation.") }}
+          </li>
+          <li>
+            {{ _("Examples of existing data. Provide examples from your data
+            sources of the data elements to be covered by the extension.") }}
+          </li>
+          <li>
+            {{ _("To encourage collaboration, keep this issue up-to-date
+            throughout the development of your extension.") }}
+          </li>
+        </ul>
         <h3 id="model">{{ _("2. Model") }}</h3>
-        <p>{{ _("Once you are clear on your concepts and use cases, you need to decide on the name, structure and format of any additional fields in your extension, and on the name of any additional codes.") }}</p>
-        <p>{{ _("You can start by mocking up an example of the data for which you are creating an extension, as JSON. Consider:") }}</p>
+        <p>
+          {{ _("Once you are clear on your concepts and use cases, you need to
+          decide on the name, structure and format of any additional fields in
+          your extension, and on the name of any additional codes.") }}
+        </p>
+        <p>
+          {{ _("You can start by mocking up an example of the data for which you
+          are creating an extension, as JSON. Consider:") }}
+        </p>
         <ul>
-        <li>{{ _("How would different data fit into this structure?") }}</li>
-        <li>{{ _("Are the names of fields and codes intuitive to users?") }}</li>
-        <li>{{ _("Is the structure easy for applications to consume?") }}</li></ul>
-        <p>{{ _("You can also check other standards for potential models. The more you consider different examples of source data and different uses of the OCDS data, the better.") }}</p>
-        <p>{{ _("Before continuing, invite feedback on your mockup, using the GitHub issue you created in the previous step.") }}</p>
+          <li>{{ _("How would different data fit into this structure?") }}</li>
+          <li>
+            {{ _("Are the names of fields and codes intuitive to users?") }}
+          </li>
+          <li>{{ _("Is the structure easy for applications to consume?") }}</li>
+        </ul>
+        <p>
+          {{ _("You can also check other standards for potential models. The
+          more you consider different examples of source data and different uses
+          of the OCDS data, the better.") }}
+        </p>
+        <p>
+          {{ _("Before continuing, invite feedback on your mockup, using the
+          GitHub issue you created in the previous step.") }}
+        </p>
         <h3 id="author">{{ _("3. Author") }}</h3>
-        <p>{{ _("Once you settle on a model, you need to author (as applicable) the metadata, documentation, schema and codelists. You can use the <a href='https://github.com/open-contracting/standard_extension_template'>extension template</a>. For details, see <a href='#reference'>Reference</a>.") }}</p>
+        <p>
+          {{ _("Once you settle on a model, you need to author (as applicable)
+          the metadata, documentation, schema and codelists. You can use the
+          <a
+            href='https://github.com/open-contracting/standard_extension_template'
+            >extension template</a
+          >. For details, see <a href='#reference'>Reference</a>.") }}
+        </p>
         <h3 id="publish">{{ _("4. Publish") }}</h3>
-        <p>{{ _("You need to publish your extension online at a stable URL. Your extension's schema and codelist files need to be accessible by replacing <code>extension.json</code> in the extension's URL with a file's path: for example, <code>release-schema.json</code> or <code>codelists/codelist.csv</code>.") }}</p>
-        <p>{{ _("Creating a GitHub, GitLab or Bitbucket repository for your extension is a good option because it offers version control, issue tracking and appropriate URLs: for example, <a href='https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json'><code>https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json</code></a>") }}</p>
-        <p>{{ _("When naming your repository, follow the pattern for <a href='#repository-name'>repository names</a>.") }}</p>
+        <p>
+          {{ _("You need to publish your extension online at a stable URL. Your
+          extension's schema and codelist files need to be accessible by
+          replacing <code>extension.json</code> in the extension's URL with a
+          file's path: for example, <code>release-schema.json</code> or
+          <code>codelists/codelist.csv</code>.") }}
+        </p>
+        <p>
+          {{ _("Creating a GitHub, GitLab or Bitbucket repository for your
+          extension is a good option because it offers version control, issue
+          tracking and appropriate URLs: for example,
+          <a
+            href='https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json'
+            ><code
+              >https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json</code
+            ></a
+          >") }}
+        </p>
+        <p>
+          {{ _("When naming your repository, follow the pattern for
+          <a href='#repository-name'>repository names</a>.") }}
+        </p>
         <h3 id="test">{{ _("5. Test") }}</h3>
-        <p>{{ _("Test your extension by following steps 2-4 of <a href='#how-to-use-an-extension'>How to use an extension</a>. Check that the OCDS Data Review Tool reports no structural errors, additional fields or additional codes.") }}</p>
+        <p>
+          {{ _("Test your extension by following steps 2-4 of
+          <a href='#how-to-use-an-extension'>How to use an extension</a>. Check
+          that the OCDS Data Review Tool reports no structural errors,
+          additional fields or additional codes.") }}
+        </p>
         <h3 id="register">{{ _("6. Register") }}</h3>
-        <p>{{ _("We encourage you to <a href='https://github.com/open-contracting/extension_registry#how-to-register-an-extension'>register your extension</a>, so that others can discover it on this website.") }}</p>
-        <p>{{ _("Extensions that are relevant to only a single publisher do not need to be registered.") }}</p>
-        <p>{{ _("A registered extension needs to meet the following criteria:") }}</p>
+        <p>
+          {{ _("We encourage you to
+          <a
+            href='https://github.com/open-contracting/extension_registry#how-to-register-an-extension'
+            >register your extension</a
+          >, so that others can discover it on this website.") }}
+        </p>
+        <p>
+          {{ _("Extensions that are relevant to only a single publisher do not
+          need to be registered.") }}
+        </p>
+        <p>
+          {{ _("A registered extension needs to meet the following criteria:")
+          }}
+        </p>
         <ul>
-        <li>{{ _("The documentation is in English. According to the<a href='https://standard.open-contracting.org/latest/en/governance/#translation-and-localization-policy'> translation and localization policy</a>, “the authoritative language for the standard is English.”") }}</li>
-        <li>{{ _("The documentation, excluding examples, is more than 200 characters long. Documentation of less than 200 characters cannot adequately describe an extension, its purpose and technical details.") }}</li>
-        <li>{{ _("The <code>extension.json</code> and <code>README.md</code> files are not publisher-specific. If the extension's name or description suggests it is relevant to only a single publisher, then it is unlikely to be used by other publishers, even if its fields and codes are relevant.") }}</li>
-        <li>{{ _("No other extension expresses the same concepts. Having multiple ways to express the same concept would be counter-productive to standardization.") }}</li>
-        <li>{{ _("The extension follows the <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html'>schema style guide</a>.") }}</li></ul>
+          <li>
+            {{ _("The documentation is in English. According to the<a
+              href='https://standard.open-contracting.org/latest/en/governance/#translation-and-localization-policy'
+            >
+              translation and localization policy</a
+            >, “the authoritative language for the standard is English.”") }}
+          </li>
+          <li>
+            {{ _("The documentation, excluding examples, is more than 200
+            characters long. Documentation of less than 200 characters cannot
+            adequately describe an extension, its purpose and technical
+            details.") }}
+          </li>
+          <li>
+            {{ _("The <code>extension.json</code> and
+            <code>README.md</code> files are not publisher-specific. If the
+            extension's name or description suggests it is relevant to only a
+            single publisher, then it is unlikely to be used by other
+            publishers, even if its fields and codes are relevant.") }}
+          </li>
+          <li>
+            {{ _("No other extension expresses the same concepts. Having
+            multiple ways to express the same concept would be
+            counter-productive to standardization.") }}
+          </li>
+          <li>
+            {{ _("The extension follows the
+            <a
+              href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html'
+              >schema style guide</a
+            >.") }}
+          </li>
+        </ul>
         <h2 id="reference">{{ _("Reference") }}</h2>
-        <p>{{ _("This section provides reference documentation for extension creators.") }}</p>
-        
+        <p>
+          {{ _("This section provides reference documentation for extension
+          creators.") }}
+        </p>
+
         <p>{{ _("Extensions consist of:") }}</p>
-        
+
         <ul>
-        <li>{{ _("<a href='#metadata'>Metadata (required)</a>") }}</li>
-        <li>{{ _("<a href='#documentation'>Documentation (required)</a>") }}</li>
-        <li>{{ _("<a href='#schema'>Schema (optional)</a>") }}</li>
-        <li>{{ _("<a href='#codelists'>Codelists (optional)</a>") }}</li></ul>
-         
-        <p>{{ _("To see the extension's structure visually, visit the <a href='https://github.com/open-contracting/standard_extension_template'>extension template</a>.") }}</p>
+          <li>{{ _("<a href='#metadata'>Metadata (required)</a>") }}</li>
+          <li>
+            {{ _("<a href='#documentation'>Documentation (required)</a>") }}
+          </li>
+          <li>{{ _("<a href='#schema'>Schema (optional)</a>") }}</li>
+          <li>{{ _("<a href='#codelists'>Codelists (optional)</a>") }}</li>
+        </ul>
+
+        <p>
+          {{ _("To see the extension's structure visually, visit the
+          <a
+            href='https://github.com/open-contracting/standard_extension_template'
+            >extension template</a
+          >.") }}
+        </p>
         <h3 id="metadata">{{ _("Metadata (required)") }}</h3>
-        <p>{{ _("The extension's metadata is expressed as an <code>extension.json</code> file.") }}</p>
-        
-        <p>{{ _("The file's contents must conform to the <a href='https://github.com/open-contracting/standard-maintenance-scripts/blob/main/schema/extension-schema.json'>extension schema</a> (<a href='https://json-schema.app/view/%%23?url=https%%3A%%2F%%2Fraw.githubusercontent.com%%2Fopen-contracting%%2Fstandard-maintenance-scripts%%2Frefs%%2Fheads%%2Fmain%%2Fschema%%2Fextension-schema.json'>schema viewer</a>).") }}</p>
+        <p>
+          {{ _("The extension's metadata is expressed as an
+          <code>extension.json</code> file.") }}
+        </p>
+
+        <p>
+          {{ _("The file's contents must conform to the
+          <a
+            href='https://github.com/open-contracting/standard-maintenance-scripts/blob/main/schema/extension-schema.json'
+            >extension schema</a
+          >
+          (<a
+            href='https://json-schema.app/view/%%23?url=https%%3A%%2F%%2Fraw.githubusercontent.com%%2Fopen-contracting%%2Fstandard-maintenance-scripts%%2Frefs%%2Fheads%%2Fmain%%2Fschema%%2Fextension-schema.json'
+            >schema viewer</a
+          >).") }}
+        </p>
         <h4 id="metadata-guidance">{{ _("Guidance") }}</h4>
-        <p>{{ _("Use the <a href='https://github.com/open-contracting/standard_extension_template/blob/master/extension.json'>extension template's </a><a href='https://github.com/open-contracting/standard_extension_template/blob/master/extension.json'><code>extension.json</code></a><a href='https://github.com/open-contracting/standard_extension_template/blob/master/extension.json'> file</a> as a starting point.") }}</p>
-        
-        <p>{{ _("You can edit and validate your <code>extension.json</code> file, while reading the extension schema, by using the <a href='https://json-schema.app/view/%%23?url=https%%3A%%2F%%2Fraw.githubusercontent.com%%2Fopen-contracting%%2Fstandard-maintenance-scripts%%2Frefs%%2Fheads%%2Fmain%%2Fschema%%2Fextension-schema.json'>Atlassian JSON Schema Viewer</a>.") }}</p>
+        <p>
+          {{ _("Use the
+          <a
+            href='https://github.com/open-contracting/standard_extension_template/blob/master/extension.json'
+            >extension template's </a
+          ><a
+            href='https://github.com/open-contracting/standard_extension_template/blob/master/extension.json'
+            ><code>extension.json</code></a
+          ><a
+            href='https://github.com/open-contracting/standard_extension_template/blob/master/extension.json'
+          >
+            file</a
+          >
+          as a starting point.") }}
+        </p>
+
+        <p>
+          {{ _("You can edit and validate your <code>extension.json</code> file,
+          while reading the extension schema, by using the
+          <a
+            href='https://json-schema.app/view/%%23?url=https%%3A%%2F%%2Fraw.githubusercontent.com%%2Fopen-contracting%%2Fstandard-maintenance-scripts%%2Frefs%%2Fheads%%2Fmain%%2Fschema%%2Fextension-schema.json'
+            >Atlassian JSON Schema Viewer</a
+          >.") }}
+        </p>
         <p>{{ _("To write a good description:") }}</p>
         <ul>
-        <li>{{ _("Describe the changes made by the extension, at a high level.") }}</li>
-        <li>{{ _("Although there's no maximum length, be concise. That said, do not sacrifice clarity for the sake of brevity.") }}</li>
-        <li>{{ _("Do not simply duplicate or paraphrase the extension's name.") }}</li>
-        <li>{{ _("Do not include the development status of the extension (like “draft”). If needed, describe the status in the <a href='#documentation'>documentation</a>.") }}</li></ul>
-        <p>{{ _("For example, for <a href='https://github.com/open-contracting-extensions/ocds_performance_failures_extension'>Performance failures</a>, a bad description is:") }}</p>
+          <li>
+            {{ _("Describe the changes made by the extension, at a high level.")
+            }}
+          </li>
+          <li>
+            {{ _("Although there's no maximum length, be concise. That said, do
+            not sacrifice clarity for the sake of brevity.") }}
+          </li>
+          <li>
+            {{ _("Do not simply duplicate or paraphrase the extension's name.")
+            }}
+          </li>
+          <li>
+            {{ _("Do not include the development status of the extension (like
+            “draft”). If needed, describe the status in the
+            <a href='#documentation'>documentation</a>.") }}
+          </li>
+        </ul>
+        <p>
+          {{ _("For example, for
+          <a
+            href='https://github.com/open-contracting-extensions/ocds_performance_failures_extension'
+            >Performance failures</a
+          >, a bad description is:") }}
+        </p>
         <blockquote>
-        <p>{{ _("An extension covering performance failures in OCDS.") }}</p>
-      </blockquote>
-        <p>{{ _("A good description is:") }}</p>
-        <blockquote><p>{{ _("Adds fields to the implementation section to allow disclosure of an array of contracting performance failures. Based on the performance failures reporting table defined in the World Bank Framework for Disclosure in PPPs.") }}</p>
+          <p>{{ _("An extension covering performance failures in OCDS.") }}</p>
         </blockquote>
-          <p>{{ _("The <code>description</code> field is displayed on this website. ") }}</p>
+        <p>{{ _("A good description is:") }}</p>
+        <blockquote>
+          <p>
+            {{ _("Adds fields to the implementation section to allow disclosure
+            of an array of contracting performance failures. Based on the
+            performance failures reporting table defined in the World Bank
+            Framework for Disclosure in PPPs.") }}
+          </p>
+        </blockquote>
+        <p>
+          {{ _("The <code>description</code> field is displayed on this website.
+          ") }}
+        </p>
         <h3 id="documentation">{{ _("Documentation (required)") }}</h3>
-        <p>{{ _("The extension's documentation is expressed as a <code>README.md</code> file.") }}</p>
-        <p>{{ _("The <code>README.md</code> file must be in Markdown format.") }}</p>
-        <p>{{ _("The <code>README.md</code> file should include a description of the extension and its use cases, and examples of OCDS data that use the extension's fields and/or codes.") }}</p>
-        <p>{{ _("You may provide documentation in addition to the <code>README.md</code> file.") }}</p>
+        <p>
+          {{ _("The extension's documentation is expressed as a
+          <code>README.md</code> file.") }}
+        </p>
+        <p>
+          {{ _("The <code>README.md</code> file must be in Markdown format.") }}
+        </p>
+        <p>
+          {{ _("The <code>README.md</code> file should include a description of
+          the extension and its use cases, and examples of OCDS data that use
+          the extension's fields and/or codes.") }}
+        </p>
+        <p>
+          {{ _("You may provide documentation in addition to the
+          <code>README.md</code> file.") }}
+        </p>
         <h3 id="schema">{{ _("Schema (optional)") }}</h3>
-        <p>{{ _("The extension's new fields and changed fields are expressed as a <code>release-schema.json</code> file. This file has the same structure as OCDS' release schema.") }}</p>
-        <p>{{ _("The file contains a fragment of <a href='https://json-schema.org/'>JSON Schema</a>, known as a <a href='https://tools.ietf.org/html/rfc7386'>JSON Merge Patch</a>, that can be merged into OCDS' release schema, to produce an “extended schema.”") }}</p>
-        <p>{{ _("The file must describe only new fields or changed fields. ") }}</p>
-        <p>{{ _("The file's contents must conform to <a href='https://json-schema.org/specification-links#draft-4'>JSON Schema Draft 4</a>.") }}</p>
-        <p>{{ _("The file should follow the <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html'>schema style guide</a>.") }}</p>
+        <p>
+          {{ _("The extension's new fields and changed fields are expressed as a
+          <code>release-schema.json</code> file. This file has the same
+          structure as OCDS' release schema.") }}
+        </p>
+        <p>
+          {{ _("The file contains a fragment of
+          <a href='https://json-schema.org/'>JSON Schema</a>, known as a
+          <a href='https://tools.ietf.org/html/rfc7386'>JSON Merge Patch</a>,
+          that can be merged into OCDS' release schema, to produce an “extended
+          schema.”") }}
+        </p>
+        <p>
+          {{ _("The file must describe only new fields or changed fields. ") }}
+        </p>
+        <p>
+          {{ _("The file's contents must conform to
+          <a href='https://json-schema.org/specification-links#draft-4'
+            >JSON Schema Draft 4</a
+          >.") }}
+        </p>
+        <p>
+          {{ _("The file should follow the
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html'
+            >schema style guide</a
+          >.") }}
+        </p>
         <h4 id="schema-guidance">{{ _("Guidance") }}</h4>
-        <p>{{ _("For example, this schema adds a <code>statusDetails</code> field to the <code>Contract</code> subschema:") }}</p>
+        <p>
+          {{ _("For example, this schema adds a <code>statusDetails</code> field
+          to the <code>Contract</code> subschema:") }}
+        </p>
         <code>
-        <pre>
+          <pre>
           
                         {
                             "definitions": {
@@ -137,32 +452,128 @@
                             }
                           }
           
-        </pre>
-      </code>
-        <p>{{ _("If you are unfamiliar with JSON Schema, you can use <a href='https://transform.tools/json-to-json-schema'>Transform</a> to generate an initial schema from a sample or mockup of your OCDS data. Then, add <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-titles'>title</a> and <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-descriptions'>description</a> properties, and follow the <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html'>schema style guide</a>, in particular the <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#validation-keywords'>validation keywords section</a>.") }}</p>
+        </pre
+          >
+        </code>
+        <p>
+          {{ _("If you are unfamiliar with JSON Schema, you can use
+          <a href='https://transform.tools/json-to-json-schema'>Transform</a> to
+          generate an initial schema from a sample or mockup of your OCDS data.
+          Then, add
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-titles'
+            >title</a
+          >
+          and
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-descriptions'
+            >description</a
+          >
+          properties, and follow the
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html'
+            >schema style guide</a
+          >, in particular the
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#validation-keywords'
+            >validation keywords section</a
+          >.") }}
+        </p>
         <h3 id="codelists">{{ _("Codelists (optional)") }}</h3>
-        <p>{{ _("The extension's new codelists and new codes are expressed as CSV files in a <code>codelists</code> directory. These files have the same structure as OCDS' codelists.") }}</p>
-        <p>{{ _("A codelist file must describe only new codelists or new codes.") }}</p>
-        <p>{{ _("A codelist file's name must be camel case, like <code>tenderStatus.csv</code>.") }}</p>
-        <p>{{ _("A codelist file's contents must conform to the <a href='https://github.com/open-contracting/standard-maintenance-scripts/blob/main/schema/codelist-schema.json'>codelist schema</a> (in the <a href='https://json-schema.app/view/%%23?url=https%%3A%%2F%%2Fraw.githubusercontent.com%%2Fopen-contracting%%2Fstandard-maintenance-scripts%%2Frefs%%2Fheads%%2Fmain%%2Fschema%%2Fcodelist-schema.json'>schema viewer</a>, expand the Root definitions accordion and click the Row item).") }}</p>
-        <p>{{ _("A codelist file should follow the style guides for <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-names'>code names</a>, <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-titles'>code titles</a> and <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-descriptions'>code descriptions</a>.") }}</p>
+        <p>
+          {{ _("The extension's new codelists and new codes are expressed as CSV
+          files in a <code>codelists</code> directory. These files have the same
+          structure as OCDS' codelists.") }}
+        </p>
+        <p>
+          {{ _("A codelist file must describe only new codelists or new codes.")
+          }}
+        </p>
+        <p>
+          {{ _("A codelist file's name must be camel case, like
+          <code>tenderStatus.csv</code>.") }}
+        </p>
+        <p>
+          {{ _("A codelist file's contents must conform to the
+          <a
+            href='https://github.com/open-contracting/standard-maintenance-scripts/blob/main/schema/codelist-schema.json'
+            >codelist schema</a
+          >
+          (in the
+          <a
+            href='https://json-schema.app/view/%%23?url=https%%3A%%2F%%2Fraw.githubusercontent.com%%2Fopen-contracting%%2Fstandard-maintenance-scripts%%2Frefs%%2Fheads%%2Fmain%%2Fschema%%2Fcodelist-schema.json'
+            >schema viewer</a
+          >, expand the Root definitions accordion and click the Row item).") }}
+        </p>
+        <p>
+          {{ _("A codelist file should follow the style guides for
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-names'
+            >code names</a
+          >,
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-titles'
+            >code titles</a
+          >
+          and
+          <a
+            href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-descriptions'
+            >code descriptions</a
+          >.") }}
+        </p>
         <h4>{{ _("Guidance") }}</h4>
-        <p>{{ _("To add a new codelist, make sure that its filename is not the same as an <a href='https://standard.open-contracting.org/schema/1__1__5/codelists/'>existing codelist's filename</a>. Add and fill in the <code>Code</code>, <code>Title</code>, and <code>Description columns</code>.") }}</p>
-        <p>{{ _("To add new codes to an open codelist, create a file that prefixes a plus sign (<code>+</code>) to the codelist's filename, and make sure that the new codes do not match any existing codes. Use the same columns as the original codelist.") }}</p>
-        <p>{{ _("For example, to add a 'subcontractor' code to the <code>partyRole.csv</code> codelist, create a <code>+partyRole.csv</code> file in your extension's <code>codelists</code> directory, and set its content to:") }}</p>
+        <p>
+          {{ _("To add a new codelist, make sure that its filename is not the
+          same as an
+          <a
+            href='https://standard.open-contracting.org/schema/1__1__5/codelists/'
+            >existing codelist's filename</a
+          >. Add and fill in the <code>Code</code>, <code>Title</code>, and
+          <code>Description columns</code>.") }}
+        </p>
+        <p>
+          {{ _("To add new codes to an open codelist, create a file that
+          prefixes a plus sign (<code>+</code>) to the codelist's filename, and
+          make sure that the new codes do not match any existing codes. Use the
+          same columns as the original codelist.") }}
+        </p>
+        <p>
+          {{ _("For example, to add a 'subcontractor' code to the
+          <code>partyRole.csv</code> codelist, create a
+          <code>+partyRole.csv</code> file in your extension's
+          <code>codelists</code> directory, and set its content to:") }}
+        </p>
         <code>
-        <pre>
+          <pre>
           
             Code,Title,Description
             subcontractor,Subcontractor,An organization that will perform part of a contract on behalf of a supplier.
           
-        </pre>
-      </code>
+        </pre
+          >
+        </code>
         <h3 id="repository-name">{{ _("Repository name") }}</h3>
-        <p>{{ _("Names of repositories should follow the pattern: <code>ocds_{name}_extension</code>. For example: <code>ocds_bidOpening_extension</code>") }}</p>
-        <p>{{ _("The name should indicate the domain (like <a href='https://extensions.open-contracting.org/en/extensions/medicine/master/'>medicine</a>) or the field being added (like <a href='https://extensions.open-contracting.org/en/extensions/coveredBy/master/'>coveredBy</a>). If the field being added is ambiguous, the parent object should prefix the field name (like <a href='https://extensions.open-contracting.org/en/extensions/document_publisher/master/'>document_publisher</a>).") }}</p>
-        
-
+        <p>
+          {{ _("Names of repositories should follow the pattern:
+          <code>ocds_{name}_extension</code>. For example:
+          <code>ocds_bidOpening_extension</code>") }}
+        </p>
+        <p>
+          {{ _("The name should indicate the domain (like
+          <a
+            href='https://extensions.open-contracting.org/en/extensions/medicine/master/'
+            >medicine</a
+          >) or the field being added (like
+          <a
+            href='https://extensions.open-contracting.org/en/extensions/coveredBy/master/'
+            >coveredBy</a
+          >). If the field being added is ambiguous, the parent object should
+          prefix the field name (like
+          <a
+            href='https://extensions.open-contracting.org/en/extensions/document_publisher/master/'
+            >document_publisher</a
+          >).") }}
+        </p>
       </div>
     </div>
   </div>
