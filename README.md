@@ -20,7 +20,7 @@ If you prefer to store the data file in another location, set the `EXTENSION_EXP
 
 ### Stylesheets
 
-Don't edit `extension_explorer/static/css`. Instead, edit `extension_explorer/static/lib` and run:
+Edit only the files starting with an underscore in the `extension_explorer/static/lib/scss/` directory. Then, run:
 
     pysassc extension_explorer/static/lib/scss/theme.scss > extension_explorer/static/css/theme.css
 
