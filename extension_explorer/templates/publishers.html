@@ -7,7 +7,7 @@
 <main class="ee-masthead" role="main">
   <div class="container">
     <div class="row align-items-center">
-      <div class="col">
+      <div class="col ee-max-width">
         <h1 class="display-4">
           {{ _("Publisher Guidance") }}
         </h1>
@@ -50,17 +50,22 @@
         <h2 id="how-to-use-an-extension">
           {{ _("How to use an extension") }}
         </h2>
-        <ol start="1">
-          <li>
-            {{ _("<a href='https://extensions.open-contracting.org/en/extensions/'>Find an extension</a> that describes the data element(s) you want to publish. If you can't find a suitable extension, you might need to <a href='#how-to-create-an-extension'>create an extension</a>.") }}
+        <ol>
+          <li class="mt-3">
+            {{ _("<a href='%(url)s'>Find an extension</a> that describes the data element(s) you want to publish. If you can't find a suitable extension, you might need to <a href='#how-to-create-an-extension'>create an extension</a>.", url=url_for('extensions', lang=lang)) }}
           </li>
-          <li>
+          <li class="mt-3">
             {{ _("Structure your data according to the extension's schema and documentation.") }}
           </li>
-          <li>
-            {{ _("Declare the extension in your <a href='https://standard.open-contracting.org/latest/en/schema/release_package/'>package's</a> extensions array, using the URL from the extension's documentation. For example, to declare the <a href='https://extensions.open-contracting.org/en/extensions/bids/master/'>Bids and expressions of interest</a> extension:") }}<code> {"extensions": ["https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"]}</code>
+          <li class="mt-3">
+            {{ _("Declare the extension in your <a href='https://standard.open-contracting.org/latest/en/schema/release_package/'>package's</a> extensions array, using the URL from the extension's documentation. For example, to declare the <a href='%(url)s'>Bids and expressions of interest</a> extension:", url=url_for('extension_documentation', lang=lang, identifier='bids', version='master')) }}
+            <div class="mt-3">
+              <code>
+                {"extensions": ["https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"]}
+              </code>
+            </div>
           </li>
-          <li>
+          <li class="mt-3">
             {{ _("Check your data using the <a href='https://review.standard.open-contracting.org/'>OCDS Data Review Tool</a>.") }}
           </li>
         </ol>
@@ -316,27 +321,26 @@
         <p>
           {{ _("For example, this schema adds a <code>statusDetails</code> field to the <code>Contract</code> subschema:") }}
         </p>
-        <code>
-          <pre>
-          {
-            "definitions": {
-              "Contract": {
-                "properties": {
-                  "statusDetails": {
-                    "title": "Status Details",
-                    "description": "Additional detail on the status of the contract. This field can be used to provide the local name of the status",
-                    "type": [
-                      "string",
-                      "null"
-                    ],
-                    "minLength": 1
-                  }
-                }
-              }
-            }
-          }
-          </pre>
-        </code>
+
+<pre><code>{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "statusDetails": {
+          "title": "Status Details",
+          "description": "Additional detail on the status of the contract. This field can be used to provide the local name of the status",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
+</code></pre>
+
         <p>
           {{ _("If you are unfamiliar with JSON Schema, you can use <a href='https://transform.tools/json-to-json-schema'>Transform</a> to generate an initial schema from a sample or mockup of your OCDS data. Then, add <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-titles'>title</a> and <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#field-and-code-descriptions'>description</a> properties, and follow the <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html'>schema style guide</a>, in particular the <a href='https://ocds-standard-development-handbook.readthedocs.io/en/latest/meta/schema_style_guide.html#validation-keywords'>validation keywords section</a>.") }}
         </p>
@@ -372,12 +376,10 @@
         <p>
           {{ _("For example, to add a 'subcontractor' code to the <code>partyRole.csv</code> codelist, create a <code>+partyRole.csv</code> file in your extension's <code>codelists</code> directory, and set its content to:") }}
         </p>
-        <code>
-          <pre>
-          Code,Title,Description
-          subcontractor,Subcontractor,An organization that will perform part of a contract on behalf of a supplier.
-          </pre>
-        </code>
+
+<pre><code>Code,Title,Description
+subcontractor,Subcontractor,An organization that will perform part of a contract on behalf of a supplier.
+</code></pre>
 
         <h3 id="repository-name">
           {{ _("Repository name") }}
@@ -386,7 +388,7 @@
           {{ _("Names of repositories should follow the pattern: <code>ocds_{name}_extension</code>. For example: <code>ocds_bidOpening_extension</code>") }}
         </p>
         <p>
-          {{ _("The name should indicate the domain (like <a href='https://extensions.open-contracting.org/en/extensions/medicine/master/'>medicine</a>) or the field being added (like <a href='https://extensions.open-contracting.org/en/extensions/coveredBy/master/'>coveredBy</a>). If the field being added is ambiguous, the parent object should prefix the field name (like <a href='https://extensions.open-contracting.org/en/extensions/document_publisher/master/'>document_publisher</a>).") }}
+          {{ _("The name should indicate the domain (like <a href='%(medicine_url)s'>medicine</a>) or the field being added (like <a href='%(covered_by_url)s'>coveredBy</a>). If the field being added is ambiguous, the parent object should prefix the field name (like <a href='%(document_publisher_url)s'>document_publisher</a>).", medicine_url=url_for('extension_documentation', lang=lang, identifier='medicine', version='master'), covered_by_url=url_for('extension_documentation', lang=lang, identifier='coveredBy', version='master'), document_publisher_url=url_for('extension_documentation', lang=lang, identifier='document_publisher', version='master')) }}
         </p>
       </div>
     </div>

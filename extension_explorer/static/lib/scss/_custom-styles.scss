@@ -1,6 +1,22 @@
+// Documentation pages
+
 blockquote {
   margin: 0 1rem 1rem;
   font-style: italic;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
+// https://baymard.com/blog/line-length-readability
+.ee-max-width h1,
+.ee-max-width h2,
+.ee-max-width h3,
+.ee-max-width h4,
+.ee-max-width p,
+.ee-max-width li {
+  max-width: 70ch;
 }
 
 // Bootstrap fixes
