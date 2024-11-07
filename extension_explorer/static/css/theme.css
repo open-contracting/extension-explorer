@@ -176,8 +176,7 @@ dd {
   margin-left: 0; }
 
 blockquote {
-  margin: 0 1rem 1rem;
-  font-style: italic; }
+  margin: 0 0 1rem; }
 
 b,
 strong {
@@ -8514,6 +8513,10 @@ textarea.form-control-lg {
   margin-right: -15px;
   margin-left: -15px;
   border-top: 1px solid #e1e4e5; }
+
+blockquote {
+  margin: 0 1rem 1rem;
+  font-style: italic; }
 
 .custom-select {
   -webkit-appearance: none;
