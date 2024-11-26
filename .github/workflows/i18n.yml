@@ -10,6 +10,6 @@ jobs:
       command: |
         pybabel extract -F ../pyproject.toml -o messages.pot .
         pybabel update -N -i messages.pot -d locale
-      dependencies; -r requirements.txt
+      dependencies: -r requirements.txt
       working-directory: extension_explorer
       python-version: '3.10'
