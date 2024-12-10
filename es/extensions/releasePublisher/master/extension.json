@@ -1,0 +1,16 @@
+{
+  "name": {
+    "en": "Release Publisher",
+    "es": "Publicador del Release"
+  },
+  "description": {
+    "en": "Includes the information about the publisher at release level for the cases in that a release-package or record-packages contains releases from different publishers.",
+    "es": "Incluye informaci\u00f3n sobre el publicador a nivel release para los casos en los que un paquete de releases o un paquete de records contienen releases de diferentes publicadores"
+  },
+  "documentationUrl": {
+    "en": "https://github.com/CompraNet/ocds_releasePublisher_extension"
+  },
+  "compatibility": [
+    "1.1"
+  ]
+}

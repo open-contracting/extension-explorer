@@ -1,0 +1,61 @@
+{
+  "definitions": {
+    "ParticipationFee": {
+      "title": "Cuota/Cargos de participaci\u00f3n",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Tipo de cuota/cargo",
+          "description": "Las cuotas que aplican a los ofertantes que participen en el proceso de licitaciones. Las cuotas pueden aplicar para tener acceso a documentos de la oferta, hacer presentaci\u00f3n de ofertas o una cuota puede aplicar para el ofertante ganador.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "document",
+              "deposit",
+              "submission",
+              "win",
+              null
+            ]
+          }
+        },
+        "value": {
+          "$ref": "#/definitions/Value"
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Informaci\u00f3n adicional sobre la manera en que se cobran las cuotas o la naturaleza exacta de las mismas.",
+          "type": "string"
+        },
+        "methodOfPayment": {
+          "title": "M\u00e9todo(s) de pago",
+          "description": "Informaci\u00f3n opcional sobre la manera en que se pueden pagar las cuotas",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "participationFees": {
+          "title": "Cuotas de participaci\u00f3n",
+          "description": "Cualquier cuota que sea aplicable a los ofertantes que quieran participar en el proceso de contrataciones. Las cuotas pueden aplicar para tener acceso a documentos de compras, para hacer ofertas o cuotas que deben ser pagadas por el ofertante ganador.",
+          "type": "array",
+          "mergeStrategy": "ocdsVersion",
+          "items": {
+            "$ref": "#/definitions/ParticipationFee"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}
