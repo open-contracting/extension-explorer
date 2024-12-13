@@ -12,7 +12,6 @@ profile:
       - finance
       - location
       - metrics
-      - milestone_documents
       - performance_failures
       - process_title
       - qualification

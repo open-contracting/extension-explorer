@@ -71,7 +71,7 @@ def set_tags(extensions):
 
     for extension in extensions.values():
         extension['tags'] = set()
-        if extension['core'] and extension['id'] != 'milestone_documents':
+        if extension['core']:
             extension['tags'].add('recommended')
 
     groups = {}
@@ -227,36 +227,10 @@ def get_codelist_tables(extension_version, lang):
     return tables
 
 
-def get_removed_fields(extension_version, lang):
-    """
-    Return a dictionary of deprecation status and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition_path", "path" and "url" (if available) keys. All values are translated.
-    """
-    tables = defaultdict(list)
-
-    schema = _patch_schema(extension_version, 'en', include_test_dependencies=True)
-    sources = _get_sources(schema, lang)
-
-    for field in get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
-        # If the field isn't removed.
-        if field.schema is not None:
-            continue
-
-        original_field = _add_link_to_original_field(field, schema, sources)
-
-        group = 'deprecated' if original_field.get('deprecated') else 'active'
-
-        d = field.asdict(exclude=('definition_pointer', 'pointer', 'schema', 'required', 'deprecated', 'multilingual'))
-        tables[group].append(d)
-
-    return tables
-
-
 def get_schema_tables(extension_version, lang):
     """
-    Return a dictionary of definition names and field tables. Each table is a list of fields. Each field is a
-    dictionary with "definition_path", "path", "schema", "multilingual", "title", "description", "types" and "source"
-    (if available) keys. All values are translated.
+    Return a dictionary of definition names and field tables. Each table is a list of fields.
+    All values are translated.
 
     The "description" (rendered from Markdown) and "types" values may contain HTML. The "description" includes any
     deprecation information.

@@ -6,7 +6,6 @@ from extension_explorer.util import (
     get_codelist_tables,
     get_extensions,
     get_present_and_historical_versions,
-    get_removed_fields,
     get_schema_tables,
     highlight_json,
     identify_headings,
@@ -335,27 +334,6 @@ def test_get_present_and_historical_versions_live():
 
     assert present_versions == [('master', 'latest')]
     assert historical_versions == [('live', '')]
-
-
-def test_get_removed_fields(client):
-    extension_version = deepcopy(extension_version_template)
-    extension_version['schemas']['release-schema.json']['en'] = release_schema
-
-    fields = get_removed_fields(extension_version, 'en')
-
-    assert fields == {
-        'active': [
-            {'definition_path': '', 'path': 'buyer',
-             'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,buyer'},
-            {'definition_path': 'Tender', 'path': 'description',
-             'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,description'},
-            {'definition_path': 'Location', 'path': 'description',
-             'url': '/en/extensions/location/v1.1.3/schema/#Location.description'},
-        ],
-        'deprecated': [
-            {'definition_path': 'OrganizationReference', 'path': 'address'},
-        ],
-    }
 
 
 def test_get_schema_tables(client):

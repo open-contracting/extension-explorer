@@ -101,7 +101,6 @@ The automated tests provide full code coverage, but you might still want to chec
   * The "Description" column:
     * renders Markdown <https://extensions.open-contracting.org/en/extensions/lots/master/schema/#Lot.status>
     * displays deprecation message
-    * indicates whether undeprecated <https://extensions.open-contracting.org/en/extensions/milestone_documents/master/schema/#Milestone.documents>
     * indicates multilingual support <https://extensions.open-contracting.org/en/extensions/budget_project/master/schema/#Project.title>
     * indicates whether it overrides:
       * the standard <https://extensions.open-contracting.org/en/extensions/ppp/master/schema/#.tag>
@@ -110,7 +109,6 @@ The automated tests provide full code coverage, but you might still want to chec
     * the standard <https://extensions.open-contracting.org/en/extensions/location/master/schema/>
     * other extensions <https://extensions.open-contracting.org/en/extensions/transaction_milestones/master/schema/>
   * Types of arrays indicate the types of items <https://extensions.open-contracting.org/en/extensions/location/master/schema/#Location.geometry.coordinates>
-  * Removed fields are listed, grouped by deprecation <https://extensions.open-contracting.org/en/extensions/ppp/master/schema/#removed-fields>
 * Codelists
   * Additional columns are shown <https://extensions.open-contracting.org/en/extensions/ppp/master/codelists/#documentType.csv>
   * URLs are hyperlinked <https://extensions.open-contracting.org/en/extensions/location/master/codelists/#geometryType.csv>

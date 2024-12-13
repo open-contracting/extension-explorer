@@ -198,10 +198,6 @@ msgstr "Documentación de los campos en la extensión %(name)s"
 msgid "Schema"
 msgstr "Esquema"
 
-#: templates/extension_schema.html:24 templates/extension_schema.html:126
-msgid "Removed fields"
-msgstr "Quitar campos"
-
 #: templates/extension_schema.html:38
 #, python-format
 msgid ""

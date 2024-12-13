@@ -13,7 +13,6 @@ from extension_explorer.util import (
     get_extension_explorer_data_filename,
     get_extensions,
     get_present_and_historical_versions,
-    get_removed_fields,
     get_schema_tables,
     highlight_json,
     identify_headings,
@@ -162,12 +161,10 @@ def extension_schema(lang, identifier, version):
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
-    removed_fields = get_removed_fields(extension_version, lang)
 
     return render_template('extension_schema.html', lang=lang, identifier=identifier, version=version,
                            extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, default_master=default_master, tables=tables,
-                           removed_fields=removed_fields)
+                           historical_versions=historical_versions, default_master=default_master, tables=tables)
 
 
 @app.route('/<lang>/extensions/<identifier>/<version>/codelists/')

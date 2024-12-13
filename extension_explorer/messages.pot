@@ -170,10 +170,6 @@ msgstr ""
 msgid "Schema"
 msgstr ""
 
-#: templates/extension_schema.html:24 templates/extension_schema.html:126
-msgid "Removed fields"
-msgstr ""
-
 #: templates/extension_schema.html:38
 #, python-format
 msgid ""
