@@ -248,22 +248,24 @@ def get_schema_tables(extension_version, lang):
         if field.schema is None:
             continue
 
-        key = field.definition_path
+        key = field.definition
         if not key:
             key = 'Release'
 
         if key not in tables:
             tables[key] = {'fields': []}
-            if field.definition_path in sources:
-                tables[key]['source'] = sources[field.definition_path]
+            if field.definition in sources:
+                tables[key]['source'] = sources[field.definition]
 
+        d = field.asdict(
+            sep='.', exclude=('name', 'deprecated', 'pointer', 'pattern', 'required', 'merge_by_id'),
+        )
         with contextlib.suppress(jsonpointer.JsonPointerException):
-            _add_link_to_original_field(field, schema, sources)
-
-        d = field.asdict(sep='.', exclude=('definition_pointer', 'pointer', 'required', 'deprecated'))
+            _, d['url'] = _add_link_to_original_field(field, schema, sources)
         d['title'] = field.schema.get('title', '')
         d['description'] = markdown(field.schema.get('description', ''))
         d['types'] = gettext(' or ').join(_get_types(field.schema, sources, extension_version, lang))
+
         tables[key]['fields'].append(d)
 
     return tables
@@ -351,11 +353,10 @@ def _get_types(value, sources, extension_version, lang, n=1, field=None):
 def _add_link_to_original_field(field, schema, sources):
     original_field = jsonpointer.resolve_pointer(schema, field.pointer)
 
-    field_url_prefix = sources[field.definition_path]['field_url_prefix']
-    if field_url_prefix:
-        field['url'] = field_url_prefix + field.pointer_components[-1]
+    field_url_prefix = sources[field.definition]['field_url_prefix']
+    url = field_url_prefix + field.name if field_url_prefix else None
 
-    return original_field
+    return original_field, url
 
 
 def _codelist_url(basename, extension_version, lang):

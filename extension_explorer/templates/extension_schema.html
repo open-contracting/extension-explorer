@@ -70,7 +70,7 @@
         <tbody>
     {% for field in properties.fields %}
           <tr>
-            <td id="{{ field.definition_path }}.{{ field.path }}">
+            <td id="{{ field.definition }}.{{ field.path }}">
               <code>
                 {{ field.path|replace('.', '.<wbr>'|safe) }}
               </code>
@@ -117,7 +117,7 @@
           <a href="{{ field.url }}">
     {% endif %}
             <code>
-              {{ field.definition_path }}{% if field.definition_path %}.<wbr>{% endif %}{{ field.path|replace('.', '.<wbr>'|safe) }}
+              {{ field.definition }}{% if field.definition %}.<wbr>{% endif %}{{ field.path|replace('.', '.<wbr>'|safe) }}
             </code>
     {% if field.url %}
           </a>

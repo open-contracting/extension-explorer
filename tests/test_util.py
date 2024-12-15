@@ -346,7 +346,7 @@ def test_get_schema_tables(client):
         'Asset': {
             'fields': [
                 {
-                    'definition_path': 'Asset',
+                    'definition': 'Asset',
                     'path': 'field',
                     'schema': release_schema['definitions']['Asset']['properties']['field'],
                     'multilingual': False,
@@ -359,7 +359,7 @@ def test_get_schema_tables(client):
         'Release': {
             'fields': [
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'titleOnly',
                     'schema': release_schema['properties']['titleOnly'],
                     'multilingual': True,
@@ -368,7 +368,7 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'descriptionOnly',
                     'schema': release_schema['properties']['descriptionOnly'],
                     'multilingual': True,
@@ -377,7 +377,7 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'typeOnly',
                     'schema': release_schema['properties']['typeOnly'],
                     'multilingual': False,
@@ -386,7 +386,7 @@ def test_get_schema_tables(client):
                     'types': 'string',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'ref',
                     'schema': release_schema['properties']['ref'],
                     'multilingual': False,
@@ -395,7 +395,7 @@ def test_get_schema_tables(client):
                     'types': '<a href="#asset">Asset</a> object',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'array',
                     'schema': release_schema['properties']['array'],
                     'multilingual': False,
@@ -404,7 +404,7 @@ def test_get_schema_tables(client):
                     'types': 'array of strings / integers',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'refArray',
                     'schema': release_schema['properties']['refArray'],
                     'multilingual': False,
@@ -413,7 +413,7 @@ def test_get_schema_tables(client):
                     'types': 'array of <a href="#asset">Asset</a> objects',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'null',
                     'schema': release_schema['properties']['null'],
                     'multilingual': False,
@@ -422,7 +422,7 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'external',
                     'schema': release_schema['properties']['external'],
                     'multilingual': False,
@@ -431,7 +431,7 @@ def test_get_schema_tables(client):
                     'types': '<a href="https://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa: E501
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'field',
                     'schema': release_schema['properties']['field'],
                     'multilingual': False,
@@ -440,7 +440,7 @@ def test_get_schema_tables(client):
                     'types': 'object',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'field.subfield',
                     'schema': release_schema['properties']['field']['properties']['subfield'],
                     'multilingual': False,
@@ -449,7 +449,7 @@ def test_get_schema_tables(client):
                     'types': 'object',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'field.subfield.subsubfield',
                     'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa: E501
                     'multilingual': False,
@@ -458,7 +458,7 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'undeprecated',
                     'schema': release_schema['properties']['undeprecated'],
                     'multilingual': False,
@@ -467,7 +467,7 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'deprecated',
                     'schema': release_schema['properties']['deprecated'],
                     'multilingual': False,
@@ -476,8 +476,8 @@ def test_get_schema_tables(client):
                     'types': 'string',
                 },
                 {
-                    'definition_path': '',
-                    'path': '(.*)',
+                    'definition': '',
+                    'path': '.*',
                     'schema': release_schema['patternProperties']['.*'],
                     'multilingual': False,
                     'title': 'Title',
@@ -485,8 +485,8 @@ def test_get_schema_tables(client):
                     'types': 'string or integer',
                 },
                 {
-                    'definition_path': '',
-                    'path': '(^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa: E501
+                    'definition': '',
+                    'path': '^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))',  # noqa: E501
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -494,8 +494,8 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': '',
-                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$)',  # noqa: E501
+                    'definition': '',
+                    'path': 'typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$',  # noqa: E501
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -503,8 +503,8 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': '',
-                    'path': '(typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))',  # noqa: E501
+                    'definition': '',
+                    'path': 'typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))',  # noqa: E501
                     'schema': {},
                     'multilingual': False,
                     'title': '',
@@ -521,7 +521,7 @@ def test_get_schema_tables(client):
         'Tender': {
             'fields': [
                 {
-                    'definition_path': 'Tender',
+                    'definition': 'Tender',
                     'path': 'field',
                     'schema': {},
                     'multilingual': False,
@@ -530,7 +530,7 @@ def test_get_schema_tables(client):
                     'types': '',
                 },
                 {
-                    'definition_path': 'Tender',
+                    'definition': 'Tender',
                     'path': 'title',
                     'schema': {'title': 'Replacement'},
                     'multilingual': False,
@@ -549,7 +549,7 @@ def test_get_schema_tables(client):
         'Location': {
             'fields': [
                 {
-                    'definition_path': 'Location',
+                    'definition': 'Location',
                     'path': 'field',
                     'schema': {'type': 'string'},
                     'multilingual': False,
@@ -558,7 +558,7 @@ def test_get_schema_tables(client):
                     'types': 'string',
                 },
                 {
-                    'definition_path': 'Location',
+                    'definition': 'Location',
                     'path': 'geometry',
                     'schema': {'title': 'Replacement'},
                     'multilingual': False,
@@ -604,7 +604,7 @@ def test_get_schema_tables_mixed_array_success(client):
         'Release': {
             'fields': [
                 {
-                    'definition_path': '',
+                    'definition': '',
                     'path': 'nullArray',
                     'schema': schema['properties']['nullArray'],
                     'multilingual': False,
