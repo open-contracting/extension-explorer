@@ -124,7 +124,7 @@ requests==2.32.2
     #   sphinx
 requests-cache==1.2.0
     # via ocdsextensionregistry
-six==1.11.0
+six==1.17.0
     # via url-normalize
 snowballstemmer==2.0.0
     # via sphinx

@@ -181,7 +181,7 @@ requests-cache==1.2.0
     # via
     #   -r requirements.txt
     #   ocdsextensionregistry
-six==1.11.0
+six==1.17.0
     # via
     #   -r requirements.txt
     #   libsass
