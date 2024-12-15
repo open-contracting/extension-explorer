@@ -14,6 +14,7 @@ import requests
 from flask import url_for
 from flask_babel import gettext, ngettext
 from markdown_it import MarkdownIt
+from ocdsextensionregistry.util import remove_nulls
 from ocdskit.schema import get_schema_fields
 from pygments import highlight
 from pygments.formatters import HtmlFormatter
@@ -243,7 +244,10 @@ def get_schema_tables(extension_version, lang):
     schema = _patch_schema(extension_version, 'en', include_test_dependencies=True)
     sources = _get_sources(schema, lang)
 
-    for field in get_schema_fields(extension_version['schemas']['release-schema.json'][lang]):
+    patch = extension_version['schemas']['release-schema.json'][lang]
+    remove_nulls(patch)
+
+    for field in get_schema_fields(patch):
         # If the field is removed.
         if field.schema is None:
             continue
@@ -258,7 +262,8 @@ def get_schema_tables(extension_version, lang):
                 tables[key]['source'] = sources[field.definition]
 
         d = field.asdict(
-            sep='.', exclude=('name', 'deprecated', 'pointer', 'pattern', 'required', 'merge_by_id'),
+            sep='.',
+            exclude=('name', 'deprecated_self', 'deprecated', 'pointer', 'pattern', 'required', 'merge_by_id'),
         )
         with contextlib.suppress(jsonpointer.JsonPointerException):
             _, d['url'] = _add_link_to_original_field(field, schema, sources)
@@ -460,7 +465,9 @@ def _patch_schema_recursive(schema, version, lang, *, include_test_dependencies=
 
     for url in dependencies:
         version = extension_versions_by_base_url[url[:-14]]  # remove "extension.json"
+
         patch = version['schemas']['release-schema.json'][lang]
+        remove_nulls(patch)
 
         # Make it possible to determine the source of the definitions.
         for name, definition in patch.get('definitions', {}).items():
