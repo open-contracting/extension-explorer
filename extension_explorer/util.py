@@ -263,7 +263,17 @@ def get_schema_tables(extension_version, lang):
 
         d = field.asdict(
             sep='.',
-            exclude=('name', 'deprecated_self', 'deprecated', 'pointer', 'pattern', 'required', 'merge_by_id'),
+            exclude=(
+                'name',
+                'deprecated_self',
+                'deprecated',
+                'pointer',
+                'pattern',
+                'required',
+                'merge_by_id',
+                'codelist',
+                'open_codelist',
+            ),
         )
         with contextlib.suppress(jsonpointer.JsonPointerException):
             _, d['url'] = _add_link_to_original_field(field, schema, sources)
