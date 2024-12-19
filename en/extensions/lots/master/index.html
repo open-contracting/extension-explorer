@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Lots — Documentation — OCDS Extension Explorer</title>
+  <meta name="description" content="A tender process can be divided into lots, where bidders can bid on one or more lots. Details of each lot can be provided here. Items, documents and other features may then reference the lot they are related to using relatedLot. Where no relatedLot identifier is given, the values ought to be interpreted as applicable to the whole tender.">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/lots/master/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/lots/master/">
+  <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/en/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        OCDS Extension Explorer
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/en/">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/en/extensions/">
+            Extensions
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/en/publishers/">
+            Publisher guidance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/en/users/">
+            User guidance
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+            <span class="sr-only">Select language</span>
+            English
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4 active" href="/en/extensions/lots/master/">
+              English
+            </a>
+            <a class="dropdown-item px-4" href="/es/extensions/lots/master/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Lots
+      </h1>
+
+      <p class="lead">
+        A tender process can be divided into lots, where bidders can bid on one or more lots. Details of each lot can be provided here. Items, documents and other features may then reference the lot they are related to using relatedLot. Where no relatedLot identifier is given, the values ought to be interpreted as applicable to the whole tender.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Version:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/en/extensions/lots/master/" selected>
+              master
+              (latest)
+            </option>
+            <option value="/en/extensions/lots/v1.1.5/">
+              v1.1.5
+              (2020-08-20)
+            </option>
+          </optgroup>
+          <optgroup label="Historical versions">
+            <option value="/en/extensions/lots/v1.1.4/">
+              v1.1.4
+              (2019-02-25)
+            </option>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/en/extensions/lots/master/">
+            Documentation
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ms-0">
+              <a href="#guidance">
+                Guidance
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#modelling">
+                Modelling
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#related-lot">
+                Related Lot
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#how-to-set-tender-status-if-lots-statuses-differ">
+                How to set tender.status if lots&#39; statuses differ?
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#examples">
+                Examples
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#changelog">
+                Changelog
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/lots/master/schema/">
+            Schema
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json" aria-label="Extension URL" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_lots_extension/archive/master.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentation
+      </h2>
+<div><p>A lot is a grouping of items within a contracting process that can be bid on or awarded together. This extension adds the concept of a lot to OCDS.</p>
+<h2 id="guidance">Guidance</h2>
+<p>If a contracting process is divided into lots, then you should add each lot to the <code>tender.lots</code> array.</p>
+<p>If a contracting process is not divided into lots, then you should nonetheless add a single, virtual lot. If a data element can be mapped to either a <code>tender</code> field or a <code>tender.lots</code> field, you should map it to the <code>tender.lots</code> field. In this way, information is accessible at the same location for all contracting processes, regardless of whether the process is actually divided into lots.</p>
+<h2 id="modelling">Modelling</h2>
+<p>The lots extension maintains the overall structure of an OCDS release, with items, documents and milestones nested immediately within <code>tender</code>, <code>awards</code> and <code>contracts</code> sections, but it introduces an array of Lots in the <code>tender</code> section, and the ability to cross-reference a specific <code>relatedLot</code> for each item, and an array of <code>relatedLots</code> for documents, milestones and awards.</p>
+<p>The <code>lotDetails</code> and <code>lotGroups</code> sections allow more complex conditions around the award of lots to be expressed, such as the maximum value of a group of lots.</p>
+<p>This means that systems which are not 'lot aware' can still understand the overall value of contracting taking place, key events, and relationships between buyers and suppliers. At the same time, 'lot aware' systems can make use of the cross-referenced information to present a lot-centric view on the information to users, or to analyze contracting lot by lot.</p>
+<h2 id="related-lot">Related Lot</h2>
+<p>The <code>relatedLot</code> (singular) field is available for:</p>
+<ul>
+<li>items</li>
+</ul>
+<p>An array of <code>relatedLots</code> (plural) can be provided for each of:</p>
+<ul>
+<li>documents</li>
+<li>milestones</li>
+<li>awards</li>
+<li>relatedProcesses</li>
+</ul>
+<p>In other extensions, the following objects can also declare related lots:</p>
+<ul>
+<li>bids submitted by tenderers, in the <a href="https://github.com/open-contracting-extensions/ocds_bid_extension">bid extension</a></li>
+<li>sources of finance (<code>Finance</code>), in the <a href="https://github.com/open-contracting-extensions/ocds_finance_extension">finance extension</a></li>
+</ul>
+<p>When lots are used, <strong>all</strong> items should have a <code>relatedLot</code> field.</p>
+<p>Documents and milestones may have a <code>relatedLots</code> field. Those without this field ought to be interpreted as applicable to the tender as a whole.</p>
+<p>The items within an award should have a <code>relatedLot</code> field. Publishers may also reference all the lots an award relates to at the award level using <code>relatedLots</code>.</p>
+<h2 id="how-to-set-tender-status-if-lots-statuses-differ">How to set <code>tender.status</code> if lots' statuses differ?</h2>
+<p><code>tender.status</code> and <code>tender.lots.status</code> use the closed tenderStatus.csv codelist. This codelist progresses from planning statuses ('planning', 'planned'), to 'active' status, and then result statuses ('complete', 'cancelled', 'unsuccessful').</p>
+<ul>
+<li>If any lot's status is 'active', then <code>tender.status</code> should be 'active', to indicate that some lots are awaiting results.</li>
+<li>If all lots' status are a result status, then <code>tender.status</code> describes the aggregate result:
+<ul>
+<li>If at least one lot's status is 'complete', then <code>tender.status</code> should be 'complete', to indicate that there is at least one award.</li>
+<li>Otherwise, if at least one lot's status is 'unsuccessful', then <code>tender.status</code> should be 'unsuccessful', to indicate that the procedure was completed but unsuccessfully.</li>
+<li>Otherwise, If all lots' status are 'cancelled', then <code>tender.status</code> should be 'cancelled', to indicate that the procedure was discontinued as a whole.</li>
+</ul>
+</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<p>A tender is issued for consultancy in the development of a new public building. This might include items for:</p>
+<ul>
+<li>Architectural design</li>
+<li>Architectural advisory services</li>
+<li>Civil engineering consultancy</li>
+<li>Structural engineering consultancy</li>
+</ul>
+<p>Although part of the same tender, the buyer is willing to award these different items to different firms, and so divides the tender into three lots.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"tender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0001"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Architectural advice"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"classification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71210000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Advisory architectural services"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"relatedLot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-1"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0002"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Architectural design"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"classification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71220000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Architectural design services"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"relatedLot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-1"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0003"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil engineering consultant"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"classification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71311000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil engineering consultancy services"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"relatedLot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-2"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0004"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Structural engineering services"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"classification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"71312000"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Structural engineering consultancy services"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"relatedLot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-3"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1200000</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"lots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROC/2020/0024-ABC-FGHI-1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Architectural services"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"For architectural services delivered in the project"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">200000</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"tenderPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-30T23:59:59+01:00"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"submissionMethodDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.acme.com/tender-submission/. All missing tenderer-related documents can be submitted later. Economic operators who ..."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"submissionTerms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"electronicSubmissionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"required"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"enquiryPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-15T23:59:59+01:00"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"contractPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-10T00:00:00Z"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-11-10T00:00:00Z"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"mainProcurementCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"services"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"additionalProcurementCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"consultingServices"</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"additionalClassifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serv-a"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Services (Architectural)"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"milestones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"securityClearanceDeadline"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-10-10T00:00:00Z"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-2"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROC/2020/0024-ABC-FGHI-2"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil engineering services"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"For civil engineering services delivered in the project"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">400000</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"mainProcurementCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"services"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"additionalProcurementCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"consultingServices"</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"tenderPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-30T23:59:59+01:00"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"submissionMethodDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.acme.com/tender-submission/. All missing tenderer-related documents can be submitted later. Economic operators who ..."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"submissionTerms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"electronicSubmissionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"required"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"enquiryPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-15T23:59:59+01:00"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"contractPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-10T00:00:00Z"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-12-10T00:00:00Z"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"additionalClassifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serv-ce"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Services (Civil engineering)"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"milestones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"securityClearanceDeadline"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-10T00:00:00Z"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-3"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROC/2020/0024-ABC-FGHI-3"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Structural engineering"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"For structural engineering consultancy delivered in the project"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">600000</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"tenderPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-30T23:59:59+01:00"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"submissionMethodDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.acme.com/tender-submission/. All missing tenderer-related documents can be submitted later. Economic operators who ..."</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"submissionTerms"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"electronicSubmissionPolicy"</span><span class="p">:</span><span class="w"> </span><span class="s2">"required"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"enquiryPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-07-15T23:59:59+01:00"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"contractPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-10T00:00:00Z"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2022-02-10T00:00:00Z"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"mainProcurementCategory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"services"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"additionalProcurementCategories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"consultingServices"</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"additionalClassifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"serv-se"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Services (Structural engineering)"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"milestones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"securityClearanceDeadline"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-02-10T00:00:00Z"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"lotGroups"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-group-1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil and structural engineering services"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Civil and structural engineering services for the development of a new public building"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"identifiers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PROC/2020/0024-ABC-FGHI-G1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"internal"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"relatedLots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"lot-2"</span><span class="p">,</span>
+<span class="w">          </span><span class="s2">"lot-3"</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"optionToCombine"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"maximumValue"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"lotDetails"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"maximumLotsBidPerSupplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"maximumLotsAwardedPerSupplier"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"awardCriteriaDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Percentage of people aggregated nationwide contestants undertake to cover, as indicated in their Economic Bids. The evaluation of proposals will be conducted based on the provisions of Article Y of the law on public private partnerships, and the provisions of the tender rules, performing in a first stage an evaluation of the technical bids and subsequently an assessment of the financial offer of the participants."</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"amendments"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"relatedLots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="s2">"lot-1"</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Submission deadline extended."</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="issues">Issues</h2>
+<p>Report issues for this extension in the <a href="https://github.com/open-contracting/ocds-extensions/issues">ocds-extensions repository</a>, putting the extension's name in the issue's title.</p>
+<h2 id="changelog">Changelog</h2>
+<h3>Unreleased</h3>
+<ul>
+<li>Add fields:
+<ul>
+<li><code>Amendment.relatedLots</code></li>
+<li><code>Lot.additionalClassifications</code></li>
+<li><code>Lot.buyer</code></li>
+<li><code>Lot.enquiryPeriod</code></li>
+<li><code>Lot.tenderPeriod</code></li>
+<li><code>Lot.identifiers</code></li>
+<li><code>Lot.mainProcurementCategory</code></li>
+<li><code>Lot.additionalProcurementCategories</code></li>
+<li><code>Lot.milestones</code></li>
+<li><code>Lot.minimumValue</code></li>
+<li><code>Lot.submissionMethodDetails</code></li>
+<li><code>Lot.submissionTerms</code></li>
+<li><code>LotGroup.identifiers</code></li>
+<li><code>LotGroup.title</code></li>
+<li><code>LotGroup.description</code></li>
+<li><code>RelatedProcess.relatedLots</code></li>
+</ul>
+</li>
+<li>Make <code>Lot.id</code> and <code>LotGroup.id</code> required so that lots and lot groups are merged by identifier</li>
+<li>Move <code>Bid.relatedLots</code> to the Bid statistics and details extension</li>
+<li>Move <code>Finance.relatedLots</code> to the Finance extension</li>
+<li>Update field descriptions to use a neutral voice</li>
+<li>Add usage guidance</li>
+</ul>
+<h3>v1.1.5</h3>
+<ul>
+<li>Add <code>tender.lotDetails.awardCriteriaDetails</code> field</li>
+<li>Add <code>Finance.relatedLots</code> field</li>
+<li>Add <code>Lot.contractPeriod</code> field</li>
+<li>Remove type information from field descriptions</li>
+<li>Review normative and non-normative words</li>
+</ul>
+<h3>v1.1.4</h3>
+<ul>
+<li>Disallow <code>Tender.lotDetails</code> from being null (bug introduced in first release)</li>
+<li><code>Tender.lotDetails</code> no longer uses a <code>$ref</code> to a <code>LotDetails</code> definition</li>
+<li>Remove Sphinx directives from readme</li>
+<li>Update extension.json for Extension Explorer</li>
+</ul>
+<h3>v1.1.3</h3>
+<ul>
+<li>Disallow <code>relatedLots</code> fields from having null in their arrays of strings</li>
+<li>Add enum to <code>Lot.status</code></li>
+<li>Allow <code>relatedLots</code> fields to be null</li>
+<li>Add title and description to <code>Tender.lotDetails</code></li>
+<li>Use Apache 2.0 License</li>
+<li>Add tests and tidy code</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>
