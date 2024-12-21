@@ -1,0 +1,100 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "otherRequirements": {
+          "title": "Otros requisitos",
+          "description": "Otros requisitos para participar del procedimiento.",
+          "$ref": "#/definitions/OtherRequirements"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "otherRequirements": {
+          "title": "Otros requisitos",
+          "description": "Otros requisitos para participar del lote.",
+          "$ref": "#/definitions/OtherRequirements"
+        }
+      }
+    },
+    "OtherRequirements": {
+      "title": "Otros requisitos",
+      "description": "Otros requisitos para participar del procedimiento o lote.",
+      "type": "object",
+      "properties": {
+        "requiresStaffNamesAndQualifications": {
+          "title": "Se requiere nombres y calificaciones del personal",
+          "description": "Si los oferentes est\u00e1n obligados a indicar los nombres y las calificaciones profesionales del personal asignado a la ejecuci\u00f3n del contrato.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "reservedParticipation": {
+          "title": "Participaci\u00f3n reservada",
+          "description": "Los tipos de organizaciones a las que se reserva la participaci\u00f3n.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "reservedParticipation.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "qualificationSystemConditions": {
+          "title": "Condiciones del sistema de calificaci\u00f3n",
+          "description": "Las condiciones que deben cumplir los candidatos en vista de su calificaci\u00f3n para el sistema.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "qualificationSystemMethods": {
+          "title": "M\u00e9todos del sistema de calificaci\u00f3n",
+          "description": "Los m\u00e9todos seg\u00fan los cuales se verificar\u00e1n cada una de las condiciones del sistema de calificaci\u00f3n.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "reductionCriteria": {
+          "title": "Criterios de reducci\u00f3n",
+          "description": "Los criterios o reglas para seleccionar un n\u00famero limitado de candidatos calificados para presentar ofertas.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "securityClearance": {
+          "title": "Security clearance",
+          "description": "Information about the required security clearance (e.g. which clearance level is needed, which team members need it, whether it is needed already for accessing documents or only for contract execution).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

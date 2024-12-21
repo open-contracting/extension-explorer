@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <title>Unión Europea — Documentation — OCDS Extension Explorer</title>
+  <meta name="description" content="Implementa campos y código que son específicos de la legislación europea.">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/eu/master/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/eu/master/">
+  <link rel="canonical" value="/es/extensions/eu/1.1/">
+  <style>
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f8f8f8; }
+.highlight .c { color: #3D7B7B; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .ch { color: #3D7B7B; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #3D7B7B; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #9C6500 } /* Comment.Preproc */
+.highlight .cpf { color: #3D7B7B; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #3D7B7B; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #3D7B7B; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #E40000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #008400 } /* Generic.Inserted */
+.highlight .go { color: #717171 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #687822 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #717171; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #CB3F38; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #767600 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sa { color: #BA2121 } /* Literal.String.Affix */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .dl { color: #BA2121 } /* Literal.String.Delimiter */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #AA5D1F; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #A45A77; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #A45A77 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #0000FF } /* Name.Function.Magic */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .vm { color: #19177C } /* Name.Variable.Magic */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        OCDS Extension Explorer
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensions
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Publisher guidance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            User guidance
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-language" aria-hidden="true" title="Select language"></i>
+            <span class="sr-only">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/eu/master/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/eu/master/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Unión Europea
+      </h1>
+
+      <p class="lead">
+        Implementa campos y código que son específicos de la legislación europea.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Version:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+          <optgroup label="Present versions">
+            <option value="/es/extensions/eu/1.1/">
+              1.1
+              (latest)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/eu/master/">
+            Documentation
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ms-0">
+              <a href="#ejemplo">
+                Ejemplo
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#registro-de-cambios">
+                Registro de cambios
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2024-10-18">
+                2024-10-18
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2024-10-08">
+                2024-10-08
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2023-08-01">
+                2023-08-01
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2023-06-30">
+                2023-06-30
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2022-05-27">
+                2022-05-27
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2021-01-19">
+                2021-01-19
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2020-10-06">
+                2020-10-06
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2020-10-05">
+                2020-10-05
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2020-07-13">
+                2020-07-13
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2020-04-29">
+                2020-04-29
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#2020-04-24">
+                2020-04-24
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/eu/master/schema/">
+            Schema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/eu/master/codelists/">
+            Codelists
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_eu_extension/1.1/extension.json" aria-label="Extension URL" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-toggle="tooltip" data-placement="bottom" title="Copy to clipboard">
+              <i aria-hidden="true" class="fas fa-copy"></i>
+              <span class="sr-only">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_eu_extension/archive/1.1.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentation
+      </h2>
+<div><p>Implementa campos y c&#243;digo que son espec&#237;ficos de la legislaci&#243;n europea.</p>
+<p>For complete guidance on meeting the disclosure requirements of European law, see <a href="https://standard.open-contracting.org/profiles/eforms/latest/en/">OCDS for eForms</a> for the 2019 regulation, or <a href="https://standard.open-contracting.org/profiles/eu/latest/en/">OCDS for European Union</a> for the 2015 regulation.</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"parties"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.manchester.ac.uk/"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"buyerProfile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://in-tendhost.co.uk/universityofmanchester/aspx/Home"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"leadBuyer"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"awardingCentralPurchasingBody"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"evaluationBody"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"submissionReceiptBody"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Royal Tax Office"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08797655"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"contactPoint"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Crown Commercial Service"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@crowncommercial.gov.uk"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.gov.uk/government/publications/procurement-policy-note-0314-promoting-tax-compliance"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"roles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"informationService"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"foreignSubsidyMeasures"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fsr-stand"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"tender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"contractPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"reviewDetails"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NHS Wales Shared Services Partnership on behalf of Cardiff and Vale University Local Health Board will allow a minimum 10 calendar day standstill period between notifying the award decision and awarding the contract."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"valueCalculationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Income from the sales of tickets over the duration of the contract minus the fees paid to the procuring entity."</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"item-1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Printer ink cartridges"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"classification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CPV"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"45233130.0"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Office supplies"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://cpv.data.ac.uk/code-45233130"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"legislativeReferences"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Direct taxation in the EU"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://eur-lex.europa.eu/summary/chapter/2101.html"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"informationService"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Royal Tax Office"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"08797655"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"lots"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lot-1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"awardPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"durationInDays"</span><span class="p">:</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-06T00:00:00Z"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-06T00:00:00Z"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"contractPeriod"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"additionalClassifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"oth-serv-contr"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eu-cvd-contract-type"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Other service contract"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"milestones"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"securityClearanceDeadline"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"dueDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-11-19T00:00:00Z"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fiscal1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"documentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"legislation"</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"selectionCriteria"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"epo-notice"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">"exclusionGrounds"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"sources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"epo-notice"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"awards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"award-1"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"valueCalculationMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The awarded value takes into account the growing revenue expected from fees and the value of the equipment provided by the contracting authority."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"additionalClassifications"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eu-vehicle-category"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"n2-n3"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Truck (N2-N3)"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"contracts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"contract-1"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"periodRationale"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The duration of the contract has been extended to anticipate the exceptional snowfall expected in January."</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"publicPassengerTransportServicesKilometers"</span><span class="p">:</span><span class="w"> </span><span class="mi">765</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"awardID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"award-1"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"relatedProcesses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"identifier"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123e4567-e89b-12d3-a456-426614174000"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"eu-oj"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"relationship"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"prior"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="issues">Issues</h2>
+<p>Reporte issues para esta extensi&#243;n en el <a href="https://github.com/open-contracting/ocds-extensions/issues">repositorio de extensiones ocds</a>, poniendo el nombre de la extensi&#243;n en el t&#237;tulo del issue.</p>
+<h2 id="registro-de-cambios">Registro de cambios</h2>
+<h3 id="2024-10-18">2024-10-18</h3>
+<ul>
+<li>Add <code>Bid.foreignSubsidyMeasures</code> field.</li>
+<li>Add <code>foreignSubsidyMeasures.csv</code> codelist.</li>
+<li>Remove <code>Item.deliveryAddresses</code> field (now in Location extension).</li>
+</ul>
+<h3 id="2024-10-08">2024-10-08</h3>
+<ul>
+<li>Add fields:
+<ul>
+<li><code>SelectionCriteria.sources</code></li>
+<li><code>ExclusionGrounds.sources</code></li>
+</ul>
+</li>
+<li>Add <code>sources.csv</code> codelist</li>
+</ul>
+<h3 id="2023-08-01">2023-08-01</h3>
+<ul>
+<li>Add fields:
+<ul>
+<li><code>Organization.eDeliveryGateway</code></li>
+<li><code>Lot.hasAccessibilityCriteria</code></li>
+<li><code>Lot.noAccessibilityCriteriaRationale</code></li>
+<li><code>Lot.reviewDetails</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="2023-06-30">2023-06-30</h3>
+<ul>
+<li>Add <code>Period.description</code> field.</li>
+<li>Add codes:
+<ul>
+<li>classificationScheme.csv:
+<ul>
+<li>'eu-vehicle-category'</li>
+<li>'eu-cvd-contract-type'</li>
+</ul>
+</li>
+<li>documentType.csv:
+<ul>
+<li>'legislation'</li>
+</ul>
+</li>
+<li>partyRole.csv:
+<ul>
+<li>'procurementServiceProvider'</li>
+<li>'eSender'</li>
+<li>'leadBuyer'</li>
+<li>'leadTenderer'</li>
+<li>'evaluationBody'</li>
+<li>'submissionReceiptBody'</li>
+</ul>
+</li>
+<li>relatedProcessScheme.csv:
+<ul>
+<li>'eu-oj'</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Move 'informationService' from the <code>+partyRole.csv</code> codelist to the Document publisher extension.</li>
+</ul>
+<h3 id="2022-05-27">2022-05-27</h3>
+<ul>
+<li>Move <code>Lot.minimumValue</code> to the Lots extension as <code>Lot.minValue</code>.</li>
+</ul>
+<h3 id="2021-01-19">2021-01-19</h3>
+<ul>
+<li>Establecer el tipo de objeto de <code>informationService</code> a<code> OrganizationReference</code>.</li>
+<li>Agregar el c&#243;digo 'informationService' a la lista de c&#243;digos <code>+ partyRole.csv</code>.</li>
+</ul>
+<h3 id="2020-10-06">2020-10-06</h3>
+<ul>
+<li>Add <code>Lot.awardPeriod</code> field.</li>
+</ul>
+<h3 id="2020-10-05">2020-10-05</h3>
+<ul>
+<li>Add <code>Lot.minimumValue</code> field.</li>
+</ul>
+<h3 id="2020-07-13">2020-07-13</h3>
+<ul>
+<li>Agregue el c&#243;digo 'securityClearanceDeadline' a la lista de c&#243;digos <code>+ milestoneType.csv</code>.</li>
+</ul>
+<h3 id="2020-04-29">2020-04-29</h3>
+<ul>
+<li>Add <code>Item.deliveryAddresses</code> field.</li>
+</ul>
+<h3 id="2020-04-24">2020-04-24</h3>
+<ul>
+<li>Agregar las propiedades <code>minProperties</code>, <code>minItems</code> y/o <code>minLength</code>.</li>
+</ul>
+<p>Esta extensi&#243;n se discuti&#243; originalmente como parte del [OCDS para el perfil de la UE] (https://github.com/open-contracting-extensions/european-union/issues), en <a href="https://github.com/open-contracting/european-union-support/issues/19">este issue</a> y en <a href="https://github.com/open-contracting-extensions/ocds_eu_extension/pulls?q=is%3Apr+is%3Aclosed">pull requests</a>.</p>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js"></script>
+<script>
+$(function () {
+  var clipboard = new ClipboardJS('.clipboard');
+
+  clipboard.on('success', function (e) {
+    // https://stackoverflow.com/a/50150393
+    $(e.trigger).attr('title', 'Copied!').tooltip('_fixTitle').tooltip('show').attr('title', 'Copy to clipboard').tooltip('_fixTitle');
+    e.clearSelection();
+  });
+
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+<script src="https://use.typekit.net/xpw3jps.js"></script>
+<script>try{Typekit.load({ async: true });}catch(e){}</script>
+
+</body>
+</html>
