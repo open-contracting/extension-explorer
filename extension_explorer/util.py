@@ -6,6 +6,7 @@ import re
 from collections import defaultdict
 from copy import deepcopy
 from functools import lru_cache
+from operator import itemgetter
 
 import json_merge_patch
 import jsonpointer
@@ -106,7 +107,7 @@ def get_present_and_historical_versions(extension):
     versions = extension['versions']
 
     historical_versions = [v for v in versions.values() if v['version'] != latest_version]
-    historical_versions = sorted(historical_versions, key=lambda v: v['date'], reverse=True)
+    historical_versions = sorted(historical_versions, key=itemgetter('date'), reverse=True)
     historical_versions = [(v['version'], v['date']) for v in historical_versions]
 
     present_versions = [(latest_version, versions[latest_version]['date'] or gettext('latest'))]
