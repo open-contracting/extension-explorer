@@ -1,0 +1,42 @@
+{
+  "definitions": {
+    "Organization": {
+      "properties": {
+        "additionalContactPoints": {
+          "title": "Additional contact points",
+          "description": "An array of additional contact points that may be consulted for information. Additional contact points should each list the languages they operate in their name, and as structured data in the availableLanguage field.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContactPoint"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "ContactPoint": {
+      "properties": {
+        "availableLanguage": {
+          "title": "Available languages",
+          "description": "The languages the contact point operates in, using either two-letter [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), or extended [BCP47 language tags](http://www.w3.org/International/articles/language-tags/). The use of lowercase two-letter codes from [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is strongly recommended unless there is a clear user need for distinguishing the language subtype.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "address": {
+          "title": "Address",
+          "description": "The address of the contact point.",
+          "$ref": "#/definitions/Address"
+        }
+      }
+    }
+  }
+}

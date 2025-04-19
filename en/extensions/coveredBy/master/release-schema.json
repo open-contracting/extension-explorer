@@ -1,0 +1,44 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "coveredBy": {
+          "title": "Covered by",
+          "description": "The international legal instruments that the contracting process is covered by.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "coveredBy.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "coveredBy": {
+          "title": "Covered by",
+          "description": "The international legal instruments that the lot is covered by.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "coveredBy.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
