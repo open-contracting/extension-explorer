@@ -153,7 +153,7 @@ typing-extensions==4.12.2
     # via cattrs
 url-normalize==1.4.3
     # via requests-cache
-urllib3==2.2.2
+urllib3==2.5.0
     # via
     #   requests
     #   requests-cache
