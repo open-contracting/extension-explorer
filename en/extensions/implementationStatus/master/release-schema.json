@@ -1,0 +1,24 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "status": {
+          "title": "Implementation status",
+          "description": "The current status of the contract implementation based on the [implementationStatuscodelist](https://github.com/INAImexico/ocds_implementationStatus_extension/blob/master/codelists/implementationStatus).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "planning",
+            "ongoing",
+            "concluded",
+            null
+          ],
+          "codelist": "implementationStatus.csv",
+          "openCodelist": false
+        }
+      }
+    }
+  }
+}
