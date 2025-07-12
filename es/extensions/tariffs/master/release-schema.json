@@ -1,0 +1,153 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "tariffs": {
+          "title": "Tarifas",
+          "description": "Las tarifas que se aplican durante la vida del proyecto. Tambi\u00e9n se conoce como peajes o cargos de usuario. \u00c9stos pueden ser copiados inicialmente de la secci\u00f3n del contrato y luego actualizados con cualquier revisi\u00f3n durante la vida de la fase de implementaci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tariff"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "tariffs": {
+          "title": "Tarifas",
+          "description": "Las tarifas establecidas en los cronogramas del contrato. Tambi\u00e9n se conoce como impuestos o cargos de usuario. Las actualizaciones de las tarifas sobre la operaci\u00f3n del contrato pueden ser proporcionadas en la secci\u00f3n de implementaci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tariff"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Tariff": {
+      "title": "Tarifa",
+      "description": "Un art\u00edculo en una tabla de tarifas que establece un desglose del usuario o tasas gubernamentales que se pagan con relaci\u00f3n a cada unidad de un bien o servicios en particular.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador local para esta tarifa espec\u00edfica. Este campo se utiliza para realizar un seguimiento de las revisiones de una tarifa a trav\u00e9s de m\u00faltiples entregas de OCDS.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "T\u00edtulo",
+          "description": "El t\u00edtulo de esta tarifa.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "paidBy": {
+          "title": "Pagado por",
+          "description": "\u00bfSe trata de un cargo de usuario (pagado por empresas o ciudadanos que utilizan las facilidades proporcionadas por el contrato), o un cargo pagado por el gobierno?",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "chargePaidBy.csv",
+          "openCodelist": false,
+          "enum": [
+            "government",
+            "user",
+            null
+          ]
+        },
+        "period": {
+          "title": "Periodo",
+          "description": "El per\u00edodo al que se aplica esta tarifa.",
+          "$ref": "#/definitions/Period"
+        },
+        "value": {
+          "title": "Valor",
+          "description": "El precio por unidad de esta tarifa.",
+          "$ref": "#/definitions/Value"
+        },
+        "unit": {
+          "title": "Unidad",
+          "description": "La unidad contra la cual se cobra esta tarifa.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Nombre de la unidad",
+              "description": "El nombre de la unidad a la que se cobra la tarifa. P.ej. Toneladas",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "scheme": {
+              "title": "Esquema",
+              "description": "La lista de la cual se toman los identificadores de unidades de medida. Se recomienda utilizar el esquema 'UNCEFACT' y los c\u00f3digos de la lista de la Recomendaci\u00f3n 20 de la UN/CEFACT de \"C\u00f3digos para Unidades de Medida Utilizadas en el Comercio Internacional\".",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "unitClassificationScheme.csv",
+              "openCodelist": true,
+              "minLength": 1
+            },
+            "id": {
+              "title": "ID",
+              "description": "El identificador de la lista de c\u00f3digos se hace referencia en la propiedad de esquema. Por ejemplo, con UNCEFACT, este es el valor de la columna \"Common Code\". A partir de este identificador, las aplicaciones pueden buscar el nombre o s\u00edmbolo legible para humanos  para esta unidad de medida.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "uri": {
+              "title": "URI",
+              "description": "Si el esquema utilizado provee una URI legible por computadora para esta unidad de medici\u00f3n, \u00e9sta puede proporcionarse.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            }
+          },
+          "minProperties": 1
+        },
+        "dimensions": {
+          "title": "Dimensiones",
+          "description": "Utilizado para capturar los diferentes desgloses en los cargos de  la tarifa. Cualquier n\u00famero de dimensiones se puede registrar dentro de este objeto. Los nombres de dimensiones deben seguir las convenciones de OCDS de camelCase.",
+          "type": "object",
+          "patternProperties": {
+            "^.*": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "notes": {
+          "title": "Notas",
+          "description": "Cualquier nota sobre esta partida de tarifas. Esto puede incluir informaci\u00f3n para aclaraci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

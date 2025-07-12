@@ -1,0 +1,42 @@
+{
+  "definitions": {
+    "Organization": {
+      "properties": {
+        "additionalContactPoints": {
+          "title": "Puntos adicionales de contacto",
+          "description": "Una lista de puntos de contacto adicionales  puede consultarse para obtener informaci\u00f3n. Los puntos de contacto adicionales deben listar en su nombre los idiomas en los que operan y como datos estructurados en el campo availableLanguage.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ContactPoint"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "ContactPoint": {
+      "properties": {
+        "availableLanguage": {
+          "title": "Lenguajes disponibles",
+          "description": "Los idiomas en los que opera el punto de contacto, utilizando [ISO639-1] de dos letras (https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), o extendido [BCP47 language tags](http://www.w3.org/International/articles/language-tags/). Se recomienda el uso del c\u00f3digo de dos letras en min\u00fasculas de [ISO639-1](https://es.wikipedia.org/wiki/List_of_ISO_639-1_codes) a menos que exista una clara necesidad del usuario para distinguir el subtipo de idioma.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "address": {
+          "title": "Direcci\u00f3n",
+          "description": "The address of the contact point.",
+          "$ref": "#/definitions/Address"
+        }
+      }
+    }
+  }
+}
