@@ -1,0 +1,229 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "techniques": {
+          "title": "Techniques",
+          "description": "Information about the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions.",
+          "$ref": "#/definitions/Techniques"
+        },
+        "competitive": {
+          "title": "Is the framework agreement call-off competitive?",
+          "description": "Whether this call-off is competitive or not.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "techniques": {
+          "title": "Techniques",
+          "description": "Information about the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions.",
+          "$ref": "#/definitions/Techniques"
+        }
+      }
+    },
+    "LotGroup": {
+      "properties": {
+        "techniques": {
+          "title": "Techniques",
+          "description": "Information about the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions.",
+          "$ref": "#/definitions/Techniques"
+        }
+      }
+    },
+    "Techniques": {
+      "title": "Techniques",
+      "description": "Information about the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions.",
+      "type": "object",
+      "properties": {
+        "hasFrameworkAgreement": {
+          "title": "Framework agreement involved",
+          "description": "Whether a framework agreement is involved.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "frameworkAgreement": {
+          "title": "Framework agreement",
+          "description": "Information about the framework agreement.",
+          "$ref": "#/definitions/FrameworkAgreement"
+        },
+        "hasDynamicPurchasingSystem": {
+          "title": "Dynamic purchasing system involved",
+          "description": "Whether a dynamic purchasing system is involved.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "dynamicPurchasingSystem": {
+          "title": "Dynamic purchasing system",
+          "description": "Information about the dynamic purchasing system.",
+          "$ref": "#/definitions/DynamicPurchasingSystem"
+        },
+        "hasElectronicAuction": {
+          "title": "Electronic auction used",
+          "description": "Whether an electronic auction is used.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "electronicAuction": {
+          "title": "Electronic auction",
+          "description": "Information about the electronic auction.",
+          "$ref": "#/definitions/ElectronicAuction"
+        }
+      },
+      "minProperties": 1
+    },
+    "FrameworkAgreement": {
+      "title": "Framework agreement",
+      "description": "Information about the framework agreement.",
+      "type": "object",
+      "properties": {
+        "minimumParticipants": {
+          "title": "Minimum number of participants",
+          "description": "The minimum number of participants in the framework agreement.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximumParticipants": {
+          "title": "Maximum number of participants",
+          "description": "The maximum number of participants in the framework agreement. If there is no maximum, set to 1e9999 (which parses to infinity).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "method": {
+          "title": "Method",
+          "description": "Whether contracts are awarded with, without, or both with and without the reopening of competition.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "frameworkAgreementMethod.csv",
+          "openCodelist": false,
+          "enum": [
+            "withReopeningCompetition",
+            "withoutReopeningCompetition",
+            "withAndWithoutReopeningCompetition",
+            null
+          ]
+        },
+        "periodRationale": {
+          "title": "Duration rationale",
+          "description": "The justification for exceptional cases when the duration of a framework agreement exceeds the legal limits.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "buyerCategories": {
+          "title": "Buyer categories",
+          "description": "Any additional categories of buyers participating in the framework agreement and not mentioned by name (e.g. 'all hospitals in the Tuscany region').",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "value": {
+          "title": "Value",
+          "description": "The total upper estimated value of the framework agreement.",
+          "$ref": "#/definitions/Value"
+        },
+        "period": {
+          "title": "Period",
+          "description": "The period over which the framework agreement is estimated to be active.",
+          "$ref": "#/definitions/Period"
+        },
+        "description": {
+          "title": "Description",
+          "description": "A summary description of the framework agreement. This complements any structured information provided using the other fields.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "DynamicPurchasingSystem": {
+      "title": "Dynamic purchasing system",
+      "description": "Information about the dynamic purchasing system.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "In the case of central purchasing bodies, whether the dynamic purchasing system can be used by buyers not listed in the contracting process.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "dynamicPurchasingSystemType.csv",
+          "openCodelist": false,
+          "enum": [
+            "open",
+            "closed",
+            null
+          ]
+        },
+        "status": {
+          "title": "Status",
+          "description": "The status of the dynamic purchasing system.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "dynamicPurchasingSystemStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "pending",
+            "active",
+            "cancelled",
+            "terminated",
+            null
+          ]
+        }
+      },
+      "minProperties": 1
+    },
+    "ElectronicAuction": {
+      "title": "Electronic auction",
+      "description": "Information about the electronic auction.",
+      "type": "object",
+      "properties": {
+        "url": {
+          "title": "URL",
+          "description": "The internet address of the electronic auction.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "Any additional information about the electronic auction.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}
