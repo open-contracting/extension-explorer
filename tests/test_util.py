@@ -21,81 +21,35 @@ extension_version_template = {
             "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/v1.1.3/extension.json"
         ]
     },
-    "schemas": {
-        "release-schema.json": {
-            "en": {}
-        }
-    },
-    "codelists": {
-        "codelist.csv": {
-            "en": {
-                "fieldnames": ["Code"],
-                "rows": [{"Code": "A code"}]
-            }
-        }
-    }
+    "schemas": {"release-schema.json": {"en": {}}},
+    "codelists": {"codelist.csv": {"en": {"fieldnames": ["Code"], "rows": [{"Code": "A code"}]}}},
 }
 
 release_schema = {
     "properties": {
         # Test a field with a `title` only.
-        "titleOnly": {
-            "title": "Title only"
-        },
+        "titleOnly": {"title": "Title only"},
         # Test a field with a `description` only.
-        "descriptionOnly": {
-            "description": "Description only"
-        },
+        "descriptionOnly": {"description": "Description only"},
         # Test a field with a `type` only.
-        "typeOnly": {
-            "type": "string"
-        },
-
+        "typeOnly": {"type": "string"},
         # Test a field with a matched `$ref` and `type`.
-        "ref": {
-            "title": "Asset",
-            "type": "object",
-            "$ref": "#/definitions/Asset"
-        },
-
+        "ref": {"title": "Asset", "type": "object", "$ref": "#/definitions/Asset"},
         # Test an array of literals.
         "array": {
             "title": "Array",
             "type": "array",
             "items": {
                 # Test `"null"` and `null` types.
-                "type": [
-                    "string",
-                    "integer",
-                    "null",
-                    None
-                ]
-            }
+                "type": ["string", "integer", "null", None]
+            },
         },
         # Test an array of $ref'erences.
-        "refArray": {
-            "title": "Assets",
-            "type": "array",
-            "items": {
-                "$ref": "#/definitions/Asset"
-            }
-        },
+        "refArray": {"title": "Assets", "type": "array", "items": {"$ref": "#/definitions/Asset"}},
         # Test a field with no non-null types.
-        "null": {
-            "title": "Null",
-            "type": [
-                "null",
-                None
-            ]
-        },
-
+        "null": {"title": "Null", "type": ["null", None]},
         # Test a field with a mismatched `$ref` and `type`, and a `$ref` to an object defined elsewhere.
-        "external": {
-            "title": "External",
-            "type": "string",
-            "$ref": "#/definitions/Value"
-        },
-
+        "external": {"title": "External", "type": "string", "$ref": "#/definitions/Value"},
         # Test nested added and removed fields.
         "field": {
             # Test a field with a `title` without a `description`.
@@ -110,21 +64,16 @@ release_schema = {
                         "subsubfield": {
                             # Test Markdown in `description`.
                             "title": "Subsubfield",
-                            "description": "*Subsubfield*"
+                            "description": "*Subsubfield*",
                         }
-                    }
+                    },
                 }
-            }
+            },
         },
-
         # Test a removed core field.
         "buyer": None,
-
         # Test an undeprecated field.
-        "undeprecated": {
-            "description": "Description",
-            "deprecated": None
-        },
+        "undeprecated": {"description": "Description", "deprecated": None},
         # Test a deprecated field.
         "deprecated": {
             "title": "Deprecated",
@@ -133,9 +82,9 @@ release_schema = {
             "deprecated": {
                 # Test Markdown in `description`.
                 "description": "Field has been deprecated because **reasons**.",
-                "deprecatedVersion": "1.1"
-            }
-        }
+                "deprecatedVersion": "1.1",
+            },
+        },
     },
     "definitions": {
         # Test a new definition.
@@ -146,27 +95,19 @@ release_schema = {
                     "title": "Title",
                     "description": "Description",
                     # Test `"null"` and `null` types in a definition.
-                    "type": [
-                        "string",
-                        "integer",
-                        "null",
-                        None
-                    ]
+                    "type": ["string", "integer", "null", None],
                 }
-            }
+            },
         },
-
         # Test a patched core definition.
         "Tender": {
             "properties": {
                 # Test adding a field without properties.
                 "field": {},
                 # Test modifying a field.
-                "title": {
-                    "title": "Replacement"
-                },
+                "title": {"title": "Replacement"},
                 # Test a removed field in a core definition.
-                "description": None
+                "description": None,
             }
         },
         "OrganizationReference": {
@@ -175,33 +116,21 @@ release_schema = {
                 "address": None
             }
         },
-
         # Test a patched extension definition.
         "Location": {
             "properties": {
                 # Test adding a field.
-                "field": {
-                    "type": "string"
-                },
+                "field": {"type": "string"},
                 # Test modifying a field.
-                "geometry": {
-                    "title": "Replacement"
-                },
+                "geometry": {"title": "Replacement"},
                 # Test a removed field in a extension definition.
-                "description": None
+                "description": None,
             }
-        }
+        },
     },
     "patternProperties": {
         # Test a pattern property.
-        ".*": {
-            "title": "Title",
-            "description": "Description",
-            "type": [
-                "string",
-                "integer"
-            ]
-        },
+        ".*": {"title": "Title", "description": "Description", "type": ["string", "integer"]},
         # Test a field with multilingual support.
         "^(titleOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+)))$": {  # noqa: E501
             "type": "string"
@@ -211,54 +140,24 @@ release_schema = {
         # Test a field with missing anchors.
         "^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {},  # noqa: E501
         "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$": {},  # noqa: E501
-        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {}  # noqa: E501
-    }
+        "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))": {},  # noqa: E501
+    },
 }
 
 codelist = {
-    "fieldnames": [
-        "Extra",
-        "Description_en",
-        "Title_en",
-        "Code"
-    ],
+    "fieldnames": ["Extra", "Description_en", "Title_en", "Code"],
     "rows": [
-        {
-            "Code": "A code",
-            "Title_en": "A title",
-            "Description_en": "A description",
-            "Extra": "An extra"
-        },
-        {
-            "Code": "",
-            "Title_en": "",
-            "Description_en": "",
-            "Extra": ""
-        }
-    ]
+        {"Code": "A code", "Title_en": "A title", "Description_en": "A description", "Extra": "An extra"},
+        {"Code": "", "Title_en": "", "Description_en": "", "Extra": ""},
+    ],
 }
 
 codelist_translated = {
-    "fieldnames": [
-        "Extra",
-        "Descripción",
-        "Título",
-        "Código"
-    ],
+    "fieldnames": ["Extra", "Descripción", "Título", "Código"],
     "rows": [
-        {
-            "Código": "Un código",
-            "Título": "Un título",
-            "Descripción": "Un descripción",
-            "Extra": "Un extra"
-        },
-        {
-            "Código": "",
-            "Título": "",
-            "Descripción": "",
-            "Extra": ""
-        }
-    ]
+        {"Código": "Un código", "Título": "Un título", "Descripción": "Un descripción", "Extra": "Un extra"},
+        {"Código": "", "Título": "", "Descripción": "", "Extra": ""},
+    ],
 }
 
 
@@ -267,356 +166,322 @@ def test_set_tags():
     tags = set_tags(extensions)
 
     assert tags == (
-        {'ppp': 'Public Private Partnerships'},
+        {"ppp": "Public Private Partnerships"},
         {},
-        {'open-contracting-extensions': 'open-contracting-extensions'},
+        {"open-contracting-extensions": "open-contracting-extensions"},
     )
 
-    assert extensions['location']['tags'] == {'recommended', 'profile-ppp', 'publisher-open-contracting-extensions'}
+    assert extensions["location"]["tags"] == {"recommended", "profile-ppp", "publisher-open-contracting-extensions"}
 
 
 def test_get_present_and_historical_versions():
-    present_versions, historical_versions = get_present_and_historical_versions({
-        "latest_version": "master",
-        "versions": {
-            "master": {
-                "version": "master",
-                "date": ""
+    present_versions, historical_versions = get_present_and_historical_versions(
+        {
+            "latest_version": "master",
+            "versions": {
+                "master": {"version": "master", "date": ""},
+                "v1.1": {"version": "v1.1", "date": "2017-05-09"},
+                "v1.1.3": {"version": "v1.1.3", "date": "2018-02-01"},
+                "v1.1.1": {"version": "v1.1.1", "date": "2017-08-07"},
             },
-            "v1.1": {
-                "version": "v1.1",
-                "date": "2017-05-09"
-            },
-            "v1.1.3": {
-                "version": "v1.1.3",
-                "date": "2018-02-01"
-            },
-            "v1.1.1": {
-                "version": "v1.1.1",
-                "date": "2017-08-07"
-            }
         }
-    })
+    )
 
-    assert present_versions == [('master', 'latest'), ('v1.1.3', '2018-02-01')]
-    assert historical_versions == [('v1.1.1', '2017-08-07'), ('v1.1', '2017-05-09')]
+    assert present_versions == [("master", "latest"), ("v1.1.3", "2018-02-01")]
+    assert historical_versions == [("v1.1.1", "2017-08-07"), ("v1.1", "2017-05-09")]
 
 
 def test_get_present_and_historical_versions_master():
-    present_versions, historical_versions = get_present_and_historical_versions({
-        "latest_version": "master",
-        "versions": {
-            "master": {
-                "version": "master",
-                "date": ""
-            }
-        }
-    })
+    present_versions, historical_versions = get_present_and_historical_versions(
+        {"latest_version": "master", "versions": {"master": {"version": "master", "date": ""}}}
+    )
 
-    assert present_versions == [('master', 'latest')]
+    assert present_versions == [("master", "latest")]
     assert historical_versions == []
 
 
 def test_get_present_and_historical_versions_live():
-    present_versions, historical_versions = get_present_and_historical_versions({
-        "latest_version": "master",
-        "versions": {
-            "master": {
-                "version": "master",
-                "date": ""
-            },
-            "live": {
-                "version": "live",
-                "date": ""
-            }
+    present_versions, historical_versions = get_present_and_historical_versions(
+        {
+            "latest_version": "master",
+            "versions": {"master": {"version": "master", "date": ""}, "live": {"version": "live", "date": ""}},
         }
-    })
+    )
 
-    assert present_versions == [('master', 'latest')]
-    assert historical_versions == [('live', '')]
+    assert present_versions == [("master", "latest")]
+    assert historical_versions == [("live", "")]
 
 
 def test_get_schema_tables(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['schemas']['release-schema.json']['en'] = release_schema
+    extension_version["schemas"]["release-schema.json"]["en"] = release_schema
 
-    tables = get_schema_tables(extension_version, 'en')
+    tables = get_schema_tables(extension_version, "en")
 
     assert dict(tables) == {
-        'Asset': {
-            'fields': [
+        "Asset": {
+            "fields": [
                 {
-                    'definition': 'Asset',
-                    'path': 'field',
-                    'schema': release_schema['definitions']['Asset']['properties']['field'],
-                    'multilingual': False,
-                    'title': 'Title',
-                    'description': '<p>Description</p>\n',
-                    'types': 'string or integer',
+                    "definition": "Asset",
+                    "path": "field",
+                    "schema": release_schema["definitions"]["Asset"]["properties"]["field"],
+                    "multilingual": False,
+                    "title": "Title",
+                    "description": "<p>Description</p>\n",
+                    "types": "string or integer",
                 },
             ],
         },
-        'Release': {
-            'fields': [
+        "Release": {
+            "fields": [
                 {
-                    'definition': '',
-                    'path': 'titleOnly',
-                    'schema': release_schema['properties']['titleOnly'],
-                    'multilingual': True,
-                    'title': 'Title only',
-                    'description': '',
-                    'types': '',
+                    "definition": "",
+                    "path": "titleOnly",
+                    "schema": release_schema["properties"]["titleOnly"],
+                    "multilingual": True,
+                    "title": "Title only",
+                    "description": "",
+                    "types": "",
                 },
                 {
-                    'definition': '',
-                    'path': 'descriptionOnly',
-                    'schema': release_schema['properties']['descriptionOnly'],
-                    'multilingual': True,
-                    'title': '',
-                    'description': '<p>Description only</p>\n',
-                    'types': '',
+                    "definition": "",
+                    "path": "descriptionOnly",
+                    "schema": release_schema["properties"]["descriptionOnly"],
+                    "multilingual": True,
+                    "title": "",
+                    "description": "<p>Description only</p>\n",
+                    "types": "",
                 },
                 {
-                    'definition': '',
-                    'path': 'typeOnly',
-                    'schema': release_schema['properties']['typeOnly'],
-                    'multilingual': False,
-                    'title': '',
-                    'description': '',
-                    'types': 'string',
+                    "definition": "",
+                    "path": "typeOnly",
+                    "schema": release_schema["properties"]["typeOnly"],
+                    "multilingual": False,
+                    "title": "",
+                    "description": "",
+                    "types": "string",
                 },
                 {
-                    'definition': '',
-                    'path': 'ref',
-                    'schema': release_schema['properties']['ref'],
-                    'multilingual': False,
-                    'title': 'Asset',
-                    'description': '',
-                    'types': '<a href="#asset">Asset</a> object',
+                    "definition": "",
+                    "path": "ref",
+                    "schema": release_schema["properties"]["ref"],
+                    "multilingual": False,
+                    "title": "Asset",
+                    "description": "",
+                    "types": '<a href="#asset">Asset</a> object',
                 },
                 {
-                    'definition': '',
-                    'path': 'array',
-                    'schema': release_schema['properties']['array'],
-                    'multilingual': False,
-                    'title': 'Array',
-                    'description': '',
-                    'types': 'array of strings / integers',
+                    "definition": "",
+                    "path": "array",
+                    "schema": release_schema["properties"]["array"],
+                    "multilingual": False,
+                    "title": "Array",
+                    "description": "",
+                    "types": "array of strings / integers",
                 },
                 {
-                    'definition': '',
-                    'path': 'refArray',
-                    'schema': release_schema['properties']['refArray'],
-                    'multilingual': False,
-                    'title': 'Assets',
-                    'description': '',
-                    'types': 'array of <a href="#asset">Asset</a> objects',
+                    "definition": "",
+                    "path": "refArray",
+                    "schema": release_schema["properties"]["refArray"],
+                    "multilingual": False,
+                    "title": "Assets",
+                    "description": "",
+                    "types": 'array of <a href="#asset">Asset</a> objects',
                 },
                 {
-                    'definition': '',
-                    'path': 'null',
-                    'schema': release_schema['properties']['null'],
-                    'multilingual': False,
-                    'title': 'Null',
-                    'description': '',
-                    'types': '',
+                    "definition": "",
+                    "path": "null",
+                    "schema": release_schema["properties"]["null"],
+                    "multilingual": False,
+                    "title": "Null",
+                    "description": "",
+                    "types": "",
                 },
                 {
-                    'definition': '',
-                    'path': 'external',
-                    'schema': release_schema['properties']['external'],
-                    'multilingual': False,
-                    'title': 'External',
-                    'description': '',
-                    'types': '<a href="https://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa: E501
+                    "definition": "",
+                    "path": "external",
+                    "schema": release_schema["properties"]["external"],
+                    "multilingual": False,
+                    "title": "External",
+                    "description": "",
+                    "types": '<a href="https://standard.open-contracting.org/1.1/en/schema/reference/#value">Value</a> object',  # noqa: E501
                 },
                 {
-                    'definition': '',
-                    'path': 'field',
-                    'schema': release_schema['properties']['field'],
-                    'multilingual': False,
-                    'title': 'Field',
-                    'description': '',
-                    'types': 'object',
+                    "definition": "",
+                    "path": "field",
+                    "schema": release_schema["properties"]["field"],
+                    "multilingual": False,
+                    "title": "Field",
+                    "description": "",
+                    "types": "object",
                 },
                 {
-                    'definition': '',
-                    'path': 'field.subfield',
-                    'schema': release_schema['properties']['field']['properties']['subfield'],
-                    'multilingual': False,
-                    'title': '',
-                    'description': '<p>Subfield</p>\n',
-                    'types': 'object',
+                    "definition": "",
+                    "path": "field.subfield",
+                    "schema": release_schema["properties"]["field"]["properties"]["subfield"],
+                    "multilingual": False,
+                    "title": "",
+                    "description": "<p>Subfield</p>\n",
+                    "types": "object",
                 },
                 {
-                    'definition': '',
-                    'path': 'field.subfield.subsubfield',
-                    'schema': release_schema['properties']['field']['properties']['subfield']['properties']['subsubfield'],  # noqa: E501
-                    'multilingual': False,
-                    'title': 'Subsubfield',
-                    'description': '<p><em>Subsubfield</em></p>\n',
-                    'types': '',
+                    "definition": "",
+                    "path": "field.subfield.subsubfield",
+                    "schema": release_schema["properties"]["field"]["properties"]["subfield"]["properties"][
+                        "subsubfield"
+                    ],
+                    "multilingual": False,
+                    "title": "Subsubfield",
+                    "description": "<p><em>Subsubfield</em></p>\n",
+                    "types": "",
                 },
                 {
-                    'definition': '',
-                    'path': 'undeprecated',
-                    'schema': release_schema['properties']['undeprecated'],
-                    'multilingual': False,
-                    'title': '',
-                    'description': '<p>Description</p>\n',
-                    'types': '',
+                    "definition": "",
+                    "path": "undeprecated",
+                    "schema": release_schema["properties"]["undeprecated"],
+                    "multilingual": False,
+                    "title": "",
+                    "description": "<p>Description</p>\n",
+                    "types": "",
                 },
                 {
-                    'definition': '',
-                    'path': 'deprecated',
-                    'schema': release_schema['properties']['deprecated'],
-                    'multilingual': False,
-                    'title': 'Deprecated',
-                    'description': '<p>Description</p>\n',
-                    'types': 'string',
+                    "definition": "",
+                    "path": "deprecated",
+                    "schema": release_schema["properties"]["deprecated"],
+                    "multilingual": False,
+                    "title": "Deprecated",
+                    "description": "<p>Description</p>\n",
+                    "types": "string",
                 },
                 {
-                    'definition': '',
-                    'path': '.*',
-                    'schema': release_schema['patternProperties']['.*'],
-                    'multilingual': False,
-                    'title': 'Title',
-                    'description': '<p>Description</p>\n',
-                    'types': 'string or integer',
+                    "definition": "",
+                    "path": ".*",
+                    "schema": release_schema["patternProperties"][".*"],
+                    "multilingual": False,
+                    "title": "Title",
+                    "description": "<p>Description</p>\n",
+                    "types": "string or integer",
                 },
                 {
-                    'definition': '',
-                    'path': '^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))',  # noqa: E501
-                    'schema': {},
-                    'multilingual': False,
-                    'title': '',
-                    'description': '',
-                    'types': '',
+                    "definition": "",
+                    "path": "^typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))",  # noqa: E501
+                    "schema": {},
+                    "multilingual": False,
+                    "title": "",
+                    "description": "",
+                    "types": "",
                 },
                 {
-                    'definition': '',
-                    'path': 'typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$',  # noqa: E501
-                    'schema': {},
-                    'multilingual': False,
-                    'title': '',
-                    'description': '',
-                    'types': '',
+                    "definition": "",
+                    "path": "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))$",  # noqa: E501
+                    "schema": {},
+                    "multilingual": False,
+                    "title": "",
+                    "description": "",
+                    "types": "",
                 },
                 {
-                    'definition': '',
-                    'path': 'typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))',  # noqa: E501
-                    'schema': {},
-                    'multilingual': False,
-                    'title': '',
-                    'description': '',
-                    'types': ''
+                    "definition": "",
+                    "path": "typeOnly_(((([A-Za-z]{2,3}(-([A-Za-z]{3}(-[A-Za-z]{3}){0,2}))?)|[A-Za-z]{4}|[A-Za-z]{5,8})(-([A-Za-z]{4}))?(-([A-Za-z]{2}|[0-9]{3}))?(-([A-Za-z0-9]{5,8}|[0-9][A-Za-z0-9]{3}))*(-([0-9A-WY-Za-wy-z](-[A-Za-z0-9]{2,8})+))*(-(x(-[A-Za-z0-9]{1,8})+))?)|(x(-[A-Za-z0-9]{1,8})+))",  # noqa: E501
+                    "schema": {},
+                    "multilingual": False,
+                    "title": "",
+                    "description": "",
+                    "types": "",
                 },
             ],
-            'source': {
-                'type': 'core',
-                'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release',
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',
+            "source": {
+                "type": "core",
+                "url": "https://standard.open-contracting.org/1.1/en/schema/reference/#release",
+                "field_url_prefix": "https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,",
             },
         },
-        'Tender': {
-            'fields': [
+        "Tender": {
+            "fields": [
                 {
-                    'definition': 'Tender',
-                    'path': 'field',
-                    'schema': {},
-                    'multilingual': False,
-                    'title': '',
-                    'description': '',
-                    'types': '',
+                    "definition": "Tender",
+                    "path": "field",
+                    "schema": {},
+                    "multilingual": False,
+                    "title": "",
+                    "description": "",
+                    "types": "",
                 },
                 {
-                    'definition': 'Tender',
-                    'path': 'title',
-                    'schema': {'title': 'Replacement'},
-                    'multilingual': False,
-                    'title': 'Replacement',
-                    'description': '',
-                    'types': '',
-                    'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,title',
+                    "definition": "Tender",
+                    "path": "title",
+                    "schema": {"title": "Replacement"},
+                    "multilingual": False,
+                    "title": "Replacement",
+                    "description": "",
+                    "types": "",
+                    "url": "https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,title",
                 },
             ],
-            'source': {
-                'type': 'core',
-                'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#tender',
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,',
+            "source": {
+                "type": "core",
+                "url": "https://standard.open-contracting.org/1.1/en/schema/reference/#tender",
+                "field_url_prefix": "https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,/definitions/Tender,",
             },
         },
-        'Location': {
-            'fields': [
+        "Location": {
+            "fields": [
                 {
-                    'definition': 'Location',
-                    'path': 'field',
-                    'schema': {'type': 'string'},
-                    'multilingual': False,
-                    'title': '',
-                    'description': '',
-                    'types': 'string',
+                    "definition": "Location",
+                    "path": "field",
+                    "schema": {"type": "string"},
+                    "multilingual": False,
+                    "title": "",
+                    "description": "",
+                    "types": "string",
                 },
                 {
-                    'definition': 'Location',
-                    'path': 'geometry',
-                    'schema': {'title': 'Replacement'},
-                    'multilingual': False,
-                    'title': 'Replacement',
-                    'description': '',
-                    'types': '',
-                    'url': '/en/extensions/location/v1.1.3/schema/#Location.geometry',
+                    "definition": "Location",
+                    "path": "geometry",
+                    "schema": {"title": "Replacement"},
+                    "multilingual": False,
+                    "title": "Replacement",
+                    "description": "",
+                    "types": "",
+                    "url": "/en/extensions/location/v1.1.3/schema/#Location.geometry",
                 },
             ],
-            'source': {
-                'type': 'extension',
-                'url': '/en/extensions/location/v1.1.3/schema/#location',
-                'field_url_prefix': '/en/extensions/location/v1.1.3/schema/#Location.',
-                'extension_name': 'Location',
-                'extension_url': '/en/extensions/location/v1.1.3/',
+            "source": {
+                "type": "extension",
+                "url": "/en/extensions/location/v1.1.3/schema/#location",
+                "field_url_prefix": "/en/extensions/location/v1.1.3/schema/#Location.",
+                "extension_name": "Location",
+                "extension_url": "/en/extensions/location/v1.1.3/",
             },
         },
     }
 
 
 def test_get_schema_tables_mixed_array_success(client):
-    schema = {
-        "properties": {
-            "nullArray": {
-                "title": "Array",
-                "type": [
-                    "array",
-                    "null"
-                ],
-                "items": {
-                    "type": "string"
-                }
-            }
-        }
-    }
+    schema = {"properties": {"nullArray": {"title": "Array", "type": ["array", "null"], "items": {"type": "string"}}}}
 
     extension_version = deepcopy(extension_version_template)
-    extension_version['schemas']['release-schema.json']['en'] = schema
+    extension_version["schemas"]["release-schema.json"]["en"] = schema
 
-    tables = get_schema_tables(extension_version, 'en')
+    tables = get_schema_tables(extension_version, "en")
 
     assert dict(tables) == {
-        'Release': {
-            'fields': [
+        "Release": {
+            "fields": [
                 {
-                    'definition': '',
-                    'path': 'nullArray',
-                    'schema': schema['properties']['nullArray'],
-                    'multilingual': False,
-                    'title': 'Array',
-                    'description': '',
-                    'types': 'array of strings',
+                    "definition": "",
+                    "path": "nullArray",
+                    "schema": schema["properties"]["nullArray"],
+                    "multilingual": False,
+                    "title": "Array",
+                    "description": "",
+                    "types": "array of strings",
                 },
             ],
-            'source': {
-                'field_url_prefix': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,',
-                'type': 'core',
-                'url': 'https://standard.open-contracting.org/1.1/en/schema/reference/#release',
+            "source": {
+                "field_url_prefix": "https://standard.open-contracting.org/1.1/en/schema/reference/#release-schema.json,,",
+                "type": "core",
+                "url": "https://standard.open-contracting.org/1.1/en/schema/reference/#release",
             },
         },
     }
@@ -624,192 +489,171 @@ def test_get_schema_tables_mixed_array_success(client):
 
 def test_get_schema_tables_mixed_array_failure(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['schemas']['release-schema.json']['en'] = {
+    extension_version["schemas"]["release-schema.json"]["en"] = {
         "properties": {
             "mixedArray": {
                 "title": "Array",
-                "type": [
-                    "array",
-                    "string"
-                ],
-                "items": {
-                    "title": "String",
-                    "type": "string"
-                }
+                "type": ["array", "string"],
+                "items": {"title": "String", "type": "string"},
             }
         }
     }
 
     with pytest.raises(NotImplementedError) as excinfo:
-        get_schema_tables(extension_version, 'en')
+        get_schema_tables(extension_version, "en")
 
-    assert str(excinfo.value) == 'array / string is not implemented'
+    assert str(excinfo.value) == "array / string is not implemented"
 
 
 def test_get_schema_tables_object_array(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['schemas']['release-schema.json']['en'] = {
+    extension_version["schemas"]["release-schema.json"]["en"] = {
         "properties": {
             "objectArray": {
                 "title": "Array",
-                "items": {
-                    "title": "Object",
-                    "properties": {
-                        "field": {
-                            "title": "Field"
-                        }
-                    }
-                }
+                "items": {"title": "Object", "properties": {"field": {"title": "Field"}}},
             }
         }
     }
 
     with pytest.raises(NotImplementedError) as excinfo:
-        get_schema_tables(extension_version, 'en')
+        get_schema_tables(extension_version, "en")
 
-    assert str(excinfo.value).startswith('array of objects with properties is not implemented: ')
+    assert str(excinfo.value).startswith("array of objects with properties is not implemented: ")
 
 
 def test_get_schema_tables_array_array(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['schemas']['release-schema.json']['en'] = {
-        "properties": {
-            "arrayArray": {
-                "title": "Array",
-                "items": {
-                    "title": "Array",
-                    "items": {
-                        "type": "string"
-                    }
-                }
-            }
-        }
+    extension_version["schemas"]["release-schema.json"]["en"] = {
+        "properties": {"arrayArray": {"title": "Array", "items": {"title": "Array", "items": {"type": "string"}}}}
     }
 
     with pytest.raises(NotImplementedError) as excinfo:
-        get_schema_tables(extension_version, 'en')
+        get_schema_tables(extension_version, "en")
 
-    assert str(excinfo.value).startswith('array of arrays with items is not implemented: ')
+    assert str(excinfo.value).startswith("array of arrays with items is not implemented: ")
 
 
 def test_get_codelist_tables(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['codelists']['codelist.csv']['en'] = codelist
+    extension_version["codelists"]["codelist.csv"]["en"] = codelist
 
-    tables = get_codelist_tables(extension_version, 'en')
+    tables = get_codelist_tables(extension_version, "en")
 
-    assert tables == [[
-        'codelist.csv',
-        'codelist.csv',
-        '/en/extensions/template/master/codelists/#codelist.csv',
-        ['Code', 'Title_en', 'Description_en'],
+    assert tables == [
         [
-            {
-                'code': 'A code',
-                'title': 'A title',
-                'content': {
-                    'description': '<p>A description</p>\n',
-                    'attributes': {'Extra': 'An extra'},
+            "codelist.csv",
+            "codelist.csv",
+            "/en/extensions/template/master/codelists/#codelist.csv",
+            ["Code", "Title_en", "Description_en"],
+            [
+                {
+                    "code": "A code",
+                    "title": "A title",
+                    "content": {
+                        "description": "<p>A description</p>\n",
+                        "attributes": {"Extra": "An extra"},
+                    },
                 },
-            }, {
-                'code': '',
-                'title': '',
-                'content': {
-                    'description': '',
+                {
+                    "code": "",
+                    "title": "",
+                    "content": {
+                        "description": "",
+                    },
                 },
-            },
-        ],
-    ]]
+            ],
+        ]
+    ]
 
 
 def test_get_codelist_tables_translation(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['codelists']['codelist.csv']['en'] = codelist
-    extension_version['codelists']['codelist.csv']['es'] = codelist_translated
+    extension_version["codelists"]["codelist.csv"]["en"] = codelist
+    extension_version["codelists"]["codelist.csv"]["es"] = codelist_translated
 
-    tables = get_codelist_tables(extension_version, 'es')
+    tables = get_codelist_tables(extension_version, "es")
 
-    assert tables == [[
-        'codelist.csv',
-        'codelist.csv',
-        '/es/extensions/template/master/codelists/#codelist.csv',
-        ['Código', 'Título', 'Descripción'],
+    assert tables == [
         [
-            {
-                'code': 'Un código',
-                'title': 'Un título',
-                'content': {
-                    'description': '<p>Un descripción</p>\n',
-                    'attributes': {'Extra': 'Un extra'},
+            "codelist.csv",
+            "codelist.csv",
+            "/es/extensions/template/master/codelists/#codelist.csv",
+            ["Código", "Título", "Descripción"],
+            [
+                {
+                    "code": "Un código",
+                    "title": "Un título",
+                    "content": {
+                        "description": "<p>Un descripción</p>\n",
+                        "attributes": {"Extra": "Un extra"},
+                    },
                 },
-            }, {
-                'code': '',
-                'title': '',
-                'content': {
-                    'description': '',
+                {
+                    "code": "",
+                    "title": "",
+                    "content": {
+                        "description": "",
+                    },
                 },
-            },
-        ],
-    ]]
+            ],
+        ]
+    ]
 
 
 def test_get_codelist_tables_subtrahend(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['codelists']['-codelist.csv'] = {
-        "en": {
-            "fieldnames": ["Code"],
-            "rows": [{"Code": "A code"}]
-        }
-    }
+    extension_version["codelists"]["-codelist.csv"] = {"en": {"fieldnames": ["Code"], "rows": [{"Code": "A code"}]}}
 
-    tables = get_codelist_tables(extension_version, 'en')
+    tables = get_codelist_tables(extension_version, "en")
 
     assert tables[1] == [
-        '-codelist.csv',
-        'codelist.csv',
-        '/en/extensions/template/master/codelists/#codelist.csv',
-        ['Code'],
-        [{'code': 'A code'}],
+        "-codelist.csv",
+        "codelist.csv",
+        "/en/extensions/template/master/codelists/#codelist.csv",
+        ["Code"],
+        [{"code": "A code"}],
     ]
 
 
 def test_get_codelist_tables_attributes(client):
     extension_version = deepcopy(extension_version_template)
-    extension_version['codelists'] = {
-        "codelist.csv": {
-            "en": {
-                "fieldnames": ["Extra"],
-                "rows": [{"Extra": "An extra"}]
-            }
-        }
+    extension_version["codelists"] = {
+        "codelist.csv": {"en": {"fieldnames": ["Extra"], "rows": [{"Extra": "An extra"}]}}
     }
 
-    tables = get_codelist_tables(extension_version, 'en')
+    tables = get_codelist_tables(extension_version, "en")
 
-    assert tables == [[
-        'codelist.csv',
-        'codelist.csv',
-        '/en/extensions/template/master/codelists/#codelist.csv',
-        ['Description'],
-        [{'content': {'attributes': {'Extra': 'An extra'}}}],
-    ]]
+    assert tables == [
+        [
+            "codelist.csv",
+            "codelist.csv",
+            "/en/extensions/template/master/codelists/#codelist.csv",
+            ["Description"],
+            [{"content": {"attributes": {"Extra": "An extra"}}}],
+        ]
+    ]
 
 
 def test_identify_headings():
-    html = markdown('# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n')  # noqa: E501
+    html = markdown(
+        "# A heading\nText\n###### A heading\nText\n## A heading\nText\n### Another heading\nText\n#### Changelog\nText\n##### v1.0.0\nText\n#### A heading\nText\n"  # noqa: E501
+    )
 
     html, headings = identify_headings(html)
 
     assert headings == [
-        {'id': 'a-heading', 'level': 1, 'text': 'A heading'},
-        {'id': 'a-heading-1', 'level': 2, 'text': 'A heading'},
-        {'id': 'a-heading-2', 'level': 2, 'text': 'A heading'},
-        {'id': 'another-heading', 'level': 3, 'text': 'Another heading'},
-        {'id': 'changelog', 'level': 4, 'text': 'Changelog'},
-        {'id': 'a-heading-3', 'level': 4, 'text': 'A heading'},
+        {"id": "a-heading", "level": 1, "text": "A heading"},
+        {"id": "a-heading-1", "level": 2, "text": "A heading"},
+        {"id": "a-heading-2", "level": 2, "text": "A heading"},
+        {"id": "another-heading", "level": 3, "text": "Another heading"},
+        {"id": "changelog", "level": 4, "text": "Changelog"},
+        {"id": "a-heading-3", "level": 4, "text": "A heading"},
     ]
 
-    assert html == """<div><h1 id="a-heading">A heading</h1>
+    assert (
+        html
+        == """<div><h1 id="a-heading">A heading</h1>
 <p>Text</p>
 <h6 id="a-heading-1">A heading</h6>
 <p>Text</p>
@@ -824,6 +668,7 @@ def test_identify_headings():
 <h4 id="a-heading-3">A heading</h4>
 <p>Text</p>
 </div>"""
+    )
 
 
 def test_highlight_json():
@@ -831,12 +676,15 @@ def test_highlight_json():
 
     html, css = highlight_json(html)
 
-    assert html == """<div><h2>Example</h2>
+    assert (
+        html
+        == """<div><h2>Example</h2>
 <div class="highlight"><pre><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span>\
 <span class="mi">1</span>
 <span class="p">}</span>
 </pre></div>
 </div>"""
+    )
 
-    assert '\n.highlight ' in css
+    assert "\n.highlight " in css

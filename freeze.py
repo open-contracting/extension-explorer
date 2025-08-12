@@ -15,32 +15,32 @@ def extensions_json():
 def extension():
     for lang in LANGS:
         for identifier in get_extensions():
-            yield {'lang': lang, 'identifier': identifier}
+            yield {"lang": lang, "identifier": identifier}
 
 
 @freezer.register_generator
 def extension_documentation():
     for lang in LANGS:
         for identifier, extension in get_extensions().items():
-            if 'master' not in extension['versions']:
-                yield {'lang': lang, 'identifier': identifier, 'version': 'master'}
+            if "master" not in extension["versions"]:
+                yield {"lang": lang, "identifier": identifier, "version": "master"}
 
 
 @freezer.register_generator
 def extension_metadata_file():
     for lang in LANGS:
         for identifier, extension in get_extensions().items():
-            for version in extension['versions']:
-                yield {'lang': lang, 'identifier': identifier, 'version': version}
+            for version in extension["versions"]:
+                yield {"lang": lang, "identifier": identifier, "version": version}
 
 
 @freezer.register_generator
 def extension_documentation_file():
     for lang in LANGS:
         for identifier, extension in get_extensions().items():
-            for version in extension['versions']:
-                yield {'lang': lang, 'identifier': identifier, 'version': version}
+            for version in extension["versions"]:
+                yield {"lang": lang, "identifier": identifier, "version": version}
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     freezer.freeze()

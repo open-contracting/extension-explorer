@@ -21,19 +21,19 @@ from extension_explorer.util import (
 )
 
 LANGS = {
-    'en': 'English',
-    'es': 'Español',
+    "en": "English",
+    "es": "Español",
 }
 
 
 class Configuration(metaclass=MetaFlaskEnv):
-    ENV_PREFIX = 'FLASK_'
+    ENV_PREFIX = "FLASK_"
     FREEZER_IGNORE_404_NOT_FOUND = True
-    FREEZER_STATIC_IGNORE = ('*.scss', 'LICENSE')
+    FREEZER_STATIC_IGNORE = ("*.scss", "LICENSE")
 
 
 def get_locale():
-    return request.view_args.get('lang') or 'en'
+    return request.view_args.get("lang") or "en"
 
 
 app = Flask(__name__)
@@ -57,10 +57,10 @@ def get_extension_and_version(identifier, version):
     try:
         extensions = get_extensions(get_extension_explorer_data_filename())
         # Always render a master branch, even if not present.
-        default_master = version == 'master' and version not in extensions[identifier]['versions']
+        default_master = version == "master" and version not in extensions[identifier]["versions"]
         if default_master:
-            version = extensions[identifier]['latest_version']
-        return extensions[identifier], extensions[identifier]['versions'][version], default_master
+            version = extensions[identifier]["latest_version"]
+        return extensions[identifier], extensions[identifier]["versions"][version], default_master
     except KeyError:
         abort(404)
 
@@ -69,9 +69,10 @@ def get_extension_and_version(identifier, version):
 def inject_language_variables():
     def change_lang_in_url(lang):
         new_view_args = request.view_args.copy()
-        new_view_args['lang'] = lang
+        new_view_args["lang"] = lang
         return url_for(request.endpoint, **new_view_args)
-    return {'change_lang_in_url': change_lang_in_url, 'langs': LANGS}
+
+    return {"change_lang_in_url": change_lang_in_url, "langs": LANGS}
 
 
 @app.errorhandler(UnknownLocaleError)
@@ -79,144 +80,178 @@ def handle_unknown_locale_error(error):
     return NotFound()
 
 
-@app.route('/robots.txt')
+@app.route("/robots.txt")
 def robots_txt():
-    return 'User-Agent: *\nDisallow:\n'
+    return "User-Agent: *\nDisallow:\n"
 
 
-@app.route('/extensions.json')
+@app.route("/extensions.json")
 def extensions_json():
     # Used by extensionexplorerlinklist in sphinxcontrib-opencontracting.
     return send_file(get_extension_explorer_data_filename())
 
 
-@app.route('/')
+@app.route("/")
 def home():
-    title = gettext('OCDS Extension Explorer')
-    url = url_for('lang_home', lang='en')
+    title = gettext("OCDS Extension Explorer")
+    url = url_for("lang_home", lang="en")
 
-    return render_template('redirect.html', title=title, redirect=url, lang='en')
+    return render_template("redirect.html", title=title, redirect=url, lang="en")
 
 
-@app.route('/<lang>/')
+@app.route("/<lang>/")
 def lang_home(lang):
-    return render_template('home.html', lang=lang)
+    return render_template("home.html", lang=lang)
 
 
-@app.route('/<lang>/publishers/')
+@app.route("/<lang>/publishers/")
 def publishers(lang):
-    return render_template('publishers.html', lang=lang)
+    return render_template("publishers.html", lang=lang)
 
 
-@app.route('/<lang>/users/')
+@app.route("/<lang>/users/")
 def users(lang):
-    return render_template('users.html', lang=lang)
+    return render_template("users.html", lang=lang)
 
 
-@app.route('/<lang>/extensions/')
+@app.route("/<lang>/extensions/")
 def extensions(lang):
     extensions = get_extensions(get_extension_explorer_data_filename())
 
     profiles, topics, publishers = set_tags(extensions)
 
-    return render_template('extensions.html', lang=lang, extensions=extensions.values(), profiles=profiles,
-                           topics=topics, publishers=publishers)
+    return render_template(
+        "extensions.html",
+        lang=lang,
+        extensions=extensions.values(),
+        profiles=profiles,
+        topics=topics,
+        publishers=publishers,
+    )
 
 
-@app.route('/<lang>/extensions/<identifier>/')
+@app.route("/<lang>/extensions/<identifier>/")
 def extension(lang, identifier):
     extension = get_extension(identifier)
 
-    title = gettext('%(name)s — OCDS Extension Explorer', name=extension['name'][lang])
-    url = url_for('extension_documentation', lang=lang, identifier=identifier, version=extension['latest_version'])
+    title = gettext("%(name)s — OCDS Extension Explorer", name=extension["name"][lang])
+    url = url_for("extension_documentation", lang=lang, identifier=identifier, version=extension["latest_version"])
 
-    return render_template('redirect.html', title=title, redirect=url, lang=lang)
+    return render_template("redirect.html", title=title, redirect=url, lang=lang)
 
 
-@app.route('/<lang>/extensions/<identifier>/<version>/')
+@app.route("/<lang>/extensions/<identifier>/<version>/")
 def extension_documentation(lang, identifier, version):
     extension, extension_version, default_master = get_extension_and_version(identifier, version)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
 
     # Note: `readme` may contain unsafe HTML and JavaScript.
-    readme = extension_version.get('readme', {}).get(lang, {})
+    readme = extension_version.get("readme", {}).get(lang, {})
     # Remove the first heading.
-    readme = re.sub(r'\A# [^\n]+', '', readme)
+    readme = re.sub(r"\A# [^\n]+", "", readme)
     readme_html = markdown(readme)
     readme_html, headings = identify_headings(readme_html)
     readme_html, highlight_css = highlight_json(readme_html)
 
-    return render_template('extension_documentation.html', lang=lang, identifier=identifier, version=version,
-                           extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, default_master=default_master,
-                           readme_html=readme_html, headings=headings, highlight_css=highlight_css)
+    return render_template(
+        "extension_documentation.html",
+        lang=lang,
+        identifier=identifier,
+        version=version,
+        extension=extension,
+        extension_version=extension_version,
+        present_versions=present_versions,
+        historical_versions=historical_versions,
+        default_master=default_master,
+        readme_html=readme_html,
+        headings=headings,
+        highlight_css=highlight_css,
+    )
 
 
-@app.route('/<lang>/extensions/<identifier>/<version>/schema/')
+@app.route("/<lang>/extensions/<identifier>/<version>/schema/")
 def extension_schema(lang, identifier, version):
     extension, extension_version, default_master = get_extension_and_version(identifier, version)
-    if not extension_version['schemas']['release-schema.json'][lang]:
+    if not extension_version["schemas"]["release-schema.json"][lang]:
         abort(404)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_schema_tables(extension_version, lang)
 
-    return render_template('extension_schema.html', lang=lang, identifier=identifier, version=version,
-                           extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, default_master=default_master, tables=tables)
+    return render_template(
+        "extension_schema.html",
+        lang=lang,
+        identifier=identifier,
+        version=version,
+        extension=extension,
+        extension_version=extension_version,
+        present_versions=present_versions,
+        historical_versions=historical_versions,
+        default_master=default_master,
+        tables=tables,
+    )
 
 
-@app.route('/<lang>/extensions/<identifier>/<version>/codelists/')
+@app.route("/<lang>/extensions/<identifier>/<version>/codelists/")
 def extension_codelists(lang, identifier, version):
     extension, extension_version, default_master = get_extension_and_version(identifier, version)
-    if not extension_version['codelists']:
+    if not extension_version["codelists"]:
         abort(404)
 
     present_versions, historical_versions = get_present_and_historical_versions(extension)
     tables = get_codelist_tables(extension_version, lang)
 
-    return render_template('extension_codelists.html', lang=lang, identifier=identifier, version=version,
-                           extension=extension, extension_version=extension_version, present_versions=present_versions,
-                           historical_versions=historical_versions, default_master=default_master, tables=tables)
+    return render_template(
+        "extension_codelists.html",
+        lang=lang,
+        identifier=identifier,
+        version=version,
+        extension=extension,
+        extension_version=extension_version,
+        present_versions=present_versions,
+        historical_versions=historical_versions,
+        default_master=default_master,
+        tables=tables,
+    )
 
 
-@app.route('/<lang>/extensions/<identifier>/<version>/extension.json')
+@app.route("/<lang>/extensions/<identifier>/<version>/extension.json")
 def extension_metadata_file(lang, identifier, version):
     extension, extension_version, _ = get_extension_and_version(identifier, version)
 
-    return extension_version['metadata']
+    return extension_version["metadata"]
 
 
-@app.route('/<lang>/extensions/<identifier>/<version>/README.md')
+@app.route("/<lang>/extensions/<identifier>/<version>/README.md")
 def extension_documentation_file(lang, identifier, version):
     extension, extension_version, _ = get_extension_and_version(identifier, version)
-    if not extension_version['readme'][lang]:
+    if not extension_version["readme"][lang]:
         abort(404)
 
-    return extension_version['readme'][lang], {'Content-Type': 'text/markdown; charset=utf-8'}
+    return extension_version["readme"][lang], {"Content-Type": "text/markdown; charset=utf-8"}
 
 
-@app.route('/<lang>/extensions/<identifier>/<version>/<filename>')
+@app.route("/<lang>/extensions/<identifier>/<version>/<filename>")
 def extension_schema_file(lang, identifier, version, filename):
     extension, extension_version, _ = get_extension_and_version(identifier, version)
-    if not extension_version['schemas'][filename] or not extension_version['schemas'][filename][lang]:
+    if not extension_version["schemas"][filename] or not extension_version["schemas"][filename][lang]:
         abort(404)
 
-    return extension_version['schemas'][filename][lang]
+    return extension_version["schemas"][filename][lang]
 
 
-@app.route('/<lang>/extensions/<identifier>/<version>/codelists/<filename>')
+@app.route("/<lang>/extensions/<identifier>/<version>/codelists/<filename>")
 def extension_codelist_file(lang, identifier, version, filename):
     extension, extension_version, _ = get_extension_and_version(identifier, version)
-    if not extension_version['codelists'][filename] or not extension_version['codelists'][filename][lang]:
+    if not extension_version["codelists"][filename] or not extension_version["codelists"][filename][lang]:
         abort(404)
 
-    codelist = extension_version['codelists'][filename][lang]
+    codelist = extension_version["codelists"][filename][lang]
 
     io = StringIO()
-    writer = csv.DictWriter(io, fieldnames=codelist['fieldnames'], lineterminator='\n', extrasaction='ignore')
+    writer = csv.DictWriter(io, fieldnames=codelist["fieldnames"], lineterminator="\n", extrasaction="ignore")
     writer.writeheader()
-    writer.writerows(codelist['rows'])
+    writer.writerows(codelist["rows"])
 
-    return io.getvalue(), {'Content-Type': 'text/csv; charset=utf-8'}
+    return io.getvalue(), {"Content-Type": "text/csv; charset=utf-8"}
