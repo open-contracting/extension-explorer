@@ -36,13 +36,10 @@ Extract messages:
 
 ```shell
 pybabel extract -F ../pyproject.toml -o messages.pot .
-```
-
-Update source strings, and then edit translation strings in PO files:
-
-```shell
 pybabel update -N -i messages.pot -d locale
 ```
+
+Edit PO files to translate strings.
 
 Finally, compile messages:
 
