@@ -1,14 +1,14 @@
 # Translations template for PROJECT.
-# Copyright (C) 2024 ORGANIZATION
+# Copyright (C) 2025 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-11-07 12:31-0500\n"
+"POT-Creation-Date: 2025-08-22 20:50-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,29 +17,29 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
-#: util.py:111
+#: util.py:114
 msgid "latest"
 msgstr ""
 
-#: util.py:127
+#: util.py:130
 msgid "Changelog"
 msgstr ""
 
-#: templates/extension_schema.html:70 util.py:217
+#: templates/extension_schema.html:63 util.py:220
 msgid "Description"
 msgstr ""
 
-#: util.py:292
+#: util.py:284
 msgid " or "
 msgstr ""
 
-#: util.py:303
+#: util.py:296
 msgid "object"
 msgid_plural "objects"
 msgstr[0] ""
 msgstr[1] ""
 
-#: util.py:328
+#: util.py:322
 #, python-format
 msgid "string from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgid_plural "strings from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
@@ -53,21 +53,21 @@ msgid_plural "strings from closed <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgstr[0] ""
 msgstr[1] ""
 
-#: util.py:333
+#: util.py:339
 #, python-format
 msgid "string from <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgid_plural "strings from <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgstr[0] ""
 msgstr[1] ""
 
-#: util.py:336
+#: util.py:347
 #, python-format
 msgid "%(type)s"
 msgid_plural "%(type)ss"
 msgstr[0] ""
 msgstr[1] ""
 
-#: util.py:371
+#: util.py:382
 #, python-format
 msgid "array of %(subtypes)s"
 msgstr ""
@@ -77,7 +77,7 @@ msgstr ""
 msgid "OCDS Extension Explorer"
 msgstr ""
 
-#: views.py:131
+#: views.py:137
 #, python-format
 msgid "%(name)s — OCDS Extension Explorer"
 msgstr ""
@@ -165,30 +165,30 @@ msgstr ""
 msgid "Documentation of the fields in the %(name)s extension"
 msgstr ""
 
-#: templates/extension_schema.html:10 templates/extension_schema.html:34
+#: templates/extension_schema.html:10 templates/extension_schema.html:27
 #: templates/layout_extension.html:71
 msgid "Schema"
 msgstr ""
 
-#: templates/extension_schema.html:38
+#: templates/extension_schema.html:31
 #, python-format
 msgid ""
 "You can <a href=\"%(url)s\">download the <code>release-schema.json</code>"
 " file</a> in English."
 msgstr ""
 
-#: templates/extension_schema.html:48
+#: templates/extension_schema.html:41
 msgid "The extension defines these fields in the release schema:"
 msgstr ""
 
-#: templates/extension_schema.html:51
+#: templates/extension_schema.html:44
 #, python-format
 msgid ""
 "The extension defines these fields in the <a "
 "href=\"%(url)s\"><code>%(name)s</code></a> object from OCDS:"
 msgstr ""
 
-#: templates/extension_schema.html:53
+#: templates/extension_schema.html:46
 #, python-format
 msgid ""
 "The extension defines these fields in the <a "
@@ -196,53 +196,39 @@ msgid ""
 "href=\"%(extension_url)s\">%(extension_name)s</a> extension:"
 msgstr ""
 
-#: templates/extension_schema.html:56
+#: templates/extension_schema.html:49
 #, python-format
 msgid ""
 "The extension defines a new <code>%(name)s</code> object with these "
 "fields:"
 msgstr ""
 
-#: templates/extension_schema.html:64
+#: templates/extension_schema.html:57
 msgid "Field"
 msgstr ""
 
-#: templates/extension_schema.html:67
+#: templates/extension_schema.html:60
 msgid "Title"
 msgstr ""
 
-#: templates/extension_schema.html:73
+#: templates/extension_schema.html:66
 msgid "Type(s)"
 msgstr ""
 
-#: templates/extension_schema.html:91
+#: templates/extension_schema.html:84
 #, python-format
 msgid "This field is modified from its <a href=\"%(url)s\">original version</a>."
 msgstr ""
 
-#: templates/extension_schema.html:97
+#: templates/extension_schema.html:90
 msgid ""
 "This field has <a href=\"https://standard.open-contracting.org/latest/{{ "
 "lang }}/schema/reference/#language\">multilingual support</a>."
 msgstr ""
 
-#: templates/extension_schema.html:104
+#: templates/extension_schema.html:96
 #, python-format
 msgid "Deprecated in OCDS %(deprecatedVersion)s:"
-msgstr ""
-
-#: templates/extension_schema.html:110
-msgid "The extension undoes the deprecation of this field."
-msgstr ""
-
-#: templates/extension_schema.html:131
-msgid "The extension removes these fields from the release schema:"
-msgstr ""
-
-#: templates/extension_schema.html:139
-msgid ""
-"The extension removes these <em>deprecated</em> fields from the release "
-"schema:"
 msgstr ""
 
 #: templates/extensions.html:3
