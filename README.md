@@ -26,7 +26,7 @@ Edit only the files starting with an underscore in the `extension_explorer/stati
 
 ### Translations
 
-If translatable strings are changed, change into the app's directory:
+If translatable strings are changed, change to the app's directory:
 
 ```shell
 cd extension_explorer
