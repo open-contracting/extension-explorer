@@ -1,0 +1,48 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "mainProcurementCategoryDetails": {
+          "title": "Main Procurement Category Details",
+          "description": "The local name of the Main Procurement Category",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statusDetails": {
+          "title": "Status Details",
+          "description": "Additional detail on the status of the tender. This field can be used to provide the local name of the status.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "statusDetails": {
+          "title": "Status Details",
+          "description": "Additional detail on the status of the award. This field can be used to provide the local name of the status.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "statusDetails": {
+          "title": "Status Details",
+          "description": "Additional detail on the status of the contract. This field can be used to provide the local name of the status",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
