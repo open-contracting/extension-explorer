@@ -1,0 +1,51 @@
+{
+  "properties": {
+    "sources": {
+      "title": "Fuentes",
+      "description": "Los sistemas de informaci\u00f3n de los cuales surgen los datos",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Source"
+      },
+      "uniqueItems": true
+    }
+  },
+  "definitions": {
+    "Source": {
+      "type": "object",
+      "title": "Fuente",
+      "description": "El sistema de informaci\u00f3n del cual los datos se originan",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "El identificador \u00fanico local para la fuente",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "name": {
+          "title": "Nombre",
+          "description": "El nombre de la fuente",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "title": "URL",
+          "description": "La direcci\u00f3n web de la fuente",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    }
+  }
+}
