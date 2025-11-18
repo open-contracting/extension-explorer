@@ -218,14 +218,14 @@ def extension_codelists(lang, identifier, version):
 
 @app.route("/<lang>/extensions/<identifier>/<version>/extension.json")
 def extension_metadata_file(lang, identifier, version):
-    _extension, extension_version, _ = get_extension_and_version(identifier, version)
+    _, extension_version, _ = get_extension_and_version(identifier, version)
 
     return extension_version["metadata"]
 
 
 @app.route("/<lang>/extensions/<identifier>/<version>/README.md")
 def extension_documentation_file(lang, identifier, version):
-    _extension, extension_version, _ = get_extension_and_version(identifier, version)
+    _, extension_version, _ = get_extension_and_version(identifier, version)
     if not extension_version["readme"][lang]:
         abort(404)
 
@@ -234,7 +234,7 @@ def extension_documentation_file(lang, identifier, version):
 
 @app.route("/<lang>/extensions/<identifier>/<version>/<filename>")
 def extension_schema_file(lang, identifier, version, filename):
-    _extension, extension_version, _ = get_extension_and_version(identifier, version)
+    _, extension_version, _ = get_extension_and_version(identifier, version)
     if not extension_version["schemas"][filename] or not extension_version["schemas"][filename][lang]:
         abort(404)
 
@@ -243,7 +243,7 @@ def extension_schema_file(lang, identifier, version, filename):
 
 @app.route("/<lang>/extensions/<identifier>/<version>/codelists/<filename>")
 def extension_codelist_file(lang, identifier, version, filename):
-    _extension, extension_version, _ = get_extension_and_version(identifier, version)
+    _, extension_version, _ = get_extension_and_version(identifier, version)
     if not extension_version["codelists"][filename] or not extension_version["codelists"][filename][lang]:
         abort(404)
 
