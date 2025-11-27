@@ -1,10 +1,5 @@
 {
   "defaults": {
-    "chromeLaunchConfig": {
-      "args": [
-        "--no-sandbox"
-      ]
-    },
     "ignore": [
       "WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2"
     ]
