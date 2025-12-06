@@ -1,0 +1,29 @@
+{
+  "name": {
+    "en": "Project",
+    "es": "Proyecto"
+  },
+  "description": {
+    "en": "Adds a project object to the planning object to describe the infrastructure or public-private partnership (PPP) project to which the planning process is related.",
+    "es": "Agrega un objeto de proyecto al objeto de planificaci\u00f3n para describir el proyecto de infraestructura o asociaci\u00f3n p\u00fablico-privada (APP) con el que est\u00e1 relacionado el proceso de planificaci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/project/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ],
+  "dependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

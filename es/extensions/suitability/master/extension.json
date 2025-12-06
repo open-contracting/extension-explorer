@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Suitability",
+    "es": "Idoneidad"
+  },
+  "description": {
+    "en": "Adds a suitability object to the tender, lot and lot group objects to describe their suitability to different types of tenderers.",
+    "es": "Adds a suitability object to the tender, lot and lot group objects to describe their suitability to different types of tenderers."
+  },
+  "documentationUrl": {
+    "en": "https://github.com/open-contracting-extensions/ocds_suitability_extension"
+  },
+  "schemas": [
+    "release-schema.json"
+  ],
+  "compatibility": [
+    "1.1"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
