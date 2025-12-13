@@ -1,0 +1,76 @@
+{
+  "definitions": {
+    "ParticipationFee": {
+      "title": "Participation fee",
+      "description": "A fee applicable to bidders wishing to participate in the tender process. Fees can apply for accessing bidding documents or for submitting bids, or there can be a \"win fee\" payable by the successful bidder.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Fee ID",
+          "description": "A local identifier for this fee, unique within this block. This field is used to keep track of multiple revisions of a fee through the compilation from release to record mechanism.",
+          "type": "string"
+        },
+        "type": {
+          "title": "Fee type",
+          "description": "The type of this fee.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "document",
+              "deposit",
+              "submission",
+              "win"
+            ]
+          },
+          "codelist": "participationFeeType.csv",
+          "openCodelist": false
+        },
+        "value": {
+          "title": "Value",
+          "description": "The monetary value of this fee.",
+          "$ref": "#/definitions/Value"
+        },
+        "description": {
+          "title": "Description",
+          "description": "Additional information about this fee, for example: the specific cases in which the fee is applicable (e.g. hard copies of documents only), the way in which the fee is levied, or the exact nature of the fee.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "methodOfPayment": {
+          "title": "Method(s) of payment",
+          "description": "The accepted ways in which fees can be paid.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "codelist": "methodOfPayment.csv",
+          "openCodelist": true
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "participationFees": {
+          "title": "Participation fees",
+          "description": "Any fees applicable to bidders wishing to participate in the tender process. Fees can apply for accessing bidding documents or for submitting bids, or there can be a \"win fee\" payable by the successful bidder.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParticipationFee"
+          },
+          "uniqueItems": true,
+          "wholeListMerge": true
+        }
+      }
+    }
+  }
+}
