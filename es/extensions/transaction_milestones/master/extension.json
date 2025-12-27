@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Transaction related milestones",
+    "es": "Hitos relacionados con transacci\u00f3n"
+  },
+  "description": {
+    "en": "Adds a relatedImplementationMilestone field to transaction objects, so that payments against a contract can be linked with an implementation milestone.",
+    "es": "Agregar un campo a relatedImplementationMilestone a los objetos de transacci\u00f3n, para que los pagos de un contrato puedan vincularse a un hito de implementaci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/transaction_milestones/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "dependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_metrics_extension/1.1/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

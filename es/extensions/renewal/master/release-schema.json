@@ -1,0 +1,110 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Tiene renovaci\u00f3n",
+          "description": "Whether the buyer is expected to reserve the right to renew the future contract(s).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renovaci\u00f3n",
+          "description": "The options for the renewal of the contract(s).",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Tiene renovaci\u00f3n",
+          "description": "Whether the buyer is expected to reserve the right to renew the future contract(s).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renovaci\u00f3n",
+          "description": "The options for the renewal of the contract(s).",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Tiene renovaci\u00f3n",
+          "description": "Whether the buyer reserves the right to renew the contract.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renovaci\u00f3n",
+          "description": "The options for the renewal of the contract.",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Tiene renovaci\u00f3n",
+          "description": "Whether the buyer is expected to reserve the right to renew the future contract(s) related to the lot.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renovaci\u00f3n",
+          "description": "The options for the renewal of the contract(s) related to the lot.",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Renewal": {
+      "title": "Renovaci\u00f3n",
+      "description": "Informaci\u00f3n sobre las opciones para la renovaci\u00f3n de un contrato.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Una descripci\u00f3n de las opciones para la renovaci\u00f3n del contrato.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "minimumRenewals": {
+          "title": "Renovaci\u00f3n m\u00ednima",
+          "description": "El n\u00famero m\u00ednimo de renovaciones.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximumRenewals": {
+          "title": "Renovaci\u00f3n m\u00e1xima",
+          "description": "El n\u00famero m\u00e1ximo de renovaciones. Si no hay un m\u00e1ximo, establecer a 1e9999 (que analiza hasta infinito).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "period": {
+          "title": "Periodo de renovaci\u00f3n",
+          "description": "El per\u00edodo durante el cual se puede renovar el contrato.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}
