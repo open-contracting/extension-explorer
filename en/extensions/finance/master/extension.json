@@ -1,0 +1,29 @@
+{
+  "name": {
+    "en": "Finance",
+    "es": "Financiamiento"
+  },
+  "description": {
+    "en": "Adds fields to disclose the financing of the whole process and its individual contracts.",
+    "es": "Agrega campos para revelar la financiaci\u00f3n de todo el proceso y sus contratos individuales."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/finance/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "assetClass.csv",
+    "debtRepaymentPriority.csv",
+    "financingArrangementType.csv",
+    "financingPartyType.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
