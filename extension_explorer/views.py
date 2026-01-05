@@ -42,7 +42,7 @@ app.jinja_env.lstrip_blocks = True
 app.json.compact = False
 app.json.sort_keys = False
 app.config.from_object(Configuration)
-babel = Babel(app, locale_selector=get_locale)
+babel = Babel(app, locale_selector=get_locale, default_translation_directories="locale")
 
 
 def get_extension(identifier):
