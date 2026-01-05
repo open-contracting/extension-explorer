@@ -12,8 +12,8 @@
   <title>{% block title %}{% endblock %}</title>
   <meta name="description" content="{% block description %}{% endblock %}">
   <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
-{% for lang, name in langs.items() %}
-  <link rel="alternate" hreflang="{{ lang }}" href="{{ change_lang_in_url(lang) }}">
+{% for lang_option, name in langs.items() %}
+  <link rel="alternate" hreflang="{{ lang_option }}" href="{{ change_lang_in_url(lang_option) }}">
 {% endfor %}
 {% block extra_head %}
 {% endblock %}
@@ -66,11 +66,11 @@
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-language" aria-hidden="true" title="{{ _('Select language') }}"></i>
             <span class="sr-only">Select language</span>
-            {{ langs[request.view_args.lang] }}
+            {{ langs[lang] }}
           </a>
           <div class="dropdown-menu dropdown-menu-end">
-{% for lang, name in langs.items() %}
-            <a class="dropdown-item px-4{% if request.view_args.lang == lang %} active{% endif %}" href="{{ change_lang_in_url(lang) }}">
+{% for lang_option, name in langs.items() %}
+            <a class="dropdown-item px-4{% if lang == lang_option %} active{% endif %}" href="{{ change_lang_in_url(lang_option) }}">
               {{ name }}
             </a>
 {% endfor %}
