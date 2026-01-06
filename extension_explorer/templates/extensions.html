@@ -42,7 +42,7 @@
   {% if profiles %}
         {{ _("in") }}
         <select class="form-select filter-select mx-1" id="filter-profile" aria-label="{{ _('Profile') }}">
-          <option value="*">
+          <option value="">
             {{ _("any profile") }}
           </option>
     {% for slug, title in profiles|dictsort(false, 'value') %}
@@ -56,7 +56,7 @@
   {% if topics %}
         {{ _("about") }}
         <select class="form-select filter-select mx-1" id="filter-topic" aria-label="{{ _('Topic') }}">
-          <option value="*">
+          <option value="">
             {{ _("any topic") }}
           </option>
     {% for slug, title in topics|dictsort(false, 'value') %}
