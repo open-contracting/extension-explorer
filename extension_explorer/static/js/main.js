@@ -8,8 +8,9 @@ document.addEventListener("DOMContentLoaded", () => {
       select.addEventListener("change", function () {
         filters[this.id] = this.value;
         const selector = Object.values(filters).join("");
+        const selected = document.querySelectorAll(`.extension${selector}`);
 
-        document.querySelectorAll(`.extension${selector}`).forEach((el) => {
+        selected.forEach((el) => {
           el.style.display = "";
         });
         if (selector) {
