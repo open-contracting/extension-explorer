@@ -4,7 +4,7 @@ from io import StringIO
 
 from babel.core import UnknownLocaleError
 from flask import Flask, abort, render_template, request, send_file, url_for
-from flask_babel import Babel, gettext
+from flask_babel import Babel, gettext, refresh
 from flask_env import MetaFlaskEnv
 from werkzeug.exceptions import NotFound
 
@@ -43,6 +43,12 @@ app.json.compact = False
 app.json.sort_keys = False
 app.config.from_object(Configuration)
 babel = Babel(app, locale_selector=get_locale, default_translation_directories="locale")
+
+
+@app.url_value_preprocessor
+def refresh_cached_locale(endpoint, values):
+    if values is not None:
+        refresh()
 
 
 def get_extension(identifier):
