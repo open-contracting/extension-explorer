@@ -8400,8 +8400,7 @@ textarea.form-control-lg {
 
 .ee-title {
   margin-top: 1rem;
-  margin-bottom: .5rem;
-  font-weight: 300; }
+  margin-bottom: .5rem; }
   @media (min-width: 576px) {
     .ee-title {
       font-size: 3rem; } }
