@@ -10,7 +10,8 @@
     "includes": [
       "**",
       "!extension_explorer/templates",
-      "!extension_explorer/static/lib",
+      "!extension_explorer/static/lib/*.min.js",
+      "!extension_explorer/static/lib/bootstrap",
       "!extension_explorer/static/css/theme.css",
       "!extension_explorer/static/css/pygments.css"
     ]
