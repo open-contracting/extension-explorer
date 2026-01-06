@@ -1,8 +1,6 @@
 {
   "defaults": {
-    "ignore": [
-      "WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2"
-    ]
+    "ignore": ["WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2"]
   },
   "urls": [
     "http://127.0.0.1:8000/en/",

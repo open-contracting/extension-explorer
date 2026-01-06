@@ -15,9 +15,7 @@
       "ocid": "ocds-213czf-000-00001",
       "id": "ocds-213czf-000-00001-example",
       "date": "2018-09-27T03:44:40.247Z",
-      "tag": [
-        "tenderUpdate"
-      ],
+      "tag": ["tenderUpdate"],
       "initiationType": "tender"
     }
   ]

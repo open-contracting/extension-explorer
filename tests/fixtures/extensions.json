@@ -31,13 +31,8 @@
           "documentationUrl": {
             "en": "https://github.com/open-contracting/ocds_location_extension"
           },
-          "codelists": [
-            "locationGazetteers.csv",
-            "geometryType.csv"
-          ],
-          "compatibility": [
-            "1.1"
-          ]
+          "codelists": ["locationGazetteers.csv", "geometryType.csv"],
+          "compatibility": ["1.1"]
         },
         "schemas": {
           "record-package-schema.json": {},
@@ -67,26 +62,17 @@
                     "description": {
                       "title": "Description",
                       "description": "A name or description of this location. This might include the name(s) of the location(s), or might provide a human readable description of the location to be covered. This description may be used in a user-interface.",
-                      "type": [
-                        "string",
-                        "null"
-                      ]
+                      "type": ["string", "null"]
                     },
                     "geometry": {
-                      "type": [
-                        "object",
-                        "null"
-                      ],
+                      "type": ["object", "null"],
                       "title": "Geometry",
                       "description": "We follow the [GeoJSON standard](http://geojson.org/) to express basic location information, using latitude and longitude values in the [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326) projection.  A point location can be identified by geocoding a delivery address. For concession licenses, or other contracts covering a polygon location which is not contained in a known gazetteer, polygon and multi-polygon can be used.",
                       "properties": {
                         "type": {
                           "title": "Type",
                           "description": "The type of [GeoJSON Geometry Objects](http://geojson.org/geojson-spec.html#geometry-objects) being provided. To provide latitude and longitude use 'point', and enter an array of [latitude,longitude] as the value of coordinates field: e.g. [37.42,-122.085]. Note the capitalization of type values - set in order to maintain compatibility with GeoJSON.",
-                          "type": [
-                            "string",
-                            "null"
-                          ],
+                          "type": ["string", "null"],
                           "enum": [
                             "Point",
                             "MultiPoint",
@@ -102,57 +88,37 @@
                         "coordinates": {
                           "title": "Coordinates",
                           "description": "The relevant array of points, e.g. [latitude,longitude], or nested array, for the GeoJSON geometry being described. The longitude and latitude MUST be expressed in decimal degrees in the WGS84 (EPSG:4326) projection",
-                          "type": [
-                            "array",
-                            "null"
-                          ],
+                          "type": ["array", "null"],
                           "items": {
-                            "type": [
-                              "number",
-                              "array"
-                            ]
+                            "type": ["number", "array"]
                           }
                         }
                       }
                     },
                     "gazetteer": {
-                      "type": [
-                        "object",
-                        "null"
-                      ],
+                      "type": ["object", "null"],
                       "title": "Gazetteer",
                       "description": "A gazetteer is a geographical index or directory. The specific gazetteer used should be specified in scheme, and one or more codes from that gazetteer used in identifier.",
                       "properties": {
                         "scheme": {
                           "title": "Gazetteer scheme",
                           "description": "The entry of the selected gazetteer in the gazetteers codelist. The codelist provides details of services, where available, that can resolve a gazetteer entry to provide location names.",
-                          "type": [
-                            "string",
-                            "null"
-                          ],
+                          "type": ["string", "null"],
                           "codelist": "locationGazetteers.csv",
                           "openCodelist": true
                         },
                         "identifiers": {
                           "title": "Identifiers",
                           "description": "An array of one or more codes drawn from the gazetteer indicated in scheme.",
-                          "type": [
-                            "array",
-                            "null"
-                          ],
+                          "type": ["array", "null"],
                           "items": {
-                            "type": [
-                              "string"
-                            ]
+                            "type": ["string"]
                           }
                         }
                       }
                     },
                     "uri": {
-                      "type": [
-                        "string",
-                        "null"
-                      ],
+                      "type": ["string", "null"],
                       "title": "URI",
                       "description": "A URI to a further description of the activity location. This may be a human readable document with information on the location, or a machine-readable description of the location."
                     }
@@ -165,12 +131,7 @@
         "codelists": {
           "geometryType.csv": {
             "en": {
-              "fieldnames": [
-                "Code",
-                "Title",
-                "Description",
-                "Source"
-              ],
+              "fieldnames": ["Code", "Title", "Description", "Source"],
               "rows": [
                 {
                   "Code": "Point",
@@ -213,14 +174,7 @@
           },
           "locationGazetteers.csv": {
             "en": {
-              "fieldnames": [
-                "Category",
-                "Code",
-                "Title",
-                "Description",
-                "Source",
-                "URI Pattern"
-              ],
+              "fieldnames": ["Category", "Code", "Title", "Description", "Source", "URI Pattern"],
               "rows": [
                 {
                   "Category": "Sub-National",
