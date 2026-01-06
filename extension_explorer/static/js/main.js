@@ -31,7 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const version = document.getElementById("version");
   if (version) {
     version.addEventListener("change", (event) => {
-      window.location.href = event.target.value;
+      const url = event.target.value;
+      if (url.startsWith("/")) {
+        window.location.href = url;
+      }
     });
   }
 
