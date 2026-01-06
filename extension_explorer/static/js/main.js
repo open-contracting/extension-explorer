@@ -1,7 +1,3 @@
-try {
-  Typekit.load({ async: true });
-} catch (_e) {}
-
 document.addEventListener("DOMContentLoaded", () => {
   // extensions.html
   const selects = document.querySelectorAll(".filter-select");

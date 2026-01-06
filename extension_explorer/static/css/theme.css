@@ -1,3 +1,31 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/lato-regular.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/lato-bold.woff2") format("woff2"); }
+
+@font-face {
+  font-family: 'Stratum1';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/stratum1-medium.otf") format("opentype"); }
+
+@font-face {
+  font-family: 'Stratum1';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/stratum1-bold.otf") format("opentype"); }
+
 /*!
    * Bootstrap  v5.2.3 (https://getbootstrap.com/)
    * Copyright 2011-2022 The Bootstrap Authors
@@ -48,7 +76,7 @@
   --bs-black-rgb: 0, 0, 0;
   --bs-body-color-rgb: 33, 37, 41;
   --bs-body-bg-rgb: 255, 255, 255;
-  --bs-font-sans-serif: "Lato", "proxima-nova", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --bs-font-sans-serif: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --bs-font-monospace: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
   --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
   --bs-body-font-family: var(--bs-font-sans-serif);
@@ -103,7 +131,7 @@ hr {
 h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-family: "stratum-1-web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Stratum1", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 500;
   line-height: 1.2; }
 
@@ -8509,13 +8537,6 @@ textarea.form-control-lg {
   margin-left: -15px;
   border-top: 1px solid #e1e4e5; }
 
-blockquote {
-  margin: 0 1rem 1rem;
-  font-style: italic; }
-
-pre {
-  white-space: pre-wrap; }
-
 .ee-max-width h1, .ee-max-width .h1,
 .ee-max-width h2,
 .ee-max-width .h2,
@@ -8537,6 +8558,13 @@ pre {
 
 .ee-max-width h4, .ee-max-width .h4 {
   font-weight: 300; }
+
+blockquote {
+  margin: 0 1rem 1rem;
+  font-style: italic; }
+
+pre {
+  white-space: pre-wrap; }
 
 .custom-select {
   -webkit-appearance: none;
