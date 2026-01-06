@@ -674,7 +674,7 @@ def test_identify_headings():
 def test_highlight_json():
     html = markdown('## Example\n```json\n{\n    "key": 1\n}\n```\n')
 
-    html, css = highlight_json(html)
+    html = highlight_json(html)
 
     assert (
         html
@@ -686,5 +686,3 @@ def test_highlight_json():
 </pre></div>
 </div>"""
     )
-
-    assert "\n.highlight " in css
