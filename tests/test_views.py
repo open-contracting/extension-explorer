@@ -145,3 +145,10 @@ def test_extension_codelists_404_no_codelists(client, monkeypatch):
     assert response.status_code == 200
     response = client.get(url_for("extension_codelists", lang="en", identifier="empty", version="master"))
     assert response.status_code == 404
+
+
+def test_spanish_translation(client):
+    response = client.get(url_for("lang_home", lang="es"))
+    assert response.status_code == 200
+    assert "Página principal" in response.data.decode("utf-8")
+    assert b">Home<" not in response.data
