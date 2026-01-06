@@ -7,7 +7,7 @@
     "defaultBranch": "main"
   },
   "files": {
-    "includes": ["**", "!extension_explorer/static/css/theme.css"]
+    "includes": ["**", "!extension_explorer/templates", "!extension_explorer/static/css/theme.css"]
   },
   "assist": {
     "actions": {
@@ -20,11 +20,6 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 119
-  },
-  "css": {
-    "formatter": {
-      "indentWidth": 2
-    }
   },
   "json": {
     "formatter": {
