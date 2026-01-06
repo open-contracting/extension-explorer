@@ -103,25 +103,4 @@
 
 {% block extra_footer %}
 <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
-<script>
-$(function () {
-  var filters = {};
-
-  $('.filter-select').on('change', function () {
-    var prop, selector = '', selected;
-
-    filters[this.id] = this.value;
-    for (prop in filters) {
-      selector += filters[prop];
-    }
-
-    selected = $('.extension' + selector).show();
-    if (selector) {
-      $('.extension:not(' + selector + ')').hide();
-    }
-
-    $('#filter-count').text(selected.length);
-  });
-});
-</script>
 {% endblock %}
