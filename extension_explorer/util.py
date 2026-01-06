@@ -153,7 +153,7 @@ def identify_headings(html):
 
 
 def highlight_json(html):
-    """Highlight JSON code blocks. Return the HTML, and the CSS for highlighting."""
+    """Highlight JSON code blocks. Return the HTML."""
     root = lxml.html.fromstring(html)
 
     for code_block in root.find_class("language-json"):
@@ -161,9 +161,7 @@ def highlight_json(html):
         parent = code_block.getparent()
         parent.getparent().replace(parent, replacement)
 
-    html = lxml.html.tostring(root).decode()
-
-    return html, HtmlFormatter().get_style_defs(".highlight")
+    return lxml.html.tostring(root).decode()
 
 
 def get_codelist_tables(extension_version, lang):

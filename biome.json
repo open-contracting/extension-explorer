@@ -7,7 +7,12 @@
     "defaultBranch": "main"
   },
   "files": {
-    "includes": ["**", "!extension_explorer/templates", "!extension_explorer/static/css/theme.css"]
+    "includes": [
+      "**",
+      "!extension_explorer/templates",
+      "!extension_explorer/static/css/theme.css",
+      "!extension_explorer/static/css/pygments.css"
+    ]
   },
   "assist": {
     "actions": {

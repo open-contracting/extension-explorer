@@ -3,9 +3,7 @@
 {% block title %}{{ _("%(name)s — Documentation — OCDS Extension Explorer", name=extension.name[lang]) }}{% endblock %}
 
 {% block style %}
-  <style>
-{{ highlight_css|safe }}
-  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/pygments.css') }}">
 {% endblock %}
 
 {% block description %}{{ extension.description[lang] }}{% endblock %}

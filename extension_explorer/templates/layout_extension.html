@@ -28,7 +28,7 @@
     <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
       <form class="d-flex align-items-center ee-search">
         <label class="me-1 mb-0" for="version">{{ _("Version:") }}</label>
-        <select class="form-select form-select-sm algolia-autocomplete" id="version" onchange="window.location.href=this.value">
+        <select class="form-select form-select-sm algolia-autocomplete" id="version">
           <optgroup label="{{ _('Present versions') }}">
   {% for other_version, date in present_versions %}
             <option value="{{ url_for(request.endpoint, lang=lang, identifier=identifier, version=other_version) }}"{% if other_version == version %} selected{% endif %}>

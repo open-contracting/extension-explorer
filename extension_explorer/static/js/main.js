@@ -27,6 +27,10 @@ $(() => {
   }
 
   // layout_extension.html
+  $("#version").on("change", function () {
+    window.location.href = this.value;
+  });
+
   if (typeof ClipboardJS !== "undefined" && $(".clipboard").length) {
     const clipboard = new ClipboardJS(".clipboard");
 

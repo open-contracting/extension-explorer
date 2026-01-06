@@ -152,7 +152,7 @@ def extension_documentation(lang, identifier, version):
     readme = re.sub(r"\A# [^\n]+", "", readme)
     readme_html = markdown(readme)
     readme_html, headings = identify_headings(readme_html)
-    readme_html, highlight_css = highlight_json(readme_html)
+    readme_html = highlight_json(readme_html)
 
     return render_template(
         "extension_documentation.html",
@@ -166,7 +166,6 @@ def extension_documentation(lang, identifier, version):
         default_master=default_master,
         readme_html=readme_html,
         headings=headings,
-        highlight_css=highlight_css,
     )
 
 
