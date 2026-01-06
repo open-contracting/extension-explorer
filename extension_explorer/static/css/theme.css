@@ -8589,3 +8589,9 @@ table code, table.docutils tt {
   .form-inline .form-select {
     width: auto; } }
 
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  overflow: visible; }
+
