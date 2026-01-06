@@ -11,3 +11,5 @@ jobs:
       python-version: '3.10'
       # ocdsextensionregistry is run as a command in a workflow.
       standard-maintenance-scripts-ignore: ocdsextensionregistry
+      # Defer indentation to biome format.
+      ocds-noindent: 'yes'
