@@ -1,14 +1,14 @@
 try {
   Typekit.load({ async: true });
-} catch (e) {}
+} catch (_e) {}
 
-$(function () {
+$(() => {
   // extensions.html
   if ($(".filter-select").length) {
-    var filters = {};
+    const filters = {};
 
     $(".filter-select").on("change", function () {
-      var prop,
+      let prop,
         selector = "",
         selected;
 
@@ -17,9 +17,9 @@ $(function () {
         selector += filters[prop];
       }
 
-      selected = $(".extension" + selector).show();
+      selected = $(`.extension${selector}`).show();
       if (selector) {
-        $(".extension:not(" + selector + ")").hide();
+        $(`.extension:not(${selector})`).hide();
       }
 
       $("#filter-count").text(selected.length);
@@ -28,12 +28,12 @@ $(function () {
 
   // layout_extension.html
   if (typeof ClipboardJS !== "undefined" && $(".clipboard").length) {
-    var clipboard = new ClipboardJS(".clipboard");
+    const clipboard = new ClipboardJS(".clipboard");
 
-    clipboard.on("success", function (e) {
-      var $trigger = $(e.trigger);
-      var original = $trigger.data("bs-original-title");
-      var updated = $trigger.data("updated-title");
+    clipboard.on("success", (e) => {
+      const $trigger = $(e.trigger);
+      const original = $trigger.data("bs-original-title");
+      const updated = $trigger.data("updated-title");
 
       $trigger.attr("data-bs-original-title", updated).tooltip("show").attr("data-bs-original-title", original);
       e.clearSelection();
