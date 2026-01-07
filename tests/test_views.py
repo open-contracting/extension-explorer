@@ -1,6 +1,9 @@
 import os
 
 from flask import url_for
+from flask_frozen import Freezer
+
+from extension_explorer.views import app
 
 EMPTY_EXTENSIONS_JSON = os.path.join(os.path.dirname(os.path.realpath(__file__)), "fixtures", "empty.json")
 
@@ -149,6 +152,24 @@ def test_extension_codelists_404_no_codelists(client, monkeypatch):
 
 def test_spanish_translation(client):
     response = client.get(url_for("lang_home", lang="es"))
+
+    content = response.data.decode("utf-8")
+
     assert response.status_code == 200
-    assert "Página principal" in response.data.decode("utf-8")
-    assert b">Home<" not in response.data
+    assert "Página principal" in content
+    assert ">Home<" not in content
+
+
+def test_frozen_spanish_translation(tmp_path):
+    app.config["FREEZER_DESTINATION"] = str(tmp_path)
+    freezer = Freezer(app)
+
+    path = tmp_path / "es" / "index.html"
+    for _ in freezer.freeze_yield():
+        if path.exists():
+            break
+
+    content = path.read_text(encoding="utf-8")
+
+    assert "Página principal" in content
+    assert ">Home<" not in content
