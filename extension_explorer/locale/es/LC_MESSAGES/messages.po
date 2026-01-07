@@ -572,7 +572,7 @@ msgstr ""
 "<a href='https://standard.open-"
 "contracting.org/latest/en/schema/release_package/'>, utilizando la URL de"
 " la documentación de la extensión. Por ejemplo, para declarar la "
-"extensión </a>Ofertas y expresiones de interés<a href='%(url)s'>:"
+"extensión <a href='%(url)s'>Ofertas y expresiones de interés</a>:"
 
 #: templates/publishers.html:69
 msgid ""
@@ -610,7 +610,7 @@ msgstr ""
 "campos, cambiar los títulos o descripciones de los campos ni agregar "
 "códigos a listas de códigos <strong>cerradas</strong>. Para sugerir "
 "dichos cambios, <a href='https://github.com/open-"
-"contracting/standard/issues/new'>abre un issue en el tracker de issues "
+"contracting/standard/issues/new'>abre un issue</a> en el tracker de issues "
 "del estándar."
 
 #: templates/publishers.html:83
