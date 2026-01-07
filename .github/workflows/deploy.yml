@@ -33,7 +33,7 @@ jobs:
           ocdsextensionregistry generate-data-file --locale-dir ocds-extensions-translations/locale > extension_explorer/data/extensions.json
           python freeze.py
           echo "/*
-            Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.usefathom.com/script.js; style-src 'self'; img-src 'self' data: https:; font-src 'self'; object-src 'none'; worker-src 'none'; frame-ancestors 'none'
+            Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.usefathom.com/script.js; img-src 'self' data: https:; object-src 'none'; worker-src 'none'; frame-ancestors 'none'
             Strict-Transport-Security: max-age=31536000; includeSubDomains; preload" > extension_explorer/build/_headers
       - name: Deploy
         uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e # v4.0.0
