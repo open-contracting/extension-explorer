@@ -14,6 +14,8 @@ jobs:
           cache: pip
           cache-dependency-path: '**/requirements*.txt'
       - run: pip install -r requirements_dev.txt
+      - working-directory: extension_explorer
+        run: pybabel compile -f -d locale
       - run: coverage run --source=extension_explorer -m pytest -W error
       - uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5.5.2
         with:
