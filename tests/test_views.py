@@ -150,7 +150,7 @@ def test_extension_codelists_404_no_codelists(client, monkeypatch):
     assert response.status_code == 404
 
 
-def test_spanish_translation(client):
+def test_translation(client):
     response = client.get(url_for("lang_home", lang="es"))
 
     content = response.data.decode("utf-8")
@@ -160,7 +160,7 @@ def test_spanish_translation(client):
     assert ">Home<" not in content
 
 
-def test_frozen_spanish_translation(tmp_path):
+def test_frozen_translation(tmp_path):
     app.config["FREEZER_DESTINATION"] = str(tmp_path)
     freezer = Freezer(app)
 

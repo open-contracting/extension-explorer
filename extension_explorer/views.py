@@ -88,7 +88,7 @@ def handle_unknown_locale_error(error):
 
 @app.route("/robots.txt")
 def robots_txt():
-    return "User-Agent: *\nDisallow:\n"
+    return "User-Agent: *\nDisallow:\n", {"Content-Type": "text/plain; charset=utf-8"}
 
 
 @app.route("/extensions.json")
