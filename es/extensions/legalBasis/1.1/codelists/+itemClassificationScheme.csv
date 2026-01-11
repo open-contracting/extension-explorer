@@ -1,0 +1,4 @@
+Código,Título,Descripción,Fuente,Categoría
+CELEX,Número CELEX,Esquema de identificación para documentos EUR-Lex,https://eur-lex.europa.eu/content/help/faq/intro.html#help8,legalBasis
+ELI,European Legislation Identifier,Identifier scheme for European legislation,https://eur-lex.europa.eu/eli-register/about.html,legalBasis
+LEXML,LexML URN,Esquema de identificación para documentos BR-Lex,https://projeto.lexml.gov.br/,legalBasis
