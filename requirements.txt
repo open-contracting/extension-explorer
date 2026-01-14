@@ -153,11 +153,11 @@ typing-extensions==4.12.2
     # via cattrs
 url-normalize==1.4.3
     # via requests-cache
-urllib3==2.6.2
+urllib3==2.6.3
     # via
     #   requests
     #   requests-cache
-werkzeug==3.1.4
+werkzeug==3.1.5
     # via
     #   -r requirements.in
     #   flask
