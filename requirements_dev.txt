@@ -44,11 +44,6 @@ docutils==0.20.1
     #   -r requirements.txt
     #   myst-parser
     #   sphinx
-exceptiongroup==1.2.2
-    # via
-    #   -r requirements.txt
-    #   cattrs
-    #   pytest
 flask==3.0.0
     # via
     #   -r requirements.txt
@@ -98,9 +93,9 @@ jsonref==1.0.0.post1
     #   ocdsextensionregistry
     #   ocdskit
     #   ocdsmerge
-libsass==0.19.4
+libsass==0.23.0
     # via -r requirements_dev.in
-lxml==4.9.1
+lxml==6.0.2
     # via -r requirements.txt
 markdown-it-py==3.0.0
     # via
@@ -184,7 +179,6 @@ requests-cache==1.2.0
 six==1.17.0
     # via
     #   -r requirements.txt
-    #   libsass
     #   url-normalize
 snowballstemmer==2.0.0
     # via
@@ -223,15 +217,6 @@ text-unidecode==1.3
     # via
     #   -r requirements.txt
     #   python-slugify
-tomli==2.0.1
-    # via
-    #   -r requirements.txt
-    #   mdformat
-    #   pytest
-typing-extensions==4.12.2
-    # via
-    #   -r requirements.txt
-    #   cattrs
 url-normalize==1.4.3
     # via
     #   -r requirements.txt
