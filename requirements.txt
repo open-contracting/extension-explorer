@@ -8,7 +8,7 @@ attrs==23.2.0
     # via
     #   cattrs
     #   requests-cache
-babel==2.16.0
+babel==2.18.0
     # via
     #   -r requirements.in
     #   flask-babel
@@ -107,7 +107,7 @@ pygments==2.15.1
     #   sphinx
 python-slugify==4.0.1
     # via -r requirements.in
-pytz==2023.3
+pytz==2025.2
     # via flask-babel
 pyyaml==6.0.1
     # via

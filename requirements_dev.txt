@@ -10,9 +10,8 @@ attrs==23.2.0
     # via
     #   -r requirements.txt
     #   cattrs
-    #   pytest
     #   requests-cache
-babel==2.16.0
+babel==2.18.0
     # via
     #   -r requirements.txt
     #   flask-babel
@@ -143,13 +142,14 @@ platformdirs==4.2.0
     # via
     #   -r requirements.txt
     #   requests-cache
-pluggy==0.13.1
+pluggy==1.6.0
     # via pytest
 pygments==2.15.1
     # via
     #   -r requirements.txt
+    #   pytest
     #   sphinx
-pytest==7.2.0
+pytest==9.0.2
     # via
     #   -r requirements_dev.in
     #   pytest-flask
@@ -157,7 +157,7 @@ pytest-flask==1.3.0
     # via -r requirements_dev.in
 python-slugify==4.0.1
     # via -r requirements.txt
-pytz==2023.3
+pytz==2025.2
     # via
     #   -r requirements.txt
     #   flask-babel
