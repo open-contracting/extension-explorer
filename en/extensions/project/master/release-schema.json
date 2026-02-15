@@ -1,0 +1,89 @@
+{
+  "definitions": {
+    "Planning": {
+      "properties": {
+        "project": {
+          "title": "Project information",
+          "description": "Information about the infrastructure or public-private partnership project to which the planning process is related.",
+          "$ref": "#/definitions/Project"
+        }
+      }
+    },
+    "Project": {
+      "title": "Project information",
+      "description": "Information about the infrastructure or public-private partnership project to which a planning process is related.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An externally provided identifier for the project. This can be a URI, an identifier from a projects register, or based on the canonical version of the project's name. Project identifiers should be unique within the scope of the publication.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "title": {
+          "title": "Title",
+          "description": "The name of the project. If a projects register is available, this should be the same as the project's name in that register.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A short description of the project.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "totalValue": {
+          "title": "Total value",
+          "description": "The total anticipated value of the project over its lifetime.",
+          "$ref": "#/definitions/Value"
+        },
+        "uri": {
+          "title": "URI",
+          "description": "The URI of a resource with additional information about the project.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "sector": {
+          "title": "Sector",
+          "description": "The primary sector to which the project relates. It is recommended to use the scheme 'oc4idsProjectSector' and codes from the [OC4IDS projectSector codelist](https://standard.open-contracting.org/infrastructure/latest/en/reference/codelists/#projectsector).",
+          "$ref": "#/definitions/Classification"
+        },
+        "additionalClassifications": {
+          "title": "Additional classifications",
+          "description": "Additional classifications for the project. For example, a sector or strategic framework classification.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "locations": {
+          "title": "Locations",
+          "description": "Information about the locations where the project is taking place.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Location"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

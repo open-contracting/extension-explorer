@@ -1,0 +1,66 @@
+{
+  "definitions": {
+    "Recurrence": {
+      "title": "Recurrence",
+      "description": "Information on the recurrence of the contracting process.",
+      "type": "object",
+      "properties": {
+        "dates": {
+          "title": "Estimated dates",
+          "description": "An estimate of the timing of subsequent initiations of contracting processes (e.g. notices of intended procurement).",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Period"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "description": {
+          "title": "Further information",
+          "description": "Any further information on the recurrence of the contracting process.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Tender": {
+      "properties": {
+        "recurrence": {
+          "title": "Recurrence",
+          "description": "Information on the recurrence of the contracting process.",
+          "$ref": "#/definitions/Recurrence"
+        },
+        "hasRecurrence": {
+          "title": "Has recurrence",
+          "description": "Whether the contracting process is recurrent.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "recurrence": {
+          "title": "Recurrence",
+          "description": "Information on the recurrence of the lot.",
+          "$ref": "#/definitions/Recurrence"
+        },
+        "hasRecurrence": {
+          "title": "Has recurrence",
+          "description": "Whether the contracting process is recurrent.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
