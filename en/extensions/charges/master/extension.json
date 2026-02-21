@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Charges",
+    "es": "Cargos"
+  },
+  "description": {
+    "en": "Adds a charges array to the implementation object to disclose the charges to be incurred by users or government in a given period of a contract.",
+    "es": "Agrega una matriz de cargos al objeto de implementaci\u00f3n para publicar los cargos en que incurrir\u00e1n los usuarios o el gobierno en un per\u00edodo determinado de un contrato."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/charges/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "chargePaidBy.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
