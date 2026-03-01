@@ -1,0 +1,4 @@
+Code,Title,Description,Source
+eu-vehicles,European Union vehicle type,The type of vehicle specified in eForms.,https://docs.ted.europa.eu/eforms/latest/reference/code-lists/vehicles.html
+eu-vehicle-category,European Union Clean Vehicle Directive vehicle category,The category of vehicle falling within the scope of the EU Clean Vehicles Directive 2009/33/EC.,https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/vehicle-category
+eu-cvd-contract-type,European Union Clean Vehicle Directive contract type,The category of contract according to the EU Clean Vehicles Directive 2009/33/EC.,https://op.europa.eu/en/web/eu-vocabularies/concept-scheme/-/resource?uri=http://publications.europa.eu/resource/authority/cvd-contract-type

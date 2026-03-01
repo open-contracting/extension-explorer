@@ -1,0 +1,29 @@
+{
+  "name": {
+    "en": "Bids and expressions of interest",
+    "es": "Bids and expressions of interest"
+  },
+  "description": {
+    "en": "Adds a bids object to describe individual bids and expressions of interest, and summary statistics.",
+    "es": "Adds a bids object to describe individual bids and expressions of interest, and summary statistics."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/bids/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "statistic.csv",
+    "bidStatus.csv",
+    "country.csv",
+    "submissionType.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

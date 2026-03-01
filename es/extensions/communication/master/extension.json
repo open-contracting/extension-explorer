@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Communication",
+    "es": "Comunicaci\u00f3n"
+  },
+  "description": {
+    "en": "Adds a communication object to the tender to describe the modalities of communication about key events.",
+    "es": "Agrega a la licitaci\u00f3n un objeto comunicaci\u00f3n para describir las modalidades de comunicaci\u00f3n de los eventos claves."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/communication/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "datePublished": {
+          "title": "Fecha de publicaci\u00f3n ",
+          "description": "La fecha en que se public\u00f3 la licitaci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "properties": {
+    "bids": {
+      "title": "Ofertas",
+      "description": "La secci\u00f3n de ofertas se utiliza para publicar res\u00famenes estad\u00edsticos y, si aplica, informaci\u00f3n de ofertas individuales.",
+      "$ref": "#/definitions/Bids"
+    }
+  },
+  "definitions": {
+    "Award": {
+      "properties": {
+        "relatedBid": {
+          "title": "Oferta relacionada",
+          "description": "Cuando se usan los detalles de la oferta, una referencia cruzada a la entrada en la lista de ofertas a la que se refiere esta adjudicaci\u00f3n. Proporcione el identificador de oferta aqu\u00ed.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "BidsStatistic": {
+      "title": "Estad\u00edstica de ofertas",
+      "description": "Para reportar estad\u00edsticas agregadas sobre las ofertas relacionadas con una oferta. Cuando se utilizan lotes, las estad\u00edsticas pueden dividirse por lotes.",
+      "type": "object",
+      "required": [
+        "id",
+        "measure",
+        "value"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "Un identificador interno para este elemento estad\u00edstico.",
+          "type": "string"
+        },
+        "measure": {
+          "title": "Medida",
+          "description": "Un elemento de la lista de c\u00f3digos bidStatistics para la estad\u00edstica informada en valor. Esta es una lista de c\u00f3digos abierta, tambi\u00e9n se pueden incluir otras estad\u00edsticas.",
+          "type": "string",
+          "codelist": "bidStatistics.csv",
+          "openCodelist": true
+        },
+        "date": {
+          "title": "Fecha",
+          "description": "La fecha en que se actualiz\u00f3 por \u00faltima vez esta estad\u00edstica. Esta es a menudo la fecha de cierre del proceso de licitaci\u00f3n. Este campo puede dejarse en blanco a menos que (a) se proporcione la misma estad\u00edstica desde m\u00faltiples puntos en el tiempo, o (b) exista un requisito local espec\u00edfico para los datos cuando se calculen estad\u00edsticas para que est\u00e9n disponibles.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "value": {
+          "title": "Valor",
+          "description": "El valor de la medida en cuesti\u00f3n. Los recuentos totales deben proporcionarse como un entero. Los porcentajes deben presentarse como una proporci\u00f3n de 1 (por ejemplo, 10% = 0.1)",
+          "type": "number"
+        },
+        "notes": {
+          "title": "Notas",
+          "description": "Cualquier nota requerida para entender o interpretar la estad\u00edstica.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedLot": {
+          "title": "Lote Relacionado",
+          "description": "Cuando se usen lotes, si esta estad\u00edstica se relaciona con ofertas en un lote determinado, proporcione el identificador de lote aqu\u00ed. Si se deja en blanco, la estad\u00edstica se interpretar\u00e1 como aplicable a toda la oferta.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Bids": {
+      "title": "Ofertas",
+      "description": "Resumen e informaci\u00f3n detallada sobre las ofertas recibidas y evaluadas como parte de este proceso de contrataci\u00f3n.",
+      "type": "object",
+      "properties": {
+        "statistics": {
+          "title": "Estad\u00edstica",
+          "description": "Estad\u00edsticas resumidas sobre el n\u00famero y la naturaleza de las ofertas recibidas. Cuando se proporciona informaci\u00f3n sobre ofertas individuales, estas estad\u00edsticas deben coincidir con las que se pueden calcular a partir de la matriz de detalles de oferta.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BidsStatistic"
+          }
+        },
+        "details": {
+          "title": "Detalles de la oferta",
+          "description": "Una lista de ofertas que proporciona informaci\u00f3n sobre los licitantes y, en su caso, el estado de las ofertas, los valores de las ofertas y los documentos relacionados. La medida en que esta informaci\u00f3n puede ser revelada var\u00eda de jurisdicci\u00f3n en jurisdicci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Bid"
+          }
+        }
+      }
+    },
+    "Bid": {
+      "title": "Oferta",
+      "description": "Para representar una oferta en respuesta a la licitaci\u00f3n o etapa de calificaci\u00f3n en esta etapa de contrataci\u00f3n.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "Un identificador local para esta oferta",
+          "type": [
+            "string"
+          ]
+        },
+        "date": {
+          "title": "Fecha",
+          "description": "La fecha en que se recibi\u00f3 esta oferta.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "status": {
+          "title": "Estado",
+          "description": "El estado de la oferta, extra\u00eddo de la lista de c\u00f3digos bidStatus",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "bidStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "invited",
+            "pending",
+            "valid",
+            "disqualified",
+            "withdrawn",
+            null
+          ]
+        },
+        "tenderers": {
+          "title": "Licitante",
+          "description": "La parte o partes responsables de esta oferta. Esto debe proporcionar un nombre y un identificador, con referencias cruzadas a una entrada en la matriz de partes en el nivel superior de la entrega.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          }
+        },
+        "value": {
+          "title": "Valor",
+          "description": "El valor total de la oferta.",
+          "$ref": "#/definitions/Value"
+        },
+        "documents": {
+          "title": "Documentos",
+          "description": "Todos los documentos y anexos relacionados con la oferta y su evaluaci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Document"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

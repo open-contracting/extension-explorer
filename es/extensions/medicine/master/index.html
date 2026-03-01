@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+
+  <title>Medicina — Documentación — Explorador de Extensiones OCDS</title>
+  <meta name="description" content="Agrega campos al objeto artículo relevantes para la adquisición de medicamentos.">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/medicine/master/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/medicine/master/">
+  <link rel="stylesheet" href="/static/css/pygments.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        Explorador de Extensiones OCDS
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Página principal
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensiones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Guía de publicadores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            Guía de usuarios
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+            <svg class="icon" aria-hidden="true" viewBox="0 0 576 512" title="Elegir idioma">
+              <path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32l0 32 128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-9.6 0-8.4 23.1c-16.4 45.2-41.1 86.5-72.2 122 14.2 8.8 29 16.6 44.4 23.5l50.4 22.4 62.2-140c5.1-11.6 16.6-19 29.2-19s24.1 7.4 29.2 19l128 288c7.2 16.2-.1 35.1-16.2 42.2s-35.1-.1-42.2-16.2l-20-45-157.5 0-20 45c-7.2 16.2-26.1 23.4-42.2 16.2s-23.4-26.1-16.2-42.2l39.8-89.5-50.4-22.4c-23-10.2-45-22.4-65.8-36.4-21.3 17.2-44.6 32.2-69.5 44.7L78.3 380.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9l34.5-17.3c16.3-8.2 31.8-17.7 46.4-28.3-13.8-12.7-26.8-26.4-38.9-40.9L81.6 224.7c-11.3-13.6-9.5-33.8 4.1-45.1s33.8-9.5 45.1 4.1l10.2 12.2c11.5 13.9 24.1 26.8 37.4 38.7 27.5-30.4 49.2-66.1 63.5-105.4l.5-1.2-210.3 0C14.3 128 0 113.7 0 96S14.3 64 32 64l96 0 0-32c0-17.7 14.3-32 32-32zM416 270.8L365.7 384 466.3 384 416 270.8z"/>
+            </svg>
+            <span class="visually-hidden">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/medicine/master/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/medicine/master/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Medicina
+      </h1>
+
+      <p class="lead">
+        Agrega campos al objeto artículo relevantes para la adquisición de medicamentos.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Versión:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/medicine/master/" selected>
+              master
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/">
+            Documentación
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ms-0">
+              <a href="#guia">
+                Guía
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#ejemplos">
+                Ejemplos
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#un-principio-activo">
+                Un principio activo
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#mas-de-un-principio-activo">
+                Más de un principio activo
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#estandares-relacionados">
+                Estándares relacionados
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#antecedentes">
+                Antecedentes
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#registro-de-cambios">
+                Registro de cambios
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/schema/">
+            Esquema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/medicine/master/codelists/">
+            Listas de código
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_medicine_extension/master/extension.json" aria-label="URL de la extensión" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar al portapapeles" data-updated-title="Copiado!">
+              <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+              <svg class="icon" aria-hidden="true" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"/>
+              </svg>
+              <span class="visually-hidden">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_medicine_extension/archive/master.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentación
+      </h2>
+<div><p>Agrega campos al objeto art&#237;culo relevantes para la adquisici&#243;n de medicamentos.</p>
+<h2 id="guia">Gu&#237;a</h2>
+<p>Esta extensi&#243;n se utiliza para describir medicamentos en las fases de licitaci&#243;n, adjudicaci&#243;n y/o contrato. Con esta extensi&#243;n, un publicador puede especificar los principios activos del medicamento y su concentraci&#243;n, la forma de dosificaci&#243;n, el envase del medicamento y la v&#237;a de administraci&#243;n. De este modo, se facilita la comparaci&#243;n de la adquisici&#243;n de medicamentos entre jurisdicciones y, por tanto, se apoya los <a href="https://en.wikipedia.org/wiki/External_reference_pricing">precios de referencia externos</a>.</p>
+<p>Las formas de dosificaci&#243;n y los tama&#241;os de los envases difieren significativamente entre pa&#237;ses, lo que dificulta la comparaci&#243;n. Para facilitar la comparaci&#243;n, la extensi&#243;n proporciona listas de c&#243;digos estandarizadas para la forma de dosificaci&#243;n, el recipiente inmediato y la v&#237;a de administraci&#243;n, basadas en <a href="https://www.hl7.org">Health Level Seven (HL7)</a>, un conjunto de normas internacionales para datos sanitarios. Dicho esto, si no ha adoptado y no puede mapear sus valores a los c&#243;digos HL7, puede utilizar sus propios c&#243;digos. Para que un usuario pueda interpretar sus c&#243;digos, debe describir las listas de c&#243;digos, y c&#243;mo encontrar las definiciones de los mismos, en su <a href="https://standard.open-contracting.org/latest/en/guidance/publish/#finalize-your-publication-policy">pol&#237;tica de publicaci&#243;n</a>.</p>
+<p>Para los nombres de los principios activos, se recomienda utilizar las Denominaciones Comunes Internacionales o por sus siglas en ingl&#233;s <a href="https://www.who.int/teams/health-product-and-policy-standards/inn">International Nonproprietary Names (INN)</a>. La Organizaci&#243;n Mundial de la Salud (OMS) mantiene una lista acumulativa de todas las INNs, con nombres equivalentes en lat&#237;n, ingl&#233;s, franc&#233;s, espa&#241;ol, &#225;rabe, chino y ruso. Para facilitar la comparaci&#243;n, se recomienda utilizar el nombre latino en min&#250;sculas.</p>
+<p>Si un proceso de contrataci&#243;n est&#225; en fase de adjudicaci&#243;n o contrato, es posible conocer m&#225;s informaci&#243;n sobre el medicamento, como la marca, el fabricante, el pa&#237;s de origen, la fecha de caducidad, si deben mantener una cadena de fr&#237;o y todas las dem&#225;s condiciones comerciales, financieras y log&#237;sticas. Utilice la extensi&#243;n <a href="https://extensions.open-contracting.org/en/extensions/itemAttributes/master/">atributos gen&#233;ricos del art&#237;culo</a> para todos los casos en que el art&#237;culo del medicamento tenga otros atributos no incluidos en esta extensi&#243;n.</p>
+<p>Si un medicamento tiene m&#225;s de un principio activo, agregue cada uno de ellos a la lista de <code>activeIngredients</code>.</p>
+<h2 id="ejemplos">Ejemplos</h2>
+<h3 id="un-principio-activo">Un principio activo</h3>
+<p>En este ejemplo, demostramos c&#243;mo utilizar esta extensi&#243;n para describir un <a href="https://www.mercadopublico.cl/Procurement/Modules/RFB/DetailsAcquisition.aspx?qs=OE1kSVnLUBVxS5IkXPNLRQ==">proceso de adquisici&#243;n de medicamentos</a> de Chile. (Puede ver sus <a href="https://api.mercadopublico.cl/APISOCDS/ocds/tender/734-82-LP14">datos originales OCDS</a>.)</p>
+<p>El punto 3 se describe como:</p>
+<table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th scope="col">Description</th>
+<th scope="col">Minimum dispensing unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Acetilcisteina</td>
+<td>ACETILCISTEINA-N 100 MG/ML SOLUCION PARA NEBULIZAR FRASCO 15-30 ML ENVASE INDIVIDUAL RESISTENTE CON SELLO QUE ASEGURE INVIOLABILIDAD DEL CONTENIDO</td>
+</tr>
+</tbody>
+</table>
+<p>La concentraci&#243;n se expresa como "100 MG/ML". La lista de c&#243;digos UN/CEFACT <a href="https://unece.org/trade/uncefact/cl-recommendations">Recomendaci&#243;n 20 - C&#243;digos de Unidades de Medida Utilizados en el Comercio Internacional</a> incluye unidades como mg/l, g/l y kg/l, pero no mg/ml. As&#237;, "100 MG/ML" se expresa como 100 g/l a continuaci&#243;n.</p>
+<p>Based on this information, we can add the <code>dosageForm</code>, <code>administrationRoute</code>, <code>immediateContainer</code> and <code>activeIngredients</code>.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"tender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acetilcisteina"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"classification"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51161701"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNSPSC"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://apis.mercadopublico.cl/OCDS/data/productos/categoria/51161701"</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"dosageForm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOL"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"administrationRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NASINHL"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"immediateContainer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vial"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNCEFACT"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ml"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[15,30]"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"activeIngredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"acetylcysteinum"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"strength"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNCEFACT"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"g/l"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">]</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="mas-de-un-principio-activo">M&#225;s de un principio activo</h3>
+<p>En este ejemplo, demostramos c&#243;mo utilizar esta extensi&#243;n para describir un <a href="https://www.contrataciones.gov.py/licitaciones/convocatoria/391507-adquisicion-medicamentos-hospital-clinicas-1.html#pliego">proceso de adquisici&#243;n de medicamentos</a> de Paraguay. (Puede ver sus <a href="https://contrataciones.gov.py/datos/api/v3/doc/ocds/record/ocds-03ad3f-391507">datos originales del OCDS</a>.)</p>
+<p>En la pesta&#241;a "Suministros requeridos - especificaciones t&#233;cnicas", art&#237;culo 1 del lote 8 ("LOTE N&#176; 8 - ANESTESICOS LOCALES - 2") se describe como:</p>
+<table class="table table-bordered">
+<thead class="table-light">
+<tr>
+<th scope="col">Description</th>
+<th scope="col">Technical specifications</th>
+<th scope="col">Unit of measurement</th>
+<th scope="col">Presentation</th>
+<th scope="col">Delivery presentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Clorhidrato de Bupivacaina Hiperbarica Inyectable</td>
+<td>clorhidrato de bupivacaina 25 mg. + dextrosa 82,5 mg. - soluci&#243;n inyectable</td>
+<td>UNIDAD</td>
+<td>AMPOLLA</td>
+<td>ampollas como minimo de 5 ml.</td>
+</tr>
+</tbody>
+</table>
+<p>Para el nombre del principio activo, el Anexo 2 del <a href="https://www.who.int/teams/health-product-and-policy-standards/inn/stembook">INN Stem Book 2018</a>, describe c&#243;mo nombrar las sales &#225;cidas: en este caso, "bupivacainum hydrochloridum".</p>
+<p>Based on this information, we can add the <code>dosageForm</code>, <code>administrationRoute</code>, <code>immediateContainer</code> and <code>activeIngredients</code>.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"tender"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"items"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">      </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"dosageForm"</span><span class="p">:</span><span class="w"> </span><span class="s2">"SOL"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"administrationRoute"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ISINJ"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"immediateContainer"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"amp"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"capacity"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNCEFACT"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ml"</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"[5,INF["</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">"activeIngredients"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bupivacainum hydrochloridum"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"strength"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNCEFACT"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mg"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dextrosa"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"strength"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"unit"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"scheme"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UNCEFACT"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mg"</span>
+<span class="w">              </span><span class="p">},</span>
+<span class="w">              </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mf">82.5</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">"quantity"</span><span class="p">:</span><span class="w"> </span><span class="mi">25</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="estandares-relacionados">Est&#225;ndares relacionados</h2>
+<p>Los campos, las definiciones y las listas de c&#243;digos utilizados en esta extensi&#243;n se basan en las siguientes normas que se utilizan habitualmente en los datos sobre compras de medicamentos p&#250;blicos.</p>
+<ul>
+<li>Most of the fields are based on the <a href="https://schema.org/Drug">Drug</a> definition by the <a href="https://www.w3.org/community/schemaorg/">Schema.org Community Group</a> and the <a href="https://www.hl7.org/fhir/medication.html">Medication Resource</a> from <a href="https://hl7.org/fhir/">Fast Healthcare Interoperability Resources (FHIR)</a> standard.</li>
+<li>La lista de c&#243;digos <code>administrationRoute</code> contiene los conceptos de nivel superior de la lista de c&#243;digos HL7 <a href="https://terminology.hl7.org/CodeSystem/v3-RouteOfAdministration/">V&#237;a de Administraci&#243;n</a>, excluyendo cualquier t&#233;rmino sin&#243;nimo.</li>
+<li>La lista de c&#243;digos <code>dosageForm</code> contiene los conceptos de nivel superior de la lista de c&#243;digos HL7 <a href="https://terminology.hl7.org/CodeSystem/v3-orderableDrugForm/">Formulario de pedido de medicamentos</a>, excluyendo las formas espec&#237;ficas de aerosoles.</li>
+<li>The <code>immediateContainer</code> codelist is a copy of the codes and titles from FHIR's <a href="https://terminology.hl7.org/CodeSystem/medicationknowledge-package-type/">Medication Knowledge Package Type</a> codelist. Given that the terms are undefined in FHIR, the descriptions are copied from corresponding terms from the <a href="https://standardterms.edqm.eu">EDQM Standard Terms database</a>, reproduced with the permission of the European Directorate for the Quality of Medicines &amp; HealthCare, Council of Europe (EDQM). The EDQM Standard Terms database is not a static list and content can change over time; the descriptions were retrieved on July 21, 2021.</li>
+</ul>
+<h2 id="antecedentes">Antecedentes</h2>
+<p>This extension is based on research with 4 data users and 6 data publishers including public organizations, journalists, medicine price analysts, and software developers for medicine purchase systems from 9 countries in Latin America, Europe, and Africa. The extension includes the most used fields from the different countries.</p>
+<h2 id="issues">Issues</h2>
+<p>Reporte issues para esta extensi&#243;n en el <a href="https://github.com/open-contracting/ocds-extensions/issues">repositorio de extensiones ocds</a>, poniendo el nombre de la extensi&#243;n en el t&#237;tulo del issue.</p>
+<h2 id="registro-de-cambios">Registro de cambios</h2>
+<h3>2023-12-04</h3>
+<ul>
+<li>Rename <code>container</code> to <code>immediateContainer</code></li>
+<li>Rename <code>container.csv</code> to <code>immediateContainer.csv</code></li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="/static/lib/bootstrap.bundle.min.js"></script>
+<script src="/static/lib/clipboard.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

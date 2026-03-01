@@ -1,0 +1,6 @@
+Código,Título,Descripción
+ordinary,Derechos de voto ordinarios,El accionista tiene derecho a un voto por acción en todas las circunstancias.
+none,Sin derecho a voto,El accionista no tiene derecho a voto bajo ninguna circunstancia
+restricted,Derechos de voto restringidos,El accionista tiene derecho a votar en circunstancias específicas únicamente
+additional,Derechos de voto adicionales,El accionista tiene derecho a más de un voto por acción en todas las circunstancias
+enhanced,Derechos de voto mejorados,El accionista tiene derecho a más de un voto por acción en circunstancias específicas únicamente

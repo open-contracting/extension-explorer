@@ -1,0 +1,66 @@
+{
+  "definitions": {
+    "Recurrence": {
+      "title": "Recurrencia",
+      "description": "Informaci\u00f3n acerca de la recurrencia del proceso de contrataci\u00f3n.",
+      "type": "object",
+      "properties": {
+        "dates": {
+          "title": "Fechas estimadas",
+          "description": "Una estimaci\u00f3n del calendario de iniciaciones posteriores de los procesos de contrataci\u00f3n (por ejemplo, avisos de contrataci\u00f3n prevista).",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Period"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "description": {
+          "title": "Para m\u00e1s informaci\u00f3n",
+          "description": "Cualquier otra informaci\u00f3n acerca de la recurrencia del proceso de contrataci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Tender": {
+      "properties": {
+        "recurrence": {
+          "title": "Recurrencia",
+          "description": "Informaci\u00f3n acerca de la recurrencia del proceso de contrataci\u00f3n.",
+          "$ref": "#/definitions/Recurrence"
+        },
+        "hasRecurrence": {
+          "title": "Tiene recurrencia",
+          "description": "Si el proceso de contrataci\u00f3n es recurrente.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "recurrence": {
+          "title": "Recurrencia",
+          "description": "Informaci\u00f3n acerca de la recurrencia del lote.",
+          "$ref": "#/definitions/Recurrence"
+        },
+        "hasRecurrence": {
+          "title": "Tiene recurrencia",
+          "description": "Si el proceso de contrataci\u00f3n es recurrente.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

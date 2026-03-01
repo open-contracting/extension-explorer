@@ -1,0 +1,24 @@
+{
+  "name": {
+    "en": "Guarantees",
+    "es": "Garant\u00edas"
+  },
+  "description": {
+    "en": "Some procurement processes consider the specification of guarantees in order to ensure compliance with the terms of a contract.\n\nThere are many types of guarantees, so we consider the creation of a new extension based on the formats that are required for the Federal Treasury (Mexico). See discussion in https://github.com/open-contracting/standard/issues/651",
+    "es": "Algunos procesos de contrataci\u00f3n consideran la especificaci\u00f3n de garant\u00edas para asegurar el cumplimiento de los t\u00e9rminos de un contrato.\n\nExisten muchos tipos de garant\u00edas, por lo que consideramos a la creaci\u00f3n de una nueva extensi\u00f3n basada en los formatos que se requieren para la Tesorer\u00eda de la Federaci\u00f3n (M\u00e9xico). Ver discusi\u00f3n en https://github.com/open-contracting/standard/issues/651"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "documentationUrl": {
+    "en": "https://github.com/contratacionesabiertas/ocds_guarantees_extension"
+  },
+  "codelists": [
+    "guaranteeType.csv",
+    "guaranteedObligations.csv",
+    "+partyRole.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ]
+}

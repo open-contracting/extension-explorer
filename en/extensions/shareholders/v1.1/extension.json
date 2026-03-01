@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "ocds-shareholders-extension",
+    "es": "ocds-shareholders-extension"
+  },
+  "description": {
+    "en": "The shareholders extension can be used to attach company ownership details to each party in the parties array.",
+    "es": "La extensi\u00f3n de las partes se puede utilizar para adjuntar los detalles de propiedad de la compa\u00f1\u00eda a cada parte en la matriz de partes."
+  },
+  "documentationUrl": {},
+  "compatibility": [
+    "1.1"
+  ]
+}

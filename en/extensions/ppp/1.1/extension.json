@@ -1,0 +1,34 @@
+{
+  "name": {
+    "en": "OCDS for PPPs Extension",
+    "es": "Extensi\u00f3n OCDS para APPs"
+  },
+  "description": {
+    "en": "Makes changes required by the OCDS for PPPs profile. Evaluation indicators, finance summary and project details may be moved into new extensions.",
+    "es": "Realiza los cambios requeridos por el perfil de OCDS para APPs. Los indicadores de evaluaci\u00f3n, resumen financiero y detalles del proyecto podr\u00edan ser movidos a otra extensi\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/ppp/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "+milestoneType.csv",
+    "+partyRole.csv",
+    "+documentType.csv",
+    "metricID.csv",
+    "milestoneCode.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_metrics_extension/1.1/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_location_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

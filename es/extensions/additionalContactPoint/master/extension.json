@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Additional Contact Points",
+    "es": "Puntos de contacto adicionales"
+  },
+  "description": {
+    "en": "For providing multiple contact points for an organization, or for providing the available languages of a contact point. For example, it may be used to provide a contact point for each language.",
+    "es": "Para proveer m\u00faltiples puntos de contacto de una organizaci\u00f3n, o para indicar los idiomas disponibles de un punto de contacto. Por ejemplo, puede usarse para indicar un punto de contacto para cada idioma."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/additionalContactPoint/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

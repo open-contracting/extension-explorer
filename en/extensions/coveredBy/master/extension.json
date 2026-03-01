@@ -1,0 +1,29 @@
+{
+  "name": {
+    "en": "Covered By",
+    "es": "Cubierto por"
+  },
+  "description": {
+    "en": "Adds a field to indicate the treaties that the contracting process is covered by.",
+    "es": "Agregar un campo para indicar los tratados que cubre el proceso de contrataci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/coveredBy/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "coveredBy.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

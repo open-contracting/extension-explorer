@@ -1,0 +1,6 @@
+Código,Título,Descripción
+string,Cadena,The response must be of type string
+date-time,Fecha y hora,The response must be of type date-time (ISO8601)
+number,Número,"The response must be of type number, i.e. a floating point or whole number"
+integer,Entero,The response must be of type integer
+boolean,Booleano,The response must be of type boolean

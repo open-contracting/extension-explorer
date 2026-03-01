@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Procedure",
+    "es": "Procedimiento"
+  },
+  "description": {
+    "en": "This extension adds a block to describe the procurement procedure.",
+    "es": "Esta extensi\u00f3n agrega un bloque para describir el procedimiento de contrataci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/procedure/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Recurrence",
+    "es": "Recurrencia"
+  },
+  "description": {
+    "en": "Adds fields for information on the recurrence of the contracting process.",
+    "es": "Agregar campos de informaci\u00f3n acerca de la recurrencia del proceso de contrataci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/recurrence/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

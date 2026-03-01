@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+
+  <title>Clasificación de presupuesto y gasto — Documentación — Explorador de Extensiones OCDS</title>
+  <meta name="description" content="Extiende el desglose de presupuesto y la implementación de contrato para permitir la publicación del detalle de las asignaciones de presupuesto y la ejecución del proceso de contrataciones, utilizando las clasificaciones que pueden mapearse a datos de presupuesto y de gasto que fueron publicados de forma separada. ">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/budget_and_spend/master/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/budget_and_spend/master/">
+  <link rel="stylesheet" href="/static/css/pygments.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        Explorador de Extensiones OCDS
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Página principal
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensiones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Guía de publicadores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            Guía de usuarios
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+            <svg class="icon" aria-hidden="true" viewBox="0 0 576 512" title="Elegir idioma">
+              <path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32l0 32 128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-9.6 0-8.4 23.1c-16.4 45.2-41.1 86.5-72.2 122 14.2 8.8 29 16.6 44.4 23.5l50.4 22.4 62.2-140c5.1-11.6 16.6-19 29.2-19s24.1 7.4 29.2 19l128 288c7.2 16.2-.1 35.1-16.2 42.2s-35.1-.1-42.2-16.2l-20-45-157.5 0-20 45c-7.2 16.2-26.1 23.4-42.2 16.2s-23.4-26.1-16.2-42.2l39.8-89.5-50.4-22.4c-23-10.2-45-22.4-65.8-36.4-21.3 17.2-44.6 32.2-69.5 44.7L78.3 380.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9l34.5-17.3c16.3-8.2 31.8-17.7 46.4-28.3-13.8-12.7-26.8-26.4-38.9-40.9L81.6 224.7c-11.3-13.6-9.5-33.8 4.1-45.1s33.8-9.5 45.1 4.1l10.2 12.2c11.5 13.9 24.1 26.8 37.4 38.7 27.5-30.4 49.2-66.1 63.5-105.4l.5-1.2-210.3 0C14.3 128 0 113.7 0 96S14.3 64 32 64l96 0 0-32c0-17.7 14.3-32 32-32zM416 270.8L365.7 384 466.3 384 416 270.8z"/>
+            </svg>
+            <span class="visually-hidden">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/budget_and_spend/master/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/budget_and_spend/master/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Clasificación de presupuesto y gasto
+      </h1>
+
+      <p class="lead">
+        Extiende el desglose de presupuesto y la implementación de contrato para permitir la publicación del detalle de las asignaciones de presupuesto y la ejecución del proceso de contrataciones, utilizando las clasificaciones que pueden mapearse a datos de presupuesto y de gasto que fueron publicados de forma separada. 
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Versión:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/budget_and_spend/master/" selected>
+              master
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/budget_and_spend/master/">
+            Documentación
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ms-0">
+              <a href="#en-resumen">
+                En resumen
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#para-comenzar">
+                Para comenzar
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#conceptos-claves">
+                Conceptos claves
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#relacionando-presupuesto-contrataciones-y-gasto">
+                Relacionando presupuesto, contrataciones y gasto
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#estandares-de-datos-unidos-conexiones-con-el-paquete-de-datos-fiscales">
+                Estándares de datos unidos: conexiones con el paquete de datos fiscales
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#antecedentes">
+                Antecedentes
+              </a>
+            </li>
+            <li class="ms-2">
+              <a href="#historias-de-usuarios-y-requisitos">
+                Historias de usuarios y requisitos
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#registro-de-cambios">
+                Registro de cambios
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/budget_and_spend/master/schema/">
+            Esquema
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_and_spend_extension/master/extension.json" aria-label="URL de la extensión" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar al portapapeles" data-updated-title="Copiado!">
+              <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+              <svg class="icon" aria-hidden="true" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"/>
+              </svg>
+              <span class="visually-hidden">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/archive/master.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentación
+      </h2>
+<div><p>La extensi&#243;n de Presupuestos y Gastos extiende la extensi&#243;n de <a href="https://github.com/open-contracting-extensions/ocds_budget_breakdown_extension/blob/master/README.md">budget breakdown</a> y la secci&#243;n de implementaci&#243;n del contrato para permitir la publicaci&#243;n de asignaciones de presupuesto detalladas y la ejecuci&#243;n de las mismas para un proceso de contrataciones</p>
+<p>Un <a href="https://docs.google.com/document/d/1b43JeG5YQ62tGTTbP7jTE4XqUxYzG-r-emgRILZPRn4/edit">art&#237;culo de discusi&#243;n que muestra los antecedentes del enfoque puede encontrarse aqu&#237;</a>.</p>
+<p>Este repositorio se encuentra activamente en desarrollo, y actualmente contiene un <a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/tree/master/examples#readme">ejemplo</a> de c&#243;mo puede ser usada esta extensi&#243;n para registrar compromisos financieros anuales de un proceso de contrataci&#243;n y contratos individuales.</p>
+<h2 id="en-resumen">En resumen</h2>
+<p>Esta extensi&#243;n introduce tres nuevas funciones que surgen de la extensi&#243;n  <a href="https://github.com/open-contracting-extensions/ocds_budget_breakdown_extension/blob/master/README.md">budget breakdown</a>:</p>
+<ul>
+<li><code>classifications</code> permiten que se den clasificaciones funcionales, econ&#243;micas y administrativas para cada detalle del presupuesto;</li>
+<li><code>measures</code> - permite que se usen diferentes medidas de presupuesto (planeadas, cometidas, ejecutadas, etc.) a nivel del proceso de contrataciones para cada set de clasificaciones de presupuesto</li>
+<li><code>fiscalBreakdownFieldMapping</code> - provee una manera de vincular a un <a href="https://frictionlessdata.io/specs/fiscal-data-package/">Paquete de Datos Fiscales</a>, un archivo datapackage.json, que define el significado de cada clasificaci&#243;n y medida, y provee acceso a datos relacionados a nivel presupuestario.</li>
+</ul>
+<p>Adicionalmente, introduce el objeto <code>financialProgress</code> en  <code>contracts/implementation</code>, permitiendo mostrar el detalle de la ejecuci&#243;n financiera de cada contrato, utilizando los mismos atributos <code>classifications</code>, <code>measures</code> y <code>fiscalBreakdownFieldMapping</code> como para <code>budgetBreakdown</code>.</p>
+<h2 id="para-comenzar">Para comenzar</h2>
+<p>La mejor manera de utilizar esta extensi&#243;n es viendo los ejemplos desarrollados.</p>
+<ul>
+<li>El <strong><a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/blob/master/examples/coordination.md">ejemplo de coordinaci&#243;n</a></strong> muestra como expresar los datos en una asignaci&#243;n presupuestaria y ejecuci&#243;n que pudieron haber surgido de diferentes sistemas de datos (ej. sistemas financieros y sistemas de compras).</li>
+<li>El <strong><a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/blob/master/examples/integration.md">ejemplo de integraci&#243;n</a></strong> muestra como las referencias a un Paquete de Datos Fiscales pueden permitir la visualizaci&#243;n de datos a los usuarios, y la comparaci&#243;n entre los datos a nivel de proceso de contrataciones y de presupuesto.</li>
+<li>El <strong><a href="https://github.com/open-contracting-extensions/ocds_budget_and_spend_extension/blob/master/examples/flat.md">ejemplo de datos planos</a></strong> muestra como usando esta extensi&#243;n pueden ser analizados los datos estructurados publicados con herramientas de hojas de c&#225;lculo.</li>
+</ul>
+<h2 id="conceptos-claves">Conceptos claves</h2>
+<p>Esta extensi&#243;n da las herramientas para crear datos que relacionen <strong>budgets</strong>, <strong>contracting processes</strong> y <strong>spending</strong></p>
+<p>Drawing on definitions from the <a href="https://fiscaltransparency.net">Global Initiative for Fiscal Transparency (GIFT)</a>:</p>
+<p><strong>Un presupuesto</strong> es una declaraci&#243;n a futuro de como una organizaci&#243;n propone aumentar sus ingresos, utilizar sus recursos y financiar sus operaciones. El presupuesto del Gobierno Nacional debe cubrir todas las actividades de un estado. Los presupuestos detallados pueden existir tambi&#233;n a nivel de agencias y proyectos. En las contrataciones p&#250;blicas, el fondo para un proceso de contrataci&#243;n puede provenir de una secci&#243;n particular del Presupuesto Nacional, o de un presupuesto organizacional. Podr&#237;a tambi&#233;n provenir por completo o parcialmente de un fondo externo (Ej. el Banco Internacional de Desarrollo), ya sea directamente o a trav&#233;s de sistemas gubernamentales.</p>
+<p>Las l&#237;neas de presupuesto se construyen a partir de un set de  <strong>classifications</strong>  (generalmente descritas en t&#233;rminos de clasificaciones funcional, administrativas o econ&#243;micas) y las  <strong>measures</strong> (como el monto original designado a un conjunto particular de clasificaciones, o los montos modificados o ejecutados).</p>
+<p><strong>Fiscal reports</strong> are records of [an organization's] actual (historical) revenues, <strong>spending</strong> and financing. They may report the fiscal activities of the central government, state governments, or local governments, or of all levels of government in a country (referred to as the general government). Reports may cover a whole government in aggregate as an organization, and/or individual government units, e.g. ministries, departments or agencies. They may be on a cash or accruals basis (full or partial). As payments are made during the execution of a contract, these may be allocated against one or more sections of the budget. In some cases, this may allow the creation of fiscal reporting at the level of individual contracts.</p>
+<p>El Open Contracting Data Standard se usa para compartir informaci&#243;n sobre <strong>procesos de contrataciones</strong>. Un proceso de contrataciones puede pasar por diferentes etapas a trav&#233;s del tiempo, incluyendo planeaci&#243;n, licitaci&#243;n, adjudicaci&#243;n, firma de contrato e implementaci&#243;n.</p>
+<h2 id="relacionando-presupuesto-contrataciones-y-gasto">Relacionando presupuesto, contrataciones y gasto</h2>
+<p><img src="https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_and_spend_extension/master/images/budget-contract-spend.png" alt="Relaciones entre Presupuesto, Contrato y Gasto"></p>
+<p>La imagen anterior presenta un representaci&#243;n esquem&#225;tica de como pueden interactuar las bases de datos de presupuesto, contrataci&#243;n y gasto</p>
+<p>Debe notar que:</p>
+<ul>
+<li>Esto no representa una secuencia linear de eventos. Los datos pueden estar disponibles en diferentes punto en el tiempo, como cuando el presupuesto se hace en un ciclo anual, pero los contratos se firman a trav&#233;s de los a&#241;os. En muchos casos, la informaci&#243;n de presupuesto en la secci&#243;n de <code>planning</code> de un proceso de contrataci&#243;n OCDS puede actualizarse despu&#233;s de que los contratos se adjudiquen y se est&#233;n implementando.</li>
+<li>Los datos de presupuesto y gasto pueden darse en diferentes niveles de detalle, desde una l&#237;nea de presupuesto &#250;nica que financia m&#250;ltiples procesos de contrataciones, hasta la clasificaci&#243;n fiscal de partes &#250;nicas contra un contrato en particular. Los publicadores de datos van a variar de acuerdo al nivel de detalle que se puede extraer con confianza de sus sistemas.</li>
+<li>Los datos de ejecuci&#243;n del presupuesto pueden existir en un nivel transaccional, o puede existir en un nivel m&#225;s agregado. Esta extensi&#243;n actualmente cubre la ejecuci&#243;n del presupuesto, pero no cubre las clasificaciones detalladas de las transacciones.</li>
+</ul>
+<p>La siguiente imagen muestra un mapeo entre las etapas de una transacci&#243;n y las etapas de un proceso de contrataci&#243;n. Las etapas de una transacci&#243;n son generalmente comunes en diferentes jurisdicciones y reflejan las descritas en el [Paquete de Datos Fiscales] (https://frictionlessdata.io/specs/fiscal-data-package/); sin embargo, es posible que algunas jurisdicciones no registren todas las etapas, algunas pueden utilizar una terminolog&#237;a diferente y algunas pueden tener m&#225;s etapas.</p>
+<p>![Mapeo del proceso de transacci&#243;n y contrataci&#243;n] (https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_and_spend_extension/master/images/transaction-contracting_process.png)</p>
+<p>Los datos combinados cubiertos por esta extensi&#243;n generalmente se obtienen de los sistemas de adquisiciones y los Sistemas de Informaci&#243;n de Gesti&#243;n Financiera (SIGF). Entre los ejemplos de c&#243;mo se pueden integrar dichos sistemas se incluyen:</p>
+<ul>
+<li>Antes de iniciar una licitaci&#243;n, el sistema de adquisiciones verifica que los fondos est&#233;n disponibles para el proceso de contrataci&#243;n a trav&#233;s del SIGF y crea una reserva en el SIGF.</li>
+<li>Cuando se firma un contrato, el sistema de adquisiciones crea un compromiso en el SIGF por el valor del contrato.</li>
+<li>Cuando se completa un hito o entregable de un contrato, el sistema de adquisiciones crea una verificaci&#243;n o devengado en el SIGF.</li>
+</ul>
+<h2 id="estandares-de-datos-unidos-conexiones-con-el-paquete-de-datos-fiscales">Est&#225;ndares de datos unidos: conexiones con el paquete de datos fiscales</h2>
+<p>The <a href="https://frictionlessdata.io/specs/fiscal-data-package/">Fiscal Data Package</a>, developed by Open Knowledge with the support of <a href="https://fiscaltransparency.net">GIFT</a>, provides <em>"a lightweight and user-oriented format for publishing and consuming fiscal data"</em>. Unlike OCDS, which requires data to be converted to a set JSON structure before publication, a Fiscal Data Package consists of:</p>
+<ul>
+<li>Una definici&#243;n de paquete de datos (datapackage.json) el cual describe el 'modelo l&#243;gico' para aplicar a los archivos de datos existentes. Esto define las columnas, su relaci&#243;n con los conceptos fiscales y c&#243;mo deben transformarse mediante el consumo de aplicaciones para crear datos normalizados.</li>
+<li>Los archivos de datos, que dan el 'modelo f&#237;sico' para la base de datos de presupuesto o de gastos, y puede ser exportado de los sistemas existentes.</li>
+</ul>
+<p>Se ha hecho bastante investigaci&#243;n y pruebas con usuarios para desarrollar el Paquete de Datos Fiscales, estableciendo que, en vez de buscar un acuerdo en un set global de conceptos fiscales, es importante, considerando la diversidad de sistemas de compras y presupuesto alrededor del mundo, permitir a los usuarios publicar sus datos utilizando sus conceptos fiscales existentes, y luego complementar estos con datos adicionales que pueden apoyar el an&#225;lisis y la comparaci&#243;n entre bases de datos.</p>
+<p>Para evitar la duplicaci&#243;n de esfuerzos por parte de los editores y consumidores de datos, esta extensi&#243;n difiere del modelo del Paquete de Datos Fiscales con respecto a la definici&#243;n de conceptos fiscales y sigue el enfoque del FDP de permitir el uso de nombres de columnas de datos existentes. Si bien el FDP no hace una distinci&#243;n directa entre "clasificaciones" y "medidas", considerando que ambas son instancias de "conceptos fiscales", en esta extensi&#243;n s&#237; trazamos una distinci&#243;n para permitir que las medidas se validen como num&#233;ricas, mientras que las clasificaciones pueden pueden ser cadenas o n&#250;meros.</p>
+<h2 id="antecedentes">Antecedentes</h2>
+<p>Una exploraci&#243;n completa del enfoque que se toma en esta extensi&#243;n se puede encontrar en el <a href="https://docs.google.com/document/d/1b43JeG5YQ62tGTTbP7jTE4XqUxYzG-r-emgRILZPRn4/edit">background discussion paper</a>.</p>
+<h3 id="historias-de-usuarios-y-requisitos">Historias de usuarios y requisitos</h3>
+<p>Esta extensi&#243;n fue dise&#241;ada en base a un conjunto de historias de usuario.</p>
+<ul>
+<li>U1: Como periodista quiero ver cu&#225;l es la fuente de presupuesto de un proceso de contrataci&#243;n particular para poder entender si el presupuesto viene de recursos dom&#233;sticos, pr&#233;stamos u otras fuentes de ingreso internacionales</li>
+<li>U2: Como periodista, quiero encontrar todos los contratos financiados a trav&#233;s de una fuente de presupuesto en particular para analizar en qu&#233; medida se gasta el presupuesto a trav&#233;s de la contrataci&#243;n u otros medios.</li>
+<li>U3: Como organizaci&#243;n de la sociedad civil enfocada en infraestructura quiero encontrar todos los procesos de contrataci&#243;n relacionados con un determinado programa o proyecto de infraestructura para poder realizar una revisi&#243;n del cumplimiento de los requisitos de transparencia del proyecto de infraestructura.</li>
+<li>U4: Como periodista, quiero hacer un seguimiento de los contratos (sospechosos) para identificar posibles conexiones entre los destinatarios y los funcionarios y pol&#237;ticos que controlan los procesos de presupuestaci&#243;n y adjudicaci&#243;n.</li>
+</ul>
+<p>Identificar y confirmar asignaciones presupuestarias:</p>
+<ul>
+<li>U5: Como un proveedor potencial quiero ver cuando se confirma la disponibilidad de presupuesto para un proceso de contrataciones especifico para poder planear un inventario de potenciales oportunidades de licitaci&#243;n.</li>
+<li>U6: Como organizaci&#243;n de monitoreo de la sociedad civil, quiero identificar proyectos sin un presupuesto confirmado para poder analizar la brecha de financiamiento de las adquisiciones planificadas.</li>
+<li>U7: Como un oficial de tesorer&#237;a quiero compartir informaci&#243;n sobre el estatus de las asignaciones de presupuesto y el gasto para cualquier contrato para poder demostrar al p&#250;blico que el presupuesto se esta gastando de acuerdo a los planes aprobados</li>
+<li>U8: Como un monitor de compras quiero ver que parte del proyecto de infraestructura viene del presupuesto de capital vs el presupuesto de ingresos para poder monitorear si se gasto de m&#225;s o de menos de lo planeado</li>
+<li>U9: Como organizaci&#243;n de la sociedad civil, quiero identificar hasta qu&#233; punto se han asignado gastos en determinadas l&#237;neas presupuestarias y el estado de ese gasto a lo largo del tiempo para poder informar sobre las &#225;reas de gasto excesivo o insuficiente.</li>
+</ul>
+<p>Siguiendo el proceso de pagos:</p>
+<ul>
+<li>U10: Como acad&#233;mico, quiero identificar la brecha entre la fecha de la factura y la fecha de pago para poder analizar c&#243;mo los precios se ven afectados por los plazos de pago.</li>
+<li>U11: Como auditor quiero los detalles completos sobre el proceso de cobro y de pago para poder identificar banderas rojas potenciales e investigar los procesos particulares</li>
+</ul>
+<p>Estas historias de usuario se utilizaron para identificar un conjunto de requisitos que la extensi&#243;n deber&#237;a cumplir. La siguiente lista describe hasta qu&#233; punto la extensi&#243;n actual cumple con los requisitos que se identificaron.</p>
+<ul>
+<li>R1: Identificar inequ&#237;vocamente cada l&#237;nea del presupuesto.
+<ul>
+<li><strong>&#191;Requisito cumplido?</strong>: S&#237;. El Desglose de Presupuesto se ampl&#237;a con un objeto flexible <code>classifications</code> que puede incluir cualquier n&#250;mero de campos de clasificaci&#243;n, reflejando los t&#233;rminos y nombres de columnas utilizados en los conjuntos de datos presupuestarios.</li>
+</ul>
+</li>
+<li>R2: Identificar inequ&#237;vocamente los proyectos que aportan financiaci&#243;n a un proceso de contrataci&#243;n.
+<ul>
+<li><strong>&#191;Requisito cumplido?</strong>: Parcialmente. Actualmente no se han introducido cambios para cumplir este caso de uso. El objeto presupuesto b&#225;sico ya incluye un campo <code>projectID</code>.</li>
+</ul>
+</li>
+<li>R3: Proveer los montos de las diferentes fases del presupuesto incluyendo las asignaciones presupuestarias confirmadas.
+<ul>
+<li><strong>&#191;Requisito cumplido?</strong>: S&#237;. El Desglose de Presupuesto se ampl&#237;a con un objeto flexible de <code>measures</code> que puede incluir cualquier n&#250;mero de campos de medida, reflejando los t&#233;rminos y nombres de columnas utilizados en los conjuntos de datos de presupuesto y gasto existentes.</li>
+</ul>
+</li>
+<li>R4: Clasificar transacciones contra l&#237;neas presupuestarias
+<ul>
+<li><strong>&#191;Requisito cumplido?</strong>: No. La informaci&#243;n desglosada del progreso financiero puede clasificarse en las l&#237;neas presupuestarias en la secci&#243;n de implementaci&#243;n del contrato <code>financialProgress.breakdown</code>, pero la extensi&#243;n no modifica actualmente el bloque de <code>transactions</code> para permitir la clasificaci&#243;n a nivel de transacciones individuales.</li>
+</ul>
+</li>
+<li>R5: Proporcionar informaci&#243;n sobre el proceso de transacci&#243;n, desde la factura hasta el pago.
+<ul>
+<li><strong>&#191;Requisito cumplido?</strong>: Parcialmente. Las <code>measures</code> en <code>financialProgress.breakdown</code> para cada contrato se pueden utilizar para describir diferentes momentos del procesamiento del pago. Sin embargo, esto solo proporciona un historial completo de la sincronizaci&#243;n de los procesos de pago cuando se usa con un historial de versiones detallado de las entregas. En esta extensi&#243;n no se ha incluido un enfoque alternativo de agregar detalles de <code>transactions</code> para representar diferentes momentos, como solicitudes de pago y aprobaciones de pago, pero puede desarrollarse por separado en el futuro.</li>
+</ul>
+</li>
+<li>R6: Permitir que las asignaciones de montos individuales del presupuesto a contraer dentro de OCDS se verifiquen con las asignaciones generales de la l&#237;nea presupuestaria en un conjunto de datos presupuestarios
+<ul>
+<li><strong>&#191;Requisito cumplido?</strong>: S&#237;. Mediante el uso de un enlace al Paquete de Datos Fiscales, es posible comparar la informaci&#243;n financiera a nivel de contrato en OCDS con informaci&#243;n clasificada de manera similar en un FDP.</li>
+</ul>
+</li>
+<li>R7: Proporcionar interfaces con la informaci&#243;n necesaria para mostrar informaci&#243;n presupuestaria a los usuarios.
+<ul>
+<li><strong>&#191;Requisito cumplido?</strong>: S&#237;. Cuando se usan en conjunto con un Paquete de Dato Fiscal, las aplicaciones pueden buscar etiquetas y meta datos para cada <code>classifications</code> y <code>measures</code> de manera a mostrar claramente la informaci&#243;n a los usuarios.</li>
+</ul>
+</li>
+</ul>
+<h2 id="issues">Issues</h2>
+<p>Reporte issues para esta extensi&#243;n en el <a href="https://github.com/open-contracting/ocds-extensions/issues">repositorio de extensiones ocds</a>, poniendo el nombre de la extensi&#243;n en el t&#237;tulo del issue.</p>
+<h2 id="registro-de-cambios">Registro de cambios</h2>
+<h3>2020-06-04</h3>
+<ul>
+<li>Revisar las palabras normativas y no-normativas</li>
+</ul>
+<h3>2020-04-24</h3>
+<ul>
+<li>Agregar las propiedades <code>minProperties</code>, <code>minItems</code> y/o <code>minLength</code>.</li>
+</ul>
+<h3>2019-03-20</h3>
+<ul>
+<li>Establecer <code>"uniqueItems ": true</code> en los campos matriz y agregar <code>"minLength": 1</code> en los campos de cadena obligatorios.</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="/static/lib/bootstrap.bundle.min.js"></script>
+<script src="/static/lib/clipboard.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

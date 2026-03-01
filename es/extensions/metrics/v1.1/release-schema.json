@@ -1,0 +1,220 @@
+{
+  "definitions": {
+    "Planning": {
+      "properties": {
+        "forecasts": {
+          "type": "array",
+          "title": "Pron\u00f3sticos",
+          "description": "Cualquier m\u00e9trica de pron\u00f3stico para los resultados de este proceso de contrataci\u00f3n.",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          }
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "targets": {
+          "type": "array",
+          "title": "Objetivos",
+          "description": "Cualquier m\u00e9trica del objetivo para el resultado de este proceso de contrataci\u00f3n.",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          }
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "agreedMetrics": {
+          "type": "array",
+          "title": "M\u00e9tricas acordadas",
+          "description": "Cualquier m\u00e9trica objetivo establecida como parte de la adjudicaci\u00f3n del contrato.",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          }
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "agreedMetrics": {
+          "type": "array",
+          "title": "M\u00e9tricas acordadas",
+          "description": "Cualquier m\u00e9trica objetivo establecida como parte de los documentos del contrato.",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          }
+        }
+      }
+    },
+    "Implementation": {
+      "properties": {
+        "metrics": {
+          "type": "array",
+          "title": "M\u00e9trica",
+          "description": "Resultados reportados de la entrega de los bienes, obras o servicios contratados.",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          }
+        }
+      }
+    },
+    "Metric": {
+      "type": "object",
+      "title": "M\u00e9trica",
+      "description": "Las m\u00e9tricas se usan para establecer objetivos y resultados de un proceso de contrataci\u00f3n. Durante las secciones de planeaci\u00f3n y licitaci\u00f3n, una m\u00e9trica indica los resultados esperados. En las secciones adjudicaci\u00f3n y contrato se indican los resultados adjudicados / contratados. En la secci\u00f3n de implementaci\u00f3n se utiliza para proporcionar actualizaciones sobre los resultados realmente entregados, tambi\u00e9n conocidos como rendimiento.",
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador para esta m\u00e9trica. En algunos casos, esto puede extraerse de una lista de c\u00f3digos de m\u00e9tricas requerida para este tipo de proceso de contrataci\u00f3n, o en otros casos puede ser un identificador arbitrario.",
+          "type": [
+            "string"
+          ]
+        },
+        "title": {
+          "title": "T\u00edtulo",
+          "description": "El t\u00edtulo de esta m\u00e9trica",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Una breve descripci\u00f3n de la m\u00e9trica. Esto puede incluir peque\u00f1os detalles de los m\u00e9todos de medici\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "observations": {
+          "type": "array",
+          "title": "Observaciones",
+          "description": "Una lista de valores objetivo o reales para esta m\u00e9trica.",
+          "items": {
+            "$ref": "#/definitions/Observation"
+          }
+        }
+      }
+    },
+    "Observation": {
+      "type": "object",
+      "title": "Observaci\u00f3n",
+      "description": "Una observaci\u00f3n real u objetivo. Las observaciones deben incluir un valor (para m\u00e9tricas financieras) o una medida (para otras m\u00e9tricas).",
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador local para esta observaci\u00f3n espec\u00edfica. Esto puede ser un identificador arbitrario, o podr\u00eda ser un compuesto del identificador de m\u00e9trica, y la fecha y otras dimensiones de esta observaci\u00f3n.",
+          "type": "string"
+        },
+        "period": {
+          "$ref": "#/definitions/Period"
+        },
+        "value": {
+          "$ref": "#/definitions/Value"
+        },
+        "measure": {
+          "title": "Medida de observaci\u00f3n",
+          "description": "Para las m\u00e9tricas no financieras, la medida de este pron\u00f3stico, objetivo o observaci\u00f3n real. Las medidas pueden proporcionarse como texto libre o valores num\u00e9ricos.",
+          "type": [
+            "string",
+            "number",
+            "null"
+          ]
+        },
+        "unit": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "title": "Unidad",
+          "description": "Unidad",
+          "properties": {
+            "name": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "title": "Nombre de la unidad",
+              "description": "El nombre de la unidad."
+            },
+            "scheme": {
+              "title": "Esquema",
+              "description": "La lista desde la cual se toman los identificadores de unidades de medida. Esta debe ser una entrada en la lista de c\u00f3digos unitClassificationScheme. Se recomienda el uso del esquema \"UNCEFACT\" para la recomendaci\u00f3n 20 del CEFACT-ONU de \"C\u00f3digos para unidades de medida utilizadas en el comercio internacional\".",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "unitClassificationScheme.csv",
+              "openCodelist": true
+            },
+            "id": {
+              "title": "ID",
+              "description": "El identificador de la lista de c\u00f3digos se hace referencia en la propiedad de esquema. Por ejemplo, con UNCEFACT, este es el valor de la columna \"Common Code\". A partir de este identificador, las aplicaciones pueden buscar el nombre o s\u00edmbolo legible para humanos  para esta unidad de medida.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "uri": {
+              "title": "URI",
+              "description": "Si el esquema utilizado provee una URI legible por computadora para esta unidad de medici\u00f3n, \u00e9sta puede proporcionarse.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            }
+          }
+        },
+        "dimensions": {
+          "type": "object",
+          "title": "Dimensiones",
+          "description": "Cualquier n\u00famero de dimensiones se puede registrar dentro de este objeto. Los nombres de dimensiones deben seguir las convenciones de OCDS de camelCase.",
+          "patternProperties": {
+            "^.*": {
+              "type": "string"
+            }
+          }
+        },
+        "notes": {
+          "title": "Notas",
+          "description": "Cualquier nota sobre esta observaci\u00f3n. Esto puede incluir informaci\u00f3n para aclaraci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedImplementationMilestone": {
+          "title": "Hito de implementaci\u00f3n relacionado",
+          "description": "Un enlace al hito en la secci\u00f3n de implementaci\u00f3n de OCDS a la cual se le relaciona esta observaci\u00f3n de pron\u00f3stico, objetivo o real.",
+          "$ref": "#/definitions/MilestoneReference"
+        }
+      }
+    },
+    "MilestoneReference": {
+      "type": "object",
+      "title": "Referencia del hito",
+      "description": "Un bloque usado para hacer referencia a un hito, incluyendo el ID y el t\u00edtulo del hito que al que se hace referencia.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID del hito",
+          "description": "El ID del hito que se hace referencia, debe coincidir con el identificador de un hito descrito en alguna otra parte de una entrega sobre este proceso de contrataci\u00f3n.",
+          "type": "string"
+        },
+        "title": {
+          "title": "T\u00edtulo del hito",
+          "description": "El t\u00edtulo del hito al que se hace referencia, debe coincidir con el t\u00edtulo de un hito descrito en alguna otra parte en una entrega sobre este proceso de contrataci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

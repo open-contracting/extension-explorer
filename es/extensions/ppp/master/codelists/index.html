@@ -1,0 +1,1286 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+
+  <title>Extensión OCDS para APPs — Listas de código — Explorador de Extensiones OCDS</title>
+  <meta name="description" content="Documentación de los códigos en la extensión Extensión OCDS para APPs">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/ppp/master/codelists/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/ppp/master/codelists/">
+  <link rel="canonical" value="/es/extensions/ppp/1.1/codelists/">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        Explorador de Extensiones OCDS
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Página principal
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensiones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Guía de publicadores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            Guía de usuarios
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+            <svg class="icon" aria-hidden="true" viewBox="0 0 576 512" title="Elegir idioma">
+              <path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32l0 32 128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-9.6 0-8.4 23.1c-16.4 45.2-41.1 86.5-72.2 122 14.2 8.8 29 16.6 44.4 23.5l50.4 22.4 62.2-140c5.1-11.6 16.6-19 29.2-19s24.1 7.4 29.2 19l128 288c7.2 16.2-.1 35.1-16.2 42.2s-35.1-.1-42.2-16.2l-20-45-157.5 0-20 45c-7.2 16.2-26.1 23.4-42.2 16.2s-23.4-26.1-16.2-42.2l39.8-89.5-50.4-22.4c-23-10.2-45-22.4-65.8-36.4-21.3 17.2-44.6 32.2-69.5 44.7L78.3 380.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9l34.5-17.3c16.3-8.2 31.8-17.7 46.4-28.3-13.8-12.7-26.8-26.4-38.9-40.9L81.6 224.7c-11.3-13.6-9.5-33.8 4.1-45.1s33.8-9.5 45.1 4.1l10.2 12.2c11.5 13.9 24.1 26.8 37.4 38.7 27.5-30.4 49.2-66.1 63.5-105.4l.5-1.2-210.3 0C14.3 128 0 113.7 0 96S14.3 64 32 64l96 0 0-32c0-17.7 14.3-32 32-32zM416 270.8L365.7 384 466.3 384 416 270.8z"/>
+            </svg>
+            <span class="visually-hidden">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/ppp/master/codelists/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/ppp/master/codelists/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Extensión OCDS para APPs
+      </h1>
+
+      <p class="lead">
+        Realiza los cambios requeridos por el perfil de OCDS para APPs. Los indicadores de evaluación, resumen financiero y detalles del proyecto podrían ser movidos a otra extensión.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Versión:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/ppp/1.1/codelists/">
+              1.1
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/ppp/master/">
+            Documentación
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/ppp/master/schema/">
+            Esquema
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/ppp/master/codelists/">
+            Listas de código
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#+documentType.csv">
+                +documentType.csv
+              </a>
+            </li>
+            <li>
+              <a href="#+milestoneType.csv">
+                +milestoneType.csv
+              </a>
+            </li>
+            <li>
+              <a href="#+partyRole.csv">
+                +partyRole.csv
+              </a>
+            </li>
+            <li>
+              <a href="#metricID.csv">
+                metricID.csv
+              </a>
+            </li>
+            <li>
+              <a href="#milestoneCode.csv">
+                milestoneCode.csv
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_ppp_extension/1.1/extension.json" aria-label="URL de la extensión" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar al portapapeles" data-updated-title="Copiado!">
+              <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+              <svg class="icon" aria-hidden="true" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"/>
+              </svg>
+              <span class="visually-hidden">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_ppp_extension/archive/master.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Listas de código
+      </h2>
+
+      <h3 id="+documentType.csv">
+        +documentType.csv
+      </h3>
+
+      <p>
+        Puede <a href="/es/extensions/ppp/master/codelists/+documentType.csv">descargar el archivo <code>+documentType.csv</code></a> en inglés.
+      </p>
+
+      <p>
+        La extensión añade estos códigos a la <a href="https://standard.open-contracting.org/1.1/es/schema/codelists/#document-type"><code>documentType.csv</code> lista de código</a>.
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Código
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="+documentType.csv/valueForMoneyAnalysis">
+              <code>
+                valueForMoneyAnalysis
+              </code>
+            </td>
+            <td>
+              Análisis de valor por dinero
+            </td>
+            <td>
+              <p>Un resumen del análisis de la relación de valor por dinero para el proyecto, junto con las cifras de soporte, cálculos y modelo de negocios, basados ​​en los resultados proyectados o reales de la adquisición.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  planning, award
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/serviceDescription">
+              <code>
+                serviceDescription
+              </code>
+            </td>
+            <td>
+              Descripciones del servicio
+            </td>
+            <td>
+              <p>Una descripción de general de los servicios</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  planning
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/estimatedDemand">
+              <code>
+                estimatedDemand
+              </code>
+            </td>
+            <td>
+              Demanda estimada
+            </td>
+            <td>
+              <p>Una narrativa que describa la demanda estimada que se cubrirá (anualmente) por el proyecto.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  planning
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/projectAdditionality">
+              <code>
+                projectAdditionality
+              </code>
+            </td>
+            <td>
+              Adicionalidad del proyecto
+            </td>
+            <td>
+              <p>Una descripción de la adicionalidad proporcionada por el proyecto</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  planning
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/financeAdditionality">
+              <code>
+                financeAdditionality
+              </code>
+            </td>
+            <td>
+              Adicionalidad financiera
+            </td>
+            <td>
+              <p>Una descripción de la adicionalidad proporcionada por el método financiero</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  planning
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/pppModeRationale">
+              <code>
+                pppModeRationale
+              </code>
+            </td>
+            <td>
+              Justificación de la modalidad APP
+            </td>
+            <td>
+              <p>Una descripción de las razones por las que se eligió llevar a cabo este proyecto como APP</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  planning
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/evaluationCommittee">
+              <code>
+                evaluationCommittee
+              </code>
+            </td>
+            <td>
+              Detalles del comité de evaluación
+            </td>
+            <td>
+              <p>Información sobre la constitución del comité de evaluación</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  tender
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/requestForQualification">
+              <code>
+                requestForQualification
+              </code>
+            </td>
+            <td>
+              Solicitud de calificación
+            </td>
+            <td>
+              <p>El conjunto de documentos emitidos por la autoridad contratante que constituyen la base de la calificación y potencialmente la preselección de candidatos (o candidatos preseleccionados). A continuación, se invitará a los candidatos calificados (o candidatos preseleccionados) a presentar una propuesta (o entrar en una nueva fase antes de la presentación de la oferta, como una fase de diálogo o una fase interactiva).</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  preQualification
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/minutes">
+              <code>
+                minutes
+              </code>
+            </td>
+            <td>
+              Minutas
+            </td>
+            <td>
+              <p>Minutas de las reuniones previas a la licitación u otras reuniones pertinentes.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  tender
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/negotiationParameters">
+              <code>
+                negotiationParameters
+              </code>
+            </td>
+            <td>
+              Parámetros de Negociación
+            </td>
+            <td>
+              <p>Una descripción de los parámetros para la negociación con el proponente preferido</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  tender
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/riskComparison">
+              <code>
+                riskComparison
+              </code>
+            </td>
+            <td>
+              Comparación de riesgos
+            </td>
+            <td>
+              <p>Comparación de riesgos de otros métodos de financiamiento</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  award
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/discountRate">
+              <code>
+                discountRate
+              </code>
+            </td>
+            <td>
+              Tasa de descuento y prima de riesgo
+            </td>
+            <td>
+              <p>Una explicación de la tasa de descuento y de cualquier prima de riesgo utilizada, incluyendo información sobre las circunstancias específicas del proyecto que justifiquen la tasa de prima de riesgo utilizada.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  award
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/equityTransferCaps">
+              <code>
+                equityTransferCaps
+              </code>
+            </td>
+            <td>
+              Límites de transferencia de capital
+            </td>
+            <td>
+              <p>Detalles de cualquier restricción a la transferencia de capital por accionistas u otros participantes relevantes en el proyecto. Algunos contratos prevén límites máximos para la transferencia de capital en diferentes etapas del contrato, especialmente durante la fase de construcción y durante algunos años después.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/financeArrangements">
+              <code>
+                financeArrangements
+              </code>
+            </td>
+            <td>
+              Seguridad y pasos en los arreglos
+            </td>
+            <td>
+              <p>Los detalles de cualquier derecho otorgado a un prestador para acceder al valor en caso de una falta por el prestador, y cualquier derecho que se de a alguna parte involucrada que entre por otra parte involucrada , por ejemplo, un derecho concedido a un prestador o autoridad pública para tomar control temporal sobre la operación del proyecto en caso de que un actor privado falle.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/guaranteeReports">
+              <code>
+                guaranteeReports
+              </code>
+            </td>
+            <td>
+              Compromisos fiscales y reportes de divulgación de deudas contingentes 
+            </td>
+            <td>
+              <p>Reportes que detallen los compromisos fiscales de la autoridad pública para el APP, por ejemplo, pagos que se deben de hacer si el APP procede, o compromisos de pago que debido a algún acontecimiento, la fecha y magnitud dependen de un evento futuro incierto, fuera del control de la autoridad pública</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/grants">
+              <code>
+                grants
+              </code>
+            </td>
+            <td>
+              Subsidios
+            </td>
+            <td>
+              <p>Información sobre las subvenciones concedidas para apoyar el proyecto. La información sobre las subvenciones debe detallar el valor total de la subvención, y/o el valor de la subvención como proporción del valor total del proyecto, así como proporcionar información sobre la naturaleza de la subvención. En el caso de las subvenciones de capital pagadas durante la construcción de un proyecto, o de las subvenciones de explotación pagadas durante el funcionamiento, deben facilitarse detalles sobre la periodicidad de los pagos de la subvención, así como los hitos concretos de la misma.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/servicePayments">
+              <code>
+                servicePayments
+              </code>
+            </td>
+            <td>
+              Pagos de servicios
+            </td>
+            <td>
+              <p>Los pagos de servicios son los pagos realizados por la autoridad pública o el comprador al proveedor privado por los servicios de infraestructura (aplicable en algunos tipos de proyectos de Asociación Público-Privada). La documentación debe incluir el número total de pagos y su periodicidad, así como la metodología utilizada para calcular los pagos y la indexación utilizada.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/landTransfer">
+              <code>
+                landTransfer
+              </code>
+            </td>
+            <td>
+              Transferencia de tierras
+            </td>
+            <td>
+              <p>Detalles de la tierra transferida en arrendamiento u otro criterio por el gobierno, incluyendo detalles del número de propiedad con la cantidad de tierra transferida, información de la zonificación y condiciones de la transferencia.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/assetTransfer">
+              <code>
+                assetTransfer
+              </code>
+            </td>
+            <td>
+              Transferencia de activos
+            </td>
+            <td>
+              <p>Detalles de los activos, recursos humanos de las transferencias de personal, incluida la documentación de las condiciones de transferencia.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/revenueShare">
+              <code>
+                revenueShare
+              </code>
+            </td>
+            <td>
+              Participación de los ingresos
+            </td>
+            <td>
+              <p>Documentación de cualquier arreglo de participación en los ingresos, incluida la participación de los ingresos en el caso base e incrementos para un proyecto de asociación público-privada.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/otherGovernmentSupport">
+              <code>
+                otherGovernmentSupport
+              </code>
+            </td>
+            <td>
+              Otro apoyo gubernamental
+            </td>
+            <td>
+              <p>Documentación de cualquier otro apoyo gubernamental, incluyendo cláusulas no completas o provisión para préstamos de déficit de ingresos.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/defaultEvents">
+              <code>
+                defaultEvents
+              </code>
+            </td>
+            <td>
+              Incumplimientos
+            </td>
+            <td>
+              <p>Información sobre eventos de incumplimiento</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/termination">
+              <code>
+                termination
+              </code>
+            </td>
+            <td>
+              Terminación
+            </td>
+            <td>
+              <p>Información sobre la terminación del contrato</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/handover">
+              <code>
+                handover
+              </code>
+            </td>
+            <td>
+              Entrega
+            </td>
+            <td>
+              <p>Provisiones contractuales para la entrega de activos al Estado, o información sobre ellos, incluyendo detalles de la condición de los activos y cualquier otra condición de traspaso.</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/financialStatement">
+              <code>
+                financialStatement
+              </code>
+            </td>
+            <td>
+              Estado financiero
+            </td>
+            <td>
+              <p>Estados financieros auditados de la empresa del proyecto</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+documentType.csv/performanceReport">
+              <code>
+                performanceReport
+              </code>
+            </td>
+            <td>
+              Reporte de desempeño
+            </td>
+            <td>
+              <p>Informes de evaluación de rendimiento</p>
+
+              <dl>
+                <dt>
+                  Sección
+                </dt>
+                <dd>
+                  contract, implementation
+                </dd>
+              </dl>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="+milestoneType.csv">
+        +milestoneType.csv
+      </h3>
+
+      <p>
+        Puede <a href="/es/extensions/ppp/master/codelists/+milestoneType.csv">descargar el archivo <code>+milestoneType.csv</code></a> en inglés.
+      </p>
+
+      <p>
+        La extensión añade estos códigos a la <a href="https://standard.open-contracting.org/1.1/es/schema/codelists/#milestone-type"><code>milestoneType.csv</code> lista de código</a>.
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Código
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="+milestoneType.csv/procurement">
+              <code>
+                procurement
+              </code>
+            </td>
+            <td>
+              Contratación
+            </td>
+            <td>
+              <p>Acontecimientos que tienen lugar durante la contratación y que no son captados por los campos del núcleo del OCDS, como los períodos de consulta adicionales o los proyectos de presentación de ofertas en un proceso de diálogo competitivo</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+milestoneType.csv/contractClose">
+              <code>
+                contractClose
+              </code>
+            </td>
+            <td>
+              Cierre de contrato
+            </td>
+            <td>
+              <p>Eventos como el cierre comercial y financiero</p>
+
+              <dl>
+                <dt>
+                  Fuente
+                </dt>
+                <dd>
+                  <a href="https://github.com/open-contracting-extensions/public-private-partnerships/issues/25" rel="noopener">https://github.com/open-contracting-extensions/public-private-partnerships/issues/25</a>
+                </dd>
+              </dl>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="+partyRole.csv">
+        +partyRole.csv
+      </h3>
+
+      <p>
+        Puede <a href="/es/extensions/ppp/master/codelists/+partyRole.csv">descargar el archivo <code>+partyRole.csv</code></a> en inglés.
+      </p>
+
+      <p>
+        La extensión añade estos códigos a la <a href="https://standard.open-contracting.org/1.1/es/schema/codelists/#party-role"><code>partyRole.csv</code> lista de código</a>.
+      </p>
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Código
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="+partyRole.csv/privateParty">
+              <code>
+                privateParty
+              </code>
+            </td>
+            <td>
+              Parte privada
+            </td>
+            <td>
+              <p>La contraparte de la autoridad contratante en el contrato de APP. Una organización privada a la que se le ha otorgado el contrato para construir y operar un activo gubernamental, y que generalmente se crea bajo la forma de una &quot;entidad con fines especiales&quot; (SPV por sus siglas en inglés).</p>
+
+              <dl>
+                <dt>
+                  Fuente
+                </dt>
+                <dd>
+                  <a href="https://ppp-certification.com/ppp-certification-guide/glossary" rel="noopener">https://ppp-certification.com/ppp-certification-guide/glossary</a>
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/leadBank">
+              <code>
+                leadBank
+              </code>
+            </td>
+            <td>
+              Lider del consorcio
+            </td>
+            <td>
+              <p>Un líder del consorcio es un banco que supervisa el arreglo de una sindicación de préstamos</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/lender">
+              <code>
+                lender
+              </code>
+            </td>
+            <td>
+              Prestador
+            </td>
+            <td>
+              <p>El Programa de Certificación PPP de APMG define a los prestamistas como &quot;Instituciones que proporcionan préstamos al proyecto: principalmente bancos e inversores institucionales a través de bonos de proyectos&quot;</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="+partyRole.csv/equityInvestor">
+              <code>
+                equityInvestor
+              </code>
+            </td>
+            <td>
+              Inversor de capital
+            </td>
+            <td>
+              <p>El Programa de Certificación PPP de APMG define a los inversores de capital como &quot;Inversores que financian una parte de los gastos de capital del proyecto (Capex), típicamente como capital social o deuda subordinada&quot;</p>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="metricID.csv">
+        metricID.csv
+      </h3>
+
+      <p>
+        Puede <a href="/es/extensions/ppp/master/codelists/metricID.csv">descargar el archivo <code>metricID.csv</code></a> en inglés.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Código
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="metricID.csv/demand">
+              <code>
+                demand
+              </code>
+            </td>
+            <td>
+              Demanda
+            </td>
+            <td>
+              <p>Para informar sobre la demanda prevista o real</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="metricID.csv/revenue">
+              <code>
+                revenue
+              </code>
+            </td>
+            <td>
+              Ingresos
+            </td>
+            <td>
+              <p>Para informar sobre los ingresos previstos o reales</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="metricID.csv/IRR">
+              <code>
+                IRR
+              </code>
+            </td>
+            <td>
+              Tasa interna de retorno
+            </td>
+            <td>
+              <p>Para informar sobre la TIR proyectada o real</p>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="milestoneCode.csv">
+        milestoneCode.csv
+      </h3>
+
+      <p>
+        Puede <a href="/es/extensions/ppp/master/codelists/milestoneCode.csv">descargar el archivo <code>milestoneCode.csv</code></a> en inglés.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Código
+            </th>
+            <th scope="col">
+              Título
+            </th>
+            <th scope="col">
+              Descripción
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="milestoneCode.csv/projectApproval">
+              <code>
+                projectApproval
+              </code>
+            </td>
+            <td>
+              Aprobación del proyecto
+            </td>
+            <td>
+              <p>Las fechas de las aprobaciones de las autoridades pertinentes.</p>
+
+              <dl>
+                <dt>
+                  Fuente
+                </dt>
+                <dd>
+                  <a href="https://github.com/open-contracting/ocds-milestones-update" rel="noopener">https://github.com/open-contracting/ocds-milestones-update</a>
+                </dd>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = approval
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/commercialClose">
+              <code>
+                commercialClose
+              </code>
+            </td>
+            <td>
+              Cierre comercial
+            </td>
+            <td>
+              <p>En una financiación, el punto en el que se ha ejecutado la documentación comercial, pero antes de que se hayan cumplido o eximido las condiciones previas; antes del cierre financiero.</p>
+
+              <dl>
+                <dt>
+                  Fuente
+                </dt>
+                <dd>
+                  <a href="https://pppknowledgelab.org/glossary#Commercial_Close" rel="noopener">https://pppknowledgelab.org/glossary#Commercial_Close</a>
+                </dd>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = contractClose
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/financialClose">
+              <code>
+                financialClose
+              </code>
+            </td>
+            <td>
+              Cierre financiero
+            </td>
+            <td>
+              <p>En una financiación, el punto en el que se ha ejecutado la documentación y las condiciones precedentes se han cumplido o se han eximido. Después de este punto son admisibles los retiros.</p>
+
+              <dl>
+                <dt>
+                  Fuente
+                </dt>
+                <dd>
+                  <a href="https://pppknowledgelab.org/glossary#Financial_Close" rel="noopener">https://pppknowledgelab.org/glossary#Financial_Close</a>
+                </dd>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = contractClose
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/commencement">
+              <code>
+                commencement
+              </code>
+            </td>
+            <td>
+              Comienzo de la construcción o desarrollo
+            </td>
+            <td>
+              <p>La fecha de inicio de la construcción o desarrollo</p>
+
+              <dl>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = delivery
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/completion">
+              <code>
+                completion
+              </code>
+            </td>
+            <td>
+              Finalización de la construcción del desarrollo
+            </td>
+            <td>
+              <p>La fecha de terminación de la construcción o desarrollo</p>
+
+              <dl>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = delivery
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/commissioning">
+              <code>
+                commissioning
+              </code>
+            </td>
+            <td>
+              Puesta en servicio
+            </td>
+            <td>
+              <p>La comprobación e inspección de las obras terminadas para verificar que las obras están listas para el funcionamiento comercial.</p>
+
+              <dl>
+                <dt>
+                  Fuente
+                </dt>
+                <dd>
+                  <a href="https://pppknowledgelab.org/glossary#Commissioning" rel="noopener">https://pppknowledgelab.org/glossary#Commissioning</a>
+                </dd>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = delivery
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/enquiryPeriodStart">
+              <code>
+                enquiryPeriodStart
+              </code>
+            </td>
+            <td>
+              Comienzo del período de consulta
+            </td>
+            <td>
+              <p>Para los procesos con múltiples periodos de consulta, la fecha de inicio de un periodo durante el cual se pueden realizar y responder consultas que no se proporciona en el bloque tender/enquiryPeriod. A veces se conocen como períodos de aclaración.</p>
+
+              <dl>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = procurement
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/enquiryPeriodEnd">
+              <code>
+                enquiryPeriodEnd
+              </code>
+            </td>
+            <td>
+              Fin del período de consulta
+            </td>
+            <td>
+              <p>En los procesos con múltiples periodos de consulta, la fecha de finalización de un periodo durante el cual se pueden realizar y responder consultas que no se proporciona en el bloque tender/enquiryPeriod. A veces se conocen como períodos de aclaración.</p>
+
+              <dl>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = procurement
+                </dd>
+              </dl>
+            </td>
+          </tr>
+          <tr>
+            <td id="milestoneCode.csv/draftFinalTender">
+              <code>
+                draftFinalTender
+              </code>
+            </td>
+            <td>
+              Presentación del proyecto de oferta final
+            </td>
+            <td>
+              <p>En el caso de los procesos de diálogo competitivo, el plazo de presentación de los proyectos de oferta final</p>
+
+              <dl>
+                <dt>
+                  Notas
+                </dt>
+                <dd>
+                  milestone/type = procurement
+                </dd>
+              </dl>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="/static/lib/bootstrap.bundle.min.js"></script>
+<script src="/static/lib/clipboard.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

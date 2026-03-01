@@ -1,0 +1,106 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "enquiries": {
+          "title": "Consultas",
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Preguntas enviadas a la entidad contratante y las respuestas dadas",
+          "items": {
+            "$ref": "#/definitions/Enquiry"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "Enquiry": {
+      "type": "object",
+      "title": "Consulta",
+      "description": "Una pregunta relacionada con el proceso de contrataciones, hecha generalmente durante el per\u00edodo de preguntas.",
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador \u00fanico para la consulta.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "date": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "title": "Fecha",
+          "description": "La fecha en que se recibi\u00f3 o proces\u00f3 la consulta.",
+          "format": "date-time"
+        },
+        "author": {
+          "title": "Autor de la pregunta",
+          "description": "La parte que realiza esta pregunta. La entrada correspondiente en la lista de `parties` deber\u00eda tener el valor 'enquirer' en su lista de `roles`. Las pol\u00edticas de adquisici\u00f3n var\u00edan sobre si se divulga la identidad de los que realizan preguntas, o en qu\u00e9 etapa se divulga esta informaci\u00f3n.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "title": {
+          "title": "T\u00edtulo de la pregunta",
+          "description": "La l\u00ednea de asunto de la pregunta.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "El cuerpo de la pregunta.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "answer": {
+          "title": "Respuesta",
+          "description": "La respuesta a esta pregunta, cuando est\u00e9 disponible.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dateAnswered": {
+          "title": "Fecha de respuesta",
+          "description": "La fecha en que se proporcion\u00f3 la respuesta a la pregunta.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "relatedItem": {
+          "title": "Art\u00edculo relacionado",
+          "description": "Si esta pregunta se refiere a una partida presupuestaria en espec\u00edfico, este campo contiene el identificador de la partida.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedLot": {
+          "title": "Lote relacionado",
+          "description": "Cuando se usan lotes, si esta pregunta se refiere a un lote espec\u00edfico, este campo contiene el identificador de lote.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "threadID": {
+          "title": "Identificador de hilo",
+          "description": "Si esta pregunta y respuesta forma parte de un hilo de discusi\u00f3n (ej. la pregunta es la continuaci\u00f3n a una respuesta previa) un identificador de hilo puede ser usado para asociar m\u00faltiples preguntas.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

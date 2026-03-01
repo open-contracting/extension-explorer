@@ -1,0 +1,1452 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+
+  <title>Extensiones — Explorador de Extensiones OCDS</title>
+  <meta name="description" content="">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        Explorador de Extensiones OCDS
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Página principal
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensiones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Guía de publicadores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            Guía de usuarios
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+            <svg class="icon" aria-hidden="true" viewBox="0 0 576 512" title="Elegir idioma">
+              <path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32l0 32 128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-9.6 0-8.4 23.1c-16.4 45.2-41.1 86.5-72.2 122 14.2 8.8 29 16.6 44.4 23.5l50.4 22.4 62.2-140c5.1-11.6 16.6-19 29.2-19s24.1 7.4 29.2 19l128 288c7.2 16.2-.1 35.1-16.2 42.2s-35.1-.1-42.2-16.2l-20-45-157.5 0-20 45c-7.2 16.2-26.1 23.4-42.2 16.2s-23.4-26.1-16.2-42.2l39.8-89.5-50.4-22.4c-23-10.2-45-22.4-65.8-36.4-21.3 17.2-44.6 32.2-69.5 44.7L78.3 380.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9l34.5-17.3c16.3-8.2 31.8-17.7 46.4-28.3-13.8-12.7-26.8-26.4-38.9-40.9L81.6 224.7c-11.3-13.6-9.5-33.8 4.1-45.1s33.8-9.5 45.1 4.1l10.2 12.2c11.5 13.9 24.1 26.8 37.4 38.7 27.5-30.4 49.2-66.1 63.5-105.4l.5-1.2-210.3 0C14.3 128 0 113.7 0 96S14.3 64 32 64l96 0 0-32c0-17.7 14.3-32 32-32zM416 270.8L365.7 384 466.3 384 416 270.8z"/>
+            </svg>
+            <span class="visually-hidden">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row mt-4">
+    <div class="col">
+      <h1 class="text-center display-4">
+        Extensiones
+      </h1>
+
+      <form class="form-inline d-flex justify-content-center align-items-center g-2 mt-4">
+        Mostrar
+
+        <select class="form-select filter-select mx-1" id="filter-core" aria-label="Extensión">
+          <option value="">
+            cualquier
+          </option>
+          <option value=".recommended">
+            recomendado
+          </option>
+        </select>
+
+        extensiones
+
+        por
+        <select class="form-select filter-select mx-1" id="filter-publisher" aria-label="Responsable">
+          <option value="">
+            cualquier mantenedor
+          </option>
+          <option value=".publisher-compranet">
+            CompraNet
+          </option>
+          <option value=".publisher-contrataciones-abiertas-mexico">
+            Contrataciones Abiertas México
+          </option>
+          <option value=".publisher-dncp-opendata">
+            dncp-opendata
+          </option>
+          <option value=".publisher-oncaeti">
+            ONCAETI
+          </option>
+          <option value=".publisher-open-contracting-data-standard-extensions">
+            Open Contracting Data Standard Extensions
+          </option>
+          <option value=".publisher-portal-edca-hn">
+            Portal EDCA HN
+          </option>
+        </select>
+
+        en
+        <select class="form-select filter-select mx-1" id="filter-profile" aria-label="Perfil">
+          <option value="">
+            cualquier perfil
+          </option>
+          <option value=".profile-ppp">
+            Public Private Partnerships
+          </option>
+        </select>
+
+      </form>
+
+      <p class="text-center text-muted mt-4">
+        Mostrando <span id="filter-count">68</span> extensiones del <a href="https://github.com/open-contracting/extension_registry">registro de extensiones</a>
+      </p>
+    </div>
+  </div>
+
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/additionalContactPoint/master/">Puntos de contacto adicionales</a>
+          </h2>
+          <p class="card-text">
+            Para proveer múltiples puntos de contacto de una organización, o para indicar los idiomas disponibles de un punto de contacto. Por ejemplo, puede usarse para indicar un punto de contacto para cada idioma.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/amendment_rationale_classifications/master/">Amendment rationale classifications</a>
+          </h2>
+          <p class="card-text">
+            Adds a field to the amendment object to classify the rationale for the amendment.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/awardCriteria/master/">Desglose de los criterios de adjudicación</a>
+          </h2>
+          <p class="card-text">
+            Agrega una matriz de criterios de adjudicación al objeto lote, para desglosar los criterios de adjudicación por precio, costo y calidad.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/beneficialOwners/master/">Beneficiarios finales</a>
+          </h2>
+          <p class="card-text">
+            Agregue una lista de beneficialOwners al objeto organización para indicar los beneficiarios finales de una organización.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/bidOpening/master/">Apertura de ofertas</a>
+          </h2>
+          <p class="card-text">
+            Agregar un objeto para describir la fecha, hora, lugar y otros detalles de la apertura de ofertas.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp recommended">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/bids/master/">Bids and expressions of interest</a>
+            <span class="badge rounded-pill text-bg-light">Recomendado</span>
+          </h2>
+          <p class="card-text">
+            Adds a bids object to describe individual bids and expressions of interest, and summary statistics.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/budget/master/">Desglose del presupuesto</a>
+          </h2>
+          <p class="card-text">
+            Agrega una lista de desglose de presupuesto al objeto de presupuesto para desglosar un presupuesto por fuente y período.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/budget_and_spend/master/">Clasificación de presupuesto y gasto</a>
+          </h2>
+          <p class="card-text">
+            Extiende el desglose de presupuesto y la implementación de contrato para permitir la publicación del detalle de las asignaciones de presupuesto y la ejecución del proceso de contrataciones, utilizando las clasificaciones que pueden mapearse a datos de presupuesto y de gasto que fueron publicados de forma separada. 
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/charges/master/">Cargos</a>
+          </h2>
+          <p class="card-text">
+            Agrega una matriz de cargos al objeto de implementación para publicar los cargos en que incurrirán los usuarios o el gobierno en un período determinado de un contrato.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/communication/master/">Comunicación</a>
+          </h2>
+          <p class="card-text">
+            Agrega a la licitación un objeto comunicación para describir las modalidades de comunicación de los eventos claves.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/contractTerms/master/">Términos del contrato</a>
+          </h2>
+          <p class="card-text">
+            Agrega un objeto términos del contrato a los objetos de la licitación y del lote, para describir los términos que rigen al futuro contrato.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/contract_buyer/master/">Buyer per award or contract</a>
+          </h2>
+          <p class="card-text">
+            Adds buyer fields to the award and contract objects to indicate the buyer(s) for an individual award or contract, if different from the buyer(s) involved in the contracting process as a whole.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/contract_completion/master/">Cumplimiento del contrato</a>
+          </h2>
+          <p class="card-text">
+            Añade campos a la sección de implementación del contrato para detallar la fecha de finalización, y el valor final de un contrato.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/contract_suppliers/master/">Proveedores contratados</a>
+          </h2>
+          <p class="card-text">
+            Permitir la declaración explícita de proveedores dentro del bloque de contratos. Se usa cuando una sola adjudicación a múltiples proveedores resulta en múltiples contratos para un subconjunto de los proveedores adjudicados.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/countryCode/master/">Código de país</a>
+          </h2>
+          <p class="card-text">
+            Agregar un campo código de país al objeto de dirección.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/coveredBy/master/">Cubierto por</a>
+          </h2>
+          <p class="card-text">
+            Agregar un campo para indicar los tratados que cubre el proceso de contratación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/designContest/master/">Concurso de proyecto</a>
+          </h2>
+          <p class="card-text">
+            Agregar un objeto al objeto de la licitación para describir un concurso de proyecto.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/document_publisher/master/">Document publisher</a>
+          </h2>
+          <p class="card-text">
+            Adds a publisher field to the document object.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/documentation_details/master/">Detalles de Documentos</a>
+          </h2>
+          <p class="card-text">
+            Agrega campos al objeto document para referencias a páginas, acceso a detalles e información del autor.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions recommended">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/enquiries/master/">Consultas</a>
+            <span class="badge rounded-pill text-bg-light">Recomendado</span>
+          </h2>
+          <p class="card-text">
+            La extensión sobre consultas puede usarse para registrar las preguntas planteadas durante un proceso de contratación y las respuestas proporcionadas.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/essentialAssets/master/">Activos esenciales</a>
+          </h2>
+          <p class="card-text">
+            Agregar un objeto al objeto de licitación para describir los activos utilizados para la prestación de servicios públicos.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/eu/1.1/">Unión Europea</a>
+          </h2>
+          <p class="card-text">
+            Implementa campos y código que son específicos de la legislación europea.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/exclusionGrounds/master/">Exclusion grounds</a>
+          </h2>
+          <p class="card-text">
+            Adds an object to describe the criteria to exclude tenderers from participating in a contracting process.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/extendsContractID/master/">Extensión de contratos a través de contratos complementario: extendsContractiD</a>
+          </h2>
+          <p class="card-text">
+            Bajo algunas reglas y procesos de contrataciones, para extender la duración o el valor de un contrato, o para realizar otras modificaciones sustanciales, se requiere la firma de un nuevo contrato. Esta extensión permite que se hagan explícitas las relaciones entre dos o más contratos en el mismo proceso de contratación. 
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/finance/master/">Financiamiento</a>
+          </h2>
+          <p class="card-text">
+            Agrega campos para revelar la financiación de todo el proceso y sus contratos individuales.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-contrataciones-abiertas-mexico">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/guarantees/master/">Garantías</a>
+          </h2>
+          <p class="card-text">
+            Algunos procesos de contratación consideran la especificación de garantías para asegurar el cumplimiento de los términos de un contrato.
+
+Existen muchos tipos de garantías, por lo que consideramos a la creación de una nueva extensión basada en los formatos que se requieren para la Tesorería de la Federación (México). Ver discusión en https://github.com/open-contracting/standard/issues/651
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/contratacionesabiertas">Contrataciones Abiertas México</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-contrataciones-abiertas-mexico">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/implementationStatus/master/">Estatus de la implementación</a>
+          </h2>
+          <p class="card-text">
+            En México, cuando se habla de obras y servicios relacionados a las obras, es necesario publicar un conjunto de variables específicas sobre su implementación. Uno de ellos es el estado de implementación del trabajo o servicio relacionado con él. Vea la discusión en https://github.com/open-contracting/standard/issues/624
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/contratacionesabiertas">Contrataciones Abiertas México</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-dncp-opendata">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/itemAttributes/master/">Atributos del artículo</a>
+          </h2>
+          <p class="card-text">
+            Agrega una lista genérica de atributos al objeto artículo
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://gitlab.com/dncp-opendata">dncp-opendata</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/legalBasis/1.1/">Base legal</a>
+          </h2>
+          <p class="card-text">
+            Agregar campos al objeto de licitación para describir la base legal del procedimiento.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp recommended">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/location/master/">Ubicación</a>
+            <span class="badge rounded-pill text-bg-light">Recomendado</span>
+          </h2>
+          <p class="card-text">
+            Permite indicar el punto de entrega o el sitio de las obras para una línea de pedido determinada en los objetos de licitación, adjudicación y contrato.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions recommended">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/lots/master/">Lotes</a>
+            <span class="badge rounded-pill text-bg-light">Recomendado</span>
+          </h2>
+          <p class="card-text">
+            Un proceso de licitación se puede dividir en lotes, donde los licitadores pueden ofertar en uno o más lotes. Los detalles de cada lote se pueden proporcionar aquí. Los artículos, documentos y otras características pueden hacer referencia al lote que están relacionados con el uso de relatedLot. Cuando no se indique ningún identificador relacionado, los valores deben interpretarse como aplicables a toda la licitación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/medicine/master/">Medicina</a>
+          </h2>
+          <p class="card-text">
+            Agrega campos al objeto artículo relevantes para la adquisición de medicamentos.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/metrics/1.1/">Métrica</a>
+          </h2>
+          <p class="card-text">
+            La extensión de métricas admite la publicación de pronósticos (etapa de planificación), objetivos (etapa de licitación), objetivos de desempeño acordados (etapa de adjudicación y contrato) y resultados (etapa de implementación).
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/options/master/">Opciones</a>
+          </h2>
+          <p class="card-text">
+            Agregar campos para obtener información sobre las opciones.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/organizationClassification/master/">Clasificación de la organización</a>
+          </h2>
+          <p class="card-text">
+            Adds an array of classification objects to an organization&#39;s details in order to categorize it.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/otherRequirements/master/">Otros requisitos</a>
+          </h2>
+          <p class="card-text">
+            Agregar un objeto para describir otros requisitos para participar en un proceso de contratación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/pagination/master/">Paginación</a>
+          </h2>
+          <p class="card-text">
+            Agregar un objeto de enlaces a los paquetes para dar soporte a la paginación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions recommended">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/participation_fee/master/">Cuotas/Cargos de participación</a>
+            <span class="badge rounded-pill text-bg-light">Recomendado</span>
+          </h2>
+          <p class="card-text">
+            Cuando un proceso de licitación implica el pago de cargos para acceder a los documentos, presentar una propuesta, o ser adjudicado un contrato, esta extensión se puede utilizar para proporcionar detalles de la tasa.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/partyScale/master/">Organization scale</a>
+          </h2>
+          <p class="card-text">
+            Para clasificar organizaciones como micro, PyME or grande
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/performance_failures/master/">Fallos de desempleño</a>
+          </h2>
+          <p class="card-text">
+            Agrega campos a la sección de implementación para permitir la divulgación de una serie de fallas de rendimiento de contratación. Basado en la tabla de informes de fallas de rendimiento definida en el Marco de Divulgación para el Banco Mundial en las APP.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/ppp/1.1/">Extensión OCDS para APPs</a>
+          </h2>
+          <p class="card-text">
+            Realiza los cambios requeridos por el perfil de OCDS para APPs. Los indicadores de evaluación, resumen financiero y detalles del proyecto podrían ser movidos a otra extensión.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/procedure/master/">Procedimiento</a>
+          </h2>
+          <p class="card-text">
+            Esta extensión agrega un bloque para describir el procedimiento de contratación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp recommended">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/process_title/master/">Título y descripción del nivel del proceso</a>
+            <span class="badge rounded-pill text-bg-light">Recomendado</span>
+          </h2>
+          <p class="card-text">
+            For providing overall process titles and descriptions, often to give a summary of the contracting process as a whole.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/procurementMethodRationaleClassifications/master/">Clasificaciones de los fundamentos de métodos de contratación</a>
+          </h2>
+          <p class="card-text">
+            Agregar una lista al objeto de licitación para clasificar la justificación del método de contratación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/project/master/">Proyecto</a>
+          </h2>
+          <p class="card-text">
+            Agrega un objeto de proyecto al objeto de planificación para describir el proyecto de infraestructura o asociación público-privada (APP) con el que está relacionado el proceso de planificación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/recurrence/master/">Recurrencia</a>
+          </h2>
+          <p class="card-text">
+            Agregar campos de información acerca de la recurrencia del proceso de contratación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-compranet">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/releasePublisher/master/">Publicador del Release</a>
+          </h2>
+          <p class="card-text">
+            Incluye información sobre el publicador a nivel release para los casos en los que un paquete de releases o un paquete de records contienen releases de diferentes publicadores
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/CompraNet">CompraNet</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-oncaeti">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/releaseSource/master/">Fuentes</a>
+          </h2>
+          <p class="card-text">
+            Añade una lista de fuentes para indicar los sistemas de información de los cuales se originan los datos
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://bitbucket.org/ONCAETI">ONCAETI</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/renewal/master/">Renovación</a>
+          </h2>
+          <p class="card-text">
+            Adds fields to describe the options for the renewal of contracts.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/requirements/master/">Requisitos</a>
+          </h2>
+          <p class="card-text">
+            Adds fields to express the Core Criterion and Core Evidence Vocabulary (CCCEV).
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/risk_allocation/master/">Asignación de Riesgo</a>
+          </h2>
+          <p class="card-text">
+            Para proporcionar las asignaciones de riesgo definidas en un contrato de asociación público-privada.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/secondStageDescription/master/">Descripción de la segunda etapa</a>
+          </h2>
+          <p class="card-text">
+            Agregar un objeto de segunda etapa a los objetos de licitación y lote, para describir la segunda etapa de un procedimiento de dos etapas.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/selectionCriteria/master/">Criterios de Selección</a>
+          </h2>
+          <p class="card-text">
+            Agrega un objeto para describir las condiciones de participación en un proceso de contratación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/shareholders/master/">Accionistas</a>
+          </h2>
+          <p class="card-text">
+            Agrega campos de propiedad de la empresa al objeto de organización utilizado en la lista de partes.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/signatories/master/">Firmantes</a>
+          </h2>
+          <p class="card-text">
+            Añade una lista de firmantes al objeto contrato, para cuando los firmantes difieran del comprador para el proceso de contratación y los proveedores para la adjudicación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/statistics/master/">Estadística</a>
+          </h2>
+          <p class="card-text">
+            Adds a top-level statistics array to describe statistics about the contracting process.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-dncp-opendata">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/statusDetails/master/">Detalles de estado</a>
+          </h2>
+          <p class="card-text">
+            Agregar un campo statusDetails al objeto Tender, Award y Contract.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://gitlab.com/dncp-opendata">dncp-opendata</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/subcontracting/master/">Subcontratación</a>
+          </h2>
+          <p class="card-text">
+            Adds objects for information about the terms governing subcontracting and the parts of the contract that tenderers and suppliers will subcontract to third parties.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/submissionTerms/master/">Términos de Presentación de la Oferta</a>
+          </h2>
+          <p class="card-text">
+            Agrega un objeto términos de presentación de la oferta a los objetos de la licitación y del lote, para describir cómo, cuándo y dónde los oferentes deberán presentar sus ofertas.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/suitability/master/">Idoneidad</a>
+          </h2>
+          <p class="card-text">
+            Adds a suitability object to the tender, lot and lot group objects to describe their suitability to different types of tenderers.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/sustainability/master/">Sustainability</a>
+          </h2>
+          <p class="card-text">
+            Adds fields to the tender and lot objects, to provide information related to Sustainable Public Procurement.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/tariffs/1.1/">Tarifas</a>
+          </h2>
+          <p class="card-text">
+            Agrega campos al contrato y objetos de implementación para capturar los detalles de las tarifas, los peajes y las tarifas de los usuarios establecidos en el contrato y en uso durante la vida del proyecto.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/techniques/master/">Técnicas</a>
+          </h2>
+          <p class="card-text">
+            Adds fields to the tender, lot and lot group objects to describe the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/tenderClassification/master/">Clasificación de la licitación</a>
+          </h2>
+          <p class="card-text">
+            Agregar una serie de objetos de clasificación al objeto de licitación para categorizar el procedimiento o la solicitud de orden de compra como un todo.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-portal-edca-hn">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/tender_datePublished/master/">Fecha de publicación de la licitación</a>
+          </h2>
+          <p class="card-text">
+            Agregar un campo de fecha para indicar cuándo se publicó la licitación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/portaledcahn">Portal EDCA HN</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions profile-ppp">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/transaction_milestones/master/">Hitos relacionados con transacción</a>
+          </h2>
+          <p class="card-text">
+            Agregar un campo a relatedImplementationMilestone a los objetos de transacción, para que los pagos de un contrato puedan vincularse a un hito de implementación.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/unstructuredChanges/master/">Cambios no estructurados</a>
+          </h2>
+          <p class="card-text">
+            Agrega una matriz unstructuredChanges al objeto Amendment.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center extension publisher-open-contracting-data-standard-extensions">
+    <div class="col-12 col-md-8 col-xl-6 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title h5">
+            <a href="/es/extensions/withheldInformation/master/">Withheld information</a>
+          </h2>
+          <p class="card-text">
+            Adds a top-level withheld information array to describe items of information whose publication is temporarily or permanently withheld.
+          </p>
+          <p class="card-text">
+            <small class="text-muted">
+              Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+            </small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/lib/bootstrap.bundle.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

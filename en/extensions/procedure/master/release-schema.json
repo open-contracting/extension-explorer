@@ -1,0 +1,47 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "procedure": {
+          "title": "Procedure",
+          "description": "Information about the procurement procedure.",
+          "$ref": "#/definitions/Procedure"
+        }
+      }
+    },
+    "Procedure": {
+      "title": "Procedure",
+      "description": "Information about the procurement procedure.",
+      "type": "object",
+      "properties": {
+        "isAccelerated": {
+          "title": "Accelerated procedure used",
+          "description": "Whether the time limit for receipt of bids or expressions of interest can be reduced due to a state of urgency.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "acceleratedRationale": {
+          "title": "Accelerated procedure rationale",
+          "description": "The justification for using an accelerated procedure.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "features": {
+          "title": "Features",
+          "description": "The main features of the procedure (e.g. description of the individual stages) and information about where the full rules for the procedure can be found.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "charges": {
+          "title": "Cargos",
+          "description": "Informaci\u00f3n sobre los ingresos que se recaudar\u00e1n a trav\u00e9s de cobros, seg\u00fan lo estipulado en el contrato o revisado posteriormente durante la vida del proyecto.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Charge"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Charge": {
+      "title": "Cargo",
+      "description": "Un cargo a ser incurrido por los usuarios o el gobierno durante el curso del contrato. La informaci\u00f3n del cargo se puede desglosar por per\u00edodo. La informaci\u00f3n sobre los precios unitarios en los que se basan los valores totales puede proporcionarse en la secci\u00f3n de tarifas.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identificador de cargo",
+          "description": "Un identificador local para esta cargo espec\u00edfico. Este campo se utiliza para realizar un seguimiento de las revisiones de un cargo a trav\u00e9s de varias publicaciones OCDS.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "T\u00edtulo del cargo",
+          "description": "Un t\u00edtulo descriptivo para este cobro,",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "paidBy": {
+          "title": "Pagado por",
+          "description": "\u00bfSe trata de un cargo de usuario (pagado por empresas o ciudadanos que utilizan las facilidades proporcionadas por el contrato), o un cargo pagado por el gobierno?",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "chargePaidBy.csv",
+          "openCodelist": false,
+          "enum": [
+            "government",
+            "user",
+            null
+          ]
+        },
+        "period": {
+          "title": "Periodo",
+          "description": "El per\u00edodo al que se aplica este cargo.",
+          "$ref": "#/definitions/Period"
+        },
+        "estimatedValue": {
+          "title": "Valor estimado",
+          "description": "Cu\u00e1l es el valor total estimado que se levantar\u00e1 de este cargo durante este per\u00edodo.",
+          "$ref": "#/definitions/Value"
+        },
+        "actualValue": {
+          "title": "Valor real",
+          "description": "En la secci\u00f3n de implementaci\u00f3n, este campo puede ser actualizado con los ingresos totales recaudados de este cobro durante este per\u00edodo.",
+          "$ref": "#/definitions/Value"
+        },
+        "notes": {
+          "title": "Notas",
+          "description": "Cualquier nota sobre este cargo. Esto puede incluir informaci\u00f3n para aclaraci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

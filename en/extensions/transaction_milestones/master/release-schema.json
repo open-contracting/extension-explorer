@@ -1,0 +1,13 @@
+{
+  "definitions": {
+    "Transaction": {
+      "properties": {
+        "relatedImplementationMilestone": {
+          "title": "Related implementation milestone",
+          "description": "A link to the milestone in the implementation section of OCDS to which this transaction relates.",
+          "$ref": "#/definitions/MilestoneReference"
+        }
+      }
+    }
+  }
+}

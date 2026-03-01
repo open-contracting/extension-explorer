@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Essential assets",
+    "es": "Activos esenciales"
+  },
+  "description": {
+    "en": "Adds a object to the tender object to describe the assets used for the provision of public services.",
+    "es": "Agregar un objeto al objeto de licitaci\u00f3n para describir los activos utilizados para la prestaci\u00f3n de servicios p\u00fablicos."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/essentialAssets/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
