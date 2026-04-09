@@ -42,3 +42,6 @@ pattern = "**/templates/**.html"
 [[tool.babel.mappings]]
 method = "tag"
 pattern = "**.yaml"
+
+[tool.uv.pip]
+exclude-newer = "1 week"
