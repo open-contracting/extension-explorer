@@ -150,7 +150,7 @@ pygments==2.20.0
     #   -r requirements.txt
     #   pytest
     #   sphinx
-pytest==9.0.2
+pytest==9.0.3
     # via
     #   -r requirements_dev.in
     #   pytest-flask
