@@ -10,7 +10,7 @@ jobs:
       - name: Disable AppArmor  # https://chromium.googlesource.com/chromium/src/+/main/docs/security/apparmor-userns-restrictions.md
         run: echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6.3.0
+      - uses: actions/setup-node@v6.4.0
         with:
           node-version: 22
       - uses: actions/setup-python@v6
