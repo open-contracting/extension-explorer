@@ -1,0 +1,3 @@
+Código,Título,Descripción
+total,Fijo (total),"El número es el precio fijo o el costo fijo de la oferta. Por ejemplo: ""El precio de una oferta debe ser de 100.000 dólares""."
+unit,Fijo (por unidad),"El número es el precio fijo o el costo fijo de una unidad. Por ejemplo: ""El precio de cada widget debe ser de $ 100""."

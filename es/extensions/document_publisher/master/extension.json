@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Document publisher",
+    "es": "Document publisher"
+  },
+  "description": {
+    "en": "Adds a publisher field to the document object.",
+    "es": "Adds a publisher field to the document object."
+  },
+  "documentationUrl": {
+    "en": "https://github.com/open-contracting-extensions/ocds_document_publisher_extension"
+  },
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+partyRole.csv"
+  ],
+  "compatibility": [
+    "1.1"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

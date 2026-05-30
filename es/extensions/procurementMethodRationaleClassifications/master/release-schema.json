@@ -1,0 +1,19 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "procurementMethodRationaleClassifications": {
+          "title": "Clasificaciones de los fundamentos de m\u00e9todos de contrataci\u00f3n",
+          "description": "Las clasificaciones de la justificaci\u00f3n del m\u00e9todo de contrataci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

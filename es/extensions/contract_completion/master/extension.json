@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Contract Completion",
+    "es": "Cumplimiento del contrato"
+  },
+  "description": {
+    "en": "Adds fields to the contract implementation section to detail the end date, and final value of a contract.",
+    "es": "A\u00f1ade campos a la secci\u00f3n de implementaci\u00f3n del contrato para detallar la fecha de finalizaci\u00f3n, y el valor final de un contrato."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/contract_completion/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

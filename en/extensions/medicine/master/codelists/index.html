@@ -1,0 +1,3216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+
+  <title>Medicine — Codelists — OCDS Extension Explorer</title>
+  <meta name="description" content="Documentation of the codes in the Medicine extension">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/medicine/master/codelists/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/medicine/master/codelists/">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/en/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        OCDS Extension Explorer
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/en/">
+            Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/en/extensions/">
+            Extensions
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/en/publishers/">
+            Publisher guidance
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/en/users/">
+            User guidance
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+            <svg class="icon" aria-hidden="true" viewBox="0 0 576 512" title="Select language">
+              <path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32l0 32 128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-9.6 0-8.4 23.1c-16.4 45.2-41.1 86.5-72.2 122 14.2 8.8 29 16.6 44.4 23.5l50.4 22.4 62.2-140c5.1-11.6 16.6-19 29.2-19s24.1 7.4 29.2 19l128 288c7.2 16.2-.1 35.1-16.2 42.2s-35.1-.1-42.2-16.2l-20-45-157.5 0-20 45c-7.2 16.2-26.1 23.4-42.2 16.2s-23.4-26.1-16.2-42.2l39.8-89.5-50.4-22.4c-23-10.2-45-22.4-65.8-36.4-21.3 17.2-44.6 32.2-69.5 44.7L78.3 380.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9l34.5-17.3c16.3-8.2 31.8-17.7 46.4-28.3-13.8-12.7-26.8-26.4-38.9-40.9L81.6 224.7c-11.3-13.6-9.5-33.8 4.1-45.1s33.8-9.5 45.1 4.1l10.2 12.2c11.5 13.9 24.1 26.8 37.4 38.7 27.5-30.4 49.2-66.1 63.5-105.4l.5-1.2-210.3 0C14.3 128 0 113.7 0 96S14.3 64 32 64l96 0 0-32c0-17.7 14.3-32 32-32zM416 270.8L365.7 384 466.3 384 416 270.8z"/>
+            </svg>
+            <span class="visually-hidden">Select language</span>
+            English
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4 active" href="/en/extensions/medicine/master/codelists/">
+              English
+            </a>
+            <a class="dropdown-item px-4" href="/es/extensions/medicine/master/codelists/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Medicine
+      </h1>
+
+      <p class="lead">
+        Adds fields to the item object relevant to the procurement of medicines.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Version:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version">
+          <optgroup label="Present versions">
+            <option value="/en/extensions/medicine/master/codelists/" selected>
+              master
+              (latest)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Toggle extension navigation"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/medicine/master/">
+            Documentation
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/en/extensions/medicine/master/schema/">
+            Schema
+          </a>
+        </div>
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/en/extensions/medicine/master/codelists/">
+            Codelists
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li>
+              <a href="#administrationRoute.csv">
+                administrationRoute.csv
+              </a>
+            </li>
+            <li>
+              <a href="#dosageForm.csv">
+                dosageForm.csv
+              </a>
+            </li>
+            <li>
+              <a href="#immediateContainer.csv">
+                immediateContainer.csv
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          To use this extension, add this URL to your package's <code>extensions</code> array:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_medicine_extension/master/extension.json" aria-label="Extension URL" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copy to clipboard" data-updated-title="Copied!">
+              <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+              <svg class="icon" aria-hidden="true" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"/>
+              </svg>
+              <span class="visually-hidden">
+                Copy to clipboard
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_medicine_extension/archive/master.zip" role="button">
+            Download ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Maintained by <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Codelists
+      </h2>
+
+      <h3 id="administrationRoute.csv">
+        administrationRoute.csv
+      </h3>
+
+      <p>
+        You can <a href="/en/extensions/medicine/master/codelists/administrationRoute.csv">download the <code>administrationRoute.csv</code> file</a> in English.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="administrationRoute.csv/AMNINJ">
+              <code>
+                AMNINJ
+              </code>
+            </td>
+            <td>
+              Injection, amniotic fluid
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/BILINJ">
+              <code>
+                BILINJ
+              </code>
+            </td>
+            <td>
+              Injection, biliary tract
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CHOLINJ">
+              <code>
+                CHOLINJ
+              </code>
+            </td>
+            <td>
+              Injection, for cholangiography
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/DRESS">
+              <code>
+                DRESS
+              </code>
+            </td>
+            <td>
+              Topical application, soaked dressing
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ELECTOSMOS">
+              <code>
+                ELECTOSMOS
+              </code>
+            </td>
+            <td>
+              Electro-osmosis
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IONTO">
+              <code>
+                IONTO
+              </code>
+            </td>
+            <td>
+              Topical application, iontophoresis
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SOAK">
+              <code>
+                SOAK
+              </code>
+            </td>
+            <td>
+              Immersion (soak)
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SWAB">
+              <code>
+                SWAB
+              </code>
+            </td>
+            <td>
+              Topical application, swab
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TOPICAL">
+              <code>
+                TOPICAL
+              </code>
+            </td>
+            <td>
+              Topical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/BUC">
+              <code>
+                BUC
+              </code>
+            </td>
+            <td>
+              Topical application, buccal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CECINSTL">
+              <code>
+                CECINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, cecostomy
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CERV">
+              <code>
+                CERV
+              </code>
+            </td>
+            <td>
+              Topical application, cervical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CERVINJ">
+              <code>
+                CERVINJ
+              </code>
+            </td>
+            <td>
+              Injection, cervical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CERVINS">
+              <code>
+                CERVINS
+              </code>
+            </td>
+            <td>
+              Insertion, cervical (uterine)
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/DEN">
+              <code>
+                DEN
+              </code>
+            </td>
+            <td>
+              Topical application, dental
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/DENRINSE">
+              <code>
+                DENRINSE
+              </code>
+            </td>
+            <td>
+              Rinse, dental
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CHEW">
+              <code>
+                CHEW
+              </code>
+            </td>
+            <td>
+              Chew, oral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EXTCORPDIF">
+              <code>
+                EXTCORPDIF
+              </code>
+            </td>
+            <td>
+              Diffusion, extracorporeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/HEMODIFF">
+              <code>
+                HEMODIFF
+              </code>
+            </td>
+            <td>
+              Diffusion, hemodialysis
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRNSDERMD">
+              <code>
+                TRNSDERMD
+              </code>
+            </td>
+            <td>
+              Diffusion, transdermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/DISSOLVE">
+              <code>
+                DISSOLVE
+              </code>
+            </td>
+            <td>
+              Dissolve, oral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SL">
+              <code>
+                SL
+              </code>
+            </td>
+            <td>
+              Dissolve, sublingual
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/DOUCHE">
+              <code>
+                DOUCHE
+              </code>
+            </td>
+            <td>
+              Douche, vaginal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ENEMA">
+              <code>
+                ENEMA
+              </code>
+            </td>
+            <td>
+              Enema, rectal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/RETENEMA">
+              <code>
+                RETENEMA
+              </code>
+            </td>
+            <td>
+              Enema, rectal retention
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EFT">
+              <code>
+                EFT
+              </code>
+            </td>
+            <td>
+              Instillation, enteral feeding tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ENTINSTL">
+              <code>
+                ENTINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, enteral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EPI">
+              <code>
+                EPI
+              </code>
+            </td>
+            <td>
+              Infusion, epidural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EPIDURINJ">
+              <code>
+                EPIDURINJ
+              </code>
+            </td>
+            <td>
+              Injection, epidural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EPIINJ">
+              <code>
+                EPIINJ
+              </code>
+            </td>
+            <td>
+              Injection, epidural, push
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EPINJSP">
+              <code>
+                EPINJSP
+              </code>
+            </td>
+            <td>
+              Injection, epidural, slow push
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EXTRAMNINJ">
+              <code>
+                EXTRAMNINJ
+              </code>
+            </td>
+            <td>
+              Injection, extra-amniotic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/EXTCORPINJ">
+              <code>
+                EXTCORPINJ
+              </code>
+            </td>
+            <td>
+              Injection, extracorporeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVFLUSH">
+              <code>
+                IVFLUSH
+              </code>
+            </td>
+            <td>
+              Flush, intravenous catheter
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/GBINJ">
+              <code>
+                GBINJ
+              </code>
+            </td>
+            <td>
+              Injection, gastric button
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/GT">
+              <code>
+                GT
+              </code>
+            </td>
+            <td>
+              Instillation, gastrostomy tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NGT">
+              <code>
+                NGT
+              </code>
+            </td>
+            <td>
+              Instillation, nasogastric tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/OGT">
+              <code>
+                OGT
+              </code>
+            </td>
+            <td>
+              Instillation, orogastric tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/GUIRR">
+              <code>
+                GUIRR
+              </code>
+            </td>
+            <td>
+              Irrigation, genitourinary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/GIN">
+              <code>
+                GIN
+              </code>
+            </td>
+            <td>
+              Topical application, gingival
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/GINGINJ">
+              <code>
+                GINGINJ
+              </code>
+            </td>
+            <td>
+              Injection, gingival
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/HAIR">
+              <code>
+                HAIR
+              </code>
+            </td>
+            <td>
+              Topical application, hair
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SHAMPOO">
+              <code>
+                SHAMPOO
+              </code>
+            </td>
+            <td>
+              Shampoo
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IDIMPLNT">
+              <code>
+                IDIMPLNT
+              </code>
+            </td>
+            <td>
+              Implantation, intradermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVITIMPLNT">
+              <code>
+                IVITIMPLNT
+              </code>
+            </td>
+            <td>
+              Implantation, intravitreal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SQIMPLNT">
+              <code>
+                SQIMPLNT
+              </code>
+            </td>
+            <td>
+              Implantation, subcutaneous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IA">
+              <code>
+                IA
+              </code>
+            </td>
+            <td>
+              Infusion, intraarterial catheter
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IC">
+              <code>
+                IC
+              </code>
+            </td>
+            <td>
+              Infusion, intracardiac
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICOR">
+              <code>
+                ICOR
+              </code>
+            </td>
+            <td>
+              Infusion, intracoronary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOSSC">
+              <code>
+                IOSSC
+              </code>
+            </td>
+            <td>
+              Infusion, intraosseous, continuous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IT">
+              <code>
+                IT
+              </code>
+            </td>
+            <td>
+              Infusion, intrathecal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IV">
+              <code>
+                IV
+              </code>
+            </td>
+            <td>
+              Infusion, intravenous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVASCINFUS">
+              <code>
+                IVASCINFUS
+              </code>
+            </td>
+            <td>
+              Infusion, intravascular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SQINFUS">
+              <code>
+                SQINFUS
+              </code>
+            </td>
+            <td>
+              Infusion, subcutaneous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPINHL">
+              <code>
+                IPINHL
+              </code>
+            </td>
+            <td>
+              Inhalation, respiratory
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPPB">
+              <code>
+                IPPB
+              </code>
+            </td>
+            <td>
+              Inhalation, intermittent positive pressure breathing (ippb)
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NASINHL">
+              <code>
+                NASINHL
+              </code>
+            </td>
+            <td>
+              Inhalation, nasal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NEB">
+              <code>
+                NEB
+              </code>
+            </td>
+            <td>
+              Inhalation, nebulization
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRACH">
+              <code>
+                TRACH
+              </code>
+            </td>
+            <td>
+              Inhalation, tracheostomy
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/VENT">
+              <code>
+                VENT
+              </code>
+            </td>
+            <td>
+              Inhalation, ventilator
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/VENTMASK">
+              <code>
+                VENTMASK
+              </code>
+            </td>
+            <td>
+              Inhalation, ventimask
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/BLADINJ">
+              <code>
+                BLADINJ
+              </code>
+            </td>
+            <td>
+              Injection, urinary bladder
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ENDOSININJ">
+              <code>
+                ENDOSININJ
+              </code>
+            </td>
+            <td>
+              Injection, endosinusial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/HEMOPORT">
+              <code>
+                HEMOPORT
+              </code>
+            </td>
+            <td>
+              Injection, hemodialysis port
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IABDINJ">
+              <code>
+                IABDINJ
+              </code>
+            </td>
+            <td>
+              Injection, intra-abdominal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IAINJ">
+              <code>
+                IAINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraarterial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IARTINJ">
+              <code>
+                IARTINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraarticular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IBURSINJ">
+              <code>
+                IBURSINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrabursal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICARDINJ">
+              <code>
+                ICARDINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracardiac
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICARTINJ">
+              <code>
+                ICARTINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracartilaginous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICAUDINJ">
+              <code>
+                ICAUDINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracaudal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICAVINJ">
+              <code>
+                ICAVINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracavernous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICAVITINJ">
+              <code>
+                ICAVITINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracavitary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICEREBINJ">
+              <code>
+                ICEREBINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracerebral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICISTERNINJ">
+              <code>
+                ICISTERNINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracisternal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICORONINJ">
+              <code>
+                ICORONINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracoronary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICORPCAVINJ">
+              <code>
+                ICORPCAVINJ
+              </code>
+            </td>
+            <td>
+              Injection, intracorpus cavernosum
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IDINJ">
+              <code>
+                IDINJ
+              </code>
+            </td>
+            <td>
+              Injection, intradermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IDISCINJ">
+              <code>
+                IDISCINJ
+              </code>
+            </td>
+            <td>
+              Injection, intradiscal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IDUCTINJ">
+              <code>
+                IDUCTINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraductal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IDURINJ">
+              <code>
+                IDURINJ
+              </code>
+            </td>
+            <td>
+              Injection, intradural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IEPIDINJ">
+              <code>
+                IEPIDINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraepidermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IEPITHINJ">
+              <code>
+                IEPITHINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraepithelial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ILESINJ">
+              <code>
+                ILESINJ
+              </code>
+            </td>
+            <td>
+              Injection, intralesional
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ILUMINJ">
+              <code>
+                ILUMINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraluminal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ILYMPJINJ">
+              <code>
+                ILYMPJINJ
+              </code>
+            </td>
+            <td>
+              Injection, intralymphatic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IM">
+              <code>
+                IM
+              </code>
+            </td>
+            <td>
+              Injection, intramuscular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IMEDULINJ">
+              <code>
+                IMEDULINJ
+              </code>
+            </td>
+            <td>
+              Injection, intramedullary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/INTERMENINJ">
+              <code>
+                INTERMENINJ
+              </code>
+            </td>
+            <td>
+              Injection, interameningeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/INTERSTITINJ">
+              <code>
+                INTERSTITINJ
+              </code>
+            </td>
+            <td>
+              Injection, interstitial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOINJ">
+              <code>
+                IOINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraocular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOSSINJ">
+              <code>
+                IOSSINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraosseous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOVARINJ">
+              <code>
+                IOVARINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraovarian
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPCARDINJ">
+              <code>
+                IPCARDINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrapericardial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPERINJ">
+              <code>
+                IPERINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraperitoneal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPINJ">
+              <code>
+                IPINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrapulmonary
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPLRINJ">
+              <code>
+                IPLRINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrapleural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPROSTINJ">
+              <code>
+                IPROSTINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraprostatic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IPUMPINJ">
+              <code>
+                IPUMPINJ
+              </code>
+            </td>
+            <td>
+              Injection, insulin pump
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ISINJ">
+              <code>
+                ISINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraspinal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ISTERINJ">
+              <code>
+                ISTERINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrasternal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ISYNINJ">
+              <code>
+                ISYNINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrasynovial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITENDINJ">
+              <code>
+                ITENDINJ
+              </code>
+            </td>
+            <td>
+              Injection, intratendinous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITESTINJ">
+              <code>
+                ITESTINJ
+              </code>
+            </td>
+            <td>
+              Injection, intratesticular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITHORINJ">
+              <code>
+                ITHORINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrathoracic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITINJ">
+              <code>
+                ITINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrathecal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITUBINJ">
+              <code>
+                ITUBINJ
+              </code>
+            </td>
+            <td>
+              Injection, intratubular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITUMINJ">
+              <code>
+                ITUMINJ
+              </code>
+            </td>
+            <td>
+              Injection, intratumor
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITYMPINJ">
+              <code>
+                ITYMPINJ
+              </code>
+            </td>
+            <td>
+              Injection, intratympanic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IUINJ">
+              <code>
+                IUINJ
+              </code>
+            </td>
+            <td>
+              Injection, intrauterine
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IUINJC">
+              <code>
+                IUINJC
+              </code>
+            </td>
+            <td>
+              Injection, intracervical (uterus)
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IURETINJ">
+              <code>
+                IURETINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraureteral, retrograde
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVASCINJ">
+              <code>
+                IVASCINJ
+              </code>
+            </td>
+            <td>
+              Injection, intravascular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVENTINJ">
+              <code>
+                IVENTINJ
+              </code>
+            </td>
+            <td>
+              Injection, intraventricular (heart)
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVESINJ">
+              <code>
+                IVESINJ
+              </code>
+            </td>
+            <td>
+              Injection, intravesicle
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVINJ">
+              <code>
+                IVINJ
+              </code>
+            </td>
+            <td>
+              Injection, intravenous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IVITINJ">
+              <code>
+                IVITINJ
+              </code>
+            </td>
+            <td>
+              Injection, intravitreal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PAINJ">
+              <code>
+                PAINJ
+              </code>
+            </td>
+            <td>
+              Injection, periarticular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PARENTINJ">
+              <code>
+                PARENTINJ
+              </code>
+            </td>
+            <td>
+              Injection, parenteral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PDONTINJ">
+              <code>
+                PDONTINJ
+              </code>
+            </td>
+            <td>
+              Injection, periodontal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PDPINJ">
+              <code>
+                PDPINJ
+              </code>
+            </td>
+            <td>
+              Injection, peritoneal dialysis port
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PDURINJ">
+              <code>
+                PDURINJ
+              </code>
+            </td>
+            <td>
+              Injection, peridural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PNINJ">
+              <code>
+                PNINJ
+              </code>
+            </td>
+            <td>
+              Injection, perineural
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PNSINJ">
+              <code>
+                PNSINJ
+              </code>
+            </td>
+            <td>
+              Injection, paranasal sinuses
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/RBINJ">
+              <code>
+                RBINJ
+              </code>
+            </td>
+            <td>
+              Injection, retrobulbar
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SCINJ">
+              <code>
+                SCINJ
+              </code>
+            </td>
+            <td>
+              Injection, subconjunctival
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SLESINJ">
+              <code>
+                SLESINJ
+              </code>
+            </td>
+            <td>
+              Injection, sublesional
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SOFTISINJ">
+              <code>
+                SOFTISINJ
+              </code>
+            </td>
+            <td>
+              Injection, soft tissue
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SQ">
+              <code>
+                SQ
+              </code>
+            </td>
+            <td>
+              Injection, subcutaneous
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SUBARACHINJ">
+              <code>
+                SUBARACHINJ
+              </code>
+            </td>
+            <td>
+              Injection, subarachnoid
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SUBMUCINJ">
+              <code>
+                SUBMUCINJ
+              </code>
+            </td>
+            <td>
+              Injection, submucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRPLACINJ">
+              <code>
+                TRPLACINJ
+              </code>
+            </td>
+            <td>
+              Injection, transplacental
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRTRACHINJ">
+              <code>
+                TRTRACHINJ
+              </code>
+            </td>
+            <td>
+              Injection, transtracheal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/URETHINJ">
+              <code>
+                URETHINJ
+              </code>
+            </td>
+            <td>
+              Injection, urethral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/URETINJ">
+              <code>
+                URETINJ
+              </code>
+            </td>
+            <td>
+              Injection, ureteral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOSURGINS">
+              <code>
+                IOSURGINS
+              </code>
+            </td>
+            <td>
+              Insertion, intraocular, surgical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IU">
+              <code>
+                IU
+              </code>
+            </td>
+            <td>
+              Insertion, intrauterine
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/LPINS">
+              <code>
+                LPINS
+              </code>
+            </td>
+            <td>
+              Insertion, lacrimal puncta
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PR">
+              <code>
+                PR
+              </code>
+            </td>
+            <td>
+              Insertion, rectal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SQSURGINS">
+              <code>
+                SQSURGINS
+              </code>
+            </td>
+            <td>
+              Insertion, subcutaneous, surgical
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/URETHINS">
+              <code>
+                URETHINS
+              </code>
+            </td>
+            <td>
+              Insertion, urethral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/VAGINSI">
+              <code>
+                VAGINSI
+              </code>
+            </td>
+            <td>
+              Insertion, vaginal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/BLADINSTL">
+              <code>
+                BLADINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, urinary catheter
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CAPDINSTL">
+              <code>
+                CAPDINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, continuous ambulatory peritoneal dialysis port
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/CTINSTL">
+              <code>
+                CTINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, chest tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ETINSTL">
+              <code>
+                ETINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, endotracheal tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/GJT">
+              <code>
+                GJT
+              </code>
+            </td>
+            <td>
+              Instillation, gastro-jejunostomy tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IBRONCHINSTIL">
+              <code>
+                IBRONCHINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, intrabronchial
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IDUODINSTIL">
+              <code>
+                IDUODINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, intraduodenal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IESOPHINSTIL">
+              <code>
+                IESOPHINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, intraesophageal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IGASTINSTIL">
+              <code>
+                IGASTINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, intragastric
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IILEALINJ">
+              <code>
+                IILEALINJ
+              </code>
+            </td>
+            <td>
+              Instillation, intraileal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOINSTL">
+              <code>
+                IOINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, intraocular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ISININSTIL">
+              <code>
+                ISININSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, intrasinal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITRACHINSTIL">
+              <code>
+                ITRACHINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, intratracheal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IUINSTL">
+              <code>
+                IUINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, intrauterine
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/JJTINSTL">
+              <code>
+                JJTINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, jejunostomy tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/LARYNGINSTIL">
+              <code>
+                LARYNGINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, laryngeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NASALINSTIL">
+              <code>
+                NASALINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, nasal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NASOGASINSTIL">
+              <code>
+                NASOGASINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, nasogastric
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NTT">
+              <code>
+                NTT
+              </code>
+            </td>
+            <td>
+              Instillation, nasotracheal tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/OJJ">
+              <code>
+                OJJ
+              </code>
+            </td>
+            <td>
+              Instillation, orojejunum tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/OT">
+              <code>
+                OT
+              </code>
+            </td>
+            <td>
+              Instillation, otic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PDPINSTL">
+              <code>
+                PDPINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, peritoneal dialysis port
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PNSINSTL">
+              <code>
+                PNSINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, paranasal sinuses
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/RECINSTL">
+              <code>
+                RECINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, rectal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SININSTIL">
+              <code>
+                SININSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, sinus, unspecified
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SOFTISINSTIL">
+              <code>
+                SOFTISINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, soft tissue
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRACHINSTL">
+              <code>
+                TRACHINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, tracheostomy
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRTYMPINSTIL">
+              <code>
+                TRTYMPINSTIL
+              </code>
+            </td>
+            <td>
+              Instillation, transtympanic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/URETHINSTL">
+              <code>
+                URETHINSTL
+              </code>
+            </td>
+            <td>
+              Instillation, urethral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICORNTA">
+              <code>
+                ICORNTA
+              </code>
+            </td>
+            <td>
+              Topical application, intracorneal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ICORONTA">
+              <code>
+                ICORONTA
+              </code>
+            </td>
+            <td>
+              Topical application, intracoronal (dental)
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IDOUDMAB">
+              <code>
+                IDOUDMAB
+              </code>
+            </td>
+            <td>
+              Mucosal absorption, intraduodenal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IESOPHTA">
+              <code>
+                IESOPHTA
+              </code>
+            </td>
+            <td>
+              Topical application, intraesophageal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IGASTIRR">
+              <code>
+                IGASTIRR
+              </code>
+            </td>
+            <td>
+              Irrigation, intragastric
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IGASTLAV">
+              <code>
+                IGASTLAV
+              </code>
+            </td>
+            <td>
+              Lavage, intragastric
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IILEALTA">
+              <code>
+                IILEALTA
+              </code>
+            </td>
+            <td>
+              Topical application, intraileal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ILESIRR">
+              <code>
+                ILESIRR
+              </code>
+            </td>
+            <td>
+              Irrigation, intralesional
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ILTOP">
+              <code>
+                ILTOP
+              </code>
+            </td>
+            <td>
+              Topical application, intralesional
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ILUMTA">
+              <code>
+                ILUMTA
+              </code>
+            </td>
+            <td>
+              Topical application, intraluminal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOIRR">
+              <code>
+                IOIRR
+              </code>
+            </td>
+            <td>
+              Irrigation, intraocular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/IOTOP">
+              <code>
+                IOTOP
+              </code>
+            </td>
+            <td>
+              Topical application, intraocular
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ITRACHMAB">
+              <code>
+                ITRACHMAB
+              </code>
+            </td>
+            <td>
+              Mucosal absorption, intratracheal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/BLADIRR">
+              <code>
+                BLADIRR
+              </code>
+            </td>
+            <td>
+              Irrigation, urinary bladder
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/RECIRR">
+              <code>
+                RECIRR
+              </code>
+            </td>
+            <td>
+              Irrigation, rectal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/LARYNGTA">
+              <code>
+                LARYNGTA
+              </code>
+            </td>
+            <td>
+              Topical application, laryngeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRNSLING">
+              <code>
+                TRNSLING
+              </code>
+            </td>
+            <td>
+              Translingual
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SMUCMAB">
+              <code>
+                SMUCMAB
+              </code>
+            </td>
+            <td>
+              Mucosal absorption, submucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/MUC">
+              <code>
+                MUC
+              </code>
+            </td>
+            <td>
+              Topical application, mucous membrane
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NAIL">
+              <code>
+                NAIL
+              </code>
+            </td>
+            <td>
+              Topical application, nail
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/NASAL">
+              <code>
+                NASAL
+              </code>
+            </td>
+            <td>
+              Topical application, nasal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ETNEB">
+              <code>
+                ETNEB
+              </code>
+            </td>
+            <td>
+              Nebulization, endotracheal tube
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/OPTHALTA">
+              <code>
+                OPTHALTA
+              </code>
+            </td>
+            <td>
+              Topical application, ophthalmic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ORALTA">
+              <code>
+                ORALTA
+              </code>
+            </td>
+            <td>
+              Topical application, oral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ORRINSE">
+              <code>
+                ORRINSE
+              </code>
+            </td>
+            <td>
+              Rinse, oral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PO">
+              <code>
+                PO
+              </code>
+            </td>
+            <td>
+              Swallow, oral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/GARGLE">
+              <code>
+                GARGLE
+              </code>
+            </td>
+            <td>
+              Gargle
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/ORMUC">
+              <code>
+                ORMUC
+              </code>
+            </td>
+            <td>
+              Topical application, oromucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SUCK">
+              <code>
+                SUCK
+              </code>
+            </td>
+            <td>
+              Suck, oromucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SWISHSPIT">
+              <code>
+                SWISHSPIT
+              </code>
+            </td>
+            <td>
+              Swish and spit out, oromucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SWISHSWAL">
+              <code>
+                SWISHSWAL
+              </code>
+            </td>
+            <td>
+              Swish and swallow, oromucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/OROPHARTA">
+              <code>
+                OROPHARTA
+              </code>
+            </td>
+            <td>
+              Topical application, oropharyngeal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PERIANAL">
+              <code>
+                PERIANAL
+              </code>
+            </td>
+            <td>
+              Topical application, perianal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PERINEAL">
+              <code>
+                PERINEAL
+              </code>
+            </td>
+            <td>
+              Topical application, perineal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/PDONTTA">
+              <code>
+                PDONTTA
+              </code>
+            </td>
+            <td>
+              Topical application, periodontal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/RECTAL">
+              <code>
+                RECTAL
+              </code>
+            </td>
+            <td>
+              Topical application, rectal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/INSUF">
+              <code>
+                INSUF
+              </code>
+            </td>
+            <td>
+              Insufflation
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TRNSDERM">
+              <code>
+                TRNSDERM
+              </code>
+            </td>
+            <td>
+              Transdermal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SCALP">
+              <code>
+                SCALP
+              </code>
+            </td>
+            <td>
+              Topical application, scalp
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/OCDRESTA">
+              <code>
+                OCDRESTA
+              </code>
+            </td>
+            <td>
+              Occlusive dressing technique
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SKIN">
+              <code>
+                SKIN
+              </code>
+            </td>
+            <td>
+              Topical application, skin
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/SUBCONJTA">
+              <code>
+                SUBCONJTA
+              </code>
+            </td>
+            <td>
+              Subconjunctival
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/URETHSUP">
+              <code>
+                URETHSUP
+              </code>
+            </td>
+            <td>
+              Suppository, urethral
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TTYMPTABSORP">
+              <code>
+                TTYMPTABSORP
+              </code>
+            </td>
+            <td>
+              Topical absorption, transtympanic
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/TMUCTA">
+              <code>
+                TMUCTA
+              </code>
+            </td>
+            <td>
+              Topical application, transmucosal
+            </td>
+          </tr>
+          <tr>
+            <td id="administrationRoute.csv/VAGINS">
+              <code>
+                VAGINS
+              </code>
+            </td>
+            <td>
+              Topical application, vaginal
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="dosageForm.csv">
+        dosageForm.csv
+      </h3>
+
+      <p>
+        You can <a href="/en/extensions/medicine/master/codelists/dosageForm.csv">download the <code>dosageForm.csv</code> file</a> in English.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="dosageForm.csv/APPFUL">
+              <code>
+                APPFUL
+              </code>
+            </td>
+            <td>
+              Applicatorful
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/DROP">
+              <code>
+                DROP
+              </code>
+            </td>
+            <td>
+              Drops
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/PUFF">
+              <code>
+                PUFF
+              </code>
+            </td>
+            <td>
+              Puff
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/SCOOP">
+              <code>
+                SCOOP
+              </code>
+            </td>
+            <td>
+              Scoops
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/SPRY">
+              <code>
+                SPRY
+              </code>
+            </td>
+            <td>
+              Sprays
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/GASINHL">
+              <code>
+                GASINHL
+              </code>
+            </td>
+            <td>
+              Gas for Inhalation
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/AER">
+              <code>
+                AER
+              </code>
+            </td>
+            <td>
+              Aerosol
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/FOAM">
+              <code>
+                FOAM
+              </code>
+            </td>
+            <td>
+              Foam
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/INHL">
+              <code>
+                INHL
+              </code>
+            </td>
+            <td>
+              Inhalant
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/LIQCLN">
+              <code>
+                LIQCLN
+              </code>
+            </td>
+            <td>
+              Liquid Cleanser
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/OIL">
+              <code>
+                OIL
+              </code>
+            </td>
+            <td>
+              Oil
+            </td>
+            <td>
+              <p>An unctuous, combustible substance which is liquid, or easily liquefiable, on warming, and is soluble in ether but insoluble in water. Such substances, depending on their origin, are classified as animal, mineral, or vegetable oils.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/SOL">
+              <code>
+                SOL
+              </code>
+            </td>
+            <td>
+              Solution
+            </td>
+            <td>
+              <p>A liquid preparation that contains one or more chemical substances dissolved, i.e., molecularly dispersed, in a suitable solvent or mixture of mutually miscible solvents.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/CRM">
+              <code>
+                CRM
+              </code>
+            </td>
+            <td>
+              Cream
+            </td>
+            <td>
+              <p>A semisolid dosage form containing one or more drug substances dissolved or dispersed in a suitable base; more recently, the term has been restricted to products consisting of oil-in-water emulsions or aqueous microcrystalline dispersions of long chain fatty acids or alcohols that are water washable and more cosmetically and aesthetically acceptable.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/LTN">
+              <code>
+                LTN
+              </code>
+            </td>
+            <td>
+              Lotion
+            </td>
+            <td>
+              <p>The term &quot;lotion&quot; has been used to categorize many topical suspensions, solutions and emulsions intended for application to the skin.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/OINT">
+              <code>
+                OINT
+              </code>
+            </td>
+            <td>
+              Ointment
+            </td>
+            <td>
+              <p>A semisolid preparation intended for external application to the skin or mucous membranes.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/GEL">
+              <code>
+                GEL
+              </code>
+            </td>
+            <td>
+              Gel
+            </td>
+            <td>
+              <p>A semisolid system consisting of either suspensions made up of small inorganic particles or large organic molecules interpenetrated by a liquid.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/PASTE">
+              <code>
+                PASTE
+              </code>
+            </td>
+            <td>
+              Paste
+            </td>
+            <td>
+              <p>A semisolid dosage form that contains one or more drug substances intended for topical application.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/SUSP">
+              <code>
+                SUSP
+              </code>
+            </td>
+            <td>
+              Suspension
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/BAR">
+              <code>
+                BAR
+              </code>
+            </td>
+            <td>
+              Bar
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/BEAD">
+              <code>
+                BEAD
+              </code>
+            </td>
+            <td>
+              Beads
+            </td>
+            <td>
+              <p>A solid dosage form in the shape of a small ball.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/CAKE">
+              <code>
+                CAKE
+              </code>
+            </td>
+            <td>
+              Cake
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/CEMENT">
+              <code>
+                CEMENT
+              </code>
+            </td>
+            <td>
+              Cement
+            </td>
+            <td>
+              <p>A substance that serves to produce solid union between two surfaces.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/CRYS">
+              <code>
+                CRYS
+              </code>
+            </td>
+            <td>
+              Crystals
+            </td>
+            <td>
+              <p>A naturally produced angular solid of definite form in which the ultimate units from which it is built up are systematically arranged; they are usually evenly spaced on a regular space lattice.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/DISK">
+              <code>
+                DISK
+              </code>
+            </td>
+            <td>
+              Disk
+            </td>
+            <td>
+              <p>A circular plate-like organ or structure.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/FLAKE">
+              <code>
+                FLAKE
+              </code>
+            </td>
+            <td>
+              Flakes
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/GRAN">
+              <code>
+                GRAN
+              </code>
+            </td>
+            <td>
+              Granules
+            </td>
+            <td>
+              <p>A small particle or grain.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/GUM">
+              <code>
+                GUM
+              </code>
+            </td>
+            <td>
+              ChewingGum
+            </td>
+            <td>
+              <p>A sweetened and flavored insoluble plastic material of various shapes which when chewed, releases a drug substance into the oral cavity.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/PAD">
+              <code>
+                PAD
+              </code>
+            </td>
+            <td>
+              Pad
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/PATCH">
+              <code>
+                PATCH
+              </code>
+            </td>
+            <td>
+              Patch
+            </td>
+            <td>
+              <p>A drug delivery system that contains an adhesived backing and that permits its ingredients to diffuse from some portion of it (e.g., the backing itself, a reservoir, the adhesive, or some other component) into the body from the external site where it is applied.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/PELLET">
+              <code>
+                PELLET
+              </code>
+            </td>
+            <td>
+              Pellet
+            </td>
+            <td>
+              <p>A small sterile solid mass consisting of a highly purified drug (with or without excipients) made by the formation of granules, or by compression and molding.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/PILL">
+              <code>
+                PILL
+              </code>
+            </td>
+            <td>
+              Pill
+            </td>
+            <td>
+              <p>A small, round solid dosage form containing a medicinal agent intended for oral administration.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/POWD">
+              <code>
+                POWD
+              </code>
+            </td>
+            <td>
+              Powder
+            </td>
+            <td>
+              <p>An intimate mixture of dry, finely divided drugs and/or chemicals that may be intended for internal or external use.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/SUPP">
+              <code>
+                SUPP
+              </code>
+            </td>
+            <td>
+              Suppository
+            </td>
+            <td>
+              <p>A solid body of various weights and shapes, adapted for introduction into the rectal, vaginal, or urethral orifice of the human body; they usually melt, soften, or dissolve at body temperature.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/SWAB">
+              <code>
+                SWAB
+              </code>
+            </td>
+            <td>
+              Swab
+            </td>
+            <td>
+              <p>A wad of absorbent material usually wound around one end of a small stick and used for applying medication or for removing material from an area.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="dosageForm.csv/WAFER">
+              <code>
+                WAFER
+              </code>
+            </td>
+            <td>
+              Wafer
+            </td>
+            <td>
+              <p>A thin slice of material containing a medicinal agent.</p>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3 id="immediateContainer.csv">
+        immediateContainer.csv
+      </h3>
+
+      <p>
+        You can <a href="/en/extensions/medicine/master/codelists/immediateContainer.csv">download the <code>immediateContainer.csv</code> file</a> in English.
+      </p>
+
+
+      <table class="table table-bordered">
+        <thead class="table-light">
+          <tr>
+            <th scope="col">
+              Code
+            </th>
+            <th scope="col">
+              Title
+            </th>
+            <th scope="col">
+              Description
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="immediateContainer.csv/amp">
+              <code>
+                amp
+              </code>
+            </td>
+            <td>
+              Ampule
+            </td>
+            <td>
+              <p>Container sealed by fusion and to be opened exclusively by breaking. The contents are intended for use on one occasion only.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/bag">
+              <code>
+                bag
+              </code>
+            </td>
+            <td>
+              Bag
+            </td>
+            <td>
+              <p>Container consisting of surfaces, whether or not with a flat bottom, made of flexible material, generally closed at the bottom and at the sides by sealing; at the top possibly to be closed by fusion of the material, depending on the intended use. Equipped with special attachments. Contains the final preparation in one compartment or the components necessary for its preparation in different compartments.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/blstrpk">
+              <code>
+                blstrpk
+              </code>
+            </td>
+            <td>
+              Blister Pack
+            </td>
+            <td>
+              <p>Container (usually multidose) consisting of two layers of which one is shaped to contain the individual doses. Strips are excluded.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/bot">
+              <code>
+                bot
+              </code>
+            </td>
+            <td>
+              Bottle
+            </td>
+            <td>
+              <p>Container with a more or less pronounced neck and usually a flat bottom.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/box">
+              <code>
+                box
+              </code>
+            </td>
+            <td>
+              Box
+            </td>
+            <td>
+              <p>Primary container consisting of one or more parts made of a light material, can be closed.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/can">
+              <code>
+                can
+              </code>
+            </td>
+            <td>
+              Can
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/cart">
+              <code>
+                cart
+              </code>
+            </td>
+            <td>
+              Cartridge
+            </td>
+            <td>
+              <p>Filled container, usually cylindrical, containing a sterile, single-dose or multidose, parenteral preparation; it contains the final preparation in one compartment, or the components necessary for its preparation in different compartments. It may be supplied as an integral part of a pre-filled pen or be intended for use in a reusable device especially designed for that purpose, such as a pen.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/disk">
+              <code>
+                disk
+              </code>
+            </td>
+            <td>
+              Disk
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/doset">
+              <code>
+                doset
+              </code>
+            </td>
+            <td>
+              Dosette
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/jar">
+              <code>
+                jar
+              </code>
+            </td>
+            <td>
+              Jar
+            </td>
+            <td>
+              <p>Container, without a pronounced neck, with a wide opening at the top and a more-or-less flat bottom. It is suited for semi-solid and solid pharmaceutical forms (including those that are stored/supplied in a liquid medium, such as living tissue equivalents). It can be reclosed.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/jug">
+              <code>
+                jug
+              </code>
+            </td>
+            <td>
+              Jug
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/minim">
+              <code>
+                minim
+              </code>
+            </td>
+            <td>
+              Minim
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/nebamp">
+              <code>
+                nebamp
+              </code>
+            </td>
+            <td>
+              Nebule Amp
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/ovul">
+              <code>
+                ovul
+              </code>
+            </td>
+            <td>
+              Ovule
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/pch">
+              <code>
+                pch
+              </code>
+            </td>
+            <td>
+              Pouch
+            </td>
+            <td>
+              <p>Item of packaging intended for use as an intermediate or outer container, intended to contain one or more medicinal product(s); it is made of a flexible material and may be for single use or be re-usable, and may be fitted with a closure system. Bags and sachets are excluded.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/pkt">
+              <code>
+                pkt
+              </code>
+            </td>
+            <td>
+              Packet
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/sash">
+              <code>
+                sash
+              </code>
+            </td>
+            <td>
+              Sashet
+            </td>
+            <td>
+              <p>Container consisting of two surfaces made of flexible material to be closed only by sealing or folding over. The contents are intended for single use.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/strip">
+              <code>
+                strip
+              </code>
+            </td>
+            <td>
+              Strip
+            </td>
+            <td>
+              <p>Multidose container consisting of two layers, usually provided with perforations, suited for containing single doses of solid or semi-solid preparations. Blisters are excluded.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/tin">
+              <code>
+                tin
+              </code>
+            </td>
+            <td>
+              Tin
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/tub">
+              <code>
+                tub
+              </code>
+            </td>
+            <td>
+              Tub
+            </td>
+            <td>
+              
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/tube">
+              <code>
+                tube
+              </code>
+            </td>
+            <td>
+              Tube
+            </td>
+            <td>
+              <p>Container for semi-solid pharmaceutical forms, usually multidose, consisting of collapsible material intended to release the contents via a nozzle by squeezing the package.</p>
+
+            </td>
+          </tr>
+          <tr>
+            <td id="immediateContainer.csv/vial">
+              <code>
+                vial
+              </code>
+            </td>
+            <td>
+              Vial
+            </td>
+            <td>
+              <p>Small container for parenteral medicinal products, with a stopper and overseal; the contents are removed after piercing the stopper. Single-dose and multidose uses are included.</p>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="/static/lib/bootstrap.bundle.min.js"></script>
+<script src="/static/lib/clipboard.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

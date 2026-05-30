@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+
+  <title>Tarifas — Documentación — Explorador de Extensiones OCDS</title>
+  <meta name="description" content="Agrega campos al contrato y objetos de implementación para capturar los detalles de las tarifas, los peajes y las tarifas de los usuarios establecidos en el contrato y en uso durante la vida del proyecto.">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/tariffs/1.1/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/tariffs/1.1/">
+  <link rel="stylesheet" href="/static/css/pygments.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        Explorador de Extensiones OCDS
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Página principal
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensiones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Guía de publicadores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            Guía de usuarios
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+            <svg class="icon" aria-hidden="true" viewBox="0 0 576 512" title="Elegir idioma">
+              <path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32l0 32 128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-9.6 0-8.4 23.1c-16.4 45.2-41.1 86.5-72.2 122 14.2 8.8 29 16.6 44.4 23.5l50.4 22.4 62.2-140c5.1-11.6 16.6-19 29.2-19s24.1 7.4 29.2 19l128 288c7.2 16.2-.1 35.1-16.2 42.2s-35.1-.1-42.2-16.2l-20-45-157.5 0-20 45c-7.2 16.2-26.1 23.4-42.2 16.2s-23.4-26.1-16.2-42.2l39.8-89.5-50.4-22.4c-23-10.2-45-22.4-65.8-36.4-21.3 17.2-44.6 32.2-69.5 44.7L78.3 380.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9l34.5-17.3c16.3-8.2 31.8-17.7 46.4-28.3-13.8-12.7-26.8-26.4-38.9-40.9L81.6 224.7c-11.3-13.6-9.5-33.8 4.1-45.1s33.8-9.5 45.1 4.1l10.2 12.2c11.5 13.9 24.1 26.8 37.4 38.7 27.5-30.4 49.2-66.1 63.5-105.4l.5-1.2-210.3 0C14.3 128 0 113.7 0 96S14.3 64 32 64l96 0 0-32c0-17.7 14.3-32 32-32zM416 270.8L365.7 384 466.3 384 416 270.8z"/>
+            </svg>
+            <span class="visually-hidden">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/tariffs/1.1/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/tariffs/1.1/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Tarifas
+      </h1>
+
+      <p class="lead">
+        Agrega campos al contrato y objetos de implementación para capturar los detalles de las tarifas, los peajes y las tarifas de los usuarios establecidos en el contrato y en uso durante la vida del proyecto.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Versión:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/tariffs/1.1/" selected>
+              1.1
+              (más reciente)
+            </option>
+          </optgroup>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/tariffs/1.1/">
+            Documentación
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ms-0">
+              <a href="#introduccion">
+                Introducción
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#modelado-de-tarifas">
+                Modelado de tarifas
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#ejemplo">
+                Ejemplo
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#entradas-de-lista-de-codigos">
+                Entradas de lista de códigos
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#registro-de-cambios">
+                Registro de cambios
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/tariffs/1.1/schema/">
+            Esquema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/tariffs/1.1/codelists/">
+            Listas de código
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_tariffs_extension/1.1/extension.json" aria-label="URL de la extensión" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar al portapapeles" data-updated-title="Copiado!">
+              <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+              <svg class="icon" aria-hidden="true" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"/>
+              </svg>
+              <span class="visually-hidden">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://github.com/open-contracting-extensions/ocds_tariffs_extension/archive/1.1.zip" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentación
+      </h2>
+<div><h2 id="introduccion">Introducci&#243;n</h2>
+<p>Algunos contratos, en particular los contratos de Asociaci&#243;n P&#250;blico Privada, incluyen acuerdos sobre las tarifas de usuario que se cobrar&#225;n por el uso de la infraestructura o los servicios a los que se refiere el contrato.</p>
+<p>Por ejemplo, un proyecto de Asociaci&#243;n P&#250;blica Privada para construir un puente puede establecer los peajes para coches y otros veh&#237;culos para cruzar el mismo.</p>
+<p>La extensi&#243;n de tarifas permite establecer una lista estructurada de estos cargos.</p>
+<p>Tambi&#233;n incluye entradas de lista de c&#243;digos adicionales para la lista de c&#243;digos documentType para:</p>
+<ul>
+<li>tariffs</li>
+<li>tariffMethod</li>
+<li>tariffReview</li>
+<li>tariffIllustration</li>
+</ul>
+<h2 id="modelado-de-tarifas">Modelado de tarifas</h2>
+<p>El modelo de tarifas se basa en la extensi&#243;n de m&#233;tricas, permitiendo una lista de elementos tarrif, cada uno con un identificador, t&#237;tulo, per&#237;odo, valor, unidades y un conjunto arbitrario de dimensiones.</p>
+<p>Por ejemplo, si el peaje para un puente de carretera var&#237;a seg&#250;n (a) el tipo de veh&#237;culo y (b) la hora del d&#237;a; una implementaci&#243;n de la extensi&#243;n de tarifas puede crear nuevos campos para <code>dimensions.vehicleType</code> y <code>dimensions.timeOfDay</code>, rellenando estos de acuerdo con las listas de c&#243;digos locales. En los casos de APP, estas dimensiones adicionales pueden reflejar las utilizadas en las secciones de demanda estimada y otras m&#233;tricas.</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<p>El ejemplo siguiente muestra una tabla de tarifas muy sencilla, sin per&#237;odos ni unidades, pero con dos dimensiones. Las tarifas que se refieren a un determinado conjunto de fechas podr&#237;an tener un bloque <code>period</code>. Los que se refieren a una unidad particular (por ejemplo, toneladas) podr&#237;an tener esto indicado usando un bloque <code>unit</code>.</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"contracts"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"awardID"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"tariffs"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard Toll"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Class 1"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"registration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No registration"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard Toll"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Class 2"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"registration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No registration"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard Toll"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Class 3"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"registration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No registration"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">6.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Standard Toll"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"vehicleType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Class 4"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"registration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"No registration"</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mf">8.0</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GBP"</span>
+<span class="w">          </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="entradas-de-lista-de-codigos">Entradas de lista de c&#243;digos</h2>
+<p>Los siguientes tipos de documentos son introducidos por la extensi&#243;n de tarifa</p>
+<ul>
+<li>tariffs - Para proporcionar tarifas y horarios de precios.</li>
+<li>tariffMethod - Para resumir el m&#233;todo por el cual se fijan las tarifas, y enlazar a la documentaci&#243;n detallada de los m&#233;todos para fijar tarifas. Esto puede incluir documentaci&#243;n escrita y hojas de c&#225;lculo con los modelos utilizados para calcular las tarifas.</li>
+<li>tariffReview - Para resumir las disposiciones para la revisi&#243;n y regulaci&#243;n de las tarifas, y enlazar con la documentaci&#243;n detallada que explique c&#243;mo se regulan las tarifas. Esto es importante para poder explicarles a los usuarios por qu&#233; est&#225;n pagando lo que est&#225;n pagando, y el alcance de los cambios en las estructuras de pago.</li>
+<li>tariffIllustration - Para vincular a gr&#225;ficos e informes sobre el cambio en el tiempo en los precios de las tarifas. Utilice el tipo de material de imagen relevante al vincular a gr&#225;ficos PNG, JPEG o GIF para permitir que las aplicaciones muestren directamente este contenido.</li>
+</ul>
+<h2 id="issues">Issues</h2>
+<p>Reporte issues para esta extensi&#243;n en el <a href="https://github.com/open-contracting/ocds-extensions/issues">repositorio de extensiones ocds</a>, poniendo el nombre de la extensi&#243;n en el t&#237;tulo del issue.</p>
+<h2 id="registro-de-cambios">Registro de cambios</h2>
+<h3>2021-04-19</h3>
+<ul>
+<li>Add Section column to the <code>+documentType.csv</code> codelist patch.</li>
+</ul>
+<h3>2020-06-04</h3>
+<ul>
+<li>Revisar las palabras normativas y no normativas.</li>
+</ul>
+<h3>2020-04-24</h3>
+<ul>
+<li>Agregar las propiedades <code>minProperties</code>, <code>minItems</code> y/o <code>minLength</code>.</li>
+</ul>
+<h3>2019-03-20</h3>
+<ul>
+<li>Establecer <code>"uniqueItems ": true</code> en los campos matriz y agregar <code>"minLength": 1</code> en los campos de cadena obligatorios.</li>
+<li>Hacer <code>Tariff.unit</code> no nulo, como <code>Item.unit</code>.</li>
+<li>Hacer <code>Tariff.dimensions</code> no nulo (deshacer el cambio anterior).</li>
+</ul>
+<h3>2018-05-08</h3>
+<ul>
+<li>Make <code>Tariff.id</code> required to support revision tracking and <a href="https://standard.open-contracting.org/latest/en/schema/merging/#array-values">list merging</a></li>
+</ul>
+<h3>2018-05-01</h3>
+<ul>
+<li>Hacer que <code>Tariff.dimensions</code> pueda ser nulo.</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="/static/lib/bootstrap.bundle.min.js"></script>
+<script src="/static/lib/clipboard.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="/static/css/theme.css">
+
+  <title>Bids and expressions of interest — Documentación — Explorador de Extensiones OCDS</title>
+  <meta name="description" content="Adds a bids object to describe individual bids and expressions of interest, and summary statistics.">
+  <script src="https://cdn.usefathom.com/script.js" data-site="UWZRRLGK" defer data-excluded-domains="localhost,127.0.0.1,0.0.0.0"></script>
+  <link rel="alternate" hreflang="en" href="/en/extensions/bids/v1.1.4/">
+  <link rel="alternate" hreflang="es" href="/es/extensions/bids/v1.1.4/">
+  <link rel="stylesheet" href="/static/css/pygments.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/es/">
+      <div class="d-none d-sm-inline-block">
+<svg width="80" height="50" viewBox="0 0 80 38" xmlns="http://www.w3.org/2000/svg" focusable="false" role="img">
+  <title>Open Contracting Partnership</title>
+  <g fill="none" fill-rule="evenodd"><path d="M33.568 4.227L25.216.14 7.952 7.072l7.94 5.81L0 20.664 16.92 38l16.648-12.182L50.216 38l16.92-17.336-15.89-7.78 7.937-5.81L41.917.138l-8.35 4.087z" fill="#D9E021"></path><path d="M25.216.138L7.952 7.073l7.94 5.81 17.676-8.656-8.352-4.09z" fill="#B9C504"></path><path d="M33.568 25.818L50.216 38l16.92-17.336-15.89-7.78-17.678 12.934z" fill="#D9E021"></path><path d="M51.245 12.884L33.568 25.818V4.228l17.677 8.656z" fill="#B9C504"></path><path d="M33.568 4.227v21.59L15.89 12.885 33.57 4.227z" fill="#9DAD01"></path><path d="M0 20.664L16.92 38l16.648-12.182L15.89 12.884 0 20.664zM41.916.138l-8.348 4.09 17.676 8.656 7.94-5.81L41.915.137z" fill="#D9E021"></path></g>
+</svg>      </div>
+      <div class="d-inline-block h4">
+        Explorador de Extensiones OCDS
+      </div>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Cambiar navegación">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " href="/es/">
+            Página principal
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="/es/extensions/">
+            Extensiones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/publishers/">
+            Guía de publicadores
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="/es/users/">
+            Guía de usuarios
+          </a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+            <svg class="icon" aria-hidden="true" viewBox="0 0 576 512" title="Elegir idioma">
+              <path fill="currentColor" d="M160 0c17.7 0 32 14.3 32 32l0 32 128 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-9.6 0-8.4 23.1c-16.4 45.2-41.1 86.5-72.2 122 14.2 8.8 29 16.6 44.4 23.5l50.4 22.4 62.2-140c5.1-11.6 16.6-19 29.2-19s24.1 7.4 29.2 19l128 288c7.2 16.2-.1 35.1-16.2 42.2s-35.1-.1-42.2-16.2l-20-45-157.5 0-20 45c-7.2 16.2-26.1 23.4-42.2 16.2s-23.4-26.1-16.2-42.2l39.8-89.5-50.4-22.4c-23-10.2-45-22.4-65.8-36.4-21.3 17.2-44.6 32.2-69.5 44.7L78.3 380.6c-15.8 7.9-35 1.5-42.9-14.3s-1.5-35 14.3-42.9l34.5-17.3c16.3-8.2 31.8-17.7 46.4-28.3-13.8-12.7-26.8-26.4-38.9-40.9L81.6 224.7c-11.3-13.6-9.5-33.8 4.1-45.1s33.8-9.5 45.1 4.1l10.2 12.2c11.5 13.9 24.1 26.8 37.4 38.7 27.5-30.4 49.2-66.1 63.5-105.4l.5-1.2-210.3 0C14.3 128 0 113.7 0 96S14.3 64 32 64l96 0 0-32c0-17.7 14.3-32 32-32zM416 270.8L365.7 384 466.3 384 416 270.8z"/>
+            </svg>
+            <span class="visually-hidden">Select language</span>
+            Español
+          </a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a class="dropdown-item px-4" href="/en/extensions/bids/v1.1.4/">
+              English
+            </a>
+            <a class="dropdown-item px-4 active" href="/es/extensions/bids/v1.1.4/">
+              Español
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row bg-light pt-2">
+    <div class="col">
+      <h1>
+        Bids and expressions of interest
+      </h1>
+
+      <p class="lead">
+        Adds a bids object to describe individual bids and expressions of interest, and summary statistics.
+      </p>
+    </div>
+  </div>
+
+  <div class="row flex-xl-nowrap">
+    <div class="col-12 col-md-3 col-xl-3 ee-sidebar">
+      <form class="d-flex align-items-center ee-search">
+        <label class="me-1 mb-0" for="version">Versión:</label>
+        <select class="form-select form-select-sm algolia-autocomplete" id="version">
+          <optgroup label="Versiones actuales">
+            <option value="/es/extensions/bids/master/">
+              master
+              (más reciente)
+            </option>
+            <option value="/es/extensions/bids/v1.1.5/">
+              v1.1.5
+              (2020-08-20)
+            </option>
+          </optgroup>
+          <optgroup label="Versiones históricas">
+            <option value="/es/extensions/bids/v1.1.4/" selected>
+              v1.1.4
+              (2019-02-25)
+            </option>
+          </optgroup>
+        </select>
+
+        <button class="btn btn-link ee-search-docs-toggle d-md-none p-0 ms-3" type="button" data-bs-toggle="collapse" data-bs-target="#extension-nav" aria-controls="extension-nav" aria-expanded="false" aria-label="Cambiar la navegación de extensión"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="30" height="30" focusable="false" role="img"><title>Menu</title><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"></path></svg></button>
+      </form>
+
+      <nav class="collapse ee-links" id="extension-nav">
+        <div class="ee-toc-item active">
+          <a class="ee-toc-link" href="/es/extensions/bids/v1.1.4/">
+            Documentación
+          </a>
+
+          <ul class="nav ee-sidenav">
+            <li class="ms-0">
+              <a href="#esquema">
+                Esquema
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#ejemplo">
+                Ejemplo
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#issues">
+                Issues
+              </a>
+            </li>
+            <li class="ms-0">
+              <a href="#registro-de-cambios">
+                Registro de cambios
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/bids/v1.1.4/schema/">
+            Esquema
+          </a>
+        </div>
+        <div class="ee-toc-item">
+          <a class="ee-toc-link" href="/es/extensions/bids/v1.1.4/codelists/">
+            Listas de código
+          </a>
+        </div>
+      </nav>
+
+      <div class="d-none d-md-block ee-download">
+        <p>
+          Para usar esta extensión, añada el URL a su matriz de paquete de <code>extensiones</code>:
+        </p>
+
+        <div class="input-group mb-3">
+          <input class="form-control" type="text" id="base-url" value="https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/v1.1.4/extension.json" aria-label="URL de la extensión" readonly>
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary clipboard" type="button" id="copy" data-clipboard-target="#base-url" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Copiar al portapapeles" data-updated-title="Copiado!">
+              <!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc. -->
+              <svg class="icon" aria-hidden="true" viewBox="0 0 448 512">
+                <path fill="currentColor" d="M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"/>
+              </svg>
+              <span class="visually-hidden">
+                Copiar al portapapeles
+              </span>
+            </button>
+          </div>
+        </div>
+
+        <p>
+          <a class="btn btn-outline-primary" href="https://api.github.com/repos/open-contracting-extensions/ocds_bid_extension/zipball/v1.1.4" role="button">
+            Descargar ZIP
+          </a>
+        </p>
+
+        <p class="text-muted">
+          Mantenido por <a href="https://github.com/open-contracting-extensions">Open Contracting Data Standard Extensions</a>
+        </p>
+      </div>
+    </div>
+
+    <main class="col-12 col-md-9 col-xl-9 py-md-3 ps-md-5 ee-content" role="main">
+      <div class="table-responsive">
+      <h2 class="ee-title">
+        Documentación
+      </h2>
+<div><p>La informaci&#243;n sobre las ofertas presentadas como parte de un proceso de contrataci&#243;n es importante para muchas formas de an&#225;lisis, incluyendo:</p>
+<ul>
+<li>An&#225;lisis de mercado para comprender la competitividad de un mercado determinado;</li>
+<li>An&#225;lisis de banderas rojas para comprender los posibles riesgos de corrupci&#243;n; y</li>
+<li>An&#225;lisis de valor por dinero;</li>
+</ul>
+<p>Los reg&#237;menes regulatorios var&#237;an en la medida en que permiten que la informaci&#243;n sobre licitaciones se publique de forma proactiva y en qu&#233; momento del proceso de adquisici&#243;n. En algunos sistemas y procesos, se publicar&#225; una lista de licitadores invitados al comienzo de la licitaci&#243;n, y todos los detalles y documentos sobre las ofertas recibidas podr&#225;n ser revelados cuando se complete la evaluaci&#243;n. En otros sistemas, s&#243;lo pueden hacerse p&#250;blicas las estad&#237;sticas resumidas sobre el n&#250;mero de ofertas recibidas.</p>
+<p>La extensi&#243;n de oferta de OCDS introduce una secci&#243;n nueva, flexible y de alto nivel para cada proceso de contrataci&#243;n para capturar informaci&#243;n de ofertas. Los ejecutores deber&#225;n evaluar qu&#233; campos son aplicables a su r&#233;gimen regulatorio local y los casos de uso locales.</p>
+<h2 id="esquema">Esquema</h2>
+<p>La lista <code>bids/details</code> se utiliza para proporcionar uno o m&#225;s objetos <code> Bid</code>, cada uno de los cuales representa una &#250;nica oferta recibida.</p>
+<p>La lista <code>bids/statistics</code> se usa para representar informaci&#243;n estad&#237;sitca sobre el n&#250;mero de ofertas y ofertantes. En cada entrada de la lista hay un objeto <code>BidsStatistic</code> que contiene al menos:</p>
+<ul>
+<li>Un identificador</li>
+<li>Una medida, de la lista de c&#243;digos <code>bidStatistics.csv</code></li>
+<li>Un valor para esa medida</li>
+</ul>
+<p>La lista de c&#243;digos <code>bidStatistics.csv</code> es una lista de c&#243;digos <strong>abierta</strong>. Los publicadores pueden agregar sus propios c&#243;digos a esta lista. Al hacerlo, se alienta a los publicadores a comprometerse con la comunidad de contrataciones abiertas para acordar las definiciones de cada c&#243;digo.</p>
+<p>Por ejemplo, tal vez los publicadores deseen agregar estad&#237;sticas sobre negocios pertenecientes a minor&#237;as o mujeres, u ofertas que cumplan ciertos est&#225;ndares y metas ambientales.</p>
+<p>La lista de c&#243;digo en la columna Categor&#237;a muestra si la estad&#237;stica aplica a las ofertas u ofertantes o si esta especificado o requerido por una categor&#237;a particular del contexto regulatorio (ej. UE)</p>
+<h2 id="ejemplo">Ejemplo</h2>
+<p>A continuaci&#243;n se muestra un ejemplo de una extensi&#243;n de ofertas:</p>
+<div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">"bids"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"statistics"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"measure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"validBids"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-09T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This statistic covers the total number of unique bids received that were considered valid against relevant criteria."</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"measure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disqualifiedBids"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-10T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"notes"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This statistic covers the total number of unique bids received that were disqualified."</span>
+<span class="w">    </span><span class="p">}],</span>
+<span class="w">    </span><span class="nt">"details"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-09T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"valid"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"documentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evaluationReports"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mega Consortium Bid Evaluation Report"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This document provides details of the evaluation of the bid submitted by Mega Consortium"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://communications.gov.example/example_ppp/evaluationReport_megaConsortium.pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"datePublished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-17T10:00:00-06:00"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ministry of Communications"</span>
+<span class="w">      </span><span class="p">}],</span>
+<span class="w">      </span><span class="nt">"tenderers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"MEGA"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mega Consortium"</span>
+<span class="w">      </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2.0"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-10T01:00:00+01:00"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"disqualified"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">1500</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"USD"</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"documents"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"documentType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"evaluationReports"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beta Consortium Bid Evaluation Report"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This document provides details of the evaluation of the bid submitted by Beta Consortium"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://communications.gov.example/example_ppp/evaluationReport_betaConsortium.pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"datePublished"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-11-18T10:00:00-06:00"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"format"</span><span class="p">:</span><span class="w"> </span><span class="s2">"application/pdf"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"language"</span><span class="p">:</span><span class="w"> </span><span class="s2">"en"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Ministry of Communications"</span>
+<span class="w">      </span><span class="p">}],</span>
+<span class="w">      </span><span class="nt">"tenderers"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">        </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"BETA"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Beta Consortium"</span>
+<span class="w">      </span><span class="p">}]</span>
+<span class="w">    </span><span class="p">}]</span>
+
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"awards"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"111"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example PPP contract award"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Award of Example PPP contract to Mega Consortium"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-12-17T10:00:00-06:00"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"relatedBid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span>
+<span class="w">  </span><span class="p">}]</span>
+<span class="p">}</span>
+</pre></div>
+<h2 id="issues">Issues</h2>
+<p>Reporte issues para esta extensi&#243;n en el <a href="https://github.com/open-contracting/ocds-extensions/issues">repositorio de extensiones ocds</a>, poniendo el nombre de la extensi&#243;n en el t&#237;tulo del issue.</p>
+<h2 id="registro-de-cambios">Registro de cambios</h2>
+<h3>v1.1.4</h3>
+<ul>
+<li>Se corrige el t&#237;tulo y la descripci&#243;n del c&#243;digo 'foreignBidsFromEU' para referirse al &#193;rea Econ&#243;mica Europea (AEE). Anteriormente, el t&#237;tulo se refer&#237;a al Mercado &#218;nico Europeo, pero su descripci&#243;n enlistaba los miembros del AEE.</li>
+<li>A&#241;ade el c&#243;digo <code>foreignBidsFromNonEU a </code>bidStatistics.csv`</li>
+<li>Quitar propiedad  <code>required</code> invalide a la matriz del campo <code>Bids.details</code></li>
+<li>Arreglar el comportamiento de uni&#243;n de  <code>Bids.statistics</code> a  <code>Bid.tenderers</code> para identificar la estrategia de uni&#243;n de los identificadores</li>
+<li>Quita las directrices Sphinx del readme</li>
+<li>A&#241;adir extension.json para el Extension Explorer</li>
+</ul>
+<h3>v1.1.3</h3>
+<ul>
+<li>No permitir que los campos requeridos <code>BidsStatistic.id</code>,<code> BidsStatistic.measure</code>, <code>BidsStatistic.value</code> sean null</li>
+<li>No permitir que <code>Bids.statistics</code> tenga null en su lista de objetos</li>
+<li>Permitir que <code>Bids.statistics</code> sea null</li>
+<li>Agregar enum a <code>BidsStatistic.status</code></li>
+<li>Mover <code>BidsStatistic.requirementResponses</code> a la extensi&#243;n de requisitos</li>
+<li>Agregar descripciones a bidStatus.csv</li>
+<li>Enlista listas de c&#243;digos en extension.json</li>
+<li>Agregar un ejemplo a la documentaci&#243;n</li>
+<li>Agregar pruebas y ordenar el c&#243;digo</li>
+</ul>
+</div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="/static/lib/bootstrap.bundle.min.js"></script>
+<script src="/static/lib/clipboard.min.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>
