@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Signatories",
+    "es": "Firmantes"
+  },
+  "description": {
+    "en": "Adds a signatories array to the contract object, for when the signatories differ from the buyer for the contracting process and the suppliers for the award.",
+    "es": "A\u00f1ade una lista de firmantes al objeto contrato, para cuando los firmantes difieran del comprador para el proceso de contrataci\u00f3n y los proveedores para la adjudicaci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/signatories/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

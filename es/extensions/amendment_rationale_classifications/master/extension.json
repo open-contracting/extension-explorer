@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Amendment rationale classifications",
+    "es": "Amendment rationale classifications"
+  },
+  "description": {
+    "en": "Adds a field to the amendment object to classify the rationale for the amendment.",
+    "es": "Adds a field to the amendment object to classify the rationale for the amendment."
+  },
+  "documentationUrl": {
+    "en": "https://github.com/open-contracting-extensions/ocds_amendment_rationale_classifications_extension"
+  },
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "compatibility": [
+    "1.1"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

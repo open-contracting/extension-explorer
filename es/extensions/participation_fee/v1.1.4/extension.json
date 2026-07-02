@@ -1,0 +1,22 @@
+{
+  "name": {
+    "en": "Participation Fees",
+    "es": "Cuotas/Cargos de participaci\u00f3n"
+  },
+  "description": {
+    "en": "Where a tender process involves payment of fees to access documents, submit a proposal, or be awarded a contract, this extension can be used to provide fee details.",
+    "es": "Cuando un proceso de licitaci\u00f3n implica el pago de cargos para acceder a los documentos, presentar una propuesta, o ser adjudicado un contrato, esta extensi\u00f3n se puede utilizar para proporcionar detalles de la tasa."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/participation_fee/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "participationFeeType.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "definitions": {
+    "ParticipationFee": {
+      "title": "Cuota/Cargos de participaci\u00f3n",
+      "description": "Una tarifa que aplica a los ofertantes que quieren participar en el proceso de licitaciones. Las tarifas pueden aplicar para acceder los documentos de oferta, para enviar las ofertas o puede haber una cuota que debe ser pagada por el ofertante ganador",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID de tarifa",
+          "description": "Un identificador local de esta tarifa, \u00fanica en este bloque. Este campo se usa para hacer un seguimiento de m\u00faltiples revisiones de la tarifa a trav\u00e9s de la compilaci\u00f3n de los mecanismos de release y record",
+          "type": "string"
+        },
+        "type": {
+          "title": "Tipo de cuota/cargo",
+          "description": "Las cuotas que aplican a los ofertantes que participen en el proceso de licitaciones. Las cuotas pueden aplicar para tener acceso a documentos de la oferta, hacer presentaci\u00f3n de ofertas o una cuota puede aplicar para el ofertante ganador.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "document",
+              "deposit",
+              "submission",
+              "win"
+            ]
+          },
+          "codelist": "participationFeeType.csv",
+          "openCodelist": false
+        },
+        "value": {
+          "title": "Valor",
+          "description": "El valor monetario de esta tarifa",
+          "$ref": "#/definitions/Value"
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Informaci\u00f3n adicional sobre la manera en que se cobran las cuotas o la naturaleza exacta de las mismas.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "methodOfPayment": {
+          "title": "M\u00e9todo(s) de pago",
+          "description": "Informaci\u00f3n opcional sobre la manera en que se pueden pagar las cuotas",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "participationFees": {
+          "title": "Cuotas de participaci\u00f3n",
+          "description": "Cualquier cuota que sea aplicable a los ofertantes que quieran participar en el proceso de contrataciones. Las cuotas pueden aplicar para tener acceso a documentos de compras, para hacer ofertas o cuotas que deben ser pagadas por el ofertante ganador.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParticipationFee"
+          },
+          "uniqueItems": true,
+          "wholeListMerge": true
+        }
+      }
+    }
+  }
+}
