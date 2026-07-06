@@ -9,7 +9,7 @@
   "files": {
     "includes": [
       "**",
-      "!extension_explorer/templates",
+      "!extension_explorer/templates/**/*.html",
       "!extension_explorer/static/lib/*.min.js",
       "!extension_explorer/static/lib/bootstrap",
       "!extension_explorer/static/css/theme.css",
