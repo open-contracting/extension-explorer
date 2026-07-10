@@ -14,6 +14,7 @@ jobs:
           cache: pip
           cache-dependency-path: '**/requirements*.txt'
       - run: pip install -r requirements_dev.txt
+      - run: pysassc extension_explorer/static/lib/scss/theme.scss > extension_explorer/static/css/theme.css
       - working-directory: extension_explorer
         run: pybabel compile -f -d locale
       - run: coverage run --source=extension_explorer -m pytest -W error
