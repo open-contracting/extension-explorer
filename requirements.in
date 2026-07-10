@@ -5,6 +5,7 @@ flask-env
 frozen-flask
 json_merge_patch
 jsonpointer
+libsass
 lxml
 markdown-it-py
 ocdskit[perf]

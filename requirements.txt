@@ -64,6 +64,8 @@ jsonref==1.0.0.post1
     #   ocdsextensionregistry
     #   ocdskit
     #   ocdsmerge
+libsass==0.23.0
+    # via -r requirements.in
 lxml==6.1.1
     # via -r requirements.in
 markdown-it-py==3.0.0

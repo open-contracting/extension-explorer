@@ -1,5 +1,4 @@
 -r requirements.txt
 coverage
-libsass
 pytest
 pytest-flask

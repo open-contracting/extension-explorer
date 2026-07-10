@@ -20,6 +20,7 @@ jobs:
           cache-dependency-path: '**/requirements*.txt'
       - run: npm install pa11y-ci
       - run: pip install -r requirements.txt
+      - run: pysassc extension_explorer/static/lib/scss/theme.scss > extension_explorer/static/css/theme.css
       - working-directory: extension_explorer
         run: pybabel compile -f -d locale
       - name: Build
