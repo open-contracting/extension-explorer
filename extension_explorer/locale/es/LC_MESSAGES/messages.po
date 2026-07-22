@@ -568,10 +568,10 @@ msgid ""
 "documentation. For example, to declare the <a href='%(url)s'>Bids and "
 "expressions of interest</a> extension:"
 msgstr ""
-"Declara la extensión en la lista de <code>extensions</code> del paquete "
+"Declara la extensión en la lista de <code>extensions</code> del "
 "<a href='https://standard.open-"
-"contracting.org/latest/en/schema/release_package/'>, utilizando la URL de"
-" la documentación de la extensión. Por ejemplo, para declarar la "
+"contracting.org/latest/en/schema/release_package/'>paquete</a>, utilizando"
+" la URL de la documentación de la extensión. Por ejemplo, para declarar la "
 "extensión <a href='%(url)s'>Ofertas y expresiones de interés</a>:"
 
 #: templates/publishers.html:69
@@ -659,7 +659,8 @@ msgid ""
 "href='https://github.com/open-contracting/standard/issues'>standard issue"
 " tracker</a>."
 msgstr ""
-"Antes de crear una extensión, busca discusiones relacionadas en el issue "
+"Antes de crear una extensión, busca discusiones relacionadas en el "
+"<a href='https://github.com/open-contracting/standard/issues'>issue "
 "tracker del estándar</a>."
 
 #: templates/publishers.html:99
