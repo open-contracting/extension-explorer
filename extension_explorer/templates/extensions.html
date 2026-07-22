@@ -68,7 +68,7 @@
   {% endif %}
       </form>
 
-      <p class="text-center text-muted mt-4">
+      <p class="text-center text-body-secondary mt-4">
         {{ _('Showing <span id="filter-count">%(num)d</span> extensions from the <a href="https://github.com/open-contracting/extension_registry">extension registry</a>', num=extensions|count) }}
       </p>
     </div>
@@ -89,7 +89,7 @@
             {{ extension.description[lang] }}
           </p>
           <p class="card-text">
-            <small class="text-muted">
+            <small class="text-body-secondary">
               {{ _('Maintained by <a href="%(url)s">%(name)s</a>', name=extension.publisher.name, url=extension.publisher.url) }}
             </small>
           </p>

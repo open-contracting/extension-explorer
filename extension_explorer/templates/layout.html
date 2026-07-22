@@ -18,7 +18,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark ee-navbar">
+<nav class="navbar navbar-expand-lg bg-dark ee-navbar" data-bs-theme="dark">
   <div class="container-fluid">
     <a class="navbar-brand" href="{{ url_for('lang_home', lang=lang) }}">
       <div class="d-none d-sm-inline-block">
@@ -69,7 +69,7 @@
             <span class="visually-hidden">Select language</span>
             {{ langs[lang] }}
           </a>
-          <div class="dropdown-menu dropdown-menu-end">
+          <div class="dropdown-menu dropdown-menu-end" data-bs-theme="light">
 {% for lang_option, name in langs.items() %}
             <a class="dropdown-item px-4{% if lang == lang_option %} active{% endif %}" href="{{ change_lang_in_url(lang_option) }}">
               {{ name }}
