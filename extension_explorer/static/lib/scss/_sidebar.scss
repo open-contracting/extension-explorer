@@ -56,11 +56,11 @@
   display: block;
   padding: .25rem 0;
   font-weight: 600;
-  color: rgba(0, 0, 0, .65);
+  color: mix(black, white, 65%);
   text-decoration: none;
 
   &:hover {
-    color: rgba(0, 0, 0, .85);
+    color: mix(black, white, 85%);
     text-decoration: none;
   }
 }
@@ -68,7 +68,7 @@
 .ee-toc-item {
   &.active {
     > .ee-toc-link {
-      color: rgba(0, 0, 0, .85);
+      color: mix(black, white, 85%);
 
       &:hover {
         background-color: transparent;
@@ -85,12 +85,12 @@
   display: block;
   padding: .25rem 1rem;
   font-size: 90%;
-  color: rgba(0, 0, 0, .65);
+  color: mix(black, white, 65%);
   text-decoration: none;
 }
 
 .ee-sidebar .nav > li > a:hover {
-  color: rgba(0, 0, 0, .85);
+  color: mix(black, white, 85%);
   text-decoration: none;
   background-color: transparent;
 }
@@ -98,7 +98,7 @@
 .ee-sidebar .nav > .active > a,
 .ee-sidebar .nav > .active:hover > a {
   font-weight: 600;
-  color: rgba(0, 0, 0, .85);
+  color: mix(black, white, 85%);
   background-color: transparent;
 }
 
