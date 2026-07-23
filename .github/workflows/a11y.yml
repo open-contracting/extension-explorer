@@ -34,4 +34,16 @@ jobs:
         run: |
           python -m http.server -d extension_explorer/build/ &
           sleep 5
-      - run: npx pa11y-ci -c pa11y.default.json
+      - env:
+          PA11Y_STRATEGY: ignore
+        run: npx pa11y-ci -c pa11y.default.js
+      - env:
+          PA11Y_INCLUDE_WARNINGS: 1
+          PA11Y_SUPPRESS_KNOWN_WARNINGS: 1
+          PA11Y_STRATEGY: ignore
+        run: npx pa11y-ci -c pa11y.default.js
+      - env:
+          PA11Y_INCLUDE_WARNINGS: 1
+          PA11Y_SUPPRESS_KNOWN_WARNINGS: 1
+          PA11Y_STRATEGY: hideElements
+        run: npx pa11y-ci -c pa11y.default.js
