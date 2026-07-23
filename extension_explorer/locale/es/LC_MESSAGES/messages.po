@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-08-22 20:50-0400\n"
+"POT-Creation-Date: 2026-07-23 00:31-0400\n"
 "PO-Revision-Date: 2018-09-28 15:07+0000\n"
 "Last-Translator: Yohanna Lisnichuk <ylisnichuk@open-contracting.org>, "
 "2024\n"
@@ -25,7 +25,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.16.0\n"
+"Generated-By: Babel 2.18.0\n"
 
 #: util.py:114
 msgid "latest"
@@ -35,22 +35,22 @@ msgstr "más reciente"
 msgid "Changelog"
 msgstr "Registro de cambios"
 
-#: templates/extension_schema.html:63 util.py:220
+#: templates/extension_schema.html:63 util.py:218
 msgid "Description"
 msgstr "Descripción"
 
-#: util.py:284
+#: util.py:282
 msgid " or "
 msgstr "o"
 
-#: util.py:296
+#: util.py:294
 msgid "object"
 msgid_plural "objects"
 msgstr[0] "objetos"
 msgstr[1] "objetos"
 msgstr[2] "objetos"
 
-#: util.py:322
+#: util.py:321
 #, python-format
 msgid "string from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgid_plural "strings from open <a href=\"%(url)s\">%(codelist)s</a> codelist"
@@ -58,7 +58,7 @@ msgstr[0] "cadena de la lista de código <a href=\"%(url)s\">%(codelist)s</a> ab
 msgstr[1] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
 msgstr[2] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> abierta"
 
-#: util.py:331
+#: util.py:330
 #, python-format
 msgid "string from closed <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgid_plural "strings from closed <a href=\"%(url)s\">%(codelist)s</a> codelist"
@@ -66,7 +66,7 @@ msgstr[0] "cadena de la lista de código <a href=\"%(url)s\">%(codelist)s</a> ce
 msgstr[1] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
 msgstr[2] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a> cerrada"
 
-#: util.py:339
+#: util.py:338
 #, python-format
 msgid "string from <a href=\"%(url)s\">%(codelist)s</a> codelist"
 msgid_plural "strings from <a href=\"%(url)s\">%(codelist)s</a> codelist"
@@ -74,7 +74,7 @@ msgstr[0] "cadena de la lista de código <a href=\"%(url)s\">%(codelist)s</a>"
 msgstr[1] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a>"
 msgstr[2] "cadenas de la lista de código <a href=\"%(url)s\">%(codelist)s</a>"
 
-#: util.py:347
+#: util.py:345
 #, python-format
 msgid "%(type)s"
 msgid_plural "%(type)ss"
@@ -82,17 +82,17 @@ msgstr[0] "%(type)s"
 msgstr[1] "%(type)s"
 msgstr[2] "%(type)s"
 
-#: util.py:382
+#: util.py:380
 #, python-format
 msgid "array of %(subtypes)s"
 msgstr "matriz de %(subtypes)s"
 
-#: templates/home.html:3 templates/home.html:13 templates/layout.html:31
-#: views.py:96
+#: templates/home.html:3 templates/home.html:13 templates/layout.html:29
+#: views.py:102
 msgid "OCDS Extension Explorer"
 msgstr "Explorador de Extensiones OCDS"
 
-#: views.py:137
+#: views.py:143
 #, python-format
 msgid "%(name)s — OCDS Extension Explorer"
 msgstr "%(name)s- Explorador de Extensiones OCDS"
@@ -173,8 +173,8 @@ msgstr ""
 msgid "%(name)s — Documentation — OCDS Extension Explorer"
 msgstr "%(name)s — Documentación — Explorador de Extensiones OCDS"
 
-#: templates/extension_documentation.html:16
-#: templates/extension_documentation.html:33 templates/layout_extension.html:63
+#: templates/extension_documentation.html:14
+#: templates/extension_documentation.html:31 templates/layout_extension.html:63
 msgid "Documentation"
 msgstr "Documentación"
 
@@ -270,7 +270,7 @@ msgstr "Obsoleto en OCDS %(deprecatedVersion)s:"
 msgid "Extensions — OCDS Extension Explorer"
 msgstr "Extensiones — Explorador de Extensiones OCDS"
 
-#: templates/extensions.html:11 templates/layout.html:49
+#: templates/extensions.html:11 templates/layout.html:47
 msgid "Extensions"
 msgstr "Extensiones"
 
@@ -278,7 +278,7 @@ msgstr "Extensiones"
 msgid "Show"
 msgstr "Mostrar"
 
-#: templates/extensions.html:17
+#: templates/extensions.html:17 templates/layout_extension.html:59
 msgid "Extension"
 msgstr "Extensión"
 
@@ -345,7 +345,7 @@ msgstr ""
 msgid "Recommended"
 msgstr "Recomendado"
 
-#: templates/extensions.html:93 templates/layout_extension.html:111
+#: templates/extensions.html:93 templates/layout_extension.html:114
 #, python-format
 msgid "Maintained by <a href=\"%(url)s\">%(name)s</a>"
 msgstr "Mantenido por <a href=\"%(url)s\">%(name)s</a>"
@@ -402,23 +402,27 @@ msgstr ""
 msgid "Read the user guidance"
 msgstr "Lea la guía de usuarios"
 
-#: templates/layout.html:36
+#: templates/layout.html:21
+msgid "Main"
+msgstr "Principal"
+
+#: templates/layout.html:34
 msgid "Toggle navigation"
 msgstr "Cambiar navegación"
 
-#: templates/layout.html:44
+#: templates/layout.html:42
 msgid "Home"
 msgstr "Página principal"
 
-#: templates/layout.html:54
+#: templates/layout.html:52
 msgid "Publisher guidance"
 msgstr "Guía de publicadores"
 
-#: templates/layout.html:59
+#: templates/layout.html:57
 msgid "User guidance"
 msgstr "Guía de usuarios"
 
-#: templates/layout.html:67
+#: templates/layout.html:66
 msgid "Select language"
 msgstr "Elegir idioma"
 
@@ -450,18 +454,17 @@ msgstr ""
 msgid "Extension URL"
 msgstr "URL de la extensión"
 
-#: templates/layout_extension.html:95 templates/layout_extension.html:98
-#: templates/layout_extension.html:134
+#: templates/layout_extension.html:95 templates/layout_extension.html:101
 msgid "Copy to clipboard"
 msgstr "Copiar al portapapeles"
 
-#: templates/layout_extension.html:106
-msgid "Download ZIP"
-msgstr "Descargar ZIP"
-
-#: templates/layout_extension.html:134
+#: templates/layout_extension.html:95
 msgid "Copied!"
 msgstr "Copiado!"
+
+#: templates/layout_extension.html:109
+msgid "Download ZIP"
+msgstr "Descargar ZIP"
 
 #: templates/publishers.html:3 templates/publishers.html:12
 msgid "Publisher Guidance"
@@ -568,11 +571,12 @@ msgid ""
 "documentation. For example, to declare the <a href='%(url)s'>Bids and "
 "expressions of interest</a> extension:"
 msgstr ""
-"Declara la extensión en la lista de <code>extensions</code> del "
-"<a href='https://standard.open-"
-"contracting.org/latest/en/schema/release_package/'>paquete</a>, utilizando"
-" la URL de la documentación de la extensión. Por ejemplo, para declarar la "
-"extensión <a href='%(url)s'>Ofertas y expresiones de interés</a>:"
+"Declara la extensión en la lista de <code>extensions</code> del <a "
+"href='https://standard.open-"
+"contracting.org/latest/en/schema/release_package/'>paquete</a>, "
+"utilizando la URL de la documentación de la extensión. Por ejemplo, para "
+"declarar la extensión <a href='%(url)s'>Ofertas y expresiones de "
+"interés</a>:"
 
 #: templates/publishers.html:69
 msgid ""
@@ -610,8 +614,8 @@ msgstr ""
 "campos, cambiar los títulos o descripciones de los campos ni agregar "
 "códigos a listas de códigos <strong>cerradas</strong>. Para sugerir "
 "dichos cambios, <a href='https://github.com/open-"
-"contracting/standard/issues/new'>abre un issue</a> en el tracker de issues "
-"del estándar."
+"contracting/standard/issues/new'>abre un issue</a> en el tracker de "
+"issues del estándar."
 
 #: templates/publishers.html:83
 msgid ""
@@ -659,9 +663,9 @@ msgid ""
 "href='https://github.com/open-contracting/standard/issues'>standard issue"
 " tracker</a>."
 msgstr ""
-"Antes de crear una extensión, busca discusiones relacionadas en el "
-"<a href='https://github.com/open-contracting/standard/issues'>issue "
-"tracker del estándar</a>."
+"Antes de crear una extensión, busca discusiones relacionadas en el <a "
+"href='https://github.com/open-contracting/standard/issues'>issue tracker "
+"del estándar</a>."
 
 #: templates/publishers.html:99
 msgid ""
@@ -1330,6 +1334,7 @@ msgid "Repository name"
 msgstr "Nombre del repositorio"
 
 #: templates/publishers.html:389
+#, python-brace-format
 msgid ""
 "Names of repositories should follow the pattern: "
 "<code>ocds_{name}_extension</code>. For example: "
