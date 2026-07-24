@@ -10,7 +10,6 @@ packages = ["extension_explorer"]
 
 [tool.ruff]
 line-length = 119
-target-version = "py310"
 
 [tool.ruff.lint]
 select = ["ALL"]
