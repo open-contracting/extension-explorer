@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Buyer per award or contract",
+    "es": "Buyer per award or contract"
+  },
+  "description": {
+    "en": "Adds buyer fields to the award and contract objects to indicate the buyer(s) for an individual award or contract, if different from the buyer(s) involved in the contracting process as a whole.",
+    "es": "Adds buyer fields to the award and contract objects to indicate the buyer(s) for an individual award or contract, if different from the buyer(s) involved in the contracting process as a whole."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/contract_buyer/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

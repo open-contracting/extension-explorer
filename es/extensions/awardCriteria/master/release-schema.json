@@ -1,0 +1,173 @@
+{
+  "definitions": {
+    "Lot": {
+      "properties": {
+        "awardCriteria": {
+          "title": "Criterio de adjudicaci\u00f3n",
+          "description": "Informaci\u00f3n acerca del criterio de adjudicaci\u00f3n del lote.",
+          "$ref": "#/definitions/AwardCriteria"
+        }
+      }
+    },
+    "LotGroup": {
+      "properties": {
+        "awardCriteria": {
+          "title": "Criterio de adjudicaci\u00f3n",
+          "description": "Informaci\u00f3n acerca del criterio de adjudicaci\u00f3n del lote.",
+          "$ref": "#/definitions/AwardCriteria"
+        }
+      }
+    },
+    "AwardCriteria": {
+      "title": "Criterio de adjudicaci\u00f3n",
+      "description": "Informaci\u00f3n sobre el criterio de adjudicaci\u00f3n.",
+      "type": "object",
+      "properties": {
+        "weightingDescription": {
+          "title": "Descripci\u00f3n de ponderaci\u00f3n compleja",
+          "description": "Cuando la ponderaci\u00f3n no se puede expresar por criterio, la ecuaci\u00f3n matem\u00e1tica (u otra descripci\u00f3n) que expresa la ponderaci\u00f3n compleja (por ejemplo, no lineal).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "orderRationale": {
+          "title": "Justificaci\u00f3n para el orden de importancia",
+          "description": "La justificaci\u00f3n para indicar \u00fanicamente el orden de importancia de los criterios de adjudicaci\u00f3n, no su ponderaci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "criteria": {
+          "title": "Criterio de adjudicaci\u00f3n",
+          "description": "El criterio de adjudicaci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AwardCriterion"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "AwardCriterion": {
+      "title": "Criterio de adjudicaci\u00f3n",
+      "description": "Informaci\u00f3n sobre el criterio de adjudicaci\u00f3n.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Tipo",
+          "description": "El aspecto de la oferta al que se refiere el criterio.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "awardCriterionType.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "name": {
+          "title": "Nombre",
+          "description": "El nombre del criterio.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "La descripci\u00f3n del criterio.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "numbers": {
+          "title": "N\u00fameros",
+          "description": "N\u00fameros ligados al criterio.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CriterionNumber"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "CriterionNumber": {
+      "title": "Criterion number",
+      "description": "Information about a number linked to a criterion.",
+      "type": "object",
+      "properties": {
+        "number": {
+          "title": "N\u00famero",
+          "description": "El n\u00famero.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "weight": {
+          "title": "Peso",
+          "description": "Si el n\u00famero es un tipo de ponderaci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "criterionWeight.csv",
+          "openCodelist": false,
+          "enum": [
+            "percentageExact",
+            "percentageRangeMiddle",
+            "decimalExact",
+            "decimalRangeMiddle",
+            "pointsExact",
+            "pointsRangeMiddle",
+            "order",
+            null
+          ]
+        },
+        "fixed": {
+          "title": "Fijado",
+          "description": "Si el n\u00famero es un valor fijo.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "awardCriterionFixed.csv",
+          "openCodelist": false,
+          "enum": [
+            "total",
+            "unit",
+            null
+          ]
+        },
+        "threshold": {
+          "title": "Umbral",
+          "description": "Si el n\u00famero es un tipo de umbral.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "criterionThreshold.csv",
+          "openCodelist": false,
+          "enum": [
+            "minimumScore",
+            "maximumBids",
+            null
+          ]
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

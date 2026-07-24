@@ -1,0 +1,19 @@
+{
+  "name": {
+    "en": "Sources",
+    "es": "Fuentes"
+  },
+  "description": {
+    "en": "Adds a sources array to indicate the information systems from which the data originates.",
+    "es": "A\u00f1ade una lista de fuentes para indicar los sistemas de informaci\u00f3n de los cuales se originan los datos"
+  },
+  "documentationUrl": {
+    "en": "https://bitbucket.org/ONCAETI/ocds_releasesource_extension/src/master/README.md"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "definitions": {
+    "BudgetBreakdown": {
+      "title": "Detailed budget breakdown",
+      "description": "This section allows a detailed budget breakdown to be expressed, covering multiple budget sources and multiple periods",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this particular budget entry.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A short free text description of this budget entry.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "amount": {
+          "title": "Amount",
+          "description": "The value of the budget line item. A positive amount means the source organization funds a future contracting process. A negative amount means a future contracting process pays the source organization.",
+          "$ref": "#/definitions/Value"
+        },
+        "uri": {
+          "title": "Linked budget information",
+          "description": "A URI pointing directly to a machine-readable information about this budget entry.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "period": {
+          "title": "Budget period",
+          "description": "The period covered by this budget entry.",
+          "$ref": "#/definitions/Period"
+        },
+        "sourceParty": {
+          "title": "Source organization",
+          "description": "The organization providing the funds for this budget entry. The corresponding entry in the `parties` array must have 'sourceParty' in its `roles` array.",
+          "$ref": "#/definitions/OrganizationReference"
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "budget",
+        "version": "master"
+      }
+    },
+    "Budget": {
+      "properties": {
+        "budgetBreakdown": {
+          "title": "Budget breakdown",
+          "description": "A detailed breakdown of the budget by period and/or participating funders.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BudgetBreakdown"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

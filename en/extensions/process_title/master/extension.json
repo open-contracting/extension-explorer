@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Process level title and description",
+    "es": "T\u00edtulo y descripci\u00f3n del nivel del proceso"
+  },
+  "description": {
+    "en": "For providing overall process titles and descriptions, often to give a summary of the contracting process as a whole.",
+    "es": "For providing overall process titles and descriptions, often to give a summary of the contracting process as a whole."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/process_title/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

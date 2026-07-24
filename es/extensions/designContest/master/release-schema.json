@@ -1,0 +1,167 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "designContest": {
+          "title": "Concurso de proyecto",
+          "description": "Informaci\u00f3n acerca de la organizaci\u00f3n de un concurso de proyecto.",
+          "$ref": "#/definitions/DesignContest"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "designContest": {
+          "title": "Concurso de proyecto",
+          "description": "Informaci\u00f3n acerca de la organizaci\u00f3n de un concurso de proyecto.",
+          "$ref": "#/definitions/DesignContest"
+        }
+      }
+    },
+    "DesignContest": {
+      "title": "Concurso de proyecto",
+      "description": "Informaci\u00f3n acerca de la organizaci\u00f3n de un concurso de proyecto.",
+      "type": "object",
+      "properties": {
+        "selectedParticipants": {
+          "title": "Participantes seleccionados",
+          "description": "The organizations that have already been selected to participate in the design contest.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "hasPrizes": {
+          "title": "Tiene premios",
+          "description": "Si se adjudicar\u00e1n los premios en el concurso de proyecto.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "prizes": {
+          "title": "Premio",
+          "description": "Informaci\u00f3n acerca de los premios adjudicados en el concurso de proyecto.",
+          "$ref": "#/definitions/Prizes"
+        },
+        "rewardsDetails": {
+          "title": "Detalles de recompensas",
+          "description": "Los detalles y condiciones de los pagos a realizar a los participantes.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "followUpContracts": {
+          "title": "Contratos de seguimiento",
+          "description": "Si los contratos posteriores al concurso de dise\u00f1o se otorgar\u00e1n al ganador o a los ganadores del concurso de dise\u00f1o.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "bindingJuryDecision": {
+          "title": "Decisi\u00f3n vinculante del jurado",
+          "description": "Si la decisi\u00f3n del jurado es vinculante para la entidad adjudicadora.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "juryMembers": {
+          "title": "Miembros del jurado",
+          "description": "Los miembros del jurado.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/JuryMember"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "JuryMember": {
+      "title": "Miembro del jurado",
+      "description": "Miembro del jurado.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "description": "El nombre del miembro del jurado.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Prizes": {
+      "title": "Premio",
+      "description": "Information about the prizes awarded in a design contest.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "La descripci\u00f3n de los premios.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "details": {
+          "title": "Detalles",
+          "description": "Information about the individual prizes.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Prize"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Prize": {
+      "title": "Prize",
+      "description": "Information about an individual prize awarded in a design contest.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "The locally unique identifier for the prize.",
+          "type": [
+            "string"
+          ],
+          "versionId": true,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "The description of the prize.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "value": {
+          "title": "Valor",
+          "description": "The value of the prize.",
+          "$ref": "#/definitions/Value"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

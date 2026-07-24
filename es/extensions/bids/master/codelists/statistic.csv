@@ -1,0 +1,19 @@
+Categoría,Código,Título,Descripción
+expressionsOfInterest,requests,Expressions of interest,The total number of unique expressions of interest received.
+bids,bids,Ofertas,El número total de ofertas únicas recibidas (antes de que se descarten por no cumplir los criterios esenciales).
+bids,validBids,Ofertas válidas,El número total de ofertas únicas recibidas que se consideraron válidas en función de los criterios pertinentes (del licitante o de la solicitud de oferta misma). Todas las ofertas válidas deben ser consideradas durante la etapa de evaluación de la oferta.
+bids,disqualifiedBids,Disqualified bids,"The number of bids that were found inadmissible. A bid is found inadmissible where it has been verified that it has been submitted by a tenderer who has been excluded or who did not meet the selection criteria, or when it is not in conformity with the technical specifications, or is irregular (e.g. it was received late, having an abnormally low price or cost), unacceptable or unsuitable."
+bids,lowestValidBidValue,Valor más bajo de la oferta,El valor de la oferta válida más baja
+bids,highestValidBidValue,Valor más alto de la oferta,El valor de la oferta válida más alta.
+bidders,bidders,Licitantes,El número total de organizaciones únicas o consorcios que presentan ofertas (antes de que se descarten por no cumplir los criterios esenciales).
+bidders,qualifiedBidders,Licitantes calificados,El número total de organizaciones únicas o consorcios que pasan la fase de calificación del proceso de evaluación.
+bidders,disqualifiedBidders,Licitantes descalificados,El número total de organizaciones únicas o consorcios que no pasaron la etapa de calificación del proceso de evaluación.
+bids,electronicBids,Ofertas electrónicas,El número de ofertas recibidas por medios electrónicos.
+bids,microBids,Bids from micro companies,The number of bids received from micro enterprises.
+bids,smeBids,Ofertas de PYMES,The number of bids received from small and medium enterprises.
+bids,smallBids,Bids from small companies,The number of bids received from small enterprises.
+bids,mediumBids,Bids from medium companies,The number of bids received from medium enterprises.
+bids,foreignBids,Ofertas de empresas extranjeras,El número de ofertas recibidas de licitantes de fuera del país donde se emite la oferta.
+EU,foreignBidsFromEU,Ofertas de empresas en otros países del Área Económica Europea,El número de ofertas recibidas de empresas en otros países del Área Económica Europea.
+EU,foreignBidsFromNonEU,Ofertas de empresas en otros países que no pertenecen al Área Económica Europea,El número de ofertas recibidas de empresas en otros países que no pertenecen al Área Económica Europea.
+EU,tendersAbnormallyLow,Ofertas excluídas porque eran anormalmente bajas,"El número de ofertas excluidas porque eran anormalmente bajas. Tenga en cuenta que en algunos conjuntos de datos de la UE esto pudo haber sido convertido de un booleano, de modo que un valor 1 indicaría ""1 o más"" ofertas fueron excluidas. Los usuarios deben evaluar e interpretar los datos según corresponda."
