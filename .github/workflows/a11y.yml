@@ -15,7 +15,7 @@ jobs:
           node-version: 22
       - uses: actions/setup-python@v6.3.0
         with:
-          python-version: '3.13'
+          python-version-file: .python-version
           cache: pip
           cache-dependency-path: '**/requirements*.txt'
       - run: npm install pa11y-ci
