@@ -1,11 +1,11 @@
-import os
+from pathlib import Path
 
 from flask import url_for
 from flask_frozen import Freezer
 
 from extension_explorer.views import app
 
-EMPTY_EXTENSIONS_JSON = os.path.join(os.path.dirname(os.path.realpath(__file__)), "fixtures", "empty.json")
+EMPTY_EXTENSIONS_JSON = str(Path(__file__).resolve().parent / "fixtures" / "empty.json")
 
 
 def test_extensions_json(client):

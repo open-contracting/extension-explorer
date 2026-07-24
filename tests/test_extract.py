@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from tempfile import TemporaryDirectory
 
 from extension_explorer.extract import extract_tag
@@ -22,10 +22,11 @@ topic:
 
 def assert_result(filename, content, method, expected):
     with TemporaryDirectory() as d:
-        with open(os.path.join(d, filename), "wb") as f:
+        path = Path(d) / filename
+        with path.open("wb") as f:
             f.write(content)
 
-        with open(os.path.join(d, filename), "rb") as f:
+        with path.open("rb") as f:
             assert list(method(f, None, None, None)) == expected
 
 

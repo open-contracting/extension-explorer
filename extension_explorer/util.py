@@ -8,6 +8,7 @@ from collections import defaultdict
 from copy import deepcopy
 from functools import lru_cache
 from operator import itemgetter
+from pathlib import Path
 
 import json_merge_patch
 import jsonpointer
@@ -53,9 +54,9 @@ def get_extension_explorer_data_filename():
     Set it with the ``EXTENSION_EXPLORER_DATA_FILENAME`` environment variable (default:
     ``extension_explorer/data/extensions.json``).
     """
-    if os.getenv("EXTENSION_EXPLORER_DATA_FILENAME"):
-        return os.getenv("EXTENSION_EXPLORER_DATA_FILENAME")
-    return os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "extensions.json")
+    if filename := os.getenv("EXTENSION_EXPLORER_DATA_FILENAME"):
+        return Path(filename)
+    return Path(__file__).resolve().parent / "data" / "extensions.json"
 
 
 @lru_cache
@@ -63,13 +64,13 @@ def get_extensions(filename=None):
     """Return the data file's parsed contents."""
     if not filename:
         filename = get_extension_explorer_data_filename()
-    with open(filename) as f:
+    with Path(filename).open() as f:
         return json.load(f)
 
 
 def set_tags(extensions):
     """Add tags and publishers to extensions, and return profile, topic and publisher tags."""
-    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "data", "tags.yaml")) as f:
+    with (Path(__file__).resolve().parent / "data" / "tags.yaml").open() as f:
         data = safe_load(f)
 
     for extension in extensions.values():
@@ -313,7 +314,7 @@ def _get_types(value, sources, extension_version, lang, n=1, field=None):
         open_codelist = codelist_schema["openCodelist"]
         variables = {
             "url": _codelist_url(codelist, extension_version, lang),
-            "codelist": os.path.splitext(codelist)[0],
+            "codelist": Path(codelist).stem,
         }
         if open_codelist is True:
             return [
@@ -406,7 +407,7 @@ def _codelist_url(basename, extension_version, lang):
             _anchor=basename,
         )
     elif basename in codelist_names:
-        anchor = re.sub(r"[A-Z]", lambda s: "-" + s[0].lower(), os.path.splitext(basename)[0])
+        anchor = re.sub(r"[A-Z]", lambda s: "-" + s[0].lower(), Path(basename).stem)
         url = f"{codelist_reference_url}#{anchor}"
     # TODO(james): Hardcoding for ocds_statistics_extension.
     # https://github.com/open-contracting/extension-explorer/issues/58
