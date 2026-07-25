@@ -8,7 +8,7 @@ jobs:
     secrets:
       personal-access-token: ${{ secrets.PAT }}
     with:
-      # pysassc and ocdsextensionregistry is run as a command in a workflow.
+      # pysassc and ocdsextensionregistry are run as commands in a workflow.
       standard-maintenance-scripts-ignore: libsass,ocdsextensionregistry
       # Defer indentation to biome format.
       ocds-noindent: 'yes'
