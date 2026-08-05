@@ -1424,18 +1424,3 @@ msgstr ""
 "Sube tus datos a la <a href=\"https://review.standard.open-"
 "contracting.org/\">OCDS Data Review Tool</a>, la cual lista las "
 "extesniones utilizadas y los enlances a su documentación."
-
-#~ msgid "The extension undoes the deprecation of this field."
-#~ msgstr "La extensión deshace la desaprobación de este campo."
-
-#~ msgid "The extension removes these fields from the release schema:"
-#~ msgstr "Esta extensión quita estos campos del esquema de entrega:"
-
-#~ msgid ""
-#~ "The extension removes these "
-#~ "<em>deprecated</em> fields from the release"
-#~ " schema:"
-#~ msgstr ""
-#~ "La extensión quita los campos "
-#~ "<em>obsoletos</em> del esquema de entrega:"
-
