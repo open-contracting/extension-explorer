@@ -1,12 +1,5 @@
-// In CI, PA11Y_INCLUDE_WARNINGS is set along with PA11Y_SUPPRESS_KNOWN_WARNINGS, to allow pa11y to pass.
-// In development, set PA11Y_INCLUDE_WARNINGS only, to review warnings manually.
-const includeWarnings = "PA11Y_INCLUDE_WARNINGS" in process.env;
-
-// pa11y supports hiding elements or ignoring rules - but not ignoring rules for specific elements.
-// So, in development, this configuration can be run using each strategy, to avoid shadowing issues.
 const strategy = process.env.PA11Y_STRATEGY;
-
-// Suppress false positive warnings.
+const includeWarnings = "PA11Y_INCLUDE_WARNINGS" in process.env;
 const suppressKnownWarnings = "PA11Y_SUPPRESS_KNOWN_WARNINGS" in process.env;
 
 const knownErrors = {
@@ -68,7 +61,6 @@ const knownWarnings = [
 
 const suppressions = [knownErrors, ...(includeWarnings && suppressKnownWarnings ? knownWarnings : [])];
 
-// A suppression with no selector can't be hidden, so its rules are always ignored, regardless of strategy.
 const withoutSelectors = suppressions.filter((suppression) => !suppression.selectors.length);
 const withSelectors = suppressions.filter((suppression) => suppression.selectors.length);
 
