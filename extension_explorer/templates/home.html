@@ -1,7 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block title %}{{ _("OCDS Extension Explorer") }}{% endblock %}
-{% block navbar_title %}{% endblock %}
+{# The logo is hidden on small screens, so the navbar brand link needs text to be accessible. #}
+{% block navbar_title %}<span class="visually-hidden">{{ _("OCDS Extension Explorer") }}</span>{% endblock %}
 {% block home_nav_link %}active{% endblock %}
 
 {% block main %}

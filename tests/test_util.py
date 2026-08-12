@@ -679,7 +679,7 @@ def test_highlight_json():
     assert (
         html
         == """<div><h2>Example</h2>
-<div class="highlight"><pre><span></span><span class="p">{</span>
+<div class="highlight"><pre tabindex="0"><span></span><span class="p">{</span>
 <span class="w">    </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span>\
 <span class="mi">1</span>
 <span class="p">}</span>

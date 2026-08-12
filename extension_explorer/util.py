@@ -159,6 +159,8 @@ def highlight_json(html):
 
     for code_block in root.find_class("language-json"):
         replacement = lxml.html.fromstring(highlight(code_block.text, JsonLexer(), HtmlFormatter()))
+        # The code block scrolls horizontally on small screens, so it must be keyboard focusable.
+        replacement.find("pre").set("tabindex", "0")
         parent = code_block.getparent()
         parent.getparent().replace(parent, replacement)
 
