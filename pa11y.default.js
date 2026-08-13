@@ -29,12 +29,6 @@ const knownWarnings = [
     selectors: ["span.visually-hidden"],
   },
   {
-    // "Elements must meet minimum color contrast ratio thresholds." The contrast can't be determined where the
-    // text overflows its container, which occurs in the mobile viewport.
-    rules: ["color-contrast"],
-    selectors: [".ee-max-width pre code", "div.highlight pre span"],
-  },
-  {
     // "If this table is a data table, consider using a caption element to the table element to identify this table."
     // https://www.w3.org/WAI/WCAG21/Techniques/html/H39
     rules: ["WCAG2AA.Principle1.Guideline1_3.1_3_1.H39.3.NoCaption"],
@@ -59,37 +53,40 @@ const knownWarnings = [
     selectors: ["select.filter-select"],
   },
   {
-    // "Accessible name for this element does not contain the visible label text." The label is an icon, not text.
-    // https://www.w3.org/WAI/WCAG21/Techniques/failures/F96
-    rules: ["WCAG2AA.Principle2.Guideline2_5.2_5_3.F96"],
-    selectors: ["button.ee-search-docs-toggle"],
-  },
-  {
     // "Preformatted text may require scrolling in two dimensions."
     rules: ["WCAG2AA.Principle1.Guideline1_4.1_4_10.C32,C31,C33,C38,SCR34,G206"],
     selectors: [],
   },
 ];
 
-const suppressions = [knownErrors, ...(includeWarnings && suppressKnownWarnings ? knownWarnings : [])];
+function createDefaults(extraKnownWarnings = []) {
+  const suppressions = [
+    knownErrors,
+    ...(includeWarnings && suppressKnownWarnings ? [...knownWarnings, ...extraKnownWarnings] : []),
+  ];
 
-const withoutSelectors = suppressions.filter((suppression) => !suppression.selectors.length);
-const withSelectors = suppressions.filter((suppression) => suppression.selectors.length);
+  const withoutSelectors = suppressions.filter((suppression) => !suppression.selectors.length);
+  const withSelectors = suppressions.filter((suppression) => suppression.selectors.length);
 
-const hideElements = strategy === "hideElements" ? withSelectors.flatMap((suppression) => suppression.selectors) : [];
-const ignore = [
-  ...withoutSelectors.flatMap((suppression) => suppression.rules),
-  ...(strategy === "ignore" ? withSelectors.flatMap((suppression) => suppression.rules) : []),
-];
+  const hideElements =
+    strategy === "hideElements" ? withSelectors.flatMap((suppression) => suppression.selectors) : [];
+  const ignore = [
+    ...withoutSelectors.flatMap((suppression) => suppression.rules),
+    ...(strategy === "ignore" ? withSelectors.flatMap((suppression) => suppression.rules) : []),
+  ];
 
-module.exports = {
-  defaults: {
+  return {
     runners: ["htmlcs", "axe"],
     levelCapWhenNeedsReview: "warning",
     includeWarnings: includeWarnings,
     ...(hideElements.length ? { hideElements: hideElements.join(", ") } : {}),
     ...(ignore.length ? { ignore: ignore } : {}),
-  },
+  };
+}
+
+module.exports = {
+  createDefaults: createDefaults,
+  defaults: createDefaults(),
   urls: [
     "http://127.0.0.1:8000/en/",
     "http://127.0.0.1:8000/es/",
