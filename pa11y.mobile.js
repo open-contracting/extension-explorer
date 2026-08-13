@@ -17,6 +17,7 @@ const knownWarnings = [
 ];
 
 module.exports = {
+  ...base,
   defaults: {
     ...base.createDefaults(knownWarnings),
     viewport: {
@@ -26,5 +27,4 @@ module.exports = {
       isMobile: true,
     },
   },
-  urls: base.urls,
 };
