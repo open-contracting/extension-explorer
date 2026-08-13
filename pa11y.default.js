@@ -85,7 +85,7 @@ function createDefaults(extraKnownWarnings = []) {
 }
 
 module.exports = {
-  createDefaults: createDefaults,
+  createDefaults,
   defaults: createDefaults(),
   urls: [
     "http://127.0.0.1:8000/en/",
