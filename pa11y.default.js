@@ -2,12 +2,14 @@ const strategy = process.env.PA11Y_STRATEGY;
 const includeWarnings = "PA11Y_INCLUDE_WARNINGS" in process.env;
 const suppressKnownWarnings = "PA11Y_SUPPRESS_KNOWN_WARNINGS" in process.env;
 
-const knownErrors = {
-  // "This form does not contain a submit button."
-  // https://www.w3.org/WAI/WCAG21/Techniques/html/H32
-  rules: ["WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2"],
-  selectors: ["h1+form.form-inline", "form.ee-search"],
-};
+const knownErrors = [
+  {
+    // "This form does not contain a submit button."
+    // https://www.w3.org/WAI/WCAG21/Techniques/html/H32
+    rules: ["WCAG2AA.Principle3.Guideline3_2.3_2_2.H32.2"],
+    selectors: ["h1+form.form-inline", "form.ee-search"],
+  },
+];
 
 const knownWarnings = [
   {
@@ -61,7 +63,7 @@ const knownWarnings = [
 
 function createDefaults(extraKnownWarnings = []) {
   const suppressions = [
-    knownErrors,
+    ...knownErrors,
     ...(includeWarnings && suppressKnownWarnings ? [...knownWarnings, ...extraKnownWarnings] : []),
   ];
 
