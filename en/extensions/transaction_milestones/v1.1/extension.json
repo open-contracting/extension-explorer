@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "ocds_transactions_relatedMilestone_extension",
+    "es": "ocds_transactions_relatedMilestone_extension"
+  },
+  "description": {
+    "en": "Adds a relatedImplementationMilestone property to the transactions object so that disbursements can be linked with their associated milestone.",
+    "es": "Agrega una propiedad relatedImplementationMilestone al objeto de transacciones para que los desembolsos se puedan vincular con su hito asociado."
+  },
+  "documentationUrl": {},
+  "compatibility": [
+    "1.1"
+  ]
+}

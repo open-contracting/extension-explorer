@@ -1,0 +1,30 @@
+Código,Título,Descripción
+economic,Económico/a,"The goal is economic, such as formal employment and the local economy."
+economic.formalEmploymentPromotion,Formal employment promotion,The goal is to promote formal employment.
+economic.innovativePurchase,Innovative purchase,"The goal is to procure innovative goods, services or works."
+economic.localEconomyPromotion,Local economy promotion,The goal is to promote the local economy.
+economic.marketInnovationPromotion,Market innovation promotion,The goal is to promote market innovation.
+economic.processInnovationPromotion,Process innovation promotion,"The goal is to procure goods, services or works that entail process innovation."
+economic.productInnovationPromotion,Product innovation promotion,"The goal is to procure goods, services or works that entail product innovation."
+economic.researchDevelopmentActivities,Research and development activities,"The goal is to procure goods, services or works that involve research and development activities."
+environmental,Environmental,"The goal is to minimize and, if possible, avoid environmental damage: for example, reducing CO2 emissions and waste or promoting resource reuse and energy efficiency."
+environmental.biodiversityProtectionRestoration,Biodiversity protection and restoration,The goal is to protect and restore biodiversity and ecosystems.
+environmental.carbonEmissionsReduction,Carbon emissions reduction,The goal is to reduce carbon dioxide (CO2) emissions.
+environmental.circularEconomy,Circular economy,The goal is to promote the transition to a circular economy.
+environmental.climateChangeAdaptation,Climate change adaptation,The goal is to promote climate change adaptation.
+environmental.climateChangeMitigation,Climate change mitigation,The goal is to promote climate change mitigation.
+environmental.energyEfficiency,Energy efficiency,The goal is to promote energy efficiency.
+environmental.pollutionPrevention,Pollution prevention,The goal is to prevent pollution.
+environmental.recycling,Recycling,The goal is to promote recycling.
+environmental.resourceReuse,Resource reuse,The goal is to maximize the reuse of resources.
+environmental.waterResourcesProtection,Water resources protection,The goal is to promote the sustainable use and protection of water and marine resources.
+environmental.wasteReduction,Waste reduction,The goal is to reduce waste.
+social,Social,"The goal is to generate benefits to society: for example, promoting labor rights, diversity and equal opportunity, and occupational health and safety."
+social.accessibility,Accessibility,The goal is to promote accessibility for disabled and not disabled persons.
+social.disadvantagedEmploymentOpportunities,Disadvantaged employment opportunities,"The goal is to promote employment opportunities for the long-term unemployed, disadvantaged and/or for persons with disabilities."
+social.ethnicEquality,Ethnic equality,The goal is to promote ethnic equality.
+social.genderEquality,Gender equality,The goal is to promote gender equality.
+social.humanRightsInSupplyChains,Human rights in supply chains,The goal is to promote human rights due diligence in global supply chains.
+social.laborRightsPromotion,Labor rights promotion,The goal is to promote labor rights.
+social.smeInclusion,SME inclusion,The goal is to promote the participation of small and medium-sized enterprises (SMEs).
+social.womenInclusion,Women inclusion,The goal is to promote the participation of women-owned suppliers.

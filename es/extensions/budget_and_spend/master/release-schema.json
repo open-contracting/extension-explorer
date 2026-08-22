@@ -1,0 +1,155 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "financialProgress": {
+          "title": "Progreso financiero",
+          "description": "La secci\u00f3n de progreso financiero permite publicar informaci\u00f3n de alto nivel y detallada sobre montos asignados o gastados hasta la fecha para este contrato en particular. Esto puede usarse junto a la secci\u00f3n de transacciones, la cual permite que se registren detalles de cada pago individual.",
+          "type": "object",
+          "properties": {
+            "totalSpend": {
+              "title": "Gasto total",
+              "description": "El gasto total de este contrato a la fecha de la \u00faltima actualizaci\u00f3n. Tenga en cuenta que la medida fiscal exacta que representa este n\u00famero puede variar dependiendo del publicador de los datos (ej. monto facturado vs monto transferido al banco del proveedor).",
+              "$ref": "#/definitions/Value"
+            },
+            "measures": {
+              "title": "Medidas",
+              "description": "La secci\u00f3n de medidas reporta valores agregados del progreso financiero para este contrato (ie. sin el desglose de clasificaci\u00f3n de presupuesto. Las medidas se deben de dar como un set de pares clave-valor, donde la clave debe ser el nombre de la medida utilizada dentro de una base de datos del Paquete de Datos Fiscales u otra base de datos de presupuesto y gasto. El valor es el valor de esta medida la \u00faltima vez que fue actualizada y debe de darse como un n\u00famero en la misma moneda que cualquier reporte agregado de presupuesto o figuras de gasto.",
+              "type": "object",
+              "patternProperties": {
+                "[A-Za-z0-9._-]": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "minProperties": 1
+            },
+            "breakdown": {
+              "title": "Desglose de progreso financiero",
+              "description": "Esta secci\u00f3n contienen un desglose del progreso financiero, permitiendo que varias medidas (monto facturado, monto acumulado, monto pagado, etc) se desglosen por fuente, per\u00edodo y clasificaci\u00f3n de presupuesto",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FinancialProgressBreakdown"
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          },
+          "minProperties": 1
+        }
+      }
+    },
+    "FinancialProgressBreakdown": {
+      "title": "Desglose de progreso financiero",
+      "description": "Esta secci\u00f3n permite un desglose detallado de cada progreso financiero que se de, cada uno cubriendo per\u00edodos particulares, o asignar el progreso financiero a fuentes de financiamiento particulares y clasificaciones fiscales.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador para esta entrada de desglose de progreso financiero particular ",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Un texto breve de descripci\u00f3n de este desglose de progreso financiero. Esto puede visualizarse en una interfaz de usuarios que interprete esta entrada. Puede ser generada autom\u00e1ticamente como datos estructurados o pueden ser ingresados manualmente.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "period": {
+          "title": "Per\u00edodo de Presupuesto",
+          "description": "El per\u00edodo cubierto por la entrada de desglose de progreso financiero. Esta informaci\u00f3n tambi\u00e9n puede ser duplicada utilizando clasificaciones cuando sea relevante. ",
+          "$ref": "#/definitions/Period"
+        },
+        "classifications": {
+          "title": "Clasificaciones de presupuesto",
+          "description": "Las clasificaciones de presupuesto deben de darse como un conjunto de pares clave-valor, donde la clave es la dimensi\u00f3n (o el nombre de la dimensi\u00f3n) usada en la clasificaci\u00f3n de presupuesto, y el valor es el valor de esa dimensi\u00f3n en el proceso de contrataciones o en el contrato espec\u00edfico (dependiendo del punto en el archivo OCDS en el cual se da la clasificaci\u00f3n).",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "measures": {
+          "title": "medidas",
+          "description": "Las medidas deben de dar un conjunto de pares clave-valor, donde la clave debe ser el nombre de una medida utilizada en la base de datos del Paquete de Datos Fiscales o en otras bases de datos de presupuesto y gasto. El valor es el valor de esta medida en la \u00faltima actualizaci\u00f3n, y debe de darse como un n\u00famero en la misma moneda que en cualquier reporte de presupuesto agregado o valores de gasto.",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "minProperties": 1
+        },
+        "fiscalBreakdownFieldMapping": {
+          "$ref": "#/definitions/FiscalBreakdownFieldMapping"
+        }
+      },
+      "minProperties": 1
+    },
+    "BudgetBreakdown": {
+      "properties": {
+        "classifications": {
+          "title": "Clasificaciones de presupuesto",
+          "description": "Las clasificaciones de presupuesto deben de darse como un conjunto de pares clave-valor, donde la clave es la dimensi\u00f3n (o el nombre de la dimensi\u00f3n) usada en la clasificaci\u00f3n de presupuesto, y el valor es el valor de esa dimensi\u00f3n en el proceso de contrataciones o en el contrato espec\u00edfico (dependiendo del punto en el archivo OCDS en el cual se da la clasificaci\u00f3n).",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "measures": {
+          "title": "medidas",
+          "description": "Las medidas deben de dar un conjunto de pares clave-valor, donde la clave debe ser el nombre de una medida utilizada en la base de datos del Paquete de Datos Fiscales o en otras bases de datos de presupuesto y gasto. El valor es el valor de esta medida en la \u00faltima actualizaci\u00f3n, y debe de darse como un n\u00famero en la misma moneda que en cualquier reporte de presupuesto agregado o valores de gasto.",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "minProperties": 1
+        },
+        "fiscalBreakdownFieldMapping": {
+          "$ref": "#/definitions/FiscalBreakdownFieldMapping"
+        }
+      }
+    },
+    "FiscalBreakdownFieldMapping": {
+      "title": "Mapeo de Campos de Desglose Fiscal",
+      "description": "OCDS defers to the Fiscal Data Package to provide detailed definitions of budget classifications and measures, including providing labels for each property and describing the relationship between each classification or measure and established fiscal concepts. A Fiscal Data Package may also contain budget and spend data, using the same classifications and measures as the OCDS file, and thereby allowing comparison between 'contract level' budget allocations and spend, and allocations and spending at the level of a particular budget line. When used, this field must contain a dereferenceable URI pointing to a [Fiscal Data Package (FDP)](https://frictionlessdata.io/specs/fiscal-data-package/) datapackage.json file (version 1.0 or above), or a file that, when decompressed, contains a datapackage.json file. The URI should include a fragment identifier with the `name` value of a particular resource within that file in order to identify the particular budget or spending data file to which contract level budget allocations and spending measures can be compared, and the particular column definitions to use. The referenced resource should contain `field` or `extraField` properties with their `name` property matching each of the budget/financial progress breakdown `classification` or `measure` fields in the OCDS data, and at minimum providing labels for these.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

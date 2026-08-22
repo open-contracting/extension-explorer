@@ -1,0 +1,157 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "selectionCriteria": {
+          "title": "Selection criteria",
+          "description": "The minimum requirements for potential suppliers to participate in the contracting process. Selection criteria ensure that a potential supplier has the legal and financial capacities and the technical and professional abilities to perform the contract.",
+          "$ref": "#/definitions/SelectionCriteria"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "selectionCriteria": {
+          "title": "Selection criteria",
+          "description": "Information about the conditions for participation in a lot.",
+          "$ref": "#/definitions/SelectionCriteria"
+        }
+      }
+    },
+    "SelectionCriteria": {
+      "title": "Selection criteria",
+      "description": "Information about conditions for participation.",
+      "type": "object",
+      "properties": {
+        "criteria": {
+          "title": "Selection criteria",
+          "description": "The selection criteria.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SelectionCriterion"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "The description of the criteria.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "selectionCriteria",
+        "version": "master"
+      }
+    },
+    "SelectionCriterion": {
+      "title": "Selection criterion",
+      "description": "Information about the selection criterion.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "The type of the criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "selectionCriterionType.csv",
+          "openCodelist": false,
+          "enum": [
+            "technical",
+            "economic",
+            "suitability",
+            "other",
+            null
+          ]
+        },
+        "subType": {
+          "title": "Subtype",
+          "description": "The subtype of the criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "The description of the criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "minimum": {
+          "title": "Minimum value or level",
+          "description": "The minimum value or level of compliance a candidate needs to meet in order to participate.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "appliesTo": {
+          "title": "Applies to",
+          "description": "Whether the criterion applies to suppliers, subcontractors, or both.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "supplier",
+              "subcontractor"
+            ]
+          },
+          "codelist": "appliesTo.csv",
+          "openCodelist": false,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "forReduction": {
+          "title": "For reduction?",
+          "description": "Whether the criterion is used to select the potential suppliers to be invited to the second stage of the contracting process, if the number of invitations is limited.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "numbers": {
+          "title": "Numbers",
+          "description": "Numbers linked to the criterion.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CriterionNumber"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "verificationMethod": {
+          "title": "Verification method",
+          "description": "The methods the buyer or procuring entity uses to verify the potential supplier satisfies the criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "selectionCriteria",
+        "version": "master"
+      }
+    }
+  }
+}

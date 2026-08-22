@@ -1,0 +1,68 @@
+{
+  "definitions": {
+    "Risk": {
+      "title": "Riesgo",
+      "description": "Un riesgo relacionado al proyecto.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID de riesgo",
+          "description": "Un identificador local para este riesgo, \u00fanico en este bloque. Este campo se utiliza para mantener el monitoreo de revisiones m\u00faltiples de un riesgo a trav\u00e9s de la compilaci\u00f3n desde la entrega hasta el registro.",
+          "type": [
+            "string",
+            "integer"
+          ]
+        },
+        "category": {
+          "title": "Categor\u00eda de riesgo",
+          "description": "Especificar la categor\u00eda del riesgo contra la lista de c\u00f3digos de categor\u00eda de riesgo.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskCategory.csv",
+          "openCodelist": true
+        },
+        "description": {
+          "title": "Descripci\u00f3n de riesgo",
+          "description": "Una descripci\u00f3n para este riesgo.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "allocation": {
+          "title": "Asignaci\u00f3n de riesgos",
+          "description": "La parte que absorbe el riesgo.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskAllocation.csv",
+          "openCodelist": false
+        },
+        "notes": {
+          "title": "Notas de Riesgo",
+          "description": "Notas adicionales sobre el riesgo, por ejemplo la justificaci\u00f3n para la asignaci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "riskAllocation": {
+          "title": "Asignaci\u00f3n de riesgos",
+          "description": "Informaci\u00f3n sobre la asignaci\u00f3n de los riesgos relacionados con el contrato.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Risk"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

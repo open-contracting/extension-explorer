@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "PerformanceFailure": {
+      "title": "Divulgaci\u00f3n de los fallos de funcionamiento",
+      "description": "Detalles de los incumplimientos para un determinado periodo y categor\u00eda. Los detalles de las penalizaciones y reducciones contempladas en el contrato, impuestas y pagadas tambi\u00e9n pueden ser provistas.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador local para esta categor\u00eda espec\u00edfica y el periodo de falla en el desempe\u00f1o. Este campo se usa para llevar registro de las revisiones de un cargo a lo largo de varias entregas de OCDS.",
+          "type": "string",
+          "minLength": 1
+        },
+        "period": {
+          "title": "Periodo de falla en el desempe\u00f1o",
+          "description": "El periodo de notificaci\u00f3n de los fallos de rendimiento.",
+          "$ref": "#/definitions/Period"
+        },
+        "category": {
+          "title": "Categor\u00eda de la falla en el desempe\u00f1o",
+          "description": "La categor\u00eda de los fallos de rendimiento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "events": {
+          "title": "N\u00famero de eventos",
+          "description": "El n\u00famero de fallos de rendimiento para este periodo y categor\u00eda.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "penaltyContracted": {
+          "title": "Penalizaci\u00f3n contractual",
+          "description": "Descripci\u00f3n de la penalizaci\u00f3n o reducci\u00f3n prevista en el contrato para este periodo, categor\u00eda y n\u00famero de fallos de incumplimiento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "penaltyImposed": {
+          "title": "Penalizaci\u00f3n impuesta",
+          "description": "Una descripci\u00f3n de la penalizaci\u00f3n o reducci\u00f3n impuesta para este periodo, categor\u00eda y n\u00famero de fallos de incumplimiento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "penaltyPaid": {
+          "title": "Penalizaci\u00f3n pagada",
+          "description": "Si se ha pagado la penalizaci\u00f3n impuesta para este periodo, categor\u00eda y n\u00famero de fallos de incumplimiento.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "minProperties": 1
+    },
+    "Implementation": {
+      "properties": {
+        "performanceFailures": {
+          "title": "Incumplimiento de divulgaci\u00f3n",
+          "description": "Una lista de incumplimientos de divulgaci\u00f3n, detallando los incumplimientos para diferentes periodos y categor\u00edas.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PerformanceFailure"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

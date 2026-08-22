@@ -1,0 +1,27 @@
+{
+  "name": {
+    "en": "Lots",
+    "es": "Lotes"
+  },
+  "description": {
+    "en": "A tender process can be divided into lots, where bidders can bid on one or more lots. Details of each lot can be provided here. Items, documents and other features may then reference the lot they are related to using relatedLot. Where no relatedLot identifier is given, the values ought to be interpreted as applicable to the whole tender.",
+    "es": "Un proceso de licitaci\u00f3n se puede dividir en lotes, donde los licitadores pueden ofertar en uno o m\u00e1s lotes. Los detalles de cada lote se pueden proporcionar aqu\u00ed. Los art\u00edculos, documentos y otras caracter\u00edsticas pueden hacer referencia al lote que est\u00e1n relacionados con el uso de relatedLot. Cuando no se indique ning\u00fan identificador relacionado, los valores deben interpretarse como aplicables a toda la licitaci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/lots/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_finance_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": {
+    "en": "ocds-riskAllocation-extension",
+    "es": "ocds-riskAllocation-extension"
+  },
+  "description": {
+    "en": "Draft risk allocation extension for ppp extension",
+    "es": "Proyecto de extensi\u00f3n de asignaci\u00f3n de riesgos para la extensi\u00f3n de APP"
+  },
+  "documentationUrl": {},
+  "compatibility": [
+    "1.1"
+  ]
+}

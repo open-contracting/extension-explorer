@@ -1,0 +1,13 @@
+{
+  "definitions": {
+    "Transaction": {
+      "properties": {
+        "relatedImplementationMilestone": {
+          "title": "Hito de implementaci\u00f3n relacionado",
+          "description": "Un enlace al hito en la secci\u00f3n de implementaci\u00f3n de OCDS a la que se refiere esta transacci\u00f3n.",
+          "$ref": "#/definitions/MilestoneReference"
+        }
+      }
+    }
+  }
+}
