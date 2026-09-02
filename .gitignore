@@ -4,7 +4,6 @@
 /extension_explorer/data/extensions.json
 /extension_explorer/static/css/theme.css
 /extension_explorer/build
-/GITHUB_ACCESS_TOKEN
 *.mo
 __pycache__/
 
