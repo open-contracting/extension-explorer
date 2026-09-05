@@ -1,0 +1,33 @@
+{
+  "name": {
+    "en": "Selection Criteria",
+    "es": "Criterios de Selecci\u00f3n"
+  },
+  "description": {
+    "en": "Adds an object to describe the conditions for participation in a contracting process.",
+    "es": "Agrega un objeto para describir las condiciones de participaci\u00f3n en un proceso de contrataci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/selectionCriteria/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "selectionCriterionType.csv",
+    "appliesTo.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "dependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_awardCriteria_extension/master/extension.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

@@ -1,0 +1,36 @@
+Código,Título,Descripción
+APPFUL,Aplicador,
+DROP,Gotas,
+PUFF,Inhalador,
+SCOOP,Cucharadas,
+SPRY,Aerosoles,
+GASINHL,Oxígeno Medicinal (Gas para inhalación),
+AER,Aerosol,
+FOAM,Espuma,
+INHL,Inhalante,
+LIQCLN,Limpiador líquido,
+OIL,Aceite,"Sustancia untuosa y combustible que es líquida, o fácilmente licuable, al calentarse, y es soluble en éter pero insoluble en agua. Estas sustancias, según su origen, se clasifican en aceites animales, minerales o vegetales."
+SOL,Solución líquida,"Preparación líquida que contiene una o más sustancias químicas disueltas, es decir, molecularmente dispersas, en un disolvente adecuado o en una mezcla de disolventes mutuamente miscibles."
+CRM,Crema,"Forma de dosificación semisólida que contiene una o más sustancias farmacológicas disueltas o dispersas en una base adecuada; más recientemente, el término se ha restringido a productos que consisten en emulsiones de aceite en agua o dispersiones acuosas microcristalinas de ácidos grasos de cadena larga o alcoholes que son lavables con agua y más aceptables cosmética y estéticamente."
+LTN,Loción,"El término ""loción"" se ha utilizado para clasificar muchas suspensiones, soluciones y emulsiones tópicas destinadas a ser aplicadas en la piel."
+OINT, Ungüento,Preparado semisólido destinado a la aplicación externa sobre la piel o las mucosas.
+GEL,Gel,Sistema semisólido formado por suspensiones de pequeñas partículas inorgánicas o grandes moléculas orgánicas interpenetradas por un líquido.
+PASTE,Pasta,Forma de dosificación farmacéutica semisólida que contiene una o más sustancias farmacológicas destinadas a la aplicación tópica.
+SUSP,Suspensión,
+BAR,Barra,
+BEAD,Perlas,Una forma de dosificación farmacéutica sólida en forma de una pequeña bola.
+CAKE,Pastel,
+CEMENT,Cemento,Sustancia que sirve para producir una unión sólida entre dos superficies.
+CRYS,Cristales,"Sólido angular de forma definida, producido naturalmente, en el que las últimas unidades a partir de las cuales se construye están sistemáticamente dispuestas; suelen estar uniformemente espaciadas en un entramado espacial regular."
+DISK,Disco,Órgano o estructura circular en forma de placa.
+FLAKE,Copos/escamas,
+GRAN,Gránulos,Una pequeña partícula o grano.
+GUM,Goma de Mascar,"Material plástico insoluble, azucarado y aromatizado, de diversas formas, que al ser masticado libera una sustancia farmacológica en la cavidad bucal."
+PAD,Apósito,
+PATCH,Parche,"Un sistema de administración de fármacos que contiene un soporte adhesivo y que permite que sus ingredientes se difundan desde alguna parte del mismo (por ejemplo, el propio soporte, un depósito, el adhesivo o algún otro componente) hacia el cuerpo desde el lugar externo donde se aplica."
+PELLET,Pellet (Gránulo),"Pequeña masa sólida estéril que consiste en un fármaco altamente purificado (con o sin excipientes) fabricado por la formación de gránulos, o por compresión y moldeo."
+PILL,Píldora,"Forma de dosificación sólida, pequeña y redonda, que contiene un agente medicinal destinado a la administración oral."
+POWD,Polvo,Mezcla íntima de fármacos y/o productos químicos secos y finamente divididos que pueden estar destinados a un uso interno o externo.
+SUPP,Supositorio,"Cuerpo sólido de diversos pesos y formas, adaptado para su introducción en el orificio rectal, vaginal o uretral del cuerpo humano; suelen fundirse, ablandarse o disolverse a la temperatura corporal."
+SWAB,Hisopo,Fajo de material absorbente que suele enrollarse en un extremo de un pequeño bastón y que se utiliza para aplicar la medicación o para retirar el material de una zona.
+WAFER,Oblea,Una fina porción de material que contiene un agente medicinal.

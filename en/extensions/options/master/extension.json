@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Options",
+    "es": "Opciones"
+  },
+  "description": {
+    "en": "Adds fields for information on options.",
+    "es": "Agregar campos para obtener informaci\u00f3n sobre las opciones."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/options/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

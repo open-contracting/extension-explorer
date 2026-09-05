@@ -1,0 +1,8 @@
+Código,Título,Descripción
+percentageExact,"Peso (porcentaje, extacto)",El número es un porcentaje exacto. Los números deben sumar 100.
+percentageRangeMiddle,"Peso (porcentaje, medio de un rango)",La ponderación se expresa como un rango de porcentajes. La suma de los mínimos debe ser menor o igual a 100. La suma de los máximos debe ser igual o mayor que 100.
+decimalExact,"Peso (decimal, exacto)",El número es una fracción propia decimal finita exacta. Los números deben sumar 1.
+decimalRangeMiddle,"Peso (decimal, medio de un rango)",La ponderación se expresa como un rango de fracciones propias decimales finitas. La suma de los mínimos debe ser menor o igual a 1. La suma de los máximos debe ser igual o mayor que 1.
+pointsExact,"Peso (puntos, exacto)",La ponderación se expresa como un número exacto de puntos.
+pointsRangeMiddle,"Peso (puntos, medio de un rango)",La ponderación es expresada como un rango de números de puntos.
+order,Orden de importancia,El número indica el orden de importancia.

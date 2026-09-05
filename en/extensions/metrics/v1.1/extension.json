@@ -1,0 +1,15 @@
+{
+  "name": {
+    "en": "Metrics",
+    "es": "M\u00e9trica"
+  },
+  "description": {
+    "en": "The metrics extension supports publication of forecasts (planning stage), targets (tender stage), agreed performance targets (award and contract stage) and results (implementation stage).",
+    "es": "La extensi\u00f3n de m\u00e9tricas admite la publicaci\u00f3n de pron\u00f3sticos (etapa de planificaci\u00f3n), objetivos (etapa de licitaci\u00f3n), objetivos de desempe\u00f1o acordados (etapa de adjudicaci\u00f3n y contrato) y resultados (etapa de implementaci\u00f3n)."
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "dependencies": [],
+  "documentationUrl": {}
+}
