@@ -1,0 +1,144 @@
+{
+  "definitions": {
+    "Item": {
+      "properties": {
+        "activeIngredients": {
+          "title": "Active ingredients",
+          "description": "The active ingredients, typically chemical compounds or biological substances.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActiveIngredient"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "dosageForm": {
+          "title": "Dosage form",
+          "description": "The dosage form in which the medicine is available, from the dosageForm codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "dosageForm.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "administrationRoute": {
+          "title": "Administration route",
+          "description": "The route by which the medicine can be administered, from the administrationRoute codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "administrationRoute.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "immediateContainer": {
+          "title": "Immediate container",
+          "description": "The immediate container for the medicine. Also known as: presentation, presentation form, package.",
+          "$ref": "#/definitions/ImmediateContainer"
+        }
+      }
+    },
+    "ActiveIngredient": {
+      "title": "Active ingredient",
+      "description": "An active ingredient, typically a chemical compound or biological substance.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The name of the active ingredient. It is recommended to use the lowercase Latin name from the International Nonproprietary Names (INN). Also known as: generic name, drug, substance name, active substance.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "strength": {
+          "title": "Strength",
+          "description": "The strength of the active ingredient. Also known as: concentration, potency.",
+          "$ref": "#/definitions/Quantity"
+        }
+      },
+      "minProperties": 1
+    },
+    "ImmediateContainer": {
+      "title": "Immediate container",
+      "description": "The immediate container for the medicine. Also known as: presentation, presentation form, package.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The common name of the container, from the immediate container codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "immediateContainer.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "capacity": {
+          "title": "Capacity",
+          "description": "The storage capacity of the container.",
+          "$ref": "#/definitions/Quantity"
+        }
+      },
+      "minProperties": 1
+    },
+    "Quantity": {
+      "title": "Quantity",
+      "description": "The quantity of a thing.",
+      "type": "object",
+      "properties": {
+        "unit": {
+          "title": "Unit",
+          "description": "The unit of measurement for the quantity.",
+          "$ref": "#/definitions/SimpleUnit"
+        },
+        "value": {
+          "title": "Value",
+          "description": "The quantity, as a multiple of the unit of measurement. The quantity is expressed in interval notation, for example: \"[10,10]\" for 10 units, \"[1,10]\" for 1 to 10 units, or \"[10,INF[\" for 10 or more units.",
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "pattern": "^[(\\[\\]][0-9]+,([0-9]+|INF)[)\\[\\]]$"
+        }
+      },
+      "minProperties": 1
+    },
+    "SimpleUnit": {
+      "title": "Simple unit",
+      "description": "A unit of measurement.",
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "title": "Scheme",
+          "description": "The scheme or codelist from which the identifier for the unit of measurement is taken, using the open [unitClassificationScheme](https://standard.open-contracting.org/latest/en/schema/codelists/#unit-classification-scheme) codelist. 'UNCEFACT' is recommended.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "unitClassificationScheme.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "id": {
+          "title": "ID",
+          "description": "The identifier for the unit of measurement, taken from the scheme. Refer to the [unitClassificationScheme](https://standard.open-contracting.org/latest/en/schema/codelists/#unit-classification-scheme) codelist for details of how to find identifiers within schemes.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "versionId": true,
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

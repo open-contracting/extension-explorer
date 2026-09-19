@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Organization classification",
+    "es": "Clasificaci\u00f3n de la organizaci\u00f3n"
+  },
+  "description": {
+    "en": "Adds an array of classification objects to an organization's details in order to categorize it.",
+    "es": "Adds an array of classification objects to an organization's details in order to categorize it."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/organizationClassification/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

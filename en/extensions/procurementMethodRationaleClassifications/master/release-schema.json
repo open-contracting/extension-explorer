@@ -1,0 +1,19 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "procurementMethodRationaleClassifications": {
+          "title": "Procurement method rationale classifications",
+          "description": "The classifications of the procurement method rationale.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

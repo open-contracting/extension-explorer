@@ -1,0 +1,210 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "subcontractingTerms": {
+          "title": "T\u00e9rminos de subcontrataci\u00f3n ",
+          "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen la subcontrataci\u00f3n.",
+          "$ref": "#/definitions/SubcontractingTerms"
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "hasSubcontracting": {
+          "title": "Subcontrataci\u00f3n involucrada",
+          "description": "Si se subcontratar\u00e1 una parte del contrato.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "subcontracting": {
+          "title": "Subcontrataci\u00f3n",
+          "description": "Informaci\u00f3n sobre las partes del contrato que el proveedor subcontratar\u00e1 a terceros.",
+          "$ref": "#/definitions/Subcontracting"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "subcontractingTerms": {
+          "title": "T\u00e9rminos de subcontrataci\u00f3n ",
+          "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen la subcontrataci\u00f3n.",
+          "$ref": "#/definitions/SubcontractingTerms"
+        }
+      }
+    },
+    "Bid": {
+      "properties": {
+        "hasSubcontracting": {
+          "title": "Subcontrataci\u00f3n involucrada",
+          "description": "Whether a part of the contract will be subcontracted to third parties.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "subcontracting": {
+          "title": "Subcontrataci\u00f3n",
+          "description": "Information about the parts of the contract that will be subcontracted to third parties.",
+          "$ref": "#/definitions/Subcontracting"
+        }
+      }
+    },
+    "SubcontractingTerms": {
+      "title": "T\u00e9rminos de subcontrataci\u00f3n ",
+      "description": "Las obligaciones de los proveedores que subcontratan.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Una descripci\u00f3n de los t\u00e9rminos que rigen la subcontrataci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "competitiveMaximumPercentage": {
+          "title": "Porcentaje m\u00e1ximo del valor del contrato para una subcontrataci\u00f3n competitiva",
+          "description": "The maximum percentage of the contract value that the buyer or procuring entity allows the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "competitiveMinimumPercentage": {
+          "title": "Porcentaje m\u00ednimo del valor del contrato para una subcontrataci\u00f3n competitiva",
+          "description": "The minimum percentage of the contract value that the buyer or procuring entity requires the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0
+        }
+      },
+      "minProperties": 1
+    },
+    "Subcontracting": {
+      "title": "Subcontrataci\u00f3n",
+      "description": "Information about the parts of the contract that will be subcontracted to third parties.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "The description of the part of the contract that will be subcontracted to third parties.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "maximumPercentage": {
+          "title": "Porcentaje m\u00e1ximo del valor del contrato",
+          "description": "The maximum percentage of the contract value that will be subcontracted, expressed as a decimal proportion between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "minimumPercentage": {
+          "title": "Porcentaje m\u00ednimo del valor del contrato",
+          "description": "The minimum percentage of the contract value that will be subcontracted, expressed as a decimal proportion between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0
+        },
+        "competitiveMaximumPercentage": {
+          "title": "Porcentaje m\u00e1ximo del valor del contrato para una subcontrataci\u00f3n competitiva",
+          "description": "The maximum percentage of the contract value that the buyer or procuring entity allows the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "competitiveMinimumPercentage": {
+          "title": "Porcentaje m\u00ednimo del valor del contrato para una subcontrataci\u00f3n competitiva",
+          "description": "The minimum percentage of the contract value that the buyer or procuring entity requires the supplier to subcontract to third parties through a competitive procedure, expressed as a decimal proportion between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0
+        },
+        "value": {
+          "title": "Valor subcontratado",
+          "description": "The estimated value of the part of the contract that will be subcontracted to third parties.",
+          "$ref": "#/definitions/Value"
+        },
+        "competitive": {
+          "title": "Subcontrataci\u00f3n competitiva",
+          "description": "Si el proveedor subcontratar\u00e1 parte del contrato a terceros mediante un procedimiento competitivo.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "subcontracts": {
+          "title": "Subcontracts",
+          "description": "Information about the subcontracts that will be established.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Subcontract"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Subcontract": {
+      "title": "Subcontract",
+      "description": "A relationship that suppliers establish with a third party to perform part of the contract on their behalf.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "The locally unique identifier for the subcontract.",
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        },
+        "subcontractor": {
+          "title": "Subcontratista",
+          "description": "The organization that performs part of the contract on behalf of the suppliers.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "mainContractors": {
+          "title": "Main contractors",
+          "description": "The organizations to which the subcontractor will be subcontracted, if they are a subset of the tenderers submitting the bid or the suppliers receiving the award.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

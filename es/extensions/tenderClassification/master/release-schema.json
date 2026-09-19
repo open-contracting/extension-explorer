@@ -1,0 +1,24 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "classification": {
+          "title": "Clasificaci\u00f3n de la licitaci\u00f3n",
+          "description": "La clasificaci\u00f3n primaria del proceso de contrataci\u00f3n.",
+          "$ref": "#/definitions/Classification"
+        },
+        "additionalClassifications": {
+          "title": "Clasificaciones adicionales de licitaciones",
+          "description": "Clasificaciones adicionales del proceso de contrataci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

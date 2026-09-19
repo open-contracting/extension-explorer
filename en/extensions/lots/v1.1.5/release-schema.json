@@ -1,0 +1,248 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "lots": {
+          "title": "Lots",
+          "description": "A tender process can be divided into lots, where bidders can bid on one or more lots. Details of each lot can be provided here. Items, documents and other features may then reference the lot they are related to using relatedLot. Where no relatedLots identifier is given, the values ought to be interpreted as applicable to the whole tender. Properties of tender can be overridden for a given Lot through their inclusion in the Lot object.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Lot"
+          }
+        },
+        "lotDetails": {
+          "title": "Lot Details",
+          "description": "If this tender is divided into lots, details can be provided here of any criteria that apply to bidding on these lots.",
+          "type": "object",
+          "properties": {
+            "maximumLotsBidPerSupplier": {
+              "title": "Maximum lots per supplier",
+              "description": "The maximum number of lots that one supplier can bid on as part of this contracting process.",
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "maximumLotsAwardedPerSupplier": {
+              "title": "Maximum lots per supplier",
+              "description": "The maximum number of lots that can be awarded to one supplier as part of this contracting process.",
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "awardCriteriaDetails": {
+              "title": "Award criteria details",
+              "description": "Any detailed or further information on the award or selection criteria.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "lotGroups": {
+          "title": "Lot groups",
+          "description": "Where the buyer reserves the right to combine lots, or wishes to specify the total value for a group of lots, a lot group is used to capture this information.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LotGroup"
+          }
+        }
+      }
+    },
+    "Document": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "If this document relates to a particular lot, provide the identifier(s) of the related lot(s) here.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "Item": {
+      "properties": {
+        "relatedLot": {
+          "title": "Related lot",
+          "description": "If this item belongs to a lot, provide the identifier of the related lot here.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Milestone": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "If this milestone relates to a particular lot, provide the identifier(s) of the related lot(s) here.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "If this award relates to one or more specific lots, provide the identifier(s) of the related lot(s) here.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "Bid": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "If this bid relates to one or more specific lots, provide the identifier(s) of the related lot(s) here.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "Finance": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "If this source of finance relates to one or more specific lots, provide the identifier(s) of the related lot(s) here.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "Lot": {
+      "title": "Lots",
+      "description": "A lot is a grouping of items within a tender that can be bid on or awarded together.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Lot ID",
+          "type": "string",
+          "description": "A local identifier for this lot, such as a lot number. This is used in relatedLots references at the item, document and award level."
+        },
+        "title": {
+          "title": "Title",
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "A title for this lot."
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this lot.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "title": "Lot Status",
+          "description": "The current status of the process related to this lot.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "tenderStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "planning",
+            "planned",
+            "active",
+            "cancelled",
+            "unsuccessful",
+            "complete",
+            "withdrawn",
+            null
+          ]
+        },
+        "value": {
+          "title": "Lot value",
+          "$ref": "#/definitions/Value",
+          "description": "The maximum estimated value of this lot."
+        },
+        "contractPeriod": {
+          "title": "Contract period",
+          "description": "The period over which the contract is estimated or specified to be active. If the lot does not specify explicit dates, the duration field can be used.",
+          "$ref": "#/definitions/Period"
+        }
+      }
+    },
+    "LotGroup": {
+      "title": "Lot group",
+      "description": "Where the buyer reserves the right to combine lots, or wishes to specify the total value for a group of lots, a lot group is used to capture this information.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Lot group identifier",
+          "type": "string",
+          "description": "A local identifier for this group of lots."
+        },
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "A list of the identifiers of the lots that form this group. Lots can appear in more than one group.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": [
+              "string"
+            ]
+          }
+        },
+        "optionToCombine": {
+          "title": "Option to combine",
+          "description": "The buyer reserves the right to combine the lots in this group when awarding a contract.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "maximumValue": {
+          "title": "Maximum value",
+          "description": "The maximum estimated value of the lots in this group. This can be lower than the sum total of lot values",
+          "$ref": "#/definitions/Value"
+        }
+      }
+    }
+  }
+}

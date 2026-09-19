@@ -1,0 +1,13 @@
+Categoría,Código,Título,Descripción
+bids,requests,Solicitudes de participación,El número total de solicitudes únicas de participación recibidas
+bids,bids,Ofertas,El número total de ofertas únicas recibidas (antes de que se descarten por no cumplir los criterios esenciales).
+bids,validBids,Ofertas válidas,El número total de ofertas únicas recibidas que se consideraron válidas en función de los criterios pertinentes (del licitante o de la solicitud de oferta misma). Todas las ofertas válidas deben ser consideradas durante la etapa de evaluación de la oferta.
+bidders,bidders,Licitantes,El número total de organizaciones únicas o consorcios que presentan ofertas (antes de que se descarten por no cumplir los criterios esenciales).
+bidders,qualifiedBidders,Licitantes calificados,El número total de organizaciones únicas o consorcios que pasan la fase de calificación del proceso de evaluación.
+bidders,disqualifiedBidders,Licitantes descalificados,El número total de organizaciones únicas o consorcios que no pasaron la etapa de calificación del proceso de evaluación.
+EU,electronicBids,Ofertas electrónicas,El número de ofertas recibidas por medios electrónicos.
+EU,smeBids,Ofertas de PYMES,El número de ofertas recibidas de pequeñas o medianas empresas.
+EU,foreignBids,Ofertas de empresas extranjeras,El número de ofertas recibidas de licitantes de fuera del país donde se emite la oferta.
+EU,foreignBidsFromEU,Ofertas de empresas en otros países del Área Económica Europea,El número de ofertas recibidas de empresas en otros países del Área Económica Europea.
+EU,foreignBidsFromNonEU,Ofertas de empresas en otros países que no pertenecen al Área Económica Europea,El número de ofertas recibidas de empresas en otros países que no pertenecen al Área Económica Europea.
+EU,tendersAbnormallyLow,Ofertas excluídas porque eran anormalmente bajas,"El número de ofertas excluidas porque eran anormalmente bajas. Tenga en cuenta que en algunos conjuntos de datos de la UE esto pudo haber sido convertido de un booleano, de modo que un valor 1 indicaría ""1 o más"" ofertas fueron excluidas. Los usuarios deben evaluar e interpretar los datos según corresponda."

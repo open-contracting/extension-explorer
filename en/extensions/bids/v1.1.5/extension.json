@@ -1,0 +1,27 @@
+{
+  "name": {
+    "en": "Bid statistics and details",
+    "es": "Estad\u00edsticas y detalles de las ofertas"
+  },
+  "description": {
+    "en": "Allowing bid statistics, and detailed bid information to be represented.",
+    "es": "Permite que se muestren las estad\u00edsticas de ofertas y la informaci\u00f3n detallada de las ofertas."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/bids/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "bidStatistics.csv",
+    "bidStatus.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
