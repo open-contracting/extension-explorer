@@ -1,0 +1,22 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "crossBorderLaw": {
+          "title": "Ley transfronteriza",
+          "description": "En caso de una contrataci\u00f3n conjunta, la legislaci\u00f3n de contrataci\u00f3n p\u00fablica que se aplica a ese procedimiento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "legalBasis": {
+          "title": "Base legal",
+          "description": "La base legal del procedimiento.",
+          "$ref": "#/definitions/Classification"
+        }
+      }
+    }
+  }
+}

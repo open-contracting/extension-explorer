@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Shareholders",
+    "es": "Accionistas"
+  },
+  "description": {
+    "en": "Adds company ownership fields to the organization object used in the parties array.",
+    "es": "Agrega campos de propiedad de la empresa al objeto de organizaci\u00f3n utilizado en la lista de partes."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/shareholders/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "votingRights.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

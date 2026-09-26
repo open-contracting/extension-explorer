@@ -1,0 +1,414 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "lots": {
+          "title": "Lots",
+          "description": "A tender process can be divided into lots, where bidders can bid on one or more lots. Details of each lot can be provided here. Items, documents and other features may then reference the lot they are related to using relatedLot. Where no relatedLots identifier is given, the values ought to be interpreted as applicable to the whole tender. Details about the whole tender can be overridden for a given lot through their inclusion in the lot object.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Lot"
+          }
+        },
+        "lotDetails": {
+          "title": "Lot Details",
+          "description": "Details of any criteria that apply to bidding on the lots in this tender.",
+          "type": "object",
+          "properties": {
+            "maximumLotsBidPerSupplier": {
+              "title": "Maximum lots per supplier",
+              "description": "The maximum number of lots that one supplier can bid on as part of this contracting process.",
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "maximumLotsAwardedPerSupplier": {
+              "title": "Maximum lots per supplier",
+              "description": "The maximum number of lots that can be awarded to one supplier as part of this contracting process.",
+              "type": [
+                "integer",
+                "null"
+              ]
+            },
+            "awardCriteriaDetails": {
+              "title": "Award criteria details",
+              "description": "Any detailed or further information on the award or selection criteria.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "lotGroups": {
+          "title": "Lot groups",
+          "description": "Where the buyer reserves the right to combine lots, or wishes to specify the total value for a group of lots, a lot group is used to capture this information.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LotGroup"
+          }
+        }
+      }
+    },
+    "Document": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "The identifiers of the lots to which this document relates.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Item": {
+      "properties": {
+        "relatedLot": {
+          "title": "Related lot",
+          "description": "The identifier of the lot to which this item relates.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Milestone": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "The identifiers of the lots to which this milestone relates.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "The identifiers of the lots to which this award relates.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "Amendment": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "The identifiers of the lots to which this amendment relates.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "RelatedProcess": {
+      "properties": {
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "The identifiers of the lots in the related process to which this process relates.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Lot": {
+      "title": "Lots",
+      "description": "A lot is a grouping of items within a tender that can be bid on or awarded together.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Lot ID",
+          "description": "A local identifier for this lot, such as a lot number. This is used in relatedLots references at the item, document and award level.",
+          "type": "string"
+        },
+        "identifiers": {
+          "title": "Identifiers",
+          "description": "Identifiers for this lot. This field can be used to provide internal identifiers for the lot, such as identifiers from a buyer's document management system or procurement system.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimpleIdentifier"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "title": {
+          "title": "Title",
+          "description": "A title for this lot.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this lot.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "title": "Lot Status",
+          "description": "The current status of the process related to this lot.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "tenderStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "planning",
+            "planned",
+            "active",
+            "cancelled",
+            "unsuccessful",
+            "complete",
+            "withdrawn",
+            null
+          ]
+        },
+        "value": {
+          "title": "Lot value",
+          "description": "The maximum estimated value of this lot.",
+          "$ref": "#/definitions/Value"
+        },
+        "minimumValue": {
+          "title": "Minimum value",
+          "description": "The estimated minimum value of the lot. A negative value indicates that the contracting process may involve payments from the supplier to the buyer (commonly used in concession contracts).",
+          "$ref": "#/definitions/Value"
+        },
+        "tenderPeriod": {
+          "title": "Tender period",
+          "description": "The period when this lot is open for submissions. The end date is the closing date for bid submissions.",
+          "$ref": "#/definitions/Period"
+        },
+        "contractPeriod": {
+          "title": "Contract period",
+          "description": "The period over which the contract is estimated or specified to be active. If the lot does not specify explicit dates, the duration field can be used.",
+          "$ref": "#/definitions/Period"
+        },
+        "buyer": {
+          "title": "Buyer",
+          "description": "The organization aiming to conclude a contract with a supplier or to use the goods, works or services in this lot. This may be different from the procuring entity who may be specified in the tender data.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "additionalClassifications": {
+          "title": "Additional classifications",
+          "description": "Additional classifications for this lot.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "mainProcurementCategory": {
+          "title": "Main procurement category",
+          "description": "The primary category describing the main object of this lot, using the closed procurementCategory codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "procurementCategory.csv",
+          "openCodelist": false,
+          "enum": [
+            "goods",
+            "services",
+            "works",
+            null
+          ]
+        },
+        "additionalProcurementCategories": {
+          "title": "Additional procurement categories",
+          "description": "Any additional categories describing the objects of this lot, using the open extendedProcurementCategory codelist.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "extendedProcurementCategory.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "enquiryPeriod": {
+          "title": "Enquiry period",
+          "description": "The period during which potential bidders may submit questions and requests for clarification about this lot to the buyer or the procuring entity.",
+          "$ref": "#/definitions/Period"
+        },
+        "milestones": {
+          "title": "Milestones",
+          "description": "Milestones associated with this lot.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Milestone"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "submissionMethodDetails": {
+          "title": "Submission method details",
+          "description": "Information about the methods by which bids are submitted for this lot. This can include the address, e-mail address or online service to which bids are submitted, and any special requirements to be followed for submissions. More structured information can be provided using the submission terms extension.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "submissionTerms": {
+          "title": "Submission terms",
+          "description": "Information about how, when and where tenderers need to submit their bids.",
+          "$ref": "#/definitions/SubmissionTerms"
+        }
+      },
+      "extension_explorer:source": {
+        "identifier": "lots",
+        "version": "master"
+      }
+    },
+    "LotGroup": {
+      "title": "Lot group",
+      "description": "Where the buyer reserves the right to combine lots, or wishes to specify the total value for a group of lots, a lot group is used to capture this information.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Lot group identifier",
+          "description": "A local identifier for this group of lots.",
+          "type": "string"
+        },
+        "identifiers": {
+          "title": "Identifiers",
+          "description": "Identifiers for this lot group. This field can be used to provide internal identifiers for the lot group, such as identifiers from a buyer's document management system or procurement system.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SimpleIdentifier"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "title": {
+          "title": "Title",
+          "description": "A title for this lot group.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this lot group.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "A list of the identifiers of the lots that form this group. Lots can appear in more than one group.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        },
+        "optionToCombine": {
+          "title": "Option to combine",
+          "description": "The buyer reserves the right to combine the lots in this group when awarding a contract.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "maximumValue": {
+          "title": "Maximum value",
+          "description": "The maximum estimated value of the lots in this group. This can be lower than the sum total of lot values",
+          "$ref": "#/definitions/Value"
+        }
+      },
+      "extension_explorer:source": {
+        "identifier": "lots",
+        "version": "master"
+      }
+    },
+    "SimpleIdentifier": {
+      "title": "Simple identifier",
+      "description": "An unambiguous reference to a resource within a given context.",
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "title": "Scheme",
+          "description": "The list, register or system from which the identifier is taken.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "id": {
+          "title": "ID",
+          "description": "The identifier taken from the scheme.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "versionId": true,
+          "minLength": 1
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "lots",
+        "version": "master"
+      }
+    }
+  }
+}

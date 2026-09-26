@@ -1,0 +1,12 @@
+Código,Título,Descripción
+mediationBody,Organismo de mediación,El organismo responsable de los procedimientos de mediación.
+centralPurchasingBody,Organismo central de compras,"La entidad contratante que proporciona actividades de compra centralizadas y, posiblemente, actividades de compra auxiliares."
+processContactPoint,Punto de contacto de proceso,Un punto de contacto dedicado a este proceso de contratación.
+reviewContactPoint,Punto de contacto de revisión,El servicio del cual se puede obtener información sobre el procedimiento de revisión.
+selectedParticipant,Participante seleccionado,An organization that has already been selected to participate in the design contest.
+procurementServiceProvider,Procurement service provider,An organization that provides ancillary procurement services to buyers.
+eSender,TED eSender,An organization that provides data transfer services to buyers.
+leadBuyer,Lead buyer,The lead buyer in a group of buyers.
+leadTenderer,Lead tenderer,The lead tenderer in the case of a consortium or equivalent.
+evaluationBody,Evaluation body,The organization responsible for evaluating bids or requests to participate.
+submissionReceiptBody,Submission receipt body,The organization responsible for receiving bids or requests to participate.

@@ -1,0 +1,66 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "exclusionGrounds": {
+          "title": "Exclusion grounds",
+          "description": "Information about the criteria regarding the situation of a tenderer that can lead to its exclusion from the contracting process. For example: criminal convictions, bankruptcy, presence on a blacklist or failure to pay taxes.",
+          "$ref": "#/definitions/ExclusionGrounds"
+        }
+      }
+    },
+    "ExclusionGrounds": {
+      "title": "Exclusion grounds",
+      "description": "Information about the criteria regarding the situation of a tenderer that can lead to its exclusion from the contracting process. For example: criminal convictions, bankruptcy, presence on a blacklist or failure to pay taxes.",
+      "type": "object",
+      "properties": {
+        "criteria": {
+          "title": "Exclusion criteria",
+          "description": "The exclusion criteria.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExclusionCriterion"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "exclusionGrounds",
+        "version": "master"
+      }
+    },
+    "ExclusionCriterion": {
+      "title": "Exclusion criterion",
+      "description": "A criterion regarding the situation of a tenderer that can lead to its exclusion from the contracting process.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "The type of the criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "The description of the criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "exclusionGrounds",
+        "version": "master"
+      }
+    }
+  }
+}

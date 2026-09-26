@@ -1,0 +1,80 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "communication": {
+          "title": "Communication",
+          "description": "Modalities of communication about key events.",
+          "$ref": "#/definitions/Communication"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "communication": {
+          "title": "Communication",
+          "description": "Modalities of communication about key events for this lot.",
+          "$ref": "#/definitions/Communication"
+        }
+      }
+    },
+    "Communication": {
+      "title": "Communication",
+      "description": "Modalities of communication about key events.",
+      "type": "object",
+      "properties": {
+        "atypicalToolName": {
+          "title": "Atypical tool name",
+          "description": "The name of the tools and devices that are not generally available and that are required to communicate electronically with the buyer.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "atypicalToolUrl": {
+          "title": "Atypical tool URL",
+          "description": "The URL of the tools and devices that are not generally available and that are required to communicate electronically with the buyer.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "noticePreferredPublicationDate": {
+          "title": "Notice preferred publication date",
+          "description": "The buyer's preferred date of publication of the notice (e.g. to avoid publication during a national holiday).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "futureNoticeDate": {
+          "title": "Future notice date",
+          "description": "The estimated date of publication of the next sequential notice. For example, the next sequential notice for a planning notice might be a competition notice.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "invitationToConfirmInterestDispatchDate": {
+          "title": "Invitation to confirm interest dispatch date",
+          "description": "The estimated date of dispatch from the buyer to potential suppliers of the invitations to confirm interest. For example, when a planning notice is used as a call for competition, the buyer might simultaneously invite the potential suppliers that have expressed their interest to confirm their continuing interest.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "documentAvailabilityPeriod": {
+          "title": "Document availability period",
+          "description": "The period during which documents can be accessed, or during which requests for access to documents can be submitted.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

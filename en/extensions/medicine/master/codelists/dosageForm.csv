@@ -1,0 +1,36 @@
+Code,Title,Description
+APPFUL,Applicatorful,
+DROP,Drops,
+PUFF,Puff,
+SCOOP,Scoops,
+SPRY,Sprays,
+GASINHL,Gas for Inhalation,
+AER,Aerosol,
+FOAM,Foam,
+INHL,Inhalant,
+LIQCLN,Liquid Cleanser,
+OIL,Oil,"An unctuous, combustible substance which is liquid, or easily liquefiable, on warming, and is soluble in ether but insoluble in water. Such substances, depending on their origin, are classified as animal, mineral, or vegetable oils."
+SOL,Solution,"A liquid preparation that contains one or more chemical substances dissolved, i.e., molecularly dispersed, in a suitable solvent or mixture of mutually miscible solvents."
+CRM,Cream,"A semisolid dosage form containing one or more drug substances dissolved or dispersed in a suitable base; more recently, the term has been restricted to products consisting of oil-in-water emulsions or aqueous microcrystalline dispersions of long chain fatty acids or alcohols that are water washable and more cosmetically and aesthetically acceptable."
+LTN,Lotion,"The term ""lotion"" has been used to categorize many topical suspensions, solutions and emulsions intended for application to the skin."
+OINT,Ointment,A semisolid preparation intended for external application to the skin or mucous membranes.
+GEL,Gel,A semisolid system consisting of either suspensions made up of small inorganic particles or large organic molecules interpenetrated by a liquid.
+PASTE,Paste,A semisolid dosage form that contains one or more drug substances intended for topical application.
+SUSP,Suspension,
+BAR,Bar,
+BEAD,Beads,A solid dosage form in the shape of a small ball.
+CAKE,Cake,
+CEMENT,Cement,A substance that serves to produce solid union between two surfaces.
+CRYS,Crystals,A naturally produced angular solid of definite form in which the ultimate units from which it is built up are systematically arranged; they are usually evenly spaced on a regular space lattice.
+DISK,Disk,A circular plate-like organ or structure.
+FLAKE,Flakes,
+GRAN,Granules,A small particle or grain.
+GUM,ChewingGum,"A sweetened and flavored insoluble plastic material of various shapes which when chewed, releases a drug substance into the oral cavity."
+PAD,Pad,
+PATCH,Patch,"A drug delivery system that contains an adhesived backing and that permits its ingredients to diffuse from some portion of it (e.g., the backing itself, a reservoir, the adhesive, or some other component) into the body from the external site where it is applied."
+PELLET,Pellet,"A small sterile solid mass consisting of a highly purified drug (with or without excipients) made by the formation of granules, or by compression and molding."
+PILL,Pill,"A small, round solid dosage form containing a medicinal agent intended for oral administration."
+POWD,Powder,"An intimate mixture of dry, finely divided drugs and/or chemicals that may be intended for internal or external use."
+SUPP,Suppository,"A solid body of various weights and shapes, adapted for introduction into the rectal, vaginal, or urethral orifice of the human body; they usually melt, soften, or dissolve at body temperature."
+SWAB,Swab,A wad of absorbent material usually wound around one end of a small stick and used for applying medication or for removing material from an area.
+WAFER,Wafer,A thin slice of material containing a medicinal agent.

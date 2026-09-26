@@ -1,0 +1,6 @@
+Code,Title,Description
+invited,Invited,A bid or expression of interest has been invited from the tenderer(s).
+pending,Pending,A bid or expression of interest has been submitted but not yet evaluated.
+valid,Valid,The submitted bid or expression of interest met the qualification criteria.
+disqualified,Disqualified,The submitted bid or expression of interest did not meet the qualification criteria.
+withdrawn,Withdrawn,The submitted bid or expression of interest was withdrawn by the tenderer(s).

@@ -1,0 +1,5 @@
+Código,Título,Descripción
+pending,Pendiente,El SDC aún no ha comenzado.
+active,Activo,El SDC ha comenzado.
+cancelled,Cancelado,El SDC ha sido cancelado antes de su inicio.
+terminated,Finalizado,"El SDC había comenzado, y ahora ha llegado a su fin. Esto puede deberse a su finalización con éxito, o puede ser una terminación anticipada debido a algún incumplimiento."
