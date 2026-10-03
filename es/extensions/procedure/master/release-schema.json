@@ -1,0 +1,47 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "procedure": {
+          "title": "Procedimiento",
+          "description": "Informaci\u00f3n sobre el procedimiento de contrataci\u00f3n.",
+          "$ref": "#/definitions/Procedure"
+        }
+      }
+    },
+    "Procedure": {
+      "title": "Procedimiento",
+      "description": "Informaci\u00f3n sobre el procedimiento de contrataci\u00f3n.",
+      "type": "object",
+      "properties": {
+        "isAccelerated": {
+          "title": "Procedimiento acelerado utilizado",
+          "description": "Whether the time limit for receipt of bids or expressions of interest can be reduced due to a state of urgency.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "acceleratedRationale": {
+          "title": "Justificaci\u00f3n del procedimiento acelerado",
+          "description": "La justificaci\u00f3n para utilizar un procedimiento acelerado.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "features": {
+          "title": "Caracter\u00edsticas",
+          "description": "Las principales caracter\u00edsticas del procedimiento (por ejemplo, descripci\u00f3n de las etapas individuales) e informaci\u00f3n sobre d\u00f3nde se pueden encontrar las reglas completas del procedimiento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

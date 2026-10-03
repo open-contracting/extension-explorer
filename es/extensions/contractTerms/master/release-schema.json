@@ -1,0 +1,214 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "contractTerms": {
+          "title": "T\u00e9rminos del contrato",
+          "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen los futuros contratos del procedimiento.",
+          "$ref": "#/definitions/ContractTerms"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "contractTerms": {
+          "title": "T\u00e9rminos del contrato",
+          "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen los contratos futuros del lote.",
+          "$ref": "#/definitions/ContractTerms"
+        }
+      }
+    },
+    "ContractTerms": {
+      "title": "T\u00e9rminos del contrato",
+      "description": "Informaci\u00f3n sobre los t\u00e9rminos que rigen los contratos futuros.",
+      "type": "object",
+      "properties": {
+        "hasElectronicPayment": {
+          "title": "Pago electr\u00f3nico utilizado",
+          "description": "Si se utiliza el pago electr\u00f3nico.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "hasElectronicOrdering": {
+          "title": "Pedido electr\u00f3nico utilizado",
+          "description": "Si se utiliza el pedido electr\u00f3nico.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "electronicInvoicingPolicy": {
+          "title": "Pol\u00edtica de facturaci\u00f3n electr\u00f3nica",
+          "description": "Si el comprador requerir\u00e1, permitir\u00e1 o no permitir\u00e1 las facturas electr\u00f3nicas.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "permission.csv",
+          "openCodelist": false,
+          "enum": [
+            "required",
+            "allowed",
+            "notAllowed",
+            null
+          ]
+        },
+        "reservedExecution": {
+          "title": "Ejecuci\u00f3n reservada",
+          "description": "Si la ejecuci\u00f3n del contrato se restringe al marco de los programas de empleo protegido",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "performanceTerms": {
+          "title": "Rendimiento de los t\u00e9rminos",
+          "description": "La informaci\u00f3n principal sobre la ejecuci\u00f3n del contrato (por ejemplo, entregables intermediarios, compensaci\u00f3n por da\u00f1os, derechos de propiedad intelectual).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "financialTerms": {
+          "title": "T\u00e9rminos financieros",
+          "description": "La principal informaci\u00f3n sobre financiaci\u00f3n y pago y/o referencia a las disposiciones que las regulan.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "tendererLegalForm": {
+          "title": "Forma jur\u00eddica del licitador",
+          "description": "Una determinada forma jur\u00eddica que debe adoptar un grupo de licitantes que es adjudicado a un contrato.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "hasExclusiveRights": {
+          "title": "Tiene derechos exclusivos",
+          "description": "Un derecho que permite a un operador de servicio p\u00fablico operar ciertos servicios p\u00fablicos de transporte de pasajeros en una ruta o red particular o en un \u00e1rea particular, con exclusi\u00f3n de cualquier otro operador.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "exclusiveRights": {
+          "title": "Derechos exclusivos",
+          "description": "La naturaleza y alcance de los derechos exclusivos otorgados por la entidad contratante al proveedor.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "operatorRevenueShare": {
+          "title": "Reparto de ingresos del operador",
+          "description": "The proportion of revenue from the sale of tickets allocated to the supplier, expressed as a decimal between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0
+        },
+        "otherTerms": {
+          "title": "Otros t\u00e9rminos",
+          "description": "Otros t\u00e9rminos del contrato que no se ajustan a la sem\u00e1ntica de ning\u00fan otro campo OCDS.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "rewardsAndPenalties": {
+          "title": "Recompensas y sanciones",
+          "description": "Informaci\u00f3n sobre recompensas y sanciones relacionadas con los objetivos de calidad.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "socialStandards": {
+          "title": "Est\u00e1ndares sociales",
+          "description": "Los est\u00e1ndares sociales requeridos, por ejemplo: detalle de los derechos contractuales del personal afectado y condiciones en las que se considera que los empleados est\u00e1n vinculados a los servicios.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "hasNonDisclosureAgreement": {
+          "title": "Has non-disclosure agreement",
+          "description": "Whether contract execution requires a non-disclosure agreement.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "nonDisclosureAgreement": {
+          "title": "Non-disclosure agreement",
+          "description": "A description of the non-disclosure agreement required for contract execution.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "customerServices": {
+          "title": "Customer services",
+          "description": "Information about customer service requirements.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerService"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "CustomerService": {
+      "title": "Customer service",
+      "description": "A customer service requirement.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Tipo",
+          "description": "The type of this customer service requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "name": {
+          "title": "Nombre",
+          "description": "A name for this customer service requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "A description of this customer service requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

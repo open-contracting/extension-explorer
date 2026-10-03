@@ -1,0 +1,110 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Has renewal",
+          "description": "Whether the buyer is expected to reserve the right to renew the future contract(s).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renewal",
+          "description": "The options for the renewal of the contract(s).",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Has renewal",
+          "description": "Whether the buyer is expected to reserve the right to renew the future contract(s).",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renewal",
+          "description": "The options for the renewal of the contract(s).",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Has renewal",
+          "description": "Whether the buyer reserves the right to renew the contract.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renewal",
+          "description": "The options for the renewal of the contract.",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "hasRenewal": {
+          "title": "Has renewal",
+          "description": "Whether the buyer is expected to reserve the right to renew the future contract(s) related to the lot.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "renewal": {
+          "title": "Renewal",
+          "description": "The options for the renewal of the contract(s) related to the lot.",
+          "$ref": "#/definitions/Renewal"
+        }
+      }
+    },
+    "Renewal": {
+      "title": "Renewal",
+      "description": "Information about the options for the renewal of a contract.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of the options for the renewal of the contract.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "minimumRenewals": {
+          "title": "Minimum renewal",
+          "description": "The minimum number of renewals.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximumRenewals": {
+          "title": "Maximum renewal",
+          "description": "The maximum number of renewals. If there is no maximum, set to 1e9999 (which parses to infinity).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "period": {
+          "title": "Renewal period",
+          "description": "The period over which the contract can be renewed.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Withheld information",
+    "es": "Withheld information"
+  },
+  "description": {
+    "en": "Adds a top-level withheld information array to describe items of information whose publication is temporarily or permanently withheld.",
+    "es": "Adds a top-level withheld information array to describe items of information whose publication is temporarily or permanently withheld."
+  },
+  "documentationUrl": {
+    "en": "https://github.com/open-contracting-extensions/ocds_withheldInformation_extension"
+  },
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ],
+  "compatibility": [
+    "1.1"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

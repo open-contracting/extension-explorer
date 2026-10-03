@@ -1,0 +1,56 @@
+{
+  "definitions": {
+    "Attribute": {
+      "type": "object",
+      "title": "Attribute",
+      "description": "An attribute, including its name and value.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "description": "El nombre del atributo, como 'brand', 'manufacturer', y similares.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "value": {
+          "title": "Valor",
+          "description": "El valor del atributo.",
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "id": {
+          "title": "Id",
+          "description": "Un identificador local para el atributo.",
+          "type": [
+            "string"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Item": {
+      "properties": {
+        "attributes": {
+          "title": "Atributos",
+          "description": "Los atributos del art\u00edculo.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Attribute"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

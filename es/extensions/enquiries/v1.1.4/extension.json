@@ -1,0 +1,22 @@
+{
+  "name": {
+    "en": "Enquiries",
+    "es": "Consultas"
+  },
+  "description": {
+    "en": "The enquiries extension can be used to record questions raised during a contracting process, and the answers provided.",
+    "es": "La extensi\u00f3n sobre consultas puede usarse para registrar las preguntas planteadas durante un proceso de contrataci\u00f3n y las respuestas proporcionadas."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/enquiries/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "+partyRole.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ]
+}

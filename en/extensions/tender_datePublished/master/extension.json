@@ -1,0 +1,19 @@
+{
+  "name": {
+    "en": "Tender Date Published",
+    "es": "Fecha de publicaci\u00f3n de la licitaci\u00f3n"
+  },
+  "description": {
+    "en": "Adds a date field to indicate when the tender was published.",
+    "es": "Agregar un campo de fecha para indicar cu\u00e1ndo se public\u00f3 la licitaci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://github.com/portaledcahn/ocds_tenderDatePublished_extension/blob/master/README.md"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ]
+}

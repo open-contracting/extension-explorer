@@ -1,0 +1,176 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "deliveryLocations": {
+          "title": "Delivery Locations",
+          "description": "The locations where activity related to this tender will take place.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Location"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true
+        },
+        "deliveryAddresses": {
+          "title": "Delivery Addresses",
+          "description": "The addresses to which, or where, goods or services related to this tender will be delivered.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true
+        }
+      }
+    },
+    "Item": {
+      "properties": {
+        "deliveryLocations": {
+          "title": "Delivery Locations",
+          "description": "The locations where activity related to this tender, contract or license will be delivered.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Location"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "deliveryLocation": {
+          "title": "Ubicaci\u00f3n de Entrega",
+          "description": "La ubicaci\u00f3n donde la actividad relacionada con esta licitaci\u00f3n, contrato o licencia ser\u00e1 entregada o se llevar\u00e1 a cabo. ",
+          "$ref": "#/definitions/Location",
+          "deprecated": {
+            "description": "This field is deprecated in favour of `.deliveryLocations` to support items with multiple delivery locations.",
+            "deprecatedVersion": "1.2.0"
+          }
+        },
+        "deliveryAddresses": {
+          "title": "Delivery Addresses",
+          "description": "The addresses to which, or where, goods or services related to this tender, contract or license will be delivered.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "deliveryAddress": {
+          "title": "Direcci\u00f3n de Entrega",
+          "description": "La direcci\u00f3n en la que bienes y servicios relacionados con esta licitaci\u00f3n, contrato o licencia ser\u00e1n entregados.",
+          "$ref": "#/definitions/Address",
+          "deprecated": {
+            "description": "This field is deprecated in favour of `.deliveryAddresses` to support items with multiple delivery locations.",
+            "deprecatedVersion": "1.2.0"
+          }
+        }
+      }
+    },
+    "Location": {
+      "title": "Ubicaci\u00f3n",
+      "description": "A physical or virtual location.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Un nombre o descripci\u00f3n para esta ubicaci\u00f3n. Esto puede incluir el(los) nombre(s) de la ubicaci\u00f3n (o ubicaciones), o puede incluir una descripci\u00f3n legible de la ubicaci\u00f3n a ser cubierta.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "geometry": {
+          "title": "Geometr\u00eda",
+          "description": "We follow the [GeoJSON standard](https://www.rfc-editor.org/rfc/rfc7946) to express basic location information, using longitude, latitude, and optional elevation values in the [WGS84](https://en.wikipedia.org/wiki/World_Geodetic_System) (EPSG:4326) projection. A point location can be identified by geocoding an address. For concession licenses, or other scenarios covering a polygon location that is not contained in a known gazetteer, polygon and multi-polygon can be used.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Tipo",
+              "description": "The type of [GeoJSON Geometry Objects](https://www.rfc-editor.org/rfc/rfc7946#section-3.1) being provided. To provide longitude, latitude, and optional elevation, use 'Point', and enter an array of [longitude, latitude] or [longitude, latitude, elevation] as the value of the coordinates field: e.g. [-122.085, 37.42].",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "geometryType.csv",
+              "openCodelist": false,
+              "enum": [
+                "Point",
+                "MultiPoint",
+                "LineString",
+                "MultiLineString",
+                "Polygon",
+                "MultiPolygon",
+                null
+              ]
+            },
+            "coordinates": {
+              "title": "Coordenadas",
+              "description": "La lista de puntos, ej. [longitud, latitud] o [longitud, latitud, elevaci\u00f3n], o una lista anidada de puntos, para el objeto geom\u00e9trico JSON que est\u00e1 siendo descrito. La longitud y latitud deben ser expresadas en grados decimales en la proyecci\u00f3n WGS84 (EPSG:4326).",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": [
+                  "number",
+                  "array"
+                ]
+              }
+            }
+          }
+        },
+        "gazetteer": {
+          "title": "Diccionario Geogr\u00e1fico",
+          "description": "Identificadores de un diccionario geogr\u00e1fico (un \u00edndice o directorio geogr\u00e1fico) para la ubicaci\u00f3n.",
+          "type": "object",
+          "properties": {
+            "scheme": {
+              "title": "Esquema de diccionario geogr\u00e1fico",
+              "description": "El identificador del diccionario geogr\u00e1fico. La lista de c\u00f3digos `locationGazetteers.csv` provee detalles de servicios, si est\u00e1n disponibles, que pueden resolver una entrada del diccionario geogr\u00e1fico para proveer nombres de ubicaci\u00f3n.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "locationGazetteers.csv",
+              "openCodelist": true
+            },
+            "identifiers": {
+              "title": "Identificadores",
+              "description": "Una lista de uno o m\u00e1s c\u00f3digos tomados del diccionario geogr\u00e1fico indicado en el campo `scheme`.",
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "uri": {
+          "title": "URI",
+          "description": "A URI to a further description of the location. This might be a human-readable document with information on the location, or a machine-readable description of the location.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "Address": {
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "The description of the address.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
