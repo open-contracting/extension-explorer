@@ -1,0 +1,27 @@
+{
+  "name": {
+    "en": "Tariffs",
+    "es": "Tarifas"
+  },
+  "description": {
+    "en": "Adds fields to the contract and implementation objects to capture details of the tariffs, tolls and user fees set out in the contract and in use throughout the life of the project.",
+    "es": "Agrega campos al contrato y objetos de implementaci\u00f3n para capturar los detalles de las tarifas, los peajes y las tarifas de los usuarios establecidos en el contrato y en uso durante la vida del proyecto."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/tariffs/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "+documentType.csv",
+    "chargePaidBy.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

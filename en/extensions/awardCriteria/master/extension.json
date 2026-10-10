@@ -1,0 +1,32 @@
+{
+  "name": {
+    "en": "Award criteria breakdown",
+    "es": "Desglose de los criterios de adjudicaci\u00f3n"
+  },
+  "description": {
+    "en": "Adds an award criteria array to the lot object, to break down award criteria by price, cost and quality.",
+    "es": "Agrega una matriz de criterios de adjudicaci\u00f3n al objeto lote, para desglosar los criterios de adjudicaci\u00f3n por precio, costo y calidad."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/awardCriteria/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "awardCriterionType.csv",
+    "awardCriterionFixed.csv",
+    "criterionWeight.csv",
+    "criterionThreshold.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

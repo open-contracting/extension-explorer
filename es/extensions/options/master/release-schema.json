@@ -1,0 +1,94 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "options": {
+          "title": "Opciones",
+          "description": "Una descripci\u00f3n de las opciones.",
+          "$ref": "#/definitions/Options"
+        },
+        "hasOptions": {
+          "title": "Opciones utilizadas",
+          "description": "Whether the buyer is expected to reserve the right to make additional purchases from the supplier.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "options": {
+          "title": "Opciones",
+          "description": "Una descripci\u00f3n de las opciones.",
+          "$ref": "#/definitions/Options"
+        },
+        "hasOptions": {
+          "title": "Opciones utilizadas",
+          "description": "Whether the buyer is expected to reserve the right to make additional purchases from the supplier.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "options": {
+          "title": "Opciones",
+          "description": "Una descripci\u00f3n de las opciones.",
+          "$ref": "#/definitions/Options"
+        },
+        "hasOptions": {
+          "title": "Opciones utilizadas",
+          "description": "Whether the buyer reserves the right to make additional purchases from the supplier.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "options": {
+          "title": "Opciones",
+          "description": "Una descripci\u00f3n de las opciones.",
+          "$ref": "#/definitions/Options"
+        },
+        "hasOptions": {
+          "title": "Opciones utilizadas",
+          "description": "Whether the buyer is expected to reserve the right to make additional purchases from the supplier.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Options": {
+      "title": "Opciones",
+      "description": "Una descripci\u00f3n de las opciones.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Una descripci\u00f3n de las opciones.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "period": {
+          "title": "Periodo",
+          "description": "El per\u00edodo durante el cual se pueden utilizar las opciones.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

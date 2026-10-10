@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Risk": {
+      "title": "Riesgo",
+      "description": "Un riesgo relacionado al proyecto.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID de riesgo",
+          "description": "Un identificador local para este riesgo, \u00fanico en este bloque. Este campo se utiliza para mantener el monitoreo de revisiones m\u00faltiples de un riesgo a trav\u00e9s de la compilaci\u00f3n desde la entrega hasta el registro.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "category": {
+          "title": "Categor\u00eda de riesgo",
+          "description": "La categor\u00eda del riesgo, de la lista de c\u00f3digos riskCategory.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskCategory.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n de riesgo",
+          "description": "La descripci\u00f3n del riesgo.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "allocation": {
+          "title": "Asignaci\u00f3n de riesgos",
+          "description": "La parte del contrato que retiene el riesgo.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskAllocation.csv",
+          "openCodelist": false,
+          "enum": [
+            "publicAuthority",
+            "privateParty",
+            "undefined",
+            null
+          ]
+        },
+        "notes": {
+          "title": "Notas de Riesgo",
+          "description": "Notas adicionales sobre el riesgo, por ejemplo la justificaci\u00f3n de la asignaci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Contract": {
+      "properties": {
+        "riskAllocation": {
+          "title": "Asignaci\u00f3n de riesgos",
+          "description": "Informaci\u00f3n sobre la asignaci\u00f3n de los riesgos relacionados con el contrato.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Risk"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

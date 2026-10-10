@@ -1,0 +1,29 @@
+{
+  "name": {
+    "en": "Submission terms",
+    "es": "T\u00e9rminos de Presentaci\u00f3n de la Oferta"
+  },
+  "description": {
+    "en": "Adds a submission terms object to the tender and lot objects, to describe how, when and where the tenderers must submit their bids.",
+    "es": "Agrega un objeto t\u00e9rminos de presentaci\u00f3n de la oferta a los objetos de la licitaci\u00f3n y del lote, para describir c\u00f3mo, cu\u00e1ndo y d\u00f3nde los oferentes deber\u00e1n presentar sus ofertas."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/submissionTerms/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "permission.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

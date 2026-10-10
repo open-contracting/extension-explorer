@@ -1,0 +1,125 @@
+{
+  "definitions": {
+    "ParticipationFee": {
+      "title": "Participation fee",
+      "description": "A fee applicable to bidders wishing to participate in the tender process. Fees can apply for accessing bidding documents or for submitting bids, or there can be a \"win fee\" payable by the successful bidder.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Fee ID",
+          "description": "The locally unique identifier for the fee.",
+          "type": "string"
+        },
+        "type": {
+          "title": "Fee type",
+          "description": "The type of the fee.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "document",
+              "deposit",
+              "submission",
+              "win"
+            ]
+          },
+          "codelist": "participationFeeType.csv",
+          "openCodelist": false
+        },
+        "value": {
+          "title": "Value",
+          "description": "The monetary value of the fee.",
+          "$ref": "#/definitions/Value"
+        },
+        "relativeValue": {
+          "title": "Relative value",
+          "description": "The value of the fee, as a proportion of a monetary value.",
+          "$ref": "#/definitions/RelativeValue"
+        },
+        "description": {
+          "title": "Description",
+          "description": "Additional information about the fee, for example: the specific cases in which the fee is applicable (e.g. hard copies of documents only), the way in which the fee is levied, or the exact nature of the fee.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "methodOfPayment": {
+          "title": "Payment methods",
+          "description": "The accepted ways to pay the fee.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "codelist": "methodOfPayment.csv",
+          "openCodelist": true,
+          "uniqueItems": true
+        },
+        "paymentAddress": {
+          "title": "Payment address",
+          "description": "The physical address to which to submit non-electronic payments.",
+          "$ref": "#/definitions/Address"
+        },
+        "payee": {
+          "title": "Payee",
+          "description": "The organization that receives the fee.",
+          "$ref": "#/definitions/OrganizationReference"
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "participationFees": {
+          "title": "Participation fees",
+          "description": "Any fees applicable to bidders wishing to participate in the tender process. Fees can apply for accessing bidding documents or for submitting bids, or there can be a \"win fee\" payable by the successful bidder.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ParticipationFee"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "RelativeValue": {
+      "title": "Relative value",
+      "description": "The value of the participation fee, as a proportion of a monetary value.",
+      "type": "object",
+      "required": [
+        "proportion",
+        "monetaryValue"
+      ],
+      "properties": {
+        "proportion": {
+          "title": "Proportion",
+          "description": "The proportion of the monetary value, expressed as a decimal between 0 and 1.",
+          "type": [
+            "number"
+          ],
+          "maximum": 1,
+          "minimum": 0,
+          "exclusiveMinimum": true
+        },
+        "monetaryValue": {
+          "title": "Monetary value",
+          "description": "The name of the monetary value.",
+          "type": "string",
+          "enum": [
+            "tender",
+            "award"
+          ],
+          "codelist": "monetaryValue.csv",
+          "openCodelist": false
+        }
+      }
+    }
+  }
+}

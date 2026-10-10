@@ -1,0 +1,68 @@
+{
+  "definitions": {
+    "Risk": {
+      "title": "Risk",
+      "description": "A risk relating to the project.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Risk ID",
+          "description": "A local identifier for this risk, unique within this block. This field is used to keep track of multiple revisions of a risk through the compilation from release to record mechanism.",
+          "type": [
+            "string",
+            "integer"
+          ]
+        },
+        "category": {
+          "title": "Risk category",
+          "description": "Specify the category of the risk against the risk category codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskCategory.csv",
+          "openCodelist": true
+        },
+        "description": {
+          "title": "Risk description",
+          "description": "A description for this risk.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "allocation": {
+          "title": "Risk allocation",
+          "description": "The party which retains the risk.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskAllocation.csv",
+          "openCodelist": false
+        },
+        "notes": {
+          "title": "Risk notes",
+          "description": "Additional notes on the risk, for example the rationale for the allocation",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "riskAllocation": {
+          "title": "Risk allocation",
+          "description": "Information on the allocation of risks relating to the contract.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Risk"
+          },
+          "uniqueItems": true
+        }
+      }
+    }
+  }
+}

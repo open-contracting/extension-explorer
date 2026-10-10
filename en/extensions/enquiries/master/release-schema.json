@@ -1,0 +1,103 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "enquiries": {
+          "title": "Enquiries",
+          "description": "Questions sent to the procuring entity, and the answers given",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Enquiry"
+          },
+          "uniqueItems": true
+        }
+      }
+    },
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "A question related to this contracting process, generally sent during the enquiry period.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "A unique identifier for the enquiry.",
+          "type": "string"
+        },
+        "date": {
+          "title": "Date",
+          "description": "The date the enquiry was received or processed.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "author": {
+          "title": "Question author",
+          "description": "The organization asking this question. The corresponding entry in the `parties` array should have 'enquirer' in its `roles` array.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "title": {
+          "title": "Question title",
+          "description": "The subject line of the question.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "description": {
+          "title": "Description",
+          "description": "The body of the question.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "answer": {
+          "title": "Answer",
+          "description": "The answer to this question, when available.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dateAnswered": {
+          "title": "Date answered",
+          "description": "The date the answer to the question was provided.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "relatedItem": {
+          "title": "Related item",
+          "description": "If this question relates to a specific line-item, this field contains the line-item identifier.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "relatedLot": {
+          "title": "Related lot",
+          "description": "Where lots are used, if this question relates to a specific lot, this field contains the lot identifier.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "threadID": {
+          "title": "Thread identifier",
+          "description": "If this question and answer forms part of a discussion thread (e.g. the question is a follow-up to a previous answer) a thread identifier can be used to associate multiple enquiries.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

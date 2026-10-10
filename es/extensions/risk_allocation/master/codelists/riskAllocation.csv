@@ -1,0 +1,4 @@
+Código,Título,Descripción
+publicAuthority,Autoridad pública,El riesgo es total o mayoritariamente retenido por la autoridad pública
+privateParty,Parte privada,El riesgo es total o mayoritariamente retenido por la parte privada
+undefined,Indefinido,El riesgo no está claramente asignado a una parte específica del contrato. Se pueden proporcionar más detalles en el campo de notas.

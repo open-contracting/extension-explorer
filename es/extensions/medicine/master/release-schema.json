@@ -1,0 +1,144 @@
+{
+  "definitions": {
+    "Item": {
+      "properties": {
+        "activeIngredients": {
+          "title": "Principios activos",
+          "description": "Los ingredientes o principios activos, normalmente compuestos qu\u00edmicos o sustancias biol\u00f3gicas.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ActiveIngredient"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "dosageForm": {
+          "title": "Forma de dosificaci\u00f3n",
+          "description": "La forma de dosificaci\u00f3n farmac\u00e9utica en la que est\u00e1 disponible el medicamento, de la lista de c\u00f3digos dosageForm.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "dosageForm.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "administrationRoute": {
+          "title": "V\u00eda de administraci\u00f3n",
+          "description": "La v\u00eda por la que se puede administrar el medicamento, a partir de la lista de c\u00f3digos administrationRoute.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "administrationRoute.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "immediateContainer": {
+          "title": "Immediate container",
+          "description": "El recipiente inmediato del medicamento. Tambi\u00e9n se conoce como: presentaci\u00f3n, forma de presentaci\u00f3n, envase.",
+          "$ref": "#/definitions/ImmediateContainer"
+        }
+      }
+    },
+    "ActiveIngredient": {
+      "title": "Principio activo",
+      "description": "Un principio activo, normalmente un compuesto qu\u00edmico o una sustancia biol\u00f3gica.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "description": "The name of the active ingredient. It is recommended to use the lowercase Latin name from the International Nonproprietary Names (INN). Also known as: generic name, drug, substance name, active substance.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "strength": {
+          "title": "Concentraci\u00f3n",
+          "description": "La fuerza del ingrediente o principio activo. Tambi\u00e9n se conoce como: concentraci\u00f3n, potencia.",
+          "$ref": "#/definitions/Quantity"
+        }
+      },
+      "minProperties": 1
+    },
+    "ImmediateContainer": {
+      "title": "Immediate container",
+      "description": "El recipiente inmediato del medicamento. Tambi\u00e9n se conoce como: presentaci\u00f3n, forma de presentaci\u00f3n, envase.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "description": "The common name of the container, from the immediate container codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "immediateContainer.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "capacity": {
+          "title": "Capacidad",
+          "description": "La capacidad de almacenamiento del recipiente o envase.",
+          "$ref": "#/definitions/Quantity"
+        }
+      },
+      "minProperties": 1
+    },
+    "Quantity": {
+      "title": "Cantidad",
+      "description": "La cantidad de un elemento.",
+      "type": "object",
+      "properties": {
+        "unit": {
+          "title": "Unidad",
+          "description": "La unidad de medida para la cantidad.",
+          "$ref": "#/definitions/SimpleUnit"
+        },
+        "value": {
+          "title": "Valor",
+          "description": "La cantidad, como m\u00faltiplo de la unidad de medida. La cantidad se expresa en notaci\u00f3n de intervalo, por ejemplo \"[10,10]\" para 10 unidades, \"[1,10]\" para 1 a 10 unidades, o \"[10,INF[\" para 10 o m\u00e1s unidades.",
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "pattern": "^[(\\[\\]][0-9]+,([0-9]+|INF)[)\\[\\]]$"
+        }
+      },
+      "minProperties": 1
+    },
+    "SimpleUnit": {
+      "title": "Unidad simple",
+      "description": "Una unidad de medida.",
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "title": "Esquema",
+          "description": "The scheme or codelist from which the identifier for the unit of measurement is taken, using the open [unitClassificationScheme](https://standard.open-contracting.org/latest/en/schema/codelists/#unit-classification-scheme) codelist. 'UNCEFACT' is recommended.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "unitClassificationScheme.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "id": {
+          "title": "ID",
+          "description": "The identifier for the unit of measurement, taken from the scheme. Refer to the [unitClassificationScheme](https://standard.open-contracting.org/latest/en/schema/codelists/#unit-classification-scheme) codelist for details of how to find identifiers within schemes.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "versionId": true,
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

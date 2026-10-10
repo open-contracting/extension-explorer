@@ -1,0 +1,3 @@
+Código,Título,Descripción,Fuente
+procurement,Contratación,"Acontecimientos que tienen lugar durante la contratación y que no son captados por los campos del núcleo del OCDS, como los períodos de consulta adicionales o los proyectos de presentación de ofertas en un proceso de diálogo competitivo",
+contractClose,Cierre de contrato,Eventos como el cierre comercial y financiero,https://github.com/open-contracting-extensions/public-private-partnerships/issues/25

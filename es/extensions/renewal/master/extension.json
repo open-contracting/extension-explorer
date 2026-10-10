@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Renewal",
+    "es": "Renovaci\u00f3n"
+  },
+  "description": {
+    "en": "Adds fields to describe the options for the renewal of contracts.",
+    "es": "Adds fields to describe the options for the renewal of contracts."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/renewal/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}
