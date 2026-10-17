@@ -1,0 +1,3 @@
+Código,Título,Descripción
+senior,Principal,Deuda que debe pagarse antes de pagar la deuda subordinada.
+subordinated,Subordinado,Deuda que debe pagarse sólo después de pagar la deuda principal.

@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Legal basis",
+    "es": "Base legal"
+  },
+  "description": {
+    "en": "Adds fields to the tender object to describe the legal basis of the procedure.",
+    "es": "Agregar campos al objeto de licitaci\u00f3n para describir la base legal del procedimiento."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/legalBasis/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

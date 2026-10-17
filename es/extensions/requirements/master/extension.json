@@ -1,0 +1,29 @@
+{
+  "name": {
+    "en": "Requirements",
+    "es": "Requisitos"
+  },
+  "description": {
+    "en": "Adds fields to express the Core Criterion and Core Evidence Vocabulary (CCCEV).",
+    "es": "Adds fields to express the Core Criterion and Core Evidence Vocabulary (CCCEV)."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/requirements/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "dataType.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

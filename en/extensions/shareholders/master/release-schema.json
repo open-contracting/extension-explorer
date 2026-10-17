@@ -1,0 +1,86 @@
+{
+  "definitions": {
+    "Shareholder": {
+      "title": "Shareholding",
+      "description": "A shareholding in an organization.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "A local identifier for this shareholding, unique within this array.",
+          "type": "string",
+          "minLength": 1
+        },
+        "shareholder": {
+          "title": "Shareholder",
+          "description": "The organization holding the share.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "shareholding": {
+          "title": "Shareholding",
+          "description": "The proportion of the organization's shares held by the shareholder, expressed as a decimal between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "votingRights": {
+          "title": "Voting rights",
+          "description": "The type of voting rights associated with the shareholder's shares.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "votingRights.csv",
+          "openCodelist": false,
+          "enum": [
+            "ordinary",
+            "none",
+            "restricted",
+            "additional",
+            "enhanced",
+            null
+          ]
+        },
+        "votingRightsDetails": {
+          "title": "Voting rights details",
+          "description": "Detailed information about the voting rights associated with the shareholder's shares: for example, when the shareholder voting rights are restricted, additional or enhanced.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "notes": {
+          "title": "Notes",
+          "description": "Additional notes on the shareholding or shareholder: for example, details on any caps on equity transfer, or lock-in arrangements, applicable to the shareholder.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Organization": {
+      "properties": {
+        "shareholders": {
+          "title": "Shareholdings",
+          "description": "Shareholdings in the organization: used to provide company ownership information for firms, primarily in the case of large and complex contracts, like public private partnerships, that require disclosure of this information by bidders or suppliers.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Shareholder"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

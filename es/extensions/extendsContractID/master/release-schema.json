@@ -1,0 +1,17 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "extendsContractID": {
+          "title": "ID extensi\u00f3n del contrato",
+          "description": "Si este contrato extiende o modifica un contrato emitido anteriormente, entonces el valor de contract.id para el contrato ampliado / modificado se puede proporcionar aqu\u00ed",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

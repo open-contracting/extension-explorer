@@ -1,0 +1,4 @@
+Código,Título,Descripción
+price,Precio,El criterio se refiere al precio de adquisición de la oferta.
+cost,Costo,El criterio se refiere a cualquier otro atributo monetario no relacionado con el precio de la oferta.
+quality,Calidad,El criterio se refiere a cualquier atributo de la oferta que no sea el precio ni el costo.

@@ -1,0 +1,271 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "reviewDetails": {
+          "title": "Review details",
+          "description": "Precise information concerning the time limits for the review procedures or contact information from which it can be obtained.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "valueCalculationMethod": {
+          "title": "Value calculation method",
+          "description": "The method used for calculating the estimated value of the concession.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "legislativeReferences": {
+          "title": "Legislative references",
+          "description": "Legislative references and associated contact points for information.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LegislativeReference"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Organization": {
+      "properties": {
+        "details": {
+          "properties": {
+            "url": {
+              "title": "Website URL",
+              "description": "The website of the organization.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "buyerProfile": {
+              "title": "Buyer profile URL",
+              "description": "The Web address of the buyer profile.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          }
+        },
+        "eDeliveryGateway": {
+          "title": "eDelivery gateway",
+          "description": "The organization's URL for the exchange of data and documents with eDelivery.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "valueCalculationMethod": {
+          "title": "Value calculation method",
+          "description": "Any details relevant to the value of the concession according to article 8(3) of Directive 2014/23/EU on concession contracts.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "periodRationale": {
+          "title": "Contract period rationale",
+          "description": "The rationale for the duration of the contract.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "publicPassengerTransportServicesKilometers": {
+          "title": "Kilometers of public passenger transport services",
+          "description": "The number of kilometers of public passenger transport services provided by a public service contract.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "Period": {
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "The description of the period.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "RelatedProcess": {
+      "properties": {
+        "part": {
+          "title": "Part",
+          "description": "The identifier of a part of a prior information notice, or another similar notice, that describes a planning process.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "LegislativeReference": {
+      "title": "Legislative reference",
+      "description": "Legislative reference and associated contact point",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "description": "The title of the legislative reference",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "url": {
+          "title": "URL",
+          "description": "A link to the Web page of the legislative reference.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "informationService": {
+          "title": "Information service",
+          "description": "An organization that can provide information about the legislative reference.",
+          "$ref": "#/definitions/OrganizationReference"
+        }
+      },
+      "minProperties": 1
+    },
+    "Lot": {
+      "properties": {
+        "awardPeriod": {
+          "title": "Award period",
+          "description": "The period for decision making regarding the contract award for the lot. The end date should be the date on which an award decision is due to be finalized. The start date may be used to indicate the start of an evaluation period.",
+          "$ref": "#/definitions/Period"
+        },
+        "hasAccessibilityCriteria": {
+          "title": "Has accessibility criteria",
+          "description": "Whether the technical specifications for the lot include accessibility criteria for people with disabilities.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "noAccessibilityCriteriaRationale": {
+          "title": "No accessibility criteria rationale",
+          "description": "The rationale for not including accessibility criteria when the object of the lot is intended for use by natural persons.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "reviewDetails": {
+          "title": "Review details",
+          "description": "Precise information concerning the time limits for the review procedures for the lot or contact information from which it can be obtained.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "ExclusionGrounds": {
+      "properties": {
+        "sources": {
+          "title": "Sources",
+          "description": "The sources in which the exclusion grounds are defined.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "epo-notice",
+              "epo-procurement-document",
+              "epo-sub-espd"
+            ]
+          },
+          "codelist": "sources.csv",
+          "openCodelist": false,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "SelectionCriteria": {
+      "properties": {
+        "sources": {
+          "title": "Sources",
+          "description": "The sources in which the selection criteria are defined.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "epo-notice",
+              "epo-procurement-document",
+              "epo-sub-espd"
+            ]
+          },
+          "codelist": "sources.csv",
+          "openCodelist": false,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Bid": {
+      "properties": {
+        "foreignSubsidyMeasures": {
+          "title": "Foreign subsidy measures",
+          "description": "The measures applied under the Foreign Subsidies Regulation (EU) 2022/2560.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "fsr-adm-clos",
+            "fsr-commit",
+            "fsr-irregul",
+            "fsr-meat",
+            "fsr-no-obj",
+            "fsr-proh",
+            "fsr-stand",
+            null
+          ],
+          "codelist": "foreignSubsidyMeasures.csv",
+          "openCodelist": false
+        }
+      }
+    }
+  }
+}

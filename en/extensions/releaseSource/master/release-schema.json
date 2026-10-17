@@ -1,0 +1,51 @@
+{
+  "properties": {
+    "sources": {
+      "title": "Sources",
+      "description": "The information systems from which the data originates.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Source"
+      },
+      "uniqueItems": true
+    }
+  },
+  "definitions": {
+    "Source": {
+      "type": "object",
+      "title": "Source",
+      "description": "An information system from which data originates.",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The locally unique identifier for the source.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "The name of the source.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "url": {
+          "title": "URL",
+          "description": "The web address of the source.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    }
+  }
+}

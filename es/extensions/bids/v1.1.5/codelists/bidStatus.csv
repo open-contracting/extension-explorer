@@ -1,0 +1,6 @@
+Código,Título,Descripción
+invited,Invitado,Se ha invitado una oferta de los licitadores listados.
+pending,Pendiente,Se ha enviado una oferta pero aún no se ha evaluado.
+valid,Válida,La oferta presentada cumplió con los requisitos de calificación para ser evaluada.
+disqualified,Descalificada,La oferta presentada no cumplió con los requisitos de calificación para ser evaluada.
+withdrawn,Retirada,La oferta presentada fue retirada por el(los) licitador(es).

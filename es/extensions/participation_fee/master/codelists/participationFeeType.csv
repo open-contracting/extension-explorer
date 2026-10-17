@@ -1,0 +1,5 @@
+Código,Título,Descripción
+document,Documento,Una cuota/cargo que se debe pagar para acceder a los documentos de oferta
+deposit,Depósito,Una cuota/cargo reembolsable que se debe pagar para hacer una oferta.
+submission,Presentación de oferta,Una cuota/cargo no-reembolsable que se debe pagar para hacer una oferta.
+win,Triunfo,Una cuota/cargo que debe pagar el ofertante ganador
