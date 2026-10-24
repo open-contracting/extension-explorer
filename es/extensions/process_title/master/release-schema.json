@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "title": {
+      "title": "T\u00edtulo",
+      "description": "Un t\u00edtulo general para este proceso de contrataci\u00f3n o entrega.",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "description": {
+      "title": "Descripci\u00f3n",
+      "description": "Una descripci\u00f3n general de este proceso de contrataci\u00f3n o entrega. Este no reemplaza a una descripci\u00f3n detallada de los objetos del proceso de contrataci\u00f3n en las secciones de planeaci\u00f3n, licitaci\u00f3n, adjudicaci\u00f3n o contrato.",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

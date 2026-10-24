@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Procurement method rationale classifications",
+    "es": "Clasificaciones de los fundamentos de m\u00e9todos de contrataci\u00f3n"
+  },
+  "description": {
+    "en": "Adds an array to the tender object to classify the procurement method rationale.",
+    "es": "Agregar una lista al objeto de licitaci\u00f3n para clasificar la justificaci\u00f3n del m\u00e9todo de contrataci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/procurementMethodRationaleClassifications/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

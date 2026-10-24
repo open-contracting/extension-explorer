@@ -1,0 +1,69 @@
+{
+  "definitions": {
+    "Document": {
+      "properties": {
+        "pageStart": {
+          "title": "Page start",
+          "description": "When the information referenced exists within a large document, indicate the first page on which it can be found. This should refer to the printed page number, not the page number reported by software applications.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "pageEnd": {
+          "title": "Page end",
+          "description": "When the information referenced exists within a large document, indicate the last page on which it can be found. This should refer to the printed page number, not the page number reported by software applications.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "accessDetails": {
+          "title": "Access details",
+          "description": "A description of any special arrangements needed to access this document, for example: registering for access, paying a fee, or visiting a location to inspect the document.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "accessDetailsURL": {
+          "title": "Access details URL",
+          "description": "A web address for information on any special arrangements needed to access the document.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "author": {
+          "title": "Author",
+          "description": "The names of the authors of the document.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "unofficialTranslations": {
+          "title": "Unofficial translations",
+          "description": "The languages in which unofficial translations of the document are available, from the open [language](https://standard.open-contracting.org/latest/en/schema/codelists/#language) codelist. A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "language.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": {
+    "en": "Techniques",
+    "es": "T\u00e9cnicas"
+  },
+  "description": {
+    "en": "Adds fields to the tender, lot and lot group objects to describe the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions.",
+    "es": "Adds fields to the tender, lot and lot group objects to describe the use of techniques, such as framework agreements, dynamic purchasing systems and electronic auctions."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/techniques/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "dynamicPurchasingSystemType.csv",
+    "dynamicPurchasingSystemStatus.csv",
+    "frameworkAgreementMethod.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

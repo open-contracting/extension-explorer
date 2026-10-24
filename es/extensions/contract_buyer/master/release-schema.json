@@ -1,0 +1,27 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "buyers": {
+          "title": "Buyers",
+          "description": "The organizations aiming to conclude a contract with the suppliers or to use the goods, services or works resulting from the contract, if not identical to the buyers for the contracting process.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "buyer": {
+          "title": "Comprador",
+          "description": "The organization aiming to conclude a contract with the suppliers or to use the goods, services or works resulting from the contract, if not identical to the buyer for the contracting process.",
+          "$ref": "#/definitions/OrganizationReference"
+        }
+      }
+    }
+  }
+}

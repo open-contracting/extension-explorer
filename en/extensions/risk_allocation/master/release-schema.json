@@ -1,0 +1,83 @@
+{
+  "definitions": {
+    "Risk": {
+      "title": "Risk",
+      "description": "A risk relating to the project.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Risk ID",
+          "description": "A local identifier for this risk, unique within this block. This field is used to keep track of multiple revisions of a risk through the compilation from release to record mechanism.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "category": {
+          "title": "Risk category",
+          "description": "The category of the risk, from the riskCategory codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskCategory.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "description": {
+          "title": "Risk description",
+          "description": "The description of the risk.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "allocation": {
+          "title": "Risk allocation",
+          "description": "The party to the contract that retains the risk.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "riskAllocation.csv",
+          "openCodelist": false,
+          "enum": [
+            "publicAuthority",
+            "privateParty",
+            "undefined",
+            null
+          ]
+        },
+        "notes": {
+          "title": "Risk notes",
+          "description": "Additional notes on the risk, for example the rationale for the allocation.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Contract": {
+      "properties": {
+        "riskAllocation": {
+          "title": "Risk allocation",
+          "description": "Information on the allocation of risks relating to the contract.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Risk"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
