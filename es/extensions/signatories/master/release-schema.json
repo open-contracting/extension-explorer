@@ -1,0 +1,18 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "signatories": {
+          "title": "Firmantes del contrato",
+          "description": "Los firmantes del contrato. Cada firmante debe tener una entrada correspondiente en la lista de `parties`.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganizationReference"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

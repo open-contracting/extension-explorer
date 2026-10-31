@@ -1,0 +1,27 @@
+{
+  "name": {
+    "en": "Risk Allocation",
+    "es": "Asignaci\u00f3n de Riesgo"
+  },
+  "description": {
+    "en": "For providing the risk allocations defined in a public private partnership's contract.",
+    "es": "Para proporcionar las asignaciones de riesgo definidas en un contrato de asociaci\u00f3n p\u00fablico-privada."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/risk_allocation/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "riskAllocation.csv",
+    "riskCategory.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

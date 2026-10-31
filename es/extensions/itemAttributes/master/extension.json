@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Item attributes",
+    "es": "Atributos del art\u00edculo"
+  },
+  "description": {
+    "en": "Adds a generic list of attributes to the item object",
+    "es": "Agrega una lista gen\u00e9rica de atributos al objeto art\u00edculo"
+  },
+  "documentationUrl": {
+    "en": "https://gitlab.com/dncp-opendata/ocds_item_attributes_extension"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Direcci\u00f3n Nacional de Contrataciones P\u00fablicas",
+    "email": "datosabiertos@dncp.gov.py"
+  }
+}

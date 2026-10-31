@@ -1,0 +1,16 @@
+{
+  "name": {
+    "en": "Process level title and description",
+    "es": "T\u00edtulo y descripci\u00f3n del nivel del proceso"
+  },
+  "description": {
+    "en": "For providing overall process titles and descriptions, often to give a free-text summary of the contracting process as a whole.",
+    "es": "Para proporcionar t\u00edtulos y descripciones del proceso en general , a menudo para dar un resumen de texto libre del proceso de contrataci\u00f3n como un todo."
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "documentationUrl": {
+    "en": "https://github.com/open-contracting/ocds_process_title_extension"
+  }
+}

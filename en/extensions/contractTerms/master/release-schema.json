@@ -1,0 +1,214 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "contractTerms": {
+          "title": "Contract terms",
+          "description": "Information about the terms governing the future contracts from the procedure.",
+          "$ref": "#/definitions/ContractTerms"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "contractTerms": {
+          "title": "Contract terms",
+          "description": "Information about the terms governing the future contracts for the lot.",
+          "$ref": "#/definitions/ContractTerms"
+        }
+      }
+    },
+    "ContractTerms": {
+      "title": "Contract terms",
+      "description": "Information about the terms governing the future contracts.",
+      "type": "object",
+      "properties": {
+        "hasElectronicPayment": {
+          "title": "Electronic payment used",
+          "description": "Whether electronic payment is used.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "hasElectronicOrdering": {
+          "title": "Electronic ordering used",
+          "description": "Whether electronic ordering is used.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "electronicInvoicingPolicy": {
+          "title": "Electronic invoicing policy",
+          "description": "Whether the buyer will require, allow or not allow electronic invoices.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "permission.csv",
+          "openCodelist": false,
+          "enum": [
+            "required",
+            "allowed",
+            "notAllowed",
+            null
+          ]
+        },
+        "reservedExecution": {
+          "title": "Reserved execution",
+          "description": "Whether the execution of the contract is restricted to the framework of sheltered employment programmes.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "performanceTerms": {
+          "title": "Terms performance",
+          "description": "The main information about the performance of the contract (e.g. intermediary deliverables, compensation for damages, intellectual property rights).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "financialTerms": {
+          "title": "Financial terms",
+          "description": "The main information about financing and payment and/or reference to any provisions that govern them.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "tendererLegalForm": {
+          "title": "Tenderer legal form",
+          "description": "A certain legal form that must be taken by a group of tenderers that is awarded a contract.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "hasExclusiveRights": {
+          "title": "Has exclusive rights",
+          "description": "A right entitling a public service operator to operate certain public passenger transport services on a particular route or network or in a particular area, to the exclusion of any other such operator.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "exclusiveRights": {
+          "title": "Exclusive rights",
+          "description": "The nature and extent of the exclusive rights granted by the procuring entity to the supplier.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "operatorRevenueShare": {
+          "title": "Operator revenue share",
+          "description": "The proportion of revenue from the sale of tickets allocated to the supplier, expressed as a decimal between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "maximum": 1,
+          "minimum": 0
+        },
+        "otherTerms": {
+          "title": "Other terms",
+          "description": "Other contract terms that do not fit the semantics of any other OCDS field.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "rewardsAndPenalties": {
+          "title": "Rewards and penalties",
+          "description": "Information about rewards and penalties relating to quality targets.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "socialStandards": {
+          "title": "Social standards",
+          "description": "The required social standards, for example: detail of the contractual rights of the staff concerned, and conditions under which employees are considered to be linked to the services.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "hasNonDisclosureAgreement": {
+          "title": "Has non-disclosure agreement",
+          "description": "Whether contract execution requires a non-disclosure agreement.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "nonDisclosureAgreement": {
+          "title": "Non-disclosure agreement",
+          "description": "A description of the non-disclosure agreement required for contract execution.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "customerServices": {
+          "title": "Customer services",
+          "description": "Information about customer service requirements.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CustomerService"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "CustomerService": {
+      "title": "Customer service",
+      "description": "A customer service requirement.",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "The type of this customer service requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "A name for this customer service requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this customer service requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

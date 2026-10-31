@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Contract extensions via supplementary contract: extendsContractID",
+    "es": "Extensi\u00f3n de contratos a trav\u00e9s de contratos complementario: extendsContractiD"
+  },
+  "description": {
+    "en": "Under some procurement rules and processes, to extend the duration or value of a contract, or to make other substantial alterations, requires a new contract to be signed. This extension allows these relationships between two or more contracts in the same contracting process to be made explicit.",
+    "es": "Bajo algunas reglas y procesos de contrataciones, para extender la duraci\u00f3n o el valor de un contrato, o para realizar otras modificaciones sustanciales, se requiere la firma de un nuevo contrato. Esta extensi\u00f3n permite que se hagan expl\u00edcitas las relaciones entre dos o m\u00e1s contratos en el mismo proceso de contrataci\u00f3n. "
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/extendsContractID/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

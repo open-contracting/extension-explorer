@@ -1,0 +1,89 @@
+{
+  "definitions": {
+    "Planning": {
+      "properties": {
+        "project": {
+          "title": "Informaci\u00f3n de proyecto",
+          "description": "Informaci\u00f3n sobre el proyecto de infraestructura o asociaci\u00f3n p\u00fablico-privada al que se relaciona el proceso de planificaci\u00f3n.",
+          "$ref": "#/definitions/Project"
+        }
+      }
+    },
+    "Project": {
+      "title": "Informaci\u00f3n de proyecto",
+      "description": "Informaci\u00f3n sobre el proyecto de infraestructura o asociaci\u00f3n p\u00fablico-privada al que se relaciona un proceso de planificaci\u00f3n.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador proporcionado externamente para el proyecto. Puede ser un URI, un identificador de un registro de proyectos o basado en la versi\u00f3n can\u00f3nica del nombre del proyecto. Los identificadores del proyecto deben ser \u00fanicos dentro del alcance de la publicaci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "title": {
+          "title": "T\u00edtulo",
+          "description": "El nombre del proyecto. Si hay un registro de proyectos disponible, este debe ser el mismo que el nombre del proyecto en ese registro.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Una breve descripci\u00f3n del proyecto.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "totalValue": {
+          "title": "Valor total",
+          "description": "El valor total previsto del proyecto a lo largo de su vida.",
+          "$ref": "#/definitions/Value"
+        },
+        "uri": {
+          "title": "URI",
+          "description": "El URI de un recurso con informaci\u00f3n adicional sobre el proyecto.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "sector": {
+          "title": "Sector",
+          "description": "El sector primario al que se refiere el proyecto. Se recomienda utilizar el esquema 'oc4idsProjectSector' y c\u00f3digos de la [lista de c\u00f3digos OC4IDS projectSector](https://standard.open-contracting.org/infrastructure/latest/en/reference/codelists/#projectsector).",
+          "$ref": "#/definitions/Classification"
+        },
+        "additionalClassifications": {
+          "title": "Clasificaciones adicionales",
+          "description": "Clasificaciones adicionales para el proyecto. Por ejemplo, una clasificaci\u00f3n sectorial o de marco estrat\u00e9gico.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "locations": {
+          "title": "Ubicaciones",
+          "description": "Informaci\u00f3n sobre las ubicaciones donde se desarrolla el proyecto.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Location"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}
