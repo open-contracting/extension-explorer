@@ -1,0 +1,15 @@
+{
+  "name": {
+    "en": "Charges",
+    "es": "Cargos"
+  },
+  "description": {
+    "en": "The charges extension is used to record details of the **total** charges that are estimated or applied to users or government during the operation of a Public Private Partnership contract.",
+    "es": "La extensi\u00f3n de cargos se utiliza para registrar detalles de los **cargos totales** estimados o aplicados a los usuarios o al gobierno durante la operaci\u00f3n de un contrato de Asociaci\u00f3n P\u00fablico Privada."
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "dependencies": [],
+  "documentationUrl": {}
+}

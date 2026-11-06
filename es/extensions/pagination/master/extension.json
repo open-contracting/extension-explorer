@@ -1,0 +1,24 @@
+{
+  "name": {
+    "en": "Pagination",
+    "es": "Paginaci\u00f3n"
+  },
+  "description": {
+    "en": "Adds a links object to packages, to support pagination.",
+    "es": "Agregar un objeto de enlaces a los paquetes para dar soporte a la paginaci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/pagination/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "record-package-schema.json",
+    "release-package-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

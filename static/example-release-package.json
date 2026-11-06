@@ -1,0 +1,22 @@
+{
+  "publisher": {
+    "name": "Example publisher"
+  },
+  "version": "1.1",
+  "extensions": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/v1.1.1/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/v1.1.1/extension.json",
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_requirements_extension/master/extension.json"
+  ],
+  "uri": "https://extensions.open-contracting.org/static/example-release-package.json",
+  "publishedDate": "2018-09-27T03:44:40.247Z",
+  "releases": [
+    {
+      "ocid": "ocds-213czf-000-00001",
+      "id": "ocds-213czf-000-00001-example",
+      "date": "2018-09-27T03:44:40.247Z",
+      "tag": ["tenderUpdate"],
+      "initiationType": "tender"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": {
+    "en": "Sustainability",
+    "es": "Sustainability"
+  },
+  "description": {
+    "en": "Adds fields to the tender and lot objects, to provide information related to Sustainable Public Procurement.",
+    "es": "Adds fields to the tender and lot objects, to provide information related to Sustainable Public Procurement."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/sustainability"
+  },
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "sustainabilityGoal.csv",
+    "sustainabilityStrategy.csv"
+  ],
+  "compatibility": [
+    "1.1"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

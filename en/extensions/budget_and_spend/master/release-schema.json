@@ -1,0 +1,155 @@
+{
+  "definitions": {
+    "Implementation": {
+      "properties": {
+        "financialProgress": {
+          "title": "Financial progress",
+          "description": "The financial progress section allows high-level and detailed information on amounts committed or spent to date for this particular contract. This may be used alongside the transactions section, which allows for details of each individual payment to be recorded.",
+          "type": "object",
+          "properties": {
+            "totalSpend": {
+              "title": "Total spend",
+              "description": "The total spend on this contract at the date of last update. Note that the exact fiscal measure this number represents may vary between data publishers (e.g. amount invoiced vs. amount transferred to the bank account of the supplier).",
+              "$ref": "#/definitions/Value"
+            },
+            "measures": {
+              "title": "Measures",
+              "description": "This measures section reports aggregated financial progress figures for this contract (i.e. without breakdown by budget classifications). Measures must be provided as a set of key-value pairs, where the key should be the name of the measure used within a related Fiscal Data Package dataset or other budget and spending dataset. The value is the value of this measure when last updated, and must be provided as a number in the same default currency as any aggregate reported budget or spending figures.",
+              "type": "object",
+              "patternProperties": {
+                "[A-Za-z0-9._-]": {
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                }
+              },
+              "minProperties": 1
+            },
+            "breakdown": {
+              "title": "Financial progress breakdown",
+              "description": "This section contains a breakdown of financial progress, allowing various measures (amount invoiced, amount accrued, amount paid etc.) to be disaggregated by source, period and budget classification",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/FinancialProgressBreakdown"
+              },
+              "uniqueItems": true,
+              "minItems": 1
+            }
+          },
+          "minProperties": 1
+        }
+      }
+    },
+    "FinancialProgressBreakdown": {
+      "title": "Financial progress breakdown",
+      "description": "This section allows a detailed breakdown of financial progress to be provided, each covering a particular periods, or allocating financial progress against particular funding sources and fiscal classifications.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this particular financial progress breakdown entry.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A short free text description of this financial progress breakdown. This may be displayed in user interfaces to help users interpret this entry. This may be automatically generated from structured data or may be manually entered.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "period": {
+          "title": "Budget period",
+          "description": "The period covered by this financial progress breakdown entry. This information may also be duplicated using classifications where relevant.",
+          "$ref": "#/definitions/Period"
+        },
+        "classifications": {
+          "title": "Budget classifications",
+          "description": "Budget classifications must be provided as a set of key-value pairs, where the key is a dimension (or the label of a dimension) used in budget classification, and the value is the value of that dimension for this contracting process or specific contract (depending on the point within an OCDS file at which the classification is provided).",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "measures": {
+          "title": "measures",
+          "description": "Measures must be provided as a set of key-value pairs, where the key should be the name of the measure used within a related Fiscal Data Package dataset or other budget and spending dataset. The value is the value of this measure when last updated, and must be provided as a number in the same default currency as any aggregate reported budget or spending figures.",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "minProperties": 1
+        },
+        "fiscalBreakdownFieldMapping": {
+          "$ref": "#/definitions/FiscalBreakdownFieldMapping"
+        }
+      },
+      "minProperties": 1
+    },
+    "BudgetBreakdown": {
+      "properties": {
+        "classifications": {
+          "title": "Budget classifications",
+          "description": "Budget classifications must be provided as a set of key-value pairs, where the key is a dimension (or the label of a dimension) used in budget classification, and the value is the value of that dimension for this contracting process or specific contract (depending on the point within an OCDS file at which the classification is provided).",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "measures": {
+          "title": "measures",
+          "description": "Measures must be provided as a set of key-value pairs, where the key should be the name of the measure used within a related Fiscal Data Package dataset or other budget and spending dataset. The value is the value of this measure when last updated, and must be provided as a number in the same default currency as any aggregate reported budget or spending figures.",
+          "type": "object",
+          "patternProperties": {
+            "[A-Za-z0-9._-]": {
+              "type": [
+                "number",
+                "null"
+              ]
+            }
+          },
+          "minProperties": 1
+        },
+        "fiscalBreakdownFieldMapping": {
+          "$ref": "#/definitions/FiscalBreakdownFieldMapping"
+        }
+      }
+    },
+    "FiscalBreakdownFieldMapping": {
+      "title": "Fiscal Breakdown Field Mapping",
+      "description": "OCDS defers to the Fiscal Data Package to provide detailed definitions of budget classifications and measures, including providing labels for each property and describing the relationship between each classification or measure and established fiscal concepts. A Fiscal Data Package may also contain budget and spend data, using the same classifications and measures as the OCDS file, and thereby allowing comparison between 'contract level' budget allocations and spend, and allocations and spending at the level of a particular budget line. When used, this field must contain a dereferenceable URI pointing to a [Fiscal Data Package (FDP)](https://frictionlessdata.io/specs/fiscal-data-package/) datapackage.json file (version 1.0 or above), or a file that, when decompressed, contains a datapackage.json file. The URI should include a fragment identifier with the `name` value of a particular resource within that file in order to identify the particular budget or spending data file to which contract level budget allocations and spending measures can be compared, and the particular column definitions to use. The referenced resource should contain `field` or `extraField` properties with their `name` property matching each of the budget/financial progress breakdown `classification` or `measure` fields in the OCDS data, and at minimum providing labels for these.",
+      "type": "string",
+      "format": "uri"
+    }
+  }
+}

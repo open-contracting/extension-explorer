@@ -1,0 +1,31 @@
+{
+  "definitions": {
+    "Organization": {
+      "properties": {
+        "details": {
+          "properties": {
+            "scale": {
+              "title": "Scale",
+              "description": "The size or scale of the organization.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "partyScale.csv",
+              "openCodelist": false,
+              "enum": [
+                "micro",
+                "sme",
+                "small",
+                "medium",
+                "large",
+                "selfEmployed",
+                null
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

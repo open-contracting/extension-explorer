@@ -1,0 +1,271 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "reviewDetails": {
+          "title": "Detalles de la revisi\u00f3n",
+          "description": "Informaci\u00f3n precisa sobre los plazos para los procedimientos de revisi\u00f3n o informaci\u00f3n de contacto de la que se puede obtener.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "valueCalculationMethod": {
+          "title": "M\u00e9todo de c\u00e1lculo de valor",
+          "description": "El m\u00e9todo usado para el c\u00e1lculo del valor estimado de la concesi\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "legislativeReferences": {
+          "title": "Referencias legislativas",
+          "description": "Referencias legislativas y puntos de contacto asociados para informaci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LegislativeReference"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Organization": {
+      "properties": {
+        "details": {
+          "properties": {
+            "url": {
+              "title": "URL del sitio web",
+              "description": "Sitio web de la organizaci\u00f3n",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "buyerProfile": {
+              "title": "URL del perfil del comprador",
+              "description": "Direcci\u00f3n web del perfil del comprador.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          }
+        },
+        "eDeliveryGateway": {
+          "title": "eDelivery gateway",
+          "description": "The organization's URL for the exchange of data and documents with eDelivery.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "valueCalculationMethod": {
+          "title": "M\u00e9todo de c\u00e1lculo de valor",
+          "description": "Cualquier detalle relevante al valor de la concesi\u00f3n seg\u00fan el art\u00edculo 8(3) de la Directiva 2014/23/UE sobre contratos de concesi\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "periodRationale": {
+          "title": "Justificaci\u00f3n del per\u00edodo del contrato",
+          "description": "La justificaci\u00f3n de la duraci\u00f3n del contrato.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "publicPassengerTransportServicesKilometers": {
+          "title": "Kil\u00f3metros de servicios de transporte p\u00fablico de pasajeros",
+          "description": "El n\u00famero de kil\u00f3metros de servicios de transporte p\u00fablico de pasajeros prestados por un contrato de servicio p\u00fablico.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "Period": {
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "The description of the period.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "RelatedProcess": {
+      "properties": {
+        "part": {
+          "title": "Part",
+          "description": "The identifier of a part of a prior information notice, or another similar notice, that describes a planning process.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "LegislativeReference": {
+      "title": "Referencia legislativa",
+      "description": "Referencias legislativas y puntos de contacto asociados",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "T\u00edtulo",
+          "description": "El t\u00edtulo de una referencia legislativa",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "url": {
+          "title": "URL",
+          "description": "Un enlace a la p\u00e1gina web de la referencia legislativa.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "informationService": {
+          "title": "Servicio de informaci\u00f3n",
+          "description": "Una organizaci\u00f3n que puede proporcionar informaci\u00f3n sobre la referencia legislativa.",
+          "$ref": "#/definitions/OrganizationReference"
+        }
+      },
+      "minProperties": 1
+    },
+    "Lot": {
+      "properties": {
+        "awardPeriod": {
+          "title": "Periodo de adjudicaci\u00f3n",
+          "description": "El plazo para la toma de decisiones sobre la adjudicaci\u00f3n del contrato del lote. La fecha de finalizaci\u00f3n debe ser la fecha en la que se debe finalizar la decisi\u00f3n de adjudicaci\u00f3n. La fecha de inicio se puede utilizar para indicar el inicio de un per\u00edodo de evaluaci\u00f3n.",
+          "$ref": "#/definitions/Period"
+        },
+        "hasAccessibilityCriteria": {
+          "title": "Has accessibility criteria",
+          "description": "Whether the technical specifications for the lot include accessibility criteria for people with disabilities.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "noAccessibilityCriteriaRationale": {
+          "title": "No accessibility criteria rationale",
+          "description": "The rationale for not including accessibility criteria when the object of the lot is intended for use by natural persons.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "reviewDetails": {
+          "title": "Detalles de la revisi\u00f3n",
+          "description": "Precise information concerning the time limits for the review procedures for the lot or contact information from which it can be obtained.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      }
+    },
+    "ExclusionGrounds": {
+      "properties": {
+        "sources": {
+          "title": "Sources",
+          "description": "The sources in which the exclusion grounds are defined.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "epo-notice",
+              "epo-procurement-document",
+              "epo-sub-espd"
+            ]
+          },
+          "codelist": "sources.csv",
+          "openCodelist": false,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "SelectionCriteria": {
+      "properties": {
+        "sources": {
+          "title": "Sources",
+          "description": "The sources in which the selection criteria are defined.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "epo-notice",
+              "epo-procurement-document",
+              "epo-sub-espd"
+            ]
+          },
+          "codelist": "sources.csv",
+          "openCodelist": false,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Bid": {
+      "properties": {
+        "foreignSubsidyMeasures": {
+          "title": "Foreign subsidy measures",
+          "description": "The measures applied under the Foreign Subsidies Regulation (EU) 2022/2560.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "fsr-adm-clos",
+            "fsr-commit",
+            "fsr-irregul",
+            "fsr-meat",
+            "fsr-no-obj",
+            "fsr-proh",
+            "fsr-stand",
+            null
+          ],
+          "codelist": "foreignSubsidyMeasures.csv",
+          "openCodelist": false
+        }
+      }
+    }
+  }
+}

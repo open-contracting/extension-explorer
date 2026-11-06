@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Organization scale",
+    "es": "Organization scale"
+  },
+  "description": {
+    "en": "For classifying organizations as micro, sme or large.",
+    "es": "Para clasificar organizaciones como micro, PyME or grande"
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/partyScale/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "partyScale.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "evaluationIndicators": {
+          "title": "Evaluation of PPP option",
+          "description": "Key indicators that describe how the PPP option has been evaluated by government.",
+          "$ref": "#/definitions/EvaluationIndicators"
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "financeSummary": {
+          "title": "Finance summary",
+          "description": "Key indicators that describe the financial model of the PPP.",
+          "$ref": "#/definitions/FinanceSummary"
+        }
+      }
+    },
+    "EvaluationIndicators": {
+      "title": "Evaluation indicators",
+      "description": "Key indicators that describe how the PPP option has been evaluated by government.",
+      "type": "object",
+      "properties": {
+        "riskPremium": {
+          "title": "Risk premium",
+          "description": "The risk premium used by government when evaluating the PPP option, expressed as a decimal (for example, 0.1) and not as a percentage (for example, 10).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "riskPremiumDetails": {
+          "title": "Risk premium details",
+          "description": "Additional details on the risk premium used: for example, the rationale.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "discountRate": {
+          "title": "Discount rate",
+          "description": "The discount rate used by government when evaluating the PPP option, expressed as a decimal (for example, 0.1) and not as a percentage (for example, 10).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "discountRateDetails": {
+          "title": "Discount rate details",
+          "description": "Additional details on the discount rate used.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "netPresentValue": {
+          "title": "Net present value",
+          "description": "The discounted value of an investment's cash inflows minus the discounted value of its cash outflows.",
+          "$ref": "#/definitions/Value"
+        },
+        "netPresentValueDetails": {
+          "title": "Net present value details",
+          "description": "Additional details on the calculation of the net present value.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "FinanceSummary": {
+      "title": "Finance summary",
+      "description": "Key indicators that describe the financial model of the PPP.",
+      "type": "object",
+      "properties": {
+        "debtEquityRatio": {
+          "title": "Debt-equity ratio",
+          "description": "The debt-equity ratio of the project, expressed as a decimal (for example, 0.1). Also called gearing or leverage.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "debtEquityRatioDetails": {
+          "title": "Debt-equity ratio details",
+          "description": "Additional details on the calculation of the debt equity ratio.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "shareCapital": {
+          "title": "Share capital",
+          "description": "The value of the capital in the project that comes from the issue of shares.",
+          "$ref": "#/definitions/Value"
+        },
+        "shareCapitalDetails": {
+          "title": "Share capital details",
+          "description": "Additional details on the calculation of the share capital.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "subsidyRatio": {
+          "title": "Subsidy ratio",
+          "description": "The subsidy's proportion of the project value, expressed as a decimal between 0 and 1.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "subsidyRatioDetails": {
+          "title": "Subsidy ratio details",
+          "description": "Additional details on the calculation of the subsidy ratio.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "projectIRR": {
+          "title": "Internal rate of return",
+          "description": "The internal rate of return of the project, expressed as a decimal (for example, 0.1) and not as a percentage (for example, 10).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "projectIRRDetails": {
+          "title": "Internal rate of return details",
+          "description": "Additional details on the calculation of the project IRR.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Metric": {
+      "properties": {
+        "id": {
+          "codelist": "metricID.csv",
+          "openCodelist": true
+        }
+      }
+    },
+    "Milestone": {
+      "properties": {
+        "code": {
+          "codelist": "milestoneCode.csv",
+          "openCodelist": true
+        }
+      }
+    }
+  }
+}

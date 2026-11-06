@@ -1,0 +1,324 @@
+{
+  "definitions": {
+    "Criterion": {
+      "title": "Criterion",
+      "description": "A criterion on which bids, tenderers, lots or items will be judged, evaluated or assessed.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The identifier for this criterion. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](https://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "title": {
+          "title": "Title",
+          "description": "A title for this criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this criterion.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "relatesToTenderer": {
+          "title": "Relates to tenderer",
+          "description": "The criterion judges, evaluates or assesses a tenderer.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "relatedItem": {
+          "title": "Related item",
+          "description": "The identifier of the item in the tender section to which this criterion applies.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "relatedLots": {
+          "title": "Related lot(s)",
+          "description": "The identifiers of the lots to which this criterion applies.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "requirementGroups": {
+          "title": "Requirement groups",
+          "description": "A list of requirement groups for this Criterion. A criterion is satisfied by one or more requirement groups being met. A requirement group is met when all requirements in the group are satisfied.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RequirementGroup"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "RequirementGroup": {
+      "title": "Requirement group",
+      "description": "A requirement group is a set of requirements that must be fulfilled together to validate a criterion.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The identifier for this requirement group. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](https://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this requirement group.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "requirements": {
+          "title": "Requirements",
+          "description": "A list requirements which must all be satisfied for the requirement group to be met.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Requirement"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Requirement": {
+      "title": "Requirement",
+      "description": "An atomic requirement. Requirements can specify the expected value that the response has to contain, or a range of threshold values within which the response has to fit in. The requirement may apply to a certain period of time.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Requirement identifier",
+          "description": "The identifier for this requirement. It must be unique and cannot change within the Open Contracting Process it is part of (defined by a single ocid). See the [identifier guidance](https://standard.open-contracting.org/latest/en/schema/identifiers/) for further details.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "Requirement title",
+          "description": "The title of this atomic requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Requirement description",
+          "description": "A free text description for this atomic requirement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "dataType": {
+          "title": "Requirement datatype",
+          "description": "The data type in which the response must be provided.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "dataType.csv",
+          "openCodelist": false,
+          "enum": [
+            "string",
+            "date-time",
+            "number",
+            "integer",
+            "boolean",
+            null
+          ]
+        },
+        "pattern": {
+          "title": "Response validation pattern",
+          "description": "A regular expression with which to validate the response.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "expectedValue": {
+          "title": "Expected value",
+          "description": "The expected value of the requirement, when the response must be specific value.",
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "minValue": {
+          "title": "Minimum value",
+          "description": "The lower bound of the requirement, when the response must be within a certain range.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maxValue": {
+          "title": "Maximum value",
+          "description": "The upper bound of the requirement, when the response must be within a certain range.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "period": {
+          "title": "Period",
+          "description": "The period to which the requirement applies: for example, the tenderer's turnover in a given year.",
+          "$ref": "#/definitions/Period"
+        }
+      },
+      "minProperties": 1
+    },
+    "RequirementResponse": {
+      "title": "Requirement response",
+      "description": "An assertion that responds to a single requirement. A response provides the value for the requirement and may provide the period to which it applies.",
+      "type": "object",
+      "required": [
+        "id",
+        "requirement"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The unique identifier of this response in the context of the contracting process.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "Title",
+          "description": "The title of this response.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "The description of this response.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "value": {
+          "title": "Value",
+          "description": "The value of this response.",
+          "type": [
+            "string",
+            "number",
+            "boolean",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "period": {
+          "title": "Period",
+          "description": "The period to which the response applies.",
+          "$ref": "#/definitions/Period"
+        },
+        "requirement": {
+          "title": "Related requirement",
+          "description": "A reference to the requirement to which the response applies.",
+          "$ref": "#/definitions/RequirementReference"
+        }
+      },
+      "minProperties": 1
+    },
+    "RequirementReference": {
+      "title": "Requirement reference",
+      "description": "A reference to a requirement.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Requirement ID",
+          "description": "The identifier of the requirement to which the response applies.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "Requirement title",
+          "description": "The title of the requirement to which the response applies.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Bid": {
+      "properties": {
+        "requirementResponses": {
+          "title": "Requirement responses",
+          "description": "The responses of this bid to the requirements.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/RequirementResponse"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "criteria": {
+          "title": "Criteria",
+          "description": "Criteria on which bids, tenderers, lots or items will be judged, evaluated or assessed.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Criterion"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

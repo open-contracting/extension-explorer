@@ -1,0 +1,79 @@
+{
+  "definitions": {
+    "Guarantee": {
+      "title": "Garant\u00eda",
+      "description": "Informaci\u00f3n de la garant\u00eda utilizada para asegurar el cumplimiento de los t\u00e9rminos de un contrato.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID de garant\u00eda",
+          "description": "Un identificador local para esta garant\u00eda, \u00fanico dentro de este bloque. ",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "type": {
+          "title": "Tipo de garant\u00eda",
+          "description": "Especifique el tipo de garant\u00eda para este contrato usando la lista de c\u00f3digos [guaranteeType] (https://github.com/contratacionesabiertas/ocds_guarantees_extension/blob/master/codelists/guaranteeType.csv)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "guaranteeType.csv",
+          "openCodelist": true
+        },
+        "date": {
+          "title": "Fecha de garant\u00eda",
+          "description": "La fecha de la garant\u00eda. Esta es la fecha en la que se emite la garant\u00eda.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "obligations": {
+          "title": "Obligaciones garantizadas",
+          "description": "Especifique el tipo de obligaciones que est\u00e1n garantizadas, utilizando la lista de c\u00f3digos [obligationType](https://github.com/contratacionesabiertas/ocds_guarantees_extension/blob/master/codelists/guaranteedObligations.csv).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "guaranteedObligations.csv",
+          "openCodelist": true
+        },
+        "value": {
+          "title": "Valor de la garant\u00eda",
+          "description": "Importe total de la garant\u00eda.",
+          "$ref": "#/definitions/Value"
+        },
+        "guarantor": {
+          "title": "Garante",
+          "description": "Instituci\u00f3n que emite la garant\u00eda.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "period": {
+          "title": "Per\u00edodo de garant\u00eda",
+          "description": "El per\u00edodo en el que esta cotizaci\u00f3n es v\u00e1lida.",
+          "$ref": "#/definitions/Period"
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "guarantees": {
+          "title": "Garant\u00edas",
+          "description": "Una lista de las garant\u00edas otorgadas para este contrato.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Guarantee"
+          }
+        }
+      }
+    }
+  }
+}

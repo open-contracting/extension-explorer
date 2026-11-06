@@ -1,0 +1,4 @@
+Código,Título,Descripción
+required,Requerido/a,La actividad es requerida.
+allowed,Autorizada/o,La actividad está autorizada.
+notAllowed,No Autorizada/o,La actividad no está autorizada.

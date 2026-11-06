@@ -1,0 +1,58 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "bidOpening": {
+          "title": "Apertura de ofertas",
+          "description": "The date, time, place and other details of the public bid opening.",
+          "$ref": "#/definitions/BidOpening"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "bidOpening": {
+          "title": "Apertura de ofertas",
+          "description": "The date, time, place and other details of the public bid opening.",
+          "$ref": "#/definitions/BidOpening"
+        }
+      }
+    },
+    "BidOpening": {
+      "title": "Apertura de ofertas",
+      "description": "The date, time, place and other details of the public bid opening.",
+      "type": "object",
+      "properties": {
+        "date": {
+          "title": "Fecha y hora",
+          "description": "Fecha y hora de la apertura de ofertas.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "location": {
+          "title": "Ubicaci\u00f3n",
+          "description": "El lugar donde se realiza la apertura de ofertas.",
+          "$ref": "#/definitions/Location"
+        },
+        "address": {
+          "title": "Direcci\u00f3n",
+          "description": "La direcci\u00f3n del lugar donde se realiza la apertura de ofertas",
+          "$ref": "#/definitions/Address"
+        },
+        "description": {
+          "title": "Detalles",
+          "description": "Cualquier otro detalle con relaci\u00f3n a la apertura de ofertas (Quienes pueden participar, si es necesaria una autorizaci\u00f3n, etc.)",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

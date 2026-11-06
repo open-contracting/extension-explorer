@@ -1,0 +1,80 @@
+{
+  "properties": {
+    "withheldInformation": {
+      "title": "Withheld information",
+      "description": "Details of items of information whose publication is temporarily or permanently withheld.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/WithheldInformationItem"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  },
+  "definitions": {
+    "WithheldInformationItem": {
+      "title": "Withheld information item",
+      "description": "An item of information whose publication is temporarily or permanently withheld.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The locally unique identifier for the withheld information item.",
+          "type": "string",
+          "minLength": 1
+        },
+        "field": {
+          "title": "Field",
+          "description": "The identifier of the field with which the withheld information would otherwise be published.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "name": {
+          "title": "Nombre",
+          "description": "The name or title of the field with which the withheld information would otherwise be published.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "availabilityDate": {
+          "title": "Availability date",
+          "description": "The date on which the withheld information will be published.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "rationale": {
+          "title": "Rationale",
+          "description": "The rationale for withholding the information.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "rationaleClassifications": {
+          "title": "Rationale classifications",
+          "description": "Classifications of the rationale for withholding the information.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

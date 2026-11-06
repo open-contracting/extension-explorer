@@ -1,0 +1,30 @@
+{
+  "name": {
+    "en": "Statistics",
+    "es": "Estad\u00edstica"
+  },
+  "description": {
+    "en": "Adds a top-level statistics array to describe statistics about the contracting process.",
+    "es": "Adds a top-level statistics array to describe statistics about the contracting process."
+  },
+  "documentationUrl": {
+    "en": "https://github.com/open-contracting-extensions/ocds_statistics_extension"
+  },
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+statistic.csv",
+    "statisticScope.csv"
+  ],
+  "compatibility": [
+    "1.1"
+  ],
+  "dependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_bid_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
