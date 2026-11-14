@@ -1,0 +1,4 @@
+Código,Título,Descripción
+withReopeningCompetition,Con reapertura de competencia,"Los contratos se adjudican mediante la reapertura del concurso (por ejemplo, minicompetencia o minitienda)."
+withoutReopeningCompetition,Sin reapertura de competencia,"Los contratos se adjudican sin la reapertura del concurso (por ejemplo, llamada o adjudicación directa)."
+withAndWithoutReopeningCompetition,Con y sin reapertura de competencia,Los contratos son adjudicados con y sin reapertura de competencia.

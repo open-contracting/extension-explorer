@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Tender classification",
+    "es": "Clasificaci\u00f3n de la licitaci\u00f3n"
+  },
+  "description": {
+    "en": "Adds an array of classification objects to the tender object, in order to categorize the procedure or call-off as a whole.",
+    "es": "Agregar una serie de objetos de clasificaci\u00f3n al objeto de licitaci\u00f3n para categorizar el procedimiento o la solicitud de orden de compra como un todo."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/tenderClassification/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "+itemClassificationScheme.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

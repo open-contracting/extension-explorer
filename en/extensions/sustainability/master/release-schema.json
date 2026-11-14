@@ -1,0 +1,94 @@
+{
+  "definitions": {
+    "Sustainability": {
+      "title": "Sustainability",
+      "description": "Information about how the contracting process or lot incorporates Sustainable Public Procurement.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of how the contracting process or lot incorporates Sustainable Public Procurement.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "goal": {
+          "title": "Goal",
+          "description": "The sustainability goal pursued, from the sustainabilityGoal codelist. New sub-codes may be used outside those in the codelist, following the format [existing-code].[sub-code].",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "sustainabilityGoal.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "strategies": {
+          "title": "Strategies",
+          "description": "The strategies used to pursue the sustainability goal(s), from the sustainabilityStrategy codelist.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "sustainabilityStrategy.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Tender": {
+      "properties": {
+        "hasSustainability": {
+          "title": "Has sustainability",
+          "description": "Whether the contracting process incorporates Sustainable Public Procurement.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "Information about how the contracting process incorporates Sustainable Public Procurement.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Sustainability"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "hasSustainability": {
+          "title": "Has sustainability",
+          "description": "Whether the lot incorporates Sustainable Public Procurement.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "sustainability": {
+          "title": "Sustainability",
+          "description": "Information about how the lot incorporates Sustainable Public Procurement.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Sustainability"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

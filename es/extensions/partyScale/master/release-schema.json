@@ -1,0 +1,31 @@
+{
+  "definitions": {
+    "Organization": {
+      "properties": {
+        "details": {
+          "properties": {
+            "scale": {
+              "title": "Escala",
+              "description": "El tama\u00f1o o escala de la organizaci\u00f3n.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "partyScale.csv",
+              "openCodelist": false,
+              "enum": [
+                "micro",
+                "sme",
+                "small",
+                "medium",
+                "large",
+                "selfEmployed",
+                null
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

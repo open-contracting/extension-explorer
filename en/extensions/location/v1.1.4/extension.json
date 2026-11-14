@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Location",
+    "es": "Ubicaci\u00f3n"
+  },
+  "description": {
+    "en": "Allows the point of delivery or site of works for a given line item to be indicated in tender, award and contract objects.",
+    "es": "Permite indicar el punto de entrega o el sitio de las obras para una l\u00ednea de pedido determinada en los objetos de licitaci\u00f3n, adjudicaci\u00f3n y contrato."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/location/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "codelists": [
+    "locationGazetteers.csv",
+    "geometryType.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ]
+}

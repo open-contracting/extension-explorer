@@ -1,0 +1,79 @@
+{
+  "definitions": {
+    "Guarantee": {
+      "title": "Guarantee",
+      "description": "Information of the guarantee used to ensure compliance with the terms of a contract.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Guarantee ID",
+          "description": "A local identifier for this guarantee, unique within this block.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "type": {
+          "title": "Guarantee type",
+          "description": "Specify the guarantee type for this contract using the [guaranteeType](https://github.com/contratacionesabiertas/ocds_guarantees_extension/blob/master/codelists/guaranteeType.csv) codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "guaranteeType.csv",
+          "openCodelist": true
+        },
+        "date": {
+          "title": "Guarantee date",
+          "description": "The date of the guarantee. This is the date on which the guarantee is issued.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "obligations": {
+          "title": "Guaranteed obligations",
+          "description": "Specify the type of obligations that are guaranteed, using the [obligationType](https://github.com/contratacionesabiertas/ocds_guarantees_extension/blob/master/codelists/guaranteedObligations.csv) codelist.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "guaranteedObligations.csv",
+          "openCodelist": true
+        },
+        "value": {
+          "title": "Guarantee value",
+          "description": "Total amount of the guarantee.",
+          "$ref": "#/definitions/Value"
+        },
+        "guarantor": {
+          "title": "Guarantor",
+          "description": "Institution that issues the guarantee.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "period": {
+          "title": "Guarantee period",
+          "description": "The period on which this quote is valid.",
+          "$ref": "#/definitions/Period"
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "guarantees": {
+          "title": "Guarantees",
+          "description": "A list of the guarantees given for this contract.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Guarantee"
+          }
+        }
+      }
+    }
+  }
+}

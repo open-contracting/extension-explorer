@@ -1,0 +1,158 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "submissionTerms": {
+          "title": "T\u00e9rminos de Presentaci\u00f3n de la Oferta",
+          "description": "Information about the submission terms to describe how, when and where the tenderers need to submit their bids or expressions of interest for the procedure.",
+          "$ref": "#/definitions/SubmissionTerms"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "submissionTerms": {
+          "title": "T\u00e9rminos de Presentaci\u00f3n de la Oferta",
+          "description": "Information about the submission terms to describe how, when and where the tenderers need to submit their bids or expressions of interest for the lot.",
+          "$ref": "#/definitions/SubmissionTerms"
+        }
+      }
+    },
+    "SubmissionTerms": {
+      "title": "T\u00e9rminos de Presentaci\u00f3n de la Oferta",
+      "description": "Information about the submission terms to describe how, when and where the tenderers need to submit their bids or expressions of interest.",
+      "type": "object",
+      "properties": {
+        "electronicSubmissionPolicy": {
+          "title": "Pol\u00edtica de presentaci\u00f3n de oferta electr\u00f3nica",
+          "description": "Whether tenderers are required, allowed or not allowed to submit bids or expressions of interest electronically.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "permission.csv",
+          "openCodelist": false,
+          "enum": [
+            "required",
+            "allowed",
+            "notAllowed",
+            null
+          ]
+        },
+        "variantPolicy": {
+          "title": "Pol\u00edtica de variantes",
+          "description": "Si se exige, se permite o no se permite a los licitantes presentar ofertas que satisfagan las necesidades del comprador de forma diferente a la propuesta en los documentos de contrataci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "permission.csv",
+          "openCodelist": false,
+          "enum": [
+            "required",
+            "allowed",
+            "notAllowed",
+            null
+          ]
+        },
+        "electronicCatalogPolicy": {
+          "title": "Electronic catalog policy",
+          "description": "Whether tenderers are required, allowed or not allowed to submit bids as electronic catalogs. An electronic catalog is an electronic format (typically prescribed by the buyer) that participants in the contracting process need to follow when exchanging information about technical specifications, evaluation criteria, bids, lots, etc.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "permission.csv",
+          "openCodelist": false,
+          "enum": [
+            "required",
+            "allowed",
+            "notAllowed",
+            null
+          ]
+        },
+        "languages": {
+          "title": "Idioma de Presentaci\u00f3n de la Oferta",
+          "description": "One or more languages in which bids or expressions of interest can be submitted, using either two-letter [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes), or extended [BCP47 language tags](http://www.w3.org/International/articles/language-tags/). The use of lowercase two-letter codes from [ISO639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) is recommended.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "bidValidityPeriod": {
+          "title": "Per\u00edodo de validez de la oferta",
+          "description": "El per\u00edodo, desde la fecha l\u00edmite de presentaci\u00f3n de ofertas, durante el cual las ofertas deben seguir siendo v\u00e1lidas.",
+          "$ref": "#/definitions/Period"
+        },
+        "depositsGuarantees": {
+          "title": "Dep\u00f3sitos y garant\u00edas",
+          "description": "Informaci\u00f3n sobre los dep\u00f3sitos o garant\u00edas exigidas a los oferentes.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "advancedElectronicSignatureRequired": {
+          "title": "Advanced electronic signature required",
+          "description": "Whether an advanced or qualified electronic signature or seal is needed.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "multipleBidsAllowed": {
+          "title": "Multiple bids allowed",
+          "description": "Whether tenderers can submit more than one bid.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "subcontractingClauses": {
+          "title": "Subcontracting clauses",
+          "description": "The information about subcontracting that needs to be provided in the bid.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "nonElectronicSubmission": {
+          "title": "Non-electronic submission",
+          "description": "Information about non-electronic submission requirements.",
+          "type": "object",
+          "properties": {
+            "rationale": {
+              "title": "Rationale",
+              "description": "The rationale for electronic submission not being allowed.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "address": {
+              "title": "Direcci\u00f3n",
+              "description": "The address to which non-electronic bids or expressions of interest should be submitted.",
+              "$ref": "#/definitions/Address"
+            }
+          },
+          "minProperties": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

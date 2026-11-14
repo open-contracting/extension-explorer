@@ -1,0 +1,269 @@
+{
+  "definitions": {
+    "Planning": {
+      "properties": {
+        "forecasts": {
+          "title": "Forecasts",
+          "description": "Any forecasts metrics for a future contracting process.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Tender": {
+      "properties": {
+        "targets": {
+          "title": "Targets",
+          "description": "Any target metrics for this contracting process.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "agreedMetrics": {
+          "title": "Agreed metrics",
+          "description": "Any target metrics set out as part of the contract award.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "agreedMetrics": {
+          "title": "Agreed metrics",
+          "description": "Any target metrics set out as part of the contract documents.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Implementation": {
+      "properties": {
+        "metrics": {
+          "title": "Metrics",
+          "description": "Reported results from the delivery of the contracted goods, works or services.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Metric"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Metric": {
+      "title": "Metric",
+      "description": "Metrics are used to set out targets and results from a contracting process. During the planning and tender sections, a metric indicates the anticipated results. In award and contract sections it indicates the awarded/contracted results. In the implementation section it is used to provide updates on actually delivered results, also known as outputs.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this metric. In some cases this may be drawn from a codelist of metrics required for this type of contracting process, or in other instances may be an arbitrary identifier.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "Title",
+          "description": "The title of this metric",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A short description of the metric. This may include short details of measurement methods.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "observations": {
+          "title": "Observations",
+          "description": "An array of target or actual values for this metric.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Observation"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "metrics",
+        "version": "1.1"
+      }
+    },
+    "Observation": {
+      "title": "Observation",
+      "description": "An actual or target observation. Observations should include either a value (for financial metrics) or measure (for other metrics).",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "A local identifier for this specific observation. This may be an arbitrary identifier, or could be a composite of the metric identifier, and the date and other dimensions of this observation.",
+          "type": "string",
+          "minLength": 1
+        },
+        "period": {
+          "title": "Period",
+          "description": "The period over which this observation is measured.",
+          "$ref": "#/definitions/Period"
+        },
+        "value": {
+          "title": "Value",
+          "description": "For financial metrics, the value of this forecast, target or actual observation.",
+          "$ref": "#/definitions/Value"
+        },
+        "measure": {
+          "title": "Measure",
+          "description": "For non-financial metrics, the measure of this forecast, target or actual observation. Measures may be provided as free text or numerical values.",
+          "type": [
+            "string",
+            "number",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "unit": {
+          "title": "Unit",
+          "description": "Unit",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Unit name",
+              "description": "The name of the unit.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "scheme": {
+              "title": "Scheme",
+              "description": "The list from which units of measure identifiers are taken. It is recommended to use the scheme 'UNCEFACT' and codes from the UN/CEFACT Recommendation 20 list of \"Codes for Units of Measure Used in International Trade\".",
+              "type": [
+                "string",
+                "null"
+              ],
+              "codelist": "unitClassificationScheme.csv",
+              "openCodelist": true,
+              "minLength": 1
+            },
+            "id": {
+              "title": "ID",
+              "description": "The identifier from the codelist referenced in the scheme field. For example, with UNCEFACT, this is the value of the 'Common Code' column. From this identifier, applications can look-up the human readable name or symbol for this unit of measure.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "uri": {
+              "title": "URI",
+              "description": "If the scheme used provide a machine-readable URI for this unit of measure, this can be given.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            }
+          },
+          "minProperties": 1
+        },
+        "dimensions": {
+          "title": "Dimensions",
+          "description": "Any number of dimensions can be recorded within this object. Dimensions names should follow the camelCase conventions of OCDS.",
+          "type": "object",
+          "patternProperties": {
+            "^.*": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "notes": {
+          "title": "Notes",
+          "description": "Any notes on this observation. This may include clarifying information.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "relatedImplementationMilestone": {
+          "title": "Related implementation milestone",
+          "description": "A link to the milestone in the implementation section of OCDS to which this forecast, target or actual observation relates.",
+          "$ref": "#/definitions/MilestoneReference"
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "metrics",
+        "version": "1.1"
+      }
+    },
+    "MilestoneReference": {
+      "title": "Milestone Reference",
+      "description": "A block used to reference a milestone, including the ID and title of the milestone being referenced.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Milestone ID",
+          "description": "The ID of the milestone being referenced, this must match the ID of a milestone described elsewhere in a release about this contracting process.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "Milestone title",
+          "description": "The title of the milestone being referenced, this must match the title of a milestone described elsewhere in a release about this contracting process.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1,
+      "extension_explorer:source": {
+        "identifier": "metrics",
+        "version": "1.1"
+      }
+    }
+  }
+}

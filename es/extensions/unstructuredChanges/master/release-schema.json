@@ -1,0 +1,109 @@
+{
+  "definitions": {
+    "Amendment": {
+      "properties": {
+        "unstructuredChanges": {
+          "title": "Cambios no estructurados",
+          "description": "Cambios no estructurados o semi-estructurados de una notificaci\u00f3n anterior.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UnstructuredChange"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "UnstructuredChange": {
+      "title": "Cambio no estructurado",
+      "description": "Cambio no estructurado o semi-estructurado de una notificaci\u00f3n anterior.",
+      "type": "object",
+      "properties": {
+        "relatedLot": {
+          "title": "Lote relacionado",
+          "description": "El identificador del lote al que se refiere este cambio, si lo hubiera.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "oldValue": {
+          "title": "Valor viejo",
+          "description": "El valor del elemento de datos al que hace referencia el campo `where`, antes del cambio.",
+          "$ref": "#/definitions/UnstructuredChangeValue"
+        },
+        "newValue": {
+          "title": "Nuevo valor",
+          "description": "El valor del elemento de datos al que hace referencia el campo `where`, despu\u00e9s del cambio.",
+          "$ref": "#/definitions/UnstructuredChangeValue"
+        },
+        "where": {
+          "title": "Donde",
+          "description": "Una referencia a un elemento de datos de una notificaci\u00f3n anterior que se est\u00e1 modificando.",
+          "type": "object",
+          "properties": {
+            "section": {
+              "title": "Secci\u00f3n",
+              "description": "El identificador de la secci\u00f3n que contiene el elemento de datos, si el aviso anterior est\u00e1 organizado en secciones.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "label": {
+              "title": "Etiqueta",
+              "description": "La etiqueta del elemento de datos.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "UnstructuredChangeValue": {
+      "title": "Valor del cambio no estructurado",
+      "description": "Un valor de un elemento de datos. El valor debe describirse utilizando exactamente uno de los campos `text`,  `classifications` o `date`.",
+      "type": "object",
+      "properties": {
+        "text": {
+          "title": "Valor del texto",
+          "description": "Un texto. Si el cambio elimin\u00f3 o borr\u00f3 el elemento de datos, utilice la cadena vac\u00eda (\"\").",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "classifications": {
+          "title": "Clasificaciones",
+          "description": "Una lista de clasificaciones",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Classification"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "date": {
+          "title": "Fecha",
+          "description": "Una fecha.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^\\d{4}-[01]\\d-[0-3]\\d(T[0-2]\\d:[0-5]\\d:[0-5]\\d([+-][0-2]\\d:?[0-5]\\d|Z))?$"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

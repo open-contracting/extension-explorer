@@ -1,0 +1,48 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "mainProcurementCategoryDetails": {
+          "title": "Detalles de la categor\u00eda principal de contrataci\u00f3n",
+          "description": "El nombre local de la Categor\u00eda Principal de Contrataci\u00f3n",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "statusDetails": {
+          "title": "Detalles de estado",
+          "description": "Detalle adicional sobre el estado de la licitaci\u00f3n. Este campo se puede utilizar para proporcionar el nombre local del estado.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Award": {
+      "properties": {
+        "statusDetails": {
+          "title": "Detalles de estado",
+          "description": "Detalle adicional sobre el estado de la adjudicaci\u00f3n. Este campo se puede utilizar para proporcionar el nombre local del estado.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "statusDetails": {
+          "title": "Detalles de estado",
+          "description": "Detalle adicional sobre el estado del contrato. Este campo se puede utilizar para proporcionar el nombre local del estado.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}

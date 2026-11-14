@@ -1,0 +1,28 @@
+{
+  "name": {
+    "en": "Medicine",
+    "es": "Medicina"
+  },
+  "description": {
+    "en": "Adds fields to the item object relevant to the procurement of medicines.",
+    "es": "Agrega campos al objeto art\u00edculo relevantes para la adquisici\u00f3n de medicamentos."
+  },
+  "documentationUrl": {
+    "en": "http://extensions.open-contracting.org/en/extensions/medicine/"
+  },
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "dosageForm.csv",
+    "administrationRoute.csv",
+    "immediateContainer.csv"
+  ],
+  "compatibility": [
+    "1.1"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
