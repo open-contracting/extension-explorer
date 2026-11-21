@@ -1,0 +1,5 @@
+Código,Título,Descripción,Sección
+tariffs,Tarifas,Para proporcionar tarifas y programación de precios.,contract
+tariffMethod,Método de tarifas,Para resumir el método por el cual se establecen las tarifas y vincular a la documentación detallada de los métodos para establecer las tarifas. Esto puede incluir documentación escrita y hojas de cálculo que proporcionen los modelos utilizados para calcular las tarifas.,contract
+tariffReview,Revisión de la tarifa,"Para resumir las disposiciones para la revisión y regulación de las tarifas, y enlazar con la documentación detallada que cubra cómo se regulan las tarifas. Esto es importante para explicar a los usuarios por qué están pagando lo que están pagando, y el alcance de los cambios en las estructuras de pago.",contract
+tariffIllustration,Ilustración de la tarifa,"Para vincular a gráficos e informes sobre el cambio en el tiempo en los precios de las tarifas. Utilice el tipo de material de imagen relevante al vincular a gráficos PNG, JPEG o GIF para permitir que las aplicaciones muestren directamente este contenido.",contract

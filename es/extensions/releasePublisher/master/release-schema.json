@@ -1,0 +1,44 @@
+{
+  "properties": {
+    "publisher": {
+      "title": "Publicador",
+      "description": "Informaci\u00f3n que identifica \u00fanicamente al publicador de este release",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "description": "El nombre de la organizaci\u00f3n o departamento responsable de publicar estos datos",
+          "type": "string"
+        },
+        "scheme": {
+          "title": "Esquema",
+          "description": "El esquema tiene identificadores \u00fanicos que se usan para identificar el art\u00edculo que se esta identificando",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uid": {
+          "title": "uid",
+          "description": "El ID \u00fanico para esta entidad bajo el esquema ID que se dio. Note el uso de  'uid' en lugar de 'id'. Vea el issue #245",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "uri": {
+          "title": "URI",
+          "description": "Se usa un URI para identificar el publicador",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        }
+      },
+      "required": [
+        "name"
+      ]
+    }
+  }
+}

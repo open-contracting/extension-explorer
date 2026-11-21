@@ -1,0 +1,23 @@
+{
+  "name": {
+    "en": "Contract suppliers",
+    "es": "Proveedores contratados"
+  },
+  "description": {
+    "en": "To allow explicit declaration of suppliers within the contracts block. Used when a single award to multiple suppliers results in multiple contracts to a sub-set of those awarded suppliers.",
+    "es": "Permitir la declaraci\u00f3n expl\u00edcita de proveedores dentro del bloque de contratos. Se usa cuando una sola adjudicaci\u00f3n a m\u00faltiples proveedores resulta en m\u00faltiples contratos para un subconjunto de los proveedores adjudicados."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/contract_suppliers/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

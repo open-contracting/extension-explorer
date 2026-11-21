@@ -1,0 +1,23 @@
+Code,Title,Description
+amp,Ampule,Container sealed by fusion and to be opened exclusively by breaking. The contents are intended for use on one occasion only.
+bag,Bag,"Container consisting of surfaces, whether or not with a flat bottom, made of flexible material, generally closed at the bottom and at the sides by sealing; at the top possibly to be closed by fusion of the material, depending on the intended use. Equipped with special attachments. Contains the final preparation in one compartment or the components necessary for its preparation in different compartments."
+blstrpk,Blister Pack,Container (usually multidose) consisting of two layers of which one is shaped to contain the individual doses. Strips are excluded.
+bot,Bottle,Container with a more or less pronounced neck and usually a flat bottom.
+box,Box,"Primary container consisting of one or more parts made of a light material, can be closed."
+can,Can,
+cart,Cartridge,"Filled container, usually cylindrical, containing a sterile, single-dose or multidose, parenteral preparation; it contains the final preparation in one compartment, or the components necessary for its preparation in different compartments. It may be supplied as an integral part of a pre-filled pen or be intended for use in a reusable device especially designed for that purpose, such as a pen."
+disk,Disk,
+doset,Dosette,
+jar,Jar,"Container, without a pronounced neck, with a wide opening at the top and a more-or-less flat bottom. It is suited for semi-solid and solid pharmaceutical forms (including those that are stored/supplied in a liquid medium, such as living tissue equivalents). It can be reclosed."
+jug,Jug,
+minim,Minim,
+nebamp,Nebule Amp,
+ovul,Ovule,
+pch,Pouch,"Item of packaging intended for use as an intermediate or outer container, intended to contain one or more medicinal product(s); it is made of a flexible material and may be for single use or be re-usable, and may be fitted with a closure system. Bags and sachets are excluded."
+pkt,Packet,
+sash,Sashet,Container consisting of two surfaces made of flexible material to be closed only by sealing or folding over. The contents are intended for single use.
+strip,Strip,"Multidose container consisting of two layers, usually provided with perforations, suited for containing single doses of solid or semi-solid preparations. Blisters are excluded."
+tin,Tin,
+tub,Tub,
+tube,Tube,"Container for semi-solid pharmaceutical forms, usually multidose, consisting of collapsible material intended to release the contents via a nozzle by squeezing the package."
+vial,Vial,"Small container for parenteral medicinal products, with a stopper and overseal; the contents are removed after piercing the stopper. Single-dose and multidose uses are included."

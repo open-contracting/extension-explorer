@@ -1,0 +1,8 @@
+Código,Título,Descripción
+bond,Vínculo,"Un instrumento de deuda proporcionado por un emisor, como un gobierno o una empresa. Un bono normalmente obliga al emisor a pagar intereses (cupones) al titular del bono durante un período específico y a reembolsar el principal (cantidad prestada) en la fecha de vencimiento."
+loan,Préstamo,"Un instrumento de deuda proporcionado por un prestamista, como un banco comercial, una institución financiera multilateral o una agencia de desarrollo. Un préstamo normalmente obliga al prestatario a pagar el principal (cantidad prestada) y los intereses al prestamista durante un período específico."
+hybrid,Híbrido,Un instrumento basado en deuda con participación similar al capital. También llamado financiamiento mezzanine.
+shares.listed,Acciones cotizadas,Un instrumento de capital que representa derechos de propiedad en una empresa que cotiza en una bolsa de valores.
+shares.unlisted,Acciones no cotizadas,Un instrumento de capital que representa derechos de propiedad en una empresa que no cotiza en una bolsa de valores.
+grant,Subvención ,Dinero proporcionado sin expectativa de reembolso.
+guarantee,Garantía,Promesa de una parte de asumir la deuda de otra en caso de incumplimiento.

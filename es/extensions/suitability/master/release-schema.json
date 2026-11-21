@@ -1,0 +1,47 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "suitability": {
+          "title": "Idoneidad",
+          "description": "Information about the suitability of the contracting process to different types of tenderers.",
+          "$ref": "#/definitions/Suitability"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "suitability": {
+          "title": "Idoneidad",
+          "description": "Information about the suitability of the lot to different types of tenderers.",
+          "$ref": "#/definitions/Suitability"
+        }
+      }
+    },
+    "LotGroup": {
+      "properties": {
+        "suitability": {
+          "title": "Idoneidad",
+          "description": "Information about the suitability of the lot group to different types of tenderers.",
+          "$ref": "#/definitions/Suitability"
+        }
+      }
+    },
+    "Suitability": {
+      "title": "Idoneidad",
+      "description": "Information about the suitability of a contracting process, lot or lot group to different types of tenderers.",
+      "type": "object",
+      "properties": {
+        "sme": {
+          "title": "Small and medium enterprises",
+          "description": "Whether the contracting process, lot or lot group is suitable to small and medium enterprises.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

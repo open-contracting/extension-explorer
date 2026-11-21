@@ -1,0 +1,7 @@
+Código,Título,Descripción,Fuente
+Point,Punto,"Para el tipo ""Point"", el miembro 'coordinates' es una posición simple.",https://tools.ietf.org/html/rfc7946#section-3.1
+MultiPoint,MultiPoint,"Para el tipo ""MultiPoint"", el miembro 'coordinates' es una lista de posiciones.",https://tools.ietf.org/html/rfc7946#section-3.1
+LineString,LineString,"Para el tipo ""LineString"", el miembro 'coordinates' es una lista de dos o más posiciones.",https://tools.ietf.org/html/rfc7946#section-3.1
+MultiLineString,MultiLineString,"Para el tipo ""MultiLineString"", el miembro 'coordinates' es un array de coordenadas 'LineString'.",https://tools.ietf.org/html/rfc7946#section-3.1
+Polygon,Polygon,Para el tipo 'Polygon' el miembro 'coordinates' DEBE ser un array de coordenadas 'LinearRing',https://tools.ietf.org/html/rfc7946#section-3.1
+MultiPolygon,MultiPolygon,Para el tipo 'MultiPolygon' el miembro 'coordinates' es una lista de coordendas 'Polygon',https://tools.ietf.org/html/rfc7946#section-3.1

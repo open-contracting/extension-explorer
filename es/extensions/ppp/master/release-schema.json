@@ -1,0 +1,167 @@
+{
+  "definitions": {
+    "Award": {
+      "properties": {
+        "evaluationIndicators": {
+          "title": "Evaluaci\u00f3n de la opci\u00f3n APP",
+          "description": "Indicadores clave que describen c\u00f3mo la opci\u00f3n de APP ha sido evaluada por el gobierno.",
+          "$ref": "#/definitions/EvaluationIndicators"
+        }
+      }
+    },
+    "Contract": {
+      "properties": {
+        "financeSummary": {
+          "title": "Resumen financiero",
+          "description": "Indicadores clave que describen el modelo financiero de la APP.",
+          "$ref": "#/definitions/FinanceSummary"
+        }
+      }
+    },
+    "EvaluationIndicators": {
+      "title": "Indicadores de evaluaci\u00f3n",
+      "description": "Indicadores clave que describen c\u00f3mo la opci\u00f3n de APP ha sido evaluada por el gobierno.",
+      "type": "object",
+      "properties": {
+        "riskPremium": {
+          "title": "Prima de riesgo",
+          "description": "La prima de riesgo utilizada por el gobierno al evaluar la opci\u00f3n de APP, expresada como decimal (por ejemplo, 0,1) y no como porcentaje (por ejemplo, 10).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "riskPremiumDetails": {
+          "title": "Detalles de la prima de riesgo",
+          "description": "Detalles adicionales sobre la prima de riesgo utilizada: por ejemplo, la justificaci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "discountRate": {
+          "title": "Tasa de descuento",
+          "description": "La tasa de descuento utilizada por el gobierno al evaluar la opci\u00f3n de APP, expresada como decimal (por ejemplo, 0,1) y no como porcentaje (por ejemplo, 10).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "discountRateDetails": {
+          "title": "Detalles de la tasa de descuento",
+          "description": "Detalles adicionales sobre la tasa de descuento utilizada.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "netPresentValue": {
+          "title": "Valor presente neto",
+          "description": "El valor rebajado de las entradas de efectivo de una inversi\u00f3n menos el valor rebajado de sus salidas de efectivo.",
+          "$ref": "#/definitions/Value"
+        },
+        "netPresentValueDetails": {
+          "title": "Detalles del valor actual neto",
+          "description": "Detalles adicionales sobre el c\u00e1lculo del valor actual neto.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "FinanceSummary": {
+      "title": "Resumen financiero",
+      "description": "Indicadores clave que describen el modelo financiero de la APP.",
+      "type": "object",
+      "properties": {
+        "debtEquityRatio": {
+          "title": "Ratio de capital de la deuda",
+          "description": "El ratio deuda-capital del proyecto, expresado como decimal (por ejemplo, 0,1). Tambi\u00e9n llamado engranaje o apalancamiento.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "debtEquityRatioDetails": {
+          "title": "Detalles del ratio deuda-capital",
+          "description": "Detalles adicionales sobre el c\u00e1lculo del ratio de endeudamiento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "shareCapital": {
+          "title": "Capital accionario",
+          "description": "El valor del capital del proyecto que proviene de la emisi\u00f3n de acciones.",
+          "$ref": "#/definitions/Value"
+        },
+        "shareCapitalDetails": {
+          "title": "Detalles del capital social",
+          "description": "Detalles adicionales sobre el c\u00e1lculo del capital social.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "subsidyRatio": {
+          "title": "Relaci\u00f3n de subsidio",
+          "description": "La proporci\u00f3n de la subvenci\u00f3n sobre el valor del proyecto, expresada como un decimal entre 0 y 1.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "subsidyRatioDetails": {
+          "title": "Detalles de la relaci\u00f3n de subvenci\u00f3n",
+          "description": "Detalles adicionales sobre el c\u00e1lculo del ratio de subvenci\u00f3n.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "projectIRR": {
+          "title": "Tasa interna de retorno",
+          "description": "La tasa interna de retorno del proyecto, expresada como decimal (por ejemplo, 0,1) y no como porcentaje (por ejemplo, 10).",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "projectIRRDetails": {
+          "title": "Detalles de la tasa interna de retorno",
+          "description": "Detalles adicionales sobre el c\u00e1lculo de la TIR del proyecto.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Metric": {
+      "properties": {
+        "id": {
+          "codelist": "metricID.csv",
+          "openCodelist": true
+        }
+      }
+    },
+    "Milestone": {
+      "properties": {
+        "code": {
+          "codelist": "milestoneCode.csv",
+          "openCodelist": true
+        }
+      }
+    }
+  }
+}

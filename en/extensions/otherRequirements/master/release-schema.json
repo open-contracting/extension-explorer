@@ -1,0 +1,100 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "otherRequirements": {
+          "title": "Other requirements",
+          "description": "Other requirements to participate in the procedure.",
+          "$ref": "#/definitions/OtherRequirements"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "otherRequirements": {
+          "title": "Other requirements",
+          "description": "Other requirements to participate in the lot.",
+          "$ref": "#/definitions/OtherRequirements"
+        }
+      }
+    },
+    "OtherRequirements": {
+      "title": "Other requirements",
+      "description": "Other requirements to participate in the procedure or lot.",
+      "type": "object",
+      "properties": {
+        "requiresStaffNamesAndQualifications": {
+          "title": "Requires staff names and qualifications",
+          "description": "Whether the bidders are obligated to indicate the names and professional qualifications of the staff assigned to performing the contract.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "reservedParticipation": {
+          "title": "Reserved participation",
+          "description": "The types of organizations to which participation is reserved.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "reservedParticipation.csv",
+          "openCodelist": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "qualificationSystemConditions": {
+          "title": "Qualification system conditions",
+          "description": "The conditions to be fulfilled by candidates in view of their qualification for the system.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "qualificationSystemMethods": {
+          "title": "Qualification system methods",
+          "description": "The methods according to which each of the qualification system conditions will be verified.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "reductionCriteria": {
+          "title": "Reduction criteria",
+          "description": "The criteria or rules for selecting a limited number of qualified candidates to submit bids.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "securityClearance": {
+          "title": "Security clearance",
+          "description": "Information about the required security clearance (e.g. which clearance level is needed, which team members need it, whether it is needed already for accessing documents or only for contract execution).",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}
