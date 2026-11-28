@@ -1,0 +1,71 @@
+{
+  "definitions": {
+    "BudgetBreakdown": {
+      "title": "Desglose detallado del presupuesto",
+      "description": "Esta secci\u00f3n permite expresar un desglose detallado del presupuesto, cubriendo tanto  m\u00faltiples fuentes presupuestarias como per\u00edodos m\u00faltiples",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identificador",
+          "description": "Un identificador para esta entrada de presupuesto en particular.",
+          "type": [
+            "string",
+            "integer"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Una breve descripci\u00f3n de texto libre sobre esta entrada de presupuesto.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "amount": {
+          "title": "Monto",
+          "description": "The value of the budget line item. A positive amount means the source organization funds a future contracting process. A negative amount means a future contracting process pays the source organization.",
+          "$ref": "#/definitions/Value"
+        },
+        "uri": {
+          "title": "Informaci\u00f3n vinculada de presupuesto",
+          "description": "Un URI apuntando directamente a informaci\u00f3n legible por computadora acerca de esta entrada de presupuesto.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "uri"
+        },
+        "period": {
+          "title": "Per\u00edodo de Presupuesto",
+          "description": "El per\u00edodo cubierto por esta entrada presupuestaria.",
+          "$ref": "#/definitions/Period"
+        },
+        "sourceParty": {
+          "title": "Source organization",
+          "description": "The organization providing the funds for this budget entry. The corresponding entry in the `parties` array must have 'sourceParty' in its `roles` array.",
+          "$ref": "#/definitions/OrganizationReference"
+        }
+      },
+      "minProperties": 1
+    },
+    "Budget": {
+      "properties": {
+        "budgetBreakdown": {
+          "title": "Desglose del presupuesto",
+          "description": "Un desglose detallado del presupuesto por periodo y/o financiadores participantes.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BudgetBreakdown"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

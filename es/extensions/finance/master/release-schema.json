@@ -1,0 +1,268 @@
+{
+  "definitions": {
+    "Contract": {
+      "properties": {
+        "finance": {
+          "title": "Financiamiento",
+          "description": "Informaci\u00f3n sobre las modalidades de financiaci\u00f3n de este contrato.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Finance"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Budget": {
+      "properties": {
+        "finance": {
+          "title": "Financiamiento",
+          "description": "Informaci\u00f3n sobre modalidades de financiaci\u00f3n para un futuro proceso de contrataci\u00f3n.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Finance"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    },
+    "Finance": {
+      "title": "Acuerdo de financiaci\u00f3n",
+      "description": "Un acuerdo entre dos partes para recaudar dinero.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "Un identificador para este acuerdo de financiamiento",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "T\u00edtulo",
+          "description": "T\u00edtulo breve de este acuerdo de financiamiento.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Una breve descripci\u00f3n de este acuerdo de financiaci\u00f3n. Esto puede incluir detalles de tarifas de servicio, tarifas de compromiso, derechos de prestamista, acuerdos de intervenci\u00f3n, garant\u00edas de tipo de cambio y, para pr\u00e9stamos sindicados, detalles de la sindicaci\u00f3n y cualquier miembro del sindicato.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "value": {
+          "title": "Valor",
+          "description": "El valor total de este financiamiento.",
+          "$ref": "#/definitions/Value"
+        },
+        "financingParty": {
+          "title": "Organizaci\u00f3n financiera",
+          "description": "La organizaci\u00f3n que proporciona este acuerdo de financiaci\u00f3n.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "financingPartyType": {
+          "title": "Tipo de organizaci\u00f3n financiera",
+          "description": "El tipo de organizaci\u00f3n financiera, de la lista de c\u00f3digos cerrada financePartyType.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "financingPartyType.csv",
+          "openCodelist": false,
+          "enum": [
+            "institutional",
+            "commercial",
+            "bilateral",
+            "multilateral",
+            "vendor",
+            "other",
+            null
+          ]
+        },
+        "source": {
+          "title": "Fuente de financiamiento",
+          "description": "La fuente de fondos para este acuerdo de financiaci\u00f3n. Por ejemplo, el Fondo Verde para el Clima.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "assetClass": {
+          "title": "Clase de activos",
+          "description": "Las clases de activos utilizadas en este acuerdo de financiaci\u00f3n, de la lista de c\u00f3digos cerrada de activeClass.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "debt",
+              "equity"
+            ],
+            "minLength": 1
+          },
+          "codelist": "assetClass.csv",
+          "openCodelist": false,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "type": {
+          "title": "Tipo",
+          "description": "El tipo de este acuerdo de financiaci\u00f3n, de la lista de c\u00f3digos de tipo de acuerdo de financiaci\u00f3n cerrado.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "financingArrangementType.csv",
+          "openCodelist": false,
+          "enum": [
+            "bond",
+            "loan",
+            "hybrid",
+            "shares.listed",
+            "shares.unlisted",
+            "grant",
+            "guarantee",
+            null
+          ]
+        },
+        "repaymentPriority": {
+          "title": "Prioridad de pago",
+          "description": "El orden en el que se reembolsar\u00e1 la deuda en este acuerdo de financiaci\u00f3n en caso de incumplimiento, de la lista de c\u00f3digos cerrada debtRepaymentPriority.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "debtRepaymentPriority.csv",
+          "openCodelist": false,
+          "enum": [
+            "senior",
+            "subordinated",
+            null
+          ]
+        },
+        "concessional": {
+          "title": "Concesional",
+          "description": "Si este acuerdo de financiaci\u00f3n se proporciona por debajo de la tasa de mercado para acelerar los objetivos clim\u00e1ticos o de desarrollo. Tambi\u00e9n llamado financiamiento blando y financiamiento subsidiado.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "resultsBased": {
+          "title": "Basado en resultados",
+          "description": "Si los pagos conforme a este acuerdo de financiaci\u00f3n est\u00e1n supeditados al logro de resultados predefinidos.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "period": {
+          "title": "Periodo de financiamiento",
+          "description": "El per\u00edodo cubierto por este acuerdo de financiaci\u00f3n. Tambi\u00e9n llamada madurez.",
+          "$ref": "#/definitions/Period"
+        },
+        "paymentPeriod": {
+          "title": "Periodo de pago",
+          "description": "El per\u00edodo durante el cual el prestatario en este acuerdo de financiaci\u00f3n est\u00e1 obligado a realizar pagos.",
+          "$ref": "#/definitions/Period"
+        },
+        "paymentFrequency": {
+          "title": "Frecuencia de pago (d\u00edas)",
+          "description": "La frecuencia de pago promedio (en d\u00edas) de este acuerdo de financiamiento. Por ejemplo, 365 por a\u00f1o, 30,4 por mes o 1 por d\u00eda.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "interestRate": {
+          "title": "Tasa de inter\u00e9s",
+          "description": "La tasa de inter\u00e9s asociada con este financiamiento.",
+          "type": "object",
+          "properties": {
+            "base": {
+              "title": "Base",
+              "description": "La variable a la que se le suma un monto de margen adicional para obtener el monto del inter\u00e9s. Esto se puede especificar como un n\u00famero fijo, como una variable conocida (por ejemplo, LIBOR o LIBOR+1%), o se puede omitir si el margen especifica la tasa de inter\u00e9s completa.",
+              "type": [
+                "string",
+                "number",
+                "null"
+              ],
+              "minLength": 1
+            },
+            "margin": {
+              "title": "Margen",
+              "description": "La variable agregada a la base para dar el monto del inter\u00e9s, expresada como decimal (por ejemplo, 0,1) y no como porcentaje (por ejemplo, 10).",
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "fixed": {
+              "title": "Tipo de inter\u00e9s fijo",
+              "description": "Un campo booleano. Si este tipo de inter\u00e9s es fijo, se establece en true. De lo contrario, se establece en false.",
+              "type": [
+                "boolean",
+                "null"
+              ]
+            },
+            "notes": {
+              "title": "Notas",
+              "description": "Notas explicativas sobre el tipo de inter\u00e9s.",
+              "type": [
+                "string",
+                "null"
+              ],
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "exchangeRateGuarantee": {
+          "title": "Garant\u00edas del tipo de cambio",
+          "description": "Si existe una garant\u00eda de tipo de cambio asociada a esta fuente de financiaci\u00f3n.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "stepInRights": {
+          "title": "Derechos de intervenci\u00f3n",
+          "description": "Si la provisi\u00f3n de esta financiaci\u00f3n confiere derechos de paso a la organizaci\u00f3n financiera.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "relatedLots": {
+          "title": "Lotes relacionados",
+          "description": "Los identificadores de los lotes a los que se refiere este acuerdo de financiaci\u00f3n.",
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

@@ -1,0 +1,7 @@
+Código,Título,Descripción
+cash,Efectivo,"El pago se hace en efectivo, en billetes y monedas. "
+check,Cheque,El pago se hace por cheque 
+creditCard,Tarjeta de crédito,El pago se hace por tarjeta de crédito
+directDebit,Débito directo,"El pago se hace por medio de débito directo, también conocido como retiro directo, débito preautorizado (PAD) o pago preautorizado (PAP)."
+letterOfCredit,Carta de crédito,El pago se hace por medio de una carta de crédito.
+wireTransfer,Transferencia bancaria,"El pago se hace por transferencia bancaria, también conocida como transferencia de crédito."

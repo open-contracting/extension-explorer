@@ -1,0 +1,71 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "secondStage": {
+          "title": "Segunda etapa",
+          "description": "Informaci\u00f3n acerca de la segunda etapa de un procedimiento de dos etapas (por ejemplo, un procedimiento restringido, un procedimiento competitivo con negociaci\u00f3n, un di\u00e1logo competitivo o una asociaci\u00f3n de innovaci\u00f3n).",
+          "$ref": "#/definitions/SecondStage"
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "secondStage": {
+          "title": "Segunda etapa",
+          "description": "Informaci\u00f3n acerca de la segunda etapa de un procedimiento de dos etapas (por ejemplo, un procedimiento restringido, un procedimiento competitivo con negociaci\u00f3n, un di\u00e1logo competitivo o una asociaci\u00f3n de innovaci\u00f3n).",
+          "$ref": "#/definitions/SecondStage"
+        }
+      }
+    },
+    "SecondStage": {
+      "title": "Segunda etapa",
+      "description": "Informaci\u00f3n acerca de la segunda etapa de un procedimiento de dos etapas (por ejemplo, un procedimiento restringido, un procedimiento competitivo con negociaci\u00f3n, un di\u00e1logo competitivo o una asociaci\u00f3n de innovaci\u00f3n).",
+      "type": "object",
+      "properties": {
+        "minimumCandidates": {
+          "title": "N\u00famero m\u00ednimo de candidatos",
+          "description": "El n\u00famero m\u00ednimo de candidatos a invitar a la segunda etapa del procedimiento. Si hay un l\u00edmite exacto en el n\u00famero de candidatos, establecer `minimumCandidates` y `maximumCandidates` en el mismo n\u00famero.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "maximumCandidates": {
+          "title": "N\u00famero m\u00e1ximo de candidatos",
+          "description": "El n\u00famero m\u00e1ximo de candidatos que se invitar\u00e1 a la segunda etapa del procedimiento. Si hay un l\u00edmite exacto en el n\u00famero de candidatos, establecer `minimumCandidates` y `maximumCandidates` en el mismo n\u00famero.",
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "successiveReduction": {
+          "title": "Reducci\u00f3n sucesiva",
+          "description": "El procedimiento se llevar\u00e1 a cabo en etapas sucesivas. En cada etapa, algunos participantes pueden ser eliminados.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "noNegotiationNecessary": {
+          "title": "No es necesaria la negociaci\u00f3n",
+          "description": "El comprador o la entidad contratante se reserva el derecho de adjudicar el contrato sobre la base de las ofertas iniciales sin m\u00e1s negociaciones.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "invitationDate": {
+          "title": "Fecha de la invitaci\u00f3n",
+          "description": "La fecha estimada de env\u00edo de las invitaciones para participar o presentar ofertas.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

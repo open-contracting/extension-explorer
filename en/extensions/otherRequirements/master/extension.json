@@ -1,0 +1,29 @@
+{
+  "name": {
+    "en": "Other Requirements",
+    "es": "Otros requisitos"
+  },
+  "description": {
+    "en": "Adds an object to describe other requirements to participate in a contracting process.",
+    "es": "Agregar un objeto para describir otros requisitos para participar en un proceso de contrataci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/otherRequirements/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "reservedParticipation.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  },
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_lots_extension/master/extension.json"
+  ]
+}

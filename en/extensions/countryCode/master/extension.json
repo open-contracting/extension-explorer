@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Country code",
+    "es": "C\u00f3digo de pa\u00eds"
+  },
+  "description": {
+    "en": "Adds a country code field to the address object.",
+    "es": "Agregar un campo c\u00f3digo de pa\u00eds al objeto de direcci\u00f3n."
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/countryCode/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "codelists": [
+    "country.csv"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}

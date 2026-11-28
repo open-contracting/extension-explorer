@@ -1,0 +1,79 @@
+{
+  "definitions": {
+    "Tender": {
+      "properties": {
+        "essentialAssets": {
+          "title": "Activos esenciales",
+          "description": "Informaci\u00f3n sobre los activos utilizados para la prestaci\u00f3n de servicios p\u00fablicos.",
+          "$ref": "#/definitions/EssentialAsset"
+        },
+        "hasEssentialAssets": {
+          "title": "Tiene activos esenciales",
+          "description": "Si existe informaci\u00f3n sobre los activos utilizados para la prestaci\u00f3n de servicios p\u00fablicos.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "Lot": {
+      "properties": {
+        "essentialAssets": {
+          "title": "Activos esenciales",
+          "description": "Informaci\u00f3n sobre los activos utilizados para la prestaci\u00f3n de servicios p\u00fablicos.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EssentialAsset"
+          },
+          "wholeListMerge": true,
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "hasEssentialAssets": {
+          "title": "Tiene activos esenciales",
+          "description": "Si existe informaci\u00f3n sobre los activos utilizados para la prestaci\u00f3n de servicios p\u00fablicos.",
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    },
+    "EssentialAsset": {
+      "title": "Essential asset",
+      "description": "Information about the asset used for the provision of public services.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Descripci\u00f3n",
+          "description": "Description of the essential asset.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "significance": {
+          "title": "Significado",
+          "description": "Estimated percentage share of the essential asset provided in relation to the overall asset needed for the provision of the public services.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "predominance": {
+          "title": "Predominancia",
+          "description": "Estimated percentage share of asset provided compared to asset used for activities other than the public services.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "definitions": {
+    "Shareholder": {
+      "title": "Participaci\u00f3n",
+      "description": "Una participaci\u00f3n accionaria en una organizaci\u00f3n.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "Un identificador local para esta participaci\u00f3n accionaria, \u00fanico dentro de esta lista.",
+          "type": "string",
+          "minLength": 1
+        },
+        "shareholder": {
+          "title": "Accionista",
+          "description": "La organizaci\u00f3n titular de la acci\u00f3n.",
+          "$ref": "#/definitions/OrganizationReference"
+        },
+        "shareholding": {
+          "title": "Participaci\u00f3n",
+          "description": "La proporci\u00f3n de las acciones de la organizaci\u00f3n en poder del accionista, expresada como un decimal entre 0 y 1.",
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "votingRights": {
+          "title": "Derecho al voto",
+          "description": "El tipo de derechos de voto asociados con las acciones del accionista.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "codelist": "votingRights.csv",
+          "openCodelist": false,
+          "enum": [
+            "ordinary",
+            "none",
+            "restricted",
+            "additional",
+            "enhanced",
+            null
+          ]
+        },
+        "votingRightsDetails": {
+          "title": "Detalles de los derechos de voto",
+          "description": "Informaci\u00f3n detallada sobre los derechos de voto asociados a las acciones del accionista: por ejemplo, cuando los derechos de voto de los accionistas son restringidos, adicionales o mejorados.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "notes": {
+          "title": "Notas",
+          "description": "Notas adicionales sobre la participaci\u00f3n o el accionista: por ejemplo, detalles sobre cualquier l\u00edmite a la transferencia de capital o acuerdos de bloqueo aplicables al accionista.",
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Organization": {
+      "properties": {
+        "shareholders": {
+          "title": "Participaciones accionarias",
+          "description": "Participaciones accionarias en la organizaci\u00f3n: se utiliza para proporcionar informaci\u00f3n sobre la propiedad de las empresas, principalmente en el caso de contratos grandes y complejos, como asociaciones p\u00fablico-privadas, que requieren la divulgaci\u00f3n de esta informaci\u00f3n por parte de los oferentes o proveedores.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Shareholder"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

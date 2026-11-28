@@ -1,0 +1,22 @@
+{
+  "name": {
+    "en": "Implementation status",
+    "es": "Estatus de la implementaci\u00f3n"
+  },
+  "description": {
+    "en": "In Mexico, when talking about works and services related with them it is necessary to publish a set of specific variables about its implementation. One of them is the implementation status of the work or service related with it. See discussion in https://github.com/open-contracting/standard/issues/624",
+    "es": "En M\u00e9xico, cuando se habla de obras y servicios relacionados a las obras, es necesario publicar un conjunto de variables espec\u00edficas sobre su implementaci\u00f3n. Uno de ellos es el estado de implementaci\u00f3n del trabajo o servicio relacionado con \u00e9l. Vea la discusi\u00f3n en https://github.com/open-contracting/standard/issues/624"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "documentationUrl": {
+    "en": "https://github.com/contratacionesabiertas/ocds_implementationStatus_extension"
+  },
+  "codelists": [
+    "implementationStatus.csv"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ]
+}

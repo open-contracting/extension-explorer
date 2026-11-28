@@ -1,0 +1,26 @@
+{
+  "name": {
+    "en": "Budget and spending classification",
+    "es": "Clasificaci\u00f3n de presupuesto y gasto"
+  },
+  "description": {
+    "en": "Extends budget breakdown and contract implementation to allow publication of detailed budget allocations and execution for a contracting process, using classifications that can be mapped to separately published budget and spend data.",
+    "es": "Extiende el desglose de presupuesto y la implementaci\u00f3n de contrato para permitir la publicaci\u00f3n del detalle de las asignaciones de presupuesto y la ejecuci\u00f3n del proceso de contrataciones, utilizando las clasificaciones que pueden mapearse a datos de presupuesto y de gasto que fueron publicados de forma separada. "
+  },
+  "documentationUrl": {
+    "en": "https://extensions.open-contracting.org/en/extensions/budget_and_spend/"
+  },
+  "compatibility": [
+    "1.1"
+  ],
+  "schemas": [
+    "release-schema.json"
+  ],
+  "testDependencies": [
+    "https://raw.githubusercontent.com/open-contracting-extensions/ocds_budget_breakdown_extension/master/extension.json"
+  ],
+  "contactPoint": {
+    "name": "Open Contracting Partnership",
+    "email": "data@open-contracting.org"
+  }
+}
